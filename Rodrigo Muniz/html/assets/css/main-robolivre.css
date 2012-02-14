@@ -18,9 +18,19 @@
 }
 
 body {
-	padding-top: 40px
+	padding-top: 60px;
+	color: #555;
+}
+h1, h2, h3, h4, h5 {
+    font-family: 'RobotoThin';
+}
+h6 {
+    font-family: 'RobotoCondensed';
 }
 
+.icon-gray {opacity: 0.4}
+.active .icon-gray {background-image: url(../img/glyphicons-halflings-white.png);}
+.navbar-fixed-top {position: fixed}
 .navbar .brand {
 	background: url(../img/rl/logo.png) no-repeat;
 	display: block;
@@ -66,15 +76,103 @@ body {
 		border: 1px solid #c5c3c3;
 		box-shadow: 0 5px 25px rgba(255, 255, 255, 1);
 	}
-	.dropdown-menu {
+	#searchsubmit {position: relative; left: -31px}
+	.navbar-fixed-top .dropdown-menu {
 		right: 0;
 		left: auto;
 	}
-	.navbar .dropdown-menu::before {
+	.navbar-fixed-top .dropdown-menu::before {
 		left: auto;
 		right: 9px;
 	}
-	.navbar .dropdown-menu::after {
+	.navbar-fixed-top .dropdown-menu::after {
 		left: auto;
 		right: 10px
 	}
+	.btn-navbar .icon-bar {
+		background-color: #0088cc
+	}
+
+#sidebar {
+	border:1px inset #e8e6e6;
+	border-width: 0 1px 0 0;
+	margin-right: -1px
+}
+	#sidebar h1 {
+	    font-family: 'RobotoCondensed';
+	    font-size: 14px;
+	    font-weight: normal;
+	    color: #555;
+	    line-height: 100%;
+	    margin:5px 0 15px;
+	}
+	.avatar {position: relative}
+	.avatar .photo {
+		background: url(../img/rl/_avatar-default-140.png) no-repeat;
+		max-width: 100%;
+	}
+	.avatar .btn-group {
+		position: absolute;
+		top:-4px;
+		left: -4px;
+	}
+	.avatar .btn-group > a {
+		padding: 2px 4px;
+		opacity: 0.9;
+	}
+
+.footer {}
+
+/*!
+ * Responsive
+ */
+/* // Landscape phones and down */
+@media (max-width: 480px) {
+	#user-menu {
+		float: left
+	}
+	
+#searchsubmit {display: none}
+}
+
+/* // Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+	#user-menu {
+		float: left
+	}
+	.navbar-search .search-query {
+		width: 95%
+	}
+	.navbar .brand {margin-left: 15px}
+
+#searchsubmit {display: none}
+}
+
+/* // Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 980px) {
+	#user-menu {
+		float: left
+	}
+	.navbar-search .search-query {
+		width: 95%
+	}
+	.navbar .brand {margin-left: 15px}
+
+
+#searchsubmit {display: none}
+}
+
+/* // Um computador por aluno */
+@media (min-width: 768px) and (max-width: 800px) {
+	#user-menu {
+		float: left
+	}
+	.navbar-search .search-query {
+		width: 95%
+	}
+
+#searchsubmit {display: none}
+}
+
+/* // Large desktop */
+@media (min-width: 1200px) {}

@@ -43,8 +43,9 @@
               </li>
 			<li class="divider-vertical"></li>
             </ul>
-			<form class="navbar-search pull-left" action="">
-           	<input type="text" class="search-query span3" placeholder="Buscar robôs, comunidades, amigos…">
+			<form class="navbar-search pull-left" action="search.html">
+           	<input type="text" class="search-query span4" placeholder="Buscar robôs, comunidades, amigos…">
+		    <input id="searchsubmit" alt="Buscar" type="image" src="assets/img/rl/btn-search.png">
          	</form>
          	
 				<ul class="nav" id="user-menu">
@@ -77,27 +78,58 @@
 
     <div class="container">
 
-<div class="span3" id="sidebar">
+<div class="row">
+
+<div class="span2" id="sidebar">
 <div class="avatar">
-	<img src="assets/img/rl/avatar-140.jpg" alt="Rodrigo Medeiros">
+	<a href="./index.html"><img src="assets/img/rl/avatar-140.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+    <div class="btn-group">
+	  	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+	    <span class="icon-cog"></span>
+	  	</a>
+	  	<ul class="dropdown-menu">
+	      <li>
+	        <a href="./inbox.html">Editar perfil</a>
+	      </li>
+	      <li class="">
+	        <a href="./settings.html">Editar foto do perfil</a>
+	      </li>
+		</ul>
+	</div>
+	
 	<h1>Rodrigo Medeiros</h1>
-</div>
-<ul>
-	<li><a href="#">Atualizações</a></li>
-	<li><a href="#">Mensagens</a></li>
-	<li><a href="#">Comunidades</a></li>
-	<li><a href="#">Amigos</a></li>
-	<li><a href="#">Eventos</a></li>
-	<li><a href="#">Projetos</a></li>
+
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li class="active"><a href="#"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+	<li><a href="#"><span class="icon-gray icon-envelope"></span> Mensagens</a></li>
+	<li><a href="#"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+	<li><a href="#"><span class="icon-gray icon-user"></span> Amigos</a></li>
+	<li><a href="#"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
+	<li><a href="#"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
 </ul>
 </div><!-- /sidebar -->
 
 
+<div class="span7">
+<h2>Teste</h2>
+Aenean lacinia bibendum nulla sed consectetur. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+</div><!-- /miolo -->
+
+
+<div class="span3">
+<h4>Comunidades</h4>
+Aenean lacinia bibendum nulla sed consectetur.
+</div><!-- /aside -->
+
+</div><!-- /row -->
 
 
      <!-- Footer
       ================================================== -->
       <footer class="footer">
+		<hr>
         <p>Esta obra é licenciada sob uma licença<br>
         	<a href="http://creativecommons.org/licenses/by/3.0/br/deed.pt_BR">Creative Commons Atribuição 3.0 Brasil</a>
         </p>
