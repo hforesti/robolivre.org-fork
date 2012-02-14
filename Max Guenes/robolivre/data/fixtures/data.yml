@@ -1,0 +1,158 @@
+Usuarios:
+  Usuarios_4:
+    id_nivel_escolaridade: null
+    nome: 'Max Igor Guenes dos Santos'
+    login: maxguenes
+    senha: e10adc3949ba59abbe56e057f20f883e
+    email: maxguenes@gmail.com
+    endereco: null
+    habilidades: null
+    curso: null
+    site: null
+    site_empresa: null
+    data_nascimento: null
+    sexo: null
+    administrador: '0'
+    sobre_mim: null
+    ativo: '1'
+    imagem_perfil: null
+    twitter: null
+    parametros_privacidade: null
+  Usuarios_5:
+    id_nivel_escolaridade: null
+    nome: robeval
+    login: robeval
+    senha: e10adc3949ba59abbe56e057f20f883e
+    email: maxguenes2@gmail.com
+    endereco: null
+    habilidades: null
+    curso: null
+    site: null
+    site_empresa: null
+    data_nascimento: null
+    sexo: null
+    administrador: '0'
+    sobre_mim: null
+    ativo: '1'
+    imagem_perfil: null
+    twitter: null
+    parametros_privacidade: null
+  Usuarios_6:
+    id_nivel_escolaridade: null
+    nome: darthvader
+    login: darthvader
+    senha: e10adc3949ba59abbe56e057f20f883e
+    email: darthvader@deathstar.com
+    endereco: null
+    habilidades: null
+    curso: null
+    site: null
+    site_empresa: null
+    data_nascimento: null
+    sexo: null
+    administrador: '0'
+    sobre_mim: null
+    ativo: '1'
+    imagem_perfil: null
+    twitter: null
+    parametros_privacidade: null
+  Usuarios_7:
+    id_nivel_escolaridade: null
+    nome: 'claudio bonitao'
+    login: claudio
+    senha: e10adc3949ba59abbe56e057f20f883e
+    email: claudio@claudio.com
+    endereco: null
+    habilidades: null
+    curso: null
+    site: null
+    site_empresa: null
+    data_nascimento: null
+    sexo: null
+    administrador: '0'
+    sobre_mim: null
+    ativo: '1'
+    imagem_perfil: null
+    twitter: null
+    parametros_privacidade: null
+  Usuarios_8:
+    id_nivel_escolaridade: null
+    nome: 'alberto analista'
+    login: alberto
+    senha: e10adc3949ba59abbe56e057f20f883e
+    email: alberto@alberto.com
+    endereco: null
+    habilidades: null
+    curso: null
+    site: null
+    site_empresa: null
+    data_nascimento: null
+    sexo: null
+    administrador: '0'
+    sobre_mim: null
+    ativo: '1'
+    imagem_perfil: null
+    twitter: null
+    parametros_privacidade: null
+  Usuarios_9:
+    id_nivel_escolaridade: null
+    nome: 'wallace ribeiro jobs'
+    login: wallace
+    senha: 9f511b73b7a190fe8ee416b140d0fd1a
+    email: wallace@wallace.com
+    endereco: null
+    habilidades: null
+    curso: null
+    site: null
+    site_empresa: null
+    data_nascimento: null
+    sexo: null
+    administrador: '0'
+    sobre_mim: null
+    ativo: '1'
+    imagem_perfil: null
+    twitter: null
+    parametros_privacidade: null
+NiveisEscolaridade:
+  NiveisEscolaridade_4:
+    nome: 'Ensino Fundamental'
+    descricao: 'Ensino Fundamental'
+  NiveisEscolaridade_5:
+    nome: 'Ensino Médio'
+    descricao: 'Ensino Médio'
+  NiveisEscolaridade_6:
+    nome: 'Ensino Superior Completo'
+    descricao: 'Ensino Superior Completo'
+  NiveisEscolaridade_7:
+    nome: 'Ensino Superior Incompleto'
+    descricao: 'Ensino Superior Incompleto'
+  NiveisEscolaridade_8:
+    nome: Pós-Graduação
+    descricao: Pós-Graduação
+  NiveisEscolaridade_9:
+    nome: Mestrado
+    descricao: Mestrado
+  NiveisEscolaridade_10:
+    nome: Doutorado
+    descricao: Doutorado
+Amigos:
+  Amigos_6_4:
+    id_usuario_a: '6'
+    id_usuario_b: '4'
+    aceito: '1'
+  Amigos_6_5:
+    id_usuario_a: '6'
+    id_usuario_b: '5'
+    aceito: '1'
+  Amigos_6_9:
+    id_usuario_a: '6'
+    id_usuario_b: '9'
+    aceito: '0'
+  Amigos_5_4:
+    id_usuario_a: '5'
+    id_usuario_b: '4'
+    aceito: '1'
+  Amigos_4_9:
+    id_usuario_a: '4'
+    id_usuario_b: '9'
+    aceito: '0'
