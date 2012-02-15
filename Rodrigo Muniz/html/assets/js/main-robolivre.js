@@ -15,5 +15,9 @@ $('.search-query').blur(function() {
 	}, 250);
 });
 
+if ( $("#login-form") ) {
+	$('input[tabindex=1]').focus();
+}
+
 
 }(window.jQuery)

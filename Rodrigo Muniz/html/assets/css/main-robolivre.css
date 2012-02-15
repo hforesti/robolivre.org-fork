@@ -21,22 +21,27 @@ body {
 	padding-top: 60px;
 	color: #555;
 }
-h1, h2, h3, h4, h5 {
+body.home {padding-top:10px}
+
+h1, h2 {
     font-family: 'RobotoThin';
 }
-h6 {
+h3, h4, h5, h6 {
     font-family: 'RobotoCondensed';
 }
+label {cursor: pointer}
 
 .icon-gray {opacity: 0.4}
 .active .icon-gray {background-image: url(../img/glyphicons-halflings-white.png);}
 .navbar-fixed-top {position: fixed}
-.navbar .brand {
+.brand {
 	background: url(../img/rl/logo.png) no-repeat;
 	display: block;
 	text-indent: -9999em;
 	height: 40px;
 	width: 140px;
+}
+.navbar .brand {
 	padding: 0;
 	margin-right: 20px;
 }
@@ -92,7 +97,21 @@ h6 {
 	.btn-navbar .icon-bar {
 		background-color: #0088cc
 	}
-
+	#login-form ul.row {list-style: none}
+	#login-form .extras {margin-left: -35px;}
+#top-login {
+	float: right;
+	margin-right: -40px
+}
+#intro {
+	margin-top: 20px
+}
+#cadastro-form input {
+	display: block;
+}
+#cadastro-form #nome {width: 98%}
+#cadastro-form #email, #cadastro-form #pass {width: 60%}
+	
 #sidebar {
 	border:1px inset #e8e6e6;
 	border-width: 0 1px 0 0;
@@ -113,8 +132,8 @@ h6 {
 	}
 	.avatar .btn-group {
 		position: absolute;
-		top:-4px;
-		left: -4px;
+		top:-6px;
+		left: -5px;
 	}
 	.avatar .btn-group > a {
 		padding: 2px 4px;
@@ -133,6 +152,12 @@ h6 {
 	}
 	
 #searchsubmit {display: none}
+
+#top-login {
+	float: none
+}
+#login-form .extras {margin-left: -20px;}
+
 }
 
 /* // Landscape phone to portrait tablet */
@@ -146,6 +171,11 @@ h6 {
 	.navbar .brand {margin-left: 15px}
 
 #searchsubmit {display: none}
+
+#top-login {
+	margin-right: 10px
+}
+
 }
 
 /* // Portrait tablet to landscape and desktop */
@@ -160,6 +190,7 @@ h6 {
 
 
 #searchsubmit {display: none}
+
 }
 
 /* // Um computador por aluno */
@@ -172,7 +203,13 @@ h6 {
 	}
 
 #searchsubmit {display: none}
+
+
+
 }
 
 /* // Large desktop */
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+
+
+}

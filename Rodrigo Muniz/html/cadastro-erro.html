@@ -55,10 +55,21 @@
 
 
 <div class="span5 offset1">
-					<form id="cadastro-form" action="cadastro-erro.html">
+					<form id="cadastro-form" action="cadastro-passo2.html">
 						<h3>Novo na Robô Livre? <small>Inscreva-se hoje!</small></h3>
+
+<div class="alert alert-error fade in">
+<a class="close" data-dismiss="alert" href="#">×</a>
+Por favor, informe um e-mail válido
+</div>
+
+
 		           			<input id="nome" type="text" placeholder="Nome Completo" tabindex="5" />
+
+		           			<span class="control-group error">
 			           		<input id="email" type="email" placeholder="E-mail" tabindex="6" />
+			           		</span>
+			           		
 			           		<input id="pass" type="password" placeholder="Senha" tabindex="7" />
 		
 					    	<input value="Cadastrar" type="submit" class="btn btn-primary" tabindex="8" />
