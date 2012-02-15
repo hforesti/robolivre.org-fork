@@ -1,0 +1,51 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+<div class="avatar">
+	<a href="profile-home.shtml"><img src="assets/img/rl/avatar-140.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+    <div class="btn-group">
+	  	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+	    <span class="icon-cog"></span>
+	  	</a>
+	  	<ul class="dropdown-menu">
+	      <li>
+	        <a href="inbox.shtml">Editar perfil</a>
+	      </li>
+	      <li class="">
+	        <a href="settings.shtml">Editar foto do perfil</a>
+	      </li>
+		</ul>
+	</div>
+	
+	<h1>Rodrigo Medeiros</h1>
+
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li class="active"><a href="#"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+	<li><a href="#"><span class="icon-gray icon-envelope"></span> Mensagens</a></li>
+	<li><a href="#"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+	<li><a href="#"><span class="icon-gray icon-user"></span> Amigos</a></li>
+	<li><a href="#"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
+	<li><a href="#"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+</ul>
+</div><!-- /sidebar -->
+
+
+<div class="span7">
+<h2>Teste</h2>
+Aenean lacinia bibendum nulla sed consectetur. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+</div><!-- /miolo -->
+
+
+<div class="span3">
+<h4>Comunidades</h4>
+Aenean lacinia bibendum nulla sed consectetur.
+</div><!-- /aside -->
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->

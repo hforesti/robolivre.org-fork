@@ -45,6 +45,13 @@ label {cursor: pointer}
 	padding: 0;
 	margin-right: 20px;
 }
+body.home .brand {
+	background: url(../img/rl/logo-home.png) no-repeat;
+	display: block;
+	text-indent: -9999em;
+	height: 52px;
+	width: 220px;
+}
 
 	#user-menu {
 		float: right
@@ -101,7 +108,7 @@ label {cursor: pointer}
 	#login-form .extras {margin-left: -35px;}
 #top-login {
 	float: right;
-	margin-right: -40px
+	width: 345px
 }
 #intro {
 	margin-top: 20px
@@ -110,7 +117,6 @@ label {cursor: pointer}
 	display: block;
 }
 #cadastro-form #nome {width: 98%}
-#cadastro-form #email, #cadastro-form #pass {width: 60%}
 	
 #sidebar {
 	border:1px inset #e8e6e6;
@@ -140,7 +146,6 @@ label {cursor: pointer}
 		opacity: 0.9;
 	}
 
-.footer {}
 
 /*!
  * Responsive
@@ -176,6 +181,19 @@ label {cursor: pointer}
 	margin-right: 10px
 }
 
+
+#top-login {
+	margin-top: 15px;
+	float: left;
+	width: 60%
+}
+#login, #login-pass {
+	display: block;
+	margin-bottom: 5px;
+	width: 100%
+}
+#top-login .extras {margin-left: -15px; margin-top: 10px}
+
 }
 
 /* // Portrait tablet to landscape and desktop */
@@ -188,8 +206,8 @@ label {cursor: pointer}
 	}
 	.navbar .brand {margin-left: 15px}
 
-
 #searchsubmit {display: none}
+
 
 }
 
@@ -203,7 +221,6 @@ label {cursor: pointer}
 	}
 
 #searchsubmit {display: none}
-
 
 
 }
