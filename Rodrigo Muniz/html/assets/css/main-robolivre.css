@@ -18,7 +18,7 @@
 }
 
 body {
-	padding-top: 60px;
+	padding: 60px 0;
 	color: #555;
 }
 body.home {padding-top:10px}
@@ -104,11 +104,24 @@ body.home .brand {
 	.btn-navbar .icon-bar {
 		background-color: #0088cc
 	}
-	#login-form ul.row {list-style: none}
-	#login-form .extras {margin-left: -35px;}
+	#login-form ul.extras {
+		margin: 0;
+		position: relative;
+		list-style: none
+	}
+
+	#login, #login-pass {width: 38%}
+	#esqueci {
+		position: absolute;
+		top: 0;
+		left: 145px
+	}
+	#top-login .extras li {padding-top: 2px}
+
+
 #top-login {
 	float: right;
-	width: 345px
+	width: 345px;
 }
 #intro {
 	margin-top: 20px
@@ -116,7 +129,6 @@ body.home .brand {
 #cadastro-form input {
 	display: block;
 }
-#cadastro-form #nome {width: 98%}
 	
 #sidebar {
 	border:1px inset #e8e6e6;
@@ -146,6 +158,21 @@ body.home .brand {
 		opacity: 0.9;
 	}
 
+#footer-utility ul {
+	list-style: none;
+	margin-left: 0;
+}
+#footer-utility ul li {
+	margin: 6px 0
+}
+.fade-rl {
+	background: url(../img/rl/fade.png) repeat-x;
+	position: fixed;
+	bottom: 0;
+	height: 60px;
+	width: 100%;
+		pointer-events: none;
+}
 
 /*!
  * Responsive
@@ -161,7 +188,6 @@ body.home .brand {
 #top-login {
 	float: none
 }
-#login-form .extras {margin-left: -20px;}
 
 }
 
@@ -181,6 +207,13 @@ body.home .brand {
 	margin-right: 10px
 }
 
+#top-login .extras {padding-top: 10px;}
+
+#esqueci {
+	position: static;
+}
+
+
 
 #top-login {
 	margin-top: 15px;
@@ -192,7 +225,6 @@ body.home .brand {
 	margin-bottom: 5px;
 	width: 100%
 }
-#top-login .extras {margin-left: -15px; margin-top: 10px}
 
 }
 
@@ -208,7 +240,6 @@ body.home .brand {
 
 #searchsubmit {display: none}
 
-
 }
 
 /* // Um computador por aluno */
@@ -221,7 +252,6 @@ body.home .brand {
 	}
 
 #searchsubmit {display: none}
-
 
 }
 

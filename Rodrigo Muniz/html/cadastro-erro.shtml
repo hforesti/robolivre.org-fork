@@ -19,9 +19,9 @@
 
 <fieldset>
 		<div class="control-group success">
-            <label class="control-label" for="nome">Nome Completo</label>
+            <label class="control-label" for="nome">Nome e Sobrenome</label>
             <div class="controls">
-              <input id="nome" type="text" placeholder="Nome Completo" value="Rodrigo Medeiros" />
+              <input id="nome" type="text" placeholder="Nome e Sobrenome" value="Rodrigo Medeiros" class="span5" />
               <span class="help-inline">Bonito nome!</span>
             </div>
 		</div>

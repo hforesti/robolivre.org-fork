@@ -1,12 +1,9 @@
 <!--#include virtual="includes/header-home.html" -->
 
     <div class="container">
-
-
   <!-- Topo
     ================================================== -->
     <div class="row">
-
 
 <!-- ========== -->
 <!-- ! ALERTA   -->
@@ -20,29 +17,29 @@
 <!-- alerta -->
 
         <a class="brand span3" href="index.shtml">Robô Livre</a>
-
-		<div class="span5" id="top-login">
-					<form id="login-form" class="form-inline" action="profile-home.shtml">
+          
+		<div id="top-login">
+					<form id="login-form" class="form-inline" action="login-erro.shtml">
 
 <!-- ================================================ -->
 <!-- ! Usar essa span para englobar campos com erro   -->
 <!-- ================================================ -->
 				<span class="control-group error">
-		           			<input id="login" type="text" placeholder="e-mail" class="span2" tabindex="1" />
-			           		<input id="login-pass" type="password" placeholder="senha" class="span2" tabindex="2" />
-				</span>	
-
+		           			<input id="login" type="email" placeholder="e-mail ou usuário" tabindex="1" />
+			           		<input id="login-pass" type="password" placeholder="senha" tabindex="2" />
+				</span>
+		
 					    	<input value="entrar" type="submit" class="btn btn-primary" tabindex="4" />
 					    	
-					<ul class="row extras">
-						<li class="span2"><label class="checkbox span2">
+					<ul class="extras">
+						<li id="lembrar"><label class="checkbox">
 						<input type="checkbox" name="optionsCheckboxList1" value="option1" tabindex="3">
 					lembrar-me
 					</label></li>
-						<li class="span2"><a href="esqueci.shtml">Esqueceu sua senha?</a></li>
-					</ul>		
+						<li id="esqueci"><a href="esqueci.shtml">Esqueceu sua senha?</a></li>
+					</ul>
+		
 		         	</form>
-
 		</div>
 
     </div>
@@ -56,13 +53,13 @@
 </div>
 
 
-<div class="span5 offset1">
-					<form id="cadastro-form" action="cadastro-erro.html">
+<div class="span4 offset2">
+					<form id="cadastro-form" action="cadastro-erro.shtml">
 						<h3>Novo na Robô Livre? <small>Inscreva-se hoje!</small></h3>
 		           			<input id="nome" type="text" placeholder="Nome Completo" tabindex="5" />
-			           		<input id="email" type="email" placeholder="E-mail" tabindex="6" />
-			           		<input id="pass" type="password" placeholder="Senha" tabindex="7" />
-
+		           			<input id="user-name" type="text" placeholder="Nome de usuário" tabindex="6" class="span3" />
+			           		<input id="email" type="email" placeholder="E-mail" tabindex="7" class="span3" />
+		
 					    	<input value="Cadastrar" type="submit" class="btn btn-primary" tabindex="8" />
 		
 		         	</form>
@@ -74,14 +71,46 @@
 
 <div class="row">
 
-<div class="span4">
+<div class="span4" id="grid-comunidades">
 <h3>Comunidades</h3>
-Aenean lacinia bibendum nulla sed consectetur. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+<ul class="thumbnails">
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+</ul>
 </div>
 
 <div class="span4">
 <h3>Conteúdos mais relevantes</h3>
-Aenean lacinia bibendum nulla sed consectetur.
+<a href="#" title="4 tópicos" style="font-size: 11.7006369427px;">Animação</a>
+<a href="#" title="5 tópicos" style="font-size: 12.2611464968px;">Bípede</a>
+<a href="#" title="4 tópicos" style="font-size: 11.7006369427px;">cattec</a>
+<a href="#" title="96 tópicos" style="font-size: 20.7388535032px;">Circuitos</a>
+<a href="#" title="42 tópicos" style="font-size: 18.2165605096px;">Código Fonte</a>
+<a href="#" title="6 tópicos" style="font-size: 12.7515923567px;">Com rodas</a>
+<a href="#" title="82 tópicos" style="font-size: 20.2484076433px;">Documento</a>
+<a href="#" title="7 tópicos" style="font-size: 13.101910828px;">GGBR4</a>
+<a href="#" title="3 tópicos" style="font-size: 11px;">GVTT3</a>
+<a href="#" title="147 tópicos" style="font-size: 22px;">Ibov</a>
+<a href="#" title="3 tópicos" style="font-size: 11px;">ITAU4</a>
+<a href="#" title="5 tópicos" style="font-size: 12.2611464968px;">ITUB4</a>
+<a href="#" title="18 tópicos" style="font-size: 15.7643312102px;">Evento</a>
+<a href="#" title="36 tópicos" style="font-size: 17.7961783439px;">LAD</a>
+<a href="#" title="5 tópicos" style="font-size: 12.2611464968px;">LAME4</a>
+<a href="#" title="3 tópicos" style="font-size: 11px;">Nasdaq</a>
+<a href="#" title="14 tópicos" style="font-size: 15.0636942675px;">New Highs New Lows</a>
+<a href="#" title="3 tópicos" style="font-size: 11px;">Programa</a>
+<a href="#" title="82 tópicos" style="font-size: 20.2484076433px;">Programação</a>
+<a href="#" title="5 tópicos" style="font-size: 12.2611464968px;">LAME4</a>
+<a href="#" title="3 tópicos" style="font-size: 11px;">Nasdaq</a>
+<a href="#" title="14 tópicos" style="font-size: 15.0636942675px;">New Highs New Lows</a>
+<a href="#" title="3 tópicos" style="font-size: 11px;">Programa</a>
+<a href="#" title="82 tópicos" style="font-size: 20.2484076433px;">Projeto</a>
 </div>
 
 <div class="span4">
@@ -89,8 +118,10 @@ Aenean lacinia bibendum nulla sed consectetur.
 <h3>Twitter @robolivre</h3>
 Aenean lacinia bibendum nulla sed consectetur.
 
+<hr>
+
 <h3>Facebook</h3>
-Aenean lacinia bibendum nulla sed consectetur.
+<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Frobolivre&amp;send=false&amp;layout=standard&amp;width=300&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=80&amp;appId=183003458415333" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:80px;" allowTransparency="true"></iframe>
 </div>
 
 </div><!-- /row -->

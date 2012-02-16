@@ -19,5 +19,8 @@ if ( $("#login-form") ) {
 	$('input[tabindex=1]').focus();
 }
 
+$('#grid-comunidades img').tooltip();
+
+
 
 }(window.jQuery)
