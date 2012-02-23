@@ -1,0 +1,101 @@
+<!--#include virtual="includes/header-home.html" -->
+
+    <div class="container">
+  <!-- Topo
+    ================================================== -->
+    <div class="row">
+        <a class="brand span3" href="index.shtml">Robô Livre</a>
+          
+
+    </div>
+
+<div class="row" id="intro">
+
+<div class="span8">
+<form id="cadastro-form" class="form-horizontal" action="profile-home.shtml">
+
+<h1>Criar uma conta <small>último passo</small></h1>
+
+
+<fieldset>
+		<div class="control-group success">
+            <label class="control-label" for="nome">Nome e Sobrenome</label>
+            <div class="controls">
+              <input id="nome" type="text" placeholder="Nome e Sobrenome" value="Rodrigo Medeiros" class="span5" />
+              <span class="help-inline">Bonito nome!</span>
+            </div>
+		</div>
+
+		<div class="control-group success">
+            <label class="control-label" for="username">Nome de usuário</label>
+            <div class="controls">
+              <input id="username" type="text" placeholder="Nome de usuário" value="rodrigo" />
+              <span class="help-inline">Nome de usuário disponível!</span>
+            </div>
+		</div>
+
+		<div class="control-group success">
+            <label class="control-label" for="email">Seu e-mail</label>
+            <div class="controls">
+              <input id="email" type="email" placeholder="E-mail" value="rodrigo@robolivre.org" />
+              <span class="help-inline">Enviaremos uma confirmação para o seu e-mail</span>
+            </div>
+		</div>
+
+		<div class="control-group warning">
+            <label class="control-label" for="email-conf">Confirmar seu e-mail</label>
+            <div class="controls">
+              <input id="email-conf" type="email" placeholder="Repetir e-mail" value="" />
+            </div>
+		</div>
+
+		<div class="control-group error">
+            <label class="control-label" for="pass">Senha</label>
+            <div class="controls">
+             <input id="pass" type="password" placeholder="Senha" value="senha1234" />
+              <span class="help-inline">A senha não pode conter a palavra "senha"</span>
+            </div>
+          </div>
+
+
+		<div class="control-group warning">
+            <label class="control-label" for="pass-conf">Confirme a senha</label>
+            <div class="controls">
+             <input id="pass-conf" type="password" placeholder="Repetir senha" />
+            </div>
+          </div>
+		
+		<div class="control-group">
+            <label class="control-label" for="optionsCheckbox">Lembrar dados</label>
+            <div class="controls">
+              <label class="checkbox">
+                <input type="checkbox" id="optionsCheckbox" value="option1">
+                Não estou em um computador público e quero me manter conectado
+              </label>
+            </div>
+		</div>
+		<div class="control-group">
+		            <div class="controls">
+					<textarea class="input-xlarge" id="textarea" rows="5" readonly="readonly">
+Ao clicar no botão, você concordará com os termos abaixo:
+----------------------------------------------------------------------------------------
+Estes Termos de Serviço ("Termos") regem seu acesso e uso dos serviços e </textarea>
+            </div>
+		</div>
+
+<div class="form-actions">
+		<button type="submit" class="btn btn-primary">Concluir Cadastro</button>
+		<a href="index.shtml" class="btn">Cancelar</a>
+		
+<p class="help-block"><strong>Nota:</strong> Outros usuários poderão encontrá-lo pelo nome, nome de usuário ou e-mail. Seu e-mail não será exibido publicamente. Você pode alterar suas configurações de privacidade a qualquer momento.</p>
+
+</div>
+
+</fieldset>		
+</form>
+</div>
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->
