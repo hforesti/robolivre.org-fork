@@ -5,25 +5,29 @@
                           
 Alguns comandos que ira funcionar nessa versao:
    
-MNERIM029parafrente 100 01884
-MNERIM027paratras 100 01680
-MNERIM030giradireita 100 01969
-MNERIM031giraesquerda 100 02090
-
+MNERIM031parafrente 100 PC02024
+MNERIM029paratras 100 PC01829
+MNERIM032giradireita 100 PC02118
+MNERIM033giraesquerda 100 PC02239
+MNERIM032quantoscomandos PC02415
+MNERIM031exibecomando 1 PC02126
+??024qualseunome PC01654
 
 
 ******************************************************************/
 
 
 char nome[] = "MNERIM";
-char caractere, checkSum[6], tamanho[4], bufferComando[20], bufferParametro[10];
+char caractere, checkSum[6], tamanho[4], bufferComando[20], bufferParametro[10], remetente[20];
 int contByte = 0, soma = 0;
 long iTamanho, icheckSum;
   
 
 //VARIAVEIS AUXILIARES
-int validouComando = 0;
+int validouComando = 0, comandoOk = 0 , criaRemetente = 0;
 int aux, qntInt, qntFloat, qntChar, numComando;
+int perguntaNome = 0;
+
 
 
 //PONTEIROS PARA A CRIACAO DOS VETORES COM OS PARAMETROS DOS COMANDOS
@@ -33,12 +37,12 @@ char *parametroChar;
 
 
 
+
 //DEFINE QUANTIDADE DE COMANDOS DO MICROCONTROLADOR
-#define qntComandos 4
+#define qntComandos 7
 
 
 //ESTRUTURA DE COMANDO
-
 struct
 {
   char nome[15];
@@ -83,20 +87,44 @@ void setup()
   comando[3].parametro2 = 0;
   comando[3].parametro3 = 0;
   
-}
-
-
-void loop()
-{
-  verificarComando(); 
-
+  strcpy(comando[4].nome , "quantoscomandos");
+  comando[4].parametro1 = 0;
+  comando[4].parametro2 = 0;
+  comando[4].parametro3 = 0;
+  
+  strcpy(comando[5].nome , "exibecomando");
+  comando[5].parametro1 = 1;
+  comando[5].parametro2 = 0;
+  comando[5].parametro3 = 0;
+  
+  
+  strcpy(comando[6].nome, "qualseunome");
+  comando[6].parametro1 = 0;
+  comando[6].parametro2 = 0;
+  comando[6].parametro3 = 0;
+  
   
 }
 
 
 
 
-void verificarComando()
+
+void loop()
+{
+  if ( verificarComando() == 1 ) 
+  {
+    processaComando(bufferComando, parametroInt, parametroFloat); 
+    zerarVariaveis();    
+  }  
+}
+
+
+
+
+
+
+int verificarComando()
 {
 
  while (Serial.available() > 0)
@@ -104,18 +132,29 @@ void verificarComando()
 
    caractere = Serial.read();     
  
+ 
+ 
+ 
   //NOME, OS PRIMEIROS BYTES
   
    if(contByte <= 5)
    {
       
-     if (nome[contByte] == caractere){
-       contByte++; // Se o caractere vindo da Serial for igual ao caractere do nome o contador (contByte) eh  incrementado em 1.
+     if ( (nome[contByte] == caractere) || (caractere == '?') )
+     {
+       
+       if ( (caractere == '?') && (contByte == 1) )
+       {
+         contByte = 5;
+         perguntaNome = 1;
+       }
        soma = soma + caractere;
+       contByte++; // Se o caractere vindo da Serial for igual ao caractere do nome o contador (contByte) eh  incrementado em 1.
      }
      
      else 
      {
+       
        contByte = 0;
        soma = 0;
      }
@@ -125,14 +164,17 @@ void verificarComando()
      
   // BYTES DE TAMANHO
   
-   else if ( (contByte > 5) && (contByte < 9) ) 
+   else if ((contByte > 5) && (contByte < 9) ) 
    {
       tamanho[contByte - 6] = caractere;
       
       if (contByte == 8)  // Se chegar no final da string do tamanho (contByte = 8), transforma a string tamanho em inteiro.
       {
-    
+        
         iTamanho = atol(tamanho); //TRANSFORMA A STRING TAMANHO EM INTEIRO
+       
+        if(perguntaNome == 1) iTamanho += 4;
+        
  
  
       }
@@ -142,11 +184,16 @@ void verificarComando()
   
    }
    
+   
+   
+   
+   
+   
    //BYTES DE COMANDO 
    
-   else if ( (contByte >= 9) && (contByte < (iTamanho - 5)) ) //VERIFICA SE O BYTE EH DE COMANDO
+   else if((contByte >= 9) && (comandoOk == 0) ) //VERIFICA SE O BYTE EH DE COMANDO
    {
-    
+   
      if (validouComando == 0) //Verifica se ja validou o comando
      {
       
@@ -158,9 +205,9 @@ void verificarComando()
   
        }
       
-       else //Se o caractere for espaco, o nome do comando acabou.
+       else //Se o caractere for espaco, o nome do comando ja esta no buffer.
        {
-         int i, comandoOk = 0; //Variaveis de auxilio. comandoOk eh para a checagem se o nome do comando eh valido.
+         int i;
          
          for(i = 0; i < qntComandos; i++) //Aqui usamos a variavel qntComandos declarada no comeco do programa para checar os comandos existentes.
          {
@@ -190,7 +237,13 @@ void verificarComando()
            validouComando = 1; // Comando valido.
            contByte++;
            soma = soma + caractere;
-           aux = contByte; //Aux vai ajudar na hora de pegar os bytes para o bufferParametro. (linha 206)
+           aux = contByte; //Aux vai ajudar na hora de pegar os bytes para o bufferParametro.
+           
+           if ( ( qntInt != 0) || ( qntFloat != 0) || (qntChar != 0) ) // SE EXISTIR PARÃ‚METROS PARA SEREM LIDOS, O COMANDO NÃƒO TÃ� OK!
+           {
+             comandoOk = 0;
+           }
+           
           
          }
          
@@ -198,7 +251,8 @@ void verificarComando()
          {
            soma = 0;
            contByte = 0; 
-           limpabuffer(bufferComando);          
+           limpabuffer(bufferComando); 
+           
          }
        }    
     
@@ -228,13 +282,15 @@ void verificarComando()
            parametroFloat[comando[numComando].parametro2 - qntFloat] = atof(bufferParametro);
            qntFloat--;
          }
-          
+         
         
         //Se acabou os parametros, acabou o comando tambem entao zera 
         
          if( (qntInt == 0) && (qntFloat == 0) )   //Checa se nao falta mais parametros a ser guardados.       
          { 
-            validouComando = 0; //Espera o proximo comando.
+            validouComando = 0; //Espera o proximo comando no proximo frame.
+            comandoOk = 1;
+  
           }
 
            contByte++;
@@ -253,6 +309,24 @@ void verificarComando()
    }
   
   
+  //REMETENTE
+  
+  
+  
+  
+  else if ( (contByte < (iTamanho - 5)) && (comandoOk == 1) )
+  {
+    
+    remetente[contByte - aux] = caractere;
+    contByte++;
+    soma = soma + caractere;
+    
+  }  
+  
+  
+  
+ 
+  
    //5 BYTES DE CHECKSUM
    
    else if ( (contByte >= (iTamanho - 5) ) && (contByte < iTamanho) )
@@ -270,17 +344,16 @@ void verificarComando()
      
        if (icheckSum == soma)  //SE O CHECKSUM BATER MANDAMOS O NOME DA FUNCAO E SEUS PARAMETROS
       {  
-          processaComando(bufferComando, parametroInt, parametroFloat); 
+          return 1;
       }
       else
       {
-        Serial.println("CHECKSUM NAO BATEU!");
+         Serial.println("CHECKSUM NAO BATEU!");
+         zerarVariaveis();
+        return 0;
       }
+      
        
-       //Apos executar o comando zera todos os valores e comeca tudo de novo.
-       soma = 0;
-       contByte = 0; 
-       limpabuffer(bufferComando);
               
          
      }
@@ -295,9 +368,11 @@ void verificarComando()
 }  
   
 
-void processaComando (const char* comando, int* parametroInt, float* parametroFloat)
+void processaComando ( char* comandoRecebido, int* parametroInt, float* parametroFloat)
 {
-   if (!(strcmp(comando,"parafrente")))
+  char resposta[20];
+  
+  if (!(strcmp(comandoRecebido,"parafrente")))
    {
      digitalWrite(8, HIGH);
      digitalWrite(7, HIGH);
@@ -308,11 +383,14 @@ void processaComando (const char* comando, int* parametroInt, float* parametroFl
      digitalWrite(7, LOW);
      digitalWrite(6, LOW);
      digitalWrite(5, LOW);
+     
+     strcpy(resposta, "sucesso");
+     enviarMensagem(remetente, comandoRecebido, resposta);
           
      
    }
   
-   else if (!(strcmp(comando,"paratras")))
+   else if (!(strcmp(comandoRecebido,"paratras")))
    {
      digitalWrite(8, LOW);
      digitalWrite(7, HIGH);
@@ -323,9 +401,12 @@ void processaComando (const char* comando, int* parametroInt, float* parametroFl
      digitalWrite(7, LOW);
      digitalWrite(6, LOW);
      digitalWrite(5, LOW);
+     
+     strcpy(resposta, "sucesso");
+     enviarMensagem(remetente, comandoRecebido, resposta);
    }
    
-   else if (!(strcmp(comando,"giradireita")))
+   else if (!(strcmp(comandoRecebido,"giradireita")))
    {
      digitalWrite(8, HIGH);
      digitalWrite(7, HIGH);
@@ -336,9 +417,12 @@ void processaComando (const char* comando, int* parametroInt, float* parametroFl
      digitalWrite(7, LOW);
      digitalWrite(6, LOW);
      digitalWrite(5, LOW);
+     
+     strcpy(resposta, "sucesso");
+     enviarMensagem(remetente, comandoRecebido, resposta);
    }
 
-   else if (!(strcmp(comando,"giraesquerda")))
+   else if (!(strcmp(comandoRecebido,"giraesquerda")))
    {
      digitalWrite(8, LOW);
      digitalWrite(7, LOW);
@@ -349,47 +433,95 @@ void processaComando (const char* comando, int* parametroInt, float* parametroFl
      digitalWrite(7, LOW);
      digitalWrite(6, LOW);
      digitalWrite(5, LOW);
+     
+     strcpy(resposta, "sucesso");
+     
+     enviarMensagem(remetente, comandoRecebido, resposta);
    } 
-
-  sensor(); 
   
- /*Serial.print("O comando foi: ");
- Serial.println(comando);
- Serial.print("O parametro: ");
- Serial.println(parametroInt[0]);
- */
+   else if (!(strcmp(comandoRecebido,"quantoscomandos")))
+   {
+     char* resposta = "";
+     itoa(qntComandos, resposta, 10);
+ 
+     enviarMensagem(remetente, comandoRecebido, resposta);
+     
+   } 
+   
+   else if (!(strcmp(comandoRecebido,"exibecomando")))
+   {
+     char resposta[20];
+ 
+     strcpy(resposta, comando[parametroInt[0] - 1].nome);   
+     enviarMensagem(remetente, comandoRecebido, resposta); 
+   } 
+   
+   else if (!(strcmp(comandoRecebido,"qualseunome")))
+   {
+     enviarMensagem(remetente, comandoRecebido, NULL);
+   } 
+}
+
+
+void enviarMensagem(char* remetente, char* comando, char* resposta)
+{
+  int soma = 0, i;
+  int itamanho = 3 + 5; // 3 BYTES DO TAMANHO, 5 BYTES DO CHECKSUM
+  char tamanho[3];
+  
+  itamanho = itamanho + strlen(remetente) + strlen(comando) + strlen(resposta) + strlen(nome);
+  itoa(itamanho, tamanho, 10);
+  
+  if (resposta != NULL) strcat(resposta," ");
+  strcat(comando," ");
+  
+  
+  for (i = 0; i < strlen(remetente); i++)
+  {
+    soma = soma +  remetente[i];
+  }
+  
+  for (i = 0; i < strlen(comando); i++)
+  {
+    soma = soma + comando[i];
+  }
+  if (resposta != NULL) {
     
+    for (i = 0; i < strlen(resposta); i++)
+    {
+      soma = soma + resposta[i];
+    }
+  }
+  
+  for (i = 0; i < strlen(nome); i++)
+  {
+    soma = soma + nome[i];
+  }
+  
+    for (i = 0; i < strlen(tamanho); i++)
+  {
+    soma = soma + tamanho[i];
+  }
+ 
+  
+
+  
+  Serial.print(remetente);
+  if ( strlen(tamanho) < 3)
+  {
+    Serial.print("0");
+    soma += 48;
+  }
+  Serial.print(tamanho);
+  Serial.print(comando);
+  if (resposta != NULL) Serial.print(resposta);
+  Serial.print(nome);
+  if(soma < 10000) Serial.print("0");
+  Serial.println(soma);
   
 }
 
 
-void sensor()
-{
-  long duration, cm;
-
-  pinMode(2, OUTPUT);
-  digitalWrite(2, LOW);
-  delayMicroseconds(2);
-  digitalWrite(2, HIGH);
-  delayMicroseconds(5);
-  digitalWrite(2, LOW);
-
-
-  pinMode(2, INPUT);
-  duration = pulseIn(2, HIGH);
-
-
-  cm = microsecondsToCentimeters(duration);
-  
-  Serial.print(cm);
-
-  delay(1000);
-}
-
-long microsecondsToCentimeters(long microseconds)
-{
-  return microseconds / 29 / 2;
-}
 
 //Funcao para limpar os buffers. (Avaliarei depois a eficiencia disso)  
 void limpabuffer(char buffer[20])
@@ -401,3 +533,20 @@ void limpabuffer(char buffer[20])
  }
 }
 
+
+
+
+void  zerarVariaveis()
+{
+         //Apos executar o comando zera todos os valores e comeca tudo de novo.
+       soma = 0;
+       contByte = 0; 
+       validouComando = 0;
+       limpabuffer(bufferComando);
+       limpabuffer(bufferParametro);
+       limpabuffer(remetente);
+       comandoOk = 0;
+       criaRemetente = 0;
+       perguntaNome = 0;
+      
+}

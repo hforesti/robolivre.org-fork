@@ -1,10 +1,21 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,	 papera4]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{soul}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+
 \begin{document}
+
 
 \title{PSIU - Protocolo Simples de Intercomunicação
 Unificado}
@@ -12,10 +23,11 @@ Unificado}
 
 \part*{Introdução \newline}
 
-\paragraph*{} Um protocolo de comunicação nada mais é do que um \textbf{ conjunto de convenções que rege o tratamento e, especialmente, a formatação dos dados num sistema de comunicação}. Seria a "gramática" de uma "linguagem" de comunicação padronizada. Conhecemos vários protocolos de comunicação e fazemos uso deles diariamente, mas não pensamos neles como protocolos de comunicação. O mais antigo deles é a língua falada: duas pessoas que emitem sons audíveis aos ouvidos humanos podem se comunicar. Neste exemplo, o protocolo de comunicação é a emissão de sons numa dada faixa de frequência, o código utilizado é a língua falada e a mensagem é o conteúdo do que se fala. Conforme o site Informática na Aldeia [1], \\
+\paragraph*{} Um protocolo de comunicação nada mais é do que um conjunto de convenções que rege o tratamento e, especialmente, a formatação dos dados num sistema de comunicação. Seria a "gramática" de uma "linguagem" de comunicação padronizada. Conhecemos vários protocolos de comunicação e fazemos uso deles diariamente, mas não pensamos neles como protocolos de comunicação. O mais antigo deles é a língua falada: duas pessoas que emitem sons audíveis aos ouvidos humanos podem se comunicar. Neste exemplo, o protocolo de comunicação é a emissão de sons numa dada faixa de frequência, o código utilizado é a língua falada e a mensagem é o conteúdo do que se fala. Conforme o site Informática na Aldeia [1], \\
 
 Na robótica recorremos o tempo todo a protocolos de comunicação para enviar comandos à robôs, obter informação de sensores, efetuar telemetria de dados, etc. De uma forma não unificada, na maioria dos casos, cada projetista cria seus próprios comandos e desenvolvem programas para controlar seus robôs a partir de computadores, tabletes ou outros dispositivos ou mesmos para robôs trocar informações entre si. 
 Como esses comandos não são normatizados, eles acabam ficando limitados ao controle de poucos robôs desenvolvidos pela mesma pessoa ou empresa e não permite que os robôs se comuniquem entre si.\\
+\\ \\
 
 A proposta do PSIU é normatizar comandos, informações e formas de comunicação para que a conversa ocorra entre dispositivos independente dos programas de controle utilizados.\\ \\ \\
 
@@ -27,12 +39,17 @@ Para garantir o envio de comandos em dispositivos com processamento limitado tam
 
 \textsl{[1] Informática na Aldeia, http://www.numaboa.com.br/informatica/internet/526-protocolos, acessado em fevereiro 2012}
 
+
+
 \newpage
 
-\part*{PSIU \newline}
+
+
+
+\part*{PSIU ASCII\newline}
 
 \paragraph{} O PSIU procura definir uma forma de comunicação para diferentes tipos
-de aplicação e volume de dados e diferentes topologias. Todas as mensagens (comandos e respostas) enviadas no PSIU são escritos em caractere ASCII. Um pacote básico de
+de aplicação e volume de dados e diferentes topologias. Todas os frames (mensagens de comandos ou de respostas) enviadas no PSIU ASCII são escritos em caractere ASCII. Um pacote básico de
 informação neste protocolo é mostrado abaixo: \\
 
 
@@ -40,7 +57,7 @@ informação neste protocolo é mostrado abaixo: \\
 	\centering
 	\begin{tabular}{lllll}
 		\toprule
-		Destinatário & Tamanho & Comando & Parâmetro & CheckSum \\
+		Destinatário & Tamanho & Mensagem & Remetente &CheckSum \\
 		\bottomrule
 	\end{tabular}
 	\label{tab:formatoslatex} %label da tabela
@@ -49,7 +66,7 @@ informação neste protocolo é mostrado abaixo: \\
 
 
 \paragraph{}O campo destinatário é o nome de identificação contido em cada robô. O próprio robô conhece seu nome e portanto sabe se o destinatário está correto ou não.\\ O tamanho é o tamanho do pacote, ou seja, a quantidade total de bytes contido na mensagem. \\ 
-O comando é o nome do comando e o parâmetro pode ser um inteiro, um float ou um char e vai depender do comando. Se o comando tiver parâmetros eles devem estar na mensagem, caso contrário, será mandada uma resposta de erro.  \\
+O  campo mensagem será ou um comando ou uma resposta. Se o comando/resposta tiver parâmetros eles devem estar na mensagem, caso contrário, será mandada uma resposta de erro.  \\
 CheckSum é a soma de todos os bytes da mensagem.
 
 \paragraph*{}Um exemplo de uma mensagem de comando no PSIU está descrita abaixo:\\
@@ -59,7 +76,7 @@ CheckSum é a soma de todos os bytes da mensagem.
 	
 	\begin{tabular}{l}
 		
-		 \textbf{MNERIM029parafrente 100 01884}\\
+		 \textbf{MNERIM031parafrente 100 PC02024}\\
 		
 	\end{tabular}
 	\label{tab:formatoslatex} %label da tabela
@@ -68,10 +85,10 @@ CheckSum é a soma de todos os bytes da mensagem.
 \textsl
 {Onde: 
 Destinatário = MNERIM , 
-Tamanho = 029 ,
-Comando = parafrente
-Parâmetro = 100 ,
-CheckSum = 01884} \\ \\
+Tamanho = 029 , 
+Comando = parafrente,   
+Parâmetro = 100 , Remetente = PC,
+CheckSum = 02031} \\ \\
 
 \newpage
 \part*{Campos do pacote} 
@@ -92,97 +109,616 @@ Se uma mensagem contém apenas dezenas de bytes, o tamanho de 3 bytes se mantem 
 
 \textsl{Exemplo: 033 (Mensagem de 33 bytes)} \\
 
-
+\paragraph{\textbf{Mensagem} \newline \newline} 
+O campo mensagem pode ser um comando ou uma resposta, incluido com um novo campo chamado parâmetro, que existirá se o comando ou resposta conter parâmetros.
 
 \paragraph{\textbf{Comando} \newline \newline} 
 O campo comando vai conter o nome do comando a ser executado pelo dispositivo. Propriamente dito, é uma palavra chave que deve indicar intuitivamente a ação a ser tomada pelo destinatário. \\
 No final de cada string de nome terá que existir um espaço " " (0x20). De forma ao despositivo determinar o final de um comando. \\
 
-
+\paragraph{\textbf{Resposta} \newline \newline} 
+O campo resposta é uma mensagem de retorno definida a um comando executado. \\
+No final de cada string de resposta terá que existir um espaço " " (0x20). De forma ao despositivo determinar o final de uma resposta. \\
 
 \paragraph{\textbf{Parâmetro} \newline \newline } 
 Parâmetro não é um campo obrigatório. Ele depende se o comando contém parâmetros ou não.
-Caso um comando não possua parâmetro este campo deve ser deixado em branco.
+Caso um comando ou resposta não possua parâmetro este campo deve ser deixado em branco.
 Um parâmetro assim como o comando, deve conter no final um espaço em branco para determinar o final do parâmetro. 
 Se o comando tiver dois ou mais parâmetros a separação entre eles é dada por espaço " " (0x20). Caracteres do tipo float têm a parte inteira separada da fracionária por ponto (1.25) 
 
 \paragraph{\textbf{CheckSum} \newline \newline } 
-CheckSum é um campo de 5 bytes fixos de tamanho e é a soma de todos os bytes da mensagem (ele não incluido). Ele sempre termina uma mensagem. Como os 5 bytes são fixos, se a soma dos bytes der um número de 4 bytes, deverá ser acrescentado um 0 na frente, assim formando um CheckSum de 5 bytes.\\
+CheckSum é um campo de 5 bytes fixos de tamanho e é a soma em uma variável inteira de 16 bits (desprezando o transporte "vai um") de todos os bytes da mensagem (ele não incluido). Essa soma é representada em decimal. \\ Como os 5 bytes são fixos, se a soma dos bytes der um número de 4 bytes, deverá ser acrescentado um 0 na frente, assim formando um CheckSum de 5 bytes.\\
 
-\textsl{Exemplo: 01884} \\ \newline
+\textsl{ Exemplo: \\\\ int checksum = 0; \newline char mensagem[] = "MNERIM029parafrente 100 ";\newline for (x = 0; $x
+< strlen(mensagem)$
+; x++) \\
+ \hspace*{1cm}checksum = checksum + mensagem[x]; \newline printf("\%s\%d",  mensagem, checksum); 
+} \\
 
+\newpage
+
+
+
+\part*{Respostas \newline}
+
+
+Para um controle mais eficaz nas respostas dos comandos no protocolo PSIU ASCII, antes de cada resposta (sucesso, falha, distância calculada por um sensor, etc) será mandado também o comando que foi executado. \\ \\
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{llllll}
+		\toprule
+		Dest. & Tam. & ComandoExecutado & Resposta & Remetente &CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+
+Isso facilita o entendimento das respostas pelos dispositivos. \\\\
+Exemplo:\\\\ \hspace*{1cm} 
+\textsc{Envio do Comando "parafrente":} \\\\ \hspace*{2cm} \texttt{MNERIM029parafrente 100 PC02031} 
+
+
+
+\paragraph*{}
+\hspace*{0.8cm}\textsc{Resposta (Sucesso):} \\\\ \hspace*{2cm}\texttt{PC035parafrente sucesso MNERIM02656} \hspace*{2cm} \\ \\ \\ \\
+
+
+\newpage
+\part*{Respostas PSIU ASCII \newline \newline}
+
+\paragraph{\textbf{sucesso} \newline \newline}
+
+Uma mensagem de sucesso é enviada se um comando válido foi executado. 
+\newline
+Exemplo:\\\\ \hspace*{0.5cm} 
+\textsc{Envio da resposta:} \\\\ \hspace*{2cm} \texttt{PCXXX"nomedocomando" sucesso MNERIMXXXXX} \\
+
+\paragraph{\textbf{falha} \newline \newline}
+
+Uma mensagem de falha é enviada se a execução se um comando falhou.
+Exemplo:\\\\ \hspace*{0.5cm} 
+\textsc{Envio da resposta:} \\\\ \hspace*{2cm} \texttt{PCXXX"nomedocomando" falha MNERIMXXXXX} \\
+
+\newpage
 
 \part*{Comandos \newline}
 
 
-\paragraph{\textbf{parafrente} \newline}
+\subsection*{parafrente \\\\}
 O comando \textit{parafrente} possui um parâmetro inteiro que varia de 0 a 999.  
 Este comando diz ao robô a quantidade em \textit{cm} que ele irá andar para frente.\\
-Se o comando for executado corretamente será recebido uma resposta de OK, caso contrário será recebido uma resposta de FALHA. \\
+Se o comando for executado corretamente será recebido uma resposta de OK, caso contrário será recebido uma resposta de FALHA. \\ 
+\newline
+ Exemplo:\\\\ \hspace*{0.5cm} 
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM031parafrente 100 PC02024} \\
 
 
-\paragraph{\textbf{paratras} \newline}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{2cm}p{1cm}p{2cm}p{2cm}p{1cm}p{2cm}}
+		\toprule
+		MNERIM & 031 & parafrente & 100 & PC & 02024 \\
+		\midrule	
+		Destinatário & Tam. & Comando & Parâmetro & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+
+\paragraph*{\newline\newline}
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC035parafrente sucesso MNERIM02656} \hspace*{2cm}\textbf{(SUCESSO)}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{3.2cm}p{2cm}p{2cm}}
+		\toprule
+		PC & 035 &parafrente sucesso  & MNERIM & 02656 \\
+		\midrule	
+		Dest. & Tam. & Resposta & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+
+\hspace*{1.2cm} \texttt{PC033parafrente falha MNERIM02389} \hspace*{2.5cm}\textbf{(FALHA)}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
+		\toprule
+		PC & 033 & parafrente falha  & MNERIM & 02389 \\
+		\midrule	
+		Dest. & Tam. & Resposta & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+
+\newpage
+
+\subsection*{paratras \\\\}
 O comando \textit{paratras} possui um parâmetro inteiro que varia de 0 a 999. 
 Este comando diz ao robô a quantidade em \textit{cm} que ele irá andar para trás.\\
 Se o comando for executado corretamente será recebido uma resposta de OK, caso contrário será recebido uma resposta de FALHA. \\
+\newline
+Exemplo: \\\\ \hspace*{0.5cm} 
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm}\texttt{MNERIM029paratras 100 PC01829} \\
 
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{2cm}p{1cm}p{2cm}p{2cm}p{1cm}p{2cm}}
+		\toprule
+		MNERIM & 029 & paratras & 100 & PC & 01829 \\
+		\midrule	
+		Destinatário & Tam. & Comando & Parâmetro & Rem.& CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
 
-\paragraph{\textbf{giradireita} \newline}
+\paragraph*{\newline\newline}
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC033paratras sucesso MNERIM02452
+} \hspace*{2cm}\textbf{(SUCESSO)}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
+		\toprule
+		PC & 033 &paratras sucesso  & MNERIM & 02452 \\
+		\midrule	
+		Dest. & Tam. & Resposta & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+
+\hspace*{1.2cm} \texttt{PC031paratras falha MNERIM02185} \hspace*{2.5cm}\textbf{(FALHA)}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
+		\toprule
+		PC & 031 &paratras falha  & MNERIM & 02185 \\
+		\midrule	
+		Dest. & Tam. & Resposta & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+
+\newpage 
+
+\subsection*{giradireita \\\\}
 O comando \textit{giradireita} possui um parâmetro inteiro que varia de 0 a 360.  
 Este comando diz ao robô a quantidade em \textit{graus} que ele irá girar para direita.\\
 Se o comando for executado corretamente será recebido uma resposta de OK, caso contrário será recebido uma resposta de FALHA. \\
+\newline
+Exemplo: \\\\ \hspace*{0.5cm} 
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM032giradireita 100 PC02118} \\
 
-\paragraph{\textbf{giraesquerda} \newline}
-O comando \textit{giraesquerda} possui um parâmetro inteiro que varia de 0 a 360.
-Este comando diz ao robô a quantidade em \textit{graus} que ele irá girar para esquerda.\\
-Se o comando for executado corretamente será recebido uma resposta de OK, caso contrário será recebido uma resposta de FALHA. \\
-
-
-
-
-
-\begin{table}[ht]
+\begin{table}[h]
 	\centering
-	\caption{Comandos do PSIU}
-	\begin{tabular}{p{4cm}p{3cm}p{5cm}}
+	\begin{tabular}{p{2cm}p{1cm}p{2cm}p{2cm}p{1cm}p{2cm}}
 		\toprule
-		Nome do Comando &  Parâmetro & Exemplo de comando \\
+		MNERIM & 032 & giradireita & 100 & PC & 02118 \\
 		\midrule	
-		parafrente & 1 int (0 : 999)  & parafrente 100 \\
-		paratras & 1 int (0 : 999)  & paratras 250 \\
-		giradireita & 1 int (0 : 360)  & giradireita 120 \\
-		giraesquerda & 1 int (0 : 360)  & giraesquerda 180 \\
+		Destinatário & Tam. & Comando & Parâmetro &Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+
+\paragraph*{\newline\newline}
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC036giradireita sucesso MNERIM02750} \hspace*{2cm}\textbf{(SUCESSO)}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{3.3cm}p{2cm}p{2cm}}
+		\toprule
+		PC & 036 &giradireita sucesso  & MNERIM & 02750 \\
+		\midrule	
+		Dest. & Tam. & Resposta & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+
+\hspace*{1.2cm} \texttt{PC034giradireita falha MNERIM02483} \hspace*{2.5cm}\textbf{(FALHA)}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
+		\toprule
+		PC & 034 &giradireita falha  & MNERIM & 02483 \\
+		\midrule	
+		Dest. & Tam. & Resposta & Rem. & CheckSum \\
 		\bottomrule
 	\end{tabular}
 	\label{tab:formatoslatex} %label da tabela
 \end{table}
 
 
-\part*{Mensagens Especiais \newline}
+\newpage
 
-Essas mensagens não precisam seguir o padrão do protocolo (NOME TAMANHO COMANDO PARÂMETRO CHECKSUM). Um dispositivo entende a mensagem especial por causa do prefixo "?" (0x3F) incluso em mensagens desse tipo.
+\subsection*{giraesquerda \\\\}
+O comando \textit{giraesquerda} possui um parâmetro inteiro que varia de 0 a 360.
+Este comando diz ao robô a quantidade em \textit{graus} que ele irá girar para esquerda.\\
+Se o comando for executado corretamente será recebido uma resposta de OK, caso contrário será recebido uma resposta de FALHA. \\
+\newline
+Exemplo:\\\\ \hspace*{0.5cm} 
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM033giraesquerda 100 PC02239} \\
 
-\paragraph{\textbf{?qualseunome} \newline}
-O comando \textit{?qualseunome} pergunta ao dispositivo o seu nome e recebe como resposta o nome do dispositivo. \\
-Se houver interesse em se comunicar com o dispositivo, toda mensagem de comando é começada pelo campo nome. 
-Caso não se saiba o nome do dispositivo, usa-se esse comando. \\
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{2cm}p{1cm}p{2cm}p{2cm}p{1cm}p{2cm}}
+		\toprule
+		MNERIM & 033 & giraesquerda & 100 & PC & 02239 \\
+		\midrule	
+		Destinatário & Tam. & Comando & Parâmetro & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+\paragraph*{\newline\newline}
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC037giraesquerda sucesso MNERIM02871} \hspace*{2cm}\textbf{(SUCESSO)}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{3.5cm}p{2cm}p{2cm}}
+		\toprule
+		PC & 037 &giraesquerda sucesso  & MNERIM & 02871 \\
+		\midrule	
+		Dest. & Tam. & Resposta & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+
+\hspace*{1.2cm} \texttt{PC035giraesquerda falha MNERIM02604} \hspace*{2.5cm}\textbf{(FALHA)}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{3.5cm}p{2cm}p{2cm}}
+		\toprule
+		PC & 035 &giraesquerda falha  & MNERIM & 02604 \\
+		\midrule	
+		Dest. & Tam. & Resposta & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+
+\newpage
+
+\subsection*{quantoscomandos \\\\}
+O comando \textit{quantoscomandos} pergunta ao dispositivo a quantidade de funções disponíveis. O retorno dessa função é um número com representando a quantidade de comandos do dispositivo.\\
+\newline
+Exemplo:\\\\ \hspace*{0.5cm} 
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM032quantoscomandos PC02415} \\
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{2cm}p{1cm}p{3cm}p{1cm}p{2cm}}
+		\toprule
+		MNERIM & 032 & quantoscomandos & PC & 02415 \\
+		\midrule	
+		Destinatário & Tam. & Comando & Rem. &CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+\paragraph*{\newline\newline}
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC032quantoscomandos 6 MNERIM02501
+} 
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
+		\toprule
+		PC & 032 & quantoscomandos 6  & MNERIM & 02501 \\
+		\midrule	
+		Dest. & Tam. & Resposta & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+
+\newpage
+\subsection*{exibecomandos \\\\}
+O comando \textit{exibecomandos} pede ao dispositivo para exibir o comando desejado. 
+Essa função tem como parâmetro um numero inteiro.\\ O retorno dessa função é o nome do comando.\\
+\newline
+Exemplo:\\\\ \hspace*{0.5cm} 
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM031exibecomando 1 PC02126} \\
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{2cm}p{1cm}p{3cm}p{1cm}p{2cm}}
+		\toprule
+		MNERIM & 031 & exibecomandos & PC & 02126 \\
+		\midrule	
+		Destinatário & Tam. & Comando & Rem. &CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+\paragraph*{\newline\newline}
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PPC038exibecomando parafrente MNERIM03148} 
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
+		\toprule
+		PC & 038 & exibecomando parafrente  & MNERIM & 03148 \\
+		\midrule	
+		Dest. & Tam. & Resposta & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+
+\newpage
+
+\part*{Comandos de Controle \newline}
+	
+
+\paragraph{\textbf{qualseunome} \newline \newline}
+O comando \textit{qualseunome} pergunta ao dispositivo o seu nome e recebe como resposta o nome do dispositivo. \\
+Se houver interesse em se comunicar com o dispositivo e
+caso não se saiba o nome do dispositivo usa-se esse comando. \\
+No campo \textit{DESTINATÁRIO} no lugar do nome irá ter duas interrogações "??" (0x3F3F).
+\\
+
+Exemplo:\\\\ \hspace*{0.5cm} 
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{??024qualseunome PC01654} \\
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{2cm}p{1cm}p{2cm}p{1cm}p{2cm}}
+		\toprule
+		?? & 024 & qualseunome & PC & 01654 \\
+		\midrule	
+		Destinatário & Tam. & Comando & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+\paragraph*{\newline\newline}
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC028qualseunome MNERIM01988} 
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{2cm}p{2cm}p{2cm}}
+		\toprule
+		PC & 028 & qualseunome  & MNERIM & 01988 \\
+		\midrule	
+		Dest. & Tam. & Resposta & Rem. & CheckSum \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
 
 
-\paragraph{\textbf{?listadecomandos} \newline}
-O comando \textit{?listadecomandos} pergunta ao dispositivo suas funções disponíveis. O retorno dessa função é uma lista dos nomes das funções e seus parâmetros.\\
+
 
 
 \newpage
-\part*{Respostas \newline}
+
+\begin{table}[h]
+	\centering
+	\caption{Comandos do PSIU}
+	\begin{tabular}{p{3cm}p{2.5cm}p{9cm}}
+		\toprule
+		Comando &  Parâmetro & Exemplo de comando \\
+		\midrule	
+		qualseunome & -- & 	??024qualseunome PC01654\\	
+		quantoscomandos & -- & PC032quantoscomandos 7 MNERIM02502  \\
+		exibecomandos & 1 int & PC038exibecomando parafrente MNERIM03148\\
+		parafrente & 1 int (0 : 999)  & MNERIM031parafrente 100 PC02024 \\
+		paratras & 1 int (0 : 999)  & MNERIM029paratras 100 PC01829 \\
+		giradireita & 1 int (0 : 360)  & MNERIM032giradireita 100 PC02118 \\
+		giraesquerda & 1 int (0 : 360)  & MNERIM033giraesquerda 100 PC02239 \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:formatoslatex} %label da tabela
+\end{table}
+	
+\newpage
+
+\part*{PSIU HEXA}
 
 
-\paragraph{\textbf{OK} \newline \newline}
+Um pacote básico de informação neste protocolo é mostrado abaixo, onde os campos remetente, destinatário, tamanho e CRC são de 1 byte cada, o que facilita a implementação deste protocolo por dispositivos pouco complexos.
 
-RespOK é enviado se um comando válido foi executado. \\
 
-\paragraph{\textbf{FALHA} \newline \newline}
+\begin{center}
+\begin{tabular}{lllll}
+\hline
+ Remetente  &  destinatário  &  tamanho  &  carga  &  CRC  \\
+\hline
+\end{tabular}
+\end{center}
 
-RespFALHA é enviado se a execução se um comando falhou. \\
+
+
+Os campos de remetente e destinatário dependem dos níveis mais baixos da comunicação e da topologia da rede: Uma comunicação ponto-a-ponto não requer nenhum dos 2 campos e portanto começaria a partir do tamanho. Uma rede com um mestre e vários escravos precisa apenas do endereço do escravo (seja como remetente ou destinatário). Numa rede ad-hoc ambos os campos são necessários.
+
+O tamanho é o tamanho do pacote, ou seja: número de bytes de carga +4. Como o tamanho é um byte a carga pode ser de 0 até 251 bytes dependendo do tipo de pacote.
+
+\section{Tipos de pacote}
+\label{sec-1}
+
+
+
+\begin{center}
+\begin{tabular}{lrr}
+\hline
+ Tipo      &  tamanho (bytes)  &  carga (bytes)  \\
+\hline
+ ping      &                4  &              0  \\
+ comando   &                5  &              1  \\
+ nó        &                6  &              2  \\
+ complexo  &          7 a 255  &        3 a 251  \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+Um pacote do tipo ping não tem carga nenhuma. Normalmente é usado para saber se o dispositivo está vivo: A manda um ping para B e B responde com um ping para A. Para os dispositivos mais burros, o tamanho é sempre 4, 5 ou 6. Apenas dispositivos com maior capacidade de processamento reconhecem um pacote completo.
+\newpage
+\subsection{Comando}
+\label{sec-1.1}
+
+
+Um pacote do tipo comando manda apenas 1 byte de informação. É usado para mensagens do tipo ACK, NAK, BUSY e AVAILABLE.
+
+Uma possibilidade de valores de carga padrão para este tipo de pacote é:
+
+
+\begin{center}
+\begin{tabular}{lll}
+ carga         &  comando  &  Significado                                                                                                                \\
+\hline
+ 65 (ascii A)  &  ACK      &  Último pacote foi recebido corretamente.                                                                                   \\
+ 78 (ascii N)  &  NAK      &  Erro no último pacote (erro de CRC). Reenvie.                                                                              \\
+ 66 (ascii B)  &  BUSY     &  Não consegui processar o último pacote. Não reenvie pois estou ocupado.                                                    \\
+ 63 (ascii ?)  &  AVAIL?   &  Pergunta: pronto para receber um pacote?.                                                                                  \\
+ 70 (ascii F)  &  FREE     &  Resposta: pronto para receber um pacote. (Se não, manda um BUSY)                                                           \\
+ 87 (ascii W)  &  WTF      &  Último comando é impossível de ser executado (CRC não deu erro e não está ocupado, mas o valor de carga não faz sentido).  \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+\subsection{Nó}
+\label{sec-1.2}
+
+
+No pacote tipo nó, um byte de informação é enviado a um nó específico do dispositivo. Cada nó é um atuador, um sensor ou um elemento mais abstrato mas que é modelado como um atuador ou um sensor. O valor 0 no campo nó é reservado para a resposta de sensores.
+
+
+\begin{center}
+\begin{tabular}{llllll}
+\hline
+ Remetente  &  destinatário  &  tamanho  &  nó  &  sinal  &  CRC  \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+\subsubsection{Atuadores e sensores}
+\label{sec-1.2.1}
+
+
+Nós atuadores recebem um sinal e respondem com com um ACK.
+
+
+\begin{center}
+\begin{tabular}{ll}
+\hline
+ tipo do nó     &  sinal                                                       \\
+\hline
+ DC aberto      &  Valor de um PWM que controla o motor DC                     \\
+ DC controlado  &  Velocidade do motor. 255 (ou 127) é a máxima vel. definida  \\
+ stepper        &  Número de passos                                            \\
+ servo          &  -128: -90o. 127: +90o                                       \\
+ linear         &  valor entre 0 (mínimo) e 255 (máximo) de atuador linear     \\
+ on-off         &  0 (desligado) ou 255 (ligado)                               \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+Quando o nó é um sensor, o campo sinal não importa. Na resposta o campo nó recebe valor 0 como indicador de que é uma resposta a um pedido de informação. Se um dispositivo recebe um pacote do tipo nó com nó igual a 0 sem ter pedido informação a nenhum outro dispositivo, ele deve responder com um WTF.
+
+
+\begin{center}
+\begin{tabular}{ll}
+\hline
+ tipo do nó         &  sinal  \\
+\hline
+ Luminosidade       &         \\
+ ângulo             &         \\
+ distância (sonar)  &         \\
+ velocidade         &         \\
+ aceleração         &         \\
+ on-off             &         \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+\subsection{Complexo}
+\label{sec-1.3}
+
+
+Para dispositivos inteligentes ou muitos bytes de dados, um pacote pode ter vários bytes. Cada dispositivo sabe o tamanho do seu nome, logo vai considera o campo destinatário como sendo deste tamanho.
+
+O tamanho máximo é 255 bytes. Se porventura houver uma mensagem maior, ela deverá ser quebrada em mensagens de 255 bytes.
+
+
+\begin{center}
+\begin{tabular}{lllllllll}
+\hline
+ rem.  &  dest.  &  tamanho  &  nCampos  &  tam. campo 1  &  \ldots{}  &  tam. campo n  &  payload  &  CRC  \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+Rementente é o robô que enviou a mensagem e destinatário é para quem é a mensagem. O campo de remetente é importante pois o destinatário não precisa obedecer a todo robô. Um byte permite endereçar 256 robôs.
+Os nós são dispositivos de um robô: motores, sensores, etc. Em função dele o sinal pode significar diferentes coisas.
+
+\subsubsection{Atuadores}
+\label{sec-1.3.1}
+
+
+\begin{center}
+\begin{tabular}{ll}
+\hline
+ tipo do nó     &  sinal                                                       \\
+\hline
+ DC aberto      &  Valor de um PWM que controla o motor DC                     \\
+ DC controlado  &  Velocidade do motor. 255 (ou 127) é a máxima vel. definida  \\
+ stepper        &  Número de passos                                            \\
+ servo          &  -128: -90o. 127: +90o                                       \\
+ linear         &  valor entre 0 (mínimo) e 255 (máximo) de atuador linear     \\
+ on-off         &  0 (desligado) ou 255 (ligado)                               \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\newpage
+\subsubsection{Sensores}
+\label{sec-1.3.2}
+
+
+Os sensores envolvem 2 sinais: um pedindo informação do sensor, com apenas os endereços e o nó, e o outro enviando esta informação, com o sinal relevante. Neste caso pode-se colocar um bit do nó como indicador se é um pedido ou uma resposta.
+
+
+\begin{center}
+\begin{tabular}{ll}
+\hline
+ tipo do nó         &  sinal  \\
+\hline
+ Luminosidade       &         \\
+ ângulo             &         \\
+ distância (sonar)  &         \\
+ velocidade         &         \\
+ aceleração         &         \\
+ on-off             &         \\
+\hline
+\end{tabular}
+\end{center}
+
 
 
 
