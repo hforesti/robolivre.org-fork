@@ -9,10 +9,10 @@ class Ui_Saida(object):
     texto = ''
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(376, 149)
+        Form.resize(700, 400)
         Form.setWindowTitle(QtGui.QApplication.translate("Form", "Form", None, QtGui.QApplication.UnicodeUTF8))
         self.textEdit = QtGui.QTextEdit(Form)
-        self.textEdit.setGeometry(QtCore.QRect(10, 275, 690, 100))
+        self.textEdit.setGeometry(QtCore.QRect(-1, 200, 680, 100))
         self.textEdit.setObjectName(_fromUtf8("textEdit"))
         self.textEdit.setDisabled(True)
         

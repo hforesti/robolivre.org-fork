@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_Sensor(object):
     def setupUi(self, Sensor):
         Sensor.setObjectName(_fromUtf8("Sensor"))
-        Sensor.resize(165, 99)
+        Sensor.resize(700, 400)
         Sensor.setWindowTitle(QtGui.QApplication.translate("Sensor", "Form", None, QtGui.QApplication.UnicodeUTF8))
         self.lcdNumber = QtGui.QLCDNumber(Sensor)
         self.lcdNumber.setGeometry(QtCore.QRect(10, 20, 141, 61))

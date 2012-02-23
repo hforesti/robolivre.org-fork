@@ -6,6 +6,7 @@ from sensor import Ui_Sensor
 from lineEdit import Ui_lineEdit
 from distancia import Ui_distancia
 from saida import Ui_Saida
+from logo import Ui_Logo
 from time import sleep
 import serial
 Serial = serial.Serial('/dev/ttyACM0', 9600)
@@ -32,32 +33,14 @@ class MainWidget(QtGui.QWidget):
         self.setObjectName(_fromUtf8("Form"))
         self.setWindowTitle(QtGui.QApplication.translate("Form", "Form", None, QtGui.QApplication.UnicodeUTF8))
         
-        #Instancias
-        #self.sensor = Ui_Sensor()
+        #Logo Robo Livre
+        self.logo = Ui_Logo()
+        self.logo.setupUi(self)
         
-        #Chamada das instancias
-        #self.sensor.setupUi(self)
-
-
-
-
-
         #Menu de abas
         self.menuDeAbas = QtGui.QTabWidget(self)
-        self.menuDeAbas.setGeometry(QtCore.QRect(10, 30, 690, 350))
+        self.menuDeAbas.setGeometry(QtCore.QRect(10, 30, 680, 330))
         self.menuDeAbas.setObjectName(_fromUtf8("menus"))
-        
-        
-        #Botao Enviar
- #       self.botaoEnviar = QtGui.QPushButton(self)
- #       self.botaoEnviar.setGeometry(QtCore.QRect(500, 230, 97, 27))
- #       self.botaoEnviar.setText(QtGui.QApplication.translate("Form", "Enviar", None, QtGui.QApplication.UnicodeUTF8))
- #       self.botaoEnviar.setObjectName(_fromUtf8("Enviar"))
-        
-        #Evento do Enviar
- #       self.botaoEnviar.clicked.connect(self.enviar)
-        
-        #Eventos do control
 
         ##
         self.aba1 = QtGui.QWidget()
@@ -70,28 +53,40 @@ class MainWidget(QtGui.QWidget):
         self.control.giraDireita.clicked.connect(self.giraDireita)
         self.control.giraEsquerda.clicked.connect(self.giraEsquerda)
         #Line edit       
-        self.lineEdit = Ui_lineEdit()
-        self.lineEdit.setupUi(self)
+        self.lineEditAba1 = Ui_lineEdit()
+        self.lineEditAba1.setupUi(self.aba1)
         #Distancia
         self.distancia = Ui_distancia()
-        self.distancia.setupUi(self)
+        self.distancia.setupUi(self.aba1)
         #Terminal de Saida
         self.saida = Ui_Saida()
-        self.saida.setupUi(self)
-        #       
+        self.saida.setupUi(self.aba1)
+        #
+        #Botao Enviar
+        self.botaoEnviar = QtGui.QPushButton(self.aba1)
+        self.botaoEnviar.setGeometry(QtCore.QRect(500, 150, 97, 27))
+        self.botaoEnviar.setText(QtGui.QApplication.translate("Form", "Enviar", None, QtGui.QApplication.UnicodeUTF8))
+        self.botaoEnviar.setObjectName(_fromUtf8("Enviar"))
+        #Evento do Enviar
+        self.botaoEnviar.clicked.connect(self.enviar)               
         self.menuDeAbas.addTab(self.aba1, _fromUtf8(""))
         ##
         
         self.aba2 = QtGui.QWidget()
         self.aba2.setObjectName(_fromUtf8("aba_2"))
+        #Line edit
+        self.lineEditAba2 = Ui_lineEdit()
+        self.lineEditAba2.setupUi2(self.aba2)
         self.menuDeAbas.addTab(self.aba2, _fromUtf8(""))
+        
+        
         
         self.metododoDoMenuDeAbas(self)
         self.menuDeAbas.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(self)
         
         #Tamanho da janela principal MainWidget
-        self.resize(715, 400)
+        self.resize(700, 400)
 
     def metododoDoMenuDeAbas(self, Form):
         self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba1), QtGui.QApplication.translate("Form", "Tab 1", None, QtGui.QApplication.UnicodeUTF8))
@@ -99,19 +94,19 @@ class MainWidget(QtGui.QWidget):
 
 
     def parafrente(self):
-        self.lineEdit.comando.setText("parafrente")
+        self.lineEditAba1.comando.setText("parafrente")
         MainWidget.comando = 'parafrente'
         
     def paraTras(self):
-        self.lineEdit.comando.setText("paratras")
+        self.lineEditAba1.comando.setText("paratras")
         MainWidget.comando = 'paratras'
     
     def giraDireita(self):
-        self.lineEdit.comando.setText("giradireita")
+        self.lineEditAba1.comando.setText("giradireita")
         MainWidget.comando = 'giradireita'
         
     def giraEsquerda(self):
-        self.lineEdit.comando.setText("giraesquerda")
+        self.lineEditAba1.comando.setText("giraesquerda")
         MainWidget.comando = 'giraesquerda'
         
     def enviar(self):
@@ -132,9 +127,9 @@ class MainWidget(QtGui.QWidget):
             for i in range(5 - len(str(MainWidget.checksum))):
                 MainWidget.mensagem = MainWidget.mensagem + '0'
     
-        self.lineEdit.tamanho.setText(str(MainWidget.tamanho))
-        self.lineEdit.distancia.setText(str(MainWidget.distancia))
-        self.lineEdit.checksum.setText(str(MainWidget.checksum))
+        self.lineEditAba1.tamanho.setText(str(MainWidget.tamanho))
+        self.lineEditAba1.distancia.setText(str(MainWidget.distancia))
+        self.lineEditAba1.checksum.setText(str(MainWidget.checksum))
         
         
         MainWidget.mensagem = MainWidget.mensagem + str(MainWidget.checksum)

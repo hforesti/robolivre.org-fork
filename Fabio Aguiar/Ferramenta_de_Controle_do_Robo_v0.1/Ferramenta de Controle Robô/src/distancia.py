@@ -18,13 +18,13 @@ class Ui_distancia(object):
     diatancia = 0
     def setupUi(self, distancia):
         distancia.setObjectName(_fromUtf8("distancia"))
-        distancia.resize(123, 119)
+        distancia.resize(700, 400)
         distancia.setWindowTitle(QtGui.QApplication.translate("distancia", "Form", None, QtGui.QApplication.UnicodeUTF8))
         self.distanciaLineEdit = QtGui.QLineEdit(distancia)
-        self.distanciaLineEdit.setGeometry(QtCore.QRect(500, 180, 61, 27))
+        self.distanciaLineEdit.setGeometry(QtCore.QRect(500, 90, 61, 27))
         self.distanciaLineEdit.setObjectName(_fromUtf8("distanciaLineEdit"))
         self.label = QtGui.QLabel(distancia)
-        self.label.setGeometry(QtCore.QRect(500, 150, 67, 17))
+        self.label.setGeometry(QtCore.QRect(500, 70, 67, 17))
         self.label.setText(QtGui.QApplication.translate("distancia", "Distancia", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setObjectName(_fromUtf8("label"))
         
