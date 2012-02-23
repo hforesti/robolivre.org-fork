@@ -11,22 +11,23 @@ MNERIM032giradireita 100 PC02118
 MNERIM033giraesquerda 100 PC02239
 MNERIM032quantoscomandos PC02415
 MNERIM031exibecomando 1 PC02126
-
+??024qualseunome PC01654
 
 
 ******************************************************************/
 
 
 char nome[] = "MNERIM";
-char caractere, checkSum[6], tamanho[4], bufferComando[20], bufferParametro[10];
+char caractere, checkSum[6], tamanho[4], bufferComando[20], bufferParametro[10], remetente[20];
 int contByte = 0, soma = 0;
 long iTamanho, icheckSum;
-char remetente[20];
   
 
 //VARIAVEIS AUXILIARES
 int validouComando = 0, comandoOk = 0 , criaRemetente = 0;
 int aux, qntInt, qntFloat, qntChar, numComando;
+int perguntaNome = 0;
+
 
 
 //PONTEIROS PARA A CRIACAO DOS VETORES COM OS PARAMETROS DOS COMANDOS
@@ -139,14 +140,21 @@ int verificarComando()
    if(contByte <= 5)
    {
       
-     if (nome[contByte] == caractere)
+     if ( (nome[contByte] == caractere) || (caractere == '?') )
      {
-       contByte++; // Se o caractere vindo da Serial for igual ao caractere do nome o contador (contByte) eh  incrementado em 1.
+       
+       if ( (caractere == '?') && (contByte == 1) )
+       {
+         contByte = 5;
+         perguntaNome = 1;
+       }
        soma = soma + caractere;
+       contByte++; // Se o caractere vindo da Serial for igual ao caractere do nome o contador (contByte) eh  incrementado em 1.
      }
      
      else 
      {
+       
        contByte = 0;
        soma = 0;
      }
@@ -156,14 +164,17 @@ int verificarComando()
      
   // BYTES DE TAMANHO
   
-   else if ( (contByte > 5) && (contByte < 9) ) 
+   else if ((contByte > 5) && (contByte < 9) ) 
    {
       tamanho[contByte - 6] = caractere;
       
       if (contByte == 8)  // Se chegar no final da string do tamanho (contByte = 8), transforma a string tamanho em inteiro.
       {
-    
+        
         iTamanho = atol(tamanho); //TRANSFORMA A STRING TAMANHO EM INTEIRO
+       
+        if(perguntaNome == 1) iTamanho += 4;
+        
  
  
       }
@@ -180,7 +191,7 @@ int verificarComando()
    
    //BYTES DE COMANDO 
    
-   else if ( (contByte >= 9) && (comandoOk == 0) ) //VERIFICA SE O BYTE EH DE COMANDO
+   else if((contByte >= 9) && (comandoOk == 0) ) //VERIFICA SE O BYTE EH DE COMANDO
    {
    
      if (validouComando == 0) //Verifica se ja validou o comando
@@ -279,6 +290,7 @@ int verificarComando()
          { 
             validouComando = 0; //Espera o proximo comando no proximo frame.
             comandoOk = 1;
+  
           }
 
            contByte++;
@@ -440,19 +452,76 @@ void processaComando ( char* comandoRecebido, int* parametroInt, float* parametr
    {
      char resposta[20];
  
-     strcpy(resposta, comando[parametroInt[0] - 1].nome);
-     
-     
-     
+     strcpy(resposta, comando[parametroInt[0] - 1].nome);   
      enviarMensagem(remetente, comandoRecebido, resposta); 
    } 
    
    else if (!(strcmp(comandoRecebido,"qualseunome")))
    {
-     char * resposta = "";
-     enviarMensagem(remetente, comandoRecebido, resposta);
+     enviarMensagem(remetente, comandoRecebido, NULL);
    } 
 }
+
+
+void enviarMensagem(char* remetente, char* comando, char* resposta)
+{
+  int soma = 0, i;
+  int itamanho = 3 + 5; // 3 BYTES DO TAMANHO, 5 BYTES DO CHECKSUM
+  char tamanho[3];
+  
+  itamanho = itamanho + strlen(remetente) + strlen(comando) + strlen(resposta) + strlen(nome);
+  itoa(itamanho, tamanho, 10);
+  
+  if (resposta != NULL) strcat(resposta," ");
+  strcat(comando," ");
+  
+  
+  for (i = 0; i < strlen(remetente); i++)
+  {
+    soma = soma +  remetente[i];
+  }
+  
+  for (i = 0; i < strlen(comando); i++)
+  {
+    soma = soma + comando[i];
+  }
+  if (resposta != NULL) {
+    
+    for (i = 0; i < strlen(resposta); i++)
+    {
+      soma = soma + resposta[i];
+    }
+  }
+  
+  for (i = 0; i < strlen(nome); i++)
+  {
+    soma = soma + nome[i];
+  }
+  
+    for (i = 0; i < strlen(tamanho); i++)
+  {
+    soma = soma + tamanho[i];
+  }
+ 
+  
+
+  
+  Serial.print(remetente);
+  if ( strlen(tamanho) < 3)
+  {
+    Serial.print("0");
+    soma += 48;
+  }
+  Serial.print(tamanho);
+  Serial.print(comando);
+  if (resposta != NULL) Serial.print(resposta);
+  Serial.print(nome);
+  if(soma < 10000) Serial.print("0");
+  Serial.println(soma);
+  
+}
+
+
 
 //Funcao para limpar os buffers. (Avaliarei depois a eficiencia disso)  
 void limpabuffer(char buffer[20])
@@ -478,62 +547,6 @@ void  zerarVariaveis()
        limpabuffer(remetente);
        comandoOk = 0;
        criaRemetente = 0;
+       perguntaNome = 0;
       
 }
-
-void enviarMensagem(char* remetente, char* comando, char* resposta)
-{
-  int soma = 0, i;
-  int itamanho = 3 + 5; // 3 BYTES DO TAMANHO, 5 BYTES DO CHECKSUM
-  char tamanho[3];
-  
-  itamanho = itamanho + strlen(remetente) + strlen(comando) + strlen(resposta) + strlen(nome);
-  itoa(itamanho, tamanho, 10);
-  
-  strcat(resposta," ");
-  strcat(comando," ");
-  
-  
-  for (i = 0; i < strlen(remetente); i++)
-  {
-    soma = soma +  remetente[i];
-  }
-  
-  for (i = 0; i < strlen(comando); i++)
-  {
-    soma = soma + comando[i];
-  }
-  
-  for (i = 0; i < strlen(resposta); i++)
-  {
-    soma = soma + resposta[i];
-  }
-  
-  for (i = 0; i < strlen(nome); i++)
-  {
-    soma = soma + nome[i];
-  }
-  
-    for (i = 0; i < strlen(tamanho); i++)
-  {
-    soma = soma + tamanho[i];
-  }
- 
-  
-
-  
-  Serial.print(remetente);
-  if ( strlen(tamanho) < 3)
-  {
-    Serial.print("0");
-    soma += 48;
-  }
-  Serial.print(tamanho);
-  Serial.print(comando);
-  Serial.print(resposta);
-  Serial.print(nome);
-  if(soma < 10000) Serial.print("0");
-  Serial.println(soma);
-  
-}
-
