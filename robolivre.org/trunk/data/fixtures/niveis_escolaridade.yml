@@ -1,0 +1,23 @@
+# data/fixtures/categories.yml
+NiveisEscolaridade:
+  ensinofundamental:
+    nome: Ensino Fundamental
+    descricao: Ensino Fundamental
+  ensinomedio:
+    nome: Ensino Médio
+    descricao: Ensino Médio
+  ensinosuperiorcompleto:
+    nome: Ensino Superior Completo
+    descricao: Ensino Superior Completo
+  ensinosuperiorincompleto:
+    nome: Ensino Superior Incompleto
+    descricao: Ensino Superior Incompleto
+  posgraduacao:
+    nome: Pós-Graduação
+    descricao: Pós-Graduação
+  mestrado:
+    nome: Mestrado
+    descricao: Mestrado
+  doutorado:
+    nome: Doutorado
+    descricao: Doutorado
