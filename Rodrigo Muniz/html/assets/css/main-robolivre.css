@@ -14,23 +14,34 @@
          url('../fonts/Roboto-Thin-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-
 }
 
 body {
 	padding: 60px 0;
 	color: #555;
 }
-body.home {padding-top:10px}
+body.home {
+	background: url(../img/rl/bg.png) repeat-x center top;
+	padding-top:25px
+}
 
 h1, h2 {
     font-family: 'RobotoThin';
 }
 h3, h4, h5, h6 {
     font-family: 'RobotoCondensed';
+    font-weight: normal;
+}
+blockquote p {
+    font-family: 'RobotoCondensed';
+    font-size: 14px;
+    font-weight: normal;
+    color: #555;
+    line-height: 100%;
+    margin:5px 0 15px;
 }
 label {cursor: pointer}
-
+.btn, .label {border-radius: 14px}
 .icon-gray {opacity: 0.4}
 .active .icon-gray {background-image: url(../img/glyphicons-halflings-white.png);}
 .navbar-fixed-top {position: fixed}
@@ -49,18 +60,19 @@ body.home .brand {
 	background: url(../img/rl/logo-home.png) no-repeat;
 	display: block;
 	text-indent: -9999em;
+	margin-bottom: 40px;
 	height: 52px;
 	width: 220px;
 }
-
-	#user-menu {
-		float: right
-	}
+body.home .top-login {
+	margin-bottom: 40px;
+}
+	#user-menu {float: right}
 	.navbar-inner {
 		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05),inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 	}
 	.navbar .nav > li > a {
-  		color: #0088cc;
+  		color: #08c;
   		text-shadow: none;
 	}
 	.navbar .nav .active > a, .navbar .nav .active > a:hover {
@@ -101,9 +113,8 @@ body.home .brand {
 		left: auto;
 		right: 10px
 	}
-	.btn-navbar .icon-bar {
-		background-color: #0088cc
-	}
+	.btn-navbar {border-radius: 6px}
+	.btn-navbar .icon-bar {background-color: #08c}
 	#login-form ul.extras {
 		margin: 0;
 		position: relative;
@@ -117,19 +128,171 @@ body.home .brand {
 		left: 145px
 	}
 	#top-login .extras li {padding-top: 2px}
+	.dropdown img {
+		height: 20px;
+		width: 20px;
+		vertical-align: middle;
+	}
 
+#user-menu .label {
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	padding: 0 2px;
+	line-height: 130%
+}
 
 #top-login {
 	float: right;
 	width: 345px;
 }
 #intro {
-	margin-top: 20px
+	margin-top: 10px
 }
+	#intro h1 {
+		font-size: 58px;
+		color: #c0c0c0;
+		letter-spacing: -.1em;
+		margin-bottom: .3em;
+	
+	}
+	#intro h1 small {
+		letter-spacing: normal;
+	}
 #cadastro-form input {
 	display: block;
 }
+
+#privacidade-status {max-width: 130px}
+.wdgt {
+	margin-bottom: -15px;
+	position: relative
+}
+.wdgt .more {
+	position: absolute;
+	top: 5px;
+	right: 0
+}
+
+#refresh, #pagination a {
+	margin-bottom: 20px;
+	width: 95% 
+}
+
+#stream {
+	position: relative;
+	padding-bottom: 30px
+}
+	#stream ul {
+		list-style: none;
+		margin-left: 0;
+	}
+	#stream > ul {margin-top: -15px}
+	#stream ul .vcard {
+		border-top: 1px dotted #ccc;
+		padding-top: 14px;
+		margin-top: 12px;
+		clear: both;
+		float: left;
+		position: relative;
+		width: 100%
+	}
+	#stream ul .activity {width: 100%}
+	#stream ul .vcard .entry {
+		float: left;
+		width: 85%;
+	}
+	#stream .meta {
+		font-size: 88%;
+		float: left;
+		clear: both;
+		margin-top: -10px
+	}
+	#stream .activity .time {font-size: 11px; color: #bbb}
+	#stream .meta li {
+		float: left;
+		margin-right: 8px
+	}
+	#stream .meta .time {padding-top: 1px}
+	#stream .meta .time a, #stream .comments .time {color: #b2b1b1; font-size: 11px}
+
+	#stream .comments {clear: both}
+	.my-status .entry > * {opacity: .6}
+	.my-status .entry .comments {opacity: 1}
+
+	#stream .photo {
+		float: left;
+		margin-right: 8px;
+	}
+	#stream .vcard .btn-group {
+		position: absolute;
+		top: -5px;
+		right: 2px;
+	}
+	#stream .vcard .dropdown-toggle span, #stream .vcard .meta i {opacity: .5}
+	#stream .vcard .dropdown-menu {
+		right: 0;
+		left: auto;
+	}
+	#stream .vcard .comments {
+		position: relative;
+		padding-top: 5px;
+		width: 90%;
+	}
+	#stream .vcard .comments li {
+		background: #f6f5f5;
+		margin-bottom: 1px;
+		padding: 1px 3px 4px 2px
+	}
+	#stream .vcard .comments li .photo {width: 15px; margin-top: 3px}
+	#stream .vcard .comments li .comment {margin-left: 17px}
+	#stream .vcard .comments li .fn {font-size: 11px}
+	#stream .vcard .comments li p {
+		font-size: 12px;
+		line-height: 16px;
+		color: #777;
+		margin-bottom: 4px
+	}
+	#stream .comments .photo {margin-right: 2px}
+	.comments form {margin-bottom: 0}
+	.textarea-comment {width: 93%; margin-top: 2px; margin-bottom: 0; font-size: 12px}
+	#stream .shared-item {position: relative; display: block; max-width: 400px}
+	#stream .btn-play {
+		position: absolute;
+		display: block;
+		background: url(../img/rl/btn-play.png) no-repeat center 0px;
+		top: 50%;
+		left: 50%;
+		margin-top: -70px;
+		margin-left: -70px;
+		height: 140px;
+		width: 140px
+	}
+	#stream .shared-item:hover .btn-play {
+		background: url(../img/rl/btn-play.png) no-repeat center -140px;
+	}
+	#stream .video-embed {display: none; max-width: 400px}
+	#stream .video-embed iframe {width: 100%; min-height: 233px}
+	.form-comment {position: relative; padding-bottom: 21px}
+	.form-comment .btn {
+		right: 5px;
+		bottom: 0;
+		position: absolute
+	}
+	.vcard .close {position: absolute; top: 2px; right: 2px}
 	
+#pagination {
+	background: url(../img/rl/fade.png) repeat-x top;
+	padding-top: 60px;
+	top: -70px;
+	position: relative;
+	float: left;
+	clear: both;
+	width: 100%
+}
+#pagination .btn {width: 96%}
+
+
 #sidebar {
 	border:1px inset #e8e6e6;
 	border-width: 0 1px 0 0;
@@ -150,21 +313,26 @@ body.home .brand {
 	}
 	.avatar .btn-group {
 		position: absolute;
-		top:-6px;
-		left: -5px;
+		top:-8px;
+		left: -7px;
 	}
-	.avatar .btn-group > a {
-		padding: 2px 4px;
+	.avatar .btn-group > a, .vcard .btn-group > a {
+		padding: 1px 3px 3px;
 		opacity: 0.9;
+	}
+	#sidebar .nav li {position: relative}
+	#sidebar .nav li .label {
+		position: absolute;
+		top:6px;
+		right:5px
 	}
 
 #footer-utility ul {
 	list-style: none;
 	margin-left: 0;
 }
-#footer-utility ul li {
-	margin: 6px 0
-}
+#footer-utility ul li {margin: 6px 0}
+#footer-utility h4 {text-transform: uppercase}
 .fade-rl {
 	background: url(../img/rl/fade.png) repeat-x;
 	position: fixed;
@@ -172,6 +340,11 @@ body.home .brand {
 	height: 60px;
 	width: 100%;
 		pointer-events: none;
+}
+#modalEsqueci {display: none}
+#privacidade-status, #form-status #send {
+	float: right;
+	margin-left: 10px
 }
 
 /*!
@@ -188,6 +361,10 @@ body.home .brand {
 #top-login {
 	float: none
 }
+
+#stream ul .vcard .entry {width: 75%}
+#sidebar-wdgt {clear: both}
+#footer-utility h4 {margin-top: 30px}
 
 }
 
@@ -213,8 +390,6 @@ body.home .brand {
 	position: static;
 }
 
-
-
 #top-login {
 	margin-top: 15px;
 	float: left;
@@ -225,6 +400,33 @@ body.home .brand {
 	margin-bottom: 5px;
 	width: 100%
 }
+#stream ul .vcard .entry {width: 75%}
+#sidebar-wdgt {clear: both}
+.textarea-comment {width: 88%;}
+#footer-utility h4 {margin-top: 30px}
+
+}
+
+
+/* // Um computador por aluno */
+@media (min-width: 768px) and (max-width: 800px) {
+	#user-menu {
+		float: left
+	}
+	.navbar-search .search-query {
+		width: 95%
+	}
+
+#searchsubmit {display: none}
+
+#sidebar .nav a {font-size: 85%; padding: 4px}
+	#sidebar .nav li .label {
+		top:3px;
+		right:3px
+	}
+
+#stream ul .vcard .entry {width: 80%}
+.textarea-comment {width: 91%;}
 
 }
 
@@ -240,18 +442,15 @@ body.home .brand {
 
 #searchsubmit {display: none}
 
-}
+#stream ul .vcard .entry {width: 80%}
 
-/* // Um computador por aluno */
-@media (min-width: 768px) and (max-width: 800px) {
-	#user-menu {
-		float: left
+#sidebar .nav a {font-size: 85%; padding: 4px}
+	#sidebar .nav li .label {
+		top:3px;
+		right:3px
 	}
-	.navbar-search .search-query {
-		width: 95%
-	}
+.textarea-comment {width: 91%;}
 
-#searchsubmit {display: none}
 
 }
 

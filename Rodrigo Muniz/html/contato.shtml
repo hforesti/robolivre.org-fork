@@ -1,0 +1,69 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span4">
+<h6>Contato</h6>
+	<ul class="nav nav-tabs nav-stacked">
+		<li class="active"><a href="contato.shtml">Fale Conosco</a></li>
+	</ul>
+		<a href="profile-home.shtml" class="btn"><i class="icon-chevron-left icon-gray"></i> Início</a>
+</div>
+
+
+<div class="span8">
+
+<div class="page-header">
+<h1>Fale Conosco</h1>
+</div>
+<div class="alert alert-info">
+Está com alguma dúvida? Verificou se ela já foi respondida no <strong><a href="faq.shtml">nosso FAQ</a></strong>?
+</div>
+
+          <p>Entre em contato com nossos robôs, quer dizer… com a nossa equipe :)</p>
+
+<form class="form-horizontal">
+        <fieldset>
+          <div class="control-group">
+            <label class="control-label" for="textarea">Mensagem</label>
+            <div class="controls">
+              <textarea class="input-xlarge" id="textarea" rows="8"></textarea>
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label class="control-label" for="input01">Seu Nome</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" id="input01">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="input02">Seu E-mail</label>
+            <div class="controls">
+              <input type="email" class="input-xlarge" id="input02">
+              <p class="help-block">Responderemos sua mensagem para este e-mail informado</p>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="input03">Telefone</label>
+            <div class="controls">
+              <input type="tel" class="input-medium" id="input03" placeholder="DDD + Telefone">
+              <p class="help-block">Opcional</p>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </fieldset>
+      </form>
+
+</div>
+
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->

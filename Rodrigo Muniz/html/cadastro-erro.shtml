@@ -79,14 +79,14 @@
 					<textarea class="input-xlarge" id="textarea" rows="5" readonly="readonly">
 Ao clicar no botão, você concordará com os termos abaixo:
 ----------------------------------------------------------------------------------------
-Estes Termos de Serviço ("Termos") regem seu acesso e uso dos serviços e </textarea>
+Estes Termos de Serviço ("Termos") regem seu acesso e uso dos serviços e 
+					</textarea>
             </div>
 		</div>
 
 <div class="form-actions">
 		<button type="submit" class="btn btn-primary">Concluir Cadastro</button>
-		<a href="index.shtml" class="btn">Cancelar</a>
-		
+
 <p class="help-block"><strong>Nota:</strong> Outros usuários poderão encontrá-lo pelo nome, nome de usuário ou e-mail. Seu e-mail não será exibido publicamente. Você pode alterar suas configurações de privacidade a qualquer momento.</p>
 
 </div>

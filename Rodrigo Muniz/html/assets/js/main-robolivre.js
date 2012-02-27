@@ -15,12 +15,31 @@ $('.search-query').blur(function() {
 	}, 250);
 });
 
-if ( $("#login-form") ) {
-	$('input[tabindex=1]').focus();
+//auto focus input
+if ( $("#login-form, #status") ) {
+	$('input[tabindex=1], textarea[tabindex=1]').focus();
 }
 
-$('#grid-comunidades img').tooltip();
+//video no stream de status
+if ( $("#stream .video-embed") ) {
+	$("#stream .share-content .shared-item").click(function() {
+		$(this).fadeOut(function(){
+				url = $(this).parent().find(".video-embed iframe").attr("src");
+				$(this).parent().find(".video-embed iframe").attr({src:url+"?autoplay=1"});
+				$(this).parent().find(".video-embed").fadeIn();
+		});
+		return false;
+	});
+}
 
+//tooltips
+$('#grid-comunidades img, #grid-conteudos img, #grid-amigos img, .visivel-para i').tooltip();
+$('#form-status .nav a').tooltip({ placement: 'bottom' });
 
+//textarea de comentarios
+$('.textarea-comment').autoResize({
+    maxHeight: 200,
+    extraSpace: 0
+});
 
 }(window.jQuery)

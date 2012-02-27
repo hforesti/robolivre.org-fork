@@ -5,7 +5,7 @@
     ================================================== -->
     <div class="row">
         <a class="brand span3" href="index.shtml">Robô Livre</a>
-          
+
 		<div id="top-login">
 					<form id="login-form" class="form-inline" action="login-erro.shtml">
 		           			<input id="login" type="email" placeholder="e-mail ou usuário" tabindex="1" />
@@ -18,10 +18,34 @@
 						<input type="checkbox" name="optionsCheckboxList1" value="option1" tabindex="3">
 					lembrar-me
 					</label></li>
-						<li id="esqueci"><a href="esqueci.shtml">Esqueceu sua senha?</a></li>
+						<li id="esqueci"><a data-toggle="modal" href="#modalEsqueci">Esqueceu sua senha?</a></li>
 					</ul>
 		
 		         	</form>
+
+<div class="modal fade" id="modalEsqueci">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Recuperar Senha</h3>
+  </div>
+  <div class="modal-body">
+			<form id="esqueci-form" class="form-inline" action="#">
+				<div class="alert fade in">
+            	<strong>Tudo bem!</strong> Um link para recuperar sua senha foi enviado para o seu email <em>rodrigo@robolivre.org</em>.
+          	</div>
+			
+           			<input id="email-esqueci" type="email" placeholder="Seu endereço de e-mail ou nome de usuário" class="span5" />
+
+			    	<input value="Recuperar senha" type="submit" class="btn btn-primary" tabindex="4" />
+
+		
+		         	</form>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Fechar</a>
+  </div>
+</div>
+
 		</div>
 
     </div>
@@ -56,14 +80,14 @@
 <div class="span4" id="grid-comunidades">
 <h3>Comunidades</h3>
 <ul class="thumbnails">
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
 </ul>
 </div>
 
