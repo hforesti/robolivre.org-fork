@@ -4,43 +4,65 @@
 
 <div class="span2" id="sidebar">
 <div class="avatar">
-	<a href="profile-home.shtml"><img src="assets/img/rl/avatar-140.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+	<a href="conteudo.shtml"><img src="assets/img/rl/140.gif" alt="Arduino" class="photo"></a>
     <div class="btn-group">
 	  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
 	    <span class="icon-cog icon-gray"></span>
 	  	</a>
 	  	<ul class="dropdown-menu">
 	      <li>
-	        <a href="settings.shtml">Atualizar foto</a>
+	        <a href="settings.shtml">Atualizar imagem</a>
 	      </li>
 	      <li>
-	        <a href="inbox.shtml">Editar perfil</a>
+	        <a href="inbox.shtml">Editar dados</a>
 	      </li>
 		</ul>
 	</div>
-	
-	<h1>Rodrigo Medeiros</h1>
 
 </div><!-- /avatar -->
-
 <ul class="nav nav-pills nav-stacked">
 	<li class="active"><a href="#"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
-	<li><a href="conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
-	<li><a href="comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
-	<li><a href="amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
-	<li><a href="eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
-	<li><a href="projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
-				<li><hr></li>
-	<li><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
+	<li><a href="amigos.shtml"><span class="icon-gray icon-user"></span> Seguidores <span class="label label-info">150</span></a></li>
+	<li><a href="imagens.shtml"><span class="icon-gray icon-picture"></span> Imagens <span class="label label-info">15</span></a></li>
+	<li><a href="videos.shtml"><span class="icon-gray icon-film"></span> Vídeos <span class="label label-info">9</span></a></li>
+	<li><a href="links.shtml"><span class="icon-gray icon-share-alt"></span> Links <span class="label label-info">5</span></a></li>
+	<li><a href="docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info">5</span></a></li>
+	<li><a href="projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos relacionados <span class="label label-info">15</span></a></li>
 </ul>
 </div><!-- /sidebar -->
 
 
 <div class="span7">
 
+<ul class="breadcrumb">
+  <li>
+    <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="conteudos.shtml">Conteúdos</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <a href="conteudo.shtml">Arduíno</a>
+  </li>
+</ul>
+
+<p><small>Adicionado por <a href="perfil.shtml">Henrique Foresti</a>. Última atualização 21/01/2011</small></p>
+
+<div class="page-header">
+<a href="#" class="btn btn-success pull-right"><i class="icon-ok icon-white"></i> Seguir conteúdo</a>
+<!-- <a href="#" class="btn pull-right"><i class="icon-remove"></i> Parar de seguir</a> -->
+
+<h1>Arduino</h1>
+
+</div>
+
+<p>A plataforma Arduino foi desenvolvida na Itália e, por ser uma plataforma aberta, várias versões surgiram e qualquer pessoa pode facilmente construir a sua, com base nos protótipos disponíveis na internet.</p>
+
+<hr>
+
 <form id="form-status" action="status.shtml">
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#tab-status" data-toggle="tab">Atualizar status</a></li>
+  <li class="active"><a href="#tab-status" data-toggle="tab">Postar sobre Arduino</a></li>
   <li><a href="#tab-foto" data-toggle="tab" title="Adicionar Foto"><i class="icon-picture"></i></a></li>
   <li><a href="#tab-video" data-toggle="tab" title="Adicionar Vídeo"><i class="icon-film"></i></a></li>
   <li><a href="#tab-link" data-toggle="tab" title="Adicionar Link"><i class="icon-share-alt icon-gray-alt"></i></a></li>
@@ -70,7 +92,7 @@
 </fieldset>
 
 <fieldset>
-	<textarea class="input-xlarge span7" id="status" rows="3" placeholder="O que você tem pesquisado sobre os robôs?" tabindex="1"></textarea>
+	<textarea class="input-xlarge span7" id="status" rows="3" placeholder="O que você tem para compartilhar sobre este conteúdo?" tabindex="1"></textarea>
 
 </fieldset>
 
@@ -79,7 +101,6 @@
 		<select id="privacidade-status">
                 <option>Público</option>
                 <option>Só para amigos</option>
-                <option>Privado</option>
 		</select>
 
 </form>
@@ -90,7 +111,7 @@
 <div id="stream">
 		<h3>Atualizações recentes</h3>
 
-<a href="#" class="btn btn-primary" id="refresh"><i class="icon-refresh icon-white"></i> 6 novas atualizações. Exibir agora.</a>
+<!-- <a href="#" class="btn btn-primary" id="refresh"><i class="icon-refresh icon-white"></i> 6 novas atualizações. Exibir agora.</a> -->
 
 	<ul>
 	
@@ -464,23 +485,8 @@
 
 <div class="span3" id="sidebar-wdgt">
 
-<div id="grid-comunidades" class="wdgt">
-		<h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
-	<ul class="thumbnails">
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	</ul>
-	<a href="comunidades.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
-</div><!-- grid-comunidades -->
-
-<hr>
-
 <div id="grid-conteudos" class="wdgt">
-	<h3><a href="conteudos.shtml">Conteúdos seguidos <small>150</small></a></h3>
+	<h3><a href="conteudos.shtml">Conteúdos relacionados <small>150</small></a></h3>
 	<ul class="thumbnails">
 		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
 		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
@@ -494,9 +500,28 @@
 
 <hr>
 
-<div id="grid-amigos" class="wdgt">
-	<h3><a href="amigos.shtml" title="Ver tudo">Amigos <small>150</small></a></h3>
+
+<div id="grid-projetos" class="wdgt">
+		<h3><a href="projetos.shtml" title="Ver tudo">Projetos relacionados <small>15</small></a></h3>
 	<ul class="thumbnails">
+		<li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
+		<li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
+		<li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
+		<li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
+		<li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
+		<li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
+	</ul>
+	<a href="projetos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+</div><!-- grid-comunidades -->
+
+<hr>
+
+<div id="grid-amigos" class="wdgt">
+	<h3><a href="amigos.shtml" title="Ver tudo">Seguidores <small>150</small></a></h3>
+	<ul class="thumbnails">
+		<li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
 		<li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
 		<li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
 		<li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>

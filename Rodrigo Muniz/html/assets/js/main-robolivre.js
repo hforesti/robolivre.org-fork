@@ -33,7 +33,7 @@ if ( $("#stream .video-embed") ) {
 }
 
 //tooltips
-$('#grid-comunidades img, #grid-conteudos img, #grid-amigos img, .visivel-para i').tooltip();
+$('#grid-comunidades img, #grid-conteudos img, #grid-amigos img, #grid-projetos img, .visivel-para i').tooltip();
 $('#form-status .nav a').tooltip({ placement: 'bottom' });
 
 //textarea de comentarios
