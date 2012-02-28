@@ -7,7 +7,7 @@ except AttributeError:
 
 class Ui_lineEdit(object):
     def setupUi(self, lineEdit):
-        nomeDoRobo = 'MNERIM'
+        nomeDoRobo = ''
         tamanho = ''
         comando = ''
         distancia = ''

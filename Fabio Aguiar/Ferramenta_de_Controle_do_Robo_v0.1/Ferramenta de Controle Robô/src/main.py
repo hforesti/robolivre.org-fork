@@ -11,11 +11,45 @@ from time import sleep
 import serial
 import glob
 
-def scan():
-    return glob.glob('/dev/ttyUSB*') + glob.glob('/dev/ttyS*') + glob.glob('/dev/ttyACM*')
 
-Serial = serial.Serial(scan()[0])
-Serial.open()
+def scan():
+    return glob.glob('/dev/ttyU*') +  glob.glob('/dev/ttyA*')
+
+
+def busca_robos():
+    robos = []
+    portas = []
+    for numero in range(len(scan())):
+        robo_porta = serial.Serial(scan()[numero])
+        robo_porta.open()
+        pergunta = "??024qualseunome PC01654"
+        robo_porta.write(str(pergunta))
+        sleep(0.5)
+        resposta = ''
+        while (robo_porta.inWaiting() > 0):
+            resposta = resposta + robo_porta.read() 
+
+        if (resposta.find("qualseunome") > 0):
+            nome = ""
+            aux = resposta.find(" ") + 1 
+            while(aux < len(resposta) -7):  
+                nome += str(resposta[aux])
+                aux += 1
+            robos.append(nome)
+            portas.append(robo_porta.portstr)
+                     
+        robo_porta.close()
+        
+           
+  
+    return robos, portas  
+
+
+
+robos, portas = busca_robos()
+
+print robos, portas
+
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -25,12 +59,13 @@ except AttributeError:
 
 class MainWidget(QtGui.QWidget):
     mensagem = ''
-    destinatario = 'MNERIM'
+    destinatario = ''
     tamanho = 0
     comando = ''
     distancia = ''
     remetente = 'PC'
     checksum = 0
+    Serial = serial.Serial(portas[0])
     
     def __init__(self, parent=None):
         QtGui.QMainWindow.__init__(self, parent)
@@ -83,6 +118,41 @@ class MainWidget(QtGui.QWidget):
         self.lineEditAba2.setupUi2(self.aba2)
         self.menuDeAbas.addTab(self.aba2, _fromUtf8(""))
         
+    
+        if (len(robos) > 0):
+            self.botaoRobo0 = QtGui.QPushButton(self)
+            self.botaoRobo0.setGeometry(QtCore.QRect(200, 7, 97, 27))
+            self.botaoRobo0.setText(QtGui.QApplication.translate("Form", robos[0], None, QtGui.QApplication.UnicodeUTF8))
+            self.botaoRobo0.setObjectName(_fromUtf8(robos[0]))
+            self.botaoRobo0.clicked.connect(self.robo0)               
+       
+        if (len(robos) > 1):
+            self.botaoRobo1 = QtGui.QPushButton(self)
+            self.botaoRobo1.setGeometry(QtCore.QRect(300, 7, 97, 27))
+            self.botaoRobo1.setText(QtGui.QApplication.translate("Form", robos[1], None, QtGui.QApplication.UnicodeUTF8))
+            self.botaoRobo1.setObjectName(_fromUtf8(robos[1]))
+            self.botaoRobo1.clicked.connect(self.robo1)
+        
+        if (len(robos) > 2):
+            self.botaoRobo2 = QtGui.QPushButton(self)
+            self.botaoRobo2.setGeometry(QtCore.QRect(400, 7, 97, 27))
+            self.botaoRobo2.setText(QtGui.QApplication.translate("Form", robos[2], None, QtGui.QApplication.UnicodeUTF8))
+            self.botaoRobo2.setObjectName(_fromUtf8(robos[2]))
+            self.botaoRobo2.clicked.connect(self.robo2)
+        
+        if (len(robos) > 3):
+            self.botaoRobo3 = QtGui.QPushButton(self)
+            self.botaoRobo3.setGeometry(QtCore.QRect(500, 7, 97, 27))
+            self.botaoRobo3.setText(QtGui.QApplication.translate("Form", robos[3], None, QtGui.QApplication.UnicodeUTF8))
+            self.botaoRobo3.setObjectName(_fromUtf8(robos[3]))
+            self.botaoRobo3.clicked.connect(self.robo3)
+        
+        if (len(robos) > 4):
+            self.botaoRobo4 = QtGui.QPushButton(self)
+            self.botaoRobo4.setGeometry(QtCore.QRect(600, 7, 97, 27))
+            self.botaoRobo4.setText(QtGui.QApplication.translate("Form", robos[4], None, QtGui.QApplication.UnicodeUTF8))
+            self.botaoRobo4.setObjectName(_fromUtf8(robos[4]))
+            self.botaoRobo4.clicked.connect(self.robo4)
         
         
         self.metododoDoMenuDeAbas(self)
@@ -91,6 +161,7 @@ class MainWidget(QtGui.QWidget):
         
         #Tamanho da janela principal MainWidget
         self.resize(700, 400)
+        
 
     def metododoDoMenuDeAbas(self, Form):
         self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba1), QtGui.QApplication.translate("Form", "Tab 1", None, QtGui.QApplication.UnicodeUTF8))
@@ -138,13 +209,13 @@ class MainWidget(QtGui.QWidget):
         
         MainWidget.mensagem = MainWidget.mensagem + str(MainWidget.checksum)
         print MainWidget.mensagem
-        Serial.write(str(MainWidget.mensagem))
+        MainWidget.Serial.write(str(MainWidget.mensagem))
 
         delay = (float(MainWidget.distancia)/100)
 	sleep(delay + 1)
         resposta = ''
-        while (Serial.inWaiting() > 0):
-            resposta = resposta + Serial.read()
+        while (MainWidget.Serial.inWaiting() > 0):
+            resposta = resposta + MainWidget.Serial.read()
         print resposta
         self.saida.vai("mensagem: " + MainWidget.mensagem + "\n" + "resposta: " + resposta)
 
@@ -153,14 +224,48 @@ class MainWidget(QtGui.QWidget):
    
     def zerarVariaveis(self):
         MainWidget.mensagem = ''
-        MainWidget.destinatario = 'MNERIM'
         MainWidget.tamanho = 0
-        #MainWidget.comando = ''
-        #MainWidget.distancia = ''
         MainWidget.remetente = 'PC'
         MainWidget.checksum = 0
+    
+    
+    
+    def robo0(self):
+        self.lineEditAba1.nomeDoRobo.setText(str(robos[0]))
+        MainWidget.destinatario = robos[0]
+        MainWidget.Serial = serial.Serial(portas[0])
+        MainWidget.Serial.open()
+    
+    def robo1(self):
+        self.lineEditAba1.nomeDoRobo.setText(str(robos[1]))
+        MainWidget.destinatario = robos[1]
+        MainWidget.Serial = serial.Serial(portas[1])
+        MainWidget.Serial.open()
+    
+    def robo2(self):
+        self.lineEditAba1.nomeDoRobo.setText(str(robos[2]))
+        MainWidget.destinatario = robos[2]
+        MainWidget.Serial = serial.Serial(portas[2])
+        MainWidget.Serial.open()
+        
+    def robo3(self):
+        self.lineEditAba1.nomeDoRobo.setText(str(robos[3]))
+        MainWidget.destinatario = robos[3]
+        MainWidget.Serial = serial.Serial(portas[3])
+        MainWidget.Serial.open()
+    
+    def robo4(self):
+        self.lineEditAba1.nomeDoRobo.setText(str(robos[4]))
+        MainWidget.destinatario = robos[4]
+        MainWidget.Serial = serial.Serial(portas[4])
+        MainWidget.Serial.open()
         
         
+    
+
+        
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     

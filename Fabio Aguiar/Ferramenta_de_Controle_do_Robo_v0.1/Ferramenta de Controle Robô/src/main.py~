@@ -150,17 +150,7 @@ class MainWidget(QtGui.QWidget):
 
         self.zerarVariaveis()
         
-        #MainWidget.distancia = self.distancia.distanciaLineEdit.text()
-        #MainWidget.protocolo = MainWidget.nomeDoRobo + MainWidget.tamanho + MainWidget.comando + MainWidget.distancia + MainWidget.remetente + MainWidget.checksum
-        #MainWidget.tamanho = len(MainWidget.protocolo)
-        #MainWidget.protocolo = MainWidget.nomeDoRobo + MainWidget.tamanho + MainWidget.comando + MainWidget.distancia + MainWidget.remetente + MainWidget.checksum
-        #Serial.write(MainWidget.protocolo)
-        #sleep(2)
-        #printar = ''
-        #while Serial.inWaiting() > 0:
-        #    printar = printar + Serial.read()
-        #print printar
-        
+   
     def zerarVariaveis(self):
         MainWidget.mensagem = ''
         MainWidget.destinatario = 'MNERIM'
