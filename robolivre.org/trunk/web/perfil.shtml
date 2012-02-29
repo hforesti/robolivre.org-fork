@@ -37,6 +37,7 @@
 </ul>
 </div><!-- /sidebar -->
 
+<hr class="only-mobile">
 
 <div class="span7">
 
@@ -204,12 +205,20 @@
 <!-- ======================== -->
 <!-- ! Modelo de atividades   -->
 <!-- ======================== -->
-		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Henrique Foresti" title="Henrique Foresti"></a>
-			<a href="perfil.shtml" class="fn">Henrique Foresti</a> publicou <a href="post.shtml">Nome do conteúdo</a> em <a href="conteudo.shtml">Arduino</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<a href="perfil.shtml" class="fn">Max Guenes</a> criou <a href="post.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> marcado com <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i> Open Source</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
 		</li>
 
-		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Henrique Foresti" title="Henrique Foresti"></a>
-			<a href="perfil.shtml" class="fn">Henrique Foresti</a> e <a href="perfil.shtml" class="fn">Rodrigo Medeiros</a> agora são amigos. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<a href="perfil.shtml" class="fn">Max Guenes</a> e <a href="perfil.shtml" class="fn">Rodrigo Medeiros</a> agora são amigos. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+		</li>
+
+		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<a href="perfil.shtml" class="fn">Max Guenes</a> criou <a href="post.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> marcado com <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i> Arduino</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+		</li>
+
+		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<a href="perfil.shtml" class="fn">Max Guenes</a> criou <a href="post.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> marcado com <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i> Arduino</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
 		</li>
 
 <!-- ======================================== -->
@@ -365,21 +374,6 @@
 
 <div class="span3" id="sidebar-wdgt">
 
-<div id="grid-comunidades" class="wdgt">
-		<h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
-	<ul class="thumbnails">
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	</ul>
-	<a href="comunidades.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
-</div><!-- grid-comunidades -->
-
-<hr>
-
 <div id="grid-conteudos" class="wdgt">
 	<h3><a href="conteudos.shtml">Conteúdos seguidos <small>150</small></a></h3>
 	<ul class="thumbnails">
@@ -395,17 +389,33 @@
 
 <hr>
 
+<div id="grid-comunidades" class="wdgt">
+		<h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
+	<ul class="thumbnails">
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	</ul>
+	<a href="comunidades.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+</div><!-- grid-comunidades -->
+
+<hr>
+
 <div id="grid-amigos" class="wdgt">
 	<h3><a href="amigos.shtml" title="Ver tudo">Amigos <small>150</small></a></h3>
 	<ul class="thumbnails">
-		<li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-		<li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-		<li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
 	</ul>
 	<a href="amigos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
 </div><!-- grid-amigos -->
-
-<hr>
 
 </div><!-- /aside -->
 

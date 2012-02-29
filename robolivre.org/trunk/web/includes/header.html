@@ -48,6 +48,7 @@
 		    <input id="searchsubmit" alt="Buscar" type="image" src="assets/img/rl/btn-search.png">
          	</form>
          	
+
 				<ul class="nav" id="user-menu">
 				  <li class="dropdown">
 				    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-warning" title="2 mensagens não lidas">2</span> <img src="assets/img/rl/20.gif" alt="Rodrigo"> Rodrigo <b class="caret"></b></a>
@@ -68,10 +69,58 @@
 				    </ul>
 				  </li>
 				</ul>
+
+<!-- ===================================================== -->
+<!-- ! Link de login que chama modal do final dessa página   -->
+<!-- ===================================================== -->
+
+<!--
+            <ul class="nav pull-right">
+			<li class="divider-vertical"></li>
+              <li>
+                <a data-toggle="modal" href="#modalLogin">Entrar</a>
+              </li>
+            </ul>
+-->
+
+
           </div>
         </div>
       </div>
     </div>
+
+<!-- ================== -->
+<!-- ! Modal de login   -->
+<!-- ================== -->
+<!--
+<div class="modal fade" id="modalLogin">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Entrar</h3>
+  </div>
+  <div class="modal-body">
+	<form id="login-form" class="form-inline" action="#">
+				<div class="alert fade in">
+            	<strong>Vixe!</strong> Os dados informados não conferem. <a data-toggle="modal" href="#modalEsqueci">Esqueceu sua senha</a>?
+          	</div>
+
+		<input id="login" type="email" placeholder="e-mail ou usuário" tabindex="1" />
+		<input id="login-pass" type="password" placeholder="senha" tabindex="2" />
+		
+		<input value="entrar" type="submit" class="btn btn-primary" tabindex="4" />
+		
+			<label class="checkbox">
+			<input type="checkbox" name="optionsCheckboxList1" value="option1" tabindex="3">
+			lembrar-me
+			</label>	
+	</form>
+  </div>
+  
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Fechar</a>
+  </div>
+</div>
+-->
 
     <div class="container">
 

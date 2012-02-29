@@ -41,9 +41,10 @@ blockquote p {
     margin:5px 0 15px;
 }
 label {cursor: pointer}
+.only-mobile {display: none}
 .btn, .label {border-radius: 14px}
 .icon-gray {opacity: 0.4}
-.active .icon-gray {background-image: url(../img/glyphicons-halflings-white.png);}
+#sidebar .nav .active .icon-gray {background-image: url(../img/glyphicons-halflings-white.png);}
 .navbar-fixed-top {position: fixed}
 .brand {
 	background: url(../img/rl/logo.png) no-repeat;
@@ -67,7 +68,7 @@ body.home .brand {
 body.home .top-login {
 	margin-bottom: 40px;
 }
-	#user-menu {float: right}
+	#user-menu {float: right; margin-right: 0}
 	.navbar-inner {
 		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05),inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 	}
@@ -133,6 +134,7 @@ body.home .top-login {
 		width: 20px;
 		vertical-align: middle;
 	}
+	.login-dropdown .dropdown ul {width: 400px}
 
 #user-menu .label {
 	position: absolute;
@@ -183,6 +185,17 @@ body.home .top-login {
 	position: relative;
 	padding-bottom: 30px
 }
+	#stream #tabs-home {width: 100%; margin-top: 30px; position: relative}
+	#stream #tabs-home li {float: right}
+	#stream #tabs-home li i {margin-top: 3px}
+	#stream #tabs-home .no-link {
+		position: absolute;
+		bottom: 14px;
+		right: 285px
+	}
+	#stream #tabs-home a h3 {color: #08c}
+	#stream #tabs-home .active a h3 {color: #555}
+	#stream .tab-content {width: 100%}
 	#stream ul {
 		list-style: none;
 		margin-left: 0;
@@ -223,7 +236,15 @@ body.home .top-login {
 	#stream .photo {
 		float: left;
 		margin-right: 8px;
+		position: relative
 	}
+	#stream .photo .sub-icon {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		box-shadow: 1px 2px 25px rgba(255, 255, 255, 1); 
+	}
+
 	#stream .vcard .btn-group {
 		position: absolute;
 		top: -5px;
@@ -326,6 +347,13 @@ body.home .top-login {
 		top:6px;
 		right:5px
 	}
+	#sidebar .nav li .label-info {
+		top: 10px;
+		padding: 0px 3px;
+		line-height: 130%;
+		opacity: .5;
+		font-size: 10px
+	}
 
 #footer-utility ul {
 	list-style: none;
@@ -361,7 +389,11 @@ body.home .top-login {
 #top-login {
 	float: none
 }
-
+#sidebar .avatar {float:left; width: 49%}
+#sidebar .nav {float:right; width: 49%}
+.only-mobile {display: block; clear: both}
+#form-status {clear: both}
+#stream #tabs-home .no-link {display: none}
 #stream ul .vcard .entry {width: 75%}
 #sidebar-wdgt {clear: both}
 #footer-utility h4 {margin-top: 30px}

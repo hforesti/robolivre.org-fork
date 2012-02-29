@@ -6,7 +6,7 @@ window.top.scrollTo(0, 1);
 //fade-nos links do menu quando focar a busca
 $('.search-query').focus(function() {
 	$('.navbar .nav li').animate({
-		opacity: 0.25,
+		opacity: 0.15,
 	}, 250);
 });
 $('.search-query').blur(function() {
