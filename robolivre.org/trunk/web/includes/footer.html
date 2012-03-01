@@ -58,9 +58,46 @@
     <!-- Le javascript
     ================================================== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-    <script src="assets/js/jquery.autoresize.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.autoresize.min.js"></script>
+    <script src="assets/js/CLEditor1_3_0/jquery.cleditor.min.js"></script>
+    <script src="assets/js/autoSuggestv14/jquery.autoSuggest.minified.js"></script>
+    <script src="assets/js/file-uploader/fileuploader.js"></script>
     <script src="assets/js/main-robolivre.js"></script>
+    
+	<script type="text/javascript">
+	//autosuggest tags
+	var data = {items: [
+		{value: "21", name: "Arduino"},
+		{value: "43", name: "Robôs"},
+		{value: "46", name: "Pernambuco"},
+		{value: "54", name: "Recife"},
+		{value: "56", name: "Teste"},
+		{value: "57", name: "Teste 2"},
+		{value: "58", name: "Open Source"},
+		{value: "79", name: "Rodrigo"},
+		{value: "80", name: "Gambiarra"},
+		{value: "81", name: "UNIX"}
+	]};
+	
+	$("#input-marcadores").autoSuggest(data.items, {
+		selectedItemProp: "name",
+		searchObjProps: "name",
+		startText: "",
+		emptyText: "Nenhuma sugestão encontrada"
+	});
+	//$("input[type=text]").autoSuggest("http://mysite.com/path/to/script", {minChars: 2, matchCase: true});
+	
+	//focus do autosuggest
+	$(".as-input").focus(function() {
+		$(this).parent().parent().addClass("as-selections-focus");
+	});
+	$(".as-input").blur(function() {
+		$(this).parent().parent().removeClass("as-selections-focus");
+	});
+
+	</script>
+
 <div class="fade-rl"></div>
   </body>
 </html>

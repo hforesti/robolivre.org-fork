@@ -48,72 +48,194 @@
   </li>
   <li class="active">
     Criar conteúdo
+<!--     Editar conteúdo -->
   </li>
 </ul>
 
 
 <div class="page-header">
 <h1>Criar conteúdo</h1>
+<!-- <h1>Editar conteúdo</h1> -->
 </div>
 
 <form action="#" id="form-criar-conteudo">
         <fieldset>
           <div class="control-group">
             <div class="controls">
-              <input type="text" class="span6" id="input01" placeholder="Nome">
+              <input type="text" class="span7" id="input01" placeholder="Nome" value="Título do conteúdo que veio do modal">
             </div>
           </div>
 
           <div class="control-group">
             <div class="controls">
-              <textarea class="span7" id="textarea" rows="9" placeholder="O que você tem para compartilhar?"></textarea>
+              <textarea class="span7 wysiwyg" id="textarea" rows="9" placeholder="O que você tem para compartilhar?" tabindex="1"></textarea>
             </div>
           </div>
+
+<hr>
 
           <fieldset class="control-group">
-            <legend class="control-label" for="input02">Relacione este conteúdo</legend>
+            <h3>Classificar conteúdo</h3>
 
-		<p class="help-block">Relacionando um conteúdo com <strong>Temas de aula</strong> ou com marcadores, este ficará mais fácil de ser encontrado aqui no site.</p>
-		
-			<div class="controls row">
-		<div class="span3">
-              <label class="checkbox">
-                <input type="checkbox" id="inlineCheckbox1" value="option1"> Robótica Definições e História - Robô na Ficção
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" id="inlineCheckbox2" value="option2"> Robótica Classificação dos Robôs
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" id="inlineCheckbox3" value="option3"> Controle de Robôs - Protocolos de comunicação
-              </label>
-		</div>
-		<div class="span3">
-              <label class="checkbox">
-                <input type="checkbox" id="inlineCheckbox1" value="option1"> Robótica Definições e História - Robô na Ficção
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" id="inlineCheckbox2" value="option2"> Robótica Classificação dos Robôs
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" id="inlineCheckbox3" value="option3"> Controle de Robôs - Protocolos de comunicação
-              </label>
-		</div>
+		<p class="alert alert-info"><i class="icon-info-sign icon-gray"></i> Classifique este conteúdo com Marcadores e relacione com nossos <strong>Temas de aula</strong>, assim ele ficará mais fácil de ser encontrado aqui no site.</p>
 
-           </div>
-            </fieldset>          
 
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#1" data-toggle="tab"><i class="icon-tag icon-gray"></i> Marcadores</a></li>
+    <li><a href="#2" data-toggle="tab"><i class="icon-book icon-gray"></i> Temas de aula</a></li>
+  </ul>
+  
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="1">
+    
           <div class="control-group">
-            <label class="control-label" for="input03">Telefone</label>
             <div class="controls">
-              <input type="tel" class="input-medium" id="input03" placeholder="DDD + Telefone">
-              <p class="help-block">Opcional</p>
+              <input type="text" id="input-marcadores" title="Ex.: Open Source, Gambiarra, UNIX etc">
+             <p class="help-block">Separados por vírgula. Ex.: Open Source, Gambiarra, UNIX</p>
             </div>
           </div>
 
+    </div>
+
+    <div class="tab-pane fade in" id="2">
+			<div class="controls row" id="temas-aula-list">
+
+		<div class="span3">
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox1" value="option1"> Robótica Definições e História - Robô na Ficção
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox2" value="option2"> Robótica Classificação dos Robôs
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox3" value="option3"> Controle de Robôs - Protocolos de comunicação
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox4" value="option3"> Design - Levantamento de requisitos e Funcionalidades
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox5" value="option3"> Eletrônica Componentes eletrônicos
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox6" value="option3"> Eletrônica Soldagem
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox7" value="option3"> Arduino
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox8" value="option3"> Programação Logo Turtle, Schetch, Arduino
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox9" value="option3"> Programação IDE Arduino
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox10" value="option1"> Desenho Técnico - Cads, Programas de geometria
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox11" value="option2"> Mecânica - Materiais e Processos de fabricação
+              </label>
+		</div>
+		<div class="span3 offset1">
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox12" value="option3"> Usinagem de Nylon - Corte, Furo, Rosca
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox14" value="option3"> Sensores magnéticos (Red Switch)
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox15" value="option3"> Sensores Infra Vermelho
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox16" value="option3"> Motores , Caixa de Redução
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox17" value="option3"> Motores Contínuos
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox18" value="option3"> Ponte H - com relés - com transistores, com chips
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox19" value="option3"> Encoder
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox20" value="option3"> Servo Motores
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox21" value="option3"> Motores de Passo
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox22" value="option3"> Motores Brush Less
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="inlineCheckbox23" value="option3"> Transmissão de Dados
+              </label>
+		</div>
+
+           </div><!-- controls row -->
+    </div><!-- tab-content -->
+
+          
+  </div><!-- tab-content -->
+  
+</div><!-- tabbable -->
+
+<hr>
+
+		  <div class="control-group clearfix">
+            <label class="control-label" for="fileInput">Imagem principal</label>
+
+
+		<div class="row">
+			<div class="preview span2" id="img-preview">
+				<img src="assets/img/rl/140.gif" alt="140" id="thumb" class="thumbnail" />
+			</div>
+
+            <div class="span5">				
+	            <div class="controls">				
+	             <p class="help-block">Escolha uma imagem que represente este conteúdo</p>
+					<div id="file-uploader-img">       
+					    <noscript>          
+	              		<input class="input-file" id="fileInput" type="file">
+					    </noscript>         
+					</div>
+	            </div>
+           </div>
+          </div><!-- row -->
+
+          </div><!-- control-group -->
+<hr>
+		  <div class="control-group">
+            <label class="control-label" for="fileInput2">Documentos</label>
+            <div class="controls">
+
+				<div id="file-uploader">       
+				    <noscript>          
+              			<input class="input-file" id="fileInput2" type="file">
+				    </noscript>         
+				</div>
+
+            <p class="help-block">Você pode anexar arquivos a este conteúdo. (Ex.: PDFs, Apresentações, Manuais).</p>
+            </div>
+          </div>
+<hr>
+		  <div class="control-group">
+            <label class="control-label" for="optionsCheckbox">Notificações</label>
+            <div class="controls">
+              <label class="checkbox">
+                <input type="checkbox" id="optionsCheckbox" value="option1" checked>
+                Receber e-mail quando um novo conteúdo relacionado a este for criado ou quando este for modificado por seus amigos
+              </label>
+            </div>
+          </div>
+           
+            </fieldset>          
 
 
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Publicar</button>
+            <button type="submit" class="btn btn-primary btn-large">Publicar</button>
+<!--             <button type="submit" class="btn btn-primary btn-large">Atualizar conteúdo</button> -->
           </div>
         </fieldset>
 
@@ -126,58 +248,17 @@
 
 <div class="span3" id="sidebar-wdgt">
 
-<div id="grid-conteudos" class="wdgt">
-	<h3><a href="conteudos.shtml">Conteúdos relacionados <small>150</small></a></h3>
-	<ul class="thumbnails">
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-	</ul>
-	<a href="conteudos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
-</div><!-- grid-conteudos -->
+<div class="alert">
+<h6>Notas:</h6>
+<ol>
+<li>Seus amigos poderão editar este conteúdo para colaborar e agregar conhecimento.</li>
 
-<hr>
-
-
-<div id="grid-projetos" class="wdgt">
-		<h3><a href="projetos.shtml" title="Ver tudo">Projetos relacionados <small>15</small></a></h3>
-	<ul class="thumbnails">
-		<li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-		<li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-		<li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-		<li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-		<li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-		<li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-	</ul>
-	<a href="projetos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
-</div><!-- grid-comunidades -->
-
-<hr>
-
-<div id="grid-amigos" class="wdgt">
-	<h3><a href="amigos.shtml" title="Ver tudo">Seguidores <small>150</small></a></h3>
-	<ul class="thumbnails">
-		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-	</ul>
-	<a href="amigos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
-</div><!-- grid-amigos -->
-
-<hr>
+<li>O conteúdo aqui postado estará sob a licença: <a href="http://creativecommons.org/licenses/by-sa/3.0/deed.pt">Atribuição-Partilha nos Mesmos Termos 3.0 não Adaptada (CC BY-SA 3.0)</a>.</li>
+</ol>
+</div>
 
 </div><!-- /aside -->
 
 </div><!-- /row -->
-
 
 <!--#include virtual="includes/footer.html" -->
