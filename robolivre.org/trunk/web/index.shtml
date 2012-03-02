@@ -34,7 +34,7 @@
             	<strong>Tudo bem!</strong> Um link para recuperar sua senha foi enviado para o seu email <em>rodrigo@robolivre.org</em>.
           	</div>
 			
-           			<input id="email-esqueci" type="email" placeholder="Seu endereço de e-mail ou nome de usuário" class="span5" />
+           			<input id="email-esqueci" type="email" placeholder="Seu endereço de e-mail ou nome de usuário" class="span4" />
 
 			    	<input value="Recuperar senha" type="submit" class="btn btn-primary" tabindex="4" />
 

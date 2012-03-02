@@ -37,6 +37,7 @@
 </ul>
 </div><!-- /sidebar -->
 
+<hr class="only-mobile">
 
 <div class="span7">
 
@@ -54,11 +55,21 @@
 
 <div id="stream">
 
+<!--
+Caso o status tenha sido postado no mural de algum conteúdo. 
+Modelo de tags.
+No release 2.0 será usado só uma tag dessas, 
+mas no futuro o plano é ter várias tags num post/status
+-->
+
+		<p class="tags"><a href="conteudo.shtml"><i class="icon-tag icon-gray"></i>Arduino</a> <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i>Open Source</a> <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i>Software</a></p>
+
 	<ul>
 <!-- ======================================== -->
 <!-- ! Modelo de compartilhamento de vídeo   -->
 <!-- ======================================== -->
 		<li class="vcard">
+
 			<div class="entry">
 				<div class="share-content">
 				<a href="status.shtml" class="shared-item"><img src="assets/img/rl/share-img.jpg" alt="Imagem compartilhada" class="thumbnail"><div class="btn-play"></div></a>
@@ -74,6 +85,7 @@
 						<li class="visivel-para"><i class="icon-lock" title="Privado"></i></li>
 						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
 					</ul>
+
 			<ul class="comments">
 				<li><a href="perfil.shtml"><img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" title="Rodrigo Medeiros" class="photo"> <span class="fn">Rodrigo Medeiros</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>:
 				<div class="comment"> 
@@ -129,23 +141,7 @@
 </div><!-- /miolo -->
 
 
-
 <div class="span3" id="sidebar-wdgt">
-
-<div id="grid-comunidades" class="wdgt">
-		<h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
-	<ul class="thumbnails">
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	</ul>
-	<a href="comunidades.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
-</div><!-- grid-comunidades -->
-
-<hr>
 
 <div id="grid-conteudos" class="wdgt">
 	<h3><a href="conteudos.shtml">Conteúdos seguidos <small>150</small></a></h3>
@@ -162,12 +158,30 @@
 
 <hr>
 
+<div id="grid-comunidades" class="wdgt">
+		<h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
+	<ul class="thumbnails">
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	</ul>
+	<a href="comunidades.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+</div><!-- grid-comunidades -->
+
+<hr>
+
 <div id="grid-amigos" class="wdgt">
 	<h3><a href="amigos.shtml" title="Ver tudo">Amigos <small>150</small></a></h3>
 	<ul class="thumbnails">
-		<li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-		<li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-		<li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
 	</ul>
 	<a href="amigos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
 </div><!-- grid-amigos -->
