@@ -427,7 +427,7 @@ Exemplo:\\\\ \hspace*{0.5cm}
 \newpage
 \subsection*{exibecomandos \\\\}
 O comando \textit{exibecomandos} pede ao dispositivo para exibir o comando desejado. 
-Essa função tem como parâmetro um numero inteiro.\\ O retorno dessa função é o nome do comando.\\
+Essa função tem como parâmetro um numero inteiro.\\ O retorno dessa função é o nome do comando seguido da quantidade de parâmetros inteiro, float e char que a função recebe.\\
 \newline
 Exemplo:\\\\ \hspace*{0.5cm} 
 \textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM031exibecomando 1 PC02126} \\
@@ -444,15 +444,15 @@ Exemplo:\\\\ \hspace*{0.5cm}
 	\label{tab:formatoslatex} %label da tabela
 \end{table}
 \paragraph*{\newline\newline}
-\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PPC038exibecomando parafrente MNERIM03148} 
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC044exibecomando parafrente 1 0 0 MNERIM03386} 
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
 		\toprule
-		PC & 038 & exibecomando parafrente  & MNERIM & 03148 \\
+		PC & 038 & exibecomando parafrente 1 0 0  & MNERIM & 03148 \\
 		\midrule	
-		Dest. & Tam. & Resposta & Rem. & CheckSum \\
+		Dest. & Tam. & Resposta  & Rem. & CheckSum \\
 		\bottomrule
 	\end{tabular}
 	\label{tab:formatoslatex} %label da tabela

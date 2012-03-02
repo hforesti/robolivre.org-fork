@@ -450,9 +450,30 @@ void processaComando ( char* comandoRecebido, int* parametroInt, float* parametr
    
    else if (!(strcmp(comandoRecebido,"exibecomando")))
    {
-     char resposta[20];
- 
-     strcpy(resposta, comando[parametroInt[0] - 1].nome);   
+     char resposta[30];
+     char aux[2];
+     int qntInt, qntFloat, qntChar;
+     
+
+   
+     strcpy(resposta, comando[parametroInt[0] - 1].nome);
+    
+     qntInt = comando[parametroInt[0] -1].parametro1;
+     qntFloat = comando[parametroInt[0] -1].parametro2;
+     qntChar = comando[parametroInt[0] -1].parametro3;  
+
+     itoa(qntInt, aux, 10);
+     strcat(resposta, " ");
+     strcat(resposta, aux);
+
+     itoa(qntFloat, aux, 10);
+     strcat(resposta, " ");
+     strcat(resposta, aux);
+             
+     itoa(qntChar, aux, 10);
+     strcat(resposta, " ");
+     strcat(resposta, aux);
+     
      enviarMensagem(remetente, comandoRecebido, resposta); 
    } 
    
