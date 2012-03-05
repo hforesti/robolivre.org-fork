@@ -54,8 +54,7 @@
 
 <div class="span6">
 	<h1>É fácil fazer...</h1>
-	<p>robolivre.org é uma plataforma de desenvolvimento colaborativo da robótica e está disponível desde 2005 para ajudar a desmistificar a tecnologia.</p>
-	<p>Mostramos que a robótica pode e deve ser desenvolvida por qualquer pessoa que tenha interesse, independente de possuir conhecimentos técnicos sobre o tema.</p>
+	<p>A robolivre.org é uma plataforma de desenvolvimento colaborativo e está disponível desde 2005 para ajudar a mostrar, que a robótica pode e deve ser desenvolvida por qualquer pessoa que tenha interesse. <a href="sobre.shtml">Mais sobre…</a></p>
 </div>
 
 
@@ -76,20 +75,6 @@
 <hr>
 
 <div class="row">
-
-<div class="span4" id="grid-comunidades">
-<h3>Comunidades</h3>
-<ul class="thumbnails">
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-</ul>
-</div>
 
 <div class="span4">
 <h3>Conteúdos mais relevantes</h3>
@@ -118,6 +103,22 @@
 <a href="#" title="3 tópicos" style="font-size: 11px;">Programa</a>
 <a href="#" title="82 tópicos" style="font-size: 20.2484076433px;">Projeto</a>
 </div>
+
+
+<div class="span4" id="grid-comunidades">
+<h3>Comunidades</h3>
+<ul class="thumbnails">
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+</ul>
+</div>
+
 
 <div class="span4">
 

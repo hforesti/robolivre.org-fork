@@ -3,14 +3,29 @@
 //oculta topbar do safari mobile
 window.top.scrollTo(0, 1);
 
-//fade-nos links do menu quando focar a busca
-$('.search-query').focus(function() {
+//input placeholder HTML5 para IE
+$('input, textarea').placeholder();
+
+//fade nos links do menu quando focar a busca
+$('.navbar .search-query').focus(function() {
 	$('.navbar .nav li').animate({
 		opacity: 0.15,
 	}, 250);
 });
-$('.search-query').blur(function() {
+$('.navbar .search-query').blur(function() {
 	$('.navbar .nav li ').animate({
+		opacity: 1,
+	}, 250);
+});
+
+//fade nas tags quando focar a busca
+$('#explore .search-query').focus(function() {
+	$('#tagcloud a').animate({
+		opacity: 0.2,
+	}, 250);
+});
+$('#explore .search-query').blur(function() {
+	$("#tagcloud a").animate({
 		opacity: 1,
 	}, 250);
 });
@@ -19,6 +34,18 @@ $('.search-query').blur(function() {
 if ( $("#login-form, #status") ) {
 	$('input[tabindex=1], textarea[tabindex=1]').focus();
 }
+//animacao respira Explore
+function toFade() { //reduces the opacity
+	$("#explore h2").animate({opacity: '.5'}, 1600, function() {
+		resetFade();
+	});
+}
+function resetFade(){ //increase opacity
+	$("#explore h2").animate({opacity: '1'}, 600, function(){
+		toFade();
+	});
+}
+toFade();
 
 //video no stream de status
 if ( $("#stream .video-embed") ) {
@@ -41,6 +68,16 @@ $('.textarea-comment').autoResize({
     maxHeight: 200,
     extraSpace: 0
 });
+
+
+//expand textarea (Termos de uso)
+$("#terms-textarea").focus(function(){
+	$("textarea").animate({
+		'height'	:	'400px',
+		'width'		:	'95%'
+	}, 'slow')
+});
+
 
 // WYSIWYG Editor
 $(".wysiwyg").cleditor({
@@ -103,11 +140,7 @@ var uploader = new qq.FileUploader({
 	},
 	showMessage: function(message){ alert(message); }
 
-
 });
 
-
-
-//input placeholder HTML5 para IE
 
 }(window.jQuery)
