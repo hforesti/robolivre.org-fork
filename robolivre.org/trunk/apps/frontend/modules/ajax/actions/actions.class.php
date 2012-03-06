@@ -38,11 +38,21 @@ class ajaxActions extends sfActions {
             $erros = $form->getErrorSchema()->getErrors();
         }
 
+        
+        if (isset($erros['nome'])) {
+            $mensagem .= "nome=".$erros['nome']. Util::SEPARADOR_PARAMETRO;
+        }else{
+            $mensagem .= "nome=". Util::SEPARADOR_PARAMETRO;
+        }
+        
+        
         if (isset($erros['login'])) {
             $mensagem .= "login=".$erros['login']. Util::SEPARADOR_PARAMETRO;
         }else{
             $mensagem .= "login=". Util::SEPARADOR_PARAMETRO;
         }
+        
+        
         if (isset($erros['email'])) {
             $mensagem .= "email=".$erros['email']. Util::SEPARADOR_PARAMETRO;
         }else{

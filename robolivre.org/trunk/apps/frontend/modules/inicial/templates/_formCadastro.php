@@ -27,11 +27,11 @@ $valoresInciais = $form->getTaintedValues();
             }
         }
         ?>
-        <div class="control-group <?php echo $class ?>">
+        <div id="div-nome" class="control-group <?php echo $class ?>">
             <label class="control-label" for="nome">Nome e Sobrenome</label>
             <div class="controls">
-                <?php echo $form->getWidget('nome')->render($form->getName() . "[nome]", null, array('id' => 'nome', 'placeholder' => "Nome e Sobrenome", 'class' => 'span5', 'value' => $valoresInciais['nome'],'onBlur'=>'validaForm()')); ?>
-                <span class="help-inline"><?php echo ($descricao != "")?$descricao:"" ?></span>
+                <?php echo $form->getWidget('nome')->render($form->getName() . "[nome]", null, array('id' => 'nome', 'placeholder' => "Nome e Sobrenome", 'class' => 'span5', 'value' => $valoresInciais['nome'],'onBlur'=>'validaCampoNome(this)')); ?>
+                <span id="help-nome" class="help-inline"><?php echo ($descricao != "")?$descricao:"" ?></span>
             </div>
         </div>
 
@@ -238,9 +238,21 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
         return document.getElementById(id).value;
     }
     
+    function validaCampoNome(campoNome){
+        if(campoNome.value==""){
+            document.getElementById('div-nome').className = "control-group error";
+            document.getElementById('help-nome').innerHTML = "Campo obrigatório!";
+        }else{
+            document.getElementById('div-nome').className = "control-group success";
+            document.getElementById('help-nome').innerHTML = "Bonito nome!";
+        }
+    }
+    
     function atualizaHelpECampo(id,mensagem){
+        
         descricao = "";
         classe = "success";
+        
         if(mensagem != ""){
             if(mensagem == "Required."){
                 classe = "error";
