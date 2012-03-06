@@ -144,3 +144,29 @@ var uploader = new qq.FileUploader({
 
 
 }(window.jQuery)
+
+function getForcaSenha(inputPassword,spanHelp) {
+    
+    var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+    var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+    var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+    var resposta = "";
+    if (inputPassword.value.length==0) {
+      resposta = 'Campo obrigatório!';
+    } else if (false == enoughRegex.test(inputPassword.value)) {
+        resposta = 'Insuficiente';
+    } else if (strongRegex.test(inputPassword.value)) {
+        resposta = 'Forte';
+    } else if (mediumRegex.test(inputPassword.value)) {
+        resposta = 'Normal';
+    } else {
+        resposta = 'Fraca';
+    }
+    
+    if(spanHelp != undefined){
+        spanHelp.innerHTML = resposta;
+    }
+    
+    return resposta;
+    
+}

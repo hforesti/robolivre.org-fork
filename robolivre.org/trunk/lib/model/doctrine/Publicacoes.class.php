@@ -12,11 +12,15 @@
  */
 class Publicacoes extends BasePublicacoes {
 
+    const PUBLICACAO_COMUM = 0;
+    const CRIACAO_CONJUNTO = 1;
+    const SEGUIR_CONTEUDO = 2;
+
     private $grupoComentarios = array();
     private $nomeUsuario;
     private $nomeUsuarioReferencia;
     private $nomeConjunto;
-    
+
     public function getNomeUsuarioReferencia() {
         return $this->nomeUsuarioReferencia;
     }
@@ -53,4 +57,105 @@ class Publicacoes extends BasePublicacoes {
         $this->grupoComentarios[$publicacao->getIdPublicacao()] = $publicacao;
     }
 
+    public function imprimir($nomeForm = null,$arrayParametrosInclude = null) {
+        
+        if ($this->getTipoPublicacao() == self::PUBLICACAO_COMUM) {
+            echo "<li class=\"vcard\">";
+            echo "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path('/assets/img/rl/20.gif') . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
+            echo "<div class=\"entry\">";
+            echo Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
+
+            //NO CONJUNTO (COMUNIDADE OU CONTEUDO)
+            if ($this->getIdConjunto() != null) {
+                echo " publicou <a href=\"post.shtml\">Nome do conteúdo</a> em <a href=\"conteudo.shtml\">Arduino</a>.";
+                //NO PERFIL DE ALGUEM    
+            } else if ($this->getIdUsuarioReferencia() != null) {
+                echo " EM ";
+                echo Util::getTagUsuario($this->getNomeUsuarioReferencia(), $this->getIdUsuarioReferencia());
+            }
+            
+            echo "<p>".Util::getTextoFormatado($this->getComentario())."</p>";
+            echo "<ul class=\"meta\">";
+            echo "<li class=\"visivel-para\"><i class=\"icon-eye-open\" title=\"Público\"></i></li>";
+            echo "<span class=\"time\" title=\"Sexta, 24 de fevereiro de 2012 às 8:00\">" . $this->getDataPublicacao() . "</span>";
+            echo "</ul>";
+            
+            echo "<ul class=\"comments\">";
+            if(count($this->getGrupoComentarios())>0){
+                
+                foreach ($this->getGrupoComentarios() as $comentario) {
+                    echo "<li><a href=\"" . url_for('perfil/exibir?u=' . $comentario->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path('/assets/img/rl/20.gif') . "\" alt=\"".$comentario->getNomeUsuario()."\" title=\"".$comentario->getNomeUsuario()."\"></a>";
+                    echo Util::getTagUsuario($comentario->getNomeUsuario(), $comentario->getIdUsuario());
+                    echo "<div class=\"comment\">";
+                    echo "<p>".Util::getTextoFormatado($comentario->getComentario())."</p>";
+                    echo "</div>";
+                    echo "<a class=\"close\" title=\"Excluir seu comentário\">&times;</a>";
+                    echo "</li>";
+                    
+                    
+                }
+                
+                
+            }
+
+            //se tem formulário de comentário
+            if($nomeForm!=null && $arrayParametrosInclude != null){
+                include_partial($nomeForm, $arrayParametrosInclude);
+            }
+
+            echo "</ul>";
+            
+            echo "</div><!-- entry -->";
+            
+            
+            
+            
+         /** ATIVIDADES **/   
+            
+            
+        //CRIACAO DE CONTEUDO OU COMUNIODADE    
+        } else if ($this->getTipoPublicacao() == self::CRIACAO_CONJUNTO) {
+            echo "<li class=\"vcard activity\">";
+            echo "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path('/assets/img/rl/20.gif') . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
+            echo Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
+            echo " criou ";
+            echo Util::getTagConteudo($this->getNomeConjunto(), $this->getIdConjunto());
+            echo ". <span class=\"time\" title=\"Sexta, 24 de fevereiro de 2012 às 8:00\">" . $this->getDataPublicacao() . "</span>";
+ 
+            
+        //SEGUINDO CONTEÚDO
+        } else if ($this->getTipoPublicacao() == self::SEGUIR_CONTEUDO) {
+            echo "<li class=\"vcard activity\">";
+            echo "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path('/assets/img/rl/20.gif') . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
+            echo Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
+
+            echo " está seguindo ";
+            echo Util::getTagConteudo($this->getNomeConjunto(), $this->getIdConjunto());
+            echo ". <span class=\"time\" title=\"Sexta, 24 de fevereiro de 2012 às 8:00\">" . $this->getDataPublicacao() . "</span>";
+        }
+
+        
+            
+        
+            echo "<div class=\"btn-group\">";
+            echo "<a class=\"btn btn-mini dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" title=\"Opções\">";
+            echo "<span class=\"icon-share  icon-gray\"></span>";
+            echo "</a>";
+            echo "<ul class=\"dropdown-menu\">";
+            echo "<li>";
+            echo "<a href=\"#\">Compartilhar no Twitter</a>";
+            echo "</li>";
+            echo "<li>";
+            echo "<a href=\"#\">Compartilhar no Facebook</a>";
+            echo "</li>";
+            echo "<li class=\"divider\"></li>";
+            echo "<li>";
+            echo "<a href=\"#\"><i class=\"icon-flag\"></i> Reportar abuso</a>";
+            echo "</li>";
+            echo "</ul>";
+            echo "</div>";
+        echo "</li>";
+    }
+
 }
+

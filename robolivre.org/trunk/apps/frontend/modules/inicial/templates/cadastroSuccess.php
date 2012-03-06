@@ -12,7 +12,7 @@
         <div class="span8">
             <?php include_partial('formCadastro', array('form' => $form)) ?>
         </div>
-
+        
     </div><!-- /row -->
 
 

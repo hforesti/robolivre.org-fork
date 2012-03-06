@@ -26,7 +26,6 @@ all:
   .settings:
     # Form security secret (CSRF protection)
     csrf_secret:            UniqueSecret
-
     # Output escaping settings
     escaping_strategy:      true
     escaping_method:        ESC_SPECIALCHARS

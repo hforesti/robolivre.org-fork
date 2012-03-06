@@ -44,7 +44,13 @@ class usuarioActions extends sfActions
     $this->forward404Unless($usuarios = Doctrine_Core::getTable('Usuarios')->find(array($request->getParameter('id_usuario'))), sprintf('Object usuarios does not exist (%s).', $request->getParameter('id_usuario')));
     $this->form = new UsuariosForm($usuarios);
   }
-
+  
+  public function executeTesteajax(sfWebRequest $request)
+  {
+    $this->teste = "testeFeito";
+    $this->setTemplate('_form');
+  }
+  
   public function executeUpdate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));

@@ -1,5 +1,7 @@
 <?php
 
+include_once "tipografia/php-typography.php";
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -12,12 +14,19 @@
  */
 class Util {
 
+    const SEPARADOR_PARAMETRO = '[[*]]';
+    
     public static function getTagUsuario($nomeUsuario,$idUsuario){
-        return "<a href=\"".url_for('perfil/index?u='.$idUsuario)."\">$nomeUsuario</a>";
+        return "<a href=\"".url_for('perfil/exibir?u='.$idUsuario)."\">$nomeUsuario</a>";
     }
     
     public static function getTagConteudo($nomeConteudo,$idConjunto){
-        return "<a href=\"".url_for('conteudo/exibir?u='.$idConjunto)."\">$nomeConteudo</a>";
+        return "<a href=\"".url_for('conteudo/exibir?u='.$idConjunto)."\" class=\"fn\">$nomeConteudo</a>";
+    }
+    
+    public static function getTextoFormatado($texto){
+        $typo = new phpTypography();
+        return $typo->process($texto);
     }
 
     public static function pre($string,$stop = false) {

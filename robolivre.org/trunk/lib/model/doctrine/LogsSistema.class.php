@@ -18,7 +18,9 @@ class LogsSistema extends BaseLogsSistema
     const ACEITAR_SOLICITACAO = 4;
     const SOLICITOU_AMIZADE = 5;
     const SEGUIR_CONTEUDO = 6;
-    const PARTICIPAR_COMUNIDADE = 7;
+    const CRIOU_CONTEUDO = 7;
+    const PARTICIPAR_COMUNIDADE = 8;
+    const CRIOU_COMUNIDADE = 9;
     const SEPARADOR = "[*]";
     
     
@@ -31,7 +33,9 @@ class LogsSistema extends BaseLogsSistema
             4 => "Recusou Solicitacao",
             5 => "Solicitou Amizade",
             6 => "Solicitou Seguir conteúdo",
-            7 => "Solicitou participação na comunidade",
+            7 => "Criou conteúdo",
+            8 => "Solicitou participação na comunidade",
+            9 => "Criou comunidade",
         );
         
         return $DESCRICOES_LOGS[$idTipo];

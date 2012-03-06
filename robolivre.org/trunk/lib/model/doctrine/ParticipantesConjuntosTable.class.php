@@ -60,8 +60,20 @@ class ParticipantesConjuntosTable extends Doctrine_Table
         }
         $logSistema->setDataPublicacao(date('Y-m-d H:i:s'));
         $logSistema->setParametros(
-                "IP:" . UsuarioLogado::getInstancia()->getEnderecoRemoto() . LogsSistema::SEPARADOR
+                "IP:" . UsuarioLogado::getInstancia()->getEnderecoRemoto() . LogsSistema::SEPARADOR.
+                "ID_CONJUNTO:".$participacao->getIdConjunto()
         );
         $logSistema->save();
+        
+        $id_conjunto = $participacao->getIdConjunto();
+                
+        $objPublicacao = new Publicacoes();
+        $objPublicacao->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
+        $objPublicacao->setDataPublicacao(date('Y-m-d H:i:s'));
+        $objPublicacao->setIdConjunto($id_conjunto);
+        $objPublicacao->setTipoPublicacao(Publicacoes::SEGUIR_CONTEUDO);
+
+        $objPublicacao->save();
+        
     }
 }

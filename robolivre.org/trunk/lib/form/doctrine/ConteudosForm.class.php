@@ -17,6 +17,7 @@ class ConteudosForm extends BaseConteudosForm {
             'id_conjunto' => new sfWidgetFormInputHidden(),
             'nome' => new sfWidgetFormInputText(),
             'descricao' => new sfWidgetFormTextarea(),
+            'id_super_tipo' => new sfWidgetFormSelect(array('choices' => Doctrine::getTable("SuperTipos")->getSuperTipos())),
             'enviar_email_criador' => new sfWidgetFormInputCheckbox(),
         ));
 
@@ -28,6 +29,7 @@ class ConteudosForm extends BaseConteudosForm {
             'descricao' => new sfValidatorString(array('required' => false)),
             'enviar_email_criador' => new sfValidatorString(array('required' => false)),
         ));
+
 
         $this->widgetSchema->setNameFormat('conteudos[%s]');
 

@@ -37,7 +37,9 @@ class inicialActions extends sfActions {
         $form = new UsuariosForm(null, null, null, UsuariosForm::SOMENTE_INFO_CADASTRO);
         //$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         $this->processForm($request, $form);
+        
         $this->form = $form;
+        
     }
 
     public function executeCadastro(sfWebRequest $request) {
@@ -102,6 +104,7 @@ class inicialActions extends sfActions {
                 return;
             }
         } else {
+            
             $this->setTemplate("cadastro");
         }
     }

@@ -100,20 +100,6 @@ class ConteudosTable extends Doctrine_Table {
         
         $id = $connection->lastInsertId();
         
-//        $objPublicacao
-//        $objPublicacao->setDataPublicacao(date('Y-m-d H:i:s'));
-//        if( $request->getParameter('id_publicacao_original')!= "" && $request->getParameter('id_usuario_original') != ""){ 
-//            $objPublicacao->setIdUsuarioOriginal ($request->getParameter('id_usuario_original'));
-//            $objPublicacao->setIdPublicacaoOriginal($request->getParameter('id_publicacao_original'));
-//        }
-//        
-//        if($request->getParameter('id_conjunto')!=""){
-//            $objPublicacao->setIdConjunto($request->getParameter('id_conjunto'));
-//        }
-//        
-////        Util::pre($objPublicacao, true);
-//        $objPublicacao->save();
-        
         $query = "SELECT c.*,
         u.id_conjunto as \"u.id_conjunto\",u.id_tipo_conjunto as \"u.id_tipo_conjunto\",u.id_usuario AS \"u.id_usuario\",u.imagem_perfil AS \"u.imagem_perfil\"
         FROM conteudos c 
@@ -132,10 +118,32 @@ class ConteudosTable extends Doctrine_Table {
 
         $resultado = $statement->fetchAll();
         
-//        Util::pre($resultado,true);
         
         if ($resultado) {
+            
             foreach ($resultado as $reg) {
+                
+                $id_conjunto = $reg['u.id_conjunto'];
+                
+                $logSistema = new LogsSistema();
+                $logSistema->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
+                $logSistema->setTipoLog(LogsSistema::CRIOU_CONTEUDO);
+                $logSistema->setDescricao(LogsSistema::getDescricaoPeloTipo(LogsSistema::CRIOU_CONTEUDO));
+                $logSistema->setDataPublicacao(date('Y-m-d H:i:s'));
+                $logSistema->setParametros(
+                        "IP:" . UsuarioLogado::getInstancia()->getEnderecoRemoto() . LogsSistema::SEPARADOR.
+                        "ID_CONJUNTO:".$participacao->getIdConjunto() . LogsSistema::SEPARADOR
+                );
+                $logSistema->save();
+                
+                $objPublicacao = new Publicacoes();
+                $objPublicacao->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
+                $objPublicacao->setDataPublicacao(date('Y-m-d H:i:s'));
+                $objPublicacao->setIdConjunto($id_conjunto);
+                $objPublicacao->setTipoPublicacao(Publicacoes::CRIACAO_CONJUNTO);
+
+                $objPublicacao->save();
+
                 $conteudo = new Conteudos();
 
                 $conteudo->setIdConteudo($reg['id_conteudo']);
@@ -148,7 +156,7 @@ class ConteudosTable extends Doctrine_Table {
                 $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
                 
                 $conjunto = new Conjuntos();
-                $conjunto->setIdConjunto($reg['u.id_conjunto']);
+                $conjunto->setIdConjunto($id_conjunto);
                 $conjunto->setIdUsuario($reg['u.id_usuario']);
                 $conjunto->setIdTipoConjunto($reg['u.id_tipo_conjunto']);
                 $conjunto->setImagemPerfil($reg['u.imagem_perfil']);

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="shortcut icon" type="image/x-icon" href="<?php echo image_path('robo-icon.png') ?>" />
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo image_path('/assets/img/rl/robo-icon.png') ?>" />
         <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -53,27 +53,32 @@
                             </ul>
                             <form id="form_busca_navbar" class="navbar-search pull-left" action="<?php echo url_for('perfil/lista') ?>">
                                 <input type="text" class="search-query span4" placeholder="Buscar robôs, comunidades, amigos…">
-                                <input id="searchsubmit" alt="Buscar" type="image" onclick="document.getElementById('form_busca_navbar').submit()" src="<?php echo image_path('rl/btn-search.png') ?>">
+                                <input id="searchsubmit" alt="Buscar" type="image" onclick="document.getElementById('form_busca_navbar').submit()" src="<?php echo image_path('/assets/img/rl/btn-search.png') ?>">
                             </form>
 
                             <ul class="nav" id="user-menu">
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo UsuarioLogado::getInstancia()->getNome(); ?> <b class="caret"></b></a>
+                                    <?php $qtdMensagem = 5; ?>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-warning" title="<?php echo $qtdMensagem ?> mensagens não lidas"><?php echo $qtdMensagem ?></span> <img src="<?php echo image_path('/assets/img/rl/20.gif') ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>"> <?php echo UsuarioLogado::getInstancia()->getNome(); ?> <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="inbox.shtml">Minhas mensagens</a>
+                                            <a href="inbox.shtml"><i class="icon-inbox icon-gray"></i> (<?php echo $qtdMensagem ?>) Minhas mensagens</a>
                                         </li>
                                         <li>
-                                            <a href="settings.shtml">Configurações</a>
+
+                                            <a href="<?php echo url_for('perfil/exibir?u='.UsuarioLogado::getInstancia()->getIdUsuario()) ?>"><i class="icon-user icon-gray"></i> Ver meu perfil</a>
+
                                         </li>
-                                        <li>
-                                            <a href="termo-resposabilidade.shtml">Privacidade</a>
-                                        </li>
-                                        <li>
-                                            <a href="help.shtml">Ajuda</a>
-                                        </li>
+
                                         <li class="divider"></li>
                                         <li>
+                                            <a href="settings.shtml"><i class="icon-cog icon-gray"></i> Configurações</a>
+                                        </li>
+                                        <li>
+                                            <a href="help.shtml"><i class="icon-question-sign icon-gray"></i> Ajuda</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li class="logout-link">
                                             <a href="<?php echo url_for('perfil/logout'); ?>">Sair</a>
                                         </li>
                                     </ul>
@@ -84,7 +89,7 @@
                 </div>
             </div>
         <?php } ?>
-
+        <div id="conteudoPagina" class="container">
         <?php echo $sf_content ?>
         <hr>
         <div class="row" id="footer-utility">
@@ -147,7 +152,7 @@
     ================================================== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
     <?php include_javascripts() ?>
-
+    
 <!--    <script src="/js/bootstrap.min.js"></script>-->
 <!--    <script src="/js/main-robolivre.js"></script>-->
     <div class="fade-rl"></div>

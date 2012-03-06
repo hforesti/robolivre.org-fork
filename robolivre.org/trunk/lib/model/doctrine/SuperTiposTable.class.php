@@ -16,4 +16,25 @@ class SuperTiposTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('SuperTipos');
     }
+    
+    public function getSuperTipos() {
+        
+        $arrayRetorno = array();
+        
+        $q = Doctrine_Query::create()
+                ->select('id_super_tipo,nome,descricao')
+                ->from('SuperTipos');
+
+        $resultado = $q->fetchArray();
+        
+        $arrayRetorno['null'] = 'Conteudo';
+        
+        if ($resultado) 
+            foreach ($resultado as $reg){ 
+                $arrayRetorno[$reg['id_super_tipo']] = $reg['nome'];
+            }
+        
+        return $arrayRetorno;
+    }
+    
 }

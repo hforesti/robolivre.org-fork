@@ -5,20 +5,43 @@
       ================================================== -->
     <div class="row">
         <?php if ($formLogin->hasErrors()) { ?>
-        <div class="span12">
-            <div class="alert alert-error fade in">
-                <a class="close" data-dismiss="alert" href="#">×</a>
-                <?php foreach ($formLogin->getErrorSchema() as $error): ?>
-                    <?php echo $error ?>
-                <?php endforeach; ?>
+            <div class="span12">
+                <div class="alert alert-error fade in">
+                    <a class="close" data-dismiss="alert" href="#">×</a>
+                    <?php foreach ($formLogin->getErrorSchema() as $error): ?>
+                        <?php echo $error ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
-    <?php } ?>
-        <a class="brand span3" href="<?php echo  url_for("inicial/index") ?>">Robô Livre</a>
+        <?php } ?>
+        <a class="brand span3" href="<?php echo url_for("inicial/index") ?>">Robô Livre</a>
 
         <div id="top-login">
             <?php include_partial('formLogin', array('form' => $formLogin)) ?>
+            <div class="modal fade" id="modalEsqueci">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+                    <h3>Recuperar Senha</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="esqueci-form" class="form-inline" action="#">
+                        <div class="alert fade in">
+                            <strong>Tudo bem!</strong> Um link para recuperar sua senha foi enviado para o seu email <em>rodrigo@robolivre.org</em>.
+                        </div>
+
+                        <input id="email-esqueci" type="email" placeholder="Seu endereço de e-mail ou nome de usuário" class="span4" />
+
+                        <input value="Recuperar senha" type="submit" class="btn btn-primary" tabindex="4" />
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn" data-dismiss="modal">Fechar</a>
+                </div>
+            </div>
         </div>
+
 
     </div>
 
@@ -26,8 +49,7 @@
 
         <div class="span6">
             <h1>É fácil fazer...</h1>
-            <p>robolivre.org é uma plataforma de desenvolvimento colaborativo da robótica e está disponível desde 2005 para ajudar a desmistificar a tecnologia.</p>
-            <p>Mostramos que a robótica pode e deve ser desenvolvida por qualquer pessoa que tenha interesse, independente de possuir conhecimentos técnicos sobre o tema.</p>
+            <p>A robolivre.org é uma plataforma de desenvolvimento colaborativo e está disponível desde 2005 para ajudar a mostrar, que a robótica pode e deve ser desenvolvida por qualquer pessoa que tenha interesse. <a href="sobre.shtml">Mais sobre…</a></p>
         </div>
 
 
@@ -40,20 +62,6 @@
     <hr>
 
     <div class="row">
-
-        <div class="span4" id="grid-comunidades">
-            <h3>Comunidades</h3>
-            <ul class="thumbnails">
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-            </ul>
-        </div>
 
         <div class="span4">
             <h3>Conteúdos mais relevantes</h3>
@@ -83,6 +91,21 @@
             <a href="#" title="82 tópicos" style="font-size: 20.2484076433px;">Projeto</a>
         </div>
 
+        <div class="span4" id="grid-comunidades">
+            <h3>Comunidades</h3>
+            <ul class="thumbnails">
+                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+            </ul>
+        </div>
+
+        
         <div class="span4">
 
             <h3>Twitter @robolivre</h3>

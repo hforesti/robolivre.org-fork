@@ -27,6 +27,16 @@ class perfilActions extends sfActions {
      */
     public function executeIndex(sfWebRequest $request) {
         
+        $this->usuario = new Usuarios(null,false,UsuarioLogado::getInstancia());
+        
+        $this->publicacoesHome = Doctrine::getTable("Publicacoes")->getPublicacoesHome();
+        
+        $this->formPublicacao = new PublicacoesForm();
+
+    }
+    
+    public function executeExibir(sfWebRequest $request) {
+        
         
         $id = $request->getParameter("u");
         
@@ -100,8 +110,14 @@ class perfilActions extends sfActions {
             $objPublicacao->setIdUsuarioReferencia($request->getParameter('id_usuario_referencia'));
         }
         
+        
+        if($request->getParameter('id_usuario_referencia')=="" || $request->getParameter('id_usuario_referencia') == null)
+            $id_usuario = UsuarioLogado::getInstancia()->getIdUsuario();
+        else
+            $id_usuario = $request->getParameter('id_usuario_referencia');
+        
         $objPublicacao->save();
-        $this->redirect("perfil/index");
+        $this->redirect("perfil/exibir?u=".$id_usuario);
     }
     
     public function executeLista(sfWebRequest $request) {
@@ -120,7 +136,7 @@ class perfilActions extends sfActions {
             $amizade->setSolicitacao($id);
             Doctrine::getTable("Amigos")->aceitarAmizade($amizade);
             UsuarioLogado::getInstancia()->removeSolicitacao($id);
-            $this->redirect('perfil/index?u='.$id);
+            $this->redirect('perfil/exibir?u='.$id);
         }else{
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
             $this->redirect('perfil/index');
@@ -149,7 +165,7 @@ class perfilActions extends sfActions {
         if(isset($id) && $id != UsuarioLogado::getInstancia()->getIdUsuario()){
             $amizade->solicitarAmizade($id);
             Doctrine::getTable("Amigos")->solicitarAmizade($amizade);
-            $this->redirect('perfil/index?u='.$id);
+            $this->redirect('perfil/exibir?u='.$id);
         }else{
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
             $this->redirect('perfil/index');

@@ -12,9 +12,9 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [bootstrap.min.css,main-robolivre.css]
+  stylesheets:    [/assets/css/bootstrap.min.css,/assets/css/main-robolivre.css]
 
-  javascripts:    [bootstrap.min.js,main-robolivre.js]
+  javascripts:    [/assets/js/bootstrap.min.js,/assets/js/jquery.placeholder.min.js,/assets/js/jquery.autoresize.min.js,/assets/js/main-robolivre.js,/sfProtoculousPlugin/js/prototype.js]
 
   has_layout:     true
   layout:         layout
