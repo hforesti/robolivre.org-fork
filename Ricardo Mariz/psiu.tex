@@ -578,13 +578,13 @@ Uma possibilidade de valores de carga padrão para este tipo de pacote é:
 
 
 \begin{center}
-\begin{tabular}{lll}
+\begin{tabular}{p{2cm}p{1.5cm}p{12cm}}
  carga         &  comando  &  Significado                                                                                                                \\
 \hline
  65 (ascii A)  &  ACK      &  Último pacote foi recebido corretamente.                                                                                   \\
  78 (ascii N)  &  NAK      &  Erro no último pacote (erro de CRC). Reenvie.                                                                              \\
  66 (ascii B)  &  BUSY     &  Não consegui processar o último pacote. Não reenvie pois estou ocupado.                                                    \\
- 63 (ascii ?)  &  AVAIL?   &  Pergunta: pronto para receber um pacote?.                                                                                  \\
+ 63 (ascii ?)  &  AVAIL?   &  Pergunta: pronto para receber um pacote?                                                                                  \\
  70 (ascii F)  &  FREE     &  Resposta: pronto para receber um pacote. (Se não, manda um BUSY)                                                           \\
  87 (ascii W)  &  WTF      &  Último comando é impossível de ser executado (CRC não deu erro e não está ocupado, mas o valor de carga não faz sentido).  \\
 \hline
