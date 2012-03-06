@@ -639,7 +639,7 @@ Publicacoes:
       default: '1'
       notnull: true
       autoincrement: false
-    is_criacao_conjunto:
+    tipo_publicacao:
       type: integer(4)
       fixed: false
       unsigned: false

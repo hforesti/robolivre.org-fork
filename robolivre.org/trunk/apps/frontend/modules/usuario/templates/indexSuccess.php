@@ -40,5 +40,19 @@
     <?php endforeach; ?>
   </tbody>
 </table>
-
+<?php use_helper('Javascript') ?>
+<?php echo javascript_tag("function my_function() { alert('entrou!');".
+  remote_function(array(
+    'update'  => 'myzone',
+    'url'     => 'usuario/testeajax',
+  ))."}"
+) ?>
+<div id="myzone">
+    <?php if(isset($teste)){ ?>
+    <?php echo "meu teste ".$teste;?>
+    <?php }else{ ?>
+        temos nada ainda cara :(
+    <?php } ?>
+</div>
+<a href="#" onclick="my_function();">teste ajax</a>
   <a href="<?php echo url_for('usuario/new') ?>">Novo :D</a>

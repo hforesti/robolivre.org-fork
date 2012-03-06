@@ -66,7 +66,7 @@ class conteudoActions extends sfActions {
         if ($form->isValid()) {
             $form->updateObject();
             $this->conteudo = Doctrine::getTable("Conteudos")->gravarConteudo($form->getObject());
-            $this->setTemplate("exibir");
+            $this->redirect('conteudo/exibir?u='.$this->conteudo->getIdConjunto());
         } else {
             $this->formConteudo = $form;
             $this->setTemplate("criar");

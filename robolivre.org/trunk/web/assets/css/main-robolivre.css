@@ -41,11 +41,13 @@ blockquote p {
     margin:5px 0 15px;
 }
 label {cursor: pointer}
+input, textarea { color: #000; }
+.placeholder { color: #aaa; }
 .only-mobile {display: none}
 .btn, .label {border-radius: 14px}
 .btn-large {border-radius: 22px}
 .icon-gray {opacity: 0.4}
-#sidebar .nav .active .icon-gray {background-image: url(../img/glyphicons-halflings-white.png);}
+#sidebar .nav .active .icon-gray, .dropdown-menu li a:hover i {background-image: url(../img/glyphicons-halflings-white.png);}
 .navbar-fixed-top {position: fixed}
 .brand {
 	background: url(../img/rl/logo.png) no-repeat;
@@ -135,7 +137,13 @@ body.home .top-login {
 		width: 20px;
 		vertical-align: middle;
 	}
+	.dropdown img {
+		height: 20px;
+		width: 20px;
+		vertical-align: middle;
+	}
 	.login-dropdown .dropdown ul {width: 400px}
+	.dropdown-menu .logout-link a:hover {background-color: #DA4F49}
 
 #user-menu .label {
 	position: absolute;
@@ -148,12 +156,13 @@ body.home .top-login {
 #top-login {
 	float: right;
 	width: 345px;
+	_width: 355px;	
 }
 #intro {
 	margin-top: 10px
 }
 	#intro h1 {
-		font-size: 58px;
+		font-size: 62px;
 		color: #c0c0c0;
 		letter-spacing: -.1em;
 		margin-bottom: .3em;
@@ -382,6 +391,26 @@ body.home .top-login {
 #temas-aula-list label:hover {
 	color: #08c
 }
+#form-criar {margin-bottom: 0}
+
+#explore {
+	padding-top: 10px;
+	text-align: center
+}
+#explore h2 {
+	margin-bottom: 15px;
+	color: #bbb;
+	letter-spacing: -.1em;
+	word-spacing: .2em;
+	font-size: 42px;
+}
+#explore #tagcloud {
+	margin: 0 auto;
+	width: 70%;
+	line-height: 180%;
+	padding-bottom: 20px
+}
+.list-conteudos img {vertical-align: middle}
 
 /* WYSIWYG Editor */
 .cleditorMain {border:1px solid #999; padding:0 1px 1px; background-color:white;}

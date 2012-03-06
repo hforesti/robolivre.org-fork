@@ -27,12 +27,7 @@ if ($conteudo->getTipoUsuario() != Conteudos::PROPRIETARIO) {
         <?php include_partial('formPublicacao', array('form' => $formPublicacao,'id_conjunto' => $conteudo->getIdConjunto())) ?>
         <?php foreach($publicacoesConjunto as $publicacao){ ?>
         <div id="qualquercoisa" style="border-style:solid;border-color:#66f;">
-            <a href="<?php echo url_for('perfil/index?u='.$publicacao->getIdUsuario()); ?>"><?php echo $publicacao->getNomeUsuario(); ?></a> - <?php echo $publicacao->getComentario(); ?> (<?php echo $publicacao->getDataPublicacao(); ?>)
-            <br/>
-            <?php foreach($publicacao->getGrupoComentarios() as  $comentario){ ?>
-            &Tab;&Rightarrow; <a href="<?php echo url_for('perfil/index?u='.$comentario->getIdUsuario()); ?>"><?php echo $comentario->getNomeUsuario(); ?></a> - <?php echo $comentario->getComentario(); ?>
-                <br/>
-            <?php }?>
+        <?php $publicacao->imprimir(); ?>
         <?php   include_partial('formPublicacao', array('form' => $formPublicacao, 
                         'id_publicacao_original' => $publicacao->getIdPublicacao(),
                         'id_usuario_original' => $publicacao->getIdUsuario(),

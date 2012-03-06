@@ -23,7 +23,7 @@ Doctrine_Manager::getInstance()->bindComponent('Publicacoes', 'doctrine');
  * @property string $link
  * @property timestamp $data_publicacao
  * @property integer $visivel
- * @property integer $is_criacao_conjunto
+ * @property integer $tipo_publicacao
  * 
  * @method integer     getIdPublicacao()           Returns the current record's "id_publicacao" value
  * @method integer     getIdUsuario()              Returns the current record's "id_usuario" value
@@ -41,7 +41,7 @@ Doctrine_Manager::getInstance()->bindComponent('Publicacoes', 'doctrine');
  * @method string      getLink()                   Returns the current record's "link" value
  * @method timestamp   getDataPublicacao()         Returns the current record's "data_publicacao" value
  * @method integer     getVisivel()                Returns the current record's "visivel" value
- * @method integer     getIsCriacaoConjunto()      Returns the current record's "is_criacao_conjunto" value
+ * @method integer     getTipoPublicacao()         Returns the current record's "tipo_publicacao" value
  * @method Publicacoes setIdPublicacao()           Sets the current record's "id_publicacao" value
  * @method Publicacoes setIdUsuario()              Sets the current record's "id_usuario" value
  * @method Publicacoes setIdConteudo()             Sets the current record's "id_conteudo" value
@@ -58,7 +58,7 @@ Doctrine_Manager::getInstance()->bindComponent('Publicacoes', 'doctrine');
  * @method Publicacoes setLink()                   Sets the current record's "link" value
  * @method Publicacoes setDataPublicacao()         Sets the current record's "data_publicacao" value
  * @method Publicacoes setVisivel()                Sets the current record's "visivel" value
- * @method Publicacoes setIsCriacaoConjunto()      Sets the current record's "is_criacao_conjunto" value
+ * @method Publicacoes setTipoPublicacao()         Sets the current record's "tipo_publicacao" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -213,7 +213,7 @@ abstract class BasePublicacoes extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 4,
              ));
-        $this->hasColumn('is_criacao_conjunto', 'integer', 4, array(
+        $this->hasColumn('tipo_publicacao', 'integer', 4, array(
              'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,

@@ -145,8 +145,9 @@ class UsuariosForm extends BaseUsuariosForm {
     }
 
     public function validaDadosIniciais() {
-        
+
         if ($this->getTipoFormulario() != self::LOGIN) {
+
             $valores = $this->getTaintedValues();
             $email = $valores['email'];
             $login = $valores['login'];
