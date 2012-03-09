@@ -40,6 +40,7 @@ class Usuarios extends BaseUsuarios
             parent::_set('site', $usuario_logado->getSite());
             parent::_set('site_empresa', $usuario_logado->getSiteEmpresa());
             parent::_set('sobre_mim', $usuario_logado->getSobreMim());
+            parent::_set('imagem_perfil', $usuario_logado->getImagemPerfil());
             $this->setTipoSolicitacaoAmizade(self::PROPRIO_USUARIO);
         }
     }
@@ -55,6 +56,36 @@ class Usuarios extends BaseUsuarios
     
     public function setTipoSolicitacaoAmizade($amigo) {
         $this->tipoSolicitacaoAmizade = $amigo;
+    }
+    
+    public function getImagemPerfil(){
+        return parent::_get('imagem_perfil');
+    }
+    
+    public function getImagemPerfilFormatada($tipoImagem = Util::IMAGEM_MINIATURA) {
+        $imagem =  parent::_get('imagem_perfil');
+
+        if (!isset($imagem) || $imagem == "") {
+            switch ($tipoImagem) {
+                case Util::IMAGEM_GRANDE:
+                    return "/assets/img/rl/_avatar-default-140.png";
+                case Util::IMAGEM_MEDIA:
+                    return "/assets/img/rl/_avatar-default-60.png";
+                case Util::IMAGEM_MINIATURA:
+                    return "/assets/img/rl/_avatar-default-20.png";
+            }
+        }else{
+            switch ($tipoImagem) {
+                case Util::IMAGEM_GRANDE:
+                    return "/assets/img/thumbnails/".str_replace(array("#"),array("140"),$imagem);
+                case Util::IMAGEM_MEDIA:
+                    return "/assets/img/thumbnails/".str_replace(array("#"),array("60"),$imagem);
+                case Util::IMAGEM_MINIATURA:
+                    return "/assets/img/thumbnails/".str_replace(array("#"),array("20"),$imagem);
+            }
+        }
+
+        return $imagem;
     }
     
 }

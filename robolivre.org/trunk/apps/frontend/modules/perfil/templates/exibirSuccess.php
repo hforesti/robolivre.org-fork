@@ -2,7 +2,7 @@
 
     <div class="span2" id="sidebar">
         <div class="avatar">
-            <a href="<?php url_for('perfil/exibir?u='.$usuario->getIdUsuario()) ?>"><img src="<?php echo image_path('/assets/img/rl/_avatar-default-140.png') ?>" alt="<?php echo $usuario->getNome(); ?>" class="photo"></a>
+            <a href="<?php url_for('perfil/exibir?u='.$usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada(Util::IMAGEM_GRANDE)) ?>" alt="<?php echo $usuario->getNome(); ?>" class="photo"></a>
             <div class="btn-group">
                 <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
                     <span class="icon-cog icon-gray"></span>
@@ -65,6 +65,19 @@
 
     <div class="span3" id="sidebar-wdgt">
 
+                
+        <div id="grid-conteudos" class="wdgt">
+            <h3><a href="conteudos.shtml">Conteúdos seguidos <small><?php echo $quantidadeConteudoSeguido; ?></small></a></h3>
+            <ul class="thumbnails">
+                <?php foreach($arrayConteudoSeguido as $conteudo): ?>
+                    <li class="span1"><a href="<?php echo url_for('conteudo/exibir?u='.$conteudo->getIdConjunto()) ?>" class="thumbnail"><img src="<?php echo image_path($conteudo->getImagemPerfil()) ?>" alt="<?php echo $conteudo->getNome(); ?>" title="<?php echo $conteudo->getNome(); ?>"></a></li>
+                <?php endforeach; ?>
+            </ul>
+            <a href="conteudos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+        </div><!-- grid-conteudos -->
+
+        <hr>
+
         <div id="grid-comunidades" class="wdgt">
             <h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
             <ul class="thumbnails">
@@ -80,27 +93,12 @@
 
         <hr>
 
-        <div id="grid-conteudos" class="wdgt">
-            <h3><a href="conteudos.shtml">Conteúdos seguidos <small>150</small></a></h3>
-            <ul class="thumbnails">
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-            </ul>
-            <a href="conteudos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
-        </div><!-- grid-conteudos -->
-
-        <hr>
-
         <div id="grid-amigos" class="wdgt">
-            <h3><a href="amigos.shtml" title="Ver tudo">Amigos <small>150</small></a></h3>
+            <h3><a href="amigos.shtml" title="Ver tudo">Amigos <small><?php echo $quantidadeAmigos ?></small></a></h3>
             <ul class="thumbnails">
-                <li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome do amigo" title="Nome do amigo"></a></li>
-                <li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome do amigo" title="Nome do amigo"></a></li>
-                <li class="span1"><a href="perfil.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome do amigo" title="Nome do amigo"></a></li>
+                <?php foreach($arrayAmigos as $usuario): ?>
+                <li ><a href="<?php echo url_for('perfil/exibir?u='.$usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada()) ?>" alt="<?php echo $usuario->getNome() ?>" title="<?php echo $usuario->getNome() ?>"></a></li>
+                <?php endforeach; ?>
             </ul>
             <a href="amigos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-amigos -->
@@ -124,7 +122,7 @@
         <p>Tem certeza de que deseja adicionar <strong><?php echo $usuario->getNome(); ?></strong> como amigo?</p>
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn btn-primary">Adicionar</a> <a href="#" class="btn" data-dismiss="modal">Cancelar</a> 
+        <a href="<?php echo url_for('perfil/solicitarAmizade?u='.$usuario->getIdUsuario()) ?>" class="btn btn-primary">Adicionar</a> <a href="#" class="btn" data-dismiss="modal">Cancelar</a> 
     </div>
 </div>
 

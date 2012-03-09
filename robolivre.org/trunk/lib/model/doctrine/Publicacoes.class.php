@@ -7,7 +7,7 @@
  * 
  * @package    robolivre
  * @subpackage model
- * * @author     Max Guenes
+ * @author     Max Guenes
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 class Publicacoes extends BasePublicacoes {
@@ -19,7 +19,39 @@ class Publicacoes extends BasePublicacoes {
     private $grupoComentarios = array();
     private $nomeUsuario;
     private $nomeUsuarioReferencia;
+    private $imagemPerfilUsuario;
     private $nomeConjunto;
+    
+    public function getImagemPerfilUsuario($tipoImagem = Util::IMAGEM_MINIATURA) {
+        
+        $imagem = $this->imagemPerfilUsuario;
+
+        if (!isset($imagem) || $imagem == "") {
+            switch ($tipoImagem) {
+                case Util::IMAGEM_GRANDE:
+                    return "/assets/img/rl/_avatar-default-140.png";
+                case Util::IMAGEM_MEDIA:
+                    return "/assets/img/rl/_avatar-default-60.png";
+                case Util::IMAGEM_MINIATURA:
+                    return "/assets/img/rl/_avatar-default-20.png";
+            }
+        }else{
+            switch ($tipoImagem) {
+                case Util::IMAGEM_GRANDE:
+                    return "/assets/img/thumbnails/".str_replace(array("#"),array("140"),$imagem);
+                case Util::IMAGEM_MEDIA:
+                    return "/assets/img/thumbnails/".str_replace(array("#"),array("60"),$imagem);
+                case Util::IMAGEM_MINIATURA:
+                    return "/assets/img/thumbnails/".str_replace(array("#"),array("20"),$imagem);
+            }
+        }
+
+        return $imagem;
+    }
+
+    public function setImagemPerfilUsuario($imagemPerfilUsuario) {
+        $this->imagemPerfilUsuario = $imagemPerfilUsuario;
+    }
 
     public function getNomeUsuarioReferencia() {
         return $this->nomeUsuarioReferencia;
@@ -61,13 +93,13 @@ class Publicacoes extends BasePublicacoes {
         
         if ($this->getTipoPublicacao() == self::PUBLICACAO_COMUM) {
             echo "<li class=\"vcard\">";
-            echo "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path('/assets/img/rl/20.gif') . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
+            echo "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario()) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
             echo "<div class=\"entry\">";
             echo Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
 
             //NO CONJUNTO (COMUNIDADE OU CONTEUDO)
             if ($this->getIdConjunto() != null) {
-                echo " publicou <a href=\"post.shtml\">Nome do conteúdo</a> em <a href=\"conteudo.shtml\">Arduino</a>.";
+                echo " publicou em ".Util::getTagConteudo($this->getNomeConjunto(),$this->getIdConjunto(),true).".";
                 //NO PERFIL DE ALGUEM    
             } else if ($this->getIdUsuarioReferencia() != null) {
                 echo " EM ";
@@ -77,14 +109,14 @@ class Publicacoes extends BasePublicacoes {
             echo "<p>".Util::getTextoFormatado($this->getComentario())."</p>";
             echo "<ul class=\"meta\">";
             echo "<li class=\"visivel-para\"><i class=\"icon-eye-open\" title=\"Público\"></i></li>";
-            echo "<span class=\"time\" title=\"Sexta, 24 de fevereiro de 2012 às 8:00\">" . $this->getDataPublicacao() . "</span>";
+            echo "<span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">" . Util::getDataSimplificada($this->getDataPublicacao()) . "</span>";
             echo "</ul>";
             
             echo "<ul class=\"comments\">";
             if(count($this->getGrupoComentarios())>0){
                 
                 foreach ($this->getGrupoComentarios() as $comentario) {
-                    echo "<li><a href=\"" . url_for('perfil/exibir?u=' . $comentario->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path('/assets/img/rl/20.gif') . "\" alt=\"".$comentario->getNomeUsuario()."\" title=\"".$comentario->getNomeUsuario()."\"></a>";
+                    echo "<li><a href=\"" . url_for('perfil/exibir?u=' . $comentario->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario()) . "\" alt=\"".$comentario->getNomeUsuario()."\" title=\"".$comentario->getNomeUsuario()."\"></a>";
                     echo Util::getTagUsuario($comentario->getNomeUsuario(), $comentario->getIdUsuario());
                     echo "<div class=\"comment\">";
                     echo "<p>".Util::getTextoFormatado($comentario->getComentario())."</p>";
@@ -116,22 +148,22 @@ class Publicacoes extends BasePublicacoes {
         //CRIACAO DE CONTEUDO OU COMUNIODADE    
         } else if ($this->getTipoPublicacao() == self::CRIACAO_CONJUNTO) {
             echo "<li class=\"vcard activity\">";
-            echo "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path('/assets/img/rl/20.gif') . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
+            echo "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario()) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
             echo Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
             echo " criou ";
-            echo Util::getTagConteudo($this->getNomeConjunto(), $this->getIdConjunto());
-            echo ". <span class=\"time\" title=\"Sexta, 24 de fevereiro de 2012 às 8:00\">" . $this->getDataPublicacao() . "</span>";
+            echo Util::getTagConteudo($this->getNomeConjunto(), $this->getIdConjunto(),true);
+            echo ". <span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">" . Util::getDataSimplificada($this->getDataPublicacao()) . "</span>";
  
             
         //SEGUINDO CONTEÚDO
         } else if ($this->getTipoPublicacao() == self::SEGUIR_CONTEUDO) {
             echo "<li class=\"vcard activity\">";
-            echo "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path('/assets/img/rl/20.gif') . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
+            echo "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario()) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
             echo Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
 
             echo " está seguindo ";
-            echo Util::getTagConteudo($this->getNomeConjunto(), $this->getIdConjunto());
-            echo ". <span class=\"time\" title=\"Sexta, 24 de fevereiro de 2012 às 8:00\">" . $this->getDataPublicacao() . "</span>";
+            echo Util::getTagConteudo($this->getNomeConjunto(), $this->getIdConjunto(),true);
+            echo ". <span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">" . Util::getDataSimplificada($this->getDataPublicacao()) . "</span>";
         }
 
         

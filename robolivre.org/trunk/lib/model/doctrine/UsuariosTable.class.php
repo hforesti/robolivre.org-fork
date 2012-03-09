@@ -16,16 +16,85 @@ class UsuariosTable extends Doctrine_Table {
         return Doctrine_Core::getTable('Usuarios');
     }
 
+    public function getAmigosPerfil($idUsuario) {
+
+        $arrayRetorno = array();
+        $qtdAmigos = 0;
+        $arrayAmigos = array();
+
+        $queryAmigos = "
+            SELECT u.*
+            FROM usuarios u 
+            LEFT JOIN amigos a 
+            ON id_usuario = id_usuario_a OR id_usuario = id_usuario_b
+            WHERE id_usuario <> $idUsuario AND a.aceito = 1 AND (a.id_usuario_a = $idUsuario OR a.id_usuario_b = $idUsuario)
+            LIMIT 0, 20";
+
+        $queryQuantidade = "
+            SELECT COUNT(*) AS \"quantidade\"
+            FROM usuarios u 
+            LEFT JOIN amigos a 
+            ON id_usuario = id_usuario_a OR id_usuario = id_usuario_b
+            WHERE id_usuario <> $idUsuario AND a.aceito = 1 AND (a.id_usuario_a = $idUsuario OR a.id_usuario_b = $idUsuario)";
+        
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($queryQuantidade);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $qtdAmigos = $reg['quantidade'];
+                break;
+            }
+        }
+
+        $statement = $connection->prepare($queryAmigos);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+
+        $arrayAmigos = array();
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $objUsuario = new Usuarios();
+                $objUsuario->setIdUsuario($reg['id_usuario']);
+                $objUsuario->setNome($reg['nome']);
+                $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+                
+                $arrayAmigos[] = $objUsuario;
+            }
+        }
+
+        $arrayRetorno['quantidade'] = $qtdAmigos;
+        $arrayRetorno['amigos'] = $arrayAmigos;
+
+//        Util::pre($arrayRetorno, true);
+
+        return $arrayRetorno;
+    }
+
     public function buscarPorId($id) {
-        
+
         $id_usuario_logado = UsuarioLogado::getInstancia()->getIdUsuario();
-        
+
         $query = "SELECT u.*,a.id_usuario_a,
         IF (aceito is not null,aceito,null) as \"amigo\"
         FROM usuarios u LEFT JOIN amigos a 
         ON (id_usuario = id_usuario_a OR id_usuario = id_usuario_b) AND ((id_usuario_a = $id_usuario_logado OR id_usuario_b = $id_usuario_logado) OR (id_usuario_a is null AND id_usuario_b is null)) 
         WHERE id_usuario = $id AND ativo = 1";
-        
+
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
         // Get Connection of Database  
@@ -54,15 +123,16 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setSiteEmpresa($reg['site_empresa']);
                 $objUsuario->setSobreMim($reg['sobre_mim']);
                 $objUsuario->setNome($reg['nome']);
+                $objUsuario->setImagemPerfil($reg['imagem_perfil']);
                 
                 //sem registro de amizade
-                if($reg['amigo']==null){
+                if ($reg['amigo'] == null) {
                     $objUsuario->setTipoSolicitacaoAmizade(Usuarios::SEM_SOLICITACAO);
-                }else{
-                    
-                    if($id_usuario_logado != $reg['id_usuario_a'] && $reg['amigo'] == 0){
+                } else {
+
+                    if ($id_usuario_logado != $reg['id_usuario_a'] && $reg['amigo'] == 0) {
                         $objUsuario->setTipoSolicitacaoAmizade(Usuarios::AGUARDANDO_CONFIRMACAO);
-                    }else{
+                    } else {
                         $objUsuario->setTipoSolicitacaoAmizade($reg['amigo']);
                     }
                 }
@@ -71,29 +141,28 @@ class UsuariosTable extends Doctrine_Table {
         }
         return false;
     }
-    
-    
-    public function getUsuariosListagem(){
-        
+
+    public function getUsuariosListagem() {
+
         $arrayRetorno = array();
-        
+
         $q = Doctrine_Query::create()
                 ->select('id_usuario,nome')
                 ->from('Usuarios')
                 ->where("ativo =  1");
 
         $resultado = $q->fetchArray();
-        
+
         if ($resultado) {
             foreach ($resultado as $reg) {
                 $usuario = new Usuarios();
                 $usuario->setNome($reg['nome']);
                 $usuario->setIdUsuario($reg['id_usuario']);
-                
-                $arrayRetorno[]  = $usuario;
+
+                $arrayRetorno[] = $usuario;
             }
         }
-        
+
         return $arrayRetorno;
     }
 
@@ -117,15 +186,15 @@ class UsuariosTable extends Doctrine_Table {
                 }
             }
         }
-        
-        if($temLogin && $temEmail)
+
+        if ($temLogin && $temEmail)
             throw new ExceptionEmailELoginExistente("O login $login e email $email já exite");
-        if($temLogin)
+        if ($temLogin)
             throw new ExceptionLoginExitente("O login $login já existe");
-        if($temEmail)
+        if ($temEmail)
             throw new ExceptionEmailExistente("O email $email já exite");
-        
-        
+
+
         return false;
     }
 
@@ -156,11 +225,24 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setSiteEmpresa($reg['site_empresa']);
                 $objUsuario->setSobreMim($reg['sobre_mim']);
                 $objUsuario->setNome($reg['nome']);
-
+                $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+                
                 return $objUsuario;
             }
         }
         return false;
+    }
+    
+    public function atualizarImagemPerfil($idUsuario, $imagem) {
+        $query = "UPDATE usuarios 
+                 SET imagem_perfil = '$imagem'
+                WHERE id_usuario = $idUsuario";
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+        $statement = $connection->prepare($query);
+        // Make Statement  
+        $statement->execute();
     }
 
 }

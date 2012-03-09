@@ -47,6 +47,10 @@ class Conteudos extends BaseConteudos
         $this->tipoUsuario = $tipoUsuario;
     }
     
+    /**
+     *
+     * @return Conjuntos 
+     */
     public function getConjunto() {
         return $this->conjunto;
     }
@@ -66,5 +70,22 @@ class Conteudos extends BaseConteudos
 
     public function setNomeProprietario($nomeProprietario) {
         $this->nomeProprietario = $nomeProprietario;
+    }
+    
+    public function getImagemPerfil($tipoImagem = Util::IMAGEM_MEDIA) {
+        $imagem = ($this->getConjunto()==null)? $this->getConjunto()->getImagemPerfil() : "";
+
+        if (!isset($imagem) || $imagem == "") {
+            switch ($tipoImagem) {
+                case Util::IMAGEM_GRANDE:
+                    return "/assets/img/rl/_conteudo-default-140.png";
+                case Util::IMAGEM_MEDIA:
+                    return "/assets/img/rl/_conteudo-default-60.png";
+                case Util::IMAGEM_MINIATURA:
+                    return "/assets/img/rl/_avatar-default-20.png";
+            }
+        }
+
+        return $imagem;
     }
 }

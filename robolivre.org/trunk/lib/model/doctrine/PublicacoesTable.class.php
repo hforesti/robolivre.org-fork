@@ -84,7 +84,7 @@ class PublicacoesTable extends Doctrine_Table {
             return array();
         }
         
-        $query = "SELECT p.*,u.nome,p.id_usuario,
+        $query = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,
         IF (i.id_tipo_conjunto = 1,con.nome,com.nome) as \"nome_conjunto\"
         FROM publicacoes p 
         LEFT JOIN usuarios u ON u.id_usuario = p.id_usuario
@@ -132,6 +132,7 @@ class PublicacoesTable extends Doctrine_Table {
                 $publicacao->setIdUsuario($reg['id_usuario']);
                 $publicacao->setIdPublicacao($reg['id_publicacao']);
                 $publicacao->setNomeUsuario($reg['nome']);
+                $publicacao->setImagemPerfilUsuario($reg['imagem_perfil']);
                 $publicacao->setNomeConjunto($reg['nome_conjunto']);
                 $publicacao->setTipoPublicacao($reg['tipo_publicacao']);
                 
@@ -167,9 +168,9 @@ class PublicacoesTable extends Doctrine_Table {
     
     public function getPublicacoesHome() {
         
-        $arrayRetorno = array();
+        $arrayRetorno = array('conteudos'=>array(),'amigos'=> array());
         $id_usuario_logado  = UsuarioLogado::getInstancia()->getIdUsuario();     
-        $query = "SELECT p.*,u.nome,p.id_usuario,
+        $query = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,
         r.nome AS \"nome_usuario_referencia\",
         IF (i.id_tipo_conjunto = 1,con.nome,com.nome) as \"nome_conjunto\"
         FROM publicacoes p 
@@ -222,6 +223,7 @@ class PublicacoesTable extends Doctrine_Table {
                 $publicacao->setIdUsuario($reg['id_usuario']);
                 $publicacao->setIdPublicacao($reg['id_publicacao']);
                 $publicacao->setNomeUsuario($reg['nome']);
+                $publicacao->setImagemPerfilUsuario($reg['imagem_perfil']);
                 $publicacao->setNomeConjunto($reg['nome_conjunto']);
                 $publicacao->setNomeUsuarioReferencia($reg['nome_usuario_referencia']);
                 $publicacao->setTipoPublicacao($reg['tipo_publicacao']);
@@ -232,23 +234,36 @@ class PublicacoesTable extends Doctrine_Table {
                     //se no array, existir a publicação original, é so adicionar o comentario no objeto
                     if (isset($arrayRetorno[$publicacao->getIdPublicacaoOriginal()])) {
                         $arrayRetorno[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
-                    }//senão, cria um objeto temporário
+                    } //senão, cria um objeto temporário
                     else {
                         $arrayRetorno[$publicacao->getIdPublicacaoOriginal()] = new Publicacoes();
                         $arrayRetorno[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
                     }
                 } else {
-                    $arrayRetorno[$publicacao->getIdPublicacao()] = $publicacao;
+                    if(isset($reg['id_conjunto']) && $reg['id_conjunto']!=""){
+                        $arrayRetorno['conteudos'][$publicacao->getIdPublicacao()] = $publicacao;
+                    }else{
+                        $arrayRetorno['amigos'][$publicacao->getIdPublicacao()] = $publicacao;
+                    }
                 }
             }
             
-            foreach(array_keys($arrayRetorno) as $chave){
-                if($arrayRetorno[$chave]->getIdPublicacao() == ""){
-                    $array = $arrayRetorno[$chave]->getGrupoComentarios();
-                    $arrayRetorno[$chave] = $this->findOneBy("id_publicacao", $array[0]->getIdPublicacaoOriginal());
-                    $arrayRetorno[$chave]->setGrupoComentarios(array_reverse($array));
+            //para cada objeto temporário inserido(caso tenha encontrado um comentario antes da publicação), procurar as publicações originais            
+            /*foreach(array_keys($arrayRetorno['conteudos']) as $chave){
+                if($arrayRetorno['conteudos'][$chave]->getIdPublicacao() == ""){
+                    $array = $arrayRetorno['conteudos'][$chave]->getGrupoComentarios();
+                    $arrayRetorno['conteudos'][$chave] = $this->findOneBy("id_publicacao", $array[0]->getIdPublicacaoOriginal());
+                    $arrayRetorno['conteudos'][$chave]->setGrupoComentarios(array_reverse($array));
                 }
             }
+            foreach(array_keys($arrayRetorno['amigos']) as $chave){
+                if($arrayRetorno['amigos'][$chave]->getIdPublicacao() == ""){
+                    $array = $arrayRetorno['amigos'][$chave]->getGrupoComentarios();
+                    $arrayRetorno['amigos'][$chave] = $this->findOneBy("id_publicacao", $array[0]->getIdPublicacaoOriginal());
+                    $arrayRetorno['amigos'][$chave]->setGrupoComentarios(array_reverse($array));
+                }
+            }*/
+            
         }
 
         return $arrayRetorno;
@@ -257,7 +272,7 @@ class PublicacoesTable extends Doctrine_Table {
     public function getPublicacoesDoPerfil($id_usuario) {
         $arrayRetorno = array();
                     
-        $query = "SELECT p.*,u.nome,p.id_usuario,
+        $query = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,
         r.nome AS \"nome_usuario_referencia\",
         IF (i.id_tipo_conjunto = 1,con.nome,com.nome) as \"nome_conjunto\"
         FROM publicacoes p 
@@ -309,6 +324,7 @@ class PublicacoesTable extends Doctrine_Table {
                 $publicacao->setIdUsuario($reg['id_usuario']);
                 $publicacao->setIdPublicacao($reg['id_publicacao']);
                 $publicacao->setNomeUsuario($reg['nome']);
+                $publicacao->setImagemPerfilUsuario($reg['imagem_perfil']);
                 $publicacao->setNomeConjunto($reg['nome_conjunto']);
                 $publicacao->setNomeUsuarioReferencia($reg['nome_usuario_referencia']);
                 $publicacao->setTipoPublicacao($reg['tipo_publicacao']);

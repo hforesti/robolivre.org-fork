@@ -59,7 +59,7 @@
                             <ul class="nav" id="user-menu">
                                 <li class="dropdown">
                                     <?php $qtdMensagem = 5; ?>
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-warning" title="<?php echo $qtdMensagem ?> mensagens não lidas"><?php echo $qtdMensagem ?></span> <img src="<?php echo image_path('/assets/img/rl/20.gif') ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>"> <?php echo UsuarioLogado::getInstancia()->getNome(); ?> <b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-warning" title="<?php echo $qtdMensagem ?> mensagens não lidas"><?php echo $qtdMensagem ?></span> <img src="<?php echo image_path(UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_MINIATURA)) ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>"> <?php echo Util::getNomeSimplificado(UsuarioLogado::getInstancia()->getNome()); ?> <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a href="inbox.shtml"><i class="icon-inbox icon-gray"></i> (<?php echo $qtdMensagem ?>) Minhas mensagens</a>

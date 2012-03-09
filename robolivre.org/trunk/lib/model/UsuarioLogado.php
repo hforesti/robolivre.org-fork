@@ -10,7 +10,7 @@
  * 
  * @author maxguenes
  */
-class UsuarioLogado {
+class UsuarioLogado{
 
     private static $instancia;
     private static $TEMPO_ATUALIZACAO = 45; //SEGUNDOS
@@ -36,6 +36,9 @@ class UsuarioLogado {
                 $this->setSiteEmpresa($objUsuario->getSiteEmpresa());
                 $this->setSobreMim($objUsuario->getSobreMim());
                 $this->setNome($objUsuario->getNome());
+                $this->setTwitter($objUsuario->getTwitter());
+                $this->setParametrosPrivacidade($objUsuario->getParametrosPrivacidade());
+                $this->setImagemPerfil($objUsuario->getImagemPerfil());
                 $_SESSION['sesStatusLogin'] = 'logado';
                 $_SESSION['sesIP'] = $_SERVER['REMOTE_ADDR'];
 
@@ -59,7 +62,7 @@ class UsuarioLogado {
     }
 
     public function deslogar() {
-        //die("ENTRA NESSA PORRA FILHO DA PUTA!");
+        
         unset($_SESSION['sesStatusLogin'], $_SESSION['sesIP'], $_SESSION['sesNome'], $_SESSION['sesLogin'], $_SESSION['sesEmail'], $_SESSION['sesCurso'], $_SESSION['sesDataNascimento'], $_SESSION['sesEndereco'], $_SESSION['sesHabilidades'], $_SESSION['sesIdNivelEscolaridade'], $_SESSION['sesIdUsuario'], $_SESSION['sesSite'], $_SESSION['sesSiteEmpresa'], $_SESSION['sesSobreMim'], $_SESSION['sesSexo']);
         if (isset($_SERVER['HTTP_COOKIE'])) {
             $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
@@ -92,6 +95,9 @@ class UsuarioLogado {
                 $this->setSiteEmpresa($objUsuario->getSiteEmpresa());
                 $this->setSobreMim($objUsuario->getSobreMim());
                 $this->setNome($objUsuario->getNome());
+                $this->setTwitter($objUsuario->getTwitter());
+                $this->setParametrosPrivacidade($objUsuario->getParametrosPrivacidade());
+                $this->setImagemPerfil($objUsuario->getImagemPerfil());
             }
 
             $this->atualizaSolicitacoes();
@@ -252,6 +258,56 @@ class UsuarioLogado {
     public function setUltimaAtualizacao() {
         $_SESSION['sesUltimaAtualizacao'] = time();
     }
+    
+    public function getImagemPerfil() {
+        return $_SESSION['sesImagemPerfil'];
+    }
+    public function getImagemPerfilFormatada($tipoImagem = Util::IMAGEM_GRANDE) {
+        $imagem = $_SESSION['sesImagemPerfil'];
+
+        if (!isset($imagem) || $imagem == "") {
+            switch ($tipoImagem) {
+                case Util::IMAGEM_GRANDE:
+                    return "/rl/_avatar-default-140.png";
+                case Util::IMAGEM_MEDIA:
+                    return "/rl/_avatar-default-60.png";
+                case Util::IMAGEM_MINIATURA:
+                    return "/rl/_avatar-default-20.png";
+            }
+        }else{
+            switch ($tipoImagem) {
+                case Util::IMAGEM_GRANDE:
+                    return "/assets/img/thumbnails/".str_replace(array("#"),array("140"),$imagem);
+                case Util::IMAGEM_MEDIA:
+                    return "/assets/img/thumbnails/".str_replace(array("#"),array("60"),$imagem);
+                case Util::IMAGEM_MINIATURA:
+                    return "/assets/img/thumbnails/".str_replace(array("#"),array("20"),$imagem);
+            }
+        }
+
+        return $imagem;
+    }
+
+    public function getParametrosPrivacidade() {
+        return $_SESSION['sesParametrosPrivacidade'];
+    }
+
+    public function getTwitter() {
+        return $_SESSION['sesTwitter'];
+    }
+
+    public function setImagemPerfil($valor) {
+        $_SESSION['sesImagemPerfil'] = $valor;
+    }
+
+    public function setParametrosPrivacidade($valor) {
+        $_SESSION['sesParametrosPrivacidade'] = $valor;
+    }
+
+    public function setTwitter($valor) {
+        $_SESSION['sesTwitter'] = $valor;
+    }
+
 
     public function setSolicitacoesPendentes($solicitacoes) {
         if (is_array($solicitacoes)) {

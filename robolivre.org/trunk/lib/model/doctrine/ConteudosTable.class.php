@@ -15,6 +15,89 @@ class ConteudosTable extends Doctrine_Table {
     public static function getInstance() {
         return Doctrine_Core::getTable('Conteudos');
     }
+    
+    public function getConteudosSeguidosPerfil($idUsuario) {
+        $arrayRetorno = array();
+        $qtdConteudosSeguidos = 0;
+        
+        $queryConteudos = "
+            SELECT c.*,
+            i.id_conjunto as \"i.id_conjunto\",i.id_tipo_conjunto as \"i.id_tipo_conjunto\",i.id_usuario AS \"i.id_usuario\",i.imagem_perfil AS \"i.imagem_perfil\"
+            FROM conteudos c 
+            LEFT JOIN conjuntos i ON c.id_conjunto = i.id_conjunto AND c.id_tipo_conjunto = i.id_tipo_conjunto  
+            LEFT JOIN participantes_conjuntos p ON p.id_conjunto = i.id_conjunto AND p.id_tipo_conjunto = i.id_tipo_conjunto
+            WHERE p.id_usuario = $idUsuario OR i.id_usuario = $idUsuario
+            LIMIT 0, 20
+        ";
+        
+        $queryQuantidade = "
+            SELECT COUNT(*) AS \"quantidade\"
+            FROM conteudos c 
+            LEFT JOIN conjuntos i ON c.id_conjunto = i.id_conjunto AND c.id_tipo_conjunto = i.id_tipo_conjunto  
+            LEFT JOIN participantes_conjuntos p ON p.id_conjunto = i.id_conjunto AND p.id_tipo_conjunto = i.id_tipo_conjunto
+            WHERE p.id_usuario = $idUsuario OR i.id_usuario = $idUsuario
+        ";
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($queryQuantidade);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+        
+        $arrayConteudos = array();
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $qtdConteudosSeguidos = $reg['quantidade'];
+                break;
+            }
+        }
+        
+        $statement = $connection->prepare($queryConteudos);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+        
+        $arrayConteudos = array();
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $conteudo = new Conteudos();
+
+                $conteudo->setIdConteudo($reg['id_conteudo']);
+                $conteudo->setIdTipoConjunto($reg['id_tipo_conjunto']);
+                $conteudo->setIdConjunto($reg['id_conjunto']);
+                $conteudo->setIdSuperTipo($reg['id_super_tipo']);
+                $conteudo->setNome($reg['nome']);
+                $conteudo->setDescricao($reg['descricao']);
+                $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
+                $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
+                
+                $conjunto = new Conjuntos();
+                $conjunto->setIdConjunto($reg['i.id_conjunto']);
+                $conjunto->setIdUsuario($reg['i.id_usuario']);
+                $conjunto->setIdTipoConjunto($reg['i.id_tipo_conjunto']);
+                $conjunto->setImagemPerfil($reg['i.imagem_perfil']);
+
+                $conteudo->setConjunto($conjunto);
+
+                $arrayConteudos[] = $conteudo;
+            }
+        }
+        
+        $arrayRetorno['quantidade'] = $qtdConteudosSeguidos;
+        $arrayRetorno['conteudos'] = $arrayConteudos;
+        
+//        Util::pre($arrayRetorno, true);
+        
+        return $arrayRetorno;
+    }
 
     public function buscaPorId($idConjunto,$idConteudo=null){
         

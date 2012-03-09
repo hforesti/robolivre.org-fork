@@ -28,8 +28,21 @@ class perfilActions extends sfActions {
     public function executeIndex(sfWebRequest $request) {
         
         $this->usuario = new Usuarios(null,false,UsuarioLogado::getInstancia());
-        
+//        die($this->usuario->getImagemPerfil());
         $this->publicacoesHome = Doctrine::getTable("Publicacoes")->getPublicacoesHome();
+        
+        {
+            $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
+            $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
+            $this->arrayConteudoSeguido = array_splice($arrayRetorno['conteudos'],0,6);
+        }
+        
+        {
+            $arrayRetorno = Doctrine::getTable("Usuarios")->getAmigosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
+            $this->quantidadeAmigos = $arrayRetorno['quantidade'];
+            $this->arrayAmigos = array_splice($arrayRetorno['amigos'],0,6);
+        }
+        
         
         $this->formPublicacao = new PublicacoesForm();
 
@@ -44,6 +57,18 @@ class perfilActions extends sfActions {
             $this->usuario = new Usuarios(null,false,UsuarioLogado::getInstancia());
         }else{
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
+        }
+        
+        {
+            $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
+            $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
+            $this->arrayConteudoSeguido = array_splice($arrayRetorno['conteudos'],0,6);
+        }
+        
+        {
+            $arrayRetorno = Doctrine::getTable("Usuarios")->getAmigosPerfil($this->usuario->getIdUsuario());
+            $this->quantidadeAmigos = $arrayRetorno['quantidade'];
+            $this->arrayAmigos = array_splice($arrayRetorno['amigos'],0,6);
         }
         
         $this->publicacoesPerfil = Doctrine::getTable("Publicacoes")->getPublicacoesDoPerfil($this->usuario->getIdUsuario());
@@ -126,6 +151,7 @@ class perfilActions extends sfActions {
     
     public function executeSolicitacoes(sfWebRequest $request){
         UsuarioLogado::getInstancia()->atualizaSolicitacoes();
+        $this->usuario = new Usuarios(null,false,UsuarioLogado::getInstancia());
     }
     
     public function executeAceitarSolicitacao(sfWebRequest $request){
@@ -172,9 +198,77 @@ class perfilActions extends sfActions {
         }
     }
     
+    public function executeExibirConteudos(sfWebRequest $request) {
+        $id = $request->getParameter("u");
+        if (isset($id) && $id != "" && is_numeric($id)) {
+            $id = $request->getParameter("u");
+
+            if (!isset($id) || $id == UsuarioLogado::getInstancia()->getIdUsuario()) {
+                $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia());
+            } else {
+                $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
+            }
+            $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
+            $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
+            $this->arrayConteudoSeguido = array_splice($arrayRetorno['conteudos'], 0, 6);
+        } else {
+            $this->redirect('perfil/index');
+        }
+    }
+    
     public function executeLogout(sfWebRequest $request) {
         UsuarioLogado::getInstancia()->deslogar();
         $this->redirect('inicial/index');
+    }
+
+    public function executeAtualizarFoto(sfWebRequest $request) {
+        $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia());
+        $this->formUpload = new AtualizacaoFotoForm();
+    }
+    
+    public function executePreviaFoto(sfWebRequest $request) {
+
+        $this->form = new AtualizacaoFotoForm();
+        if ($request->isMethod('post')) {
+            $this->form->bind($request->getParameter('upload_foto'), $request->getFiles('upload_foto'));
+            if ($this->form->isValid()) {
+                $file = $this->form->getValue('arquivo');
+                $filename = 'temp_usu'.  UsuarioLogado::getInstancia()->getIdUsuario(); //.sha1($file->getOriginalName());
+                $extension = $file->getExtension($file->getOriginalExtension());
+                $file->save(sfConfig::get('sf_upload_dir').'/'.$filename.$extension);
+                
+            }
+        }
+        $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia());
+        $this->imagem = '/uploads/'.$filename.$extension;
+        $this->nome_arquivo = $filename.$extension;
+        $this->formUpload = new AtualizacaoFotoForm();
+        $this->setTemplate('atualizarFoto');
+        
+    }
+    
+    
+    public function executeConfirmarFotoPerfil(sfWebRequest $request) {
+        
+        $nome_arquivo = $request->getParameter('arq');
+        
+        $diretorioThumbnail = Util::getDiretorioThumbnail();
+        
+        $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo;
+        $extensao = end(explode(".", $nome_arquivo));
+        $thumbnail = new sfThumbnail(140, 140);
+        $thumbnail->loadFile($diretorio_arquivo);
+        $thumbnail->save($diretorioThumbnail.'/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_140.' . $extensao, 'image/jpeg');
+
+        $thumbnail = new sfThumbnail(60, 60);
+        $thumbnail->loadFile($diretorio_arquivo);
+        $thumbnail->save($diretorioThumbnail.'/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_60.' . $extensao, 'image/jpeg');
+
+        $thumbnail = new sfThumbnail(20, 20);
+        $thumbnail->loadFile($diretorio_arquivo);
+        $thumbnail->save($diretorioThumbnail.'/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_20.' . $extensao, 'image/jpeg');
+        
+        Doctrine::getTable("Usuarios")->atualizarImagemPerfil(UsuarioLogado::getInstancia()->getIdUsuario(),'_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_#.'.$extensao);
     }
 
 }
