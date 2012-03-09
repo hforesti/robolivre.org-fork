@@ -84,7 +84,7 @@ class PublicacoesTable extends Doctrine_Table {
             return array();
         }
         
-        $query = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,
+        $query = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,i.imagem_perfil AS \"imagem_perfil_conjunto\",
         IF (i.id_tipo_conjunto = 1,con.nome,com.nome) as \"nome_conjunto\"
         FROM publicacoes p 
         LEFT JOIN usuarios u ON u.id_usuario = p.id_usuario
@@ -135,6 +135,7 @@ class PublicacoesTable extends Doctrine_Table {
                 $publicacao->setImagemPerfilUsuario($reg['imagem_perfil']);
                 $publicacao->setNomeConjunto($reg['nome_conjunto']);
                 $publicacao->setTipoPublicacao($reg['tipo_publicacao']);
+                $publicacao->setImagemPerfilConjunto($reg['imagem_perfil_conjunto']);
                 
                 //É um comentário de uma publicação
                 if ($publicacao->getIdPublicacaoOriginal() != null && $publicacao->getIdUsuarioOriginal() != null) {
@@ -171,7 +172,7 @@ class PublicacoesTable extends Doctrine_Table {
         $arrayRetorno = array('conteudos'=>array(),'amigos'=> array());
         $id_usuario_logado  = UsuarioLogado::getInstancia()->getIdUsuario();     
         $query = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,
-        r.nome AS \"nome_usuario_referencia\",
+        r.nome AS \"nome_usuario_referencia\",i.imagem_perfil AS \"imagem_perfil_conjunto\",
         IF (i.id_tipo_conjunto = 1,con.nome,com.nome) as \"nome_conjunto\"
         FROM publicacoes p 
         LEFT JOIN amigos a ON a.id_usuario_a = p.id_usuario OR a.id_usuario_b = p.id_usuario
@@ -227,6 +228,7 @@ class PublicacoesTable extends Doctrine_Table {
                 $publicacao->setNomeConjunto($reg['nome_conjunto']);
                 $publicacao->setNomeUsuarioReferencia($reg['nome_usuario_referencia']);
                 $publicacao->setTipoPublicacao($reg['tipo_publicacao']);
+                $publicacao->setImagemPerfilConjunto($reg['imagem_perfil_conjunto']);
                 
                 //É um comentário de uma publicação
                 if ($publicacao->getIdPublicacaoOriginal() != null && $publicacao->getIdUsuarioOriginal() != null) {
@@ -273,7 +275,7 @@ class PublicacoesTable extends Doctrine_Table {
         $arrayRetorno = array();
                     
         $query = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,
-        r.nome AS \"nome_usuario_referencia\",
+        r.nome AS \"nome_usuario_referencia\",i.imagem_perfil AS \"imagem_perfil_conjunto\",
         IF (i.id_tipo_conjunto = 1,con.nome,com.nome) as \"nome_conjunto\"
         FROM publicacoes p 
         LEFT JOIN usuarios u ON u.id_usuario = p.id_usuario
@@ -328,6 +330,7 @@ class PublicacoesTable extends Doctrine_Table {
                 $publicacao->setNomeConjunto($reg['nome_conjunto']);
                 $publicacao->setNomeUsuarioReferencia($reg['nome_usuario_referencia']);
                 $publicacao->setTipoPublicacao($reg['tipo_publicacao']);
+                $publicacao->setImagemPerfilConjunto($reg['imagem_perfil_conjunto']);
                 
                 //É um comentário de uma publicação
                 if ($publicacao->getIdPublicacaoOriginal() != null && $publicacao->getIdUsuarioOriginal() != null) {

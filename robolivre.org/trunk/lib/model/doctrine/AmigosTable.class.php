@@ -22,7 +22,8 @@ class AmigosTable extends Doctrine_Table {
                 ->select("count(*) as quantidade")
                 ->from('Amigos')
                 ->where("id_usuario_a = " . $amizade->getIdUsuarioA())
-                ->andWhere("id_usuario_b = " . $amizade->getIdUsuarioB());
+                ->andWhere("id_usuario_b = " . $amizade->getIdUsuarioB())
+                ->andWhere("aceito <> 1");
         $resultado = $q->fetchArray();
 
         if ($resultado[0]['quantidade'] == 0) {
@@ -82,8 +83,7 @@ class AmigosTable extends Doctrine_Table {
     }
 
     public function recusarAmizade(Amigos $amizade) {
-        $query = "UPDATE amigos 
-                 SET aceito = NULL
+        $query = "DELETE FROM amigos 
                 WHERE id_usuario_a = " . $amizade->getIdUsuarioA() . " AND id_usuario_b = " . $amizade->getIdUsuarioB();
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();

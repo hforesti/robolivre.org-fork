@@ -117,14 +117,11 @@
         <hr>
 
         <div id="grid-amigos" class="wdgt">
-            <h3><a href="amigos.shtml" title="Ver tudo">Seguidores <small>150</small></a></h3>
+            <h3><a href="amigos.shtml" title="Ver tudo">Seguidores <small><?php echo $quantidadeParticipantes ?></small></a></h3>
             <ul class="thumbnails">
-                <li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-                <li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-                <li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-                <li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-                <li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
-                <li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+                <?php foreach($arrayParticipantes as $usuario): ?>
+                <li ><a href="<?php echo url_for('perfil/exibir?u='.$usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada()) ?>" alt="<?php echo $usuario->getNome() ?>" title="<?php echo $usuario->getNome() ?>"></a></li>
+                <?php endforeach; ?>
             </ul>
             <a href="amigos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-amigos -->

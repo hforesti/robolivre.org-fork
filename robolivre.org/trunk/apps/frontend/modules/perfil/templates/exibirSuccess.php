@@ -8,9 +8,15 @@
                     <span class="icon-cog icon-gray"></span>
                 </a>
                 <ul class="dropdown-menu">
+                    <?php if ($usuario->getTipoSolicitacaoAmizade() == Usuarios::SEM_SOLICITACAO) { ?>
                     <li>
                         <a data-toggle="modal" href="#modalAdd">Adicionar como amigo</a>
                     </li>
+                    <?php } else if ($usuario->getTipoSolicitacaoAmizade() == Usuarios::AGUARDANDO_CONFIRMACAO) { ?>
+                    <li>
+                        <a data-toggle="modal" href="#modalAdd">Responder solicitação</a>
+                    </li>
+                    <?php } ?>
                     <li>
                         <a href="enviar-msg.shtml">Enviar mensagem privada</a>
                     </li>
@@ -37,7 +43,10 @@
 
 
     <div class="span7">
-
+        <?php if ($usuario->getTipoSolicitacaoAmizade() == Usuarios::SOLICITADA_AMIZADE) { ?>
+            <span class="alert pull-right">Aguardando resposta da sua solicitação de amizade.</span>
+        <?php } ?>
+<!--            <span class="alert alert-error pull-right">Usuário ignorado</span>-->
         <h3>Atualizações recentes</h3>
 
         <div id="stream">
@@ -96,8 +105,8 @@
         <div id="grid-amigos" class="wdgt">
             <h3><a href="amigos.shtml" title="Ver tudo">Amigos <small><?php echo $quantidadeAmigos ?></small></a></h3>
             <ul class="thumbnails">
-                <?php foreach($arrayAmigos as $usuario): ?>
-                <li ><a href="<?php echo url_for('perfil/exibir?u='.$usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada()) ?>" alt="<?php echo $usuario->getNome() ?>" title="<?php echo $usuario->getNome() ?>"></a></li>
+                <?php foreach($arrayAmigos as $amigo): ?>
+                <li ><a href="<?php echo url_for('perfil/exibir?u='.$amigo->getIdUsuario()) ?>"><img src="<?php echo image_path($amigo->getImagemPerfilFormatada()) ?>" alt="<?php echo $amigo->getNome() ?>" title="<?php echo $amigo->getNome() ?>"></a></li>
                 <?php endforeach; ?>
             </ul>
             <a href="amigos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
@@ -113,19 +122,6 @@
 <!-- ====================== -->
 <!-- ! Caixas de mensagem   -->
 <!-- ====================== -->
-<div class="modal fade" id="modalAdd">
-    <div class="modal-header">
-        <a class="close" data-dismiss="modal">×</a>
-        <h3>Adicionar amigo</h3>
-    </div>
-    <div class="modal-body">
-        <p>Tem certeza de que deseja adicionar <strong><?php echo $usuario->getNome(); ?></strong> como amigo?</p>
-    </div>
-    <div class="modal-footer">
-        <a href="<?php echo url_for('perfil/solicitarAmizade?u='.$usuario->getIdUsuario()) ?>" class="btn btn-primary">Adicionar</a> <a href="#" class="btn" data-dismiss="modal">Cancelar</a> 
-    </div>
-</div>
-
 <div class="modal fade" id="modalIgnore">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
@@ -138,3 +134,33 @@
         <a href="#" class="btn btn-danger">Ignorar <?php echo $usuario->getNome(); ?></a> <a href="#" class="btn" data-dismiss="modal">Cancelar</a> 
     </div>
 </div>
+
+<?php if ($usuario->getTipoSolicitacaoAmizade() == Usuarios::SEM_SOLICITACAO) { ?>
+<div class="modal fade" id="modalAdd">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Adicionar amigo</h3>
+    </div>
+    <div class="modal-body">
+        <p>Tem certeza de que deseja adicionar <strong><?php echo $usuario->getNome(); ?></strong> como amigo?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="<?php echo url_for('perfil/solicitarAmizade?u='.$usuario->getIdUsuario()) ?>" class="btn btn-primary">Adicionar</a> <a href="#" class="btn" data-dismiss="modal">Cancelar</a> 
+    </div>
+</div>
+<?php } else if ($usuario->getTipoSolicitacaoAmizade() == Usuarios::AGUARDANDO_CONFIRMACAO) { ?>
+<div class="modal fade" id="modalAdd">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Responder solicitação</h3>
+    </div>
+    <div class="modal-body">
+        <p>Deseja aceitar a solicitação de amizade de <strong><?php echo $usuario->getNome(); ?></strong>?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="<?php echo url_for('perfil/aceitarSolicitacao') . "?u=" . $usuario->getIdUsuario() ?>" class="btn btn-primary">Aceitar</a> 
+        <a href="<?php echo url_for('perfil/recusarSolicitacao') . "?u=" . $usuario->getIdUsuario() ?>" class="btn btn-danger">Rejeitar</a> 
+        <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+    </div>
+</div>
+<?php } ?>

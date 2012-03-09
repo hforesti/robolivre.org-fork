@@ -65,7 +65,6 @@ class UsuariosTable extends Doctrine_Table {
 
         $resultado = $statement->fetchAll();
 
-        $arrayAmigos = array();
         if ($resultado) {
             foreach ($resultado as $reg) {
                 $objUsuario = new Usuarios();
@@ -85,6 +84,78 @@ class UsuariosTable extends Doctrine_Table {
         return $arrayRetorno;
     }
 
+    public function getParticipantesConjunto($idConjunto) {
+
+        $arrayRetorno = array();
+        $qtdAmigos = 0;
+        $arrayParticipantes = array();
+
+        $queryParticipantes = "
+            SELECT u.*
+            FROM usuarios u 
+            LEFT JOIN participantes_conjuntos p 
+            ON u.id_usuario = p.id_usuario
+            LEFT JOIN conjuntos i
+            ON  u.id_usuario  = i.id_usuario AND i.id_conjunto = $idConjunto
+            WHERE (p.aceito = 1 AND p.id_conjunto = $idConjunto) OR u.id_usuario = i.id_usuario
+            LIMIT 0, 20";
+
+        $queryQuantidade = "
+            SELECT COUNT(*) AS \"quantidade\"
+            FROM usuarios u 
+            LEFT JOIN participantes_conjuntos p 
+            ON u.id_usuario = p.id_usuario
+            LEFT JOIN conjuntos i
+            ON  u.id_usuario  = i.id_usuario AND i.id_conjunto = $idConjunto
+            WHERE (p.aceito = 1 AND p.id_conjunto = $idConjunto) OR u.id_usuario = i.id_usuario";
+        
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($queryQuantidade);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $qtdAmigos = $reg['quantidade'];
+                break;
+            }
+        }
+
+        $statement = $connection->prepare($queryParticipantes);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $objUsuario = new Usuarios();
+                $objUsuario->setIdUsuario($reg['id_usuario']);
+                $objUsuario->setNome($reg['nome']);
+                $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+                
+                $arrayParticipantes[] = $objUsuario;
+            }
+        }
+
+        $arrayRetorno['quantidade'] = $qtdAmigos;
+        $arrayRetorno['participantes'] = $arrayParticipantes;
+
+//        Util::pre($arrayRetorno, true);
+
+        return $arrayRetorno;
+    }
+    
     public function buscarPorId($id) {
 
         $id_usuario_logado = UsuarioLogado::getInstancia()->getIdUsuario();
@@ -243,6 +314,36 @@ class UsuariosTable extends Doctrine_Table {
         $statement = $connection->prepare($query);
         // Make Statement  
         $statement->execute();
+        
+        $q = Doctrine_Query::create()
+                ->select('*')
+                ->from('Usuarios')
+                ->where("id_usuario = $idUsuario");
+
+        $resultado = $q->fetchArray();
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $objUsuario = new Usuarios();
+
+                $objUsuario->setCurso($reg['curso']);
+                $objUsuario->setDataNascimento($reg['data_nascimento']);
+                $objUsuario->setEmail($reg['email']);
+                $objUsuario->setEndereco($reg['endereco']);
+                $objUsuario->setHabilidades($reg['habilidades']);
+                $objUsuario->setNivelEscolaridade($reg['nivel_escolaridade']);
+                $objUsuario->setIdUsuario($reg['id_usuario']);
+                $objUsuario->setLogin($reg['login']);
+                $objUsuario->setSexo($reg['sexo']);
+                $objUsuario->setSite($reg['site']);
+                $objUsuario->setSiteEmpresa($reg['site_empresa']);
+                $objUsuario->setSobreMim($reg['sobre_mim']);
+                $objUsuario->setNome($reg['nome']);
+                $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+                
+                return $objUsuario;
+            }
+        }
     }
 
 }

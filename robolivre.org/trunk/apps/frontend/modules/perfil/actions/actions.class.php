@@ -258,17 +258,22 @@ class perfilActions extends sfActions {
         $extensao = end(explode(".", $nome_arquivo));
         $thumbnail = new sfThumbnail(140, 140);
         $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail.'/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_140.' . $extensao, 'image/jpeg');
+        $thumbnail->save($diretorioThumbnail.'/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_140.' . $extensao);
 
         $thumbnail = new sfThumbnail(60, 60);
         $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail.'/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_60.' . $extensao, 'image/jpeg');
+        $thumbnail->save($diretorioThumbnail.'/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_60.' . $extensao);
 
         $thumbnail = new sfThumbnail(20, 20);
         $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail.'/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_20.' . $extensao, 'image/jpeg');
+        $thumbnail->save($diretorioThumbnail.'/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_20.' . $extensao);
         
-        Doctrine::getTable("Usuarios")->atualizarImagemPerfil(UsuarioLogado::getInstancia()->getIdUsuario(),'_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_#.'.$extensao);
+        $objUsuario = Doctrine::getTable("Usuarios")->atualizarImagemPerfil(UsuarioLogado::getInstancia()->getIdUsuario(),'_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_#.'.$extensao);
+        
+        UsuarioLogado::getInstancia()->atualizaInformacoes($objUsuario);
+        
+        $this->redirect('perfil/index');
+        
     }
 
 }

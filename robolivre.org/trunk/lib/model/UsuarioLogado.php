@@ -268,11 +268,11 @@ class UsuarioLogado{
         if (!isset($imagem) || $imagem == "") {
             switch ($tipoImagem) {
                 case Util::IMAGEM_GRANDE:
-                    return "/rl/_avatar-default-140.png";
+                    return "/assets/img/rl/_avatar-default-140.png";
                 case Util::IMAGEM_MEDIA:
-                    return "/rl/_avatar-default-60.png";
+                    return "/assets/img/rl/_avatar-default-60.png";
                 case Util::IMAGEM_MINIATURA:
-                    return "/rl/_avatar-default-20.png";
+                    return "/assets/img/rl/_avatar-default-20.png";
             }
         }else{
             switch ($tipoImagem) {

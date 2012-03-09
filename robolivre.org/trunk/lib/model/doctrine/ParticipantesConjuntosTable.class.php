@@ -76,4 +76,6 @@ class ParticipantesConjuntosTable extends Doctrine_Table
         $objPublicacao->save();
         
     }
+    
+    
 }

@@ -93,11 +93,33 @@ class Util {
     
     
     public static function getDataSimplificada($data){
-        $dataRetorno = self::dataBrHora($data);
-        return self::getDiaSemana($dataRetorno[0]).", ".$dataRetorno[0]." ".$dataRetorno[1];
+
+        $valor =  self::getDiffData($data); //getDiaSemana($dataRetorno[0]).", ".$dataRetorno[0]." ".$dataRetorno[1];
+        
+        //entre segundo de publicação
+        if($valor >=0 && $valor < 60){
+            return "hà ".$valor.(($valor<=1)?" segundo":" segundos");
+        //entre minutos de publicação
+        }else if($valor < 3600){
+            $valor = round($valor/60);
+            return "há ".$valor.(($valor<=1)?" minuto":" minutos");
+        //entre horas de publicação
+        }else if($valor < 3600){
+            $valor = round($valor/60);
+            return "hà ".$valor.(($valor<=1)?" hora":" horas");
+        //retorna a data completa    
+        }else{
+            $dataRetorno = self::dataBrHora($data);
+            return self::getDiaSemana($dataRetorno[0]).", ".$dataRetorno[0]." ".$dataRetorno[1];
+        }
     }
     
-    
+    public static function getDiffData($data) {
+        $dataInicio = strtotime($data);
+        $dataAtual = time(); 
+        return $dataAtual-$dataInicio;
+
+    }
     
     
     public static function getDiaSemana($pData){

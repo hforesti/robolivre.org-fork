@@ -44,6 +44,13 @@ class conteudoActions extends sfActions {
             $this->publicacoesConjunto = Doctrine::getTable("Publicacoes")->getPublicacoesDoConjunto($this->conteudo->getIdConjunto()); //array();
             $chaves = array_keys($this->publicacoesConjunto);
             $this->ultimaAtulizacao = Util::getDataFormatada($this->publicacoesConjunto[$chaves[0]]->getDataPublicacao());
+            
+            {
+                $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($idConjunto);
+                $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
+                $this->arrayParticipantes = array_splice($arrayRetorno['participantes'],0,6);
+            }
+            
         }
     }
 
