@@ -446,12 +446,15 @@ body.home .top-login {
 	margin-left: 0;
 	clear: both
 }
-.list-mgmt h2 {margin-bottom: 10px}
+.list-mgmt h2 {margin-bottom: 10px; float: left}
 
 .list-mgmt ul .row {
 	padding: 15px 0;
 	border-top: 1px solid #eee;
 	position: relative;
+}
+.list-mgmt ul .mine h3 a, .list-mgmt ul .mine .meta a {
+	color: #008e42;
 }
 .list-mgmt ul .photo {
 	display: block;
@@ -471,7 +474,7 @@ body.home .top-login {
 	font-size: 12px;
 	color: #bbb
 }
-.list-mgmt #bt-ordem {float: left}
+.list-mgmt .nav-pills {float: left}
 
 /* WYSIWYG Editor */
 .cleditorMain {border:1px solid #999; padding:0 1px 1px; background-color:white;}

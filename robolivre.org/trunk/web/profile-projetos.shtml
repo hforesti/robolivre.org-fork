@@ -39,34 +39,33 @@
 
 <div class="span10">
 
-
 <div class="list-mgmt">
 	<h2>Projetos que você segue ‧ <small>15</small></h2>	
+
+
+  <ul class="nav nav-pills">
+	  <li class="active">
+	    <a href="#">Atualizados recentemente</a>
+	  </li>
+	  <li><a href="#">Criados por você</a></li>
+  </ul>
+
 
 <form class="list-filter pull-right">
         <input type="text" class="input-xlarge search-query" placeholder="Buscar na lista de projetos">
 </form>
 
-<div class="btn-group" id="bt-ordem">
-  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-    Ordenar
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu">
-	  <li class="active">
-	    <a href="#">Atualizados recentemente</a>
-	  </li>
-	  <li><a href="#">Ordem alfabética</a></li>
-	  <li><a href="#">Criados por você</a></li>
-  </ul>
-</div>
 
 	<ul>
-		<li class="row">
+<!-- ================================================ -->
+<!-- ! class "mine" para indicar "Criada por você"   -->
+<!-- !  ‧ <small>Criado por você</small> dentro do titulo   -->
+<!-- ================================================ -->
+		<li class="row mine">
 		<div class="span8">
-		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a> ‧ <small>Criado por você</small></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -75,23 +74,33 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
 				</li>
 				<li>
-					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+					<a href="projeto-criar.shtml">Editar projeto</a>
+				</li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Excluir projeto</a>
 				</li>
 			</ul>
 		</div><!-- btn-group -->
 		</li>
+
 		<li class="row">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -100,40 +109,20 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
 				</li>
 				<li>
-					<a href="comunidade-upload.shtml">Adicionar um documento</a>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
-				</li>
-			</ul>
-		</div><!-- btn-group -->
-		</li>
-		
-		<li class="row">
-		<div class="span8">
-		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
-		</div>
-
-		<div class="btn-group">
-		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			<span class="icon-cog icon-gray"></span>
-		</a>
-			<ul class="dropdown-menu">
-				<li>
-					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
 				</li>
 				<li>
-					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
 				</li>
 			</ul>
 		</div><!-- btn-group -->
@@ -143,7 +132,7 @@
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -152,14 +141,20 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
 				</li>
 				<li>
-					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
 				</li>
 			</ul>
 		</div><!-- btn-group -->
@@ -169,7 +164,7 @@
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -178,14 +173,20 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
 				</li>
 				<li>
-					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
 				</li>
 			</ul>
 		</div><!-- btn-group -->
@@ -195,7 +196,7 @@
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -204,14 +205,20 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
 				</li>
 				<li>
-					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
 				</li>
 			</ul>
 		</div><!-- btn-group -->
@@ -221,7 +228,7 @@
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -230,14 +237,20 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
 				</li>
 				<li>
-					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
 				</li>
 			</ul>
 		</div><!-- btn-group -->
@@ -247,7 +260,7 @@
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -256,14 +269,20 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
 				</li>
 				<li>
-					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
 				</li>
 			</ul>
 		</div><!-- btn-group -->
@@ -273,7 +292,7 @@
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -282,14 +301,20 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
 				</li>
 				<li>
-					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
 				</li>
 			</ul>
 		</div><!-- btn-group -->
@@ -299,7 +324,7 @@
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -308,14 +333,52 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
 				</li>
 				<li>
-					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
 				</li>
 			</ul>
 		</div><!-- btn-group -->

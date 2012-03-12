@@ -38,19 +38,31 @@
 <hr class="only-mobile">
 
 <div class="span10">
-	<div class="row">
-	<h3 class="span5">Comunidades que você faz parte ‧ <small>55</small></h3>
-	
-	<form class="pull-right">
-	        <input type="text" class="input-xlarge search-query" placeholder="Buscar na lista de comunidades">
-	</form>
-	</div>
 
 <div class="list-mgmt">
+	<h2>Comunidades que você faz parte ‧ <small>55</small></h2>
+
+
+  <ul class="nav nav-pills">
+	  <li class="active">
+	    <a href="#">Atualizadas recentemente</a>
+	  </li>
+	  <li><a href="#">Criadas por você</a></li>
+  </ul>
+
+
+<form class="list-filter pull-right">
+        <input type="text" class="input-xlarge search-query" placeholder="Buscar na lista de comunidades">
+</form>
+
 	<ul>
-		<li class="row">
+<!-- ================================================ -->
+<!-- ! class "mine" para indicar "Criada por você"   -->
+<!-- !  ‧ <small>Criado por você</small> dentro do titulo   -->
+<!-- ================================================ -->
+		<li class="row mine">
 		<div class="span8">
-		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a> ‧ <small>Criada por você</small></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
 		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
 		</div>

@@ -39,20 +39,18 @@
 
 <div class="span10">
 
-	<div class="row">
-	<h3 class="span5">Seus amigos ‧ <small>55</small></h3>
+<div class="list-mgmt">
+	<h2>Seus amigos ‧ <small>55</small></h2>
 	
 	<form class="pull-right">
 	        <input type="text" class="input-xlarge search-query" placeholder="Buscar na lista de amigos">
 	</form>
-	</div>
 
 <!-- ========================================================== -->
 <!-- ! Modelo de alerta quando tiver solicitação de amizade   -->
 <!-- ========================================================== -->
 <!-- <div class="alert">Você tem <strong>40</strong> novas solicitações de amizade. <a href="inbox-notificacoes.shtml">Confira nas suas notificações</a>.</div> -->
 
-<div class="list-mgmt">
 	<ul>
 		<li class="row">
 		<div class="span8">
