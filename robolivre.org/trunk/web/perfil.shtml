@@ -4,7 +4,7 @@
 
 <div class="span2" id="sidebar">
 <div class="avatar">
-	<a href="perfil.shtml"><img src="assets/img/rl/_avatar-default-140.png" alt="Henrique Foresti" class="photo"></a>
+	<a href="perfil.shtml"><img src="assets/img/rl/_avatar-default-large.png" alt="Henrique Foresti" class="photo"></a>
     <div class="btn-group">
 	  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
 	    <span class="icon-cog icon-gray"></span>
@@ -40,6 +40,10 @@
 <hr class="only-mobile">
 
 <div class="span7">
+
+<!-- modelo de mensagens -->
+<!-- <span class="alert pull-right">Aguardando resposta da sua solicitação de amizade.</span> -->
+<span class="alert alert-error pull-right">Usuário ignorado</span>
 
   <h3>Atualizações recentes</h3>
 
@@ -428,13 +432,16 @@
 <div class="modal fade" id="modalAdd">
   <div class="modal-header">
     <a class="close" data-dismiss="modal">×</a>
-    <h3>Adicionar amigo</h3>
+    <h3>Responder solicitação</h3>
   </div>
   <div class="modal-body">
-  <p>Tem certeza de que deseja adicionar <strong>Henrique Foresti</strong> como amigo?</p>
+  <p>Deseja aceitar a solicitação de amizade de <strong>Henrique Foresti</strong>?</p>
   </div>
   <div class="modal-footer">
-    <a href="#" class="btn btn-primary">Adicionar</a> <a href="#" class="btn" data-dismiss="modal">Cancelar</a> 
+    <a href="#" class="btn btn-primary">Aceitar</a> 
+    <a href="#" class="btn btn-danger">Rejeitar</a> 
+
+    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
   </div>
 </div>
 
@@ -447,7 +454,7 @@
   <p>Você não verá mais as atualizações de <strong>Henrique Foresti</strong>. Tem certeza de que deseja ignorar seu conteúdo?</p>
   </div>
   <div class="modal-footer">
-    <a href="#" class="btn btn-danger">Ignorar Henrique</a> <a href="#" class="btn" data-dismiss="modal">Cancelar</a> 
+    <a href="#" class="btn btn-danger">Ignorar <strong>Henrique</strong></a> <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
   </div>
 </div>
 

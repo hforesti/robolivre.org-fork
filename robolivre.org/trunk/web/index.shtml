@@ -6,7 +6,7 @@
     <div class="row">
         <a class="brand span3" href="index.shtml">Robô Livre</a>
 
-		<div id="top-login">
+		<div id="top-login" class="span4 pull-right">
 					<form id="login-form" class="form-inline" action="login-erro.shtml">
 		           			<input id="login" type="email" placeholder="e-mail ou usuário" tabindex="1" />
 			           		<input id="login-pass" type="password" placeholder="senha" tabindex="2" />

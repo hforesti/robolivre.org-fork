@@ -1,0 +1,330 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+<div class="avatar">
+	<a href="profile-home.shtml"><img src="assets/img/rl/avatar-170.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+    <div class="btn-group">
+	  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+	    <span class="icon-cog icon-gray"></span>
+	  	</a>
+	  	<ul class="dropdown-menu">
+	      <li>
+	        <a href="settings.shtml">Atualizar foto</a>
+	      </li>
+	      <li>
+	        <a href="inbox.shtml">Editar perfil</a>
+	      </li>
+		</ul>
+	</div>
+	
+	<h1>Rodrigo Medeiros</h1>
+
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li><a href="profile-home.shtml"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+	<li class="active"><a href="profile-conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+	<li><a href="profile-comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+	<li><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
+	<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
+	<li><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+				<li><hr></li>
+	<li><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+
+	<div class="row">
+	<h3 class="span6">Conteúdos seguidos por você ‧ <small>55</small></h3>
+	
+	<form class="span4">
+	        <input type="text" class="input-xlarge search-query" placeholder="Buscar na lista de conteúdos">
+	</form>
+	</div>
+
+
+<div class="list-mgmt">
+	<ul>
+		<li class="row">
+		<div class="span8">
+		<a href="conteudo.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo" class="thumbnail"></a> <h3><a href="conteudo.shtml">Nome do conteúdo</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="conteudo-imagens.shtml">15 imagens</a> ‧ <a href="conteudo-videos.shtml">5 vídeos</a> ‧ <a href="conteudo-links.shtml">40 links</a> ‧ <a href="conteudo-docs.shtml">5 documentos</a> ‧ <a href="conteudo-projetos.shtml">5 projetos relacionados</a> ‧ <a href="conteudo-seguidores.shtml">150 seguidores</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveContent">Parar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		<li class="row">
+		<div class="span8">
+		<a href="conteudo.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo" class="thumbnail"></a> <h3><a href="conteudo.shtml">Nome do conteúdo</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="conteudo-imagens.shtml">15 imagens</a> ‧ <a href="conteudo-videos.shtml">5 vídeos</a> ‧ <a href="conteudo-links.shtml">40 links</a> ‧ <a href="conteudo-docs.shtml">5 documentos</a> ‧ <a href="conteudo-projetos.shtml">5 projetos relacionados</a> ‧ <a href="conteudo-seguidores.shtml">150 seguidores</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveContent">Parar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="conteudo.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo" class="thumbnail"></a> <h3><a href="conteudo.shtml">Nome do conteúdo</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="conteudo-imagens.shtml">15 imagens</a> ‧ <a href="conteudo-videos.shtml">5 vídeos</a> ‧ <a href="conteudo-links.shtml">40 links</a> ‧ <a href="conteudo-docs.shtml">5 documentos</a> ‧ <a href="conteudo-projetos.shtml">5 projetos relacionados</a> ‧ <a href="conteudo-seguidores.shtml">150 seguidores</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveContent">Parar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="conteudo.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo" class="thumbnail"></a> <h3><a href="conteudo.shtml">Nome do conteúdo</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="conteudo-imagens.shtml">15 imagens</a> ‧ <a href="conteudo-videos.shtml">5 vídeos</a> ‧ <a href="conteudo-links.shtml">40 links</a> ‧ <a href="conteudo-docs.shtml">5 documentos</a> ‧ <a href="conteudo-projetos.shtml">5 projetos relacionados</a> ‧ <a href="conteudo-seguidores.shtml">150 seguidores</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveContent">Parar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="conteudo.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo" class="thumbnail"></a> <h3><a href="conteudo.shtml">Nome do conteúdo</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="conteudo-imagens.shtml">15 imagens</a> ‧ <a href="conteudo-videos.shtml">5 vídeos</a> ‧ <a href="conteudo-links.shtml">40 links</a> ‧ <a href="conteudo-docs.shtml">5 documentos</a> ‧ <a href="conteudo-projetos.shtml">5 projetos relacionados</a> ‧ <a href="conteudo-seguidores.shtml">150 seguidores</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveContent">Parar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="conteudo.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo" class="thumbnail"></a> <h3><a href="conteudo.shtml">Nome do conteúdo</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="conteudo-imagens.shtml">15 imagens</a> ‧ <a href="conteudo-videos.shtml">5 vídeos</a> ‧ <a href="conteudo-links.shtml">40 links</a> ‧ <a href="conteudo-docs.shtml">5 documentos</a> ‧ <a href="conteudo-projetos.shtml">5 projetos relacionados</a> ‧ <a href="conteudo-seguidores.shtml">150 seguidores</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveContent">Parar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="conteudo.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo" class="thumbnail"></a> <h3><a href="conteudo.shtml">Nome do conteúdo</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="conteudo-imagens.shtml">15 imagens</a> ‧ <a href="conteudo-videos.shtml">5 vídeos</a> ‧ <a href="conteudo-links.shtml">40 links</a> ‧ <a href="conteudo-docs.shtml">5 documentos</a> ‧ <a href="conteudo-projetos.shtml">5 projetos relacionados</a> ‧ <a href="conteudo-seguidores.shtml">150 seguidores</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveContent">Parar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="conteudo.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo" class="thumbnail"></a> <h3><a href="conteudo.shtml">Nome do conteúdo</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="conteudo-imagens.shtml">15 imagens</a> ‧ <a href="conteudo-videos.shtml">5 vídeos</a> ‧ <a href="conteudo-links.shtml">40 links</a> ‧ <a href="conteudo-docs.shtml">5 documentos</a> ‧ <a href="conteudo-projetos.shtml">5 projetos relacionados</a> ‧ <a href="conteudo-seguidores.shtml">150 seguidores</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveContent">Parar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="conteudo.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo" class="thumbnail"></a> <h3><a href="conteudo.shtml">Nome do conteúdo</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="conteudo-imagens.shtml">15 imagens</a> ‧ <a href="conteudo-videos.shtml">5 vídeos</a> ‧ <a href="conteudo-links.shtml">40 links</a> ‧ <a href="conteudo-docs.shtml">5 documentos</a> ‧ <a href="conteudo-projetos.shtml">5 projetos relacionados</a> ‧ <a href="conteudo-seguidores.shtml">150 seguidores</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveContent">Parar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="conteudo.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo" class="thumbnail"></a> <h3><a href="conteudo.shtml">Nome do conteúdo</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="conteudo-imagens.shtml">15 imagens</a> ‧ <a href="conteudo-videos.shtml">5 vídeos</a> ‧ <a href="conteudo-links.shtml">40 links</a> ‧ <a href="conteudo-docs.shtml">5 documentos</a> ‧ <a href="conteudo-projetos.shtml">5 projetos relacionados</a> ‧ <a href="conteudo-seguidores.shtml">150 seguidores</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveContent">Parar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+	</ul>
+
+<hr>
+
+<div class="pagination">
+  <ul>
+<!--     <li><a href="#"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li> -->
+    <li class="active">
+      <a href="#">1</a>
+    </li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
+  </ul>
+  
+  <p class="pull-right">Exibindo de 1 a 10</p>
+
+</div>
+
+</div>
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!-- ====================== -->
+<!-- ! Caixas de mensagem   -->
+<!-- ====================== -->
+<div class="modal fade" id="modalRemoveContent">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Parar de seguir</h3>
+  </div>
+  <div class="modal-body">
+  <p>Deseja parar de seguir o conteúdo <strong>Arduíno</strong>?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-danger">Parar de seguir</a> 
+
+    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+  </div>
+</div>
+
+
+
+<!--#include virtual="includes/footer.html" -->

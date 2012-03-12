@@ -1,0 +1,331 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+<div class="avatar">
+	<a href="profile-home.shtml"><img src="assets/img/rl/avatar-170.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+    <div class="btn-group">
+	  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+	    <span class="icon-cog icon-gray"></span>
+	  	</a>
+	  	<ul class="dropdown-menu">
+	      <li>
+	        <a href="settings.shtml">Atualizar foto</a>
+	      </li>
+	      <li>
+	        <a href="inbox.shtml">Editar perfil</a>
+	      </li>
+		</ul>
+	</div>
+	
+	<h1>Rodrigo Medeiros</h1>
+
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li><a href="profile-home.shtml"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+	<li><a href="profile-conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+	<li><a href="profile-comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+	<li class="active"><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
+	<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
+	<li><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+				<li><hr></li>
+	<li><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+
+	<div class="row">
+	<h3 class="span6">Seus amigos ‧ <small>55</small></h3>
+	
+	<form class="span4">
+	        <input type="text" class="input-xlarge search-query" placeholder="Buscar na lista de amigos">
+	</form>
+	</div>
+
+<!-- <div class="alert">Você tem <strong>40</strong> novas solicitações de amizade. <a href="inbox-notificacoes.shtml">Confira suas notificações</a>.</div> -->
+
+<div class="list-mgmt">
+	<ul>
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+	</ul>
+
+<hr>
+
+<div class="pagination">
+  <ul>
+<!--     <li><a href="#"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li> -->
+    <li class="active">
+      <a href="#">1</a>
+    </li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
+  </ul>
+  
+  <p class="pull-right">Exibindo de 1 a 10</p>
+
+</div>
+
+</div>
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!-- ====================== -->
+<!-- ! Caixas de mensagem   -->
+<!-- ====================== -->
+<div class="modal fade" id="modalRemoveCommunity">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Deixar de participar</h3>
+  </div>
+  <div class="modal-body">
+  <p>Deseja deixar de participar da comunidade <strong>Henrique Foresti</strong>?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-danger">Deixar de participar</a> 
+
+    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+  </div>
+</div>
+
+
+
+<!--#include virtual="includes/footer.html" -->

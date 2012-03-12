@@ -67,7 +67,7 @@
     <script src="assets/js/main-robolivre.js"></script>
     
 	<script type="text/javascript">
-	//autosuggest tags
+	//autosuggest tags data
 	var data = {items: [
 		{value: "21", name: "Arduino"},
 		{value: "43", name: "Robôs"},
@@ -78,18 +78,49 @@
 		{value: "58", name: "Open Source"},
 		{value: "79", name: "Rodrigo"},
 		{value: "80", name: "Gambiarra"},
-		{value: "81", name: "UNIX"}
+		{value: "81", name: "UNIX"},
+		{value: "81", name: "Robótica Definições e História - Robô na Ficção"}
 	]};
 	
+	//autosuggest tags input options
 	$("#input-marcadores").autoSuggest(data.items, {
 		selectedItemProp: "name",
 		searchObjProps: "name",
-		startText: "",
-		emptyText: "Nenhuma sugestão encontrada"
+		startText: "Ex.: Open Source, UNIX",
+		emptyText: "Nenhuma sugestão encontrada",
+			formatList: function(data, elem){
+				var my_image = data.image;
+				var new_elem = elem.html("<i class='icon-tag icon-gray'></i>"+ data.name);
+				return new_elem;
+			}
+	});
+	
+	//autosuggest search input options
+	$("#search-content").autoSuggest(data.items, {
+	selectedItemProp: "name",
+	searchObjProps: "name",
+	startText: "Procurar conteúdo...",
+	emptyText: "Nenhum conteúdo encontrado",
+	limitText: "",
+	selectionLimit: 1,
+	neverSubmit: true,
+ 	resultClick: function(data){rlGoSearchResult(data);},
+		formatList: function(data, elem){
+			var my_image = data.image;
+			var new_elem = elem.html("<img src='assets/img/rl/60.gif' alt='"+ data.name+"'><h4 style='display:inline'>"+ data.name+"<h4><a href='conteudo.shtml'></a><br clear='all'>");
+			return new_elem;
+		}
 	});
 	//$("input[type=text]").autoSuggest("http://mysite.com/path/to/script", {minChars: 2, matchCase: true});
-	
-	//focus do autosuggest
+
+/* selecionado um item no resultado de busca */
+function rlGoSearchResult(item) {
+	var i = item;
+	alert(i);
+	/* $('.as-result-item a').click(); */
+}
+
+	//estilo no focus do autosuggest
 	$(".as-input").focus(function() {
 		$(this).parent().parent().addClass("as-selections-focus");
 	});

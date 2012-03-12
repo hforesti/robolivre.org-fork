@@ -4,7 +4,7 @@
 
 <div class="span2" id="sidebar">
 <div class="avatar">
-	<a href="profile-home.shtml"><img src="assets/img/rl/avatar-140.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+	<a href="profile-home.shtml"><img src="assets/img/rl/avatar-170.jpg" alt="Rodrigo Medeiros" class="photo"></a>
     <div class="btn-group">
 	  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
 	    <span class="icon-cog icon-gray"></span>
@@ -24,12 +24,12 @@
 </div><!-- /avatar -->
 
 <ul class="nav nav-pills nav-stacked">
-	<li class="active"><a href="#"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
-	<li><a href="conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
-	<li><a href="comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
-	<li><a href="amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
-	<li><a href="eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
-	<li><a href="projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+	<li class="active"><a href="profile-home.shtml"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+	<li><a href="profile-conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+	<li><a href="profile-comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+	<li><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
+	<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
+	<li><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
 				<li><hr></li>
 	<li><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
 </ul>
@@ -811,13 +811,10 @@
 <div class="span3" id="sidebar-wdgt">
 
 <div id="grid-conteudos" class="wdgt">
-	<h3><a href="conteudos.shtml">Conteúdos seguidos <small>150</small></a></h3>
+	<h3><a href="conteudos.shtml" title="Ver tudo">Conteúdos seguidos <small>1</small></a></h3>
+<div class="alert"><a href="conteudos.shtml">Descubra mais conteúdos para seguir</a></div>
+
 	<ul class="thumbnails">
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
 		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
 	</ul>
 	<a href="conteudos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
@@ -827,6 +824,9 @@
 
 <div id="grid-comunidades" class="wdgt">
 		<h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
+
+
+
 	<ul class="thumbnails">
 		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
 		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>

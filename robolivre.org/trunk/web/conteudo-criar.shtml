@@ -4,7 +4,7 @@
 
 <div class="span2" id="sidebar">
 <div class="avatar">
-	<a href="profile-home.shtml"><img src="assets/img/rl/avatar-140.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+	<a href="profile-home.shtml"><img src="assets/img/rl/avatar-170.jpg" alt="Rodrigo Medeiros" class="photo"></a>
     <div class="btn-group">
 	  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
 	    <span class="icon-cog icon-gray"></span>
@@ -189,7 +189,7 @@
 
 		<div class="row">
 			<div class="preview span2" id="img-preview">
-				<img src="assets/img/rl/140.gif" alt="140" id="thumb" class="thumbnail" />
+				<img src="assets/img/rl/170.gif" alt="140" id="thumb" class="thumbnail" />
 			</div>
 
             <div class="span5">				

@@ -4,17 +4,17 @@
 
 <div class="span2" id="sidebar">
 <div class="avatar">
-	<a href="conteudo.shtml"><img src="assets/img/rl/140.gif" alt="Arduino" class="photo"></a>
+	<a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Arduino" class="photo"></a>
     <div class="btn-group">
 	  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
 	    <span class="icon-cog icon-gray"></span>
 	  	</a>
 	  	<ul class="dropdown-menu">
 	      <li>
-	        <a href="settings.shtml">Atualizar imagem</a>
+	        <a data-toggle="modal" href="#modalImgUpload">Atualizar imagem</a>
 	      </li>
 	      <li>
-	        <a href="inbox.shtml">Editar conteúdo</a>
+	        <a href="conteudo-criar.shtml">Editar conteúdo</a>
 	      </li>
 		</ul>
 	</div>
@@ -47,17 +47,59 @@
   </li>
 </ul>
 
-<p><small>Adicionado por <a href="perfil.shtml">Henrique Foresti</a>. Última atualização 21/01/2011</small></p>
+<div class="btn-group pull-right">
+  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+    <span class="icon-cog icon-gray"></span>
+  	</a>
+  	<ul class="dropdown-menu">
+      <li>
+        <a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+      </li>
+	<li class="divider"></li>
+      <li class="danger-link">
+        <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+      </li>
+	</ul>
+</div>
+
+<p>
+<!-- <span class="label label-info">Tema de aula</span> -->
+<small>Adicionado por <a href="perfil.shtml">Henrique Foresti</a>. Última atualização 21/01/2011</small>
+</p>
 
 <div class="page-header">
 <a href="#" class="btn btn-success pull-right"><i class="icon-ok icon-white"></i> Seguir conteúdo</a>
 <!-- <a href="#" class="btn pull-right"><i class="icon-remove"></i> Parar de seguir</a> -->
 
 <h1>Arduino</h1>
-
 </div>
 
-<p>A plataforma Arduino foi desenvolvida na Itália e, por ser uma plataforma aberta, várias versões surgiram e qualquer pessoa pode facilmente construir a sua, com base nos protótipos disponíveis na internet.</p>
+			<p>A plataforma Arduino foi desenvolvida na <strong>Itália</strong> e, por ser uma plataforma aberta, várias versões surgiram e qualquer pessoa pode facilmente construir a sua, com base nos protótipos disponíveis na internet.</p>
+
+            <p>Nulla facilisi. Nullam <em>fringilla lacus</em> eu risus. Donec id dolor bibendum augue feugiat tincidunt. Morbi tristique libero sit amet urna. <a href="#">Aenean lorem</a> eros; dignissim id, volutpat id, ultricies eget, felis.</p>
+        		<blockquote><p>Nulla facilisi. Nullam fringilla lacus eu risus. Donec id dolor bibendum augue feugiat tincidunt. Morbi tristique libero sit amet urna. <a href="#">Aenean lorem</a> eros; dignissim id, volutpat id, ultricies eget, felis.</p>
+        		</blockquote>
+
+						<h3>Nam sed odio at metus hendrerit volutpat</h3>    
+    				<p>Fusce mollis metus ac nibh. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisi. Nullam fringilla lacus eu risus. Donec id dolor bibendum augue feugiat tincidunt. <a href="#">Morbi tristique</a> libero sit amet urna. Aenean lorem eros; dignissim id, volutpat id, ultricies eget, felis. In hac habitasse platea dictumst.</p>
+    				<p>Phasellus suscipit. In justo odio, posuere ut, viverra quis, viverra at, dui. Nam eros. Nulla nec odio vitae nisi molestie tempus. Quisque leo neque, scelerisque sit amet, egestas vitae, tempor vel, ante. Praesent mi libero; viverra eget, viverra nec, convallis non, dolor. Nulla non sem nec nibh accumsan cursus. Ut dapibus. Ut a tortor. Mauris elementum pretium nisi.</p>
+						<h4>Nam sed odio at metus hendrerit volutpat</h4>  
+						<ul>
+							<li>Nam sed odio at metus</li>
+							<li><a href="#">Nam sed odio at metus</a></li>
+							<li>Nam sed odio at metus</li>
+						</ul> 
+ 
+						<h5>Nam sed odio at metus hendrerit volutpat</h5>  
+						<ol>
+							<li><a href="#">Nam sed odio at metus</a></li>
+							<li>Nam sed odio at metus</li>
+							<li>Nam sed odio at metus</li>
+						</ol>  
+
+						<h6>Nam sed odio at metus hendrerit volutpat</h6>
+    				<p>Phasellus suscipit. In justo odio, posuere ut, viverra quis, viverra at, dui. Nam eros. Nulla nec odio vitae nisi molestie tempus. Quisque leo neque, scelerisque sit amet, egestas vitae, tempor vel, ante. Praesent mi libero; viverra eget, viverra nec, convallis non, dolor. Nulla non sem nec nibh accumsan cursus. Ut dapibus. Ut a tortor. Mauris elementum pretium nisi.</p>
+    				<p>Phasellus suscipit. In justo odio, posuere ut, viverra quis, viverra at, dui. Nam eros. Nulla nec odio vitae nisi molestie tempus. Quisque leo neque, scelerisque sit amet, egestas vitae, tempor vel, ante. Praesent mi libero; viverra eget, viverra nec, convallis non, dolor. Nulla non sem nec nibh accumsan cursus. Ut dapibus. Ut a tortor. Mauris elementum pretium nisi.</p>
 
 <hr>
 
@@ -520,6 +562,20 @@
 
 <hr>
 
+<div id="grid-projetos" class="wdgt">
+	<h3><a href="projetos.shtml" title="Ver tudo">Projetos <small>5</small></a></h3>
+	<ul class="thumbnails">
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+	</ul>
+	<a href="projetos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+</div><!-- grid-amigos -->
+
+<hr>
+
 <div id="grid-amigos" class="wdgt">
 	<h3><a href="amigos.shtml" title="Ver tudo">Seguidores <small>150</small></a></h3>
 	<ul class="thumbnails">
@@ -533,7 +589,6 @@
 	<a href="amigos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
 </div><!-- grid-amigos -->
 
-<hr>
 
 </div><!-- /aside -->
 

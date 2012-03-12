@@ -18,22 +18,18 @@ $('.navbar .search-query').blur(function() {
 	}, 250);
 });
 
-//fade nas tags quando focar a busca
+//fade no conteudo quando focar a busca
 $('#explore .search-query').focus(function() {
-	$('#tagcloud a').animate({
-		opacity: 0.2,
+	$('#featured').animate({
+		opacity: 0.3,
 	}, 250);
 });
 $('#explore .search-query').blur(function() {
-	$("#tagcloud a").animate({
+	$("#featured").animate({
 		opacity: 1,
 	}, 250);
 });
 
-//auto focus input
-if ( $("#login-form, #status") ) {
-	$('input[tabindex=1], textarea[tabindex=1]').focus();
-}
 //animacao respira Explore
 function toFade() { //reduces the opacity
 	$("#explore h2").animate({opacity: '.5'}, 1600, function() {
@@ -77,7 +73,6 @@ $("#terms-textarea").focus(function(){
 		'width'		:	'95%'
 	}, 'slow')
 });
-
 
 // WYSIWYG Editor
 $(".wysiwyg").cleditor({

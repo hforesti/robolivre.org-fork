@@ -4,7 +4,7 @@
 
 <div class="span2" id="sidebar">
 <div class="avatar">
-	<a href="perfil.shtml"><img src="assets/img/rl/_avatar-default-140.png" alt="Henrique Foresti" class="photo"></a>
+	<a href="perfil.shtml"><img src="assets/img/rl/_avatar-default-large.png" alt="Henrique Foresti" class="photo"></a>
     <div class="btn-group">
 	  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
 	    <span class="icon-cog icon-gray"></span>
