@@ -126,6 +126,17 @@ function rlGoSearchResult(item) {
 		$(this).parent().parent().removeClass("as-selections-focus");
 	});
 
+//pega destinatario do modal de mensagem privada
+$('.send-msg').click(function(){
+	var n = $(this).closest('.row').find("h3 a").text();
+	var u = $(this).closest('.row').find(".photo img").attr("src");
+		//quando iniciar a mostrar o modal, muda nome
+		$('#modalSendMsg').on('show', function () {
+			$("#fromField .uneditable-input").text(n);
+			$("#fromField .add-on img").attr("src",u);
+		})
+
+});
 	</script>
 
 <div class="fade-rl"></div>

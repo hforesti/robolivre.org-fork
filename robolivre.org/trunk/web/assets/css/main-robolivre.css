@@ -394,7 +394,7 @@ body.home .top-login {
 #temas-aula-list label:hover {
 	color: #08c
 }
-#form-criar {margin-bottom: 0}
+.modal form {margin-bottom: 0 !important}
 
 #explore {
 	padding-top: 10px;
@@ -475,6 +475,10 @@ body.home .top-login {
 	color: #bbb
 }
 .list-mgmt .nav-pills {float: left}
+
+#modalSendMsg img {margin-top: -1px}
+#modalSendMsg .uneditable-input {cursor: default}
+#fromField .add-on img {width: 20px}
 
 /* WYSIWYG Editor */
 .cleditorMain {border:1px solid #999; padding:0 1px 1px; background-color:white;}

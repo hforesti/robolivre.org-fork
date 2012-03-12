@@ -65,7 +65,7 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
 				</li>
 				<li class="divider"></li>
 				<li>
@@ -76,7 +76,7 @@
 		</li>
 		<li class="row">
 		<div class="span8">
-		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Rodrigo Muniz" title="Rodrigo Muniz" class="thumbnail"></a> <h3><a href="perfil.shtml">Rodrigo Muniz</a></h3>
 		<p class="meta">Interaction Designer no Robô Livre<br>
 		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
 		</div>
@@ -87,7 +87,76 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes" class="thumbnail"></a> <h3><a href="perfil.shtml">Max Guenes</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Fabio Aguiar" title="Fabio Aguiar" class="thumbnail"></a> <h3><a href="perfil.shtml">Fabio Aguiar</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Ricardo Mariz" title="Ricardo Mariz" class="thumbnail"></a> <h3><a href="perfil.shtml">Ricardo Mariz</a></h3>
+		<p class="meta">Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
 				</li>
 				<li class="divider"></li>
 				<li>
@@ -110,7 +179,7 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
 				</li>
 				<li class="divider"></li>
 				<li>
@@ -133,7 +202,7 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
 				</li>
 				<li class="divider"></li>
 				<li>
@@ -156,7 +225,7 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
 				</li>
 				<li class="divider"></li>
 				<li>
@@ -179,7 +248,7 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
 				</li>
 				<li class="divider"></li>
 				<li>
@@ -202,76 +271,7 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
-				</li>
-			</ul>
-		</div><!-- btn-group -->
-		</li>
-		
-		<li class="row">
-		<div class="span8">
-		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
-		<p class="meta">Interaction Designer no Robô Livre<br>
-		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
-		</div>
-
-		<div class="btn-group">
-		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			<span class="icon-cog icon-gray"></span>
-		</a>
-			<ul class="dropdown-menu">
-				<li>
-					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
-				</li>
-			</ul>
-		</div><!-- btn-group -->
-		</li>
-		
-		<li class="row">
-		<div class="span8">
-		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
-		<p class="meta">Interaction Designer no Robô Livre<br>
-		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
-		</div>
-
-		<div class="btn-group">
-		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			<span class="icon-cog icon-gray"></span>
-		</a>
-			<ul class="dropdown-menu">
-				<li>
-					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
-				</li>
-			</ul>
-		</div><!-- btn-group -->
-		</li>
-		
-		<li class="row">
-		<div class="span8">
-		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a></h3>
-		<p class="meta">Interaction Designer no Robô Livre<br>
-		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
-		</div>
-
-		<div class="btn-group">
-		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			<span class="icon-cog icon-gray"></span>
-		</a>
-			<ul class="dropdown-menu">
-				<li>
-					<a href="inbox-escrever.shtml">Enviar mensagem privada</a>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
 				</li>
 				<li class="divider"></li>
 				<li>
@@ -312,21 +312,41 @@
 <!-- ====================== -->
 <!-- ! Caixas de mensagem   -->
 <!-- ====================== -->
-<div class="modal fade" id="modalRemoveCommunity">
+<div class="modal fade" id="modalSendMsg">
+<form action="#" id="form-enviar" class="form-horizontal">
+
   <div class="modal-header">
     <a class="close" data-dismiss="modal">×</a>
-    <h3>Deixar de participar</h3>
+    <h3>Enviar mensagem</h3>
   </div>
+
   <div class="modal-body">
-  <p>Deseja deixar de participar da comunidade <strong>Henrique Foresti</strong>?</p>
-  </div>
+  
+<!--   <div class="alert alert-success">Mensagem enviada com sucesso.</div> -->
+
+		        <div class="control-group">
+				<label class="control-label">Para</label>
+		          <div class="controls">
+				<div class="input-prepend" id="fromField">
+				<span class="add-on"><img src="assets/img/rl/_avatar-default-20.png" alt="Rodrigo Medeiros" class="photo"></span><span class="input-medium uneditable-input"></span>
+                </div>
+
+		            </div>
+
+		        <div class="control-group">
+				<label class="control-label" for="msgCompose">Mensagem</label>
+		            <div class="controls">
+		            	<textarea id="msgCompose" class="input-xlarge" rows="8" placeholder="Escreva sua mensagem privada"></textarea>
+		            </div>
+		          </div>
+		          </div>
+
+  </div><!-- modal-body -->
   <div class="modal-footer">
-    <a href="#" class="btn btn-danger">Deixar de participar</a> 
-
-    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+    <button type="submit" class="btn btn-primary">Enviar</button>
   </div>
+</form>
 </div>
-
 
 
 <!--#include virtual="includes/footer.html" -->
