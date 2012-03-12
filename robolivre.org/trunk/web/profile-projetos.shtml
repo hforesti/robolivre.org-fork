@@ -26,10 +26,10 @@
 <ul class="nav nav-pills nav-stacked">
 	<li><a href="profile-home.shtml"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
 	<li><a href="profile-conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
-	<li class="active"><a href="profile-comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+	<li><a href="profile-comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
 	<li><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
 	<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
-	<li><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+	<li class="active"><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
 				<li><hr></li>
 	<li><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
 </ul>
@@ -38,19 +38,33 @@
 <hr class="only-mobile">
 
 <div class="span10">
-	<div class="row">
-	<h3 class="span5">Comunidades que você faz parte ‧ <small>55</small></h3>
-	
-	<form class="pull-right">
-	        <input type="text" class="input-xlarge search-query" placeholder="Buscar na lista de comunidades">
-	</form>
-	</div>
+
 
 <div class="list-mgmt">
+	<h2>Projetos que você segue ‧ <small>15</small></h2>	
+
+<form class="list-filter pull-right">
+        <input type="text" class="input-xlarge search-query" placeholder="Buscar na lista de projetos">
+</form>
+
+<div class="btn-group" id="bt-ordem">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    Ordenar
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+	  <li class="active">
+	    <a href="#">Atualizados recentemente</a>
+	  </li>
+	  <li><a href="#">Ordem alfabética</a></li>
+	  <li><a href="#">Criados por você</a></li>
+  </ul>
+</div>
+
 	<ul>
 		<li class="row">
 		<div class="span8">
-		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
 		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
 		</div>
@@ -75,33 +89,7 @@
 		</li>
 		<li class="row">
 		<div class="span8">
-		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
-		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
-		</div>
-
-		<div class="btn-group">
-		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			<span class="icon-cog icon-gray"></span>
-		</a>
-			<ul class="dropdown-menu">
-				<li>
-					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
-				</li>
-				<li>
-					<a href="comunidade-upload.shtml">Adicionar um documento</a>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
-				</li>
-			</ul>
-		</div><!-- btn-group -->
-		</li>
-		
-		<li class="row">
-		<div class="span8">
-		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
 		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
 		</div>
@@ -127,7 +115,7 @@
 		
 		<li class="row">
 		<div class="span8">
-		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
 		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
 		</div>
@@ -153,7 +141,7 @@
 		
 		<li class="row">
 		<div class="span8">
-		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
 		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
 		</div>
@@ -179,7 +167,7 @@
 		
 		<li class="row">
 		<div class="span8">
-		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
 		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
 		</div>
@@ -205,7 +193,7 @@
 		
 		<li class="row">
 		<div class="span8">
-		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
 		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
 		</div>
@@ -231,7 +219,7 @@
 		
 		<li class="row">
 		<div class="span8">
-		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
 		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
 		</div>
@@ -257,7 +245,7 @@
 		
 		<li class="row">
 		<div class="span8">
-		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
 		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
 		</div>
@@ -283,7 +271,33 @@
 		
 		<li class="row">
 		<div class="span8">
-		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
 		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
 		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
 		</div>
@@ -344,7 +358,7 @@
     <h3>Deixar de participar</h3>
   </div>
   <div class="modal-body">
-  <p>Deseja deixar de participar da comunidade <strong>Nome da comunidade</strong>?</p>
+  <p>Deseja deixar de participar da comunidade <strong>Nome do projeto</strong>?</p>
   </div>
   <div class="modal-footer">
     <a href="#" class="btn btn-danger">Deixar de participar</a> 

@@ -40,9 +40,9 @@
 <div class="span10">
 
 	<div class="row">
-	<h3 class="span6">Conteúdos seguidos por você ‧ <small>55</small></h3>
+	<h3 class="span5">Conteúdos seguidos por você ‧ <small>55</small></h3>
 	
-	<form class="span4">
+	<form class="pull-right">
 	        <input type="text" class="input-xlarge search-query" placeholder="Buscar na lista de conteúdos">
 	</form>
 	</div>

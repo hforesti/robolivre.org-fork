@@ -1,0 +1,13 @@
+INSTUPsrc.sensor
+/home/fabyuu/GitHub/robolivre-desenv/Fabio Aguiar/Ferramenta_de_Controle_do_Robo_v0.1/Ferramenta de Controle do Robô/src/sensor.py
+INFOS:&&3|1|2|0&&3|1|2|0&&1|3|2|0&&2|4|2|3&&3|5|2|6&&2|7|2|3&&3|8|2|3&&3|9|2|3&&3|10|2|3
+ui=10
+Ui_Sensor=3
+app=8
+Sensor=9
+lcdNumber=5
+Ui_Sensor.setupUi=6
+_fromUtf8=1
+setupUi=4
+retranslateUi=7
+src.sensor=2
