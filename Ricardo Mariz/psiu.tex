@@ -69,6 +69,8 @@ informação neste protocolo é mostrado abaixo: \\
 O  campo mensagem será ou um comando ou uma resposta. Se o comando/resposta tiver parâmetros eles devem estar na mensagem, caso contrário, será mandada uma resposta de erro.  \\
 CheckSum é a soma de todos os bytes da mensagem.
 
+\paragraph*{•}OBS: Cada campo é separado por um caractere de espaço " "(0x20).Esses caracteres fazem parte da mensagem, ou seja, o valor desses caracteres tem que ser calculado no checksum e estar contido no campo tamanho. 
+
 \paragraph*{}Um exemplo de uma mensagem de comando no PSIU está descrita abaixo:\\
 
 \begin{table}[ht]
@@ -76,7 +78,7 @@ CheckSum é a soma de todos os bytes da mensagem.
 	
 	\begin{tabular}{l}
 		
-		 \textbf{MNERIM031parafrente 100 PC02024}\\
+		 \textbf{MNERIM 034 parafrente 100 PC 02123}\\
 		
 	\end{tabular}
 	\label{tab:formatoslatex} %label da tabela
@@ -85,10 +87,10 @@ CheckSum é a soma de todos os bytes da mensagem.
 \textsl
 {Onde: 
 Destinatário = MNERIM , 
-Tamanho = 029 , 
+Tamanho = 034 , 
 Comando = parafrente,   
 Parâmetro = 100 , Remetente = PC,
-CheckSum = 02031} \\ \\
+CheckSum = 02123} \\ \\
 
 \newpage
 \part*{Campos do pacote} 
@@ -97,8 +99,7 @@ CheckSum = 02031} \\ \\
 \paragraph{}Destinatário é o campo onde vai conter o nome do dispositivo a ser enviado a mensagem.
 Este nome pode conter letra maísculas, minúsculas, numerés, espaços e caracteres especiais, desde que sejam caracteres ASCII. \\
 Cada dispositivo sabe seu nome e com isso ele só irá ler as mensagens que sejam mandadas diretamente para eles. \\
-A quantidade de bytes é definido pelo tamanho do nome do dispositivo. \\ 
-O número de caracteres do nome também pode variar entre os dispositivos, mas como cada um sabe seu próprio nome é possível indicar onde começa o próximo campo (tamanho da mensagem).
+
 
 
 
@@ -129,7 +130,7 @@ Se o comando tiver dois ou mais parâmetros a separação entre eles é dada por
 \paragraph{\textbf{CheckSum} \newline \newline } 
 CheckSum é um campo de 5 bytes fixos de tamanho e é a soma em uma variável inteira de 16 bits (desprezando o transporte "vai um") de todos os bytes da mensagem (ele não incluido). Essa soma é representada em decimal. \\ Como os 5 bytes são fixos, se a soma dos bytes der um número de 4 bytes, deverá ser acrescentado um 0 na frente, assim formando um CheckSum de 5 bytes.\\
 
-\textsl{ Exemplo: \\\\ int checksum = 0; \newline char mensagem[] = "MNERIM029parafrente 100 ";\newline for (x = 0; $x
+\textsl{ Exemplo: \\\\ int checksum = 0; \newline char mensagem[] = "MNERIM 034 parafrente 100 PC ";\newline for (x = 0; $x
 < strlen(mensagem)$
 ; x++) \\
  \hspace*{1cm}checksum = checksum + mensagem[x]; \newline printf("\%s\%d",  mensagem, checksum); 
@@ -142,7 +143,7 @@ CheckSum é um campo de 5 bytes fixos de tamanho e é a soma em uma variável in
 \part*{Respostas \newline}
 
 
-Para um controle mais eficaz nas respostas dos comandos no protocolo PSIU ASCII, antes de cada resposta (sucesso, falha, distância calculada por um sensor, etc) será mandado também o comando que foi executado. \\ \\
+Para um controle mais eficaz nas respostas dos comandos no protocolo PSIU ASCII, antes de cada resposta (sucesso, falha, distância calculada por um sensor, etc) será mandado também o nome do comando que foi executado. \\ \\
 
 \begin{table}[ht]
 	\centering
@@ -156,12 +157,12 @@ Para um controle mais eficaz nas respostas dos comandos no protocolo PSIU ASCII,
 
 Isso facilita o entendimento das respostas pelos dispositivos. \\\\
 Exemplo:\\\\ \hspace*{1cm} 
-\textsc{Envio do Comando "parafrente":} \\\\ \hspace*{2cm} \texttt{MNERIM029parafrente 100 PC02031} 
+\textsc{Envio do Comando "parafrente":} \\\\ \hspace*{2cm} \texttt{MNERIM 034 parafrente 100 PC 02123} 
 
 
 
 \paragraph*{}
-\hspace*{0.8cm}\textsc{Resposta (Sucesso):} \\\\ \hspace*{2cm}\texttt{PC035parafrente sucesso MNERIM02656} \hspace*{2cm} \\ \\ \\ \\
+\hspace*{0.8cm}\textsc{Resposta (Sucesso):} \\\\ \hspace*{2cm}\texttt{PC 038 parafrente sucesso MNERIM 02755} \hspace*{2cm} \\ \\ \\ \\
 
 
 \newpage
@@ -172,13 +173,13 @@ Exemplo:\\\\ \hspace*{1cm}
 Uma mensagem de sucesso é enviada se um comando válido foi executado. 
 \newline
 Exemplo:\\\\ \hspace*{0.5cm} 
-\textsc{Envio da resposta:} \\\\ \hspace*{2cm} \texttt{PCXXX"nomedocomando" sucesso MNERIMXXXXX} \\
+\textsc{Envio da resposta:} \\\\ \hspace*{2cm} \texttt{PC XXX "nomedocomando" sucesso MNERIM XXXXX} \\
 
 \paragraph{\textbf{falha} \newline \newline}
 
 Uma mensagem de falha é enviada se a execução se um comando falhou.
 Exemplo:\\\\ \hspace*{0.5cm} 
-\textsc{Envio da resposta:} \\\\ \hspace*{2cm} \texttt{PCXXX"nomedocomando" falha MNERIMXXXXX} \\
+\textsc{Envio da resposta:} \\\\ \hspace*{2cm} \texttt{PC XXX "nomedocomando" falha MNERIM XXXXX} \\
 
 \newpage
 
@@ -191,14 +192,14 @@ Este comando diz ao robô a quantidade em \textit{cm} que ele irá andar para fr
 Se o comando for executado corretamente será recebido uma resposta de OK, caso contrário será recebido uma resposta de FALHA. \\ 
 \newline
  Exemplo:\\\\ \hspace*{0.5cm} 
-\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM031parafrente 100 PC02024} \\
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM 034 parafrente 100 PC 02123} \\
 
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{2cm}p{1cm}p{2cm}p{2cm}p{1cm}p{2cm}}
 		\toprule
-		MNERIM & 031 & parafrente & 100 & PC & 02024 \\
+		MNERIM & 034 & parafrente & 100 & PC & 02123 \\
 		\midrule	
 		Destinatário & Tam. & Comando & Parâmetro & Rem. & CheckSum \\
 		\bottomrule
@@ -207,13 +208,14 @@ Se o comando for executado corretamente será recebido uma resposta de OK, caso 
 \end{table}
 
 \paragraph*{\newline\newline}
-\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC035parafrente sucesso MNERIM02656} \hspace*{2cm}\textbf{(SUCESSO)}
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC 038 parafrente sucesso MNERIM 02755
+} \hspace*{2cm}\textbf{(SUCESSO)}
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{1cm}p{1cm}p{3.2cm}p{2cm}p{2cm}}
 		\toprule
-		PC & 035 &parafrente sucesso  & MNERIM & 02656 \\
+		PC & 038 &parafrente sucesso  & MNERIM & 02755 \\
 		\midrule	
 		Dest. & Tam. & Resposta & Rem. & CheckSum \\
 		\bottomrule
@@ -221,13 +223,13 @@ Se o comando for executado corretamente será recebido uma resposta de OK, caso 
 	\label{tab:formatoslatex} %label da tabela
 \end{table}
 
-\hspace*{1.2cm} \texttt{PC033parafrente falha MNERIM02389} \hspace*{2.5cm}\textbf{(FALHA)}
+\hspace*{1.2cm} \texttt{PC 036 parafrente falha MNERIM 02488} \hspace*{2.5cm}\textbf{(FALHA)}
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
 		\toprule
-		PC & 033 & parafrente falha  & MNERIM & 02389 \\
+		PC & 036 & parafrente falha  & MNERIM & 02488 \\
 		\midrule	
 		Dest. & Tam. & Resposta & Rem. & CheckSum \\
 		\bottomrule
@@ -243,13 +245,13 @@ Este comando diz ao robô a quantidade em \textit{cm} que ele irá andar para tr
 Se o comando for executado corretamente será recebido uma resposta de OK, caso contrário será recebido uma resposta de FALHA. \\
 \newline
 Exemplo: \\\\ \hspace*{0.5cm} 
-\textsc{Envio do Comando:} \\\\ \hspace*{2cm}\texttt{MNERIM029paratras 100 PC01829} \\
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm}\texttt{MNERIM 032 paratras 100 PC 01919} \\
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{2cm}p{1cm}p{2cm}p{2cm}p{1cm}p{2cm}}
 		\toprule
-		MNERIM & 029 & paratras & 100 & PC & 01829 \\
+		MNERIM & 032 & paratras & 100 & PC & 01919 \\
 		\midrule	
 		Destinatário & Tam. & Comando & Parâmetro & Rem.& CheckSum \\
 		\bottomrule
@@ -258,14 +260,14 @@ Exemplo: \\\\ \hspace*{0.5cm}
 \end{table}
 
 \paragraph*{\newline\newline}
-\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC033paratras sucesso MNERIM02452
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC 036 paratras sucesso MNERIM 02551
 } \hspace*{2cm}\textbf{(SUCESSO)}
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
 		\toprule
-		PC & 033 &paratras sucesso  & MNERIM & 02452 \\
+		PC & 036 &paratras sucesso  & MNERIM & 02551 \\
 		\midrule	
 		Dest. & Tam. & Resposta & Rem. & CheckSum \\
 		\bottomrule
@@ -273,13 +275,13 @@ Exemplo: \\\\ \hspace*{0.5cm}
 	\label{tab:formatoslatex} %label da tabela
 \end{table}
 
-\hspace*{1.2cm} \texttt{PC031paratras falha MNERIM02185} \hspace*{2.5cm}\textbf{(FALHA)}
+\hspace*{1.2cm} \texttt{PC 034 paratras falha MNERIM 02284} \hspace*{2.5cm}\textbf{(FALHA)}
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
 		\toprule
-		PC & 031 &paratras falha  & MNERIM & 02185 \\
+		PC & 031 &paratras falha  & MNERIM & 02284 \\
 		\midrule	
 		Dest. & Tam. & Resposta & Rem. & CheckSum \\
 		\bottomrule
@@ -295,13 +297,13 @@ Este comando diz ao robô a quantidade em \textit{graus} que ele irá girar para
 Se o comando for executado corretamente será recebido uma resposta de OK, caso contrário será recebido uma resposta de FALHA. \\
 \newline
 Exemplo: \\\\ \hspace*{0.5cm} 
-\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM032giradireita 100 PC02118} \\
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM 035 giradireita 100 PC 02217} \\
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{2cm}p{1cm}p{2cm}p{2cm}p{1cm}p{2cm}}
 		\toprule
-		MNERIM & 032 & giradireita & 100 & PC & 02118 \\
+		MNERIM & 035 & giradireita & 100 & PC & 02217 \\
 		\midrule	
 		Destinatário & Tam. & Comando & Parâmetro &Rem. & CheckSum \\
 		\bottomrule
@@ -310,13 +312,13 @@ Exemplo: \\\\ \hspace*{0.5cm}
 \end{table}
 
 \paragraph*{\newline\newline}
-\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC036giradireita sucesso MNERIM02750} \hspace*{2cm}\textbf{(SUCESSO)}
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC 039 giradireita sucesso MNERIM 02849} \hspace*{2cm}\textbf{(SUCESSO)}
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{1cm}p{1cm}p{3.3cm}p{2cm}p{2cm}}
 		\toprule
-		PC & 036 &giradireita sucesso  & MNERIM & 02750 \\
+		PC & 039 &giradireita sucesso  & MNERIM & 02849 \\
 		\midrule	
 		Dest. & Tam. & Resposta & Rem. & CheckSum \\
 		\bottomrule
@@ -324,13 +326,13 @@ Exemplo: \\\\ \hspace*{0.5cm}
 	\label{tab:formatoslatex} %label da tabela
 \end{table}
 
-\hspace*{1.2cm} \texttt{PC034giradireita falha MNERIM02483} \hspace*{2.5cm}\textbf{(FALHA)}
+\hspace*{1.2cm} \texttt{PC 037 giradireita falha MNERIM 02582} \hspace*{2.5cm}\textbf{(FALHA)}
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
 		\toprule
-		PC & 034 &giradireita falha  & MNERIM & 02483 \\
+		PC & 037 &giradireita falha  & MNERIM & 02582 \\
 		\midrule	
 		Dest. & Tam. & Resposta & Rem. & CheckSum \\
 		\bottomrule
@@ -347,13 +349,13 @@ Este comando diz ao robô a quantidade em \textit{graus} que ele irá girar para
 Se o comando for executado corretamente será recebido uma resposta de OK, caso contrário será recebido uma resposta de FALHA. \\
 \newline
 Exemplo:\\\\ \hspace*{0.5cm} 
-\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM033giraesquerda 100 PC02239} \\
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM 036 giraesquerda 100 PC 02338} \\
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{2cm}p{1cm}p{2cm}p{2cm}p{1cm}p{2cm}}
 		\toprule
-		MNERIM & 033 & giraesquerda & 100 & PC & 02239 \\
+		MNERIM & 036 & giraesquerda & 100 & PC & 02338 \\
 		\midrule	
 		Destinatário & Tam. & Comando & Parâmetro & Rem. & CheckSum \\
 		\bottomrule
@@ -361,13 +363,13 @@ Exemplo:\\\\ \hspace*{0.5cm}
 	\label{tab:formatoslatex} %label da tabela
 \end{table}
 \paragraph*{\newline\newline}
-\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC037giraesquerda sucesso MNERIM02871} \hspace*{2cm}\textbf{(SUCESSO)}
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC 040 giraesquerda sucesso MNERIM 02961} \hspace*{2cm}\textbf{(SUCESSO)}
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{1cm}p{1cm}p{3.5cm}p{2cm}p{2cm}}
 		\toprule
-		PC & 037 &giraesquerda sucesso  & MNERIM & 02871 \\
+		PC & 040 &giraesquerda sucesso  & MNERIM & 02961 \\
 		\midrule	
 		Dest. & Tam. & Resposta & Rem. & CheckSum \\
 		\bottomrule
@@ -375,13 +377,13 @@ Exemplo:\\\\ \hspace*{0.5cm}
 	\label{tab:formatoslatex} %label da tabela
 \end{table}
 
-\hspace*{1.2cm} \texttt{PC035giraesquerda falha MNERIM02604} \hspace*{2.5cm}\textbf{(FALHA)}
+\hspace*{1.2cm} \texttt{PC 038 giraesquerda falha MNERIM 02703} \hspace*{2.5cm}\textbf{(FALHA)}
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{1cm}p{1cm}p{3.5cm}p{2cm}p{2cm}}
 		\toprule
-		PC & 035 &giraesquerda falha  & MNERIM & 02604 \\
+		PC & 038 &giraesquerda falha  & MNERIM & 02703 \\
 		\midrule	
 		Dest. & Tam. & Resposta & Rem. & CheckSum \\
 		\bottomrule
@@ -395,13 +397,13 @@ Exemplo:\\\\ \hspace*{0.5cm}
 O comando \textit{quantoscomandos} pergunta ao dispositivo a quantidade de funções disponíveis. O retorno dessa função é um número com representando a quantidade de comandos do dispositivo.\\
 \newline
 Exemplo:\\\\ \hspace*{0.5cm} 
-\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM032quantoscomandos PC02415} \\
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM 035 quantoscomandos PC 02514} \\
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{2cm}p{1cm}p{3cm}p{1cm}p{2cm}}
 		\toprule
-		MNERIM & 032 & quantoscomandos & PC & 02415 \\
+		MNERIM & 035 & quantoscomandos & PC & 02514 \\
 		\midrule	
 		Destinatário & Tam. & Comando & Rem. &CheckSum \\
 		\bottomrule
@@ -409,14 +411,14 @@ Exemplo:\\\\ \hspace*{0.5cm}
 	\label{tab:formatoslatex} %label da tabela
 \end{table}
 \paragraph*{\newline\newline}
-\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC032quantoscomandos 6 MNERIM02501
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC 035 quantoscomandos 6 MNERIM 02600
 } 
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
 		\toprule
-		PC & 032 & quantoscomandos 6  & MNERIM & 02501 \\
+		PC & 035 & quantoscomandos 6  & MNERIM & 02600 \\
 		\midrule	
 		Dest. & Tam. & Resposta & Rem. & CheckSum \\
 		\bottomrule
@@ -430,13 +432,13 @@ O comando \textit{exibecomandos} pede ao dispositivo para exibir o comando desej
 Essa função tem como parâmetro um numero inteiro.\\ O retorno dessa função é o nome do comando seguido da quantidade de parâmetros inteiro, float e char que a função recebe.\\
 \newline
 Exemplo:\\\\ \hspace*{0.5cm} 
-\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM031exibecomando 1 PC02126} \\
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{MNERIM 034 exibecomando 1 PC 02225} \\
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{2cm}p{1cm}p{3cm}p{1cm}p{2cm}}
 		\toprule
-		MNERIM & 031 & exibecomandos & PC & 02126 \\
+		MNERIM & 034 & exibecomandos & PC & 02225 \\
 		\midrule	
 		Destinatário & Tam. & Comando & Rem. &CheckSum \\
 		\bottomrule
@@ -444,13 +446,13 @@ Exemplo:\\\\ \hspace*{0.5cm}
 	\label{tab:formatoslatex} %label da tabela
 \end{table}
 \paragraph*{\newline\newline}
-\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC044exibecomando parafrente 1 0 0 MNERIM03386} 
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC 049 exibecomando parafrente 1 0 0 MNERIM 03487} 
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{1cm}p{1cm}p{3cm}p{2cm}p{2cm}}
 		\toprule
-		PC & 038 & exibecomando parafrente 1 0 0  & MNERIM & 03148 \\
+		PC & 049 & exibecomando parafrente 1 0 0  & MNERIM & 03487 \\
 		\midrule	
 		Dest. & Tam. & Resposta  & Rem. & CheckSum \\
 		\bottomrule
@@ -471,13 +473,13 @@ No campo \textit{DESTINATÁRIO} no lugar do nome irá ter duas interrogações "
 \\
 
 Exemplo:\\\\ \hspace*{0.5cm} 
-\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{??024qualseunome PC01654} \\
+\textsc{Envio do Comando:} \\\\ \hspace*{2cm} \texttt{?? 029 qualseunome PC 01755} \\
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{2cm}p{1cm}p{2cm}p{1cm}p{2cm}}
 		\toprule
-		?? & 024 & qualseunome & PC & 01654 \\
+		?? & 029 & qualseunome & PC & 01755 \\
 		\midrule	
 		Destinatário & Tam. & Comando & Rem. & CheckSum \\
 		\bottomrule
@@ -485,13 +487,13 @@ Exemplo:\\\\ \hspace*{0.5cm}
 	\label{tab:formatoslatex} %label da tabela
 \end{table}
 \paragraph*{\newline\newline}
-\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC028qualseunome MNERIM01988} 
+\hspace*{0.8cm}\textsc{Resposta:} \\\\ \hspace*{2cm}\texttt{PC 031 qualseunome MNERIM 02078} 
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{p{1cm}p{1cm}p{2cm}p{2cm}p{2cm}}
 		\toprule
-		PC & 028 & qualseunome  & MNERIM & 01988 \\
+		PC & 031 & qualseunome  & MNERIM & 02078 \\
 		\midrule	
 		Dest. & Tam. & Resposta & Rem. & CheckSum \\
 		\bottomrule
@@ -512,13 +514,13 @@ Exemplo:\\\\ \hspace*{0.5cm}
 		\toprule
 		Comando &  Parâmetro & Exemplo de comando \\
 		\midrule	
-		qualseunome & -- & 	??024qualseunome PC01654\\	
-		quantoscomandos & -- & PC032quantoscomandos 7 MNERIM02502  \\
-		exibecomandos & 1 int & PC038exibecomando parafrente MNERIM03148\\
-		parafrente & 1 int (0 : 999)  & MNERIM031parafrente 100 PC02024 \\
-		paratras & 1 int (0 : 999)  & MNERIM029paratras 100 PC01829 \\
-		giradireita & 1 int (0 : 360)  & MNERIM032giradireita 100 PC02118 \\
-		giraesquerda & 1 int (0 : 360)  & MNERIM033giraesquerda 100 PC02239 \\
+		qualseunome & -- & 	?? 029 qualseunome PC 01755\\	
+		quantoscomandos & -- & MNERIM 035 quantoscomandos PC 02514\\
+		exibecomandos & 1 int & MNERIM 034 exibecomando 1 PC 02225\\
+		parafrente & 1 int (0 : 999)  & MNERIM 034 parafrente 100 PC 02123\\
+		paratras & 1 int (0 : 999)  & MNERIM 032 paratras 100 PC 01919 \\
+		giradireita & 1 int (0 : 360)  & MNERIM 035 giradireita 100 PC 02217\\
+		giraesquerda & 1 int (0 : 360)  & MNERIM 036 giraesquerda 100 PC 02338\\
 		\bottomrule
 	\end{tabular}
 	\label{tab:formatoslatex} %label da tabela

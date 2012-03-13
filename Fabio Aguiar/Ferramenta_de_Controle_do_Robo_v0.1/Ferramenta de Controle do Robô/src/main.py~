@@ -296,8 +296,7 @@ class MainWidget(QtGui.QWidget):
         for numero in range(len(scan())):
             robo_porta = serial.Serial(scan()[numero])
             robo_porta.open()
-            if (robo_porta.portstr.find("/dev/ttyACM") != -1):
-           	 sleep(1.5)
+            sleep(1.5)
             mensagem = "?? 024 qualseunome PC 01750"
             resposta = self.instanciaFuncoes.enviar_mensagem(robo_porta, mensagem,  0.5)
             nome = resposta.split(" ")[3]
