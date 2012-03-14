@@ -25,7 +25,24 @@ class ajaxActions extends sfActions {
     }
     
     public function executeIndex(sfWebRequest $request) {}
+    
+    
+    public function executeAjaxValidaNomeConteudo(sfWebRequest $request) {
+        $mensagem = "";
+        $nome = $request->getParameter("nome");
+        $objConteudo = Doctrine::getTable('Conteudos')->validaNomeConteudo($nome);
+        
+        if(!$objConteudo){
+            $mensagem = "ok";
+        } else {
+            $mensagem .= "id_conjunto=" . $objConteudo->getIdConjunto() . Util::SEPARADOR_PARAMETRO . "nome=" . $objConteudo->getNome();
+        }
 
+        $this->mensagem = $mensagem;
+    }
+    
+    
+    
     public function executeAjaxValidacaoFormCadastro(sfWebRequest $request) {
 
         $mensagem = "";

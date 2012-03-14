@@ -133,7 +133,7 @@ class Publicacoes extends BasePublicacoes {
                 $string .="</a>";
                 $string .= "<div class=\"entry\">";       
                 $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
-                $string .= " publicou em ".Util::getTagConteudo($this->getNomeConjunto(),$this->getIdConjunto(),true).".";
+                $string .= " publicou em ".Util::getTagConteudo($this->getNomeConjunto(),"fn",true).".";
             
             //NO PERFIL DE ALGUEM    
             } else if ($this->getIdUsuarioReferencia() != null) {
@@ -194,7 +194,7 @@ class Publicacoes extends BasePublicacoes {
             $string .= "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario(Util::IMAGEM_MINIATURA)) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
             $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
             $string .= " criou ";
-            $string .= Util::getTagConteudo($this->getNomeConjunto(), $this->getIdConjunto(),true);
+            $string .= Util::getTagConteudo($this->getNomeConjunto(),"fn",true);
             $string .= ". <span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">" . Util::getDataSimplificada($this->getDataPublicacao()) . "</span>";
  
             
@@ -205,7 +205,7 @@ class Publicacoes extends BasePublicacoes {
             $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
 
             $string .= " está seguindo ";
-            $string .= Util::getTagConteudo($this->getNomeConjunto(), $this->getIdConjunto(),true);
+            $string .= Util::getTagConteudo($this->getNomeConjunto(),"fn",true);
             $string .= ". <span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">" . Util::getDataSimplificada($this->getDataPublicacao()) . "</span>";
         }
 

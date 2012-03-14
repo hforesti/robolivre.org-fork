@@ -27,6 +27,7 @@ abstract class BasePublicacoesFormFilter extends BaseFormFilterDoctrine
       'link'                   => new sfWidgetFormFilterInput(),
       'data_publicacao'        => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'visivel'                => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'tipo_publicacao'        => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -44,6 +45,7 @@ abstract class BasePublicacoesFormFilter extends BaseFormFilterDoctrine
       'link'                   => new sfValidatorPass(array('required' => false)),
       'data_publicacao'        => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'visivel'                => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'tipo_publicacao'        => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('publicacoes_filters[%s]');
@@ -79,6 +81,7 @@ abstract class BasePublicacoesFormFilter extends BaseFormFilterDoctrine
       'link'                   => 'Text',
       'data_publicacao'        => 'Date',
       'visivel'                => 'Number',
+      'tipo_publicacao'        => 'Number',
     );
   }
 }

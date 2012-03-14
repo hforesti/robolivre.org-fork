@@ -35,7 +35,8 @@
         <h3><a href="<?php echo url_for('perfil/exibirConteudos?u='.$usuario->getIdUsuario()) ?>">Conteúdos seguidos <small><?php echo $quantidadeConteudoSeguido; ?></small></a></h3>
         <ul class="thumbnails">
             <?php foreach ($arrayConteudoSeguido as $conteudo): ?>
-                <li class="span1"><a href="<?php echo url_for('conteudo/exibir?u=' . $conteudo->getIdConjunto()) ?>" class="thumbnail"><img src="<?php echo image_path($conteudo->getImagemPerfil()) ?>" alt="<?php echo $conteudo->getNome(); ?>" title="<?php echo $conteudo->getNome(); ?>"></a></li>
+                <?php $innerHTML = "<img src='".image_path($conteudo->getImagemPerfil())."' alt='". $conteudo->getNome() ."' title='".$conteudo->getNome()."'>"; ?>
+                    <li class="span1"><?php echo Util::getTagConteudoSlug($innerHTML, $conteudo->getNome(), "thumbnail") ?></li>
             <?php endforeach; ?>
         </ul>
     </div><!-- grid-conteudos -->

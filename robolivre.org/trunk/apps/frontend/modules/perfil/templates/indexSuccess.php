@@ -4,7 +4,7 @@
 
     <div class="span2" id="sidebar">
         <div class="avatar">
-            <a href="<?php url_for('perfil/index'); ?>"><img src="<?php echo image_path(UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_GRANDE)); ?>" alt="Rodrigo Medeiros" class="photo"></a>
+            <a href="<?php url_for('perfil/index'); ?>"><img src="<?php echo image_path(UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_GRANDE)); ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>" class="photo"></a>
             <div class="btn-group">
                 <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
                     <span class="icon-cog icon-gray"></span>
@@ -14,12 +14,12 @@
                         <a href="<?php echo url_for('perfil/atualizarFoto') ?>">Atualizar foto</a>
                     </li>
                     <li>
-                        <a href="<?php echo url_for('perfil/editarPerfil?u='.$usuario->getIdUsuario()) ?>">Editar perfil</a>
+                        <a href="<?php echo url_for('perfil/editarPerfil?u='.UsuarioLogado::getInstancia()->getIdUsuario()) ?>">Editar perfil</a>
                     </li>
                 </ul>
             </div>
 
-            <h1><?php echo $usuario->getNome(); ?></h1>
+            <h1><?php echo UsuarioLogado::getInstancia()->getNome(); ?></h1>
 
         </div><!-- /avatar -->
 
@@ -122,7 +122,8 @@
             <h3><a href="<?php echo url_for('perfil/exibirConteudos?u='.$usuario->getIdUsuario()) ?>">Conteúdos seguidos <small><?php echo $quantidadeConteudoSeguido; ?></small></a></h3>
             <ul class="thumbnails">
                 <?php foreach($arrayConteudoSeguido as $conteudo): ?>
-                    <li class="span1"><a href="<?php echo url_for('conteudo/exibir?u='.$conteudo->getIdConjunto()) ?>" class="thumbnail"><img src="<?php echo image_path($conteudo->getImagemPerfil()) ?>" alt="<?php echo $conteudo->getNome(); ?>" title="<?php echo $conteudo->getNome(); ?>"></a></li>
+                    <?php $innerHTML = "<img src='".image_path($conteudo->getImagemPerfil())."' alt='". $conteudo->getNome() ."' title='".$conteudo->getNome()."'>"; ?>
+                    <li class="span1"><?php echo Util::getTagConteudoSlug($innerHTML, $conteudo->getNome(), "thumbnail") ?></li>
                 <?php endforeach; ?>
             </ul>
             <a href="<?php echo url_for('perfil/exibirConteudos?u='.$usuario->getIdUsuario()) ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>

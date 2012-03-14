@@ -2,7 +2,7 @@
 
     <div class="span2" id="sidebar">
         <div class="avatar">
-            <a href="<?php url_for('conteudo/exibir?u='.$conteudo->getIdConjunto()); ?>"><img src="<?php echo image_path($conteudo->getImagemPerfil(Util::IMAGEM_GRANDE)) ?>" alt="Arduino" class="photo"></a>
+            <a href="<?php url_for('conteudo/').Util::criaSlug($conteudo->getNome()); ?>"><img src="<?php echo image_path($conteudo->getImagemPerfil(Util::IMAGEM_GRANDE)) ?>" alt="Arduino" class="photo"></a>
             <div class="btn-group">
                 <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
                     <span class="icon-cog icon-gray"></span>
@@ -85,15 +85,15 @@
         <div id="grid-conteudos" class="wdgt">
             <h3><a href="conteudos.shtml">Conteúdos relacionados <small>150</small></a></h3>
             <ul class="thumbnails">
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
-                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+                <li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
             </ul>
             <a href="conteudos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-conteudos -->
@@ -104,12 +104,12 @@
         <div id="grid-projetos" class="wdgt">
             <h3><a href="projetos.shtml" title="Ver tudo">Projetos relacionados <small>15</small></a></h3>
             <ul class="thumbnails">
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
+                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
+                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
+                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
+                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
+                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
+                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
             </ul>
             <a href="projetos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-comunidades -->
@@ -131,3 +131,8 @@
     </div><!-- /aside -->
 
 </div><!-- /row -->
+<script type="text/javascript">
+    //<![CDATA[
+    document.title = "<?php echo $conteudo->getNome(); ?> - Conteudo - Robolivre";
+    //]]>   
+</script>

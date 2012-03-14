@@ -16,4 +16,23 @@ class ConjuntosTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Conjuntos');
     }
+    
+    
+    public function getSlug($id_conjunto) {
+        
+        $q = Doctrine_Query::create()
+                ->select('slug')
+                ->from('Conjuntos')
+                ->where("id_conjunto = '$id_conjunto'");
+        
+
+        $resultado = $q->fetchArray();
+
+        if ($resultado){ 
+            foreach ($resultado as $reg) 
+                return $reg['slug'];
+        }
+
+        return false;
+    }
 }

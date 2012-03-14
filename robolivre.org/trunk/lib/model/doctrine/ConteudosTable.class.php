@@ -169,9 +169,82 @@ class ConteudosTable extends Doctrine_Table {
         }
     }
     
+    
+    
+    public function buscaPorSlug($slug){
+        
+        $slug = strtolower($slug);
+        
+        $id_usuario_logado = UsuarioLogado::getInstancia()->getIdUsuario();
+        $query = "SELECT IF (p.aceito is not null,p.aceito,null) as \"participante\",c.*,
+        i.id_conjunto as \"i.id_conjunto\",i.id_tipo_conjunto as \"i.id_tipo_conjunto\",i.id_usuario AS \"i.id_usuario\",i.imagem_perfil AS \"i.imagem_perfil\",
+        t.id_tipo_permissao_conjunto as \"t.id_tipo_permissao_conjunto\",
+        u.nome as \"u.nome\"
+        FROM conteudos c 
+        LEFT JOIN conjuntos i ON c.id_conjunto = i.id_conjunto AND c.id_tipo_conjunto = i.id_tipo_conjunto 
+        LEFT JOIN participantes_conjuntos p ON p.id_usuario = $id_usuario_logado AND p.id_conjunto = i.id_conjunto AND p.id_tipo_conjunto = i.id_tipo_conjunto
+        LEFT JOIN tipos_permissoes_conjuntos t ON t.id_tipo_permissao_conjunto = p.id_tipo_permissao_conjunto       
+        LEFT JOIN usuarios u ON i.id_usuario = u.id_usuario
+        WHERE i.slug = '$slug'";
+        
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($query);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+        
+//        Util::pre($statement);
+//        Util::pre($resultado,true);
+        
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $conteudo = new Conteudos();
+
+                $conteudo->setIdConteudo($reg['id_conteudo']);
+                $conteudo->setIdTipoConjunto($reg['id_tipo_conjunto']);
+                $conteudo->setIdConjunto($reg['id_conjunto']);
+                $conteudo->setIdSuperTipo($reg['id_super_tipo']);
+                $conteudo->setNome($reg['nome']);
+                $conteudo->setDescricao($reg['descricao']);
+                $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
+                $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
+                
+                $conjunto = new Conjuntos();
+                $conjunto->setIdConjunto($reg['i.id_conjunto']);
+                $conjunto->setIdUsuario($reg['i.id_usuario']);
+                $conjunto->setIdTipoConjunto($reg['i.id_tipo_conjunto']);
+                $conjunto->setImagemPerfil($reg['i.imagem_perfil']);
+
+                $conteudo->setConjunto($conjunto);
+                $conteudo->setNomeProprietario($reg['u.nome']);
+
+                if($conjunto->getIdUsuario()==UsuarioLogado::getInstancia()->getIdUsuario()){
+                    $conteudo->setTipoUsuario(Conteudos::PROPRIETARIO);
+                }else{
+                    $conteudo->setTipoUsuario($reg['t.id_tipo_permissao_conjunto']);
+                    if($reg['participante']==null){
+                        $conteudo->setTipoSolicitacao(Conteudos::SEM_SOLICITACAO);
+                    }else{
+                        $conteudo->setTipoSolicitacao($reg['participante']);
+                    }
+                }
+                return $conteudo;
+            }
+        }
+    }
+    
     public function gravarConteudo(Conteudos $conteudo) {
+        
+        $slug = Util::criaSlug($conteudo->getNome());
+        
         $query = "
-        INSERT INTO conjuntos (id_usuario, id_tipo_conjunto) VALUES (" . UsuarioLogado::getInstancia()->getIdUsuario() . ", " . TiposConjuntos::CONTEUDO . ");
+        INSERT INTO conjuntos (id_usuario, id_tipo_conjunto,slug) VALUES (" . UsuarioLogado::getInstancia()->getIdUsuario() . ", " . TiposConjuntos::CONTEUDO . ",'$slug');
         INSERT INTO conteudos (id_conjunto, id_tipo_conjunto,nome,descricao,enviar_email_criador)
             VALUES (LAST_INSERT_ID(), " . TiposConjuntos::CONTEUDO . ",'" . $conteudo->getNome() . "','" . $conteudo->getDescricao() . "','" . $conteudo->getEnviarEmailCriador() . "')";
         $connection = Doctrine_Manager::getInstance()
@@ -215,7 +288,7 @@ class ConteudosTable extends Doctrine_Table {
                 $logSistema->setDataPublicacao(date('Y-m-d H:i:s'));
                 $logSistema->setParametros(
                         "IP:" . UsuarioLogado::getInstancia()->getEnderecoRemoto() . LogsSistema::SEPARADOR.
-                        "ID_CONJUNTO:".$participacao->getIdConjunto() . LogsSistema::SEPARADOR
+                        "ID_CONJUNTO:".$id_conjunto . LogsSistema::SEPARADOR
                 );
                 $logSistema->save();
                 
@@ -243,7 +316,8 @@ class ConteudosTable extends Doctrine_Table {
                 $conjunto->setIdUsuario($reg['u.id_usuario']);
                 $conjunto->setIdTipoConjunto($reg['u.id_tipo_conjunto']);
                 $conjunto->setImagemPerfil($reg['u.imagem_perfil']);
-
+                $conjunto->setSlug($slug);
+                
                 $conteudo->setConjunto($conjunto);
                 $conteudo->setTipoUsuario(Conteudos::PROPRIETARIO);
                 $conteudo->setNomeProprietario(UsuarioLogado::getInstancia()->getNome());
@@ -282,6 +356,36 @@ class ConteudosTable extends Doctrine_Table {
         }
 
         return $arrayRetorno;
+    }
+    
+    public function validaNomeConteudo($nome) {
+        
+        $q = Doctrine_Query::create()
+                ->select('*')
+                ->from('Conteudos')
+                ->where("nome = '$nome'");
+        
+
+        $resultado = $q->fetchArray();
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $conteudo = new Conteudos();
+
+                $conteudo->setIdConteudo($reg['id_conteudo']);
+                $conteudo->setIdTipoConjunto($reg['id_tipo_conjunto']);
+                $conteudo->setIdConjunto($reg['id_conjunto']);
+                $conteudo->setIdSuperTipo($reg['id_super_tipo']);
+                $conteudo->setNome($reg['nome']);
+                $conteudo->setDescricao($reg['descricao']);
+                $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
+                $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
+
+                return $conteudo;
+            }
+        }
+
+        return false;
     }
 
 }

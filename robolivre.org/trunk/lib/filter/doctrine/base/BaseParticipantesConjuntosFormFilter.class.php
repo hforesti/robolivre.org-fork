@@ -13,9 +13,11 @@ abstract class BaseParticipantesConjuntosFormFilter extends BaseFormFilterDoctri
   public function setup()
   {
     $this->setWidgets(array(
+      'aceito'                     => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
+      'aceito'                     => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('participantes_conjuntos_filters[%s]');
@@ -39,6 +41,7 @@ abstract class BaseParticipantesConjuntosFormFilter extends BaseFormFilterDoctri
       'id_conjunto'                => 'Number',
       'id_tipo_conjunto'           => 'Number',
       'id_tipo_permissao_conjunto' => 'Number',
+      'aceito'                     => 'Number',
     );
   }
 }

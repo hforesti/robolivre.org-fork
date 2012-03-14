@@ -14,8 +14,10 @@
 
         <!-- Le styles -->
         <?php include_stylesheets() ?>
-<!--        <link href="/css/bootstrap.min.css" rel="stylesheet">-->
-<!--        <link href="/css/main-robolivre.css" rel="stylesheet">-->
+        
+        <!-- Le JQuery
+        ================================================== -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
     </head>
     <?php if (!UsuarioLogado::getInstancia()->isLogado()) { ?>
         <body class="home">
@@ -40,14 +42,14 @@
                                     <a href="<?php echo url_for("perfil/index") ?>">Início</a>
                                 </li>
                                 
-                                <?php $class = $sf_context->getModuleName()=="conteudo"? "active" : "" ?>
+                                <?php $class = ($sf_context->getModuleName()=="conteudos"||$sf_context->getModuleName()=="conteudo")? "active" : "" ?>
                                 <li class="<?php echo $class ?>">
-                                    <a href="<?php echo url_for("conteudo/index") ?>">Conteúdos</a>
+                                    <a href="<?php echo url_for("conteudos/index") ?>">Conteúdos</a>
                                 </li>
                                 
                                 <?php $class = $sf_context->getModuleName()=="comunidade"? "active" : "" ?>
                                 <li class="<?php echo $class ?>">
-                                    <a href="<?php echo url_for("comunidade/index") ?>">Comunidades</a>
+                                    <a href="<?php echo url_for("comunidades/index") ?>">Comunidades</a>
                                 </li>
                                 <li class="divider-vertical"></li>
                             </ul>
@@ -147,14 +149,10 @@
     </div><!-- /container -->
 
 
-
     <!-- Le javascript
-    ================================================== -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    ================================================== -->    
     <?php include_javascripts() ?>
     
-<!--    <script src="/js/bootstrap.min.js"></script>-->
-<!--    <script src="/js/main-robolivre.js"></script>-->
     <div class="fade-rl"></div>
 </body>
 </html>

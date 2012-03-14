@@ -137,6 +137,13 @@ Conjuntos:
       primary: false
       notnull: false
       autoincrement: false
+    slug:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
 Conteudos:
   connection: doctrine
   tableName: conteudos

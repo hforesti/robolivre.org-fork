@@ -25,8 +25,18 @@ class Util {
         return "<a href=\"".url_for('perfil/exibir?u='.$idUsuario)."\">$nomeUsuario</a>";
     }
     
-    public static function getTagConteudo($nomeConteudo,$idConjunto,$comImagemReferencia = false){
-        return (($comImagemReferencia)?"<i class=\"icon-tag icon-gray\"></i>":"")."<a href=\"".url_for('conteudo/exibir?u='.$idConjunto)."\" class=\"fn\">$nomeConteudo</a>";
+    public static function getTagConteudo($nomeConteudo,$class="",$comImagemReferencia = false){
+        
+        $url = url_for('conteudo/'.  self::criaSlug($nomeConteudo));
+        
+        return (($comImagemReferencia)?"<i class=\"icon-tag icon-gray\"></i>":"")."<a href=\"$url\" class=\"$class\">$nomeConteudo</a>";
+    }
+    
+    public static function getTagConteudoSlug($innerHTML,$slug,$class=""){
+        
+        $url = url_for('conteudo/'.  self::criaSlug($slug));
+        
+        return "<a href=\"$url\" class=\"$class\">$innerHTML</a>";
     }
     
     public static function getTextoFormatado($texto){
@@ -132,6 +142,20 @@ class Util {
     public static function getDiretorioThumbnail(){
         $v = new sfProjectConfiguration(); 
         return $v->getRootDir()."/web/assets/img/thumbnails";
+    }
+    public static function criaSlug($slug){
+        $slug = strtolower($slug);
+        $retorno = "";
+        
+        foreach(explode(" ", $slug) as $parte){
+            if($retorno == ""){
+                $retorno = $parte;
+            }else{
+                $retorno .= "-".$parte;
+            }
+        }
+        
+        return $retorno;
     }
 
 }

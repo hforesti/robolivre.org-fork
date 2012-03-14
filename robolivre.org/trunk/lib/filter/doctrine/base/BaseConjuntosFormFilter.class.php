@@ -15,11 +15,13 @@ abstract class BaseConjuntosFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'id_usuario'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'imagem_perfil'    => new sfWidgetFormFilterInput(),
+      'slug'             => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
       'id_usuario'       => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'imagem_perfil'    => new sfValidatorPass(array('required' => false)),
+      'slug'             => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('conjuntos_filters[%s]');
@@ -43,6 +45,7 @@ abstract class BaseConjuntosFormFilter extends BaseFormFilterDoctrine
       'id_tipo_conjunto' => 'Number',
       'id_usuario'       => 'Number',
       'imagem_perfil'    => 'Text',
+      'slug'             => 'Text',
     );
   }
 }

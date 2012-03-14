@@ -15,13 +15,11 @@ abstract class BaseTiposPermissoesConjuntosFormFilter extends BaseFormFilterDoct
     $this->setWidgets(array(
       'nome'                       => new sfWidgetFormFilterInput(),
       'descricao'                  => new sfWidgetFormFilterInput(),
-      'prioridade'                 => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
       'nome'                       => new sfValidatorPass(array('required' => false)),
       'descricao'                  => new sfValidatorPass(array('required' => false)),
-      'prioridade'                 => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('tipos_permissoes_conjuntos_filters[%s]');
@@ -45,7 +43,6 @@ abstract class BaseTiposPermissoesConjuntosFormFilter extends BaseFormFilterDoct
       'id_tipo_conjunto'           => 'Number',
       'nome'                       => 'Text',
       'descricao'                  => 'Text',
-      'prioridade'                 => 'Number',
     );
   }
 }

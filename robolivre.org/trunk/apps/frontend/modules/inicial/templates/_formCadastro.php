@@ -227,8 +227,6 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
     </fieldset>    
 </form>
 
-
-<?php use_helper('Javascript') ?>
 <script type="text/javascript">
     //<![CDATA[
     
@@ -280,13 +278,12 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
     }
     
     function validaForm() {
-            new Ajax.Request(<?php echo "'".url_for("ajax/ajaxValidacaoFormCadastro") . "?usuarios[nome]='+getValue('nome')+'&usuarios[login]='+getValue('username')+'&usuarios[email]='+getValue('email')+'&usuarios[senha]='+getValue('pass')+'&usuarios[_csrf_token]='+getValue('usuarios__csrf_token')" ?>, {
-                method: 'post', 
-                onComplete: function(resposta) {
-                    atualizaCamposAjax(resposta.responseText);
+            $.ajax({
+                url: <?php echo "'".url_for("ajax/ajaxValidacaoFormCadastro") . "?usuarios[nome]='+getValue('nome')+'&usuarios[login]='+getValue('username')+'&usuarios[email]='+getValue('email')+'&usuarios[senha]='+getValue('pass')+'&usuarios[_csrf_token]='+getValue('usuarios__csrf_token')" ?>,
+                success: function(resposta){
+                    atualizaCamposAjax(resposta);
                 }
-            });     
-        <?php  //echo remote_function(array('update' => 'conteudoPagina','url' => url_for("inicial/ajaxValidacaoFormCadastro") . "?usuarios[nome]='+getValue('nome')+'&usuarios[login]='+getValue('username')+'&usuarios[email]='+getValue('email')+'&usuarios[senha]='+getValue('pass')+'&usuarios[_csrf_token]='+getValue('usuarios__csrf_token')+'",)); ?>
+            });
     }//END validaForm
 
     function atualizaForcaSenha(inputSenha){

@@ -11,15 +11,18 @@ Doctrine_Manager::getInstance()->bindComponent('Conjuntos', 'doctrine');
  * @property integer $id_tipo_conjunto
  * @property integer $id_usuario
  * @property string $imagem_perfil
+ * @property string $slug
  * 
  * @method integer   getIdConjunto()       Returns the current record's "id_conjunto" value
  * @method integer   getIdTipoConjunto()   Returns the current record's "id_tipo_conjunto" value
  * @method integer   getIdUsuario()        Returns the current record's "id_usuario" value
  * @method string    getImagemPerfil()     Returns the current record's "imagem_perfil" value
+ * @method string    getSlug()             Returns the current record's "slug" value
  * @method Conjuntos setIdConjunto()       Sets the current record's "id_conjunto" value
  * @method Conjuntos setIdTipoConjunto()   Sets the current record's "id_tipo_conjunto" value
  * @method Conjuntos setIdUsuario()        Sets the current record's "id_usuario" value
  * @method Conjuntos setImagemPerfil()     Sets the current record's "imagem_perfil" value
+ * @method Conjuntos setSlug()             Sets the current record's "slug" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -62,6 +65,15 @@ abstract class BaseConjuntos extends sfDoctrineRecord
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
+             'autoincrement' => false,
+             'length' => 100,
+             ));
+        $this->hasColumn('slug', 'string', 100, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
              'autoincrement' => false,
              'length' => 100,
              ));

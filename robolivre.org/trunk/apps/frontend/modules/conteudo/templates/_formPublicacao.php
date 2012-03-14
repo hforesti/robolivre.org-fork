@@ -1,7 +1,5 @@
-<?php use_stylesheets_for_form($form) ?>
-<?php use_javascripts_for_form($form) ?>
 <?php if(isset ($id_conjunto)){ ?>
-<form id="form-status" action="<?php echo url_for('conteudo/publicar'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<form id="form-status" action="<?php echo url_for('conteudos/publicar'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 <ul class="nav nav-tabs">
   <li class="active"><a href="#tab-status" data-toggle="tab">Atualizar status</a></li>
   <li><a href="#tab-foto" data-toggle="tab" title="Adicionar Foto"><i class="icon-picture"></i></a></li>
