@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -25,7 +23,7 @@ class Ui_lineEdit(object):
         self.nomeDoRobo.setObjectName(_fromUtf8("nomeDoRobo"))
         self.label = QtGui.QLabel(lineEdit)
         self.label.setGeometry(QtCore.QRect(20, 10, 101, 17))
-        self.label.setText(QtGui.QApplication.translate("lineEdit", "Nome do Robô", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("lineEdit", "Nome do Robo", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setObjectName(_fromUtf8("label"))
         self.label_2 = QtGui.QLabel(lineEdit)
         self.label_2.setGeometry(QtCore.QRect(140, 10, 67, 17))
@@ -57,7 +55,7 @@ class Ui_lineEdit(object):
         self.checksum.setObjectName(_fromUtf8("checksum"))
         self.label_6 = QtGui.QLabel(lineEdit)
         self.label_6.setGeometry(QtCore.QRect(445, 10, 67, 17))
-        self.label_6.setText(QtGui.QApplication.translate("lineEdit", "Distância", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_6.setText(QtGui.QApplication.translate("lineEdit", "Distancia", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setObjectName(_fromUtf8("label_6"))
         self.distancia = QtGui.QLineEdit(lineEdit)
         self.distancia.setGeometry(QtCore.QRect(440, 30, 71, 27))
@@ -156,6 +154,11 @@ class Ui_lineEdit(object):
         
         self.retranslateUi(lineEdit)
         QtCore.QMetaObject.connectSlotsByName(lineEdit)        
+        
+    def setupUi3(self, lineEdit):
+        self.tamanho = QtGui.QLineEdit(lineEdit)
+        self.tamanho.setGeometry(QtCore.QRect(130, 30, 81, 27))
+        self.tamanho.setObjectName(_fromUtf8("tamanho"))
         
     def clickedRadioButton1(self):
         print "oi"

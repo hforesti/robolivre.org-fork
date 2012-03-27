@@ -25,7 +25,7 @@ class Ui_distancia(object):
         self.distanciaLineEdit.setObjectName(_fromUtf8("distanciaLineEdit"))
         self.label = QtGui.QLabel(distancia)
         self.label.setGeometry(QtCore.QRect(500, 70, 67, 17))
-        self.label.setText(QtGui.QApplication.translate("distancia", "Distância", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("distancia", "Distancia", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setObjectName(_fromUtf8("label"))
         
         

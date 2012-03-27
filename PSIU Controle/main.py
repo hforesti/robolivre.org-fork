@@ -10,6 +10,7 @@ from funcoes import Funcoes
 from time import sleep
 import serial
 import glob
+#from wadllib.application import Parameter
 
 
 def scan():
@@ -47,7 +48,6 @@ class MainWidget(QtGui.QWidget):
     contInt = 0
     contFloat = 0
     contChar = 0
-    
 
     
     def __init__(self, parent=None):
@@ -117,8 +117,44 @@ class MainWidget(QtGui.QWidget):
         self.boxMenu.setObjectName(_fromUtf8("boxMenu"))
         #
         ##
+        self.bigLineEdit = QtGui.QLineEdit(self.aba2)
+        self.bigLineEdit.setGeometry(QtCore.QRect(160, 80, 475, 27))
+        self.bigLineEdit.setText(QtGui.QApplication.translate("Form", "", None, QtGui.QApplication.UnicodeUTF8))
+        self.bigLineEdit.setObjectName(_fromUtf8("radioButtonBigLineEdit"))
+        self.bigLineEdit.setVisible(False)
+        
         self.menuDeAbas.addTab(self.aba2, _fromUtf8(""))
         
+        self.aba3 = QtGui.QWidget()
+        self.aba3.setObjectName(_fromUtf8("aba_2"))
+        #
+        self.lineEditAvancado = QtGui.QLineEdit(self.aba3)
+        self.lineEditAvancado.setGeometry(QtCore.QRect(35, 50, 600, 27))
+        self.lineEditAvancado.setText(QtGui.QApplication.translate("Form", "", None, QtGui.QApplication.UnicodeUTF8))
+        self.lineEditAvancado.setObjectName(_fromUtf8("radioButtonBigLineEdit"))
+        #
+        self.saidaAba3 = Ui_Saida()
+        self.saidaAba3.setupUi(self.aba3)
+        #Botao Listar Comandos
+        self.botaoEnviarComando = QtGui.QPushButton(self.aba3)
+        self.botaoEnviarComando.setGeometry(QtCore.QRect(35, 30, 600, 27))
+        self.botaoEnviarComando.setText(QtGui.QApplication.translate("Form", "Enviar Comando", None, QtGui.QApplication.UnicodeUTF8))
+        self.botaoEnviarComando.setObjectName(_fromUtf8("Enviar"))
+        #Evento de Listar Comandos
+        self.botaoEnviarComando.clicked.connect(self.enviarComandoAvancadoNormal)               
+        self.menuDeAbas.addTab(self.aba3, _fromUtf8(""))
+
+        self.botaoEnviarHexa = QtGui.QPushButton(self.aba3)
+        self.botaoEnviarHexa.setGeometry(QtCore.QRect(35, 30, 600, 27))
+        self.botaoEnviarHexa.setText(QtGui.QApplication.translate("Form", "Enviar Comando", None, QtGui.QApplication.UnicodeUTF8))
+        self.botaoEnviarHexa.setObjectName(_fromUtf8("Enviar"))
+        #Evento de Listar Comandos
+        self.botaoEnviarHexa.clicked.connect(self.enviarComandoAvancadoHexa)               
+        self.menuDeAbas.addTab(self.aba3, _fromUtf8(""))
+
+
+
+        self.menuDeAbas.addTab(self.aba3, _fromUtf8(""))
         
         self.botaoRobo0 = QtGui.QPushButton(self)
         self.botaoRobo0.setGeometry(QtCore.QRect(430, 7, 97, 27))
@@ -159,16 +195,22 @@ class MainWidget(QtGui.QWidget):
         
         
         self.metododoDoMenuDeAbas(self)
-        self.menuDeAbas.setCurrentIndex(2)
+        self.menuDeAbas.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(self)
         
         #Tamanho da janela principal MainWidget
         self.resize(700, 400)
 
+    def enviarComandoAvancadoNormal(self):
+        print "oi"
+    
+    def enviarComandoAvancadoHexa(self):
+        print "oi"
+
     def metododoDoMenuDeAbas(self, Form):
         self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba1), QtGui.QApplication.translate("Form", "Movimentos Basicos", None, QtGui.QApplication.UnicodeUTF8))
         self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba2), QtGui.QApplication.translate("Form", "Lista de Comandos", None, QtGui.QApplication.UnicodeUTF8))
-
+        self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba3), QtGui.QApplication.translate("Form", "Avancado", None, QtGui.QApplication.UnicodeUTF8))
 
     def parafrente(self):
         self.lineEditAba1.comando.setText("parafrente")
@@ -241,26 +283,62 @@ class MainWidget(QtGui.QWidget):
             MainWidget.listaParametrosChar.append(self.arrayResposta[i].split(" ")[6])
         
         self.boxMenu.clear()
+        
+        self.radioButton1 = QtGui.QRadioButton(self.aba2)
+        self.radioButton1.setGeometry(QtCore.QRect(35, 110, 116, 22))
+        self.radioButton1.setText(QtGui.QApplication.translate("Form", "RadioButton", None, QtGui.QApplication.UnicodeUTF8))
+        self.radioButton1.setObjectName(_fromUtf8("radioButton"))
+        self.radioButton1.show()
+        
+        self.radioButton2 = QtGui.QRadioButton(self.aba2)
+        self.radioButton2.setGeometry(QtCore.QRect(35, 130, 116, 22))
+        self.radioButton2.setText(QtGui.QApplication.translate("Form", "RadioButton", None, QtGui.QApplication.UnicodeUTF8))
+        self.radioButton2.setObjectName(_fromUtf8("radioButton"))
+        self.radioButton2.show()
+        
         self.boxMenu.addItems(MainWidget.listaComandos)
-        
-        self.connect(self.boxMenu, QtCore.SIGNAL("currentIndexChanged(const QString&)"), self.selecaoDeComandos)
-        
+
         #Botao Enviar
         self.botaoEnviar = QtGui.QPushButton(self.aba2)
-        self.botaoEnviar.setGeometry(QtCore.QRect(500, 150, 97, 27))
+        self.botaoEnviar.setGeometry(QtCore.QRect(35, 160, 97, 27))# 35, 30, 600, 27
         self.botaoEnviar.setText(QtGui.QApplication.translate("Form", "Enviar", None, QtGui.QApplication.UnicodeUTF8))
         self.botaoEnviar.setObjectName(_fromUtf8("Enviar"))
         self.botaoEnviar.show()
-        #Evento do Enviar
-        self.botaoEnviar.clicked.connect(self.verificaValoresParametrosValidos)               
-        self.menuDeAbas.addTab(self.aba2, _fromUtf8(""))
-        ##
+        ####
+
+        self.connect(self.radioButton1, QtCore.SIGNAL("clicked(bool)"),self.connectRadioButton1)
+        self.connect(self.radioButton2, QtCore.SIGNAL("clicked(bool)"),self.connectRadioButton2)
+        self.botaoEnviar.clicked.connect(self.constroiMensagem)
+                
+
         
         self.metododoDoMenuDeAbas(self)
         self.menuDeAbas.setCurrentIndex(1)
         
         self.zerarVariaveis()
     
+    def connectRadioButton1(self):
+        self.bigLineEdit.setVisible(False)
+        if (self.boxMenu.currentIndex() != self.boxMenu.setCurrentIndex(0)):
+            self.boxMenu.setCurrentIndex(0)
+        self.connect(self.boxMenu, QtCore.SIGNAL("currentIndexChanged(const QString&)"), self.selecaoDeComandos)
+        self.menuDeAbas.addTab(self.aba2, _fromUtf8(""))
+
+        self.metododoDoMenuDeAbas(self)
+        self.menuDeAbas.setCurrentIndex(1)
+    
+    def connectRadioButton2(self):
+        self.bigLineEdit.setVisible(True)
+        self.deletaLineEditParametro()
+        self.connect(self.boxMenu, QtCore.SIGNAL("currentIndexChanged(const QString&)"), self.lineEditParametrosExtenso)
+        self.menuDeAbas.addTab(self.aba2, _fromUtf8(""))
+
+        self.metododoDoMenuDeAbas(self)
+        self.menuDeAbas.setCurrentIndex(1)
+    
+    def lineEditParametrosExtenso(self):
+        self.deletaLineEditParametro()
+        
     def selecaoDeComandos(self):
         self.xLineEdit = 160
         self.yLineEdit = 80
@@ -275,6 +353,7 @@ class MainWidget(QtGui.QWidget):
         if (self.listaComandos[self.boxMenu.currentIndex()]):
             
             self.deletaLineEditParametro()            
+            
             
             if (self.listaParametrosInteiros[self.boxMenu.currentIndex()] > 0):
                 for i in range(int(self.listaParametrosInteiros[self.boxMenu.currentIndex()])):
@@ -411,42 +490,87 @@ class MainWidget(QtGui.QWidget):
 
     def constroiMensagem(self):
         self.zerarVariaveis()
-        self.tamanho = 0
+        self.somaDosParametros = 0
+        self.parametros = ''
         self.qtdEspacos = 4
-        for i in range (len(MainWidget.arrayInputsParametrosInt)):
-            self.tamanho = self.tamanho + len(str(MainWidget.arrayInputsParametrosInt[i].text()))
-            self.qtdEspacos = self.qtdEspacos + 1
-            
-        for i in range (len(MainWidget.arrayInputsParametrosFloat)):
-            self.tamanho = self.tamanho + len(str(MainWidget.arrayInputsParametrosFloat[i].text()))
-            self.qtdEspacos = self.qtdEspacos + 1
-            
-        for i in range (len(MainWidget.arrayInputsParametrosChar)):
-            self.tamanho = self.tamanho + len(str(MainWidget.arrayInputsParametrosChar[i].text()))
-            self.qtdEspacos = self.qtdEspacos + 1
-            
-        MainWidget.tamanho = self.instanciaFuncoes.contarTamanho(MainWidget.destinatario, 
-                                                                              MainWidget.listaComandos[self.boxMenu.currentIndex()], 
-                                                                              self.tamanho, 
-                                                                              MainWidget.remetente, 
-                                                                              self.qtdEspacos)
-        
-        MainWidget.mensagem = MainWidget.destinatario + ' ' + MainWidget.tamanho + ' ' + MainWidget.listaComandos[self.boxMenu.currentIndex()] + ' '
-        
-        for i in range (len(MainWidget.arrayInputsParametrosInt)):
-            MainWidget.mensagem = MainWidget.mensagem + MainWidget.arrayInputsParametrosInt[i].text()
 
-        for i in range (len(MainWidget.arrayInputsParametrosFloat)):
-            MainWidget.mensagem = MainWidget.mensagem + MainWidget.arrayInputsParametrosFloat[i].text()
-            
-        for i in range (len(MainWidget.arrayInputsParametrosChar)):
-            MainWidget.mensagem = MainWidget.mensagem + MainWidget.arrayInputsParametrosChar[i].text()
-            
-        MainWidget.mensagem = MainWidget.mensagem + ' ' + MainWidget.remetente + ' '
-        MainWidget.checksum = self.instanciaFuncoes.calculachecksum(MainWidget.mensagem)
-        MainWidget.mensagem = MainWidget.mensagem + MainWidget.checksum
         
+        if (self.radioButton1.isChecked() == True):
+            for i in range (len(MainWidget.arrayInputsParametrosInt)):
+                self.somaDosParametros = self.somaDosParametros + int(str(MainWidget.arrayInputsParametrosInt[i].text()))
+                self.qtdEspacos = self.qtdEspacos + 1
+                
+            for i in range (len(MainWidget.arrayInputsParametrosFloat)):
+                self.somaDosParametros = self.somaDosParametros + int(str(MainWidget.arrayInputsParametrosFloat[i].text()))
+                self.qtdEspacos = self.qtdEspacos + 1
+                
+            for i in range (len(MainWidget.arrayInputsParametrosChar)):
+                self.somaDosParametros = self.somaDosParametros + int(str(MainWidget.arrayInputsParametrosChar[i].text()))
+                self.qtdEspacos = self.qtdEspacos + 1
+                
+            MainWidget.tamanho = self.instanciaFuncoes.contarTamanho(MainWidget.destinatario, 
+                                                                                  MainWidget.listaComandos[self.boxMenu.currentIndex()], 
+                                                                                  self.somaDosParametros, 
+                                                                                  MainWidget.remetente, 
+                                                                                  self.qtdEspacos)
+            
+            MainWidget.mensagem = MainWidget.destinatario + ' ' + MainWidget.tamanho + ' ' + MainWidget.listaComandos[self.boxMenu.currentIndex()] + ' '
+            
+            for i in range (len(MainWidget.arrayInputsParametrosInt)):
+                MainWidget.mensagem = MainWidget.mensagem + MainWidget.arrayInputsParametrosInt[i].text()
+    
+            for i in range (len(MainWidget.arrayInputsParametrosFloat)):
+                MainWidget.mensagem = MainWidget.mensagem + MainWidget.arrayInputsParametrosFloat[i].text()
+                
+            for i in range (len(MainWidget.arrayInputsParametrosChar)):
+                MainWidget.mensagem = MainWidget.mensagem + MainWidget.arrayInputsParametrosChar[i].text()
+                
+            MainWidget.mensagem = MainWidget.mensagem + ' ' + MainWidget.remetente + ' '
+            MainWidget.checksum = self.instanciaFuncoes.calculachecksum(MainWidget.mensagem)
+            MainWidget.mensagem = MainWidget.mensagem + MainWidget.checksum
+            
+
+        if (self.radioButton2.isChecked() == True):
+            self.parametros = self.bigLineEdit.text()
+            self.qtdEspacos = 5
+            MainWidget.comando = MainWidget.listaComandos[self.boxMenu.currentIndex()]
+            MainWidget.tamanho = self.instanciaFuncoes.contarTamanho(MainWidget.destinatario, 
+                                                                     MainWidget.comando, 
+                                                                     len(self.parametros), 
+                                                                     MainWidget.remetente, 
+                                                                     self.qtdEspacos)
+            MainWidget.mensagem = MainWidget.destinatario + ' ' + MainWidget.tamanho + ' ' + MainWidget.comando + ' ' + self.parametros + ' ' + MainWidget.remetente + ' '
+            MainWidget.checksum = self.instanciaFuncoes.calculachecksum(MainWidget.mensagem)
+            MainWidget.mensagem = MainWidget.mensagem + MainWidget.checksum
+        
+        if(self.somaDosParametros > 0):
+            delay = float(self.somaDosParametros)/100 + 0.2
+        
+        if(int(len(self.parametros)) > 0):
+            delay = float(int(len(self.parametros)/100)) + 0.2
+            
+        if((int(len(self.parametros)) == 0) and (self.somaDosParametros == 0)):
+            self.zerarVariaveis()
+            self.parametros = ''
+            self.qtdEspacos = 4
+            MainWidget.comando = MainWidget.listaComandos[self.boxMenu.currentIndex()]
+            MainWidget.tamanho = self.instanciaFuncoes.contarTamanho(MainWidget.destinatario, 
+                                                                     MainWidget.comando, 
+                                                                     len(self.parametros), 
+                                                                     MainWidget.remetente, 
+                                                                     self.qtdEspacos)
+            MainWidget.mensagem = MainWidget.destinatario + ' ' + MainWidget.tamanho + ' ' + MainWidget.comando + ' ' + MainWidget.remetente + ' '
+            MainWidget.checksum = self.instanciaFuncoes.calculachecksum(MainWidget.mensagem)
+            MainWidget.mensagem = MainWidget.mensagem + MainWidget.checksum   
+            
+            
+            delay = 1
+        
+        resposta = self.instanciaFuncoes.enviar_mensagem(MainWidget.Serial, MainWidget.mensagem, delay)
+        self.saidaAba2.imprimirSaida("mensagem: " + MainWidget.mensagem + "\n" + "resposta: " + resposta)
+            
         print MainWidget.mensagem
+        self.zerarVariaveis()
 
 
 
