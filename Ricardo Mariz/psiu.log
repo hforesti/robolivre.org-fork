@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.30)  9 MAR 2012 10:42
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.30)  14 MAR 2012 14:49
 entering extended mode
  %&-line parsing enabled.
 **psiu.tex
@@ -1351,7 +1351,7 @@ ts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/rjom/.texmf-var/fonts/pk/ljfour
 /jknappen/ec/ecrm1728.600pk></usr/share/texmf-texlive/fonts/type1/public/amsfon
 ts/cm/cmbsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi
 10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on psiu.pdf (19 pages, 200278 bytes).
+Output written on psiu.pdf (19 pages, 200224 bytes).
 PDF statistics:
  599 PDF objects out of 1000 (max. 8388607)
  65 named destinations out of 1000 (max. 500000)
