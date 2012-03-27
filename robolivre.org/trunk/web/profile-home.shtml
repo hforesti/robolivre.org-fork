@@ -30,6 +30,7 @@
 	<li><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
 	<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
 	<li><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+	<li><a href="perfil-info.shtml"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
 				<li><hr></li>
 	<li><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
 </ul>
@@ -411,6 +412,9 @@
 
 		</li>
 	</ul>
+
+<div class="btn-load-more" id="pagination"><a href="#" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
+
 	</div><!-- tab-pane #1 -->
 
 
@@ -797,13 +801,22 @@
 
 		</li>
 	</ul>
+
+
+<div class="btn-load-more" id="pagination2"><a href="#" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
+
+
 	</div><!-- tab-pane #2 -->
+
+
 	
 </div><!-- tab-content -->
 
+
+
+
 </div><!-- stream -->
 
-<div id="pagination"><a href="#" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
 
 </div><!-- /miolo -->
 

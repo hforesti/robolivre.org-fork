@@ -27,17 +27,22 @@
 
 		          <div class="control-group">
 		            <div class="controls">
-		            <input type="text" class="span6" id="input-nome-conteudo" placeholder="Nome do conteúdo" value="">
+		            <input type="text" class="span5" id="input-nome-conteudo" placeholder="Nome do conteúdo" value="">
 		            </div>
 		          </div>
 
+<!--
 				<div class="alert">
             	<a href="conteudo.html">Arduino</a> é um conteúdo que já existe na nossa rede. <br>Deseja colaborar com ele? <a href="conteudo.shtml"><strong>Acesse agora</strong></a>.
           		</div>
+-->
 
   </div><!-- modal-body -->
   <div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Criar</button>
+    <div class="pull-right" id="div-botao-criar">
+    	<img src="assets/img/rl/loading.gif" alt="Aguarde...">
+    	<button type="submit" class="btn btn-primary">Criar</button>
+    </div>
   </div>
 </form>
 
@@ -68,21 +73,21 @@
 <div class="tab-content">
   <div class="tab-pane active fade in" id="thumbs">
 
-	<ul class="thumbnails">
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Nome do conteúdo</h5></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Apostila de C para PIC</h5></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Sistema de Processamento Principal - ARM</h5></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Arduino</h5> <span class="label label-info">Tema de aula</span></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Projeto Mecânico 22</h5></div></li>
+	<ul>
+		<li><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h4>Nome do conteúdo</h4></div></li>
+		<li><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h4>Apostila de C para PIC</h4></div></li>
+		<li><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h4>Sistema de Processamento Principal - ARM</h4></div></li>
+		<li class="corner-stamp"><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h4>Arduino</h4> <span class="label label-info">Tema de aula</span></div></li>
+		<li><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h4>Projeto Mecânico 22</h4></div></li>
+		<li><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h4>Encoder</h4> <span class="label label-info">Tema de aula</span></div></li>
+		<li><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h4>ProUCA</h4></div></li>
+		<li><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h4>MSWLogo</h4></div></li>
+		<li><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h4>Encoder</h4> <span class="label label-info">Tema de aula</span></div></li>
+		<li><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h4>Iniciando com o Arduino</h4></div></li>
+		<li><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h4>Encoder</h4> <span class="label label-info">Tema de aula</span></div></li>
+		<li><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h4>Iniciando com o Arduino</h4></div></li>
 	</ul>
 
-	<ul class="thumbnails">
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Encoder</h5> <span class="label label-info">Tema de aula</span></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>ProUCA</h5></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>MSWLogo</h5></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Encoder</h5> <span class="label label-info">Tema de aula</span></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Iniciando com o Arduino</h5></div></li>
-	</ul>
   </div>
 
 

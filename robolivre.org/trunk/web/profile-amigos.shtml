@@ -40,11 +40,14 @@
 <div class="span10">
 
 <div class="list-mgmt">
-	<h2>Seus amigos ‧ <small>55</small></h2>
-	
-	<form class="pull-right">
-	        <input type="text" class="input-xlarge search-query" placeholder="Buscar na lista de amigos">
+
+<div class="row">
+	<h2 class="span7">Seus amigos ‧ <small>55</small></h2>
+
+	<form class="list-filter">
+	        <input type="text" class="span3 search-query" placeholder="Buscar na lista de amigos">
 	</form>
+</div>
 
 <!-- ========================================================== -->
 <!-- ! Modelo de alerta quando tiver solicitação de amizade   -->

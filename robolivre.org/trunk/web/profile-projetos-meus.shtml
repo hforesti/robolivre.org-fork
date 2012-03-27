@@ -1,0 +1,99 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+<div class="avatar">
+	<a href="profile-home.shtml"><img src="assets/img/rl/avatar-170.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+    <div class="btn-group">
+	  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+	    <span class="icon-cog icon-gray"></span>
+	  	</a>
+	  	<ul class="dropdown-menu">
+	      <li>
+	        <a href="settings.shtml">Atualizar foto</a>
+	      </li>
+	      <li>
+	        <a href="inbox.shtml">Editar perfil</a>
+	      </li>
+		</ul>
+	</div>
+	
+	<h1>Rodrigo Medeiros</h1>
+
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li><a href="profile-home.shtml"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+	<li><a href="profile-conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+	<li><a href="profile-comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+	<li><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
+	<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
+	<li class="active"><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+				<li><hr></li>
+	<li><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+
+<div class="list-mgmt">
+
+<div class="row">
+	<h2 class="span7">Projetos que você segue ‧ <small>15</small></h2>	
+</div>
+
+<div class="row">
+	<div class="span6">
+	  <ul class="nav nav-pills">
+		  <li>
+		    <a href="profile-projetos.shtml">Atualizados recentemente</a>
+		  </li>
+		  <li class="active"><a href="profile-projetos-meus.shtml">Criados por você</a></li>
+	  </ul>
+	</div>
+	
+	<form class="list-filter">
+	        <input type="text" class="span4 search-query" placeholder="Buscar na lista de projetos">
+	</form>
+</div>
+
+<div class="well">
+<p>Você ainda não criou um projeto. <a href="projetos-criar.shtml">Criar agora</a>?</p>
+	<p>
+		ou<br>
+		<a href="profile-projetos.shtml" class="btn">Ver projetos que você segue</a>
+	</p>
+</div>
+
+</div>
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!-- ====================== -->
+<!-- ! Caixas de mensagem   -->
+<!-- ====================== -->
+<div class="modal fade" id="modalRemoveCommunity">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Deixar de participar</h3>
+  </div>
+  <div class="modal-body">
+  <p>Deseja deixar de participar da comunidade <strong>Nome do projeto</strong>?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-danger">Deixar de participar</a> 
+
+    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+  </div>
+</div>
+
+
+
+<!--#include virtual="includes/footer.html" -->

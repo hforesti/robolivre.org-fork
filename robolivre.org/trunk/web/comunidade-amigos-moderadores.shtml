@@ -1,0 +1,258 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+<div class="avatar">
+	<a href="comunidade.shtml"><img src="assets/img/rl/170.gif" alt="Poeta Manuel Bandeira" class="photo"></a>
+
+    <div class="btn-group">
+		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+		<span class="icon-cog icon-gray"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a data-toggle="modal" href="#modalInvite">Convidar amigos</a>
+			</li>
+		    <li class="divider"></li>
+		  <li>
+			<a href="#"><i class="icon-flag"></i> Reportar problema</a>
+		  </li>
+	</ul>
+	</div>
+
+
+<!-- ========================================== -->
+<!-- ! Menu apenas para o criador e moderador   -->
+<!-- ========================================== -->
+<!--
+    <div class="btn-group">
+		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+		<span class="icon-cog icon-gray"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="conteudo-criar.shtml">Editar dados</a>
+			</li>
+			<li>
+				<a data-toggle="modal" href="#modalImgUpload">Atualizar imagem</a>
+			</li>
+		</ul>
+	</div>
+-->
+	<h1>Poeta Manuel Bandeira</h1>
+
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li><a href="comunidade.shtml"><span class="icon-gray icon-info-sign"></span> Resumo</a></li>
+	<li><a href="comunidade-forum.shtml"><span class="icon-gray icon-comment"></span> Fórum <span class="label label-info">50</span></a></li>
+	<li><a href="comunidade-projetos.shtml"><span class="icon-gray icon-user"></span> Projetos <span class="label label-info">150</span></a></li>
+	<li><a href="comunidade-docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info">5</span></a></li>
+	<li class="active"><a href="comunidade-amigos.shtml"><span class="icon-gray icon-user"></span> Participantes <span class="label label-info">15</span></a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+
+
+<ul class="breadcrumb">
+  <li>
+    <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="comunidades">Comunidades</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="comunidade.shtml">Poeta Manuel Bandeira</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <a href="comunidade-amigos.shtml">Participantes</a>
+  </li>
+</ul>
+
+<div class="list-mgmt">
+
+<div class="row">
+	<h2 class="span7">Participantes desta comunidade ‧ <small>55</small></h2>	
+	<div class="span3">
+		<a href="#" class="btn btn-success"><i class="icon-plus icon-white"></i> Convidar amigos</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span6">
+	  <ul class="nav nav-pills">
+		  <li>
+		    <a href="comunidade-amigos.shtml">Todos</a>
+		  </li>
+		  <li><a href="#">Seus amigos</a></li>
+		  <li class="active"><a href="comunidade-amigos-moderadores.shtml">Moderadores</a></li>
+	  </ul>
+	</div>
+	
+	<form class="list-filter">
+	        <input type="text" class="span4 search-query" placeholder="Buscar na lista de participantes">
+	</form>
+</div>
+
+	<ul>
+		<li class="row mine">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Henrique Foresti" title="Henrique Foresti" class="thumbnail"></a> <h3><a href="perfil.shtml">Henrique Foresti</a> ‧ <small>Olha só você!</small></h3>
+		<p class="meta"><span class="label label-success"><i class="icon-user icon-white"></i> Administrador</span> ‧ Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		</li>
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Rodrigo Muniz" title="Rodrigo Muniz" class="thumbnail"></a> <h3><a href="perfil.shtml">Rodrigo Muniz</a></h3>
+		<p class="meta"><span class="label label-info"><i class="icon-user icon-white"></i> Moderador</span> ‧ Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a class="send-msg" data-toggle="modal" href="#modalModerator"><i class="icon-exclamation-sign icon-gray"></i> Remover de Moderador</a>
+				</li>
+				<li>
+					<a class="send-msg" data-toggle="modal" href="#modalBlock"><i class="icon-ban-circle icon-gray"></i> Banir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row mine">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes" class="thumbnail"></a> <h3><a href="perfil.shtml">Max Guenes</a> ‧ <small>Seu amigo</small></h3>
+		<p class="meta"><span class="label label-info"><i class="icon-user icon-white"></i> Moderador</span> ‧ Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a class="send-msg" data-toggle="modal" href="#modalModerator"><i class="icon-exclamation-sign icon-gray"></i> Remover de Moderador</a>
+				</li>
+				<li>
+					<a class="send-msg" data-toggle="modal" href="#modalBlock"><i class="icon-ban-circle icon-gray"></i> Banir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Fabio Aguiar" title="Fabio Aguiar" class="thumbnail"></a> <h3><a href="perfil.shtml">Fabio Aguiar</a></h3>
+		<p class="meta"><span class="label label-info"><i class="icon-user icon-white"></i> Moderador</span> ‧ Interaction Designer no Robô Livre<br>
+		<a href="perfil-conteudos.shtml">40 conteúdos seguidos</a> ‧ <a href="perfil-comunidades.shtml">5 comunidades</a> ‧ <a href="perfil-projetos.shtml">5 projetos relacionados</a> ‧ <a href="perfil-amigos.shtml">150 amigos</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a class="send-msg" data-toggle="modal" href="#modalModerator"><i class="icon-exclamation-sign icon-gray"></i> Remover de Moderador</a>
+				</li>
+				<li>
+					<a class="send-msg" data-toggle="modal" href="#modalBlock"><i class="icon-ban-circle icon-gray"></i> Banir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>		
+	</ul>
+
+</div>
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!-- ====================== -->
+<!-- ! Caixas de mensagem   -->
+<!-- ====================== -->
+<div class="modal fade" id="modalSendMsg">
+<form action="#" id="form-enviar" class="form-horizontal">
+
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Enviar mensagem</h3>
+  </div>
+
+  <div class="modal-body">
+  
+<!--   <div class="alert alert-success">Mensagem enviada com sucesso.</div> -->
+
+		        <div class="control-group">
+				<label class="control-label">Para</label>
+		          <div class="controls">
+				<div class="input-prepend" id="fromField">
+				<span class="add-on"><img src="assets/img/rl/_avatar-default-20.png" alt="Rodrigo Medeiros" class="photo"></span><span class="input-medium uneditable-input"></span>
+                </div>
+
+		            </div>
+
+		        <div class="control-group">
+				<label class="control-label" for="msgCompose">Mensagem</label>
+		            <div class="controls">
+		            	<textarea id="msgCompose" class="input-xlarge" rows="8" placeholder="Escreva sua mensagem privada"></textarea>
+		            </div>
+		          </div>
+		          </div>
+
+  </div><!-- modal-body -->
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>
+</form>
+</div>
+
+<div class="modal fade" id="modalModerator">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Promover a moderador</h3>
+  </div>
+  <div class="modal-body">
+  <p>Deseja promover <strong>Henrique Foresti</strong> a moderador da comunidade <strong>Nome da Comunidade</strong>? Moderadores podem:</p>
+	<ul>
+		<li>Excluir e editar tópicos</li>
+		<li>Excluir arquivos de documentos</li>
+		<li>Adicionar e remover projetos da comunidade</li>
+		<li>Banir usuários da comunidade</li>
+		<li>Editar nome, descrição e imagem da comunidade</li>
+	</ul>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary">Promover <strong>Henrique</strong> a moderador</a> 
+
+    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+  </div>
+</div>
+
+<!--#include virtual="includes/footer.html" -->
