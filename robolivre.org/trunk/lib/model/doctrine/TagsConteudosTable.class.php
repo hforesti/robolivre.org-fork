@@ -16,4 +16,66 @@ class TagsConteudosTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('TagsConteudos');
     }
+    
+    public function removeTag(TagsConteudos $tag){
+        $query = "DELETE FROM  tags_conteudos
+                WHERE id_conteudo_referencia = ".$tag->getIdConteudoReferencia()." AND id_conjunto_referencia = ".$tag->getIdConjuntoReferencia()." AND id_tipo_conjunto_referencia = ".$tag->getIdTipoConjuntoReferencia()." AND id_tag_conteudo = ".$tag->getIdTagConteudo();
+//        die($query);
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+        $statement = $connection->prepare($query);
+        // Make Statement  
+        $statement->execute();
+        
+    }
+    
+    public function getTagsConteudo($idConjunto) {
+        $arrayRetorno = array();
+
+        $query = "SELECT * 
+        FROM tags_conteudos t 
+        LEFT JOIN conteudos c ON c.id_conjunto = t.id_conjunto_referenciado
+        WHERE t.id_conjunto_referencia = $idConjunto";
+//        die($query);
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($query);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $tag = new TagsConteudos();
+
+                $tag->setIdTagConteudo($reg['id_tag_conteudo']);
+                
+                $tag->setIdConjuntoReferencia($reg['id_conjunto_referencia']);
+                $tag->setIdConteudoReferencia($reg['id_conteudo_referencia']);
+                $tag->setIdTipoConjuntoReferencia($reg['id_tipo_conjunto_referencia']);
+
+                $tag->setIdConjuntoReferenciado($reg['id_conjunto_referenciado']);
+                $tag->setIdConteudoReferenciado($reg['id_conteudo_referenciado']);
+                $tag->setIdTipoConjuntoReferenciado($reg['id_tipo_conjunto_referenciado']);
+
+                $conteudo = new Conteudos();
+                $conteudo->setNome($reg['nome']);
+                $conteudo->setIdConjunto($reg['id_conjunto']);
+                $conteudo->setIdConteudo($reg['id_conteudo']);
+
+                $tag->setConteudo($conteudo);
+
+                $value = $conteudo->getIdConjunto() . Util::SEPARADOR_PARAMETRO . $conteudo->getIdConteudo();
+                $arrayRetorno[$value] = $tag;
+            }
+        }
+        
+        return $arrayRetorno;
+    }
+    
 }

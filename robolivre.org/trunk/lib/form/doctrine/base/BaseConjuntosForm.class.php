@@ -19,6 +19,7 @@ abstract class BaseConjuntosForm extends BaseFormDoctrine
       'id_tipo_conjunto' => new sfWidgetFormInputHidden(),
       'id_usuario'       => new sfWidgetFormInputText(),
       'imagem_perfil'    => new sfWidgetFormInputText(),
+      'slug'             => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -26,6 +27,7 @@ abstract class BaseConjuntosForm extends BaseFormDoctrine
       'id_tipo_conjunto' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_tipo_conjunto')), 'empty_value' => $this->getObject()->get('id_tipo_conjunto'), 'required' => false)),
       'id_usuario'       => new sfValidatorInteger(),
       'imagem_perfil'    => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'slug'             => new sfValidatorString(array('max_length' => 100)),
     ));
 
     $this->widgetSchema->setNameFormat('conjuntos[%s]');

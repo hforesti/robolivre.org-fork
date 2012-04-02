@@ -195,11 +195,11 @@ var uploaderImg = new qq.FileUploader({
 	},
 	showMessage: function(message){ 
                 alert(message);
-                $("#thumb").attr("src",url_for("/assets/img/rl/170.gif")); 
+                $("#thumb").attr("src",url_for("assets/img/rl/170.gif")); 
                 $("#imagem_selecionada").val("");
             },
         onComplete: function(id, fileName, responseJSON){
-            $("#thumb").attr("src",url_for("/uploads/"+ fileName));
+            $("#thumb").attr("src",url_for("uploads/"+ fileName));
             $("#imagem_selecionada").val(fileName);
         }
 });

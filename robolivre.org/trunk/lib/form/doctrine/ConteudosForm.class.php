@@ -17,7 +17,6 @@ class ConteudosForm extends BaseConteudosForm {
             'id_conjunto' => new sfWidgetFormInputHidden(),
             'nome' => new sfWidgetFormInputText(),
             'descricao' => new sfWidgetFormTextarea(),
-            'id_super_tipo' => new sfWidgetFormSelect(array('choices' => Doctrine::getTable("SuperTipos")->getSuperTipos())),
             'enviar_email_criador' => new sfWidgetFormInputCheckbox(),
         ));
 
@@ -36,6 +35,27 @@ class ConteudosForm extends BaseConteudosForm {
         $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
         $this->setupInheritance();
+    }
+    
+    public function isValid() {
+        $isValid = parent::isValid();
+        $erros = $this->getErrorSchema()->getErrors();
+        if($isValid || (isset($erros['id_conteudo'])&& isset($erros['id_tipo_conjunto']) && isset($erros['id_conjunto']))){
+            $valores = $this->getTaintedValues();
+            $nomeConteudo = $valores['nome'];
+            $idConjunto = $valores['id_conjunto'];
+            
+            if(Doctrine::getTable("Conteudos")->validaNomeConteudo($nomeConteudo,$idConjunto)){
+                $error = new sfValidatorError($this->validatorSchema['nome'], 'Este conteúdo já existe');
+                $this->errorSchema->addError($error, 'nome');
+                return false;
+            }
+            
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }

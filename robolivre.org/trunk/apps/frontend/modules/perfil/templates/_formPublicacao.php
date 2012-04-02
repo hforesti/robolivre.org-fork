@@ -44,11 +44,10 @@
 
 	<button type="submit" class="btn btn-primary" id="send" tabindex="2">Publicar</button>
 
-		<select id="privacidade-status">
-                <option>Público</option>
-                <option>Só para amigos</option>
-                <option>Privado</option>
-		</select>
+		<select name="privacidade_publicacao" id="privacidade-status">
+                    <option value="<?php echo Publicacoes::PRIVACIDADE_PUBLICA ?>">Público</option>
+                    <option value="<?php echo Publicacoes::PRIVACIDADE_SOMENTE_AMIGOS ?>">Só para amigos</option>
+                </select>
 
 </form>
 

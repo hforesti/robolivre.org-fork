@@ -19,7 +19,7 @@
         ================================================== -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
     </head>
-    <?php if (!UsuarioLogado::getInstancia()->isLogado()) { ?>
+        <?php if (!UsuarioLogado::getInstancia()->isLogado()) { ?>
         <body class="home">
         <?php } ?>
         <?php if (UsuarioLogado::getInstancia()->isLogado()) { ?>
@@ -37,7 +37,7 @@
                         <a class="brand" href="<?php echo url_for("perfil/index") ?>">Robô Livre</a>
                         <div class="nav-collapse">
                             <ul class="nav">
-                                <?php $class = $sf_context->getModuleName()=="perfil"? "active" : "" ?>
+                                <?php $class = ($sf_context->getModuleName()=="perfil"&& $sf_context->getActionName()=="index" )? "active" : "" ?>
                                 <li class="<?php echo $class ?>">
                                     <a href="<?php echo url_for("perfil/index") ?>">Início</a>
                                 </li>
@@ -61,7 +61,7 @@
                             <ul class="nav" id="user-menu">
                                 <li class="dropdown">
                                     <?php $qtdMensagem = 5; ?>
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-warning" title="<?php echo $qtdMensagem ?> mensagens não lidas"><?php echo $qtdMensagem ?></span> <img src="<?php echo image_path(UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_MINIATURA)) ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>"> <?php echo Util::getNomeSimplificado(UsuarioLogado::getInstancia()->getNome()); ?> <b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-warning" title="<?php echo $qtdMensagem ?> mensagens não lidas"><?php echo $qtdMensagem ?></span> <img src="<?php echo image_path(UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_MINIATURA)) ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>"> <?php echo Util::getNomeSimplificado(UsuarioLogado::getInstancia()->getNome());?> <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a href="inbox.shtml"><i class="icon-inbox icon-gray"></i> (<?php echo $qtdMensagem ?>) Minhas mensagens</a>
@@ -148,7 +148,11 @@
         </footer>
     </div><!-- /container -->
 
-
+    <script type="text/javascript">
+        function url_for(path){
+            return '<?php echo url_for('') ?>'+path;
+        }
+    </script>
     <!-- Le javascript
     ================================================== -->    
     <?php include_javascripts() ?>

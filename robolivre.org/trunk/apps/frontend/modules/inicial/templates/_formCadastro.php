@@ -1,9 +1,6 @@
 <?php
-//$form = new UsuariosForm();
 $erros = $form->getErrorSchema()->getErrors();
 $valoresInciais = $form->getTaintedValues();
-//Util::pre($valoresInciais);
-
 ?>
 
 <form id="cadastro-form" class="form-horizontal" onsubmit="return validaConfirmacaoSenhaEmail()" action="<?php echo url_for('inicial/create'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>

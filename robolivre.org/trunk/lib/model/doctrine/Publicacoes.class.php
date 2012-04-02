@@ -15,6 +15,10 @@ class Publicacoes extends BasePublicacoes {
     const PUBLICACAO_COMUM = 0;
     const CRIACAO_CONJUNTO = 1;
     const SEGUIR_CONTEUDO = 2;
+    
+    const PRIVACIDADE_PUBLICA = 1;
+    const PRIVACIDADE_PRIVADA = 0;
+    const PRIVACIDADE_SOMENTE_AMIGOS = 2;
 
     private $grupoComentarios = array();
     private $nomeUsuario;
@@ -24,54 +28,13 @@ class Publicacoes extends BasePublicacoes {
     private $imagemPerfilConjunto;
     
     public function getImagemPerfilUsuario($tipoImagem = Util::IMAGEM_MEDIA) {
-        
         $imagem = $this->imagemPerfilUsuario;
-
-        if (!isset($imagem) || $imagem == "") {
-            switch ($tipoImagem) {
-                case Util::IMAGEM_GRANDE:
-                    return "/assets/img/rl/_avatar-default-140.png";
-                case Util::IMAGEM_MEDIA:
-                    return "/assets/img/rl/_avatar-default-60.png";
-                case Util::IMAGEM_MINIATURA:
-                    return "/assets/img/rl/_avatar-default-20.png";
-            }
-        }else{
-            switch ($tipoImagem) {
-                case Util::IMAGEM_GRANDE:
-                    return "/assets/img/thumbnails/".str_replace(array("#"),array("140"),$imagem);
-                case Util::IMAGEM_MEDIA:
-                    return "/assets/img/thumbnails/".str_replace(array("#"),array("60"),$imagem);
-                case Util::IMAGEM_MINIATURA:
-                    return "/assets/img/thumbnails/".str_replace(array("#"),array("20"),$imagem);
-            }
-        }
-
-        return $imagem;
+        return Util::validaImagem($imagem, $tipoImagem,Util::TIPO_IMAGEM_USUARIO);
     }
 
     public function getImagemPerfilConjunto($tipoImagem = Util::IMAGEM_MINIATURA) {
         $imagem = $this->imagemPerfilConjunto;
-
-        if (!isset($imagem) || $imagem == "") {
-            switch ($tipoImagem) {
-                case Util::IMAGEM_GRANDE:
-                    return "/assets/img/rl/_avatar-default-140.png";
-                case Util::IMAGEM_MEDIA:
-                    return "/assets/img/rl/_avatar-default-60.png";
-                case Util::IMAGEM_MINIATURA:
-                    return "/assets/img/rl/_avatar-default-20.png";
-            }
-        }else{
-            switch ($tipoImagem) {
-                case Util::IMAGEM_GRANDE:
-                    return "/assets/img/thumbnails/".str_replace(array("#"),array("140"),$imagem);
-                case Util::IMAGEM_MEDIA:
-                    return "/assets/img/thumbnails/".str_replace(array("#"),array("60"),$imagem);
-                case Util::IMAGEM_MINIATURA:
-                    return "/assets/img/thumbnails/".str_replace(array("#"),array("20"),$imagem);
-            }
-        }
+        return Util::validaImagem($imagem, $tipoImagem,Util::TIPO_IMAGEM_CONTEUDO);
     }
 
     public function setImagemPerfilConjunto($imagemPerfilConjunto) {
@@ -117,8 +80,14 @@ class Publicacoes extends BasePublicacoes {
     public function adicionarPublicacaoComentario(Publicacoes $publicacao) {
         $this->grupoComentarios[$publicacao->getIdPublicacao()] = $publicacao;
     }
-
+    
     public function imprimir($nomeForm = null,$arrayParametrosInclude = null) {
+        echo $this->getImpressao($nomeForm, $arrayParametrosInclude);
+    }
+    
+    public function getImpressao($nomeForm = null,$arrayParametrosInclude = null) {
+       
+        sfContext::getInstance()->getConfiguration()->loadHelpers(array('Helper', 'Tag', 'Url', 'Asset'));
         $string = "";
         if ($this->getTipoPublicacao() == self::PUBLICACAO_COMUM) {
             $string .= "<li class=\"vcard\">";
@@ -129,7 +98,7 @@ class Publicacoes extends BasePublicacoes {
                  
             //NO CONJUNTO (COMUNIDADE OU CONTEUDO)
             if ($this->getIdConjunto() != null) {
-                $string .= "<img src=\"" . $this->getImagemPerfilConjunto() . "\" alt=\"" . $this->getNomeConjunto() . "\" title=\"" . $this->getNomeConjunto() . "\" class=\"sub-icon\">";
+                $string .= "<img src=\"" . image_path($this->getImagemPerfilConjunto()) . "\" alt=\"" . $this->getNomeConjunto() . "\" title=\"" . $this->getNomeConjunto() . "\" class=\"sub-icon\">";
                 $string .="</a>";
                 $string .= "<div class=\"entry\">";       
                 $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
@@ -146,12 +115,21 @@ class Publicacoes extends BasePublicacoes {
             //PUBLICAÇÃO ATUALIZAÇÃO DE STATUS
             }else{
                 $string .="</a>";
-                $string .= "<div class=\"entry\">";       
+                $string .= "<div class=\"entry\">";
+                $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
             }
             
             $string .= "<p>".Util::getTextoFormatado($this->getComentario())."</p>";
             $string .= "<ul class=\"meta\">";
-            $string .= "<li class=\"visivel-para\"><i class=\"icon-eye-open\" title=\"Público\"></i></li>";
+            
+            if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_PUBLICA){
+                $string .= "<li class=\"visivel-para\"><i class=\"icon-eye-open\" title=\"Público\"></i></li>";
+            }else if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_SOMENTE_AMIGOS){
+                $string .= "<li class=\"visivel-para\"><i class=\"icon-user\" title=\"Só para amigos\"></i></li>";
+            }else if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_PRIVADA){
+                $string .= "<li class=\"visivel-para\"><i class=\"icon-lock\" title=\"Privada\"></i></li>";
+            }
+            
             $string .= "<span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">" . Util::getDataSimplificada($this->getDataPublicacao()) . "</span>";
             $string .= "</ul>";
             
@@ -229,8 +207,9 @@ class Publicacoes extends BasePublicacoes {
             $string .= "</li>";
             $string .= "</ul>";
             $string .= "</div>";
+        $string .= "<input type='hidden' name='id_ultima_publicacao' class='input-id-ultima-publicacao' value='".$this->getIdPublicacao()."' >";
         $string .= "</li>";
-        echo $string;
+        return $string;
     }
 
 }

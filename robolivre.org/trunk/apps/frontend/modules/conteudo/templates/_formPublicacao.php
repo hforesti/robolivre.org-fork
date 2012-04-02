@@ -36,17 +36,20 @@
         <?php if(isset ($id_conjunto)){ ?>
             <input type="hidden" name="id_conjunto" value="<?php echo $id_conjunto ?>" />
           <?php } ?>
+        <?php if(isset ($nome_conteudo)){ ?>
+            <input type="hidden" name="nome_conteudo" value="<?php echo $nome_conteudo ?>" />
+          <?php } ?>
         <?php echo $form->getWidget('comentario')->render($form->getName() . "[comentario]", null, array('class'=>"input-xlarge span7",'id' => 'status','rows'=>"3", 'placeholder' => "O que você tem para compartilhar sobre este conteúdo?",'tabindex'=>"1")); ?>
 	
 </fieldset>
 
 	<button type="submit" class="btn btn-primary" id="send" tabindex="2">Publicar</button>
 
-		<select id="privacidade-status">
-                <option>Público</option>
-                <option>Só para amigos</option>
-                <option>Privado</option>
-		</select>
+		<select name="privacidade_publicacao" id="privacidade-status">
+                    <option value="<?php echo Publicacoes::PRIVACIDADE_PUBLICA ?>">Público</option>
+                    <option value="<?php echo Publicacoes::PRIVACIDADE_SOMENTE_AMIGOS ?>">Só para amigos</option>
+                    <option value="<?php echo Publicacoes::PRIVACIDADE_PRIVADA ?>">Privado</option>
+                </select>
 
 </form>
 

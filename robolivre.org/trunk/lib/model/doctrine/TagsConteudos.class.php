@@ -12,4 +12,22 @@
  */
 class TagsConteudos extends BaseTagsConteudos
 {
+    private $conteudo;
+    
+    public function getConteudo() {
+        
+        if($this->conteudo==null){
+            $this->conteudo = new Conteudos();
+        }
+        
+        return $this->conteudo;
+    }
+
+    public function setConteudo($conteudo) {
+        $this->conteudo = $conteudo;
+    }
+    
+    public function getNomeConteudo(){
+        return $this->getConteudo()->getNome();
+    }
 }

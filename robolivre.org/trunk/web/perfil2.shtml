@@ -1,0 +1,477 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+<div class="avatar">
+	<a href="perfil.shtml"><img src="assets/img/rl/_avatar-default-large.png" alt="Henrique Foresti" class="photo"></a>
+    <div class="btn-group">
+	  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+	    <span class="icon-cog icon-gray"></span>
+	  	</a>
+	  	<ul class="dropdown-menu">
+	      <li>
+	        <a data-toggle="modal" href="#modalAdd">Adicionar como amigo</a>
+	      </li>
+	      <li>
+	        <a href="enviar-msg.shtml">Enviar mensagem privada</a>
+	      </li>
+		<li class="divider"></li>
+		<li>
+			<a data-toggle="modal" href="#modalIgnore"><i class="icon-ban-circle icon-gray"></i> Ignorar usuário</a>
+		</li>
+		</ul>
+	</div>
+	
+	<h1>Henrique Foresti</h1>
+
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li class="active"><a href="perfil.shtml"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+	<li><a href="#"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+	<li><a href="#"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+	<li><a href="#"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+	<li><a href="#"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
+	<li><a href="#"><span class="icon-gray icon-user"></span> Amigos</a></li>
+	<li><a href="perfil-info.shtml"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span7">
+
+<!-- modelo de mensagens -->
+<!-- <span class="alert pull-right">Aguardando resposta da sua solicitação de amizade.</span>
+<span class="alert alert-error pull-right">Usuário ignorado</span> -->
+
+<div class="well">
+<p><strong>Interaction Designer</strong> em Robô Livre ‧ <strong>Sexo:</strong> Masculino ‧ <strong>Idade:</strong> 30 anos</p>
+
+<a href="perfil-info.shtml" class="btn btn-primary btn-mini pull-right"><i class="icon-info-sign icon-white"></i> Mais sobre Henrique</a>
+
+<p>
+	<i class="icon-user icon-gray"></i> <small>Membro desde 22/01/2012 às 08h00</small>
+</p>
+</div>
+
+
+  <h3>Atualizações recentes</h3>
+
+<div id="stream">
+
+	<ul>
+	
+<!-- ====================================== -->
+<!-- ! Modelo de compartilhamento de link   -->
+<!-- ====================================== -->
+		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<div class="entry">
+			<a href="perfil.shtml" class="fn">Henrique Foresti</a>
+			<blockquote><p>
+			<a href="http://www.robolivre.org/">Robô Livre - O principal objetivo da Plataforma Robótica Livre, robolivre.org, é mostrar que a robótica pode e deve ser...</a>
+			</p></blockquote>
+			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
+			os robôs. Novos formatos?</p>
+					<ul class="meta">
+						<li class="visivel-para"><i class="icon-user" title="Só para amigos"></i></li>
+						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+					</ul>
+
+			<ul class="comments">
+				<li>
+				<form action="#" class="form-comment">
+					<img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" class="photo">
+					<textarea class="textarea-comment" rows="1" placeholder="Escreva um comentário"></textarea>
+					<button class="btn btn-mini">comentar</button>
+				</form>
+				</li>
+			</ul><!-- comments -->
+
+					
+			</div><!-- entry -->
+
+			<div class="btn-group">
+			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			    <span class="icon-share  icon-gray"></span>
+			  	</a>
+			  	<ul class="dropdown-menu">
+			      <li>
+			        <a href="#">Compartilhar no Twitter</a>
+			      </li>
+			      <li>
+			        <a href="#">Compartilhar no Facebook</a>
+			      </li>
+				<li class="divider"></li>
+			      <li>
+			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
+			      </li>
+				</ul>
+			</div><!-- btn-group -->
+
+		</li>
+		
+<!-- =============================================== -->
+<!-- ! Modelo de compartilhamento apenas de status   -->
+<!-- =============================================== -->
+		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<div class="entry">
+			<a href="perfil.shtml" class="fn">Henrique Foresti</a>
+			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
+			os robôs. Novos formatos?</p>
+					<ul class="meta">
+						<li class="visivel-para"><i class="icon-user" title="Só para amigos"></i></li>
+						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+					</ul>
+
+			<ul class="comments">
+				<li>
+				<form action="#" class="form-comment">
+					<img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" class="photo">
+					<textarea class="textarea-comment" rows="1" placeholder="Escreva um comentário"></textarea>
+					<button class="btn btn-mini">comentar</button>
+				</form>
+				</li>
+			</ul><!-- comments -->
+
+					
+			</div><!-- entry -->
+
+			<div class="btn-group">
+			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			    <span class="icon-share  icon-gray"></span>
+			  	</a>
+			  	<ul class="dropdown-menu">
+			      <li>
+			        <a href="#">Compartilhar no Twitter</a>
+			      </li>
+			      <li>
+			        <a href="#">Compartilhar no Facebook</a>
+			      </li>
+				<li class="divider"></li>
+			      <li>
+			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
+			      </li>
+				</ul>
+			</div><!-- btn-group -->
+
+		</li>
+
+<!-- ================================================================= -->
+<!-- ! Modelos de compartilhamento apenas de status com comentários   -->
+<!-- ================================================================= -->
+		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<div class="entry">
+			<a href="perfil.shtml" class="fn">Henrique Foresti</a>
+			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
+			os robôs. Novos formatos?</p>
+					<ul class="meta">
+						<li class="visivel-para"><i class="icon-eye-open" title="Público"></i></li>
+						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+					</ul>
+			<ul class="comments">
+				<li><a href="perfil.shtml"><img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" title="Rodrigo Medeiros" class="photo"> <span class="fn">Rodrigo Medeiros</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>:
+				<div class="comment"> 
+				<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod.</p>
+				</div>
+				<a class="close" title="Excluir seu comentário">&times;</a>
+				</li>
+				<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes" class="photo"> <span class="fn">Max Guenes</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>:
+				<div class="comment"> 
+				<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo. Curabitur blandit tempus porttitor.</p>
+				</div></li>
+				<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes" class="photo"> <span class="fn">Max Guenes</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>:
+				<div class="comment"> 
+				<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod.</p>
+				</div></li>
+				<li>
+				<form action="#" class="form-comment">
+					<img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" class="photo">
+					<textarea class="textarea-comment" rows="1" placeholder="Escreva um comentário"></textarea>
+					<button class="btn btn-mini">comentar</button>
+				</form>
+				</li>
+			</ul><!-- comments -->
+
+			</div><!-- entry -->
+
+		    <div class="btn-group">
+			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			    <span class="icon-share  icon-gray"></span>
+			  	</a>
+			  	<ul class="dropdown-menu">
+			      <li>
+			        <a href="#">Compartilhar no Twitter</a>
+			      </li>
+			      <li>
+			        <a href="#">Compartilhar no Facebook</a>
+			      </li>
+				<li class="divider"></li>
+			      <li>
+			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
+			      </li>
+				</ul>
+			</div><!-- btn-group -->
+
+		</li>
+
+
+<!-- ======================== -->
+<!-- ! Modelo de atividades   -->
+<!-- ======================== -->
+		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<a href="perfil.shtml" class="fn">Max Guenes</a> criou <a href="post.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> marcado com <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i> Open Source</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+		</li>
+
+		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<a href="perfil.shtml" class="fn">Max Guenes</a> e <a href="perfil.shtml" class="fn">Rodrigo Medeiros</a> agora são amigos. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+		</li>
+
+		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<a href="perfil.shtml" class="fn">Max Guenes</a> criou <a href="post.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> marcado com <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i> Arduino</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+		</li>
+
+		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<a href="perfil.shtml" class="fn">Max Guenes</a> criou <a href="post.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> marcado com <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i> Arduino</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+		</li>
+
+<!-- ======================================== -->
+<!-- ! Modelo de compartilhamento de vídeo   -->
+<!-- ======================================== -->
+		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<div class="entry">
+			<a href="perfil.shtml" class="fn">Henrique Foresti</a>
+				<div class="share-content">
+				<a href="status.shtml" class="shared-item"><img src="assets/img/rl/share-img.jpg" alt="Imagem compartilhada" class="thumbnail"><div class="btn-play"></div></a>
+				
+				<div class="video-embed">
+				<iframe width="400" height="233" src="http://www.youtube.com/embed/-KXBZZO6IgQ" frameborder="0" allowfullscreen></iframe>
+				</div>
+				
+				</div>
+			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
+			os robôs. Novos formatos?</p>
+					<ul class="meta">
+						<li class="visivel-para"><i class="icon-lock" title="Privado"></i></li>
+						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+					</ul>
+			<ul class="comments">
+				<li>
+				<form action="#" class="form-comment">
+					<img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" class="photo">
+					<textarea class="textarea-comment" rows="1" placeholder="Escreva um comentário"></textarea>
+					<button class="btn btn-mini">comentar</button>
+				</form>
+				</li>
+			</ul><!-- comments -->
+
+			</div><!-- entry -->
+
+		    <div class="btn-group">
+			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			    <span class="icon-share  icon-gray"></span>
+			  	</a>
+			  	<ul class="dropdown-menu">
+			      <li>
+			        <a href="#">Compartilhar no Twitter</a>
+			      </li>
+			      <li>
+			        <a href="#">Compartilhar no Facebook</a>
+			      </li>
+				<li class="divider"></li>
+			      <li>
+			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
+			      </li>
+				</ul>
+			</div><!-- btn-group -->
+
+		</li>
+
+<!-- ====================================== -->
+<!-- ! Modelo de compartilhamento de foto   -->
+<!-- ====================================== -->
+		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<div class="entry">
+			<a href="perfil.shtml" class="fn">Henrique Foresti</a>
+				<div class="share-content">
+				<img src="assets/img/rl/share-img.jpg" alt="Imagem compartilhada" class="thumbnail">
+				</div>
+			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
+			os robôs. Novos formatos?</p>
+					<ul class="meta">
+						<li class="visivel-para"><i class="icon-lock" title="Privado"></i></li>
+						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+					</ul>
+			<ul class="comments">
+				<li>
+				<form action="#" class="form-comment">
+					<img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" class="photo">
+					<textarea class="textarea-comment" rows="1" placeholder="Escreva um comentário"></textarea>
+					<button class="btn btn-mini">comentar</button>
+				</form>
+				</li>
+			</ul><!-- comments -->
+
+			</div><!-- entry -->
+
+		    <div class="btn-group">
+			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			    <span class="icon-share  icon-gray"></span>
+			  	</a>
+			  	<ul class="dropdown-menu">
+			      <li>
+			        <a href="#">Compartilhar no Twitter</a>
+			      </li>
+			      <li>
+			        <a href="#">Compartilhar no Facebook</a>
+			      </li>
+				<li class="divider"></li>
+			      <li>
+			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
+			      </li>
+				</ul>
+			</div><!-- btn-group -->
+
+		</li>
+
+		
+		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<div class="entry">
+			<a href="perfil.shtml" class="fn">Henrique Foresti</a>
+			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
+			os robôs. Novos formatos?</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean lacinia bibendum nulla sed consectetur.</p>
+					<ul class="meta">
+						<li class="visivel-para"><i class="icon-lock" title="Privado"></i></li>
+						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+					</ul>
+			<ul class="comments">
+				<li>
+				<form action="#" class="form-comment">
+					<img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" class="photo">
+					<textarea class="textarea-comment" rows="1" placeholder="Escreva um comentário"></textarea>
+					<button class="btn btn-mini">comentar</button>
+				</form>
+				</li>
+			</ul><!-- comments -->
+
+			</div><!-- entry -->
+
+		    <div class="btn-group">
+			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			    <span class="icon-share  icon-gray"></span>
+			  	</a>
+			  	<ul class="dropdown-menu">
+			      <li>
+			        <a href="#">Compartilhar no Twitter</a>
+			      </li>
+			      <li>
+			        <a href="#">Compartilhar no Facebook</a>
+			      </li>
+				<li class="divider"></li>
+			      <li>
+			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
+			      </li>
+				</ul>
+			</div><!-- btn-group -->
+
+		</li>
+	</ul>
+
+
+</div><!-- stream -->
+
+<div class="btn-load-more" id="pagination"><a href="#" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
+
+</div><!-- /miolo -->
+
+
+<div class="span3" id="sidebar-wdgt">
+
+<div id="grid-conteudos" class="wdgt">
+	<h3><a href="conteudos.shtml">Conteúdos seguidos <small>150</small></a></h3>
+	<ul class="thumbnails">
+		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
+	</ul>
+	<a href="conteudos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+</div><!-- grid-conteudos -->
+
+<hr>
+
+<div id="grid-comunidades" class="wdgt">
+		<h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
+	<ul class="thumbnails">
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+	</ul>
+	<a href="comunidades.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+</div><!-- grid-comunidades -->
+
+<hr>
+
+<div id="grid-amigos" class="wdgt">
+	<h3><a href="amigos.shtml" title="Ver tudo">Amigos <small>150</small></a></h3>
+	<ul class="thumbnails">
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+		<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Nome do amigo" title="Nome do amigo"></a></li>
+	</ul>
+	<a href="amigos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+</div><!-- grid-amigos -->
+
+</div><!-- /aside -->
+
+</div><!-- /row -->
+
+
+<!-- ====================== -->
+<!-- ! Caixas de mensagem   -->
+<!-- ====================== -->
+<div class="modal fade" id="modalAdd">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Responder solicitação</h3>
+  </div>
+  <div class="modal-body">
+  <p>Deseja aceitar a solicitação de amizade de <strong>Henrique Foresti</strong>?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary">Aceitar</a> 
+    <a href="#" class="btn btn-danger">Rejeitar</a> 
+
+    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+  </div>
+</div>
+
+<div class="modal fade" id="modalIgnore">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Ignorar</h3>
+  </div>
+  <div class="modal-body">
+  <p>Você não verá mais as atualizações de <strong>Henrique Foresti</strong>. Tem certeza de que deseja ignorar seu conteúdo?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-danger">Ignorar <strong>Henrique</strong></a> <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+  </div>
+</div>
+
+
+<!--#include virtual="includes/footer.html" -->

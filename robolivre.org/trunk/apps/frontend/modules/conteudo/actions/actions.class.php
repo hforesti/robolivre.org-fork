@@ -45,6 +45,12 @@ class conteudoActions extends sfActions {
                 $this->arrayParticipantes = array_splice($arrayRetorno['participantes'],0,6);
             }
             
+            {
+                $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosRelacionados($this->conteudo->getIdConjunto());
+                $this->quantidadeConteudosRelacionados = $arrayRetorno['quantidade'];
+                $this->arrayConteudosRelacionados = array_splice($arrayRetorno['conteudos'],0,9);
+            }
+            
         }
     }
 }

@@ -51,10 +51,10 @@
 
         <div id="stream">
 
-            <ul>
+            <ul id="ul-steam">
                
                 <?php foreach ($publicacoesPerfil as $publicacao) { ?>                    
-                        <?php $publicacao->imprimir();
+                        <?php print_r( $publicacao->imprimir());
                                 
                             /*'formPublicacao',array('form' => $formPublicacao,
                             'id_publicacao_original' => $publicacao->getIdPublicacao(),
@@ -67,7 +67,7 @@
 
         </div><!-- stream -->
 
-<!--        <div id="pagination"><a href="#" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>-->
+        <div id="pagination"><a href="#pagination" onclick="getPublicacoesAntigas()" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
 
     </div><!-- /miolo -->
 
@@ -165,3 +165,43 @@
     </div>
 </div>
 <?php } ?>
+
+<script type="text/javascript">
+    //<![CDATA[
+    
+    var SEPARADOR_PARAMETRO = '<?php echo Util::SEPARADOR_PARAMETRO ?>';
+    
+    function getValue(id) {
+        return document.getElementById(id).value;
+    }
+    
+    function getUltimoId(){
+        t=document.getElementsByName('id_ultima_publicacao');
+        return t[t.length-1].value;
+    }
+    
+    function getPublicacoesAntigas() {        
+        
+            $.ajax({
+                url: <?php echo "'" . url_for("ajax/ajaxReceberMaisPublicacaoPerfil") . "?id_usuario=".$usuario->getIdUsuario()."&ultimo_id_publicacao='+getUltimoId()" ?>,
+                success: function(resposta){
+                    if(resposta!=""){
+                        $("#ul-steam").append(resposta);
+                    }else{
+                        $("#pagination").remove();
+                    }
+                }
+            });
+        
+    }//END getPublicacoesAntigas
+    
+    
+    $('#form-criar').submit(function(){
+        validaForm();
+        return false;
+    });
+    
+    
+    
+    //]]>   
+</script>

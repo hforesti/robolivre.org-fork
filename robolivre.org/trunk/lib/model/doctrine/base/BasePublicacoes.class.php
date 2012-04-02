@@ -24,6 +24,7 @@ Doctrine_Manager::getInstance()->bindComponent('Publicacoes', 'doctrine');
  * @property timestamp $data_publicacao
  * @property integer $visivel
  * @property integer $tipo_publicacao
+ * @property integer $privacidade_publicacao
  * 
  * @method integer     getIdPublicacao()           Returns the current record's "id_publicacao" value
  * @method integer     getIdUsuario()              Returns the current record's "id_usuario" value
@@ -42,6 +43,7 @@ Doctrine_Manager::getInstance()->bindComponent('Publicacoes', 'doctrine');
  * @method timestamp   getDataPublicacao()         Returns the current record's "data_publicacao" value
  * @method integer     getVisivel()                Returns the current record's "visivel" value
  * @method integer     getTipoPublicacao()         Returns the current record's "tipo_publicacao" value
+ * @method integer     getPrivacidadePublicacao()  Returns the current record's "privacidade_publicacao" value
  * @method Publicacoes setIdPublicacao()           Sets the current record's "id_publicacao" value
  * @method Publicacoes setIdUsuario()              Sets the current record's "id_usuario" value
  * @method Publicacoes setIdConteudo()             Sets the current record's "id_conteudo" value
@@ -59,6 +61,7 @@ Doctrine_Manager::getInstance()->bindComponent('Publicacoes', 'doctrine');
  * @method Publicacoes setDataPublicacao()         Sets the current record's "data_publicacao" value
  * @method Publicacoes setVisivel()                Sets the current record's "visivel" value
  * @method Publicacoes setTipoPublicacao()         Sets the current record's "tipo_publicacao" value
+ * @method Publicacoes setPrivacidadePublicacao()  Sets the current record's "privacidade_publicacao" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -219,6 +222,16 @@ abstract class BasePublicacoes extends sfDoctrineRecord
              'unsigned' => false,
              'primary' => false,
              'default' => '0',
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
+        $this->hasColumn('privacidade_publicacao', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => true,
+             'primary' => false,
+             'default' => '1',
              'notnull' => false,
              'autoincrement' => false,
              'length' => 4,

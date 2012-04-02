@@ -1,3 +1,6 @@
 <?php
-echo $mensagem;
+
+if (isset($mensagem) && $mensagem != "") {
+    echo "$mensagem";
+}
 ?>
