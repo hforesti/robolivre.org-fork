@@ -42,13 +42,29 @@
 
 	<div class="span7">
 
-
-<!-- modelo de mensagens -->
-<!-- <span class="alert pull-right">Aguardando resposta da sua solicitação de amizade.</span>
-<span class="alert alert-error pull-right">Usuário ignorado</span> -->
+		<ul class="breadcrumb">
+			<li>
+				<a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+			</li>
+			<li>
+				<a href="perfil.shtml">Henrique Foresti</a> <span class="divider">/</span>
+			</li>
+			<li class="active">
+				<a href="perfil-info.shtml">Informações sobre Henrique</a>
+			</li>
+		</ul>
 
 		<div clas="entry">
 			<h6><i class="icon-user icon-gray"></i> Sobre Henrique</h6>
+			<!-- modelo de mensagens -->
+			<!-- 
+			<p class="alert alert-error"><i class="icon-exclamation-sign icon-gray"></i> Usuário ignorado</p>
+			<p class="alert pull-right"><i class="icon-exclamation-sign icon-gray"></i> Aguardando resposta da sua solicitação de amizade.</p>
+			<a href="profile-info-editar.shtml" class="btn btn-primary pull-right"><i class="icon-edit icon-white"></i> Editar perfil</a> -->
+
+			<!-- modelo de botao para editar perfil caso seja o perfil dele -->
+			<!-- <a href="profile-info-editar.shtml" class="btn btn-primary pull-right"><i class="icon-edit icon-white"></i> Editar perfil</a> -->
+
 			<p>Designer de interação que trabalha com visualização de informação e usabilidade em projetos interativos e pesquisas com usuários.</p>
 
 			<p>Mestre em tecnologia e arte digital pela Universidade do Minho, em Portugal, trabalho com visualização de informação, design centrado no usuário, arquitetura de informação, usabilidade e prototipos para novas mídias, sistemas e experiências.</p>
@@ -64,7 +80,7 @@
 		<h6><i class="icon-envelope icon-gray"></i> Contatos</h6>
 		<p class="row">
 			<span class="span3"><strong>Website:</strong> <a href="http://www.rodrigomedeiros.com.br">www.rodrigomedeiros.com.br</a></span>
-			<span class="span3"><strong>Email:</strong> <i class="icon-lock icon-gray" title="Apenas amigos"></i>rodrigo@robolivre.org</span>
+			<span class="span3"><strong>Email:</strong> <i class="icon-user icon-gray singletip" title="Apenas amigos"></i>rodrigo@robolivre.org</span>
 		</p>
 
 		<hr>

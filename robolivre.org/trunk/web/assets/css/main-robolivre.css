@@ -11,9 +11,11 @@
     font-family: 'RobotoThin';
     src: url('../fonts/Roboto-Thin-webfont.eot');
     src: url('../fonts/Roboto-Thin-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Roboto-Thin-webfont.ttf') format('truetype');
+         url('../fonts/Roboto-Thin-webfont.ttf') format('truetype'),
+         url('../fonts/Roboto-Thin-webfont.svg#RobotoThin') format('svg');
     font-weight: normal;
     font-style: normal;
+
 }
 
 body {
@@ -26,14 +28,15 @@ body.home {
 }
 
 h1, h2 {
-    font-family: 'RobotoThin';
+    font-family: 'RobotoThin', sans-serif;
+    font-weight: normal;
 }
 h3, h4, h5, h6 {
-    font-family: 'RobotoCondensed';
+    font-family: 'RobotoCondensed', sans-serif;
     font-weight: normal;
 }
 blockquote p {
-    font-family: 'RobotoCondensed';
+    font-family: 'RobotoCondensed', sans-serif;
     font-size: 14px;
     font-weight: normal;
     color: #555;
@@ -49,11 +52,19 @@ input, textarea { color: #000; }
 .icon-gray {opacity: 0.4}
 #sidebar .nav .active .icon-gray, .dropdown-menu li a:hover i, #explore .nav .active a i {background-image: url(../img/glyphicons-halflings-white.png);}
 
+/* image replacement */
+.brand, 
+body.home .brand,
+#co-workers li a {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	display: block;
+}
+
 .navbar-fixed-top {position: fixed}
 .brand {
 	background: url(../img/rl/logo.png) no-repeat;
-	display: block;
-	text-indent: -9999em;
 	height: 40px;
 	width: 140px;
 }
@@ -63,8 +74,6 @@ input, textarea { color: #000; }
 }
 body.home .brand {
 	background: url(../img/rl/logo-home.png) no-repeat;
-	display: block;
-	text-indent: -9999em;
 	margin-bottom: 40px;
 	height: 52px;
 	width: 220px;
@@ -393,6 +402,32 @@ body.home .top-login {
 		font-size: 10px
 	}
 
+#co-workers ul {list-style:none; margin-left:0;}
+footer .pull-left {width: 45%;}
+#co-workers li {float: left;}
+#co-workers .heading {margin:0 5px 0 20px;}
+#co-workers ul li a {
+	background: url(../img/rl/logos-financ.png) no-repeat;
+	height:61px;
+	margin-bottom: 25px;
+}
+#co-workers ul #a-capes a {
+	background-position:0 0;
+	width:79px;
+}
+#co-workers ul #a-cnpq a {
+	background-position:-79px 0;
+	width:150px;
+}
+#co-workers ul #a-facepe a {
+	background-position:-229px 0;
+	width:129px;
+}
+#co-workers ul #a-mix a {
+	background-position:-358px 0;
+	width:131px;
+}
+#other-links {font-size:11px;}
 #footer-utility ul {
 	list-style: none;
 	margin-left: 0;
@@ -886,7 +921,12 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 	box-shadow: none;
 	margin: 0
 }
-#img-preview {cursor: pointer}
+#img-preview .thumbnail {display: inline; vertical-align: top;}
+#img-preview #thumb {
+	cursor: pointer;
+	display: block;
+	margin-bottom: 5px;
+}
 
 /*!
  * Responsive
@@ -914,6 +954,15 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 	width: 99%
 }
 #search-comun-field {width: 93%}
+
+footer .pull-left {width:100%;}
+#co-workers {float: none; clear: both;}
+#co-workers .heading {
+	clear: both;
+	float: none;
+	margin-left: 0;
+	padding-top: 15px;
+}
 
 }
 
@@ -952,6 +1001,14 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 .textarea-comment {width: 88%;}
 #footer-utility h4 {margin-top: 30px}
 
+footer .pull-left {width:100%;}
+#co-workers {float: left; clear: both;}
+#co-workers ul {padding-top: 25px;}
+#co-workers .heading {margin-left: 0;}
+#co-workers #a-facepe {
+	margin-right: 35px;
+}
+
 }
 
 
@@ -970,6 +1027,8 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 
 #stream ul .vcard .entry {width: 80%}
 .textarea-comment {width: 91%;}
+
+footer .pull-left {width:25%;}
 
 }
 
@@ -996,7 +1055,7 @@ background: aqua;
 		margin-right:0
 	}
 .textarea-comment {width: 91%;}
-
+footer .pull-left {width:25%;}
 
 }
 

@@ -11,10 +11,10 @@
 	  	</a>
 	  	<ul class="dropdown-menu">
 	      <li>
-	        <a href="settings.shtml">Atualizar foto</a>
+	        <a href="settings-avatar.shtml">Atualizar foto</a>
 	      </li>
 	      <li>
-	        <a href="inbox.shtml">Editar perfil</a>
+	        <a href="profile-info-editar.shtml">Editar perfil</a>
 	      </li>
 		</ul>
 	</div>
