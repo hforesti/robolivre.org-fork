@@ -1,0 +1,230 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+	<div class="span2" id="sidebar">
+		<div class="avatar">
+			<a href="profile-home.shtml"><img src="assets/img/rl/avatar-170.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+			<div class="btn-group">
+				<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+					<span class="icon-cog icon-gray"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="settings-avatar.shtml">Atualizar foto</a>
+					</li>
+					<li>
+						<a href="profile-info-editar.shtml">Editar perfil</a>
+					</li>
+				</ul>
+			</div>
+
+			<h1>Rodrigo Medeiros</h1>
+
+		</div><!-- /avatar -->
+
+		<ul class="nav nav-pills nav-stacked">
+			<li><a href="profile-home.shtml"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+			<li><a href="profile-conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+			<li><a href="profile-comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+			<li><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
+			<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
+			<li><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+			<li><a href="perfil-info.shtml"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
+			<li><hr></li>
+			<li><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
+		</ul>
+	</div><!-- /sidebar -->
+
+	<hr class="only-mobile">
+
+	<div class="span10">
+
+		<ul class="breadcrumb">
+			<li>
+				<a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+			</li>
+			<li>
+				<a href="perfil.shtml">Rodrigo Medeiros</a> <span class="divider">/</span>
+			</li>
+			<li class="active">
+				Configurações
+			</li>
+		</ul>
+
+		<form id="form-editar-conf" class="form-horizontal" action="#">
+
+<ul class="nav nav-tabs" id="tabs-home">
+  <li class="active">
+  	<a href="#notific" data-toggle="tab"><i class="icon-inbox icon-gray"></i> Notificações por email</a>
+  </li>
+  <li>
+    <a href="#senha" data-toggle="tab"><i class="icon-asterisk icon-gray"></i> Alterar Senha</a>
+  </li>
+  <li>
+  	<a href="#nomecomp" data-toggle="tab"><i class="icon-user icon-gray"></i> Nome completo</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+		<fieldset class="tab-pane active fade in" id="notific">
+
+			<div class="control-group" id="turnEmailOff">
+				<label class="control-label">Desligar tudo</label>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="optionTurnEmailOff" value="optionOffAll">
+						<strong>Parar de receber qualquer tipo de notificação por email</strong>
+					</label>
+					<span class="help-inline">Se está recebendo muitas mensagens da nossa rede, marque esta opção para desligar todas as notificações por email.</span> 
+				</div>
+	        <hr>
+
+
+			<div class="control-group">
+				<label class="control-label">Comentários no Perfil</label>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="optionsCheckbox0" value="option10" checked="checked">
+						Receber email quando alguém comentar em uma atualização do seu perfil
+					</label>
+				</div>
+			</div>
+	        <hr>
+
+			<div class="control-group">
+				<label class="control-label">Amigos</label>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="optionsCheckbox1" value="option1" checked="checked">
+						Receber email quando alguém lhe adicionar como amigo
+					</label>
+				</div>
+			</div>
+	        <hr>
+
+	        <div class="control-group">
+				<label class="control-label">Conteúdos</label>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="optionsCheckbox2" value="option2" checked="checked">
+						Receber email quando alguém lhe convidar para colaborar com um conteúdo
+					</label> 
+				</div>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="optionsCheckbox2-1" value="option2-1" checked="checked">
+						Receber email quando alguém comentar em uma atualização que você publicou na página de um conteúdo
+					</label>
+				</div>
+			</div>
+	        <hr>
+
+	        <div class="control-group">
+				<label class="control-label">Comunidades</label>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="optionsCheckbox2" value="option2" checked="checked">
+						Receber email quando alguém lhe promover a moderador de uma comunidade
+					</label> 
+				</div>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="optionsCheckbox3" value="option3" checked="checked">
+						Receber email quando um moderador lhe remover de uma comunidade
+					</label> 
+				</div>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="optionsCheckbox4" value="option4" checked="checked">
+						Receber email quando alguém responder a um tópico que você criou
+					</label> 
+				</div>
+
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="optionsCheckbox5" value="option5" checked="checked">
+						Receber email quando alguém adicionar um projeto a uma comunidade que você criou
+					</label> 
+				</div>
+			</div>
+	        <hr>
+
+	        <div class="control-group">
+				<label class="control-label">Projetos</label>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="optionsCheckbox2" value="option2" checked="checked">
+						Receber email quando alguém alterar status de um projeto que você segue
+					</label> 
+				</div>
+			</div>
+	        <hr>
+
+	        <div class="control-group">
+				<label class="control-label">Informativo Robô livre</label>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="optionsCheckbox4" value="option4" checked="checked">
+						Receber nossa super newsletter com super novidades da rede e dos nossos super projetos :-)
+					</label> 
+				</div>
+			</div>
+
+		</fieldset>
+
+		<fieldset class="tab-pane fade in" id="senha">
+
+			<div class="control-group">
+            	<label class="control-label" for="pass">Nova senha</label>
+            	<div class="controls">
+            	 	<input id="pass" type="password" placeholder="Nova senha" value="senha1234" />
+            		<span class="help-inline">informe a nova senha</span>
+            	</div>
+         	 </div>
+
+			<div class="control-group">
+	            <label class="control-label" for="pass-conf">Confirme a nova senha</label>
+	            <div class="controls">
+	            	<input id="pass-conf" type="password" placeholder="Repetir a senha" />
+	            </div>
+	        </div>
+		</fieldset>
+
+		<fieldset class="tab-pane fade in" id="nomecomp">
+			<div class="control-group">
+            	<label class="control-label" for="pass">Nome Completo</label>
+	          <div class="controls">
+	            <input type="text" class="span5" id="realname" placeholder="Informe seu nome Completo" value="Rodrigo Medeiros">
+	          </div>
+	        </div>
+		</fieldset>
+
+</div><!-- /tab-content -->
+
+	        <hr>
+
+			<div class="control-group">
+            	<label class="control-label" for="pass">Senha atual</label>
+            	<div class="controls">
+            		<input id="pass" type="password" placeholder="Sua senha" value="" />
+            		<span class="help-inline">Para alterar informe a sua senha atual</span>
+            	</div>
+          	</div>
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary" id="update-info">Salvar alterações</button>
+			</div>
+			</fieldset>
+
+	</form>
+
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->

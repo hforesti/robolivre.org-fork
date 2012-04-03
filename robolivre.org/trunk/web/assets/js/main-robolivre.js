@@ -17,6 +17,7 @@ $(window).load(function(){
 
 !function ($) {
 
+
 //sidebar border (apenas para desktop)
 
 // if ( $("#sidebar") ) {
@@ -156,6 +157,35 @@ $("#terms-textarea").focus(function(){
 	}, 'slow')
 });
 
+//checkbox desligar emails
+function disableCheckboxesEmail() {
+	$('#notific .control-group').not('#turnEmailOff').animate(
+		{opacity: '.2'}, 200);
+	$('#notific input[type=checkbox]').not('#optionTurnEmailOff').attr('disabled','disabled');
+}//function
+//checkbox desligar emails
+function enableCheckboxesEmail() {
+	$('#notific .control-group').not('#turnEmailOff').animate(
+		{opacity: '1'}, 200);
+	$('#notific input[type=checkbox]').not('#optionTurnEmailOff').removeAttr('disabled','disabled');
+}//function
+
+if ( $('#optionTurnEmailOff').is(':checked') ) {
+	disableCheckboxesEmail();
+} else {
+	enableCheckboxesEmail();
+}
+
+//checkbox desligar emails
+$('#optionTurnEmailOff').change(function() {
+	if ( $('#optionTurnEmailOff').is(':checked') ) {
+		disableCheckboxesEmail();
+	} else {
+		enableCheckboxesEmail();
+	}
+
+}); 
+
 // WYSIWYG Editor
 $(".wysiwyg").cleditor({
 			controls:     // controls to add to the toolbar
@@ -171,6 +201,7 @@ $(".wysiwyg").cleditor({
 			"margin:4px; font:13px 'Helvetica Neue', Helvetica, Arial, sans-serif; cursor:text",
 			width:'99%',
 		});                
+
 
 /* multi upload */
 //upload img
