@@ -19,22 +19,14 @@ except AttributeError:
 class Ui_Form(object):
     def setupUi(self, Form):
         
-        Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(163, 68)
-        Form.setWindowTitle(QtGui.QApplication.translate("Form", "Form", None, QtGui.QApplication.UnicodeUTF8))
+        array = []
         
-        self.radioButton1 = QtGui.QRadioButton()
-        self.radioButton1.setGeometry(QtCore.QRect(35, 110, 116, 22))
-        self.radioButton1.setText(QtGui.QApplication.translate("Form", "RadioButton", None, QtGui.QApplication.UnicodeUTF8))
-        self.radioButton1.setObjectName(_fromUtf8("radioButton"))
-        #self.radioButton1.show()
-        
-        self.radioButton2 = QtGui.QRadioButton()
-        self.radioButton2.setGeometry(QtCore.QRect(35, 130, 116, 22))
-        self.radioButton2.setText(QtGui.QApplication.translate("Form", "RadioButton", None, QtGui.QApplication.UnicodeUTF8))
-        self.radioButton2.setObjectName(_fromUtf8("radioButton"))
-        self.radioButton2.show()
-        
+        array.append(QtGui.QLineEdit(Ui_Form))
+        array[0].setGeometry(QtCore.QRect(10, 10, 10, 10))
+        array[0].setObjectName(_fromUtf8("comandoInt"))
+        array[0].show()
+
+
         
         
     def teste(self):

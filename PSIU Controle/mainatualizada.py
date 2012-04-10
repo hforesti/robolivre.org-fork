@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
 import sys
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtGui import *
@@ -30,7 +28,7 @@ class MainWidget(QtGui.QWidget):
     destinatario = ''
     tamanho = ''
     comando = ''
-    distancia = '0'
+    distancia = ''
     remetente = 'PC'
     checksum = ''
     Serial = ''
@@ -82,18 +80,17 @@ class MainWidget(QtGui.QWidget):
         #Distancia
         self.distancia = Ui_distancia()
         self.distancia.setupUi(self.aba1)
-        self.distancia.distanciaLineEdit.setText(MainWidget.distancia)
         #Terminal de Saida
         self.saidaAba1 = Ui_Saida()
         self.saidaAba1.setupUi(self.aba1)
         #
         #Botao Enviar
-        #self.botaoEnviar = QtGui.QPushButton(self.aba1)
-        #self.botaoEnviar.setGeometry(QtCore.QRect(500, 150, 97, 27))
-        #self.botaoEnviar.setText(QtGui.QApplication.translate("Form", "Enviar", None, QtGui.QApplication.UnicodeUTF8))
-        #self.botaoEnviar.setObjectName(_fromUtf8("Enviar"))
+        self.botaoEnviar = QtGui.QPushButton(self.aba1)
+        self.botaoEnviar.setGeometry(QtCore.QRect(500, 150, 97, 27))
+        self.botaoEnviar.setText(QtGui.QApplication.translate("Form", "Enviar", None, QtGui.QApplication.UnicodeUTF8))
+        self.botaoEnviar.setObjectName(_fromUtf8("Enviar"))
         #Evento do Enviar
-        #self.botaoEnviar.clicked.connect(self.enviar)               
+        self.botaoEnviar.clicked.connect(self.enviar)               
         self.menuDeAbas.addTab(self.aba1, _fromUtf8(""))
         ##
         
@@ -211,29 +208,25 @@ class MainWidget(QtGui.QWidget):
         print "oi"
 
     def metododoDoMenuDeAbas(self, Form):
-        self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba1), QtGui.QApplication.translate("Form", "Movimentos Básicos", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba1), QtGui.QApplication.translate("Form", "Movimentos Basicos", None, QtGui.QApplication.UnicodeUTF8))
         self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba2), QtGui.QApplication.translate("Form", "Lista de Comandos", None, QtGui.QApplication.UnicodeUTF8))
-        self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba3), QtGui.QApplication.translate("Form", "Avançado", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba3), QtGui.QApplication.translate("Form", "Avancado", None, QtGui.QApplication.UnicodeUTF8))
 
     def parafrente(self):
         self.lineEditAba1.comando.setText("parafrente")
         MainWidget.comando = 'parafrente'
-        self.enviar()
         
     def paraTras(self):
         self.lineEditAba1.comando.setText("paratras")
         MainWidget.comando = 'paratras'
-  	self.enviar()
-  	  
+    
     def giraDireita(self):
         self.lineEditAba1.comando.setText("giradireita")
         MainWidget.comando = 'giradireita'
-        self.enviar()
         
     def giraEsquerda(self):
         self.lineEditAba1.comando.setText("giraesquerda")
         MainWidget.comando = 'giraesquerda'
-	self.enviar()
 
     def listarComandos(self):
         self.zerarVariaveis()
