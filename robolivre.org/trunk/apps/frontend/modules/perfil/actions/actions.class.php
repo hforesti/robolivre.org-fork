@@ -131,8 +131,13 @@ class perfilActions extends sfActions {
             $objPublicacao->setIdUsuarioOriginal ($request->getParameter('id_usuario_original'));
             $objPublicacao->setIdPublicacaoOriginal($request->getParameter('id_publicacao_original'));
         } 
+        
         if($request->getParameter('id_usuario_referencia')!=""){
             $objPublicacao->setIdUsuarioReferencia($request->getParameter('id_usuario_referencia'));
+        }
+        
+        if($request->getParameter('privacidade_publicacao')!=""){
+            $objPublicacao->setPrivacidadePublicacao($request->getParameter('privacidade_publicacao'));
         }
         
         
@@ -208,9 +213,14 @@ class perfilActions extends sfActions {
             } else {
                 $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
             }
-            $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
-            $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
-            $this->arrayConteudoSeguido = array_splice($arrayRetorno['conteudos'], 0, 6);
+            
+            if($this->usuario){
+                $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
+                $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
+                $this->arrayConteudoSeguido = $arrayRetorno['conteudos'];
+            }else{
+               $this->redirect('perfil/index');
+            }
         } else {
             $this->redirect('perfil/index');
         }
@@ -227,7 +237,7 @@ class perfilActions extends sfActions {
     }
     
     public function executePreviaFoto(sfWebRequest $request) {
-
+       
         $this->form = new AtualizacaoFotoForm();
         if ($request->isMethod('post')) {
             $this->form->bind($request->getParameter('upload_foto'), $request->getFiles('upload_foto'));
@@ -249,16 +259,15 @@ class perfilActions extends sfActions {
     
     
     public function executeConfirmarFotoPerfil(sfWebRequest $request) {
-        
         $nome_arquivo = $request->getParameter('arq');
         
         $diretorioThumbnail = Util::getDiretorioThumbnail();
         
         $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo;
         $extensao = end(explode(".", $nome_arquivo));
-        $thumbnail = new sfThumbnail(140, 140);
+        $thumbnail = new sfThumbnail(170, 170);
         $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail.'/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_140.' . $extensao);
+        $thumbnail->save($diretorioThumbnail.'/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_large.' . $extensao);
 
         $thumbnail = new sfThumbnail(60, 60);
         $thumbnail->loadFile($diretorio_arquivo);

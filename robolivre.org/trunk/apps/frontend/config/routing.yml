@@ -5,7 +5,7 @@
 conteudo:
   url:    conteudo/:slug
   param:  { module: conteudo, action: exibir }
-  
+
 # default rules
 homepage:
   url:   /

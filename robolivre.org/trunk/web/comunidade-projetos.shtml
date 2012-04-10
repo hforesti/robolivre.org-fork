@@ -1,0 +1,455 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+<div class="avatar">
+	<a href="comunidade.shtml"><img src="assets/img/rl/170.gif" alt="Poeta Manuel Bandeira" class="photo"></a>
+
+    <div class="btn-group">
+		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+		<span class="icon-cog icon-gray"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a data-toggle="modal" href="#modalInvite">Convidar amigos</a>
+			</li>
+		    <li class="divider"></li>
+		  <li>
+			<a href="#"><i class="icon-flag"></i> Reportar problema</a>
+		  </li>
+	</ul>
+	</div>
+
+
+<!-- ========================================== -->
+<!-- ! Menu apenas para o criador e moderador   -->
+<!-- ========================================== -->
+<!--
+    <div class="btn-group">
+		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+		<span class="icon-cog icon-gray"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="conteudo-criar.shtml">Editar dados</a>
+			</li>
+			<li>
+				<a data-toggle="modal" href="#modalImgUpload">Atualizar imagem</a>
+			</li>
+		</ul>
+	</div>
+-->
+	<h1>Poeta Manuel Bandeira</h1>
+
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li><a href="comunidade.shtml"><span class="icon-gray icon-info-sign"></span> Resumo</a></li>
+	<li><a href="comunidade-forum.shtml"><span class="icon-gray icon-comment"></span> Fórum <span class="label label-info">50</span></a></li>
+	<li class="active"><a href="comunidade-projetos.shtml"><span class="icon-gray icon-user"></span> Projetos <span class="label label-info">150</span></a></li>
+	<li><a href="comunidade-docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info">5</span></a></li>
+	<li><a href="comunidade-amigos.shtml"><span class="icon-gray icon-user"></span> Participantes <span class="label label-info">15</span></a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+
+<ul class="breadcrumb">
+  <li>
+    <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="comunidades">Comunidades</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="comunidade.shtml">Poeta Manuel Bandeira</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <a href="comunidade-projetos.shtml">Projetos</a>
+  </li>
+</ul>
+
+<div class="list-mgmt">
+
+<div class="row">
+	<h2 class="span7">Projetos adicionados a esta comunidade ‧ <small>15</small></h2>	
+	<div class="span3">
+		<a href="#" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar projeto</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span6">
+	  <ul class="nav nav-pills">
+		  <li class="active">
+		    <a href="#">Atualizados recentemente</a>
+		  </li>
+		  <li><a href="#">Criados por você</a></li>
+	  </ul>
+	</div>
+	
+	<form class="list-filter">
+	        <input type="text" class="span4 search-query" placeholder="Buscar na lista de projetos">
+	</form>
+</div>
+
+
+	<ul>
+<!-- ================================================ -->
+<!-- ! class "mine" para indicar "Criada por você"   -->
+<!-- !  ‧ <small>Criado por você</small> dentro do titulo   -->
+<!-- ================================================ -->
+		<li class="row mine">
+		<div class="span8">
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a> ‧ <small>Criado por você</small></h3>
+		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Ativo</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a href="projeto-criar.shtml">Editar projeto</a>
+				</li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Excluir projeto</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+
+		<li class="row">
+		<div class="span8">
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
+		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Ativo</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
+		<p class="meta"><span class="label label-info"><i class="icon-ok-circle icon-white"></i> Concluído</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
+		<p class="meta"><span class="label label-important"><i class="icon-remove-circle icon-white"></i> Cancelado</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
+		<p class="meta"><span class="label label-info"><i class="icon-ok-circle icon-white"></i> Concluído</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
+		<p class="meta"><span class="label label-info"><i class="icon-ok-circle icon-white"></i> Concluído</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
+		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Ativo</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
+		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Ativo</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
+		<p class="meta"><span class="label label-info"><i class="icon-ok-circle icon-white"></i> Concluído</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
+		<p class="meta"><span class="label label-important"><i class="icon-remove-circle icon-white"></i> Cancelado</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar imagem</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar documento</a>
+				</li>
+				<li>
+					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+	</ul>
+
+<hr>
+
+<div class="pagination">
+  <ul>
+<!--     <li><a href="#"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li> -->
+    <li class="active">
+      <a href="#">1</a>
+    </li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
+  </ul>
+  
+  <p class="pull-right">Exibindo de 1 a 10</p>
+
+</div>
+
+</div>
+
+</div><!-- /miolo -->
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->

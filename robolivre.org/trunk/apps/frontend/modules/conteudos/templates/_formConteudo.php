@@ -1,14 +1,31 @@
-<form id="form-criar-conteudo" action="<?php echo url_for('conteudos/gravar'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<?php 
+$valoresInciais = $form->getTaintedValues();
+
+if(!isset($conteudo)){
+    $evento = 'conteudos/gravar';
+}else{
+    $nomeConteudo = $conteudo->getNome();
+    $evento = 'conteudos/gravarEdicao';
+}
+?>
+<?php // Util::pre($valoresInciais) ?>
+
+<form id="form-criar-conteudo" action="<?php echo url_for($evento); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
             <fieldset>
                 <div class="control-group">
                     <div class="controls">
-                    <?php echo $form->getWidget('nome')->render($form->getName() . "[nome]", null, array('id' => 'nome', 'placeholder' => "Título do contúdo", 'class' => 'span7', 'value' => $nomeConteudo)); ?>
+                    <?php
+                    if(!isset($nomeConteudo)){
+                        $nomeConteudo = array_key_exists('nome',$valoresInciais)?$valoresInciais['nome']:"";
+                    }
+                    ?>
+                    <?php echo $form->getWidget('nome')->render($form->getName() . "[nome]", $nomeConteudo, array('id' => 'nome', 'placeholder' => "Título do contúdo", 'class' => 'span7')); ?>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <div class="controls">
-                        <?php echo $form->getWidget('descricao')->render($form->getName() . "[descricao]", null, array('id' => 'textarea','rows' => 9, 'placeholder' => "O que você tem para compartilhar?", 'class' => 'span7 wysiwyg')); ?>
+                        <?php  echo $form->getWidget('descricao')->render($form->getName() . "[descricao]",array_key_exists('descricao',$valoresInciais)?$valoresInciais['descicao']:"", array('id' => 'textarea','rows' => 9, 'placeholder' => "O que você tem para compartilhar?", 'class' => 'span7 wysiwyg')); ?>
                     </div>
                 </div>
 
@@ -129,7 +146,8 @@
 
                         <div class="row">
                             <div class="preview span2" id="img-preview">
-                                <img src="/assets/img/rl/140.gif" alt="140" id="thumb" class="thumbnail" />
+                                <img src="<?php echo image_path("/assets/img/rl/170.gif"); ?>" alt="140" id="thumb" class="thumbnail" />
+                                <input type="hidden" value="" id="imagem_selecionada" name="imagem_selecionada">
                             </div>
 
                             <div class="span5">				
@@ -164,13 +182,13 @@
                         <label class="control-label" for="optionsCheckbox">Notificações</label>
                         <div class="controls">
                             <label class="checkbox">
-                                <?php echo $form->getWidget('enviar_email_criador')->render($form->getName() . "[enviar_email_criador]", null, array('id' => 'optionsCheckbox','value' => 'on','checked'=>'checked')); ?>
-                                <!--                                <input type="checkbox" id="" value="option1" checked>-->
+                                <?php echo $form->getWidget('enviar_email_criador')->render($form->getName() . "[enviar_email_criador]", array_key_exists('enviar_email_criador',$valoresInciais)?$valoresInciais['enviar_email_criador']:"", array('id' => 'optionsCheckbox','value' => 'on','checked'=>'checked')); ?>
                                 Receber e-mail quando um novo conteúdo relacionado a este for criado ou quando este for modificado por seus amigos
                             </label>
                         </div>
                     </div>
                     <?php echo $form->renderHiddenFields() ?>
+                    <input type="hidden" id="tags" name="tags">
                 </fieldset>          
 
 
@@ -181,3 +199,36 @@
             </fieldset>
 
         </form>
+<script src="<?php echo javascript_path("/assets/js/autoSuggestv14/jquery.autoSuggest.minified.js") ?>"></script>
+<script type="text/javascript">
+        
+        var carregar = [
+        <?php 
+        if(isset($tags)){
+        foreach(array_keys($tags) as $valueTag){ ?>
+                {value: "<?php echo $valueTag ?>", name: "<?php echo $tags[$valueTag]->getNomeConteudo() ?>"},
+        <?php }}?>
+        ];
+    
+        
+	//autosuggest tags data
+        $("#input-marcadores").autoSuggest("<?php echo url_for('ajax/ajaxAutoSuggestConteudo'); ?>", 
+        {
+            minChars: 2, 
+            preFill:carregar,
+            matchCase: false,
+            selectedItemProp: "name",
+            searchObjProps: "name",
+            startText: "Ex.: Open Source, UNIX",
+            emptyText: "Nenhuma sugestão encontrada",
+            formatList: function(data, elem){
+                    var new_elem = elem.html("<i class='icon-tag icon-gray'></i>"+ data.name);
+                    return new_elem;
+            }
+        });
+        
+        $("#form-criar-conteudo").submit(function() {
+            document.getElementById('tags').value = $('.as-values')[0].value; 
+        });
+
+</script>

@@ -1,0 +1,165 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+<div class="avatar">
+	<a href="comunidade.shtml"><img src="assets/img/rl/170.gif" alt="Poeta Manuel Bandeira" class="photo"></a>
+
+    <div class="btn-group">
+		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+		<span class="icon-cog icon-gray"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a data-toggle="modal" href="#modalInvite">Convidar amigos</a>
+			</li>
+		    <li class="divider"></li>
+		  <li>
+			<a href="#"><i class="icon-flag"></i> Reportar problema</a>
+		  </li>
+	</ul>
+	</div>
+
+
+<!-- ========================================== -->
+<!-- ! Menu apenas para o criador e moderador   -->
+<!-- ========================================== -->
+<!--
+    <div class="btn-group">
+		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+		<span class="icon-cog icon-gray"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="conteudo-criar.shtml">Editar dados</a>
+			</li>
+			<li>
+				<a data-toggle="modal" href="#modalImgUpload">Atualizar imagem</a>
+			</li>
+		</ul>
+	</div>
+-->
+	<h1>Poeta Manuel Bandeira</h1>
+
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li><a href="comunidade.shtml"><span class="icon-gray icon-info-sign"></span> Resumo</a></li>
+	<li class="active"><a href="comunidade-forum.shtml"><span class="icon-gray icon-comment"></span> Fórum <span class="label label-info">50</span></a></li>
+	<li><a href="comunidade-projetos.shtml"><span class="icon-gray icon-user"></span> Projetos <span class="label label-info">150</span></a></li>
+	<li><a href="comunidade-docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info">5</span></a></li>
+	<li><a href="comunidade-amigos.shtml"><span class="icon-gray icon-user"></span> Participantes <span class="label label-info">15</span></a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+
+<ul class="breadcrumb">
+  <li>
+    <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="comunidades">Comunidades</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="comunidade.shtml">Poeta Manuel Bandeira</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <a href="comunidade-forum.shtml">Fórum</a>
+  </li>
+</ul>
+
+
+<div class="list-mgmt">
+
+<div class="row">
+	<h2 class="span7">Fórum de discussão ‧ <small>55 tópicos</small></h2>	
+	<div class="span3">
+		<a href="comunidade-topico-criar.shtml" class="btn btn-success"><i class="icon-plus icon-white"></i> Criar novo tópico</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span6">
+	  <ul class="nav nav-pills">
+		  <li class="active">
+		    <a href="#">Atualizados recentemente</a>
+		  </li>
+		  <li><a href="#">Criados por você</a></li>
+	  </ul>
+	</div>
+	
+	<form class="list-filter">
+	        <input type="text" class="span4 search-query" placeholder="Buscar na lista de tópicos">
+	</form>
+</div>
+
+
+<div id="forum-intro">
+
+<ul class="nav nav-tabs nav-stacked">
+            <li class="mine">
+            <a href="comunidade-topico.shtml"><i class="icon-comment icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Criado por você</small> <span class="label label-info" title="Nenhuma resposta ainda">0</span></a>
+            </li>
+            <li>
+            <a href="comunidade-topico.shtml"><i class="icon-comment icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small> <span class="label label-info" title="5 respostas">5</span></a>
+            </li>
+            <li>
+            <a href="comunidade-topico.shtml"><i class="icon-comment icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small> <span class="label label-info" title="Nenhuma resposta ainda">0</span></a>
+            </li>
+            <li>
+            <a href="comunidade-topico.shtml"><i class="icon-comment icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small> <span class="label label-info" title="115 respostas">115</span></a>
+            </li>
+            <li>
+            <a href="comunidade-topico.shtml"><i class="icon-comment icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small> <span class="label label-info" title="Nenhuma resposta ainda">0</span></a>
+            </li>
+            <li>
+            <a href="comunidade-topico.shtml"><i class="icon-comment icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small> <span class="label label-info" title="5 respostas">5</span></a>
+            </li>
+            <li>
+            <a href="comunidade-topico.shtml"><i class="icon-comment icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small> <span class="label label-info" title="Nenhuma resposta ainda">0</span></a>
+            </li>
+            <li>
+            <a href="comunidade-topico.shtml"><i class="icon-comment icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small> <span class="label label-info" title="115 respostas">115</span></a>
+            </li>
+            <li>
+            <a href="comunidade-topico.shtml"><i class="icon-comment icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small> <span class="label label-info" title="Nenhuma resposta ainda">0</span></a>
+            </li>
+            <li>
+            <a href="comunidade-topico.shtml"><i class="icon-comment icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small> <span class="label label-info" title="115 respostas">115</span></a>
+            </li>
+</ul>
+
+</div><!-- forum -->
+
+<div class="pagination">
+  <ul>
+<!--     <li><a href="#"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li> -->
+    <li class="active">
+      <a href="#">1</a>
+    </li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
+  </ul>
+  
+  <p class="pull-right">Exibindo de 1 a 10</p>
+
+</div>
+
+
+<hr class="only-mobile">
+
+</div>
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->

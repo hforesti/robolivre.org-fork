@@ -10,5 +10,12 @@
   </head>
   <body>
     <?php $sf_content ?>
+      <script type="text/javascript">
+        function url_for(){
+            alert('<?php echo url_for('') ?>');
+        }
+        
+    </script>
   </body>
+    
 </html>

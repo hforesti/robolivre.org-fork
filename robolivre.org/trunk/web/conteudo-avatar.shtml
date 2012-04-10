@@ -1,0 +1,118 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+
+  <div class="span2" id="sidebar">
+    <div class="avatar">
+      <a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Arduino" class="photo"></a>
+      <div class="btn-group">
+        <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+          </li>
+          <li>
+            <a href="conteudo-avatar.shtml">Atualizar imagem</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a data-toggle="modal" href="#modalColabInvite">Convidar amigos a colaborar</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+          </li>
+        </ul>
+      </div>
+
+    </div><!-- /avatar -->
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+      <li><a href="conteudo-docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info">5</span></a></li>
+      <li><a href="conteudo-imagens.shtml"><span class="icon-gray icon-picture"></span> Imagens <span class="label label-info">15</span></a></li>
+      <li><a href="conteudo-videos.shtml"><span class="icon-gray icon-film"></span> Vídeos <span class="label label-info">9</span></a></li>
+      <li><a href="conteudo-links.shtml"><span class="icon-gray icon-share-alt"></span> Links <span class="label label-info">5</span></a></li>
+      <li><a href="conteudo-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos relacionados <span class="label label-info">15</span></a></li>
+      <li><a href="conteudo-amigos.shtml"><span class="icon-gray icon-user"></span> Seguidores <span class="label label-info">150</span></a></li>
+    </ul>
+  </div><!-- /sidebar -->
+
+
+  <hr class="only-mobile">
+
+  <div class="span7">
+
+    <ul class="breadcrumb">
+      <li>
+        <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+      </li>
+      <li>
+        <a href="conteudos.shtml">Conteúdos</a> <span class="divider">/</span>
+      </li>
+      <li>
+        <a href="conteudo.shtml">Arduino</a> <span class="divider">/</span>
+      </li>
+      <li class="active">
+        Alterar imagem
+      </li>
+    </ul>
+
+
+    <div class="page-header">
+      <h1>Alterar imagem</h1>
+    </div>
+
+    <form action="#" id="form-upload-avatar">
+          <div class="control-group clearfix">
+            <label class="control-label" for="fileInput">Imagem (Até 8MB)</label>
+            <div class="row">
+              <div class="preview span2" id="img-preview">
+                <img src="assets/img/rl/170.gif" alt="Sua imagem" id="thumb" class="thumbnail" />
+              </div>
+
+              <div class="span5">				
+                <div class="controls">				
+                  <p class="help-block">Escolha uma imagem para <strong>"Arduino"</strong></p>
+                  <div id="file-uploader-avatar">       
+                    <noscript>          
+                      <input class="input-file" id="fileInput" type="file">
+                    </noscript>         
+                  </div>
+                  <p class="help-block">Dica: você pode arrastar e soltar o arquivo (jpg, jpeg, png ou gif) aqui na página</p>
+                </div>
+              </div>
+            </div><!-- row -->
+
+          </div><!-- control-group -->
+        </fieldset>          
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Salvar alterações</button>
+        </div>
+      </fieldset>
+
+    </form>
+
+
+  </div><!-- /miolo -->
+
+
+  <div class="span3" id="sidebar-wdgt">
+
+    <div class="alert">
+      <h6>Notas:</h6>
+      <ol>
+        <li>Somos amigos, porém o uso de imagens pornográficas e material sexualmente explícito está proibido. Isto pode causar <strong>exclusão</strong> do seu perfil.</li>
+        <li>Não seja um pirata de conteúdo, respeite os direitos autorais. Ou seja, não publique material que você não tem autorização explícita do dono/criador para usar.</li>
+      </ol>
+    </div>
+
+  </div><!-- /aside -->
+
+
+</div><!-- /row -->
+
+<!--#include virtual="includes/footer.html" -->

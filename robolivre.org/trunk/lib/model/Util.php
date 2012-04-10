@@ -20,6 +20,8 @@ class Util {
     const IMAGEM_MEDIA = 2;
     const IMAGEM_MINIATURA = 3;
     
+    const TIPO_IMAGEM_CONTEUDO = 1;
+    const TIPO_IMAGEM_USUARIO = 2;
     
     public static function getTagUsuario($nomeUsuario,$idUsuario){
         return "<a href=\"".url_for('perfil/exibir?u='.$idUsuario)."\">$nomeUsuario</a>";
@@ -144,6 +146,7 @@ class Util {
         return $v->getRootDir()."/web/assets/img/thumbnails";
     }
     public static function criaSlug($slug){
+        $slug = trim($slug);
         $slug = strtolower($slug);
         $retorno = "";
         
@@ -157,7 +160,57 @@ class Util {
         
         return $retorno;
     }
-
+    
+    
+    public static function imprimir($valor){
+        echo $valor;
+    }
+    
+    public static function validaImagem($imagem, $tamanhoImagem, $tipoImagem = self::TIPO_IMAGEM_USUARIO) {
+        if ($tipoImagem == self::TIPO_IMAGEM_USUARIO) {
+            if (!isset($imagem) || $imagem == "") {
+                switch ($tamanhoImagem) {
+                    case Util::IMAGEM_GRANDE:
+                        return "/assets/img/rl/_avatar-default-large.png";
+                    case Util::IMAGEM_MEDIA:
+                        return "/assets/img/rl/_avatar-default-60.png";
+                    case Util::IMAGEM_MINIATURA:
+                        return "/assets/img/rl/_avatar-default-20.png";
+                }
+            } else {
+                switch ($tamanhoImagem) {
+                    case Util::IMAGEM_GRANDE:
+                        return "/assets/img/thumbnails/" . str_replace(array("#"), array("large"), $imagem);
+                    case Util::IMAGEM_MEDIA:
+                        return "/assets/img/thumbnails/" . str_replace(array("#"), array("60"), $imagem);
+                    case Util::IMAGEM_MINIATURA:
+                        return "/assets/img/thumbnails/" . str_replace(array("#"), array("20"), $imagem);
+                }
+            }
+        } else if ($tipoImagem == self::TIPO_IMAGEM_CONTEUDO) {
+            if (!isset($imagem) || $imagem == "") {
+                switch ($tamanhoImagem) {
+                    case Util::IMAGEM_GRANDE:
+                        return "/assets/img/rl/170.gif";
+                    case Util::IMAGEM_MEDIA:
+                        return "/assets/img/rl/60.gif";
+                    case Util::IMAGEM_MINIATURA:
+                        return "/assets/img/rl/20.gif";
+                }
+            } else {
+                switch ($tamanhoImagem) {
+                    case Util::IMAGEM_GRANDE:
+                        return "/assets/img/thumbnails/" . str_replace(array("#"), array("large"), $imagem);
+                    case Util::IMAGEM_MEDIA:
+                        return "/assets/img/thumbnails/" . str_replace(array("#"), array("60"), $imagem);
+                    case Util::IMAGEM_MINIATURA:
+                        return "/assets/img/thumbnails/" . str_replace(array("#"), array("20"), $imagem);
+                }
+            }
+        }
+        return $imagem;
+    }
+    
 }
 
 ?>

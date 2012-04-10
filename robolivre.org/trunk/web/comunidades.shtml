@@ -1,0 +1,74 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+
+<hr class="only-mobile">
+
+<div class="span10 offset1">
+
+
+<div class="page-header">
+
+<form id="search-comun-form" class="pull-right" action="search.shtml">
+        <input type="text" id="search-comun-field" class="input-xlarge search-query" placeholder="Buscar comunidade">
+</form>
+
+<h1>Comunidades</h1>
+
+</div>
+
+
+<div id="explore" class="main-comunidades clearfix">
+	<div id="featured">
+
+<ul class="nav nav-pills">
+  <li class="active">
+    <a href="comunidades.shtml"><i class="icon-fire icon-gray"></i> Mais Populares</a>
+  </li>
+  <li><a href="comunidades-recents.shtml"><i class="icon-time icon-gray"></i> Atualizadas Recentemente</a></li>
+</ul>
+
+<hr>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="thumbs">
+
+	<ul>
+		<li><div class="thumbnail"><a href="comunidade.shtml"><img src="assets/img/rl/170.gif" width="170" height="170" alt="Nome da comunidade" title="Nome da comunidade"></a> <h4>Fringilla Ligula Sit Ipsum Fringilla Ligula Sit Ipsum Fringilla Ligula Sit Ipsum Fringilla Ligula Sit Ipsum Fringilla Ligula Sit Ipsum Fringilla Ligula Sit Ipsum Fringilla Ligula Sit<small>55 membros</small></h4></div></li>
+		<li><div class="thumbnail"><a href="comunidade.shtml"><img src="assets/img/rl/170.gif" width="170" height="170" alt="Nome da comunidade" title="Nome da comunidade"></a> <h4>Apostila de C para PIC <small>55 membros</small></h4></div></li>
+		<li><div class="thumbnail"><a href="comunidade.shtml"><img src="assets/img/rl/170.gif" width="170" height="170" alt="Nome da comunidade" title="Nome da comunidade"></a> <h4>Sistema de Processamento Principal - ARM <small>55 membros</small></h4></div></li>
+		<li><div class="thumbnail"><a href="comunidade.shtml"><img src="assets/img/rl/170.gif" width="170" height="170" alt="Nome da comunidade" title="Nome da comunidade"></a> <h4>Arduino <small>55 membros</small></h4></div></li>
+		<li><div class="thumbnail"><a href="comunidade.shtml"><img src="assets/img/rl/170.gif" width="170" height="170" alt="Nome da comunidade" title="Nome da comunidade"></a> <h4>Projeto Mecânico 22 <small>55 membros</small></h4></div></li>
+		<li><div class="thumbnail"><a href="comunidade.shtml"><img src="assets/img/rl/170.gif" width="170" height="170" alt="Nome da comunidade" title="Nome da comunidade"></a> <h4>Encoder <small>55 membros</small></h4></div></li>
+		<li><div class="thumbnail"><a href="comunidade.shtml"><img src="assets/img/rl/170.gif" width="170" height="170" alt="Nome da comunidade" title="Nome da comunidade"></a> <h4>ProUCA <small>55 membros</small></h4></div></li>
+		<li><div class="thumbnail"><a href="comunidade.shtml"><img src="assets/img/rl/170.gif" width="170" height="170" alt="Nome da comunidade" title="Nome da comunidade"></a> <h4>MSWLogo <small>55 membros</small></h4></div></li>
+		<li><div class="thumbnail"><a href="comunidade.shtml"><img src="assets/img/rl/170.gif" width="170" height="170" alt="Nome da comunidade" title="Nome da comunidade"></a> <h4>Encoder <small>55 membros</small></h4></div></li>
+		<li><div class="thumbnail"><a href="comunidade.shtml"><img src="assets/img/rl/170.gif" width="170" height="170" alt="Nome da comunidade" title="Nome da comunidade"></a> <h4>Iniciando com o Arduino <small>55 membros</small></h4></div></li>
+		<li><div class="thumbnail"><a href="comunidade.shtml"><img src="assets/img/rl/170.gif" width="170" height="170" alt="Nome da comunidade" title="Nome da comunidade"></a> <h4>Fringilla Ligula Sit Ipsum Fringilla Ligula Sit Ipsum <small>55 membros</small></h4></div></li>
+		<li><div class="thumbnail"><a href="comunidade.shtml"><img src="assets/img/rl/170.gif" width="170" height="170" alt="Nome da comunidade" title="Nome da comunidade"></a> <h4>Apostila de C para PIC <small>55 membros</small></h4></div></li>
+
+	</ul>
+  </div>
+
+
+  </div>
+
+<hr>
+
+<a href="comunidade-criar.shtml" class="btn btn-success"><i class="icon-plus icon-white"></i> Criar sua comunidade</a>
+
+</div>
+
+
+
+</div><!-- #explore -->
+
+
+</div><!-- /miolo -->
+
+
+
+</div><!-- /row -->
+
+<!--#include virtual="includes/footer.html" -->

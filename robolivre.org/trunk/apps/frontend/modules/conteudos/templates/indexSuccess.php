@@ -1,41 +1,9 @@
 <div class="row">
 
-    <div class="span2" id="sidebar">
-        <div class="avatar">
-            <a href="<?php url_for('perfil/index'); ?>"><img src="<?php echo image_path(UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_GRANDE)); ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>" class="photo"></a>
-            <div class="btn-group">
-                <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-                    <span class="icon-cog icon-gray"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="<?php echo url_for('perfil/atualizarFoto') ?>">Atualizar foto</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo url_for('perfil/editarPerfil?u='.UsuarioLogado::getInstancia()->getIdUsuario()) ?>">Editar perfil</a>
-                    </li>
-                </ul>
-            </div>
-
-            <h1><?php echo UsuarioLogado::getInstancia()->getNome(); ?></h1>
-
-        </div><!-- /avatar -->
-
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="<?php url_for('perfil/index'); ?>"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
-            <li><a href="<?php echo url_for('perfil/exibirConteudos?u='.UsuarioLogado::getInstancia()->getIdUsuario()) ?>"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
-            <li><a href="comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
-            <li><a href="<?php echo url_for('perfil/solicitacoes') ?>"><?php if (UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() > 0) { ?><span class="label label-warning" title="<?php echo UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() ?> nova(s) solicitações de amizade"><?php echo UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() ?></span><?php } ?><span class="icon-gray icon-user"></span> Amigos</a></li>
-            <li><a href="eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
-            <li><a href="projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
-            <li><hr></li>
-            <li><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
-        </ul>
-    </div><!-- /sidebar -->
 
     <hr class="only-mobile">
 
-    <div class="span10">
+    <div class="span10 offset1">
 
 
         <div class="page-header">
@@ -63,7 +31,7 @@
                     </div><!-- modal-body -->
                     <div class="modal-footer">
                         <div class="pull-right" id="div-botao-criar">
-                        <button type="button" onclick="validaForm()" class="btn btn-primary">Criar</button>
+                            <button type="button" onclick="validaForm()" class="btn btn-primary">Criar</button>
                         </div>
                     </div>
                 </form>
@@ -75,74 +43,172 @@
 
 
         <div id="explore" class="clearfix">
-            <h2>Explore nosso mundo de conteúdos</h2>
-            <form class="form-search" action="#">
-                <input type="text" class="span4 search-query" placeholder="Procurar conteúdo…">
-            </form>
+<h2>Explore nosso mundo de conteúdos</h2>
+<form class="form-search" action="#">
+  <input type="text" id="search-content" class="span5 search-query" placeholder="Procurar conteúdo…">
+</form>
 
-            <div id="tagcloud">
-                <a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">LAME4</a>
-                <a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Nasdaq</a>
-                <a href="conteudo.shtml" title="14 itens" style="font-size: 15.0636942675px;">Apresentações</a>
-                <a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Programa</a>
-                <a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Programação</a>
-                <a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">LAME4</a>
-                <a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">C++</a>
-                <a href="conteudo.shtml" title="14 itens" style="font-size: 15.0636942675px;">New Highs New Lows</a>
-                <a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Programa</a>
-                <a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Projeto</a>
-                <a href="conteudo.shtml" title="4 itens" style="font-size: 11.7006369427px;">Animação</a>
-                <a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">Bípede</a>
-                <a href="conteudo.shtml" title="4 itens" style="font-size: 11.7006369427px;">cattec</a>
-                <a href="conteudo.shtml" title="96 itens" style="font-size: 20.7388535032px;">Circuitos</a>
-                <a href="conteudo.shtml" title="42 itens" style="font-size: 18.2165605096px;">Código Fonte</a>
-                <a href="conteudo.shtml" title="6 itens" style="font-size: 12.7515923567px;">Com rodas</a>
-                <a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Documento</a>
-                <a href="conteudo.shtml" title="7 itens" style="font-size: 13.101910828px;">GGBR4</a>
-                <a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">GVTT3</a>
-                <a href="conteudo.shtml" title="147 itens" style="font-size: 22px;">Ibov</a>
-                <a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">ITAU4</a>
-                <a href="conteudo.shtml" title="3 itens" style="font-size: 32px;" class="nofade">Arduino</a>
-                <a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">ITUB4</a>
-                <a href="conteudo.shtml" title="18 itens" style="font-size: 15.7643312102px;">Evento</a>
-                <a href="conteudo.shtml" title="36 itens" style="font-size: 17.7961783439px;">LAD</a>
-                <a href="conteudo.shtml" title="36 itens" style="font-size: 22px;" class="nofade">Open source</a>
-                <a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">LAME4</a>
-                <a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Nasdaq</a>
-                <a href="conteudo.shtml" title="14 itens" style="font-size: 15.0636942675px;">New Highs New Lows</a>
-                <a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Programa</a>
-                <a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Programação</a>
-                <a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">LAME4</a>
-                <a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Nasdaq</a>
-                <a href="conteudo.shtml" title="14 itens" style="font-size: 15.0636942675px;">New Highs New Lows</a>
-                <a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Programa</a>
-                <a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Projeto</a>
-            </div>
-        </div><!-- #explore -->
+	<div id="featured">
 
-        <hr>
+<ul class="nav nav-pills">
+  <li class="active">
+    <a href="#thumbs" data-toggle="tab"><i class="icon-fire icon-gray"></i> Mais Populares</a>
+  </li>
+  <li><a href="#tags" data-toggle="tab"><i class="icon-tags icon-gray"></i> Nuvem de Tags</a></li>
+</ul>
 
-        <div class="row">
+<hr>
 
-            <div class="span10 list-conteudos">
-                <h3>Apresentações</h3>
-                <ul class="nav nav-pills nav-stacked">
-                    <li><a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo"> Nome do conteúdo Nome do conteúdo</a></li>
-                    <li><a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo"> Nome do conteúdo</a></li>
-                    <li><a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo"> Nome do conteúdo</a></li>
-                    <li><a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo"> Conteúdo</a></li>
-                    <li><a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo"> Nome do conteúdo</a></li>
-                    <li><a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo"> Nome do conteúdo</a></li>
-                    <li><a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo"> Nome do conteúdo</a></li>
-                    <li><a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo"> Nome do conteúdo</a></li>
-                    <li><a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo"> Conteúdo</a></li>
-                    <li><a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo"> Nome do conteúdo</a></li>
-                </ul>
-            </div><!-- list-conteudos -->
+<div class="tab-content">
+  <div class="tab-pane active fade in" id="thumbs">
 
-        </div>
+	<ul class="thumbnails">
+		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Nome do conteúdo</h5></div></li>
+		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Apostila de C para PIC</h5></div></li>
+		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Sistema de Processamento Principal - ARM</h5></div></li>
+		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Arduino</h5> <span class="label label-info">Tema de aula</span></div></li>
+		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Projeto Mecânico 22</h5></div></li>
+	</ul>
 
-    </div><!-- /miolo -->
+	<ul class="thumbnails">
+		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Encoder</h5> <span class="label label-info">Tema de aula</span></div></li>
+		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>ProUCA</h5></div></li>
+		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>MSWLogo</h5></div></li>
+		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Encoder</h5> <span class="label label-info">Tema de aula</span></div></li>
+		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Iniciando com o Arduino</h5></div></li>
+	</ul>
+  </div>
+
+
+  <div class="tab-pane fade in" id="tags">
+  
+	<div id="tagcloud">
+		<a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">LAME4</a>
+		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Nasdaq</a>
+		<a href="conteudo.shtml" title="14 itens" style="font-size: 15.0636942675px;">Apresentações</a>
+		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Programa</a>
+		<a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Programação</a>
+		<a href="conteudo.shtml" title="5 itens" style="font-size: 22.2611464968px;">LAME4</a>
+		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">C++</a>
+		<a href="conteudo.shtml" title="14 itens" style="font-size: 25.0636942675px;">New Highs New Lows</a>
+		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Programa</a>
+		<a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Projeto</a>
+		<a href="conteudo.shtml" title="4 itens" style="font-size: 11.7006369427px;">Animação</a>
+		<a href="conteudo.shtml" title="5 itens" style="font-size: 22.2611464968px;">Bípede</a>
+		<a href="conteudo.shtml" title="4 itens" style="font-size: 11.7006369427px;">cattec</a>
+		<a href="conteudo.shtml" title="96 itens" style="font-size: 20.7388535032px;">Circuitos</a>
+		<a href="conteudo.shtml" title="42 itens" style="font-size: 18.2165605096px;">Código Fonte</a>
+		<a href="conteudo.shtml" title="6 itens" style="font-size: 12.7515923567px;">Com rodas</a>
+		<a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Documento</a>
+		<a href="conteudo.shtml" title="7 itens" style="font-size: 13.101910828px;">GGBR4</a>
+		<a href="conteudo.shtml" title="3 itens" style="font-size: 21px;">GVTT3</a>
+		<a href="conteudo.shtml" title="147 itens" style="font-size: 22px;">Ibov</a>
+		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">ITAU4</a>
+		<a href="conteudo.shtml" title="3 itens" style="font-size: 52px;" class="nofade">Arduino</a>
+		<a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">ITUB4</a>
+		<a href="conteudo.shtml" title="18 itens" style="font-size: 15.7643312102px;">Evento</a>
+		<a href="conteudo.shtml" title="36 itens" style="font-size: 17.7961783439px;">LAD</a>
+		<a href="conteudo.shtml" title="36 itens" style="font-size: 32px;" class="nofade">Open source</a>
+		<a href="conteudo.shtml" title="5 itens" style="font-size: 22.2611464968px;">LAME4</a>
+		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Nasdaq</a>
+		<a href="conteudo.shtml" title="14 itens" style="font-size: 15.0636942675px;">New Highs New Lows</a>
+		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Programa</a>
+		<a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Programação</a>
+		<a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">LAME4</a>
+		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Nasdaq</a>
+		<a href="conteudo.shtml" title="14 itens" style="font-size: 25.0636942675px;">New Highs New Lows</a>
+		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Programa</a>
+		<a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Projeto</a>
+	</div>	
+	
+  </div>
+</div>
+
+
+	</div>
+
+</div><!-- #explore -->
+
+<hr>
+
+<div class="row" id="institucional-content">
+	<h3>Conteúdo da Equipe Robô Livre</h3>
+
+<div class="span5 list-conteudos">
+	<h6>Apresentações</h6>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Arquivo</th>
+      <th>Formato</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="label label-info">Novo</span> <a href="#">Mattis Pharetra Sit Amet</a></td>
+      <td>PPT</td>
+    </tr>
+    <tr>
+      <td><span class="label label-info">Novo</span> <a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
+      <td>PPT</td>
+    </tr>
+    <tr>
+      <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
+      <td>PDF</td>
+    </tr>
+    <tr>
+      <td><a href="#">Mattis Pharetra Sit Amet</a></td>
+      <td>ZIP</td>
+    </tr>
+    <tr>
+      <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
+      <td>PDF</td>
+    </tr>
+  </tbody>
+</table>
+
+</div><!-- list-conteudos -->
+
+<div class="span5 list-conteudos">
+	<h6>Publicações científicas</h6>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Arquivo</th>
+      <th>Formato</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="label label-info">Novo</span> <a href="#">Mattis Pharetra Sit Amet</a></td>
+      <td>PDF</td>
+    </tr>
+    <tr>
+      <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit</a></td>
+      <td>PDF</td>
+    </tr>
+    <tr>
+      <td><a href="#">Mattis Pharetra Sit Amet</a></td>
+      <td>DOC</td>
+    </tr>
+    <tr>
+      <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
+      <td>ZIP</td>
+    </tr>
+    <tr>
+      <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
+      <td>PDF</td>
+    </tr>
+  </tbody>
+</table>
+
+</div><!-- list-conteudos -->
+
+
+</div>
+
+</div><!-- /miolo -->
 
 
 
@@ -177,7 +243,7 @@
         
         if(getValue('nome') != ""){
             
-            $("#div-botao-criar").prepend("<img src='<?php echo image_path('/assets/img/rl/loading.gif');?>' id='imagem-load' alt='Carregando'>");
+            $("#div-botao-criar").prepend("<img src='<?php echo image_path('/assets/img/rl/loading.gif'); ?>' id='imagem-load' alt='Carregando'>");
             
             $.ajax({
                 url: <?php echo "'" . url_for("ajax/ajaxValidaNomeConteudo") . "?nome='+getValue('nome')" ?>,

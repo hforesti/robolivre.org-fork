@@ -1,0 +1,102 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+<div class="avatar">
+	<a href="profile-home.shtml"><img src="assets/img/rl/avatar-170.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+    <div class="btn-group">
+	  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+	    <span class="icon-cog icon-gray"></span>
+	  	</a>
+	  	<ul class="dropdown-menu">
+	      <li>
+	        <a href="settings-avatar.shtml">Atualizar foto</a>
+	      </li>
+	      <li>
+	        <a href="profile-info-editar.shtml">Editar perfil</a>
+	      </li>
+		</ul>
+	</div>
+	
+	<h1>Rodrigo Medeiros</h1>
+
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li><a href="profile-home.shtml"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+	<li><a href="profile-conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+	<li><a href="profile-comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+	<li><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
+	<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
+	<li><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+	<li><a href="perfil-info.shtml"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
+				<li><hr></li>
+	<li class="active"><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+  	<a href="inbox-criar.shtml" class="pull-right btn btn-primary"><i class="icon-pencil icon-white"></i> Criar nova mensagem</a>
+
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a href="inbox.shtml"><i class="icon-th-list icon-gray"></i> Notificações</a>
+  </li>
+  <li>
+  	<a href="inbox-pvt.shtml"><i class="icon-envelope icon-gray"></i> Mensagens privadas</a>
+  </li>
+  <li>
+  	<a href="inbox-sent.shtml"><i class="icon-arrow-right icon-gray"></i> Enviadas</a>
+  </li>
+
+</ul>
+
+<div id="stream">
+
+	<ul>
+		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<a href="perfil.shtml" class="fn">Max Guenes</a> criou <a href="post.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> marcado com <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i> Open Source</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+		</li>
+
+		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<a href="perfil.shtml" class="fn">Max Guenes</a> e <a href="perfil.shtml" class="fn">Rodrigo Medeiros</a> agora são amigos. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+		</li>
+
+		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<a href="perfil.shtml" class="fn">Max Guenes</a> criou <a href="post.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> marcado com <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i> Arduino</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+		</li>
+
+		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<a href="perfil.shtml" class="fn">Max Guenes</a> criou <a href="post.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> marcado com <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i> Arduino</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+		</li>
+	</ul>
+
+
+</div><!-- stream -->
+
+
+<div class="pagination">
+	<hr>
+  <ul>
+<!--     <li><a href="#"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li> -->
+    <li class="active">
+      <a href="#">1</a>
+    </li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
+  </ul>
+  
+  <p class="pull-right">Exibindo de 1 a 10</p>
+
+</div>
+
+</div><!-- /miolo -->
+
+</div><!-- /row -->
+
+<!--#include virtual="includes/footer.html" -->

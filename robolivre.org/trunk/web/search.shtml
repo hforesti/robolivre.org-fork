@@ -1,0 +1,371 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+<h6>Filtros</h6>
+	<ul class="nav nav-pills nav-stacked">
+	  <li class="active">
+	    <a href="search.shtml"><i class="icon-search icon-gray"></i> Tudo</a>
+	  </li>
+	  <li><a href="#"><i class="icon-file icon-gray"></i> Conteúdos</a></li>
+	  <li><a href="#"><i class="icon-comment icon-gray"></i> Comunidades</a></li>
+	  <li><a href="#"><i class="icon-folder-open icon-gray"></i> Projetos</a></li>
+	</ul>
+</div>
+
+
+<div class="span10">
+
+<div class="list-mgmt">
+
+	<h1>Resultado de busca por "Arduino"<!--  <small>Em Comunidades</small> --></h1>
+
+<!-- ================================================== -->
+<!-- ! Alertas em caso de nenhum resultado encontrado   -->
+<!-- ================================================== -->
+
+<!--
+<div class="alert alert-block">
+<p>Nossos robôs não encontraram na rede algo com o termo "Arduino". Tente outra busca.</p>
+	<p>
+		<a href="profile-home.shtml" class="btn"><i class="icon-chevron-left icon-gray"></i> Início</a>
+	</p>
+</div>
+-->
+
+<!--
+<div class="alert alert-block">
+
+<p>Nossos robôs não encontraram uma <strong>comunidade</strong> com o termo "Arduino"</p>
+	<p>
+		<a href="comunidades.shtml" class="btn"><i class="icon-comment icon-gray"></i> Ver Comunidades</a> <a href="profile-home.shtml" class="btn"><i class="icon-chevron-left icon-gray"></i> Início</a>
+	</p>
+
+<p>Nossos robôs não encontraram um <strong>conteúdo</strong> com o termo "Arduino"</p>
+	<p>
+		<a href="conteudos.shtml" class="btn"><i class="icon-comment icon-gray"></i> Ver Conteúdos</a> <a href="profile-home.shtml" class="btn"><i class="icon-chevron-left icon-gray"></i> Início</a>
+	</p>
+
+<p>Nossos robôs não encontraram um <strong>projeto</strong> com o termo "Arduino"</p>
+	<p>
+		<a href="projetos.shtml" class="btn"><i class="icon-comment icon-gray"></i> Ver Projetos</a> <a href="profile-home.shtml" class="btn"><i class="icon-chevron-left icon-gray"></i> Início</a>
+	</p>
+</div>
+-->
+<!-- ================================================== -->
+
+
+	<ul>
+<!-- ================================================ -->
+<!-- ! class "mine" para indicar "Criada por você"   -->
+<!-- !  ‧ <small>Criado por você</small> dentro do titulo   -->
+<!-- ================================================ -->
+		<li class="row mine">
+		<div class="span8">
+		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a> ‧ <small>Criada por você</small></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		<li class="row">
+		<div class="span8">
+		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+		<li class="row">
+		<div class="span8">
+		<a href="comunidade.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade" class="thumbnail"></a> <h3><a href="comunidade.shtml">Nome da comunidade</a></h3>
+		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
+		<a href="comunidade-topicos.shtml">40 tópicos</a> ‧ <a href="comunidade-docs.shtml">5 documentos</a> ‧ <a href="comunidade-projetos.shtml">5 projetos relacionados</a> ‧ <a href="comunidade-seguidores.shtml">150 participantes</a></p>
+		</div>
+
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+			<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="comunidade-topico-criar.shtml">Criar novo tópico</a>
+				</li>
+				<li>
+					<a href="comunidade-upload.shtml">Adicionar um documento</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de participar</a>
+				</li>
+			</ul>
+		</div><!-- btn-group -->
+		</li>
+		
+	</ul>
+
+<hr>
+
+<div class="pagination">
+  <ul>
+<!--     <li><a href="#"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li> -->
+    <li class="active">
+      <a href="#">1</a>
+    </li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
+  </ul>
+  
+  <p class="pull-right">Exibindo de 1 a 10</p>
+
+</div>
+
+</div>
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!-- ====================== -->
+<!-- ! Caixas de mensagem   -->
+<!-- ====================== -->
+<div class="modal fade" id="modalRemoveCommunity">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Deixar de participar</h3>
+  </div>
+  <div class="modal-body">
+  <p>Deseja deixar de participar da comunidade <strong>Nome da comunidade</strong>?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-danger">Deixar de participar</a> 
+
+    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+  </div>
+</div>
+
+
+
+<!--#include virtual="includes/footer.html" -->

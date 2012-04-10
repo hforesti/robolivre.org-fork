@@ -16,20 +16,24 @@ abstract class BaseTagsConteudosForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id_conteudo_referencia'        => new sfWidgetFormInputHidden(),
-      'id_conteudo_referenciado'      => new sfWidgetFormInputHidden(),
       'id_conjunto_referencia'        => new sfWidgetFormInputHidden(),
       'id_tipo_conjunto_referencia'   => new sfWidgetFormInputHidden(),
-      'id_conjunto_referenciado'      => new sfWidgetFormInputHidden(),
-      'id_tipo_conjunto_referenciado' => new sfWidgetFormInputHidden(),
+      'id_tag_conteudo'               => new sfWidgetFormInputHidden(),
+      'id_conteudo_referenciado'      => new sfWidgetFormInputText(),
+      'id_conjunto_referenciado'      => new sfWidgetFormInputText(),
+      'id_tipo_conjunto_referenciado' => new sfWidgetFormInputText(),
+      'nome_conteudo_inexistente'     => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
       'id_conteudo_referencia'        => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_conteudo_referencia')), 'empty_value' => $this->getObject()->get('id_conteudo_referencia'), 'required' => false)),
-      'id_conteudo_referenciado'      => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_conteudo_referenciado')), 'empty_value' => $this->getObject()->get('id_conteudo_referenciado'), 'required' => false)),
       'id_conjunto_referencia'        => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_conjunto_referencia')), 'empty_value' => $this->getObject()->get('id_conjunto_referencia'), 'required' => false)),
       'id_tipo_conjunto_referencia'   => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_tipo_conjunto_referencia')), 'empty_value' => $this->getObject()->get('id_tipo_conjunto_referencia'), 'required' => false)),
-      'id_conjunto_referenciado'      => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_conjunto_referenciado')), 'empty_value' => $this->getObject()->get('id_conjunto_referenciado'), 'required' => false)),
-      'id_tipo_conjunto_referenciado' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_tipo_conjunto_referenciado')), 'empty_value' => $this->getObject()->get('id_tipo_conjunto_referenciado'), 'required' => false)),
+      'id_tag_conteudo'               => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_tag_conteudo')), 'empty_value' => $this->getObject()->get('id_tag_conteudo'), 'required' => false)),
+      'id_conteudo_referenciado'      => new sfValidatorInteger(),
+      'id_conjunto_referenciado'      => new sfValidatorInteger(),
+      'id_tipo_conjunto_referenciado' => new sfValidatorInteger(),
+      'nome_conteudo_inexistente'     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('tags_conteudos[%s]');

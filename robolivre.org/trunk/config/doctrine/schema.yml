@@ -654,6 +654,14 @@ Publicacoes:
       default: '0'
       notnull: false
       autoincrement: false
+    privacidade_publicacao:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '1'
+      notnull: false
+      autoincrement: false
 SuperTipos:
   connection: doctrine
   tableName: super_tipos
@@ -688,12 +696,6 @@ TagsConteudos:
       unsigned: false
       primary: true
       autoincrement: false
-    id_conteudo_referenciado:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: false
     id_conjunto_referencia:
       type: integer(8)
       fixed: false
@@ -706,17 +708,39 @@ TagsConteudos:
       unsigned: true
       primary: true
       autoincrement: false
-    id_conjunto_referenciado:
+    id_tag_conteudo:
       type: integer(8)
       fixed: false
       unsigned: false
       primary: true
+      autoincrement: true
+    id_conteudo_referenciado:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_conjunto_referenciado:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
       autoincrement: false
     id_tipo_conjunto_referenciado:
       type: integer(4)
       fixed: false
       unsigned: true
-      primary: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    nome_conteudo_inexistente:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
       autoincrement: false
 TiposConjuntos:
   connection: doctrine

@@ -43,10 +43,10 @@
                         <h6>Atualizar foto: </h6>
                     </li>
                 </ul>
-                <?php if(isset($imagem)): ?>
-                <img src="<?php echo ($imagem); ?>" class="photo">
-                <a href="<?php echo url_for('perfil/confirmarFotoPerfil?arq='.$nome_arquivo) ?>">CONFIRMAR</a>
-                <?php endif; ?>
+                <?php if(isset($imagem)){ ?>
+                    <img src="<?php echo image_path($imagem); ?>" class="photo">
+                    <a href="<?php echo url_for('perfil/confirmarFotoPerfil?arq='.$nome_arquivo) ?>">CONFIRMAR</a>
+                <?php } ?>
                 <form action="<?php echo url_for('perfil/previaFoto'); ?>" method="post" enctype="multipart/form-data">
                     <div id="div-nome" class="control-group">
                         <label class="control-label" for="nome">Nome e Sobrenome</label>

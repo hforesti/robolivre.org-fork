@@ -27,8 +27,8 @@ all:
     # Form security secret (CSRF protection)
     csrf_secret:            UniqueSecret
     # Output escaping settings
-    escaping_strategy:      true
-    escaping_method:        ESC_SPECIALCHARS
+    escaping_strategy:    false  
+    #escaping_method:        ESC_SPECIALCHARS
 
     # Enable the database manager
     use_database:           true

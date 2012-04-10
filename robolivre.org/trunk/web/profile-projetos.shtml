@@ -40,21 +40,25 @@
 <div class="span10">
 
 <div class="list-mgmt">
-	<h2>Projetos que você segue ‧ <small>15</small></h2>	
 
+<div class="row">
+	<h2 class="span7">Projetos que você segue ‧ <small>15</small></h2>	
+</div>
 
-  <ul class="nav nav-pills">
-	  <li class="active">
-	    <a href="#">Atualizados recentemente</a>
-	  </li>
-	  <li><a href="#">Criados por você</a></li>
-  </ul>
-
-
-<form class="list-filter pull-right">
-        <input type="text" class="input-xlarge search-query" placeholder="Buscar na lista de projetos">
-</form>
-
+<div class="row">
+	<div class="span6">
+	  <ul class="nav nav-pills">
+		  <li class="active">
+		    <a href="profile-projetos.shtml">Atualizados recentemente</a>
+		  </li>
+		  <li><a href="profile-projetos-meus.shtml">Criados por você</a></li>
+	  </ul>
+	</div>
+	
+	<form class="list-filter">
+	        <input type="text" class="span4 search-query" placeholder="Buscar na lista de projetos">
+	</form>
+</div>
 
 	<ul>
 <!-- ================================================ -->
@@ -64,8 +68,8 @@
 		<li class="row mine">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a> ‧ <small>Criado por você</small></h3>
-		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
+		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Ativo</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -99,8 +103,8 @@
 		<li class="row">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
+		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Ativo</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -131,8 +135,8 @@
 		<li class="row">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
+		<p class="meta"><span class="label label-info"><i class="icon-ok-circle icon-white"></i> Concluído</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -163,8 +167,8 @@
 		<li class="row">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
+		<p class="meta"><span class="label label-important"><i class="icon-remove-circle icon-white"></i> Cancelado</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -195,8 +199,8 @@
 		<li class="row">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
+		<p class="meta"><span class="label label-info"><i class="icon-ok-circle icon-white"></i> Concluído</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -227,8 +231,8 @@
 		<li class="row">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
+		<p class="meta"><span class="label label-info"><i class="icon-ok-circle icon-white"></i> Concluído</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -259,8 +263,8 @@
 		<li class="row">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
+		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Ativo</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -291,8 +295,8 @@
 		<li class="row">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
+		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Ativo</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -323,8 +327,8 @@
 		<li class="row">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
+		<p class="meta"><span class="label label-info"><i class="icon-ok-circle icon-white"></i> Concluído</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
 		<div class="btn-group">
@@ -355,8 +359,8 @@
 		<li class="row">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta">Última atualização 21/01/2012 às 21:50<br>
-		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a> ‧ <i class="icon-comment icon-gray"></i> <a href="projeto.shtml">Nome da comunidade</a></p>
+		<p class="meta"><span class="label label-important"><i class="icon-remove-circle icon-white"></i> Cancelado</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
 		<div class="btn-group">

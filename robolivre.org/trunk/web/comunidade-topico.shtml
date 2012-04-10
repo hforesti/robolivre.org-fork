@@ -1,0 +1,588 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+<div class="avatar">
+	<a href="comunidade.shtml"><img src="assets/img/rl/170.gif" alt="Poeta Manuel Bandeira" class="photo"></a>
+
+  <div class="btn-group">
+    <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+      <span class="icon-cog icon-gray"></span>
+    </a>
+    <ul class="dropdown-menu">
+     <li>
+      <a data-toggle="modal" href="#modalInvite">Convidar amigos</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+     <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+   </li>
+ </ul>
+</div>
+
+
+<!-- ========================================== -->
+<!-- ! Menu apenas para o criador e moderador   -->
+<!-- ========================================== -->
+<!--
+    <div class="btn-group">
+		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+		<span class="icon-cog icon-gray"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="conteudo-criar.shtml">Editar dados</a>
+			</li>
+			<li>
+				<a data-toggle="modal" href="#modalImgUpload">Atualizar imagem</a>
+			</li>
+		</ul>
+	</div>
+-->
+	<h1>Poeta Manuel Bandeira</h1>
+
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li><a href="comunidade.shtml"><span class="icon-gray icon-info-sign"></span> Resumo</a></li>
+	<li class="active"><a href="comunidade-forum.shtml"><span class="icon-gray icon-comment"></span> Fórum <span class="label label-info">50</span></a></li>
+	<li><a href="comunidade-projetos.shtml"><span class="icon-gray icon-user"></span> Projetos <span class="label label-info">150</span></a></li>
+	<li><a href="comunidade-docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info">5</span></a></li>
+	<li><a href="comunidade-amigos.shtml"><span class="icon-gray icon-user"></span> Participantes <span class="label label-info">15</span></a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+
+<ul class="breadcrumb">
+  <li>
+    <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="comunidades">Comunidades</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="comunidade.shtml">Poeta Manuel Bandeira</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="comunidade-forum.shtml">Fórum</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <a href="comunidade-topico.shtml">Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus</a>
+  </li>
+</ul>
+
+
+<div id="stream" class="forum-item">
+<h3>Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus</h3>
+
+  <ul>
+<!-- ======================================== -->
+<!-- ! Modelo de compartilhamento de vídeo   -->
+<!-- ======================================== -->
+    <li class="vcard">
+<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+        <a href="perfil.shtml" class="fn">Rodrigo Muniz</a>
+        <div class="share-content">
+        <a href="status.shtml" class="shared-item"><img src="assets/img/rl/share-img.jpg" alt="Imagem compartilhada" class="thumbnail"><div class="btn-play"></div></a>
+        
+        <div class="video-embed">
+          <iframe src="http://www.youtube.com/embed/-KXBZZO6IgQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+        
+        </div>
+      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Aberto há 39 minutos</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="bt-reply">
+              <a href="#form-reply">Responder tópico</a>
+            </li>
+<!--        <li class="divider"></li>
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+-->
+        <li class="divider"></li>
+            <li>
+              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+            </li>
+        </ul>
+      </div><!-- btn-group -->
+    </li>
+
+
+    <li class="vcard reply mine"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+      <a href="perfil.shtml" class="fn">Max Guenes</a>
+      <blockquote>
+      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      </blockquote>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Editado há 19 minutos</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+
+        </ul>
+      </div><!-- btn-group -->
+
+    </li>
+
+    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+      <a href="perfil.shtml" class="fn">Max Guenes</a>
+      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="bt-reply">
+              <a href="#form-reply">Responder</a>
+            </li>
+<!--        <li class="divider"></li>
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+-->
+        <li class="divider"></li>
+            <li>
+              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+            </li>
+        </ul>
+      </div><!-- btn-group -->
+
+    </li>
+
+    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+      <a href="perfil.shtml" class="fn">Max Guenes</a>
+      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="bt-reply">
+              <a href="#form-reply">Responder</a>
+            </li>
+<!--        <li class="divider"></li>
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+-->
+        <li class="divider"></li>
+            <li>
+              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+            </li>
+        </ul>
+      </div><!-- btn-group -->
+
+    </li>
+
+    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+      <a href="perfil.shtml" class="fn">Max Guenes</a>
+      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="bt-reply">
+              <a href="#form-reply">Responder</a>
+            </li>
+<!--        <li class="divider"></li>
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+-->
+        <li class="divider"></li>
+            <li>
+              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+            </li>
+        </ul>
+      </div><!-- btn-group -->
+
+    </li>
+
+    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+      <a href="perfil.shtml" class="fn">Max Guenes</a>
+      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="bt-reply">
+              <a href="#form-reply">Responder</a>
+            </li>
+<!--        <li class="divider"></li>
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+-->
+        <li class="divider"></li>
+            <li>
+              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+            </li>
+        </ul>
+      </div><!-- btn-group -->
+
+    </li>
+
+    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+      <a href="perfil.shtml" class="fn">Max Guenes</a>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="bt-reply">
+              <a href="#form-reply">Responder</a>
+            </li>
+<!--        <li class="divider"></li>
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+-->
+        <li class="divider"></li>
+            <li>
+              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+            </li>
+        </ul>
+      </div><!-- btn-group -->
+
+    </li>
+
+    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+      <a href="perfil.shtml" class="fn">Max Guenes</a>
+      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="bt-reply">
+              <a href="#form-reply">Responder</a>
+            </li>
+<!--        <li class="divider"></li>
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+-->
+        <li class="divider"></li>
+            <li>
+              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+            </li>
+        </ul>
+      </div><!-- btn-group -->
+
+    </li>
+
+    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+      <a href="perfil.shtml" class="fn">Max Guenes</a>
+      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="bt-reply">
+              <a href="#form-reply">Responder</a>
+            </li>
+<!--        <li class="divider"></li>
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+-->
+        <li class="divider"></li>
+            <li>
+              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+            </li>
+        </ul>
+      </div><!-- btn-group -->
+
+    </li>
+
+    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+      <a href="perfil.shtml" class="fn">Max Guenes</a>
+      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="bt-reply">
+              <a href="#form-reply">Responder</a>
+            </li>
+<!--        <li class="divider"></li>
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+-->
+        <li class="divider"></li>
+            <li>
+              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+            </li>
+        </ul>
+      </div><!-- btn-group -->
+
+    </li>
+
+    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+      <a href="perfil.shtml" class="fn">Max Guenes</a>
+      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="bt-reply">
+              <a href="#form-reply">Responder</a>
+            </li>
+<!--        <li class="divider"></li>
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+-->
+        <li class="divider"></li>
+            <li>
+              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+            </li>
+        </ul>
+      </div><!-- btn-group -->
+
+    </li>
+
+
+    <li class="vcard reply">
+      <a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+        <form id="form-reply" class="tabs" action="comunidade-topico.shtml">
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#tab-status" data-toggle="tab">Seu comentário</a></li>
+  <li><a href="#tab-foto" data-toggle="tab" title="Adicionar Foto"><i class="icon-picture"></i></a></li>
+  <li><a href="#tab-video" data-toggle="tab" title="Adicionar Vídeo"><i class="icon-film"></i></a></li>
+  <li><a href="#tab-link" data-toggle="tab" title="Adicionar Link"><i class="icon-share-alt icon-gray-alt"></i></a></li>
+</ul>
+<fieldset class="tab-content">
+  <div class="tab-pane active fade in" id="tab-status">
+  </div>
+  
+  <div class="tab-pane fade in" id="tab-foto">
+    <input class="input-file" id="fileInput" type="file">
+  </div>
+  
+  <div class="tab-pane fade in" id="tab-video">
+  <div class="alert alert-error fade in">
+  <a class="close" data-dismiss="alert" href="#">×</a>
+    Nossos robôs não identificaram o link como sendo do YouTube. Por favor tente novamente.
+  </div>
+
+    <input type="text" class="span7" id="input02" placeholder="Endereço do vídeo do YouTube. Ex.: http://youtube.com/watch?v=Nem-KvCsODw">
+  </div>
+  
+  <div class="tab-pane fade in" id="tab-link">
+    <input type="text" class="span7" id="input03" placeholder="Endereço do link. Ex.: http://robolivre.org">
+  </div>
+
+</fieldset>
+
+          <fieldset>
+            <textarea class="textarea-comment" id="reply-topic" rows="3" placeholder="O que você tem a comentar?" tabindex="1"></textarea>
+          </fieldset>
+
+          <button type="submit" class="btn btn-success pull-right" id="send" tabindex="2">Responder</button>
+        </form>
+      </div>
+    </li>
+
+  </ul>
+
+</div><!-- stream -->
+
+<div class="pagination" id="forum-pag">
+  <hr>
+  <ul>
+<!--     <li><a href="#"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li> -->
+    <li class="active">
+      <a href="#">1</a>
+    </li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
+  </ul>
+  
+  <p class="pull-right">Exibindo respostas de 1 a 50</p>
+
+  <hr>
+
+</div>
+
+
+  <ul class="pager" id="nav-topic">
+  <li class="previous">
+    <a href="comunidade-topico.shtml">&larr; Tópico anterior<br>
+    <small>Cras justo odio, dapibus ac...</small></a>
+  </li>
+  <li class="next">
+    <a href="comunidade-topico.shtml">Próximo tópico &rarr;<br>
+    <small>Cras justo odio, dapibus ac...</small></a>
+  </li>
+</ul>
+
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->

@@ -66,9 +66,9 @@
 
 <!-- <a href="#" class="btn btn-primary" id="refresh"><i class="icon-refresh icon-white"></i> 6 novas atualizações. Exibir agora.</a> -->
 
-                    <ul>
+                    <ul id="ul-steam-conteudos">
                         <?php foreach ($publicacoesHome['conteudos'] as $publicacao) { ?>                    
-                            <?php $publicacao->imprimir();
+                            <?php echo $publicacao->imprimir();
 
                             /* 'formPublicacao',array('form' => $formPublicacao,
                               'id_publicacao_original' => $publicacao->getIdPublicacao(),
@@ -77,6 +77,7 @@
 
 <?php } ?>
                     </ul>
+                    <div id="pagination" class="btn-load-more"><a href="#pagination" onclick="atualizaDados(1)" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
                 </div><!-- tab-pane #1 -->
 
 
@@ -94,9 +95,9 @@
                 <!-- ========================== -->
 
                 <div class="tab-pane fade in" id="2">
-                    <ul>
+                    <ul id="ul-steam-amigos">
                         <?php foreach ($publicacoesHome['amigos'] as $publicacao) { ?>                    
-                            <?php $publicacao->imprimir();
+                            <?php echo $publicacao->imprimir();
 
                             /* 'formPublicacao',array('form' => $formPublicacao,
                               'id_publicacao_original' => $publicacao->getIdPublicacao(),
@@ -105,13 +106,14 @@
 
 <?php } ?>
                     </ul>
+                    <div id="pagination2" class="btn-load-more"><a href="#pagination2" onclick="atualizaDados(2)" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
                 </div><!-- tab-pane #2 -->
 
             </div><!-- tab-content -->
 
         </div><!-- stream -->
 
-        <div id="pagination"><a href="#" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
+        
 
     </div><!-- /miolo -->
 
@@ -131,7 +133,7 @@
 
         <hr>
 
-        <div id="grid-comunidades" class="wdgt">
+<!--        <div id="grid-comunidades" class="wdgt">
             <h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
             <ul class="thumbnails">
                 <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
@@ -142,7 +144,7 @@
                 <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
             </ul>
             <a href="comunidades.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
-        </div><!-- grid-comunidades -->
+        </div> grid-comunidades -->
 
         <hr>
 
@@ -162,5 +164,60 @@
 
 </div><!-- /row -->
 
-
-<!--#include virtual="includes/footer.html" -->
+<script type="text/javascript">
+    //<![CDATA[
+    
+    var SEPARADOR_PARAMETRO = '<?php echo Util::SEPARADOR_PARAMETRO ?>';
+    
+    function getValue(id) {
+        return document.getElementById(id).value;
+    }
+    
+    function getUltimoIdConteudos(){
+        t=document.getElementById('1').getElementsByClassName('input-id-ultima-publicacao');
+        return t[t.length-1].value;
+    }
+    
+    function getUltimoIdAmigos(){
+        t=document.getElementById('2').getElementsByClassName('input-id-ultima-publicacao');
+        return t[t.length-1].value;
+    }
+    
+    function getPublicacoesAntigasAmigos() {        
+            $.ajax({
+                url: <?php echo "'" . url_for("ajax/ajaxReceberMaisPublicacaoAmigosHome") . "?ultimo_id_publicacao='+getUltimoIdAmigos()" ?>,
+                success: function(resposta){
+                    if(resposta!=""){
+                        $("#ul-steam-amigos").append(resposta);
+                    }else{
+                        $("#pagination2").remove();
+                    }
+                }
+            });
+        
+    }//END getPublicacoesAntigas
+    
+    function getPublicacoesAntigasConteudos() {      
+            $.ajax({
+                url: <?php echo "'" . url_for("ajax/ajaxReceberMaisPublicacaoConteudosHome") . "?ultimo_id_publicacao='+getUltimoIdConteudos()" ?>,
+                success: function(resposta){
+                    if(resposta!=""){
+                        $("#ul-steam-conteudos").append(resposta);
+                    }else{
+                        $("#pagination").remove();
+                    }
+                }
+            });
+    }//END getPublicacoesAntigas
+    
+    
+    function atualizaDados(tipo){
+        if(tipo==1){
+            getPublicacoesAntigasConteudos();
+        }else if(tipo==2){
+            getPublicacoesAntigasAmigos();
+        }
+    }
+    
+    //]]>   
+</script>

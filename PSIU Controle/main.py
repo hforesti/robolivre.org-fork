@@ -213,7 +213,11 @@ class MainWidget(QtGui.QWidget):
     def metododoDoMenuDeAbas(self, Form):
         self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba1), QtGui.QApplication.translate("Form", "Movimentos Básicos", None, QtGui.QApplication.UnicodeUTF8))
         self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba2), QtGui.QApplication.translate("Form", "Lista de Comandos", None, QtGui.QApplication.UnicodeUTF8))
+<<<<<<< HEAD
         self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba3), QtGui.QApplication.translate("Form", "Avançado", None, QtGui.QApplication.UnicodeUTF8))
+=======
+        self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba3), QtGui.QApplication.translate("Form", "Avancado", None, QtGui.QApplication.UnicodeUTF8))
+>>>>>>> a5baba1e01a1c55f6e9ae81c400c70ec2ff70b5a
 
     def parafrente(self):
         self.lineEditAba1.comando.setText("parafrente")
@@ -296,6 +300,7 @@ class MainWidget(QtGui.QWidget):
         self.radioButton1.setText(QtGui.QApplication.translate("Form", "RadioButton", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButton1.setObjectName(_fromUtf8("radioButton"))
         self.radioButton1.show()
+<<<<<<< HEAD
         
         self.radioButton2 = QtGui.QRadioButton(self.aba2)
         self.radioButton2.setGeometry(QtCore.QRect(35, 130, 116, 22))
@@ -303,6 +308,15 @@ class MainWidget(QtGui.QWidget):
         self.radioButton2.setObjectName(_fromUtf8("radioButton"))
         self.radioButton2.show()
         
+=======
+        
+        self.radioButton2 = QtGui.QRadioButton(self.aba2)
+        self.radioButton2.setGeometry(QtCore.QRect(35, 130, 116, 22))
+        self.radioButton2.setText(QtGui.QApplication.translate("Form", "RadioButton", None, QtGui.QApplication.UnicodeUTF8))
+        self.radioButton2.setObjectName(_fromUtf8("radioButton"))
+        self.radioButton2.show()
+        
+>>>>>>> a5baba1e01a1c55f6e9ae81c400c70ec2ff70b5a
         self.boxMenu.addItems(MainWidget.listaComandos)
 
         #Botao Enviar

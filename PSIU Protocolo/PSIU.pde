@@ -48,7 +48,6 @@ int posicao = 0;
 
 
 
-
 //PONTEIROS PARA A CRIACAO DOS VETORES COM OS PARAMETROS DOS COMANDOS
 int *parametroInt;
 float *parametroFloat;
@@ -76,14 +75,14 @@ struct
 void setup()
 {
   Serial.begin(9600);
-  pinMode(8, OUTPUT);
-  pinMode(7, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
   pinMode(6, OUTPUT);
-  pinMode(5, OUTPUT);
   
   //LISTA DE COMANDOS PREVIAMENTE DECLARADOS
   
-  //Aqui eh declarado os comandos que o microcontrolador aceitara.
+  //Aqui eh declarado os comandos que o microcontrolador aceitará.
   
   strcpy(comando[0].nome , "parafrente");
   comando[0].parametro1 = 1;
@@ -163,9 +162,9 @@ int verificarComando()
        contByte++; // Se o caractere vindo da Serial for igual ao caractere do nome o contador (contByte) eh  incrementado em 1.
      }
      
-     else  if (caractere == 32)
+     else  if (caractere == 32) //se encontrar um espaço, ele incremente a posição em 1 e zera o contByte para contar os bytes do próximo campo.
      {
-       posicao = 1;
+       posicao = 1; //Posição 1 = Campo de Tamanho.
        contByte = 0;
    
      }
@@ -185,7 +184,7 @@ int verificarComando()
      }
      else
      {
-      posicao = 2;
+      posicao = 2; //Posição 1 = Campo de Comando
       contByte = 0;
      }
      soma = soma + caractere;
@@ -245,7 +244,7 @@ int verificarComando()
            
            if ( ( qntInt == 0) && ( qntFloat == 0) && (qntChar == 0) ) // SE EXISTIR PARAMETROS PARA SEREM LIDOS, O COMANDO NAO TA OK!
            {
-             posicao = 3;
+             posicao = 3; //POSICAO DE REMETENTE
            }
            
           
@@ -299,7 +298,7 @@ int verificarComando()
          { 
             validouComando = 0; //Espera o proximo comando no proximo frame.
             comandoOk = 1;
-            posicao = 3;
+            posicao = 3; //POSICAO DE REMETENTE
   
           }
 
@@ -331,7 +330,7 @@ int verificarComando()
     }
     
     else{
-      posicao = 4;
+      posicao = 4; // POSICAO DE CHECKSUM
       contByte = 0;
     }
     soma = soma + caractere;
@@ -387,15 +386,15 @@ void processaComando ( char* comandoRecebido, int* parametroInt, float* parametr
   
   if (!(strcmp(comandoRecebido,"parafrente")))
    {
-     digitalWrite(8, HIGH);
-     digitalWrite(7, HIGH);
-     digitalWrite(6, HIGH);
-     digitalWrite(5, HIGH);
+     analogWrite(6, 0);
+     analogWrite(9, 150);
+     analogWrite(10, 0);
+     analogWrite(11, 150);
      delay(parametroInt[0]*10);
-     digitalWrite(8, LOW);
-     digitalWrite(7, LOW);
-     digitalWrite(6, LOW);
-     digitalWrite(5, LOW);
+     analogWrite(6, 0);
+     analogWrite(9, 0);
+     analogWrite(10, 0);
+     analogWrite(11, 0);
      
      strcpy(resposta, "sucesso");
      enviarMensagem(remetente, comandoRecebido, resposta);
@@ -405,15 +404,15 @@ void processaComando ( char* comandoRecebido, int* parametroInt, float* parametr
   
    else if (!(strcmp(comandoRecebido,"paratras")))
    {
-     digitalWrite(8, LOW);
-     digitalWrite(7, HIGH);
-     digitalWrite(6, HIGH);
-     digitalWrite(5, LOW);
+     analogWrite(6, 150);
+     analogWrite(9, 0);
+     analogWrite(10, 150);
+     analogWrite(11, 0);
      delay(parametroInt[0]*10);
-     digitalWrite(8, LOW);
-     digitalWrite(7, LOW);
-     digitalWrite(6, LOW);
-     digitalWrite(5, LOW);
+     analogWrite(6, 0);
+     analogWrite(9, 0); 
+     analogWrite(10, 0);
+     analogWrite(11, 0);
      
      strcpy(resposta, "sucesso");
      enviarMensagem(remetente, comandoRecebido, resposta);
@@ -421,15 +420,15 @@ void processaComando ( char* comandoRecebido, int* parametroInt, float* parametr
    
    else if (!(strcmp(comandoRecebido,"giradireita")))
    {
-     digitalWrite(8, HIGH);
-     digitalWrite(7, HIGH);
-     digitalWrite(6, LOW);
-     digitalWrite(5, LOW);
+     analogWrite(6, 0);
+     analogWrite(9, 150);
+     analogWrite(10, 0);
+     analogWrite(11, 0);
      delay(parametroInt[0]*10);
-     digitalWrite(8, LOW);
-     digitalWrite(7, LOW);
-     digitalWrite(6, LOW);
-     digitalWrite(5, LOW);
+     analogWrite(6, 0);
+     analogWrite(9, 0);
+     analogWrite(10, 0);
+     analogWrite(11, 0);
      
      strcpy(resposta, "sucesso");
      enviarMensagem(remetente, comandoRecebido, resposta);
@@ -437,15 +436,16 @@ void processaComando ( char* comandoRecebido, int* parametroInt, float* parametr
 
    else if (!(strcmp(comandoRecebido,"giraesquerda")))
    {
-     digitalWrite(8, LOW);
-     digitalWrite(7, LOW);
-     digitalWrite(6, HIGH);
-     digitalWrite(5, HIGH);
+     analogWrite(6, 0);
+     analogWrite(9, 0);
+     analogWrite(10, 0);
+     analogWrite(11, 150);
      delay(parametroInt[0]*10);
-     digitalWrite(8, LOW);
-     digitalWrite(7, LOW);
-     digitalWrite(6, LOW);
-     digitalWrite(5, LOW);
+     analogWrite(6, 0);
+     analogWrite(9, 0);
+     analogWrite(10, 0);
+     analogWrite(11, 0);
+     
      
      strcpy(resposta, "sucesso");
      
