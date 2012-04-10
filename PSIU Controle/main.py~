@@ -211,9 +211,9 @@ class MainWidget(QtGui.QWidget):
         print "oi"
 
     def metododoDoMenuDeAbas(self, Form):
-        self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba1), QtGui.QApplication.translate("Form", "Movimentos Básicos", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba1), QtGui.QApplication.translate("Form", "Movimentos Basicos", None, QtGui.QApplication.UnicodeUTF8))
         self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba2), QtGui.QApplication.translate("Form", "Lista de Comandos", None, QtGui.QApplication.UnicodeUTF8))
-        self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba3), QtGui.QApplication.translate("Form", "Avançado", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuDeAbas.setTabText(self.menuDeAbas.indexOf(self.aba3), QtGui.QApplication.translate("Form", "Avancado", None, QtGui.QApplication.UnicodeUTF8))
 
     def parafrente(self):
         self.lineEditAba1.comando.setText("parafrente")

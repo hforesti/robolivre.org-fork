@@ -15,6 +15,7 @@ except AttributeError:
     _fromUtf8 = lambda s: s
 
 class Ui_distancia(object):
+    distancia = '0'
     def setupUi(self, distancia):
         distancia.setObjectName(_fromUtf8("distancia"))
         distancia.resize(700, 400)

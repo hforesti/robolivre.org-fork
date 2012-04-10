@@ -6,7 +6,7 @@ class Ui_Logo(object):
     def setupUi(self, Logo):
         #Teste de Imagem
         self.hbox = QtGui.QHBoxLayout(Logo)
-        self.pixmap = QtGui.QPixmap("imagens/logo/robo.png")
+        self.pixmap = QtGui.QPixmap("./imagens/logo/robo.png")
         self.lbl = QtGui.QLabel(Logo)
         self.lbl.setGeometry(QtCore.QRect(15, 0, 165, 50))
         self.lbl.setPixmap(self.pixmap)
