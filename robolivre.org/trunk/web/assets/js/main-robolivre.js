@@ -148,7 +148,6 @@ $('.textarea-comment').autoResize({
 	extraSpace: 0
 });
 
-
 //expand textarea (Termos de uso)
 $("#terms-textarea").focus(function(){
 	$("textarea").animate({
@@ -156,6 +155,13 @@ $("#terms-textarea").focus(function(){
 		'width'		:	'95%'
 	}, 'slow')
 });
+
+//marcar notificacao como lida
+$('.notifications .vcard .notf').click(function(){
+	$(this).parent().toggleClass('unread');
+	var numItems = $('.unread').length;
+	$('#notf-unread, #side-notf-unread').html(numItems);
+})
 
 //checkbox desligar emails
 function disableCheckboxesEmail() {
