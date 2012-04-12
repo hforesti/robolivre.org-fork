@@ -18,7 +18,7 @@ class PastasTable extends Doctrine_Table
     }
     
     
-    public function getPastaUsuario($idUsuario = null,$tipoPasta = null){
+    public function getPastaUsuario($idUsuario = null,$tipoPasta = null,$idConjunto = null,$tipoConjunto = null){
         
         if($idUsuario==null){
             $idUsuario = UsuarioLogado::getInstancia()->getIdUsuario();
@@ -27,8 +27,13 @@ class PastasTable extends Doctrine_Table
         $q = Doctrine_Query::create()
                 ->select('*')
                 ->from('Pastas')
-                ->where("id_usuario =  $idUsuario")
-                ->andWhere("id_conjunto IS NULL");
+                ->where("id_usuario =  $idUsuario");
+                if($idConjunto==null){
+                    $q = $q->andWhere("id_conjunto IS NULL");
+                }else{
+                    $q = $q->andWhere("id_conjunto = $idConjunto")->andWhere("id_tipo_conjunto = $tipoConjunto");
+                }
+                
                 if($tipoPasta!=null){
                     $q = $q->andWhere("tipo_pasta = $tipoPasta");
                 }
