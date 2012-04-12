@@ -16,4 +16,40 @@ class ImagensTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Imagens');
     }
+    
+    
+    public function gravarImagem(Imagens $imagem){
+        
+        $nomeArquivo = Util::validaNullInserBanco($imagem->getNomeArquivo());
+        
+        $query = "
+        INSERT INTO imagens (id_usuario, id_pasta,nome_arquivo) VALUES (" . UsuarioLogado::getInstancia()->getIdUsuario() . ", " . $imagem->getIdPasta() . ",$nomeArquivo)";
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+        $statement = $connection->prepare($query);
+        // Make Statement  
+        $statement->execute();
+        
+        $id = $connection->lastInsertId();
+        $q = Doctrine_Query::create()
+                ->select('*')
+                ->from('imagens')
+                ->where("id_imagem = $id");
+        
+
+        $resultado = $q->fetchArray();
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $imagem = new Imagens();
+                $imagem->setIdImagem($reg['id_imagem']);
+                $imagem->setIdPasta($reg['id_pasta']);
+                $imagem->setIdUsuario($reg['id_usuario']);
+                $imagem->setNomeArquivo($reg['nome_arquivo']);
+                
+                return $imagem;
+            }
+        }
+    }
 }

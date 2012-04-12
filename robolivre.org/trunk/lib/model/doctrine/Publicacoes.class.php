@@ -20,6 +20,12 @@ class Publicacoes extends BasePublicacoes {
     const PRIVACIDADE_PRIVADA = 0;
     const PRIVACIDADE_SOMENTE_AMIGOS = 2;
 
+    const TIPO_NORMAL = "normal";
+    const TIPO_VIDEO = "video";
+    const TIPO_LINK = "link";
+    const TIPO_FOTO = "foto";
+    
+    
     private $grupoComentarios = array();
     private $nomeUsuario;
     private $nomeUsuarioReferencia;
@@ -117,6 +123,27 @@ class Publicacoes extends BasePublicacoes {
                 $string .="</a>";
                 $string .= "<div class=\"entry\">";
                 $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
+            }
+            
+            if($this->getLink()!="" && $this->getLink()!=null){
+                $title = Util::getTitle($this->getLink());
+                $string .="<blockquote><p>";
+                $string .="<a target=\"_blank\" href=\"".$this->getLink()."\">$title</a>";
+                $string .="</p></blockquote>";
+            }else if($this->getIdPasta()!=null && $this->getIdPasta()!=""){
+                if($this->getIdImagem()!=null && $this->getIdImagem()!=""){
+                    $imagem = Doctrine::getTable('Imagens')->find(array($this->getIdImagem(),$this->getIdUsuario(),$this->getIdPasta()));
+                    $array = explode(".",$imagem->getNomeArquivo());
+                    
+                    $diretorioArquivo = Util::getLinkFotosPublicacoes($this->getIdUsuario())."/".$array[0].'_min'.'.'.$array[1];
+                    
+                    $string .= "<div class=\"share-content\">";
+                    $string .= "<img src=\"$diretorioArquivo\" alt=\"Imagem compartilhada\" class=\"thumbnail\">";
+                    $string .= "</div>";
+                    
+                }else if($this->getIdVideo()!=null && $this->getIdVideo()!=""){
+                    
+                }
             }
             
             $string .= "<p>".Util::getTextoFormatado($this->getComentario())."</p>";

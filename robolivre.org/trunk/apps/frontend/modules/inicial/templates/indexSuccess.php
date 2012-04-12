@@ -63,7 +63,7 @@
 
     <div class="row">
 
-        <div class="span4">
+        <div class="span8">
             <h3>Conteúdos mais relevantes</h3>
             <a href="#" title="4 tópicos" style="font-size: 11.7006369427px;">Animação</a>
             <a href="#" title="5 tópicos" style="font-size: 12.2611464968px;">Bípede</a>
@@ -91,7 +91,7 @@
             <a href="#" title="82 tópicos" style="font-size: 20.2484076433px;">Projeto</a>
         </div>
 
-        <div class="span4" id="grid-comunidades">
+<!--        <div class="span4" id="grid-comunidades">
             <h3>Comunidades</h3>
             <ul class="thumbnails">
                 <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
@@ -103,14 +103,19 @@
                 <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
                 <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="http://placehold.it/60x60" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
             </ul>
-        </div>
+        </div>-->
+
+        
 
         
         <div class="span4">
 
             <h3>Twitter @robolivre</h3>
-            Aenean lacinia bibendum nulla sed consectetur.
-
+            <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+            <script>new TWTR.Widget({  version: 2,  type: 'profile',  rpp: 2,  interval: 30000,  width: 'auto',  height: 300,  theme: {    shell: {      background: '#ffffff',      color: '#000000'    },    tweets: {      background: '#ffffff',      color: '#000000',      links: '#5aaffa'    }  },  features: {    scrollbar: false,    loop: false,    live: false,    behavior: 'all'  }}).render().setUser('robolivre').start();</script>
+            <script type="txt/javascript">
+                
+            </script>
             <hr>
 
             <h3>Facebook</h3>

@@ -12,17 +12,20 @@ Doctrine_Manager::getInstance()->bindComponent('Videos', 'doctrine');
  * @property integer $id_pasta
  * @property string $nome_arquivo
  * @property integer $ordenacao
+ * @property string $link_video
  * 
  * @method integer getIdVideo()      Returns the current record's "id_video" value
  * @method integer getIdUsuario()    Returns the current record's "id_usuario" value
  * @method integer getIdPasta()      Returns the current record's "id_pasta" value
  * @method string  getNomeArquivo()  Returns the current record's "nome_arquivo" value
  * @method integer getOrdenacao()    Returns the current record's "ordenacao" value
+ * @method string  getLinkVideo()    Returns the current record's "link_video" value
  * @method Videos  setIdVideo()      Sets the current record's "id_video" value
  * @method Videos  setIdUsuario()    Sets the current record's "id_usuario" value
  * @method Videos  setIdPasta()      Sets the current record's "id_pasta" value
  * @method Videos  setNomeArquivo()  Sets the current record's "nome_arquivo" value
  * @method Videos  setOrdenacao()    Sets the current record's "ordenacao" value
+ * @method Videos  setLinkVideo()    Sets the current record's "link_video" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -75,6 +78,15 @@ abstract class BaseVideos extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => 4,
+             ));
+        $this->hasColumn('link_video', 'string', 255, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 255,
              ));
     }
 

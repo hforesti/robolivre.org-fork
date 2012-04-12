@@ -13,7 +13,7 @@
 class Sexo {
     
     public static function getDescricoes() {
-        return array('' => 'Sem resposta','1'=>"Masculino",'2'=>"Feminino");
+        return array('' => 'Sem resposta','1'=>"Masculino",'2'=>"Feminino",'3'=>"Outro");
     }
     
     public static function getDescricao($id) {

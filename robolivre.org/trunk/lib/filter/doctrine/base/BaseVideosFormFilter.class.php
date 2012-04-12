@@ -15,11 +15,13 @@ abstract class BaseVideosFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'nome_arquivo' => new sfWidgetFormFilterInput(),
       'ordenacao'    => new sfWidgetFormFilterInput(),
+      'link_video'   => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
       'nome_arquivo' => new sfValidatorPass(array('required' => false)),
       'ordenacao'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'link_video'   => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('videos_filters[%s]');
@@ -44,6 +46,7 @@ abstract class BaseVideosFormFilter extends BaseFormFilterDoctrine
       'id_pasta'     => 'Number',
       'nome_arquivo' => 'Text',
       'ordenacao'    => 'Number',
+      'link_video'   => 'Text',
     );
   }
 }

@@ -16,4 +16,46 @@ class PastasTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Pastas');
     }
+    
+    
+    public function getPastaUsuario($idUsuario = null,$tipoPasta = null){
+        
+        if($idUsuario==null){
+            $idUsuario = UsuarioLogado::getInstancia()->getIdUsuario();
+        }
+        
+        $q = Doctrine_Query::create()
+                ->select('*')
+                ->from('Pastas')
+                ->where("id_usuario =  $idUsuario")
+                ->andWhere("id_conjunto IS NULL");
+                if($tipoPasta!=null){
+                    $q = $q->andWhere("tipo_pasta = $tipoPasta");
+                }
+                
+                
+        $resultado = $q->fetchArray();
+        
+        if ($resultado) {
+            $arrayRetorno = array();
+            $cont = count($resultado);
+            foreach ($resultado as $reg) {
+                $pasta = new Pastas();
+                $pasta->setIdPasta($reg['id_pasta']);
+                $pasta->setIdUsuario($reg['id_usuario']);
+                $pasta->setNome($reg['nome']);
+                $pasta->setDescricao($reg['descricao']);
+                $pasta->setTipoPasta($reg['tipo_pasta']);
+                if($cont>1){
+                    $arrayRetorno[] = $pasta;
+                }else{
+                    return $pasta;
+                }
+            }
+            return $arrayRetorno;
+            
+        }
+        
+        return false;
+    }
 }

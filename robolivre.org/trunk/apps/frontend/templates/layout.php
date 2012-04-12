@@ -124,9 +124,9 @@
                 </ul>
             </div>
 
-            <div class="span1">
+<!--            <div class="span1">
                 <h4><a href="loja.shtml">Loja</a></h4>
-            </div>
+            </div>-->
 
             <div class="span2">
                 <h4><a href="contato.shtml">Contato</a></h4>
@@ -139,13 +139,26 @@
         </div>
 
         <!-- Footer
-         ================================================== -->
-        <footer class="footer">
-            <hr>
-            <p>Esta obra é licenciada sob uma licença<br>
-                <a href="http://creativecommons.org/licenses/by/3.0/br/deed.pt_BR">Creative Commons Atribuição 3.0 Brasil</a>
-            </p>
-        </footer>
+      ================================================== -->
+      <footer class="footer">
+		<hr>
+		<div class="pull-left">
+        <p>Esta obra está sob a licença <a href="http://creativecommons.org/licenses/by/3.0/br/deed.pt_BR">Creative Commons Atribuição 3.0 Brasil</a>
+        </p>
+        <p id="other-links"><a href="sobre.shtml">Créditos</a> / <a href="sobre.shtml">Reportar um erro</a>
+        </p>
+    	</div>
+      <div id="co-workers" class="pull-right">
+      	<ul>
+      		<li class="heading"><h6>Financiado por</h6></li>
+      		<li id="a-capes"><a href="http://www.capes.gov.br/" rel="co-worker" title="CAPES">CAPES</a></li>
+      		<li id="a-cnpq"><a href="http://www.cnpq.br/" rel="co-worker" title="CNPq">CNPq</a></li>
+      		<li id="a-facepe"><a href="http://www.facepe.br/" rel="co-worker" title="FACEPE">FACEPE</a></li>
+      		<!-- <li class="heading"><h6>Realização</h6></li>
+      		<li id="a-mix"><a href="http://www.facepe.br/" rel="co-worker" title="Mix Tecnologia">Mix Tecnologia</a></li> -->
+      	</ul>
+      </div>
+      </footer>
     </div><!-- /container -->
 
     <script type="text/javascript">

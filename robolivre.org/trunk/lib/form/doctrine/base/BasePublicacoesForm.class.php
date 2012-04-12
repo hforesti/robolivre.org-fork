@@ -32,6 +32,7 @@ abstract class BasePublicacoesForm extends BaseFormDoctrine
       'data_publicacao'        => new sfWidgetFormDateTime(),
       'visivel'                => new sfWidgetFormInputText(),
       'tipo_publicacao'        => new sfWidgetFormInputText(),
+      'privacidade_publicacao' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -52,6 +53,7 @@ abstract class BasePublicacoesForm extends BaseFormDoctrine
       'data_publicacao'        => new sfValidatorDateTime(),
       'visivel'                => new sfValidatorInteger(array('required' => false)),
       'tipo_publicacao'        => new sfValidatorInteger(array('required' => false)),
+      'privacidade_publicacao' => new sfValidatorInteger(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('publicacoes[%s]');

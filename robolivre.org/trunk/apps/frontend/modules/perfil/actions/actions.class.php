@@ -122,11 +122,67 @@ class perfilActions extends sfActions {
     }
     
     public function executePublicar(sfWebRequest $request) {
+
+        //Util::pre(array($request->getFiles(),$request->getPostParameters()), true);
         $form = new PublicacoesForm();
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         $form->updateObject();
         $objPublicacao = $form->getObject();
         $objPublicacao->setDataPublicacao(date('Y-m-d H:i:s'));
+        
+        $tipoConteudoPublicacao = $request->getParameter('tipo_conteudo_publicacao');
+        if($tipoConteudoPublicacao != Publicacoes::TIPO_LINK && $tipoConteudoPublicacao != Publicacoes::TIPO_NORMAL){
+            
+            $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_PUBLICACOES);
+            if(!$pasta){
+                echo "sem pasta <br/>";
+                $pasta = new Pastas();
+                $pasta->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
+                $pasta->setNome("Publicações de ".UsuarioLogado::getInstancia()->getNome());
+                $pasta->setDescricao("Pasta de arquivos enviados das publicações de ".UsuarioLogado::getInstancia()->getNome());
+                $pasta->setTipoPasta(Pastas::TIPO_PASTA_PUBLICACOES);
+                $pasta->save();
+                
+                $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_PUBLICACOES);
+            }
+            
+            if($tipoConteudoPublicacao== Publicacoes::TIPO_VIDEO){
+                $video = new Videos();
+                $video->setIdPasta($pasta->getIdPasta());
+                $video->setIdUsuario($pasta->getIdUsuario());
+                $video->setLinkVideo($request->getParameter("url_video"));
+                
+                $video = Doctrine::getTable("Videos")->gravarVideo($video);
+                $objPublicacao->setIdVideo($video->getIdVideo());
+                $objPublicacao->setIdPasta($video->getIdPasta());
+            }else if($tipoConteudoPublicacao== Publicacoes::TIPO_FOTO){
+                //mas 550x550   
+                $diretorio_arquivo = Util::getDiretorioFotosPublicacoes(UsuarioLogado::getInstancia()->getIdUsuario());
+                $file = $form->getValue('foto');
+                $extension = $file->getExtension($file->getOriginalExtension());
+                $nome_arquivo = 'img_publicacao_usu_'.UsuarioLogado::getInstancia()->getIdUsuario()."_". md5(time());
+                $file->save($diretorio_arquivo.'/'.$nome_arquivo.$extension);
+                
+                $thumbnail = new sfThumbnail(550, null);
+                $thumbnail->loadFile($diretorio_arquivo.'/'.$nome_arquivo.$extension);
+                $thumbnail->save($diretorio_arquivo.'/'.$nome_arquivo. '_min' . $extension);
+                
+                $imagem = new Imagens();
+                $imagem->setIdPasta($pasta->getIdPasta());
+                $imagem->setIdUsuario($pasta->getIdUsuario());
+                $imagem->setNomeArquivo($nome_arquivo.$extension);
+                
+                $imagem = Doctrine::getTable("Imagens")->gravarImagem($imagem);
+                $objPublicacao->setIdImagem($imagem->getIdImagem());
+                $objPublicacao->setIdPasta($imagem->getIdPasta());
+            }
+        }else{
+            if($tipoConteudoPublicacao == Publicacoes::TIPO_LINK){
+                $objPublicacao->setLink($request->getParameter('url_link'));
+            }
+        }
+        
+        
         if( $request->getParameter('id_publicacao_original')!= "" && $request->getParameter('id_usuario_original') != ""){ 
             $objPublicacao->setIdUsuarioOriginal ($request->getParameter('id_usuario_original'));
             $objPublicacao->setIdPublicacaoOriginal($request->getParameter('id_publicacao_original'));

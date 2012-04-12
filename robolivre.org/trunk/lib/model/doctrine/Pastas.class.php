@@ -12,4 +12,7 @@
  */
 class Pastas extends BasePastas
 {
+    const TIPO_PASTA_PUBLICACOES = 1;
+    const TIPO_PASTA_ANEXOS_CONJUNTO = 2;
+    const TIPO_PASTA_CRIADA_USUARIO = 3;
 }

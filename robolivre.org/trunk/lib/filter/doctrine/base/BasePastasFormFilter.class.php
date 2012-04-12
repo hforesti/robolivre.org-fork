@@ -13,13 +13,17 @@ abstract class BasePastasFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'nome'       => new sfWidgetFormFilterInput(),
-      'descricao'  => new sfWidgetFormFilterInput(),
+      'id_tipo_conjunto' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'id_conjunto'      => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'nome'             => new sfWidgetFormFilterInput(),
+      'descricao'        => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'nome'       => new sfValidatorPass(array('required' => false)),
-      'descricao'  => new sfValidatorPass(array('required' => false)),
+      'id_tipo_conjunto' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'id_conjunto'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'nome'             => new sfValidatorPass(array('required' => false)),
+      'descricao'        => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('pastas_filters[%s]');
@@ -39,10 +43,12 @@ abstract class BasePastasFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id_pasta'   => 'Number',
-      'id_usuario' => 'Number',
-      'nome'       => 'Text',
-      'descricao'  => 'Text',
+      'id_pasta'         => 'Number',
+      'id_usuario'       => 'Number',
+      'id_tipo_conjunto' => 'Number',
+      'id_conjunto'      => 'Number',
+      'nome'             => 'Text',
+      'descricao'        => 'Text',
     );
   }
 }

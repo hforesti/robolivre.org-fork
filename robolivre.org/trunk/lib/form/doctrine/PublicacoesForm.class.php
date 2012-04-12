@@ -16,12 +16,14 @@ class PublicacoesForm extends BasePublicacoesForm {
         $this->setWidgets(array(
             'id_publicacao' => new sfWidgetFormInputHidden(),
             'id_usuario' => new sfWidgetFormInput(array('is_hidden'=>true), array('value'=> UsuarioLogado::getInstancia()->getIdUsuario(),'type' => 'hidden')),
+            'foto'    => new sfWidgetFormInputFile(),
             'comentario' => new sfWidgetFormTextarea(),
         ));
 
         $this->setValidators(array(
             'id_publicacao' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_publicacao')), 'empty_value' => $this->getObject()->get('id_publicacao'), 'required' => false)),
             'id_usuario' => new sfValidatorString(),//array('choices' => array($this->getObject()->get('id_usuario')), 'empty_value' => $this->getObject()->get('id_usuario'), 'required' => false)),
+            'foto'    => new sfValidatorFile(),
             'comentario' => new sfValidatorString(array('required' => false)),
         ));
         

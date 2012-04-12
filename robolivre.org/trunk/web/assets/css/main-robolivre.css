@@ -869,6 +869,8 @@ li.as-result-item.active h4 {
 	clear: both;
 }
 
+.twtr-ft, .twtr-hd {display: none}
+.twtr-tweet-wrap {padding: 6px 0!important}
 
 /* Webkit Hacks  */
 @media screen and (-webkit-min-device-pixel-ratio:0) {	

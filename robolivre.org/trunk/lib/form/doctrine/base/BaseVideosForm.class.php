@@ -20,6 +20,7 @@ abstract class BaseVideosForm extends BaseFormDoctrine
       'id_pasta'     => new sfWidgetFormInputHidden(),
       'nome_arquivo' => new sfWidgetFormInputText(),
       'ordenacao'    => new sfWidgetFormInputText(),
+      'link_video'   => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -28,6 +29,7 @@ abstract class BaseVideosForm extends BaseFormDoctrine
       'id_pasta'     => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_pasta')), 'empty_value' => $this->getObject()->get('id_pasta'), 'required' => false)),
       'nome_arquivo' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'ordenacao'    => new sfValidatorInteger(array('required' => false)),
+      'link_video'   => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('videos[%s]');
