@@ -2,100 +2,337 @@
 
 <div class="row">
 
-<div class="span2" id="sidebar">
-<div class="avatar">
-	<a href="profile-home.shtml"><img src="assets/img/rl/avatar-170.jpg" alt="Rodrigo Medeiros" class="photo"></a>
-    <div class="btn-group">
-	  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-	    <span class="icon-cog icon-gray"></span>
-	  	</a>
-	  	<ul class="dropdown-menu">
-	      <li>
-	        <a href="settings-avatar.shtml">Atualizar foto</a>
-	      </li>
-	      <li>
-	        <a href="profile-info-editar.shtml">Editar perfil</a>
-	      </li>
+	<div class="span2" id="sidebar">
+		<div class="avatar">
+			<a href="profile-home.shtml"><img src="assets/img/rl/avatar-170.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+			<div class="btn-group">
+				<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+					<span class="icon-cog icon-gray"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="settings-avatar.shtml">Atualizar foto</a>
+					</li>
+					<li>
+						<a href="profile-info-editar.shtml">Editar perfil</a>
+					</li>
+				</ul>
+			</div>
+
+			<h1>Rodrigo Medeiros</h1>
+
+		</div><!-- /avatar -->
+
+		<ul class="nav nav-pills nav-stacked">
+			<li><a href="profile-home.shtml"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+			<li><a href="profile-conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+			<li><a href="profile-comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+			<li><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
+			<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
+			<li><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+			<li><a href="perfil-info.shtml"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
+			<li><hr></li>
+			<li class="active"><a href="inbox.shtml"><span class="label label-warning" id="side-notf-unread" title="2 notificações não lidas">2</span> <span class="icon-gray icon-th-list"></span> Notificações</a></li>
+			<li><a href="inbox-pvt.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
 		</ul>
-	</div>
-	
-	<h1>Rodrigo Medeiros</h1>
+	</div><!-- /sidebar -->
 
-</div><!-- /avatar -->
+	<hr class="only-mobile">
 
-<ul class="nav nav-pills nav-stacked">
-	<li><a href="profile-home.shtml"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
-	<li><a href="profile-conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
-	<li><a href="profile-comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
-	<li><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
-	<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
-	<li><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
-	<li><a href="perfil-info.shtml"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
-				<li><hr></li>
-	<li class="active"><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
-</ul>
-</div><!-- /sidebar -->
+	<div class="span10">
 
-<hr class="only-mobile">
+		<div id="stream">
 
-<div class="span10">
-  	<a href="inbox-criar.shtml" class="pull-right btn btn-primary"><i class="icon-pencil icon-white"></i> Criar nova mensagem</a>
+		<div class="page-header">
+			<h1>Notificações</h1>
+		</div>
 
-<ul class="nav nav-tabs">
-  <li class="active">
-    <a href="inbox.shtml"><i class="icon-th-list icon-gray"></i> Notificações</a>
-  </li>
-  <li>
-  	<a href="inbox-pvt.shtml"><i class="icon-envelope icon-gray"></i> Mensagens privadas</a>
-  </li>
-  <li>
-  	<a href="inbox-sent.shtml"><i class="icon-arrow-right icon-gray"></i> Enviadas</a>
-  </li>
+			<h4>Recebido hoje</h4>
 
-</ul>
+			<ul class="notifications">
+				<li class="vcard activity unread">
+				<div class="notf">
+					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+					<a href="perfil.shtml" class="fn">Max Guenes</a> convidou você para colaborar editando o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
 
-<div id="stream">
+					<blockquote>
+						<p>
+							Encontrei "Arduíno" e gostaria de convidá-lo(a) a colaborar e editar este conteúdo.
+						</p>
+					</blockquote>
+				</div>
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+							<span class="icon-cog icon-gray"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="conteudo-criar.shtml">Editar conteúdo agora</a>
+							</li>
+							<li class="divider"></li>
+							<li class="danger-link">
+								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
+							</li>
+						</ul>
+					</div><!-- btn-group -->
+				</li>
 
-	<ul>
-		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-			<a href="perfil.shtml" class="fn">Max Guenes</a> criou <a href="post.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> marcado com <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i> Open Source</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
-		</li>
+				<li class="vcard activity unread">
+				<div class="notf">
+					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+					<a href="perfil.shtml" class="fn">Max Guenes</a> convidou você para colaborar editando o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> PSIU</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
 
-		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-			<a href="perfil.shtml" class="fn">Max Guenes</a> e <a href="perfil.shtml" class="fn">Rodrigo Medeiros</a> agora são amigos. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
-		</li>
+					<blockquote>
+						<p>
+							Rodrigo, você poderia pode favor me ajudar a completar as informações do PSIU?
+						</p>
+						<p>
+							Já publiquei sobre Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum. Agora acho que você poderia ajudar mais com Maecenas sed diam eget risus varius blandit sit amet non magna. :)
+						</p>
+					</blockquote>
+				</div>
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+							<span class="icon-cog icon-gray"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="conteudo-criar.shtml">Editar conteúdo agora</a>
+							</li>
+							<li class="divider"></li>
+							<li class="danger-link">
+								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
+							</li>
+						</ul>
+					</div><!-- btn-group -->
+				</li>
 
-		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-			<a href="perfil.shtml" class="fn">Max Guenes</a> criou <a href="post.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> marcado com <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i> Arduino</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
-		</li>
+				<li class="vcard activity">
+				<div class="notf">
+					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+					<a href="perfil.shtml" class="fn">Max Guenes</a> editou o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+				</div>
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+							<span class="icon-cog icon-gray"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="conteudo.shtml">Ver conteúdo agora</a>
+							</li>
+							<li class="divider"></li>
+							<li class="danger-link">
+								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
+							</li>
+						</ul>
+					</div><!-- btn-group -->
+				</li>
 
-		<li class="vcard activity"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-			<a href="perfil.shtml" class="fn">Max Guenes</a> criou <a href="post.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> marcado com <a href="conteudo.shtml"><i class="icon-tag icon-gray"></i> Arduino</a>. <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
-		</li>
-	</ul>
+				<li class="vcard activity">
+				<div class="notf">
+					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+					<a href="perfil.shtml" class="fn">Max Guenes</a> colaborou com o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> publicando <a href="status.shtml">uma atualização</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+				</div>
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+							<span class="icon-cog icon-gray"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="conteudo.shtml">Ver atualização agora</a>
+							</li>
+							<li class="divider"></li>
+							<li class="danger-link">
+								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
+							</li>
+						</ul>
+					</div><!-- btn-group -->
+				</li>
+			</ul>
 
 
-</div><!-- stream -->
+			<h4>Recebido ontem</h4>
+			<ul class="notifications">
+				<li class="vcard activity">
+				<div class="notf">
+					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+					<a href="perfil.shtml" class="fn">Max Guenes</a> colaborou com o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> publicando <a href="status.shtml">uma atualização</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+				</div>
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+							<span class="icon-cog icon-gray"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="conteudo.shtml">Ver atualização agora</a>
+							</li>
+							<li class="divider"></li>
+							<li class="danger-link">
+								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
+							</li>
+						</ul>
+					</div><!-- btn-group -->
+				</li>
+
+				<li class="vcard activity">
+				<div class="notf">
+					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+					<a href="perfil.shtml" class="fn">Max Guenes</a> promoveu você a moderador da comunidade <a href="comunidade.shtml"><i class="icon-comment icon-gray"></i> Nome da comunidade</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+				</div>
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+							<span class="icon-cog icon-gray"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="comunidade.shtml">Ver comunidade agora</a>
+							</li>
+							<li class="divider"></li>
+							<li class="danger-link">
+								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
+							</li>
+						</ul>
+					</div><!-- btn-group -->
+				</li>
+			</ul>
+
+			<h4>Recebido 3 dias atrás</h4>
+			<ul class="notifications">
+				<li class="vcard activity">
+				<div class="notf">
+					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+					<a href="perfil.shtml" class="fn">Max Guenes</a> promoveu você a moderador da comunidade <a href="comunidade.shtml"><i class="icon-comment icon-gray"></i> Nome da comunidade</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+				</div>
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+							<span class="icon-cog icon-gray"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="comunidade.shtml">Ver comunidade agora</a>
+							</li>
+							<li class="divider"></li>
+							<li class="danger-link">
+								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
+							</li>
+						</ul>
+					</div><!-- btn-group -->
+				</li>
+			</ul>
+
+			<h4>Recebido 27 dias atrás</h4>
+			<ul class="notifications">
+				<li class="vcard activity">
+				<div class="notf">
+					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+					<a href="perfil.shtml" class="fn">Max Guenes</a> convidou você para colaborar editando o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> PSIU</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+
+					<blockquote>
+						<p>
+							Rodrigo, você poderia pode favor me ajudar a completar as informações do PSIU?
+						</p>
+						<p>
+							Já publiquei sobre Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum. Agora acho que você poderia ajudar mais com Maecenas sed diam eget risus varius blandit sit amet non magna. :)
+						</p>
+					</blockquote>
+				</div>
+
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+							<span class="icon-cog icon-gray"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="conteudo-criar.shtml">Editar conteúdo agora</a>
+							</li>
+							<li class="divider"></li>
+							<li class="danger-link">
+								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
+							</li>
+						</ul>
+					</div><!-- btn-group -->
+				</li>
+
+				<li class="vcard activity">
+				<div class="notf">
+					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+					<a href="perfil.shtml" class="fn">Max Guenes</a> convidou você para colaborar editando o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+
+					<blockquote>
+						<p>
+							Encontrei "Arduíno" e gostaria de convidá-lo(a) a colaborar e editar este conteúdo.
+						</p>
+					</blockquote>
+				</div>
+
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+							<span class="icon-cog icon-gray"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="conteudo-criar.shtml">Editar conteúdo agora</a>
+							</li>
+							<li class="divider"></li>
+							<li class="danger-link">
+								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
+							</li>
+						</ul>
+					</div><!-- btn-group -->
+				</li>
+
+				<li class="vcard activity">
+				<div class="notf">
+					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+					<a href="perfil.shtml" class="fn">Max Guenes</a> editou o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+				</div>
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+							<span class="icon-cog icon-gray"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="conteudo.shtml">Ver conteúdo agora</a>
+							</li>
+							<li class="divider"></li>
+							<li class="danger-link">
+								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
+							</li>
+						</ul>
+					</div><!-- btn-group -->
+				</li>
+
+				<li class="vcard activity">
+				<div class="notf">
+					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+					<a href="perfil.shtml" class="fn">Max Guenes</a> colaborou com o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> publicando <a href="status.shtml">uma atualização</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+				</div>
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+							<span class="icon-cog icon-gray"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="conteudo.shtml">Ver atualização agora</a>
+							</li>
+							<li class="divider"></li>
+							<li class="danger-link">
+								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
+							</li>
+						</ul>
+					</div><!-- btn-group -->
+				</li>
+			</ul>
+
+			<div class="alert">
+				<strong>Procurando algo?</strong> Armazenamos apenas notificações recebidas nos últimos 90 dias.
+			</div>
+
+		</div><!-- stream -->
 
 
-<div class="pagination">
-	<hr>
-  <ul>
-<!--     <li><a href="#"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li> -->
-    <li class="active">
-      <a href="#">1</a>
-    </li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
-  </ul>
-  
-  <p class="pull-right">Exibindo de 1 a 10</p>
 
-</div>
-
-</div><!-- /miolo -->
+	</div><!-- /miolo -->
 
 </div><!-- /row -->
 
