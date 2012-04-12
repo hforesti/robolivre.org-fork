@@ -160,7 +160,7 @@ $("#terms-textarea").focus(function(){
 $('.notifications .vcard .notf').click(function(){
 	$(this).parent().toggleClass('unread');
 	var numItems = $('.unread').length;
-	$('#notf-unread, #side-notf-unread').html(numItems);
+	$('#side-notf-unread').html(numItems);
 })
 
 //checkbox desligar emails
