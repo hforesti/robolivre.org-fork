@@ -208,6 +208,18 @@ $(".wysiwyg").cleditor({
 			width:'99%',
 		});                
 
+$('#location').change(function () {
+          var str = "";
+          $("#location option:selected").each(function () {
+                str += $(this).val();
+		    	if ( str=='ex' ) {
+					$("#outropais").fadeIn().focus();
+				} else {
+					$("#outropais").fadeOut();
+				}
+              });
+        })
+
 
 /* multi upload */
 //upload img

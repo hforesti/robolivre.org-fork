@@ -286,7 +286,7 @@ body.home .top-login {
 	margin-top: 0;
 }
 #stream .notifications .unread {
-	background-color: #faf7e7;
+	background-color: #fff3cc;
 	border-top: 1px dotted #049cdb;
 }
 #stream .notifications blockquote {
@@ -615,15 +615,21 @@ footer .pull-left {width: 45%;}
 #fromField .add-on img {width: 20px}
 
 #forum-intro {margin-bottom: 25px}
-#forum-intro ul, #docs-intro table {margin-bottom: 8px}
+#forum-intro ul, 
+#docs-intro table,
+#inbox-pvt-intro ul {margin-bottom: 8px}
 #forum-intro ul a, 
 #forum-intro ul a small, 
+#inbox-pvt-intro ul a, 
+#inbox-pvt-intro ul a small, 
 #docs-intro table a, 
 #docs-intro table a small {display: block}
 #forum-intro ul a:hover,
 #docs-intro table a:hover {text-decoration: none}
-#forum-intro ul a {position: relative; padding-right: 40px}
-#forum-intro ul a .label {
+#forum-intro ul a,
+#inbox-pvt-intro ul a {position: relative; padding-right: 40px}
+#forum-intro ul a .label,
+#inbox-pvt-intro ul a .label {
 	font-family: "Helvetica", "Arial", sans-serif;
 	padding-bottom: 1px;
 	font-weight: normal;
@@ -632,11 +638,32 @@ footer .pull-left {width: 45%;}
 	top: 8px;
 }
 #forum-intro ul a small,
+#inbox-pvt-intro ul a small,
 #docs-intro table a small {
 	font-size: 85%;
 	color: #aaa
 }
+#inbox-pvt-intro ul .unread a {
+	background-color: #fff9e6;
+	font-weight: bold;
+}
 table .col-sec {width: 10%}
+#inbox-pvt-intro ul .unread .icon-gray {opacity: 1}
+#inbox-pvt-intro ul li {position: relative}
+#inbox-pvt-intro ul li .label {
+	position: absolute;
+	right: 10px;
+	top: 8px;
+	z-index: 100;
+	padding: 0;
+	opacity: .8;
+	border: 0;
+}
+#inbox-pvt-intro ul li .label .close {
+	padding: 1px 6px 4px;
+	padding-top: 0;
+	line-height:100%;
+}
 
 /* WYSIWYG Editor */
 .cleditorMain {border:1px solid #999; padding:0 1px 1px; background-color:white;}
@@ -909,7 +936,10 @@ li.as-result-item.active h4 {
 	clear: both;
 }
 
-.twtr-ft, .twtr-hd {display: none}
+/* hide */
+.twtr-ft, 
+.twtr-hd,
+#outropais {display: none}
 .twtr-tweet-wrap {padding: 6px 0!important}
 
 /* Webkit Hacks  */
