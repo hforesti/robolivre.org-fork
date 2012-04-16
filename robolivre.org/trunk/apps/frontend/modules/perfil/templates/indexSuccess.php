@@ -14,7 +14,7 @@
                         <a href="<?php echo url_for('perfil/atualizarFoto') ?>">Atualizar foto</a>
                     </li>
                     <li>
-                        <a href="<?php echo url_for('perfil/editarPerfil?u='.UsuarioLogado::getInstancia()->getIdUsuario()) ?>">Editar perfil</a>
+                        <a href="<?php echo url_for('perfil/editarPerfil') ?>">Editar perfil</a>
                     </li>
                 </ul>
             </div>

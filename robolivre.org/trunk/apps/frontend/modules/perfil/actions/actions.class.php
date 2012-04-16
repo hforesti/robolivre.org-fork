@@ -78,35 +78,29 @@ class perfilActions extends sfActions {
     }
     
     public function executeEditarPerfil(sfWebRequest $request) {
-        $u = $request->getParameter('u');
-        
-        if($u == UsuarioLogado::getInstancia()->getIdUsuario()){
-            $this->forward404Unless($usuarios = Doctrine_Core::getTable('Usuarios')->find(array($u)), sprintf('Object usuarios does not exist (%s).', $u));
-            $this->formUsuario = new UsuariosForm($usuarios,null,null,  UsuariosForm::SOMENTE_INFO);
-        }else{
-            $this->redirect("perfil/index");
-        }
+        $this->forward404Unless($usuarios = Doctrine_Core::getTable('Usuarios')->find(array(UsuarioLogado::getInstancia()->getIdUsuario())), sprintf('Object usuarios does not exist (%s).', UsuarioLogado::getInstancia()->getIdUsuario()));
+//        $usuarios = new Usuarios(null, false, UsuarioLogado::getInstancia());
+        $this->formUsuario = new UsuariosForm($usuarios,null,null,  UsuariosForm::SOMENTE_INFO);
     }
     
     public function executeEditarRegistro(sfWebRequest $request) {
         $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
         
-        $array_info = $request->getParameter("usuarios");
-        $id = $array_info['id_usuario'];
-        
+        $id = UsuarioLogado::getInstancia()->getIdUsuario();
         $this->forward404Unless($usuarios = Doctrine_Core::getTable('Usuarios')->find(array($id)), sprintf('Object usuarios does not exist (%s).', $id));
         $form = new UsuariosForm($usuarios,null,null,  UsuariosForm::SOMENTE_INFO);
         
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-        
+        //Util::pre($form->getTaintedValues(),true);
+
         if ($form->isValid()) {
             $usuarios = $form->save();
             UsuarioLogado::getInstancia()->atualizaInformacoes($usuarios);
             $this->redirect('perfil/informacao?u=' . $usuarios->getIdUsuario());
+        }else{
+            $this->formUsuario = $form;
+            $this->setTemplate('editarPerfil');
         }
-        
-        $this->formUsuario = $form;
-        $this->setTemplate('editarPerfil');
     }
     
    

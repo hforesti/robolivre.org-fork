@@ -21,15 +21,17 @@ abstract class BasePastasForm extends BaseFormDoctrine
       'id_conjunto'      => new sfWidgetFormInputText(),
       'nome'             => new sfWidgetFormInputText(),
       'descricao'        => new sfWidgetFormInputText(),
+      'tipo_pasta'       => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
       'id_pasta'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_pasta')), 'empty_value' => $this->getObject()->get('id_pasta'), 'required' => false)),
       'id_usuario'       => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_usuario')), 'empty_value' => $this->getObject()->get('id_usuario'), 'required' => false)),
-      'id_tipo_conjunto' => new sfValidatorInteger(),
-      'id_conjunto'      => new sfValidatorInteger(),
+      'id_tipo_conjunto' => new sfValidatorInteger(array('required' => false)),
+      'id_conjunto'      => new sfValidatorInteger(array('required' => false)),
       'nome'             => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'descricao'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'tipo_pasta'       => new sfValidatorInteger(),
     ));
 
     $this->widgetSchema->setNameFormat('pastas[%s]');

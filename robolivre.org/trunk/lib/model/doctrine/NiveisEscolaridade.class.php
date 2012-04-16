@@ -26,12 +26,17 @@ class NiveisEscolaridade{
     public static function getDescricoes() {
         return array('' => 'Sem resposta',
                      '1'=>"Ensino Fundamental",
-                     '2'=>"Ensino Médio",
-                     '3'=>"Ensino Superior Completo",
-                     '4'=>"Ensino Superior Incompleto",
-                     '5'=>"Pós-Graduação",
-                     '6'=>"Mestrado",
-                     '7'=>"Doutorado",
+                     '2'=>"Ensino Fundamental Incompleto",
+                     '3'=>"Ensino Médio",
+                     '4'=>"Ensino Médio Incompleto",
+                     '5'=>"Ensino Superior Completo",
+                     '6'=>"Ensino Superior Incompleto",
+                     'Pós-graduação' => array(
+                        '5'=>"Pós-Graduação",
+                        '6'=>"Mestrado",
+                        '7'=>"Doutorado"
+                         )
+            
            );
     }
     

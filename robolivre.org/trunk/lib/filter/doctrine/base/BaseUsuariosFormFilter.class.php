@@ -31,6 +31,10 @@ abstract class BaseUsuariosFormFilter extends BaseFormFilterDoctrine
       'imagem_perfil'          => new sfWidgetFormFilterInput(),
       'twitter'                => new sfWidgetFormFilterInput(),
       'parametros_privacidade' => new sfWidgetFormFilterInput(),
+      'aula_robolivre'         => new sfWidgetFormFilterInput(),
+      'profissao'              => new sfWidgetFormFilterInput(),
+      'escola'                 => new sfWidgetFormFilterInput(),
+      'empresa'                => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -52,6 +56,10 @@ abstract class BaseUsuariosFormFilter extends BaseFormFilterDoctrine
       'imagem_perfil'          => new sfValidatorPass(array('required' => false)),
       'twitter'                => new sfValidatorPass(array('required' => false)),
       'parametros_privacidade' => new sfValidatorPass(array('required' => false)),
+      'aula_robolivre'         => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'profissao'              => new sfValidatorPass(array('required' => false)),
+      'escola'                 => new sfValidatorPass(array('required' => false)),
+      'empresa'                => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('usuarios_filters[%s]');
@@ -90,6 +98,10 @@ abstract class BaseUsuariosFormFilter extends BaseFormFilterDoctrine
       'imagem_perfil'          => 'Text',
       'twitter'                => 'Text',
       'parametros_privacidade' => 'Text',
+      'aula_robolivre'         => 'Number',
+      'profissao'              => 'Text',
+      'escola'                 => 'Text',
+      'empresa'                => 'Text',
     );
   }
 }

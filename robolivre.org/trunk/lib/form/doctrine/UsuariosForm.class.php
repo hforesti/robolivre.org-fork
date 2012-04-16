@@ -98,7 +98,7 @@ class UsuariosForm extends BaseUsuariosForm {
                 $this->setWidgets(array(
                     'id_usuario' => $this->widgetSchema['id_usuario'],
                     'nivel_escolaridade' => $this->widgetSchema['nivel_escolaridade'],
-                    'nome' => $this->widgetSchema['nome'],
+                    //'nome' => $this->widgetSchema['nome'],
                     'email' => $this->widgetSchema['email'],
                     'endereco' => $this->widgetSchema['endereco'],
                     'habilidades' => $this->widgetSchema['habilidades'],
@@ -108,11 +108,15 @@ class UsuariosForm extends BaseUsuariosForm {
                     'data_nascimento' => $this->widgetSchema['data_nascimento'],
                     'sexo' => $this->widgetSchema['sexo'],
                     'sobre_mim' => $this->widgetSchema['sobre_mim'],
+                    'aula_robolivre' => new sfWidgetFormInputCheckbox(array('value_attribute_value'=>1)),
+                    'profissao' => $this->widgetSchema['profissao'],
+                    'escola' => $this->widgetSchema['escola'],
+                    'empresa' => $this->widgetSchema['empresa'],
                 ));
                 $this->setValidators(array(
                     'id_usuario' => $this->validatorSchema['id_usuario'],
                     'nivel_escolaridade' => $this->validatorSchema['nivel_escolaridade'],
-                    'nome' => $this->validatorSchema['nome'],
+                    //'nome' => $this->validatorSchema['nome'],
                     'email' => $this->validatorSchema['email'],
                     'endereco' => $this->validatorSchema['endereco'],
                     'habilidades' => $this->validatorSchema['habilidades'],
@@ -122,6 +126,10 @@ class UsuariosForm extends BaseUsuariosForm {
                     'data_nascimento' => $this->validatorSchema['data_nascimento'],
                     'sexo' => $this->validatorSchema['sexo'],
                     'sobre_mim' => $this->validatorSchema['sobre_mim'],
+                    'aula_robolivre' => $this->validatorSchema['aula_robolivre'],
+                    'profissao' => $this->validatorSchema['profissao'],
+                    'escola' => $this->validatorSchema['escola'],
+                    'empresa' => $this->validatorSchema['empresa'],
                 ));
                 break;
         }
@@ -135,6 +143,17 @@ class UsuariosForm extends BaseUsuariosForm {
         if (isset($this->widgetSchema['nivel_escolaridade'])) {
             $this->widgetSchema['nivel_escolaridade'] = new sfWidgetFormSelect(array(
                         'choices' => NiveisEscolaridade::getDescricoes(),
+                    ));
+        }
+        if (isset($this->widgetSchema['data_nascimento'])) {
+            $anos = range(1900, date('Y'));
+            //$meses = array(01=>'Janeiro',02=>'Fevereiro',03=>'Março',04=>'Abril',05=>'Maio');
+            $this->widgetSchema['data_nascimento'] = new sfWidgetFormI18nDate(array(
+                        'format' => '%day%/%month%/%year%',
+                        'years' => array_reverse(array_combine($anos,$anos)),
+                        'month_format' => 'name',
+                        'culture' => "pt",
+                        'empty_values'=> array('year' => 'Ano', 'month' => 'Mês', 'day' => 'Dia')
                     ));
         }
         if (isset($this->widgetSchema['sexo'])) {
@@ -178,9 +197,10 @@ class UsuariosForm extends BaseUsuariosForm {
 
     public function isValid() {
         $valido = true;
-        if (!parent::isValid())
+        if (!parent::isValid()){
             $valido = false;
-
+        }
+        
         if ($this->isNew()) {
             
             if ($this->getTipoFormulario() != self::LOGIN) {

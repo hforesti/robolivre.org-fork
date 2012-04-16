@@ -34,6 +34,10 @@ abstract class BaseUsuariosForm extends BaseFormDoctrine
       'imagem_perfil'          => new sfWidgetFormInputText(),
       'twitter'                => new sfWidgetFormInputText(),
       'parametros_privacidade' => new sfWidgetFormInputText(),
+      'aula_robolivre'         => new sfWidgetFormInputText(),
+      'profissao'              => new sfWidgetFormInputText(),
+      'escola'                 => new sfWidgetFormInputText(),
+      'empresa'                => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -56,6 +60,10 @@ abstract class BaseUsuariosForm extends BaseFormDoctrine
       'imagem_perfil'          => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'twitter'                => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'parametros_privacidade' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'aula_robolivre'         => new sfValidatorInteger(array('required' => false)),
+      'profissao'              => new sfValidatorString(array('max_length' => 50, 'required' => false)),
+      'escola'                 => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'empresa'                => new sfValidatorString(array('max_length' => 50, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('usuarios[%s]');

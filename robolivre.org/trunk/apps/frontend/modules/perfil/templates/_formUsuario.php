@@ -1,10 +1,19 @@
 <?php 
+$valoresInciais = $form->getDefaults();
+//Util::pre($valoresInciais);
 
 $dia = "";
 $mes = "";
 $ano = "";
-
-
+if($valoresInciais['data_nascimento']!=null && $valoresInciais['data_nascimento']!=""){
+    $arrayData = explode("-", $valoresInciais['data_nascimento']);
+//    Util::pre($arrayData);
+    $dia = $arrayData[2];
+    $mes = "".$arrayData[1];
+    $ano = $arrayData[0];
+    
+}
+//echo "data: $dia/$mes/$ano<br/>";
 ?>
 
 <div class="row">
@@ -62,7 +71,9 @@ $ano = "";
 		</ul>
 
                 <form id="form-editar-info" class="form-horizontal" action="<?php echo url_for('perfil/editarRegistro'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
-                        <input type="hidden" name="sf_method" value="put" />
+                        <?php if (!$form->getObject()->isNew()): ?>
+                            <input type="hidden" name="sf_method" value="put" />
+                        <?php endif; ?>
 			<fieldset>
 				<legend>Configurações e imagem</legend>
 				<div class="control-group">
@@ -79,43 +90,43 @@ $ano = "";
 				<div class="control-group">
 					<label class="control-label" for="dresciption">Sobre você</label>
 					<div class="controls">
-                                            <?php echo $form->getWidget('sobre_mim')->render($form->getName() . "[sobre_mim]", null, array('class'=>"span6",'id' => 'dresciption','rows'=>"5", 'placeholder' => "Descreva suas atividades e seus interesses em poucas palavras")); ?>
+                                            <?php echo $form->getWidget('sobre_mim')->render($form->getName() . "[sobre_mim]", $valoresInciais['sobre_mim'], array('class'=>"span6",'id' => 'dresciption','rows'=>"5", 'placeholder' => "Descreva suas atividades e seus interesses em poucas palavras")); ?>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label" for="genero">Gênero</label>
 					<div class="controls">
-                                            <?php echo $form->getWidget('sexo')->render($form->getName() . "[sexo]", null, array('class'=>"span2",'id' => 'genero')); ?>
+                                            <?php echo $form->getWidget('sexo')->render($form->getName() . "[sexo]", $valoresInciais['sexo'], array('class'=>"span2",'id' => 'genero')); ?>
 					</div>
 				</div>
-
+                                
 				<div class="control-group">
 					<label class="control-label">Data de nascimento</label>
 					<div class="controls">
-						<select class="span1" id="dia">
+                                                <select class="span1" name="<?php echo $form->getName() ?>[data_nascimento][day]" id="dia">
                                                     <option <?php echo ($dia=="")?"selected='selected'":"" ?> value="">Dia</option>
                                                     <?php for($i =  1; $i<=31;++$i){ ?>
                                                     <option <?php echo ($dia==$i)?"selected='selected'":"" ?> value="<?php echo $i ?>"><?php echo $i ?></option>
                                                     <?php } ?>
 						</select>
-						<select class="span2" id="mes">
+						<select class="span2" name="<?php echo $form->getName() ?>[data_nascimento][month]" id="mes">
                                                     <option <?php echo ($mes=="")?"selected='selected'":"" ?> value="">Mês</option>
-                                                    <option <?php echo ($mes=="1")?"selected='selected'":"" ?> value="1">Janeiro</option>
-                                                    <option <?php echo ($mes=="2")?"selected='selected'":"" ?> value="2">Fevereiro</option>
-                                                    <option <?php echo ($mes=="3")?"selected='selected'":"" ?> value="3">Março</option>
-                                                    <option <?php echo ($mes=="4")?"selected='selected'":"" ?> value="4">Abril</option>
-                                                    <option <?php echo ($mes=="5")?"selected='selected'":"" ?> value="5">Maio</option>
-                                                    <option <?php echo ($mes=="6")?"selected='selected'":"" ?> value="6">Junho</option>
-                                                    <option <?php echo ($mes=="7")?"selected='selected'":"" ?> value="7">Julho</option>
-                                                    <option <?php echo ($mes=="8")?"selected='selected'":"" ?> value="8">Agosto</option>
-                                                    <option <?php echo ($mes=="9")?"selected='selected'":"" ?> value="9">Setembro</option>
+                                                    <option <?php echo ($mes=="01")?"selected='selected'":"" ?> value="1">Janeiro</option>
+                                                    <option <?php echo ($mes=="02")?"selected='selected'":"" ?> value="2">Fevereiro</option>
+                                                    <option <?php echo ($mes=="03")?"selected='selected'":"" ?> value="3">Março</option>
+                                                    <option <?php echo ($mes=="04")?"selected='selected'":"" ?> value="4">Abril</option>
+                                                    <option <?php echo ($mes=="05")?"selected='selected'":"" ?> value="5">Maio</option>
+                                                    <option <?php echo ($mes=="06")?"selected='selected'":"" ?> value="6">Junho</option>
+                                                    <option <?php echo ($mes=="07")?"selected='selected'":"" ?> value="7">Julho</option>
+                                                    <option <?php echo ($mes=="08")?"selected='selected'":"" ?> value="8">Agosto</option>
+                                                    <option <?php echo ($mes=="09")?"selected='selected'":"" ?> value="9">Setembro</option>
                                                     <option <?php echo ($mes=="10")?"selected='selected'":"" ?> value="10">Outubro</option>
                                                     <option <?php echo ($mes=="11")?"selected='selected'":"" ?> value="11">Novembro</option>
                                                     <option <?php echo ($mes=="12")?"selected='selected'":"" ?> value="12">Dezembro</option>
 						</select>
 
-						<select id="ano" class="span2">
+						<select id="ano" name="<?php echo $form->getName() ?>[data_nascimento][year]" class="span2">
                                                     <option value="">Ano</option>
                                                     <?php for($i =  date('Y'); $i>=1900;--$i){ ?>
                                                     <option <?php echo ($ano==$i)?"selected='selected'":"" ?> value="<?php echo $i ?>"><?php echo $i ?></option>
@@ -133,29 +144,19 @@ $ano = "";
 
 					<div class="controls">
 						<div class="input-append">
-							<input type="email" id="email" value="rodrigo@robolivre.org" placeholder="Ex: voce@email.com" class="span4"><span class="add-on"><i class="icon-ok icon-gray"></i> Confirmado</span>
+                                                        <?php echo $form->getWidget('email')->render($form->getName() . "[email]", $valoresInciais['email'], array('class'=>"span4",'id' => 'email', 'placeholder' => "Ex: voce@email.com",'type'=>"email")); ?>
+                                                        <span class="add-on"><i class="icon-ok icon-gray"></i> Confirmado</span>
 						</div>
 						<p class="help-block">
 							Atualizando seu email você receberá um link para confirmação no novo endereço informado.</p>
 						</div>
 					</div>
 
-					<!-- modelo para email não confirmado ainda -->
-			<!-- <div class="control-group warning">
-			<label class="control-label" for="email">E-mail <i class="icon-user icon-gray singletip" title="Apenas amigos podem ver"></i></label>
-	            <div class="controls">
-	            
-	            <div class="input-append">
-                	<input type="email" id="email" value="rodrigo@robolivre.org" placeholder="Ex: voce@email.com" class="span4"><span class="add-on"><i class="icon-exclamation-sign icon-gray"></i> Confirmação pendente</span>
-                </div>
-				<p class="help-block">É importante confirmarmos seu email. Verifique sua caixa de entrada e também de spam.<br><strong>Não recebeu nosso email de confirmação? <a href="#">Reenviar agora</a></strong></p>
-				</div>
-
-			</div> -->
+					
 			<div class="control-group">
 				<label class="control-label" for="site">Seu site ou blog</label>
 				<div class="controls">
-					<input type="url" id="site" value="" placeholder="Ex: http://www.meusite.com" class="span5">
+                                        <?php echo $form->getWidget('site')->render($form->getName() . "[site]", $valoresInciais['site'], array('class'=>"span5",'id' => 'site', 'placeholder' => "Ex: http://www.meusite.com",'type'=>"url")); ?>
 				</div>
 			</div>
 		</fieldset>
@@ -166,22 +167,7 @@ $ano = "";
 			<div class="control-group">
 				<label class="control-label" for="escolaridade">Nível de Escolaridade</label>
 				<div class="controls">
-					<select class="span3" id="escolaridade">
-						<option value="">Nível</option>
-						<option value="1">Ensino fundamental</option>
-						<option value="2">Ensino fundamental incompleto</option>
-						<option value="3">Ensino médio</option>
-						<option value="4">Ensino médio incompleto</option>
-						<option value="5">Ensino superior</option>
-						<option value="6">Ensino superior incompleto</option>
-						<optgroup label="Pós-graduação">
-							<option value="7">Especialização</option>
-							<option value="8">Mestrado</option>
-							<option value="9">Doutorado</option>
-							<option value="10">Pós-doutorado</option>
-						</optgroup>
-						<option value="11">Outro</option>
-					</select>
+                                        <?php echo $form->getWidget('nivel_escolaridade')->render($form->getName() . "[nivel_escolaridade]", null, array('class'=>"span3",'id' => 'escolaridade')); ?>
 				</div>
 			</div>
 
@@ -195,7 +181,7 @@ $ano = "";
 			<div class="control-group">
 				<label class="control-label" for="curso">Curso (Opcional)</label>
 				<div class="controls">
-					<input type="text" id="curso" value="Tecnologia e Arte Digital" placeholder="Nome do curso" class="span4">
+                                        <?php echo $form->getWidget('curso')->render($form->getName() . "[curso]", $valoresInciais['curso'], array('class'=>"span4",'id' => 'curso', 'placeholder' => "Nome do curso",'type'=>'text')); ?>
 					<p class="help-block">Exemplo: Direito, Engenharia, Tecnologia e Arte...</p>
 				</div>
 			</div>
@@ -204,7 +190,7 @@ $ano = "";
 				<label class="control-label" for="optionsCheckbox">Aulas Robô Livre <i class="icon-star-empty icon-gray"></i></label>
 				<div class="controls">
 					<label class="checkbox">
-						<input type="checkbox" id="optionsCheckbox" value="option1">
+                                                <?php echo $form->getWidget('aula_robolivre')->render($form->getName() . "[aula_robolivre]", ($valoresInciais['aula_robolivre']!=0)?$valoresInciais['aula_robolivre']:false, array('id' => 'optionsCheckbox')); ?>
 						Sim, participo das aulas presenciais da Robô Livre <a href="sobre.shtml" title="Mais informações sobre nossas aulas" class="singletip"><i class="icon-info-sign"></i></a>
 					</label> 
 				</div>
@@ -215,24 +201,24 @@ $ano = "";
 				<div class="control-group">
 					<label class="control-label" for="profissao">Profissão ou cargo</label>
 					<div class="controls">
-						<input type="text" id="profissao" value="Interaction Designer" placeholder="Ex: Estudante ou Gerente" class="span5">
+                                                <?php echo $form->getWidget('profissao')->render($form->getName() . "[profissao]", $valoresInciais['profissao'], array('class'=>"span5",'id' => 'profissao', 'placeholder' => "Ex: Estudante ou Gerente",'type'=>'text')); ?>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="empresa">Empresa</label>
 					<div class="controls">
-						<input type="text" id="empresa" value="Robô Livre" placeholder="Nome da Empresa" class="span5">
+                                                <?php echo $form->getWidget('empresa')->render($form->getName() . "[empresa]", $valoresInciais['empresa'], array('class'=>"span5",'id' => 'profissao', 'placeholder' => "Nome da Empresa",'type'=>'text')); ?>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="site-corp">Site da empresa</label>
 					<div class="controls">
-						<input type="url" id="site-corp" value="" placeholder="Ex: http://www.sitedaempresa.com" class="span5">
+                                            <?php echo $form->getWidget('site_empresa')->render($form->getName() . "[site_empresa]", $valoresInciais['site_empresa'], array('class'=>"span5",'id' => 'site-corp', 'placeholder' => "Ex: http://www.sitedaempresa.com",'type'=>"url")); ?>
 					</div>
 				</div>
 
 			</fieldset>
-                                  <input type="hidden" name="tp_frm" value="<?php $form->getTipoFormulario(); ?>" />
+                        <input type="hidden" name="tp_frm" value="<?php $form->getTipoFormulario(); ?>" />
                         <?php echo $form->renderHiddenFields() ?>
 			<div class="form-actions">
 				<button type="submit" class="btn btn-primary" id="update-info">Salvar informações</button>
@@ -247,6 +233,3 @@ $ano = "";
 
 
 </div><!-- /row -->
-
-
-<!--#include virtual="includes/footer.html" -->

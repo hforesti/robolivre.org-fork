@@ -67,4 +67,9 @@ class Usuarios extends BaseUsuarios
         return Util::validaImagem($imagem, $tipoImagem,Util::TIPO_IMAGEM_USUARIO);
     }
     
+    public function setAulaRobolivre($valor) {
+        parent::_set('aula_robolivre', ($valor=="on"||$valor==true)?1:0);
+        return $this;
+    }
+    
 }

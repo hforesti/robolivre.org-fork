@@ -26,6 +26,10 @@ Doctrine_Manager::getInstance()->bindComponent('Usuarios', 'doctrine');
  * @property string $imagem_perfil
  * @property string $twitter
  * @property string $parametros_privacidade
+ * @property integer $aula_robolivre
+ * @property string $profissao
+ * @property string $escola
+ * @property string $empresa
  * 
  * @method integer  getIdUsuario()              Returns the current record's "id_usuario" value
  * @method integer  getNivelEscolaridade()      Returns the current record's "nivel_escolaridade" value
@@ -46,6 +50,10 @@ Doctrine_Manager::getInstance()->bindComponent('Usuarios', 'doctrine');
  * @method string   getImagemPerfil()           Returns the current record's "imagem_perfil" value
  * @method string   getTwitter()                Returns the current record's "twitter" value
  * @method string   getParametrosPrivacidade()  Returns the current record's "parametros_privacidade" value
+ * @method integer  getAulaRobolivre()          Returns the current record's "aula_robolivre" value
+ * @method string   getProfissao()              Returns the current record's "profissao" value
+ * @method string   getEscola()                 Returns the current record's "escola" value
+ * @method string   getEmpresa()                Returns the current record's "empresa" value
  * @method Usuarios setIdUsuario()              Sets the current record's "id_usuario" value
  * @method Usuarios setNivelEscolaridade()      Sets the current record's "nivel_escolaridade" value
  * @method Usuarios setNome()                   Sets the current record's "nome" value
@@ -65,6 +73,10 @@ Doctrine_Manager::getInstance()->bindComponent('Usuarios', 'doctrine');
  * @method Usuarios setImagemPerfil()           Sets the current record's "imagem_perfil" value
  * @method Usuarios setTwitter()                Sets the current record's "twitter" value
  * @method Usuarios setParametrosPrivacidade()  Sets the current record's "parametros_privacidade" value
+ * @method Usuarios setAulaRobolivre()          Sets the current record's "aula_robolivre" value
+ * @method Usuarios setProfissao()              Sets the current record's "profissao" value
+ * @method Usuarios setEscola()                 Sets the current record's "escola" value
+ * @method Usuarios setEmpresa()                Sets the current record's "empresa" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -247,6 +259,43 @@ abstract class BaseUsuarios extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => 255,
+             ));
+        $this->hasColumn('aula_robolivre', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => true,
+             'primary' => false,
+             'default' => '0',
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
+        $this->hasColumn('profissao', 'string', 50, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 50,
+             ));
+        $this->hasColumn('escola', 'string', 100, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 100,
+             ));
+        $this->hasColumn('empresa', 'string', 50, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 50,
              ));
     }
 
