@@ -1,0 +1,318 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+	<div class="span2" id="sidebar">
+		<div class="avatar">
+			<a href="profile-home.shtml"><img src="assets/img/rl/avatar-170.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+			<div class="btn-group">
+				<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+					<span class="icon-cog icon-gray"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="settings-avatar.shtml">Atualizar foto</a>
+					</li>
+					<li>
+						<a href="profile-info-editar.shtml">Editar perfil</a>
+					</li>
+				</ul>
+			</div>
+
+			<h1>Rodrigo Medeiros</h1>
+
+		</div><!-- /avatar -->
+
+		<ul class="nav nav-pills nav-stacked">
+			<li><a href="profile-home.shtml"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+			<li><a href="profile-conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+			<li><a href="profile-comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+			<li><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
+			<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
+			<li><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+			<li><a href="perfil-info.shtml"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
+			<li><hr></li>
+			<li><a href="inbox.shtml"><span class="label label-warning" id="side-notf-unread" title="2 notificações não lidas">2</span> <span class="icon-gray icon-th-list"></span> Notificações</a></li>
+			<li class="active"><a href="inbox-pvt.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
+		</ul>
+	</div><!-- /sidebar -->
+
+	<hr class="only-mobile">
+
+	<div class="span10">
+
+		<div id="stream" class="clear-fix">
+
+		<a href="inbox-criar.shtml" class="pull-right btn btn-primary"><i class="icon-pencil icon-white"></i> Criar nova mensagem</a>
+
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="inbox-pvt.shtml"><i class="icon-envelope icon-gray"></i> Mensagens privadas <span class="label label-warning" title="2 não lidas">2</span></a>
+				</li>
+				<li>
+					<a href="inbox-sent.shtml"><i class="icon-arrow-right icon-gray"></i> Enviadas</a>
+				</li>
+			</ul>
+
+			<div id="msg-item">
+
+				<ul class="pager">
+					<li class="previous">
+						<a href="inbox-pvt-msg.shtml">&larr; Conversa anterior</a>
+					</li>
+					<li>
+						<a href="inbox-pvt.shtml"><i class="icon-inbox icon-gray"></i> Lista de mensagens privadas</a>
+					</li>
+
+					<li class="next">
+						<a href="inbox-pvt-msg.shtml">Próxima conversa &rarr;</a>
+					</li>
+				</ul>
+
+				<ul>
+					<!-- ======================================== -->
+					<!-- ! Modelo de compartilhamento de vídeo   -->
+					<!-- ======================================== -->
+					<li class="vcard">
+
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<div class="entry">
+							<a href="perfil.shtml" class="fn">Rodrigo Muniz</a>
+							<div class="share-content">
+								<a href="status.shtml" class="shared-item"><img src="assets/img/rl/share-img.jpg" alt="Imagem compartilhada" class="thumbnail"><div class="btn-play"></div></a>
+
+								<div class="video-embed">
+									<iframe src="http://www.youtube.com/embed/-KXBZZO6IgQ" frameborder="0" allowfullscreen></iframe>
+								</div>
+
+							</div>
+							<p>Cras mattis consectetur purus sit amet fermentum Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<ul class="meta pull-right">
+								<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Há 39 minutos</li>
+							</ul>
+
+						</div><!-- entry -->
+
+						<div class="btn-group">
+							<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+								<span class="icon-cog icon-gray"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li class="bt-reply">
+									<a href="#form-reply">Responder</a>
+								</li>     
+								<li class="divider"></li>
+								<li>
+									<a href="#">Excluir conversa</a>
+								</li>
+								<li>
+									<a href="#"><i class="icon-flag"></i> Reportar spam</a>
+								</li>
+							</ul>
+						</div><!-- btn-group -->
+					</li>
+
+					<!-- ================================================ -->
+					<!-- ! botão para conversas com mais de 10 respostas  -->
+					<!-- ================================================ -->
+					<li class="more-msg">
+						<button class="btn btn-mini"><i class="icon-chevron-up"></i> Carregar respostas mais antigas...</button>
+					</li>
+
+					<li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<div class="entry">
+							<a href="perfil.shtml" class="fn">Max Guenes</a>
+							<blockquote>
+								<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+								<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							</blockquote>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<ul class="meta pull-right">
+								<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+							</ul>
+
+						</div><!-- entry -->
+
+					</li>
+
+					<li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<div class="entry">
+							<a href="perfil.shtml" class="fn">Max Guenes</a>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<ul class="meta pull-right">
+								<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+							</ul>
+						</div><!-- entry -->
+					</li>
+
+					<li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<div class="entry">
+							<a href="perfil.shtml" class="fn">Max Guenes</a>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<ul class="meta pull-right">
+								<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+							</ul>
+						</div><!-- entry -->
+					</li>
+
+					<li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<div class="entry">
+							<a href="perfil.shtml" class="fn">Max Guenes</a>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<ul class="meta pull-right">
+								<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+							</ul>
+						</div><!-- entry -->
+					</li>
+
+					<li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<div class="entry">
+							<a href="perfil.shtml" class="fn">Max Guenes</a>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<ul class="meta pull-right">
+								<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+							</ul>
+						</div><!-- entry -->
+					</li>
+
+					<li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<div class="entry">
+							<a href="perfil.shtml" class="fn">Max Guenes</a>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<ul class="meta pull-right">
+								<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+							</ul>
+						</div><!-- entry -->
+					</li>
+
+					<li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<div class="entry">
+							<a href="perfil.shtml" class="fn">Max Guenes</a>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<ul class="meta pull-right">
+								<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+							</ul>
+						</div><!-- entry -->
+					</li>
+
+					<li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<div class="entry">
+							<a href="perfil.shtml" class="fn">Max Guenes</a>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<ul class="meta pull-right">
+								<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+							</ul>
+						</div><!-- entry -->
+					</li>
+
+					<li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<div class="entry">
+							<a href="perfil.shtml" class="fn">Max Guenes</a>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<ul class="meta pull-right">
+								<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+							</ul>
+						</div><!-- entry -->
+					</li>
+
+					<li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<div class="entry">
+							<a href="perfil.shtml" class="fn">Max Guenes</a>
+							<p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							<ul class="meta pull-right">
+								<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+							</ul>
+						</div><!-- entry -->
+					</li>
+
+
+					<li class="vcard reply">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<div class="entry">
+							<form id="form-reply" class="tabs" action="inbox-pvt-msg.shtml">
+
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#tab-status" data-toggle="tab">Sua resposta</a></li>
+									<li><a href="#tab-foto" data-toggle="tab" title="Adicionar Foto"><i class="icon-picture"></i></a></li>
+									<li><a href="#tab-video" data-toggle="tab" title="Adicionar Vídeo"><i class="icon-film"></i></a></li>
+									<li><a href="#tab-link" data-toggle="tab" title="Adicionar Link"><i class="icon-share-alt icon-gray-alt"></i></a></li>
+								</ul>
+								<fieldset class="tab-content">
+									<div class="tab-pane active fade in" id="tab-status">
+									</div>
+
+									<div class="tab-pane fade in" id="tab-foto">
+										<input class="input-file" id="fileInput" type="file">
+									</div>
+
+									<div class="tab-pane fade in" id="tab-video">
+										<div class="alert alert-error fade in">
+											<a class="close" data-dismiss="alert" href="#">×</a>
+											Nossos robôs não identificaram o link como sendo do YouTube. Por favor tente novamente.
+										</div>
+
+										<input type="text" class="span7" id="input02" placeholder="Endereço do vídeo do YouTube. Ex.: http://youtube.com/watch?v=Nem-KvCsODw">
+									</div>
+
+									<div class="tab-pane fade in" id="tab-link">
+										<input type="text" class="span7" id="input03" placeholder="Endereço do link. Ex.: http://robolivre.org">
+									</div>
+
+								</fieldset>
+
+								<fieldset>
+									<textarea class="textarea-comment" id="reply-topic" rows="3" placeholder="O que você tem a dizer?" tabindex="1"></textarea>
+								</fieldset>
+
+								<button type="submit" class="btn btn-success pull-right" id="send" tabindex="2">Responder</button>
+							</form>
+						</div>
+					</li>
+				</ul>
+
+			</div><!-- msg-item -->
+
+		</div><!-- stream -->
+
+<div class="clear">
+<hr>
+		<ul class="pager" id="nav-topic">
+			<li class="previous">
+				<a href="inbox-pvt-msg.shtml">&larr; Conversa anterior</a>
+			</li>
+			<li>
+				<a href="inbox-pvt.shtml"><i class="icon-inbox icon-gray"></i> Lista de mensagens privadas</a>
+			</li>
+
+			<li class="next">
+				<a href="inbox-pvt-msg.shtml">Próxima conversa &rarr;</a>
+			</li>
+		</ul>
+</div>
+	</div><!-- /miolo -->
+
+</div><!-- /row -->
+
+<!--#include virtual="includes/footer.html" -->

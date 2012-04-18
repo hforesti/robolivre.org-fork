@@ -57,44 +57,44 @@
 <div id="inbox-pvt-intro">
 
 <ul class="nav nav-tabs nav-stacked">
-            <li class="unread">
-            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Nenhuma resposta</small></a>
-				<button class="label label-important singletip" title="Excluir imediatamente"><span class="close" title="Excluir imediatamente">&times;</span></button>
-            </li>
-            <li class="unread">
-            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ 5 respostas</small></a>
+            <li>
+            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum... <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Para Rodrigo ‧ 39 minutos atrás ‧ Nenhuma resposta</small></a>
 				<button class="label label-important singletip" title="Excluir imediatamente"><span class="close" title="Excluir imediatamente">&times;</span></button>
             </li>
             <li>
-            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Nenhuma resposta</small></a>
+            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus... <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Para Rodrigo ‧ 39 minutos atrás ‧ 5 respostas</small></a>
 				<button class="label label-important singletip" title="Excluir imediatamente"><span class="close" title="Excluir imediatamente">&times;</span></button>
             </li>
             <li>
-            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ 1 resposta</small></a>
+            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum... <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Para Rodrigo ‧ 39 minutos atrás ‧ Nenhuma resposta</small></a>
 				<button class="label label-important singletip" title="Excluir imediatamente"><span class="close" title="Excluir imediatamente">&times;</span></button>
             </li>
             <li>
-            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ 10 respostas</small></a>
-				<span class="label label-important" title="Excluir imediatamente"><span class="close" title="Excluir imediatamente">&times;</span></span>
-            </li>
-            <li>
-            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ 10 respostas</small></a>
+            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus... <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Para Rodrigo ‧ 39 minutos atrás ‧ 1 resposta</small></a>
 				<button class="label label-important singletip" title="Excluir imediatamente"><span class="close" title="Excluir imediatamente">&times;</span></button>
             </li>
             <li>
-            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ 10 respostas</small></a>
+            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum... <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Para Rodrigo ‧ 39 minutos atrás ‧ 10 respostas</small></a>
 				<button class="label label-important singletip" title="Excluir imediatamente"><span class="close" title="Excluir imediatamente">&times;</span></button>
             </li>
             <li>
-            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Nenhuma resposta</small></a>
+            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus... <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Para Rodrigo ‧ 39 minutos atrás ‧ 10 respostas</small></a>
 				<button class="label label-important singletip" title="Excluir imediatamente"><span class="close" title="Excluir imediatamente">&times;</span></button>
             </li>
             <li>
-            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Nenhuma resposta</small></a>
+            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum... <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Para Rodrigo ‧ 39 minutos atrás ‧ 10 respostas</small></a>
 				<button class="label label-important singletip" title="Excluir imediatamente"><span class="close" title="Excluir imediatamente">&times;</span></button>
             </li>
             <li>
-            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Nenhuma resposta</small></a>
+            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus... <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Para Rodrigo ‧ 39 minutos atrás ‧ Nenhuma resposta</small></a>
+				<button class="label label-important singletip" title="Excluir imediatamente"><span class="close" title="Excluir imediatamente">&times;</span></button>
+            </li>
+            <li>
+            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum... <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Para Rodrigo ‧ 39 minutos atrás ‧ Nenhuma resposta</small></a>
+				<button class="label label-important singletip" title="Excluir imediatamente"><span class="close" title="Excluir imediatamente">&times;</span></button>
+            </li>
+            <li>
+            <a href="inbox-pvt-msg.shtml"><i class="icon-arrow-right icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus... <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Para Rodrigo ‧ 39 minutos atrás ‧ Nenhuma resposta</small></a>
 				<button class="label label-important singletip" title="Excluir imediatamente"><span class="close" title="Excluir imediatamente">&times;</span></button>
             </li>
 </ul>

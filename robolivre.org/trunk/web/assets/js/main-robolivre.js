@@ -93,6 +93,13 @@ $('table td .btn-group').children().hover(function() {
 	$(this).closest('tr').siblings().stop().fadeTo(500,1);
 });
 
+$('#inbox-pvt-intro li button').children().hover(function() {
+	$(this).closest('li').siblings().stop().fadeTo(500,0.45);
+}, function() {
+	$(this).closest('li').siblings().stop().fadeTo(500,1);
+});
+
+
 //pega destinatario do modal de mensagem privada
 $('.send-msg').click(function(){
 	var n = $(this).closest('.row').find("h3 a").text();
@@ -139,8 +146,10 @@ if ( $("#stream .video-embed") ) {
 }
 
 //tooltips
+$('#inbox-pvt-intro .singletip').tooltip({placement: 'left'});
 $('.singletip, #grid-comunidades img, #grid-conteudos img, #grid-amigos img, #grid-projetos img, .visivel-para i, #grid-eventos img').tooltip();
 $('#form-status .nav a').tooltip({placement: 'bottom'});
+
 
 //textarea de comentarios
 $('.textarea-comment').autoResize({
@@ -160,7 +169,10 @@ $("#terms-textarea").focus(function(){
 $('.notifications .vcard .notf').click(function(){
 	$(this).parent().toggleClass('unread');
 	var numItems = $('.unread').length;
-	$('#side-notf-unread').html(numItems);
+	$('#side-notf-unread, .notf-num').html(numItems);
+		if(numItems == 0) {$('.notf-txt-num').html('')}
+		if(numItems == 1) {$('.notf-txt-num').html('não lida')}
+		if(numItems > 1) {$('.notf-txt-num').html('não lidas')}
 })
 
 //checkbox desligar emails
