@@ -1,0 +1,196 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+  <hr class="only-mobile">
+
+  <div class="span8 offset2">
+
+    <ul class="breadcrumb">
+      <li>
+        <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+      </li>
+      <li>
+        <a href="comunidades.shtml">Comunidades</a> <span class="divider">/</span>
+      </li>
+      <li class="active">
+        Criar comunidade
+        <!--     Editar comunidade -->
+      </li>
+    </ul>
+
+
+    <div class="page-header">
+      <h1>Criar comunidade</h1>
+      <!-- <h1>Editar comunidade</h1> -->
+    </div>
+
+    <form action="#" id="form-criar-comunidade">
+      <fieldset>
+<!-- Modelo de campo com erro -->
+<!--
+        <div class="control-group error">
+          <div class="controls">
+            <input type="text" class="span8" id="input01" placeholder="Nome da comunidade" value="" tabindex="1">
+            <span class="help-inline">Por favor informe um nome para a sua comunidade</span>
+          </div>
+        </div>
+ -->
+        <div class="control-group">
+          <div class="controls">
+            <input type="text" class="span8" id="input01" placeholder="Nome da comunidade" value="" tabindex="1">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls">
+            <textarea class="span8" id="textarea" rows="3" placeholder="Descreva rapidamente a comunidade" tabindex="2"></textarea>
+          </div>
+        </div>
+
+        <hr>
+
+        <fieldset class="control-group">
+          <h3>Classificar comunidade</h3>
+
+          <p class="alert alert-info"><i class="icon-info-sign icon-gray"></i> Classifique esta comunidade com Marcadores e/ou relacione com nossos <strong>Temas de aula</strong>, assim ela ficará mais fácil de ser encontrada aqui no site.</p>
+
+          <div class="tabbable">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#1" data-toggle="tab"><i class="icon-tag icon-gray"></i> Marcadores</a></li>
+              <li><a href="#2" data-toggle="tab"><i class="icon-book icon-gray"></i> Temas de aula</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="1">
+
+                <div class="control-group">
+                  <div class="controls">
+                    <input type="text" id="input-marcadores" title="Ex.: Open Source, Gambiarra, UNIX etc">
+                    <p class="help-block">Separados por vírgula. Ex.: Open Source, Gambiarra, UNIX</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="tab-pane fade in" id="2">
+                <div class="controls row" id="temas-aula-list">
+
+                  <div class="span3">
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox1" value="option1"> Robótica Definições e História - Robô na Ficção
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox2" value="option2"> Robótica Classificação dos Robôs
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox3" value="option3"> Controle de Robôs - Protocolos de comunicação
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox4" value="option3"> Design - Levantamento de requisitos e Funcionalidades
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox5" value="option3"> Eletrônica Componentes eletrônicos
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox6" value="option3"> Eletrônica Soldagem
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox7" value="option3"> Arduino
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox8" value="option3"> Programação Logo Turtle, Schetch, Arduino
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox9" value="option3"> Programação IDE Arduino
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox10" value="option1"> Desenho Técnico - Cads, Programas de geometria
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox11" value="option2"> Mecânica - Materiais e Processos de fabricação
+                    </label>
+                  </div>
+                  <div class="span3 offset1">
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox12" value="option3"> Usinagem de Nylon - Corte, Furo, Rosca
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox14" value="option3"> Sensores magnéticos (Red Switch)
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox15" value="option3"> Sensores Infra Vermelho
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox16" value="option3"> Motores, Caixa de Redução
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox17" value="option3"> Motores Contínuos
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox18" value="option3"> Ponte H - com relés - com transistores, com chips
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox19" value="option3"> Encoder
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox20" value="option3"> Servo Motores
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox21" value="option3"> Motores de Passo
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox22" value="option3"> Motores Brush Less
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="inlineCheckbox23" value="option3"> Transmissão de Dados
+                    </label>
+                  </div>
+
+                </div><!-- controls row -->
+              </div><!-- tab-content -->
+
+
+            </div><!-- tab-content -->
+
+          </div><!-- tabbable -->
+
+          <hr>
+
+
+          <div class="control-group clearfix">
+            <label class="control-label" for="fileInput">Imagem principal</label>
+
+
+            <div class="row">
+              <div class="preview span2" id="img-preview">
+                <img src="assets/img/rl/170.gif" alt="140" id="thumb" class="thumbnail" />
+              </div>
+
+              <div class="span3">				
+                <div class="controls">				
+                  <p class="help-block">Escolha uma imagem que represente esta comunidade</p>
+                  <div id="file-uploader-img">       
+                    <noscript>          
+                      <input class="input-file" id="fileInput" type="file">
+                    </noscript>         
+                  </div>
+                </div>
+              </div>
+            </div><!-- row -->
+
+          </div><!-- control-group -->
+        </fieldset>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-large" tabindex="3">Criar comunidade</button>
+          <!--<button type="submit" class="btn btn-primary btn-large" tabindex="3">Atualizar dados</button> -->
+        </div>
+      </fieldset>
+    </form>
+
+  </div><!-- /miolo -->
+
+</div><!-- /row -->
+
+<!--#include virtual="includes/footer.html" -->

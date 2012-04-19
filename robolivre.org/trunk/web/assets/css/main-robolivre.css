@@ -65,6 +65,7 @@ body.home .brand,
 .clear {clear: both; float: left; width:100%;}
 
 .navbar-fixed-top {position: fixed}
+
 .brand {
 	background: url(../img/rl/logo.png) no-repeat;
 	height: 40px;
@@ -155,7 +156,7 @@ body.home .top-login {
 		vertical-align: middle;
 	}
 	.login-dropdown .dropdown ul {width: 400px}
-	.dropdown-menu .logout-link a:hover, .dropdown-menu .danger-link a:hover {background-color: #DA4F49;}
+	.dropdown-menu .logout-link a:hover, .dropdown-menu .danger-link a:hover {background-color: #DA4F49 !important;}
 
 #user-menu .label {
 	position: absolute;
@@ -1006,7 +1007,7 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 	border: none;
 }
 
-#form-criar-conteudo .as-original input {
+.as-original input {
 	border: 0;
 	outline: 0;
 	box-shadow: none;
@@ -1025,7 +1026,10 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 /* // Landscape phones and down */
 @media (max-width: 480px) {
 	#user-menu {float: left}
-	
+
+.nav-collapse {overflow: auto;}
+.nav-collapse a:hover {color:#fff !important; background:#08C !important;}
+
 #searchsubmit {display: none}
 
 #top-login {
@@ -1064,6 +1068,9 @@ footer .pull-left {width:100%;}
 		width: 95%
 	}
 	.navbar .brand {margin-left: 15px}
+
+.nav-collapse {overflow: auto;}
+.nav-collapse a:hover {color:#fff !important; background:#08C !important;}
 
 #searchsubmit {display: none}
 
@@ -1110,6 +1117,9 @@ footer .pull-left {width:100%;}
 		width: 95%
 	}
 
+.nav-collapse {overflow: auto;}
+.nav-collapse a:hover {color:#fff !important; background:#08C !important;}
+
 #searchsubmit {display: none}
 
 #login, #login-pass {width: 32%}
@@ -1120,6 +1130,7 @@ footer .pull-left {width:100%;}
 .textarea-comment {width: 91%;}
 
 footer .pull-left {width:25%;}
+#user-menu .nav-collapse a:hover {color:#005580}
 
 }
 

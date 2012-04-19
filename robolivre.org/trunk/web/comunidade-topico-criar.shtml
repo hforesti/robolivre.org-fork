@@ -1,0 +1,145 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+  <div class="span2" id="sidebar">
+    <div class="avatar">
+     <a href="comunidade.shtml"><img src="assets/img/rl/170.gif" alt="Poeta Manuel Bandeira" class="photo"></a>
+
+     <div class="btn-group">
+      <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+        <span class="icon-cog icon-gray"></span>
+      </a>
+      <ul class="dropdown-menu">
+       <li>
+        <a data-toggle="modal" href="#modalInvite">Convidar amigos</a>
+      </li>
+      <li class="divider"></li>
+      <li>
+       <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+     </li>
+   </ul>
+ </div>
+
+
+ <!-- ========================================== -->
+ <!-- ! Menu apenas para o criador e moderador   -->
+ <!-- ========================================== -->
+<!--
+    <div class="btn-group">
+		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+		<span class="icon-cog icon-gray"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="conteudo-criar.shtml">Editar dados</a>
+			</li>
+			<li>
+				<a data-toggle="modal" href="#modalImgUpload">Atualizar imagem</a>
+			</li>
+		</ul>
+	</div>
+-->
+<h1>Poeta Manuel Bandeira</h1>
+
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li><a href="comunidade.shtml"><span class="icon-gray icon-info-sign"></span> Resumo</a></li>
+	<li class="active"><a href="comunidade-forum.shtml"><span class="icon-gray icon-comment"></span> Fórum <span class="label label-info">50</span></a></li>
+	<li><a href="comunidade-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos <span class="label label-info">150</span></a></li>
+	<li><a href="comunidade-docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info">5</span></a></li>
+	<li><a href="comunidade-amigos.shtml"><span class="icon-gray icon-user"></span> Participantes <span class="label label-info">15</span></a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+
+  <ul class="breadcrumb">
+    <li>
+      <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+    </li>
+    <li>
+      <a href="comunidades">Comunidades</a> <span class="divider">/</span>
+    </li>
+    <li>
+      <a href="comunidade.shtml">Poeta Manuel Bandeira</a> <span class="divider">/</span>
+    </li>
+    <li>
+      <a href="comunidade-forum.shtml">Fórum</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+      Criar novo tópico
+    </li>
+  </ul>
+
+
+
+    <form id="form-topico" class="tabs" action="comunidade-topico.shtml">
+
+<!-- Modelo de campo com erro -->
+<!--
+        <div class="control-group error">
+          <div class="controls">
+            <input type="text" class="span10" id="input01" placeholder="Título do tópico" value="" tabindex="1">
+            <span class="help-inline">Por favor informe um título para o seu tópico</span>
+          </div>
+        </div>
+ -->
+
+        <div class="control-group">
+          <div class="controls">
+            <input type="text" class="span10" id="input01" placeholder="Título do tópico" value="" tabindex="1">
+          </div>
+        </div>
+
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-status" data-toggle="tab">Conteúdo do tópico</a></li>
+        <li><a href="#tab-foto" data-toggle="tab" title="Adicionar Foto"><i class="icon-picture"></i></a></li>
+        <li><a href="#tab-video" data-toggle="tab" title="Adicionar Vídeo"><i class="icon-film"></i></a></li>
+        <li><a href="#tab-link" data-toggle="tab" title="Adicionar Link"><i class="icon-share-alt icon-gray-alt"></i></a></li>
+      </ul>
+      <fieldset class="tab-content">
+        <div class="tab-pane active fade in" id="tab-status">
+        </div>
+
+        <div class="tab-pane fade in" id="tab-foto">
+          <input class="input-file" id="fileInput" type="file">
+        </div>
+
+        <div class="tab-pane fade in" id="tab-video">
+          <div class="alert alert-error fade in">
+            <a class="close" data-dismiss="alert" href="#">×</a>
+            Nossos robôs não identificaram o link como sendo do YouTube. Por favor tente novamente.
+          </div>
+
+          <input type="text" class="span10" id="input02" placeholder="Endereço do vídeo do YouTube. Ex.: http://youtube.com/watch?v=Nem-KvCsODw">
+        </div>
+
+        <div class="tab-pane fade in" id="tab-link">
+          <input type="text" class="span10" id="input03" placeholder="Endereço do link. Ex.: http://robolivre.org">
+        </div>
+
+      </fieldset>
+
+      <fieldset>
+        <textarea class="textarea-comment span10" id="reply-topic" rows="5" placeholder="O que você tem a compartilhar na comunidade?" tabindex="2"></textarea>
+      </fieldset>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-large" tabindex="3">Criar tópico</button>
+        </div>
+
+    </form>
+
+
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->

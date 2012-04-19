@@ -16,7 +16,10 @@ $(window).load(function(){
 });
 
 !function ($) {
-
+ //auto focus input
+ if ( $("#login-form, #form-criar-conteudo, #form-criar-comunidade") ) {
+   $('input[tabindex=1], textarea[tabindex=1]').focus();
+ }
 
 //sidebar border (apenas para desktop)
 
@@ -148,7 +151,7 @@ if ( $("#stream .video-embed") ) {
 //tooltips
 $('#inbox-pvt-intro .singletip').tooltip({placement: 'left'});
 $('.singletip, #grid-comunidades img, #grid-conteudos img, #grid-amigos img, #grid-projetos img, .visivel-para i, #grid-eventos img').tooltip();
-$('#form-status .nav a').tooltip({placement: 'bottom'});
+$('#form-status .nav a, #form-topico .nav a, #form-reply .nav a').tooltip({placement: 'bottom'});
 
 
 //textarea de comentarios
