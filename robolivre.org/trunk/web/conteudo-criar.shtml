@@ -177,10 +177,10 @@
             <label class="control-label" for="fileInput2">Documentos</label>
             <div class="controls">
 
-              <div id="file-uploader">       
-                <noscript>          
+              <div id="file-uploader">
+                <noscript>
                   <input class="input-file" id="fileInput2" type="file">
-                </noscript>         
+                </noscript>
               </div>
 
               <p class="help-block">Você pode anexar arquivos a este conteúdo. (Ex.: PDFs, Apresentações, Manuais).</p>

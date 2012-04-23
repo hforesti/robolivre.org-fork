@@ -63,7 +63,7 @@
     <a href="#senha" data-toggle="tab"><i class="icon-asterisk icon-gray"></i> Alterar Senha</a>
   </li>
   <li>
-  	<a href="#nomecomp" data-toggle="tab"><i class="icon-user icon-gray"></i> Nome completo</a>
+  	<a href="#nomecomp" data-toggle="tab"><i class="icon-user icon-gray"></i> Nome e sobrenome</a>
   </li>
 </ul>
 
@@ -194,7 +194,7 @@
 
 		<fieldset class="tab-pane fade in" id="nomecomp">
 			<div class="control-group">
-            	<label class="control-label" for="pass">Nome Completo</label>
+            	<label class="control-label" for="pass">Nome e sobrenome</label>
 	          <div class="controls">
 	            <input type="text" class="span5" id="realname" placeholder="Informe seu nome Completo" value="Rodrigo Medeiros">
 	          </div>

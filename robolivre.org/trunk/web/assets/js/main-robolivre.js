@@ -223,6 +223,7 @@ $(".wysiwyg").cleditor({
 			width:'99%',
 		});                
 
+//campo de localizacao pais estrageiro
 $('#location').change(function () {
           var str = "";
           $("#location option:selected").each(function () {
@@ -291,6 +292,29 @@ var uploader = new qq.FileUploader({
 	showMessage: function(message){alert(message);}
 
 });
+
+//upload doc
+var uploader = new qq.FileUploader({
+    // pass the dom node (ex. $(selector)[0] for jQuery users)
+    element: document.getElementById('file-uploader-docs'),
+    // path to server-side upload script
+    action: url_for('ajax/ajaxUlpoadArquivos'),//'../uploads/',
+    multiple: false,
+	// validation    
+	// ex. ['jpg', 'jpeg', 'png', 'gif'] or []
+	allowedExtensions: ['txt', 'rtf', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods', 'odg', 'fodg'],
+
+	messages: {
+            typeError		: "'{file}' tem um formato inválido. Apenas os formatos de documentos ({extensions}) são aceitos neste caso.",
+            sizeError		: "'{file}' é muito grande, o tamanho máximo do arquivo é: {sizeLimit}.",
+            minSizeError	: "'{file}' é muito pequeno, o tamaho mínimo do arquivo é: {minSizeLimit}.",
+            emptyError		: "'{file}' está vazio, por favor tente novamente.",
+            onLeave			: "Os arquivos estão sendo enviados, se você sair agora o envio será cancelado."            
+	},
+	showMessage: function(message){alert(message);}
+});
+
+
 
 }(window.jQuery)
 
