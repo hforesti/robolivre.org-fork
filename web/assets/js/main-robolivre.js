@@ -34,7 +34,7 @@ $(window).load(function(){
 // 		$("#sidebar").height(mh);
 // 	}
 // }
-
+//
 
 //oculta parte da descricao do conteudo
 var ch = $('#main-entry').height();
