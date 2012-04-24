@@ -138,7 +138,7 @@ body.home .top-login {
 		list-style: none
 	}
 
-	#login, #login-pass {width: 35%}
+	#login-form #login, #login-form #login-pass {width: 35%}
 	#esqueci {
 		position: absolute;
 		top: 0;
@@ -167,7 +167,6 @@ body.home .top-login {
 }
 
 #top-login {
-
 	float: right;
 /*	width: 345px;
 	_width: 355px;
@@ -683,7 +682,9 @@ table .col-sec {width: 10%}
 	line-height:100%;
 }
 #inbox-pvt-intro .sent-user {vertical-align: middle;}
-##inbox-pvt-intro .close {cursor: pointer;}
+#inbox-pvt-intro .close {cursor: pointer;}
+
+.fourofour {background: url(../img/rl/404.png) no-repeat bottom center; padding-bottom:280px;}
 
 /* WYSIWYG Editor */
 .cleditorMain {border:1px solid #999; padding:0 1px 1px; background-color:white;}
@@ -1089,7 +1090,7 @@ footer .pull-left {width:100%;}
 	float: left;
 	width: 60%
 }
-#login, #login-pass {
+#login-form #login, #login-form #login-pass {
 	display: block;
 	margin-bottom: 5px;
 	width: 100%
@@ -1122,7 +1123,7 @@ footer .pull-left {width:100%;}
 
 #searchsubmit {display: none}
 
-#login, #login-pass {width: 32%}
+#login-form #login, #login-form #login-pass {width: 32%}
 #top-login {width: 300px}
 #esqueci {left: 110px}
 
@@ -1145,7 +1146,7 @@ background: aqua;
 
 #searchsubmit {display: none}
 
-#login, #login-pass {width: 32%}
+#login-form #login, #login-form #login-pass {width: 32%}
 #top-login {width: 300px}
 #esqueci {left: 110px}
 

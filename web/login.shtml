@@ -1,0 +1,86 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+  <hr class="only-mobile">
+
+  <div class="span8 offset2">
+
+    <div class="page-header">
+
+<a href="cadastro-erro.shtml" class="btn btn-mini pull-right"><i class="icon-user icon-gray"></i> Novo por aqui? Crie uma conta!</a>
+
+      <h1>Entrar</h1>
+    </div>
+
+    <form id="login-form-standalone" action="#" class="form-horizontal">
+
+<!-- modelo de alert com link para modal de esqueceu senha
+        <div class="alert fade in">
+          <strong>Vixe!</strong> Os dados informados não conferem. <a data-toggle="modal" href="#modalEsqueci">Esqueceu sua senha</a>?
+        </div>
+
+<div class="modal fade" id="modalEsqueci">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Recuperar Senha</h3>
+  </div>
+  <div class="modal-body">
+    <form id="esqueci-form" class="form-inline" action="#">
+      <div class="alert fade in">
+        <strong>Tudo bem!</strong> Um link para recuperar sua senha foi enviado para o seu email <em>rodrigo@robolivre.org</em>.
+      </div>
+      
+      <input id="email-esqueci" type="email" placeholder="Seu endereço de e-mail ou nome de usuário" class="span4" />
+
+      <input value="Recuperar senha" type="submit" class="btn btn-primary" tabindex="4" />
+
+      
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Fechar</a>
+  </div>
+</div>
+
+      -->
+
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label" for="login">E-mail ou usuário</label>
+          <div class="controls">
+           <input class="input-xlarge" id="login" type="email" placeholder="Seu e-mail ou usuário" tabindex="1" />
+         </div>
+       </div>
+
+       <div class="control-group">
+        <label class="control-label" for="login-pass">Senha</label>
+        <div class="controls">
+         <input class="input-xlarge" id="login-pass" type="password" placeholder="Sua senha" tabindex="2" />
+       </div>
+     </div>
+
+     <div class="control-group">
+      <div class="controls">
+        <label class="checkbox">
+          <input type="checkbox" name="optionsCheckboxList1" value="option1" tabindex="3">
+          lembrar-me
+          <div class="help-block">Não estou em um computador público</div>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <input value="entrar" type="submit" class="btn btn-primary btn-large" tabindex="4" />
+    </div>
+
+  </fieldset>
+
+</form>
+
+
+</div><!-- /miolo -->
+
+</div><!-- /row -->
+
+<!--#include virtual="includes/footer.html" -->
