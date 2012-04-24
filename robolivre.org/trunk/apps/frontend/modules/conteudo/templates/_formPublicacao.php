@@ -44,7 +44,6 @@
 		<select name="privacidade_publicacao" id="privacidade-status">
                     <option value="<?php echo Publicacoes::PRIVACIDADE_PUBLICA ?>">Público</option>
                     <option value="<?php echo Publicacoes::PRIVACIDADE_SOMENTE_AMIGOS ?>">Só para amigos</option>
-                    <option value="<?php echo Publicacoes::PRIVACIDADE_PRIVADA ?>">Privado</option>
                 </select>
 
 </form>

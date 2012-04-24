@@ -249,7 +249,19 @@ class Util {
         $len = strpos($str2, "</title>") - $start;
         return substr($str, $start, $len);
     }
-
+    
+    public static function getIdadeUsuario($data) {
+    
+        if (($data = strtotime($data)) === false) {return false;}
+        for ($i = 0; strtotime("-$i year") > $data; ++$i);
+        return $i - 1;
+    }
+    
+    public static function getDataInformacao($data) {
+        //22/01/2012 às 08h00
+        $dataHora = self::dataBrHora($data);
+        return $dataHora[0]." às ".str_replace(":", "h", $dataHora[1]);
+    }
 }
 
 ?>

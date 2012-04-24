@@ -22,55 +22,6 @@ Amigos:
       default: '0'
       notnull: false
       autoincrement: false
-ArquivosAnexos:
-  connection: doctrine
-  tableName: arquivos_anexos
-  columns:
-    id_pasta:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: true
-      autoincrement: false
-    id_usuario:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: false
-    id_tipo_conjunto:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: true
-      autoincrement: false
-    id_conjunto:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: false
-    id_video:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: true
-      autoincrement: false
-    id_imagem:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: true
-      autoincrement: false
-    id_documento:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: true
-      autoincrement: false
 Comunidades:
   connection: doctrine
   tableName: comunidades
@@ -477,6 +428,20 @@ Pastas:
       unsigned: false
       primary: true
       autoincrement: false
+    id_tipo_conjunto:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    id_conjunto:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
     nome:
       type: string(45)
       fixed: false
@@ -485,11 +450,18 @@ Pastas:
       notnull: false
       autoincrement: false
     descricao:
-      type: string()
+      type: string(255)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
+      autoincrement: false
+    tipo_pasta:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
       autoincrement: false
 ProjetosComunidades:
   connection: doctrine
@@ -934,6 +906,42 @@ Usuarios:
       primary: false
       notnull: false
       autoincrement: false
+    aula_robolivre:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: false
+      autoincrement: false
+    profissao:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    escola:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    empresa:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    data_criacao_perfil:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
 Videos:
   connection: doctrine
   tableName: videos
@@ -967,6 +975,13 @@ Videos:
       type: integer(4)
       fixed: false
       unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    link_video:
+      type: string(255)
+      fixed: false
+      unsigned: false
       primary: false
       notnull: false
       autoincrement: false

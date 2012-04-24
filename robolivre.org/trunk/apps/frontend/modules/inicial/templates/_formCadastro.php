@@ -3,11 +3,11 @@ $erros = $form->getErrorSchema()->getErrors();
 $valoresInciais = $form->getTaintedValues();
 ?>
 
-<form id="cadastro-form" class="form-horizontal" onsubmit="return validaConfirmacaoSenhaEmail()" action="<?php echo url_for('inicial/create'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<form id="cadastro-form" class="form-horizontal" action="<?php echo url_for('inicial/create'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
     <?php if (!$form->getObject()->isNew()): ?>
         <input type="hidden" name="sf_method" value="put" />
 <?php endif; ?>
-        
+            
     <h1>Criar uma conta <small>último passo</small></h1>
     <fieldset>
         
@@ -17,7 +17,7 @@ $valoresInciais = $form->getTaintedValues();
         if (isset($erros['nome'])) {
             if($erros['nome']=="Required."){
                 $class = "error";
-                $descricao = "Campo obrigatório!";
+                $descricao = "Por favor preencha";
             }else{
                 $class = "warning";
                 $descricao = $erros['nome'];
@@ -35,11 +35,11 @@ $valoresInciais = $form->getTaintedValues();
 
         <?php
         $class = "success";
-        $descricao = "";
+        $descricao = "Ótimo! Nome de usuário disponível.";
         if (isset($erros['login'])) {
             if($erros['login']=="Required."){
                 $class = "error";
-                $descricao = "Campo obrigatório!";
+                $descricao = "Por favor preencha";
             }else{
                 $class = "warning";
                 $descricao = $erros['login'];
@@ -57,14 +57,17 @@ $valoresInciais = $form->getTaintedValues();
         
         <?php
         $class = "success";
-        $descricao = "";
+        $descricao = "Enviaremos uma confirmação para o seu e-mail";
         if (isset($erros['email'])) {
             if($erros['email']=="Required."){
                 $class = "error";
-                $descricao = "Campo obrigatório!";
+                $descricao = "Por favor preencha";
+            }else if($erros['email']=="Invalid."){
+                $class = "error";
+                $descricao = "O e-mail não parece ser válido. Verifique a digitação.";
             }else{
-            $class = "warning";
-            $descricao = $erros['email'];
+                $class = "warning";
+                $descricao = $erros['email'];
             }
         }
         ?>
@@ -80,7 +83,7 @@ $valoresInciais = $form->getTaintedValues();
         $descricao = "";
         if (isset($valoresInciais['email'])) {
             $class = "error";
-            $descricao = "Repita o mesmo email acima!";
+            $descricao = "Por favor repita o mesmo email";
         }
         ?>
         <div id="div-confirmacao-email" class="control-group <?php echo $class ?>">
@@ -98,7 +101,7 @@ $valoresInciais = $form->getTaintedValues();
         if (isset($erros['senha'])) {
             if($erros['senha']=="Required."){
                 $class = "error";
-                $descricao = "Campo obrigatório!";
+                $descricao = "Por favor preencha";
             }else{
                 $class = "warning";
                 $descricao = $erros['senha'];
@@ -214,7 +217,7 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
         </div>
 
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary btn-large">Concluir Cadastro</button>
+            <button id="btn-submit" type="submit" class="btn btn-primary btn-large">Concluir Cadastro</button>
 <!--            <a href="<?php echo url_for('inicial/index') ?>" class="btn">Cancelar</a>-->
 
             <p class="help-block"><strong>Nota:</strong> Outros usuários poderão encontrá-lo pelo nome, nome de usuário ou e-mail. Seu e-mail não será exibido publicamente. Você pode alterar suas configurações de privacidade a qualquer momento.</p>
@@ -236,7 +239,7 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
     function validaCampoNome(campoNome){
         if(campoNome.value==""){
             document.getElementById('div-nome').className = "control-group error";
-            document.getElementById('help-nome').innerHTML = "Campo obrigatório!";
+            document.getElementById('help-nome').innerHTML = "Por favor preencha";
         }else{
             document.getElementById('div-nome').className = "control-group success";
             document.getElementById('help-nome').innerHTML = "Bonito nome!";
@@ -246,12 +249,17 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
     function atualizaHelpECampo(id,mensagem){
         
         descricao = "";
+        if(id=="login"){
+            descricao = "Ótimo! Nome de usuário disponível.";
+        }else if(id=="email"){
+           descricao = "Enviaremos uma confirmação para o seu e-mail";
+        }
         classe = "success";
         
         if(mensagem != ""){
             if(mensagem == "Required."){
                 classe = "error";
-                descricao = "Campo obrigatório!";
+                descricao = "Por favor preencha";
             }else{
                 classe = "warning";
                 descricao = mensagem;
@@ -283,11 +291,24 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
             });
     }//END validaForm
 
+
+    $("#cadastro-form input[type=text], #cadastro-form input[type=email], #cadastro-form input[type=password]").blur(
+        function(){
+            verificaFormValidado();
+        }
+    );
+    function verificaFormValidado(){
+        document.getElementById("btn-submit").disabled = false;
+        if($("#cadastro-form .control-group").hasClass('error')){
+            document.getElementById("btn-submit").disabled = true;
+        }
+    }
+
     function atualizaForcaSenha(inputSenha){
 
         var forca = getForcaSenha(inputSenha,document.getElementById('help-forca-senha'));
 
-        if(forca == "Campo obrigatório!" || forca == "Insuficiente"){
+        if(forca){
             document.getElementById('div-senha').className = "control-group error";
         }else{
             document.getElementById('div-senha').className = "control-group success";
@@ -323,7 +344,7 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
             document.getElementById('help-confirmacao-email').innerHTML = "";
         }else{
             document.getElementById('div-confirmacao-email').className = "control-group error";
-            document.getElementById('help-confirmacao-email').innerHTML = "Repita o mesmo email acima!";
+            document.getElementById('help-confirmacao-email').innerHTML = "Por favor repita o mesmo email";
             
             isValido = false;
         }
@@ -331,7 +352,23 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
         return isValido;
     }
     
+    $('#username').bind('keypress', function (event) {
+        try{
+        var regex = new RegExp("^[A-Za-z0-9_.]*$");
+        }catch(e){alert(e);}
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+        event.preventDefault();
+        return false;
+        }
+    });
+    
+    $("#cadastro-form").submit(function() {
+        return validaConfirmacaoSenhaEmail();
+    }); 
+    
     validaConfirmacaoSenhaEmail();
+    verificaFormValidado();
     
     //]]>   
 </script>

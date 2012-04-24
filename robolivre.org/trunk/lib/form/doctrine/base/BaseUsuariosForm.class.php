@@ -38,6 +38,7 @@ abstract class BaseUsuariosForm extends BaseFormDoctrine
       'profissao'              => new sfWidgetFormInputText(),
       'escola'                 => new sfWidgetFormInputText(),
       'empresa'                => new sfWidgetFormInputText(),
+      'data_criacao_perfil'    => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
@@ -64,6 +65,7 @@ abstract class BaseUsuariosForm extends BaseFormDoctrine
       'profissao'              => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'escola'                 => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'empresa'                => new sfValidatorString(array('max_length' => 50, 'required' => false)),
+      'data_criacao_perfil'    => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('usuarios[%s]');

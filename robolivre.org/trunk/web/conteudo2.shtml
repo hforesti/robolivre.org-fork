@@ -14,7 +14,7 @@
 						<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
 					</li>
 					<li>
-						<a data-toggle="modal" href="#modalImgUpload">Atualizar imagem</a>
+						<a href="conteudo-avatar.shtml">Atualizar imagem</a>
 					</li>
 					<li class="divider"></li>
 					<li>

@@ -94,6 +94,8 @@ class Publicacoes extends BasePublicacoes {
     public function getImpressao($nomeForm = null,$arrayParametrosInclude = null) {
        
         sfContext::getInstance()->getConfiguration()->loadHelpers(array('Helper', 'Tag', 'Url', 'Asset'));
+        
+        $comMenuDropDown = true;
         $string = "";
         if ($this->getTipoPublicacao() == self::PUBLICACAO_COMUM) {
             $string .= "<li class=\"vcard\">";
@@ -195,14 +197,14 @@ class Publicacoes extends BasePublicacoes {
             
         //CRIACAO DE CONTEUDO OU COMUNIODADE    
         } else if ($this->getTipoPublicacao() == self::CRIACAO_CONJUNTO) {
+            $comMenuDropDown = false;
             $string .= "<li class=\"vcard activity\">";
             $string .= "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario(Util::IMAGEM_MINIATURA)) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
             $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
             $string .= " criou ";
             $string .= Util::getTagConteudo($this->getNomeConjunto(),"fn",true);
             $string .= ". <span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">" . Util::getDataSimplificada($this->getDataPublicacao()) . "</span>";
- 
-            
+           
         //SEGUINDO CONTEÚDO
         } else if ($this->getTipoPublicacao() == self::SEGUIR_CONTEUDO) {
             $string .= "<li class=\"vcard activity\">";
@@ -214,26 +216,25 @@ class Publicacoes extends BasePublicacoes {
             $string .= ". <span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">" . Util::getDataSimplificada($this->getDataPublicacao()) . "</span>";
         }
 
-        
-            
-        
-            $string .= "<div class=\"btn-group\">";
-            $string .= "<a class=\"btn btn-mini dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" title=\"Opções\">";
-            $string .= "<span class=\"icon-share  icon-gray\"></span>";
-            $string .= "</a>";
-            $string .= "<ul class=\"dropdown-menu\">";
-            $string .= "<li>";
-            $string .= "<a href=\"#\">Compartilhar no Twitter</a>";
-            $string .= "</li>";
-            $string .= "<li>";
-            $string .= "<a href=\"#\">Compartilhar no Facebook</a>";
-            $string .= "</li>";
-            $string .= "<li class=\"divider\"></li>";
-            $string .= "<li>";
-            $string .= "<a href=\"#\"><i class=\"icon-flag\"></i> Reportar abuso</a>";
-            $string .= "</li>";
-            $string .= "</ul>";
-            $string .= "</div>";
+        if($comMenuDropDown){
+                $string .= "<div class=\"btn-group\">";
+                $string .= "<a class=\"btn btn-mini dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" title=\"Opções\">";
+                $string .= "<span class=\"icon-share  icon-gray\"></span>";
+                $string .= "</a>";        
+                $string .= "<ul class=\"dropdown-menu\">";
+                $string .= "<li>";
+                $string .= "<a href=\"#\">Compartilhar no Twitter</a>";
+                $string .= "</li>";
+                $string .= "<li>";
+                $string .= "<a href=\"#\">Compartilhar no Facebook</a>";
+                $string .= "</li>";
+                $string .= "<li class=\"divider\"></li>";
+                $string .= "<li>";
+                $string .= "<a href=\"#\"><i class=\"icon-flag\"></i> Reportar abuso</a>";
+                $string .= "</li>";
+                $string .= "</ul>";
+                $string .= "</div>";
+        }
         $string .= "<input type='hidden' name='id_ultima_publicacao' class='input-id-ultima-publicacao' value='".$this->getIdPublicacao()."' >";
         $string .= "</li>";
         return $string;

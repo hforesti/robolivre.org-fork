@@ -25,10 +25,9 @@
 
         <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="<?php url_for('perfil/index'); ?>"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
-            <li><a href="<?php echo url_for('perfil/exibirConteudos?u='.$usuario->getIdUsuario()) ?>"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+            <li><a href="<?php echo url_for('perfil/exibirConteudos?u='.UsuarioLogado::getInstancia()->getIdUsuario()) ?>"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
             <li><a href="comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
             <li><a href="<?php echo url_for('perfil/solicitacoes') ?>"><?php if (UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() > 0) { ?><span class="label label-warning" title="<?php echo UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() ?> nova(s) solicitações de amizade"><?php echo UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() ?></span><?php } ?><span class="icon-gray icon-user"></span> Amigos</a></li>
-            <li><a href="eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
             <li><a href="projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
             <li><hr></li>
             <li><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
@@ -39,7 +38,7 @@
 
     <div class="span7">
 
-        <?php include_partial('formPublicacao', array('form' => $formPublicacao, 'id_usuario_referencia' => ($usuario->getTipoSolicitacaoAmizade() != Usuarios::PROPRIO_USUARIO) ? $usuario->getIdUsuario() : null)) ?>
+        <?php include_partial('formPublicacao', array('form' => $formPublicacao, 'id_usuario_referencia' => null)) ?>
 
         <hr>
 
@@ -121,14 +120,14 @@
     <div class="span3" id="sidebar-wdgt">
                 
         <div id="grid-conteudos" class="wdgt">
-            <h3><a href="<?php echo url_for('perfil/exibirConteudos?u='.$usuario->getIdUsuario()) ?>">Conteúdos seguidos <small><?php echo $quantidadeConteudoSeguido; ?></small></a></h3>
+            <h3><a href="<?php echo url_for('perfil/exibirConteudos?u='.UsuarioLogado::getInstancia()->getIdUsuario()) ?>">Conteúdos seguidos <small><?php echo $quantidadeConteudoSeguido; ?></small></a></h3>
             <ul class="thumbnails">
                 <?php foreach($arrayConteudoSeguido as $conteudo): ?>
                     <?php $innerHTML = "<img src='".image_path($conteudo->getImagemPerfil())."' alt='". $conteudo->getNome() ."' title='".$conteudo->getNome()."'>"; ?>
                     <li class="span1"><?php echo Util::getTagConteudoSlug($innerHTML, $conteudo->getNome(), "thumbnail") ?></li>
                 <?php endforeach; ?>
             </ul>
-            <a href="<?php echo url_for('perfil/exibirConteudos?u='.$usuario->getIdUsuario()) ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+            <a href="<?php echo url_for('perfil/exibirConteudos?u='.UsuarioLogado::getInstancia()->getIdUsuario()) ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-conteudos -->
 
         <hr>

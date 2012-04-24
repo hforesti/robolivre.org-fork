@@ -195,6 +195,11 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setSobreMim($reg['sobre_mim']);
                 $objUsuario->setNome($reg['nome']);
                 $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+                $objUsuario->setDataCriacaoPerfil($reg['data_criacao_perfil']);
+                $objUsuario->setEmpresa($reg['empresa']);
+                $objUsuario->setEscola($reg['escola']);
+                $objUsuario->setProfissao($reg['profissao']);
+                $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
                 
                 //sem registro de amizade
                 if ($reg['amigo'] == null) {
@@ -274,7 +279,9 @@ class UsuariosTable extends Doctrine_Table {
         $q = Doctrine_Query::create()
                 ->select('*')
                 ->from('Usuarios')
-                ->where("login = '$login' and senha = '$senha' and ativo = 1");
+                ->where("(login = '$login' OR email='$login')")
+                ->andWhere("senha = '$senha'")
+                ->andWhere("ativo = 1");
 
 
         $resultado = $q->fetchArray();
@@ -297,6 +304,11 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setSobreMim($reg['sobre_mim']);
                 $objUsuario->setNome($reg['nome']);
                 $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+                $objUsuario->setDataCriacaoPerfil($reg['data_criacao_perfil']);
+                $objUsuario->setEmpresa($reg['empresa']);
+                $objUsuario->setEscola($reg['escola']);
+                $objUsuario->setProfissao($reg['profissao']);
+                $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
                 
                 return $objUsuario;
             }
@@ -340,6 +352,11 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setSobreMim($reg['sobre_mim']);
                 $objUsuario->setNome($reg['nome']);
                 $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+                $objUsuario->setDataCriacaoPerfil($reg['data_criacao_perfil']);
+                $objUsuario->setEmpresa($reg['empresa']);
+                $objUsuario->setEscola($reg['escola']);
+                $objUsuario->setProfissao($reg['profissao']);
+                $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
                 
                 return $objUsuario;
             }

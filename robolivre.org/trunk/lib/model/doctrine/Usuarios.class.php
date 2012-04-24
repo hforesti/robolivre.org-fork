@@ -41,6 +41,12 @@ class Usuarios extends BaseUsuarios
             parent::_set('site_empresa', $usuario_logado->getSiteEmpresa());
             parent::_set('sobre_mim', $usuario_logado->getSobreMim());
             parent::_set('imagem_perfil', $usuario_logado->getImagemPerfil());
+            parent::_set('data_criacao_perfil', $usuario_logado->getDataCriacaoPerfil());
+            parent::_set('empresa',$usuario_logado->getEmpresa());
+            parent::_set('escola',$usuario_logado->getEscola());
+            parent::_set('profissao',$usuario_logado->getProfissao());
+            parent::_set('aula_robolivre',$usuario_logado->getAulaRobolivre());
+            
             $this->setTipoSolicitacaoAmizade(self::PROPRIO_USUARIO);
         }
     }

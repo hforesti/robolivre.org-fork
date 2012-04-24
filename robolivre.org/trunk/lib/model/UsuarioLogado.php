@@ -14,7 +14,7 @@ class UsuarioLogado{
 
     private static $instancia;
     private static $TEMPO_ATUALIZACAO = 45; //SEGUNDOS
-
+    
     private function __construct() {
         
     }
@@ -39,6 +39,12 @@ class UsuarioLogado{
                 $this->setTwitter($objUsuario->getTwitter());
                 $this->setParametrosPrivacidade($objUsuario->getParametrosPrivacidade());
                 $this->setImagemPerfil($objUsuario->getImagemPerfil());
+                $this->setDataCriacaoPerfil($objUsuario->getDataCriacaoPerfil());
+                $this->setEmpresa($objUsuario->getEmpresa());
+                $this->setEscola($objUsuario->getEscola());
+                $this->setProfissao($objUsuario->getProfissao());
+                $this->setAulaRobolivre($objUsuario->getAulaRobolivre());
+
                 $_SESSION['sesStatusLogin'] = 'logado';
                 $_SESSION['sesIP'] = $_SERVER['REMOTE_ADDR'];
 
@@ -63,7 +69,7 @@ class UsuarioLogado{
 
     public function deslogar() {
         
-        unset($_SESSION['sesStatusLogin'], $_SESSION['sesIP'], $_SESSION['sesNome'], $_SESSION['sesLogin'], $_SESSION['sesEmail'], $_SESSION['sesCurso'], $_SESSION['sesDataNascimento'], $_SESSION['sesEndereco'], $_SESSION['sesHabilidades'], $_SESSION['sesIdNivelEscolaridade'], $_SESSION['sesIdUsuario'], $_SESSION['sesSite'], $_SESSION['sesSiteEmpresa'], $_SESSION['sesSobreMim'], $_SESSION['sesSexo']);
+        unset($_SESSION['sesStatusLogin'], $_SESSION['sesIP'], $_SESSION['sesNome'], $_SESSION['sesLogin'], $_SESSION['sesEmail'], $_SESSION['sesCurso'], $_SESSION['sesDataNascimento'], $_SESSION['sesEndereco'], $_SESSION['sesHabilidades'], $_SESSION['sesIdNivelEscolaridade'], $_SESSION['sesIdUsuario'], $_SESSION['sesSite'], $_SESSION['sesSiteEmpresa'], $_SESSION['sesSobreMim'], $_SESSION['sesSexo'],$_SESSION['sesDataCriacaoPerfil']);
         if (isset($_SERVER['HTTP_COOKIE'])) {
             $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
             foreach ($cookies as $cookie) {
@@ -202,6 +208,10 @@ class UsuarioLogado{
     public function getSobreMim() {
         return $_SESSION['sesSobreMim'];
     }
+    
+    public function getDataCriacaoPerfil() {
+        return $_SESSION['sesDataCriacaoPerfil'];
+    }
 
     public function setCurso($valor) {
         $_SESSION['sesCurso'] = $valor;
@@ -259,6 +269,10 @@ class UsuarioLogado{
         $_SESSION['sesUltimaAtualizacao'] = time();
     }
     
+    public function setDataCriacaoPerfil($valor) {
+        $_SESSION['sesDataCriacaoPerfil'] = $valor;
+    }
+    
     public function getImagemPerfil() {
         return $_SESSION['sesImagemPerfil'];
     }
@@ -287,7 +301,38 @@ class UsuarioLogado{
     public function setTwitter($valor) {
         $_SESSION['sesTwitter'] = $valor;
     }
+    
+    public function getAulaRobolivre() {
+        return $_SESSION['sesAulaRobolivre'];
+    }
 
+    public function getEmpresa() {
+        return $_SESSION['sesEmpresa'];
+    }
+
+    public function getEscola() {
+        return $_SESSION['sesEscola'];
+    }
+
+    public function getProfissao() {
+        return $_SESSION['sesProfissao'];
+    }
+
+    public function setEmpresa($valor) {
+        $_SESSION['sesEmpresa'] = $valor;
+    }
+
+    public function setEscola($valor) {
+        $_SESSION['sesEscola'] = $valor;
+    }
+
+    public function setProfissao($valor) {
+        $_SESSION['sesProfissao'] = $valor;
+    }
+
+    public function setAulaRobolivre($valor) {
+        $_SESSION['sesAulaRobolivre'] = $valor;
+    }
 
     public function setSolicitacoesPendentes($solicitacoes) {
         if (is_array($solicitacoes)) {

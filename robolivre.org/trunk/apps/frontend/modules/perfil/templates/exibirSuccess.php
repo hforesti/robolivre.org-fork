@@ -2,7 +2,9 @@
 
     <div class="span2" id="sidebar">
         <div class="avatar">
-            <a href="<?php url_for('perfil/exibir?u='.$usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada(Util::IMAGEM_GRANDE)) ?>" alt="<?php echo $usuario->getNome(); ?>" class="photo"></a>
+            <a href="<?php echo url_for('perfil/exibir?u='.$usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada(Util::IMAGEM_GRANDE)) ?>" alt="<?php echo $usuario->getNome(); ?>" class="photo"></a>
+            
+            <?php if($usuario->getIdUsuario()!= UsuarioLogado::getInstancia()->getIdUsuario()){ ?>
             <div class="btn-group">
                 <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
                     <span class="icon-cog icon-gray"></span>
@@ -26,27 +28,53 @@
                     </li>
                 </ul>
             </div>
-
+            <?php } ?>
             <h1><?php echo $usuario->getNome(); ?></h1>
 
         </div><!-- /avatar -->
 
         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="#"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
-            <li><a href="#"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+            <li class="active"><a href="<?php echo url_for('perfil/exibir?u='.$usuario->getIdUsuario()) ?>"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+            <li><a href="<?php echo url_for('perfil/exibirConteudos?u='.$usuario->getIdUsuario()) ?>"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
             <li><a href="#"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
-            <li><a href="#"><span class="icon-gray icon-user"></span> Amigos</a></li>
-            <li><a href="#"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
             <li><a href="#"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+            <li><a href="#"><span class="icon-gray icon-user"></span> Amigos</a></li>
+            <li><a href="<?php echo url_for('perfil/informacao?u='.$usuario->getIdUsuario()) ?>"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
         </ul>
     </div><!-- /sidebar -->
 
-
+<hr class="only-mobile">
+    
     <div class="span7">
         <?php if ($usuario->getTipoSolicitacaoAmizade() == Usuarios::SOLICITADA_AMIZADE) { ?>
             <span class="alert pull-right">Aguardando resposta da sua solicitação de amizade.</span>
         <?php } ?>
 <!--            <span class="alert alert-error pull-right">Usuário ignorado</span>-->
+        
+        <div class="well">
+            <p>
+                <?php if($usuario->getProfissao()!=""){?>
+                    <strong><?php echo $usuario->getProfissao() ?></strong>
+                    <?php if($usuario->getEmpresa()!=""){ ?>
+                        <?php echo $usuario->getEmpresa() ?>
+                    <?php } ?>
+                     ‧ 
+                <?php } ?>
+                <?php if($usuario->getSexo()!=""){ ?>
+                    <strong>Sexo:</strong> <?php echo Sexo::getDescricao($usuario->getSexo()) ?> ‧ 
+                <?php } ?>
+                <?php if($usuario->getDataNascimento()!=""){ ?>
+                    <strong>Idade:</strong> <?php echo Util::getIdadeUsuario($usuario->getDataNascimento())." anos" ?> 
+                <?php } ?>
+            </p>
+            
+            <a href="<?php echo url_for('perfil/informacao?u='.$usuario->getIdUsuario()) ?>" class="btn btn-primary btn-mini pull-right"><i class="icon-info-sign icon-white"></i> Mais sobre <?php echo Util::getNomeSimplificado($usuario->getNome()); ?></a>
+
+            <p>
+                <i class="icon-user icon-gray"></i> <small>Membro desde <?php echo Util::getDataInformacao($usuario->getDataCriacaoPerfil()) ?></small>
+            </p>
+        </div>
+            
         <h3>Atualizações recentes</h3>
 
         <div id="stream">
@@ -67,7 +95,7 @@
 
         </div><!-- stream -->
 
-        <div id="pagination"><a href="#pagination" onclick="getPublicacoesAntigas()" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
+        <div class="btn-load-more" id="pagination"><a href="#pagination" onclick="getPublicacoesAntigas()" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
 
     </div><!-- /miolo -->
 

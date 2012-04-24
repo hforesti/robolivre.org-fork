@@ -273,22 +273,80 @@ function getForcaSenha(inputPassword,spanHelp) {
 	var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
 	var enoughRegex = new RegExp("(?=.{6,}).*", "g");
 	var resposta = "";
-	if (inputPassword.value.length==0) {
-		resposta = 'Campo obrigatório!';
-	} else if (false == enoughRegex.test(inputPassword.value)) {
-		resposta = 'Insuficiente';
-	} else if (strongRegex.test(inputPassword.value)) {
-		resposta = 'Forte';
-	} else if (mediumRegex.test(inputPassword.value)) {
-		resposta = 'Normal';
-	} else {
-		resposta = 'Fraca';
-	}
+        var erro = false;
+        
+        var senhasProibidas = new Array("senha");
+        
+        if (inputPassword.value.length==0) {
+                    resposta = 'Por favor preencha';
+                    erro = 1;
+        } else if (false == enoughRegex.test(inputPassword.value)) {
+                resposta = 'Senha muito curta. Precisa ter no mínimo 6 caracteres.';
+                erro = 2;
+        } 
+        
+        if(!erro){
+            for(i=0;i< senhasProibidas.length;++i){
+                if(inputPassword.value.toLowerCase() == senhasProibidas[i].toLowerCase()){
+                    erro = 4;
+                    resposta = 'Não coloque a senha '+inputPassword.value;
+                    break;
+                }
+            }
+        }
+        
+        if(!erro){
+            if(!isNaN(inputPassword.value)){
+                erro = 3;
+                var str = inputPassword.value;
+                var last = str[0]-1;
+                for(i=0;i<str.length;++i){
+                    ++last;
+                    if(last>=10){
+                        last = last - 10;
+                    }
+                    if(str[i]!=last){
+                        erro = false;
+                        break;
+                    }
+                    last = str[i];
+                }
+
+                if(!erro){
+                    erro = 3;
+                    last = str[str.length-1];
+                    --last;
+                    for(i=str.length-1;i>=0;--i){
+                        if(--str[i]!=last){
+                            erro = false;
+                            break;
+                        }
+                        last = str[i];
+                    }
+                }
+                if(erro){
+                    resposta = 'Não coloque a senha '+str;
+                }
+            }
+        }
+        
+        if(!erro){
+            if (strongRegex.test(inputPassword.value)) {
+                    resposta = 'Força da senha: Ótima';
+                    erro = false;
+            } else if (mediumRegex.test(inputPassword.value)) {
+                    resposta = 'Força da senha: Boa';
+                    erro = false;
+            } else {
+                    resposta = 'Força da senha: Fraca';
+                    erro = false;
+            }
+        }
 
 	if(spanHelp != undefined){
 		spanHelp.innerHTML = resposta;
 	}
 
-	return resposta;
+	return erro;
 
 }

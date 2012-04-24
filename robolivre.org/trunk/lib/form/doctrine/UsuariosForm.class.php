@@ -45,9 +45,9 @@ class UsuariosForm extends BaseUsuariosForm {
 
                 $this->setValidators(array(
                     'id_usuario' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_usuario')), 'empty_value' => $this->getObject()->get('id_usuario'), 'required' => false)),
-                    'login' => new sfValidatorString(array('max_length' => 45)),
-                    'senha' => new sfValidatorString(array('max_length' => 100)),
-                    'tp_frm' => new sfValidatorString(array('max_length' => 100))
+                    'login' => new sfValidatorString(array('max_length' => 45), array('required' => " ")),
+                    'senha' => new sfValidatorString(array('max_length' => 100), array('required' => " ")),
+                    'tp_frm' => new sfValidatorString(array('max_length' => 100, 'required' => false))
                 ));
                 break;
 
@@ -65,11 +65,10 @@ class UsuariosForm extends BaseUsuariosForm {
                     'id_usuario' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_usuario')), 'empty_value' => $this->getObject()->get('id_usuario'), 'required' => false)),
                     'nome' => new sfValidatorString(array('max_length' => 255)),
                     'login' => new sfValidatorString(array('max_length' => 45)),
-                    'email' => new sfValidatorEmail(array('max_length' => 100, 'required' => false)),
+                    'email' => new sfValidatorEmail(array('max_length' => 100),array('invalid'=>'O e-mail não parece ser válido. Verifique a digitação.')),
                     'tp_frm' => new sfValidatorString(array('max_length' => 100))
                 ));
                 break;
-
 
             case self::SOMENTE_INFO_CADASTRO:
                 $this->setWidgets(array(
@@ -80,18 +79,20 @@ class UsuariosForm extends BaseUsuariosForm {
                     'senha' => new sfWidgetFormInputPassword(),
                     'confirmacao_senha' => new sfWidgetFormInputPassword(),
                     'confirmacao_email' => new sfWidgetFormInputText(),
-                    'tp_frm' => new sfWidgetFormInputHidden(array(), array('value' => $this->tipoFormulario))
+                    'tp_frm' => new sfWidgetFormInputHidden(array(), array('value' => $this->tipoFormulario)),
+                    'data_criacao_perfil'    => new sfWidgetFormDateTime(),
                 ));
 
                 $this->setValidators(array(
                     'id_usuario' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_usuario')), 'empty_value' => $this->getObject()->get('id_usuario'), 'required' => false)),
                     'nome' => new sfValidatorString(array('max_length' => 255)),
                     'login' => new sfValidatorString(array('max_length' => 45)),
-                    'email' => new sfValidatorEmail(array('max_length' => 100)),
+                    'email' => new sfValidatorEmail(array('max_length' => 100),array('invalid'=>'O e-mail não parece ser válido. Verifique a digitação.')),
                     'senha' => new sfValidatorString(array('max_length' => 100)),
                     'confirmacao_senha' => new sfValidatorString(array('max_length' => 100, 'required' => false)),
                     'confirmacao_email' => new sfValidatorEmail(array('max_length' => 100, 'required' => false)),
-                    'tp_frm' => new sfValidatorString(array('max_length' => 100))
+                    'tp_frm' => new sfValidatorString(array('max_length' => 100)),
+                     'data_criacao_perfil'    => new sfValidatorDateTime(),
                 ));
                 break;
             case self::SOMENTE_INFO:
@@ -108,7 +109,7 @@ class UsuariosForm extends BaseUsuariosForm {
                     'data_nascimento' => $this->widgetSchema['data_nascimento'],
                     'sexo' => $this->widgetSchema['sexo'],
                     'sobre_mim' => $this->widgetSchema['sobre_mim'],
-                    'aula_robolivre' => new sfWidgetFormInputCheckbox(array('value_attribute_value'=>1)),
+                    'aula_robolivre' => new sfWidgetFormInputCheckbox(array('value_attribute_value' => 1)),
                     'profissao' => $this->widgetSchema['profissao'],
                     'escola' => $this->widgetSchema['escola'],
                     'empresa' => $this->widgetSchema['empresa'],
@@ -117,7 +118,7 @@ class UsuariosForm extends BaseUsuariosForm {
                     'id_usuario' => $this->validatorSchema['id_usuario'],
                     'nivel_escolaridade' => $this->validatorSchema['nivel_escolaridade'],
                     //'nome' => $this->validatorSchema['nome'],
-                    'email' => $this->validatorSchema['email'],
+                    'email' => new sfValidatorEmail(array('max_length' => 100),array('invalid'=>'O e-mail não parece ser válido. Verifique a digitação.')),
                     'endereco' => $this->validatorSchema['endereco'],
                     'habilidades' => $this->validatorSchema['habilidades'],
                     'curso' => $this->validatorSchema['curso'],
@@ -150,43 +151,59 @@ class UsuariosForm extends BaseUsuariosForm {
             //$meses = array(01=>'Janeiro',02=>'Fevereiro',03=>'Março',04=>'Abril',05=>'Maio');
             $this->widgetSchema['data_nascimento'] = new sfWidgetFormI18nDate(array(
                         'format' => '%day%/%month%/%year%',
-                        'years' => array_reverse(array_combine($anos,$anos)),
+                        'years' => array_reverse(array_combine($anos, $anos)),
                         'month_format' => 'name',
                         'culture' => "pt",
-                        'empty_values'=> array('year' => 'Ano', 'month' => 'Mês', 'day' => 'Dia')
+                        'empty_values' => array('year' => 'Ano', 'month' => 'Mês', 'day' => 'Dia')
                     ));
         }
         if (isset($this->widgetSchema['sexo'])) {
             $this->widgetSchema['sexo'] = new sfWidgetFormSelect(array(
                         'choices' => Sexo::getDescricoes()
                     ));
-        }
+        }        
+        
     }
 
     public function validaDadosIniciais() {
 
+        $valores = $this->getTaintedValues();
+
+        if ($this->getTipoFormulario() == self::LOGIN) {
+            if (!isset($valores['login']) || $valores['login'] == "" || !isset($valores['senha']) || $valores['senha'] == "") {
+                $error = new sfValidatorError($this->validatorSchema['login'], 'Preencha os campos de login e senha');
+                $this->errorSchema->addError($error, 'login');
+                $valido = false;
+            }
+        } else if ($valores['login'] != null && $valores['login'] != "") {
+            if (!preg_match("/^[a-z]+[\w.-]*$/i", $valores['login'])) {
+                $error = new sfValidatorError($this->validatorSchema['login'], 'O nome do usuário ser ser composto por letra,underline ou .');
+                $this->errorSchema->addError($error, 'login');
+                $valido = false;
+            }
+        }
+
         if ($this->getTipoFormulario() != self::LOGIN) {
 
-            $valores = $this->getTaintedValues();
             $email = $valores['email'];
             $login = $valores['login'];
             try {
                 if (Doctrine::getTable('Usuarios')->jaExiste($login, $email)) {
                     return false;
                 }
-             } catch (ExceptionEmailELoginExistente $e){
-                    $error = new sfValidatorError($this->validatorSchema['email'], 'Email já existe');
-                    $this->errorSchema->addError($error, 'email');
-                    
-                    $error = new sfValidatorError($this->validatorSchema['login'], 'Login já existe');
-                    $this->errorSchema->addError($error, 'login');
-                    return false;
+            } catch (ExceptionEmailELoginExistente $e) {
+                $error = new sfValidatorError($this->validatorSchema['email'], 'Email já existe');
+                $this->errorSchema->addError($error, 'email');
+
+                $error = new sfValidatorError($this->validatorSchema['login'], 'Nome de usuário já está sendo usado, por favor escolha outro.');
+                $this->errorSchema->addError($error, 'login');
+                return false;
             } catch (ExceptionEmailExistente $e) {
                 $error = new sfValidatorError($this->validatorSchema['email'], 'Email já existe');
                 $this->errorSchema->addError($error, 'email');
                 return false;
             } catch (ExceptionLoginExitente $e) {
-                $error = new sfValidatorError($this->validatorSchema['login'], 'Login já existe');
+                $error = new sfValidatorError($this->validatorSchema['login'], 'Nome de usuário já está sendo usado, por favor escolha outro.');
                 $this->errorSchema->addError($error, 'login');
                 return false;
             } catch (Exception $e) {
@@ -197,27 +214,41 @@ class UsuariosForm extends BaseUsuariosForm {
 
     public function isValid() {
         $valido = true;
-        if (!parent::isValid()){
+        if (!parent::isValid()) {
             $valido = false;
         }
-        
+        $valores = $this->getTaintedValues();
+
+        if ($this->getTipoFormulario() == self::LOGIN) {
+            if (!isset($valores['login']) || $valores['login'] == "" || !isset($valores['senha']) || $valores['senha'] == "") {
+                $error = new sfValidatorError($this->validatorSchema['login'], 'Preencha os campos de login e senha');
+                $this->errorSchema->addError($error, 'login');
+                $valido = false;
+            }
+        } else if ($valores['login'] != null && $valores['login'] != "") {
+            if (!preg_match("/^[a-z]+[\w.-]*$/i", $valores['login'])) {
+                $error = new sfValidatorError($this->validatorSchema['login'], 'O nome do usuário ser ser composto por letra,underline ou .');
+                $this->errorSchema->addError($error, 'login');
+                $valido = false;
+            }
+        }
+
         if ($this->isNew()) {
-            
+
             if ($this->getTipoFormulario() != self::LOGIN) {
 
-                $valores = $this->getTaintedValues();
                 $email = $valores['email'];
                 $login = $valores['login'];
-                
+
                 try {
                     if (Doctrine::getTable('Usuarios')->jaExiste($login, $email)) {
-                        $valido =  false;
+                        $valido = false;
                     }
-                }  catch (ExceptionEmailELoginExistente $e){
+                } catch (ExceptionEmailELoginExistente $e) {
                     $error = new sfValidatorError($this->validatorSchema['email'], 'Email já existe');
                     $this->errorSchema->addError($error, 'email');
-                    
-                    $error = new sfValidatorError($this->validatorSchema['login'], 'Login já existe');
+
+                    $error = new sfValidatorError($this->validatorSchema['login'], 'Nome de usuário já está sendo usado, por favor escolha outro.');
                     $this->errorSchema->addError($error, 'login');
                     $valido = false;
                 } catch (ExceptionEmailExistente $e) {
@@ -225,7 +256,7 @@ class UsuariosForm extends BaseUsuariosForm {
                     $this->errorSchema->addError($error, 'email');
                     $valido = false;
                 } catch (ExceptionLoginExitente $e) {
-                    $error = new sfValidatorError($this->validatorSchema['login'], 'Login já existe');
+                    $error = new sfValidatorError($this->validatorSchema['login'], 'Nome de usuário já está sendo usado, por favor escolha outro.');
                     $this->errorSchema->addError($error, 'login');
                     $valido = false;
                 } catch (Exception $e) {
@@ -233,7 +264,7 @@ class UsuariosForm extends BaseUsuariosForm {
                 }
             }
         }
-        
+
         return $valido;
     }
 

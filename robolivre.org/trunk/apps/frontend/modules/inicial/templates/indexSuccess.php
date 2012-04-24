@@ -16,7 +16,7 @@
         <?php } ?>
         <a class="brand span3" href="<?php echo url_for("inicial/index") ?>">Robô Livre</a>
 
-        <div id="top-login">
+        <div id="top-login" class="span4 pull-right">
             <?php include_partial('formLogin', array('form' => $formLogin)) ?>
             <div class="modal fade" id="modalEsqueci">
                 <div class="modal-header">

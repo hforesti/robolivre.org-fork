@@ -55,7 +55,7 @@ class inicialActions extends sfActions {
 
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if ($form->isValid()) {
-
+            
             $login = $form->getValue('login');
             $senha = md5($form->getValue('senha'));
 
@@ -79,13 +79,20 @@ class inicialActions extends sfActions {
                 $this->setTemplate('index');
                 return;
             }
+        }else{
+            $this->formLogin = $form;
+            $this->formNovoUsuario = new UsuariosForm(null, null, null, UsuariosForm::SIMPLES);
+            $this->setTemplate('index');
+            return;
         }
 
-        $this->redirect('inicial/index');
+        
     }
 
     protected function processForm(sfWebRequest $request, sfForm $form) {
-        $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+
+        $form->bind(array_merge($request->getParameter($form->getName()), array('data_criacao_perfil'=>date('Y-m-d H:i:s'))), $request->getFiles($form->getName()));
+
         if ($form->isValid()) {
             $usuarios = $form->save();
             if ($usuarios) {
@@ -104,7 +111,6 @@ class inicialActions extends sfActions {
                 return;
             }
         } else {
-            
             $this->setTemplate("cadastro");
         }
     }

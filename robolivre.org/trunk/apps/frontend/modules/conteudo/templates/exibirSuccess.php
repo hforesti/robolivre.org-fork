@@ -2,7 +2,7 @@
 
     <div class="span2" id="sidebar">
         <div class="avatar">
-            <a href="<?php url_for('conteudo/').Util::criaSlug($conteudo->getNome()); ?>"><img src="<?php echo image_path($conteudo->getImagemPerfil(Util::IMAGEM_GRANDE)) ?>" alt="Arduino" class="photo"></a>
+            <a href="<?php echo url_for('conteudo/').Util::criaSlug($conteudo->getNome()); ?>"><img src="<?php echo image_path($conteudo->getImagemPerfil(Util::IMAGEM_GRANDE)) ?>" alt="Arduino" class="photo"></a>
             <div class="btn-group">
                 <?php if($conteudo->getConjunto()->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()){ ?>
                 <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
@@ -37,13 +37,13 @@
 
         <ul class="breadcrumb">
             <li>
-                <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+                <a href="<?php echo url_for('perfil/index');?>">Início</a> <span class="divider">/</span>
             </li>
             <li>
-                <a href="conteudos.shtml">Conteúdos</a> <span class="divider">/</span>
+                <a href="<?php echo url_for('conteudos/index');?>">Conteúdos</a> <span class="divider">/</span>
             </li>
             <li class="active">
-                <a href="conteudo.shtml"><?php echo $conteudo->getNome(); ?></a>
+                <a href="<?php echo url_for('conteudo/').Util::criaSlug($conteudo->getNome()); ?>"><?php echo $conteudo->getNome(); ?></a>
             </li>
         </ul>
 
@@ -77,7 +77,7 @@
 
         </div><!-- stream -->
 
-        <div id="pagination"><a href="#pagination" onclick="getPublicacoesAntigasConteudos()" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
+        <div class="btn-load-more" id="pagination"><a href="#pagination" onclick="getPublicacoesAntigasConteudos()" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
 
     </div><!-- /miolo -->
 

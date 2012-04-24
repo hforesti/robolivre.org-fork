@@ -10,7 +10,7 @@
  * 
  * @author maxguenes
  */
-class UsuarioLogado {
+class UsuarioLogado{
 
     private static $instancia;
     private static $TEMPO_ATUALIZACAO = 45; //SEGUNDOS
