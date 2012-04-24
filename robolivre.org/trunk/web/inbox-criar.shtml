@@ -1,0 +1,97 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+	<div class="span2" id="sidebar">
+		<div class="avatar">
+			<a href="profile-home.shtml"><img src="assets/img/rl/avatar-170.jpg" alt="Rodrigo Medeiros" class="photo"></a>
+			<div class="btn-group">
+				<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+					<span class="icon-cog icon-gray"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="settings-avatar.shtml">Atualizar foto</a>
+					</li>
+					<li>
+						<a href="profile-info-editar.shtml">Editar perfil</a>
+					</li>
+				</ul>
+			</div>
+
+			<h1>Rodrigo Medeiros</h1>
+
+		</div><!-- /avatar -->
+
+		<ul class="nav nav-pills nav-stacked">
+			<li><a href="profile-home.shtml"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+			<li><a href="profile-conteudos.shtml"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+			<li><a href="profile-comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li>
+			<li><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
+			<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
+			<li><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
+			<li><a href="perfil-info.shtml"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
+			<li><hr></li>
+			<li><a href="inbox.shtml"><span class="label label-warning" id="side-notf-unread" title="2 notificações não lidas">2</span> <span class="icon-gray icon-th-list"></span> Notificações</a></li>
+			<li class="active"><a href="inbox-pvt.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
+		</ul>
+	</div><!-- /sidebar -->
+
+	<hr class="only-mobile">
+
+	<div class="span10">
+
+		<div id="stream">
+
+			<a class="pull-right btn btn-primary disabled"><i class="icon-pencil icon-white"></i> Criar nova mensagem</a>
+
+			<ul class="nav nav-tabs">
+				<li>
+					<a href="inbox-pvt.shtml"><i class="icon-envelope icon-gray"></i> Mensagens privadas <span class="label label-warning" title="2 não lidas">2</span></a>
+				</li>
+				<li>
+					<a href="inbox-sent.shtml"><i class="icon-arrow-right icon-gray"></i> Enviadas</a>
+				</li>
+			</ul>
+
+			<!--   <div class="alert alert-success">Mensagem enviada com sucesso.</div> -->
+			<form action="#" id="form-enviar" class="form-horizontal">
+				<fieldset>
+					
+					<legend>Nova mensagem privada</legend>
+
+					<div class="control-group">
+						<label class="control-label" for="fromInvite">Para</label>
+						<div class="controls">
+							<input class="span6" type="text" placeholder="Informe nome dos amigos" id="fromInvite">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="msgCompose">Mensagem</label>
+						<div class="controls">
+							<textarea id="msgCompose" class="span6" rows="8" placeholder="Escreva sua mensagem privada"></textarea>
+						</div>
+					</div>
+				</fieldset>
+
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Enviar</button>
+				</div>
+
+
+			</form>
+
+
+
+			<hr class="only-mobile">
+
+		</div><!-- stream -->
+
+
+
+	</div><!-- /miolo -->
+
+</div><!-- /row -->
+
+<!--#include virtual="includes/footer.html" -->

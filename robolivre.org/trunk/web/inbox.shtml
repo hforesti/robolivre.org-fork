@@ -43,284 +43,162 @@
 
 		<div id="stream">
 
-		<div class="page-header">
-			<h1>Notificações</h1>
-		</div>
+			<div class="page-header">
+				<h1>Notificações ‧ <small><span class="notf-num">2</span> <span class="notf-txt-num">não lidas</span></small> </h1>
+			</div>
 
 			<h4>Recebido hoje</h4>
 
 			<ul class="notifications">
 				<li class="vcard activity unread">
-				<div class="notf">
-					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-					<a href="perfil.shtml" class="fn">Max Guenes</a> convidou você para colaborar editando o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> convidou você para colaborar editando o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
 
-					<blockquote>
-						<p>
-							Encontrei "Arduíno" e gostaria de convidá-lo(a) a colaborar e editar este conteúdo.
-						</p>
-					</blockquote>
-				</div>
-					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-							<span class="icon-cog icon-gray"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="conteudo-criar.shtml">Editar conteúdo agora</a>
-							</li>
-							<li class="divider"></li>
-							<li class="danger-link">
-								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
-							</li>
-						</ul>
-					</div><!-- btn-group -->
+						<blockquote>
+							<p>
+								Encontrei "Arduíno" e gostaria de convidá-lo(a) a colaborar e editar este conteúdo.
+							</p>
+						</blockquote>
+					</div>
 				</li>
 
 				<li class="vcard activity unread">
-				<div class="notf">
-					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-					<a href="perfil.shtml" class="fn">Max Guenes</a> convidou você para colaborar editando o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> PSIU</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> convidou você para colaborar editando o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> PSIU</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
 
-					<blockquote>
-						<p>
-							Rodrigo, você poderia pode favor me ajudar a completar as informações do PSIU?
-						</p>
-						<p>
-							Já publiquei sobre Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum. Agora acho que você poderia ajudar mais com Maecenas sed diam eget risus varius blandit sit amet non magna. :)
-						</p>
-					</blockquote>
-				</div>
-					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-							<span class="icon-cog icon-gray"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="conteudo-criar.shtml">Editar conteúdo agora</a>
-							</li>
-							<li class="divider"></li>
-							<li class="danger-link">
-								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
-							</li>
-						</ul>
-					</div><!-- btn-group -->
+						<blockquote>
+							<p>
+								Rodrigo, você poderia pode favor me ajudar a completar as informações do PSIU?
+							</p>
+							<p>
+								Já publiquei sobre Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum. Agora acho que você poderia ajudar mais com Maecenas sed diam eget risus varius blandit sit amet non magna. :)
+							</p>
+						</blockquote>
+					</div>
 				</li>
 
 				<li class="vcard activity">
-				<div class="notf">
-					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-					<a href="perfil.shtml" class="fn">Max Guenes</a> editou o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
-				</div>
-					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-							<span class="icon-cog icon-gray"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="conteudo.shtml">Ver conteúdo agora</a>
-							</li>
-							<li class="divider"></li>
-							<li class="danger-link">
-								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
-							</li>
-						</ul>
-					</div><!-- btn-group -->
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> editou o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					</div>
 				</li>
 
 				<li class="vcard activity">
-				<div class="notf">
-					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-					<a href="perfil.shtml" class="fn">Max Guenes</a> colaborou com o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> publicando <a href="status.shtml">uma atualização</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
-				</div>
-					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-							<span class="icon-cog icon-gray"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="conteudo.shtml">Ver atualização agora</a>
-							</li>
-							<li class="divider"></li>
-							<li class="danger-link">
-								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
-							</li>
-						</ul>
-					</div><!-- btn-group -->
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> colaborou com o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> publicando <a href="status.shtml">uma atualização</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					</div>
 				</li>
+
+				<li class="vcard activity">
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> enviou uma solicitação de amizade <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					</div>
+
+					<div class="actions">
+						<a href="#" class="btn btn-mini btn-primary">Aceitar</a> 
+						<a href="#" class="btn btn-mini btn-danger">Rejeitar</a> 
+					</div>
+				</li>
+
 			</ul>
 
 
 			<h4>Recebido ontem</h4>
 			<ul class="notifications">
 				<li class="vcard activity">
-				<div class="notf">
-					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-					<a href="perfil.shtml" class="fn">Max Guenes</a> colaborou com o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> publicando <a href="status.shtml">uma atualização</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
-				</div>
-					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-							<span class="icon-cog icon-gray"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="conteudo.shtml">Ver atualização agora</a>
-							</li>
-							<li class="divider"></li>
-							<li class="danger-link">
-								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
-							</li>
-						</ul>
-					</div><!-- btn-group -->
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> colaborou com o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> publicando <a href="status.shtml">uma atualização</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					</div>
+			</li>
+
+				<li class="vcard activity">
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> enviou uma solicitação de amizade <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					</div>
+
+					<div class="actions">
+						<a href="#" class="btn btn-mini btn-primary">Aceitar</a> 
+						<a href="#" class="btn btn-mini btn-danger">Rejeitar</a> 
+					</div>
 				</li>
 
 				<li class="vcard activity">
-				<div class="notf">
-					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-					<a href="perfil.shtml" class="fn">Max Guenes</a> promoveu você a moderador da comunidade <a href="comunidade.shtml"><i class="icon-comment icon-gray"></i> Nome da comunidade</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
-				</div>
-					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-							<span class="icon-cog icon-gray"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="comunidade.shtml">Ver comunidade agora</a>
-							</li>
-							<li class="divider"></li>
-							<li class="danger-link">
-								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
-							</li>
-						</ul>
-					</div><!-- btn-group -->
-				</li>
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> promoveu você a moderador da comunidade <a href="comunidade.shtml"><i class="icon-comment icon-gray"></i> Nome da comunidade</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					</div>
+			</li>
 			</ul>
 
 			<h4>Recebido 3 dias atrás</h4>
 			<ul class="notifications">
 				<li class="vcard activity">
-				<div class="notf">
-					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-					<a href="perfil.shtml" class="fn">Max Guenes</a> promoveu você a moderador da comunidade <a href="comunidade.shtml"><i class="icon-comment icon-gray"></i> Nome da comunidade</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
-				</div>
-					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-							<span class="icon-cog icon-gray"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="comunidade.shtml">Ver comunidade agora</a>
-							</li>
-							<li class="divider"></li>
-							<li class="danger-link">
-								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
-							</li>
-						</ul>
-					</div><!-- btn-group -->
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> promoveu você a moderador da comunidade <a href="comunidade.shtml"><i class="icon-comment icon-gray"></i> Nome da comunidade</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					</div>
+				</li>
+
+				<li class="vcard activity">
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> enviou uma solicitação de amizade <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					</div>
 				</li>
 			</ul>
 
 			<h4>Recebido 27 dias atrás</h4>
 			<ul class="notifications">
 				<li class="vcard activity">
-				<div class="notf">
-					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-					<a href="perfil.shtml" class="fn">Max Guenes</a> convidou você para colaborar editando o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> PSIU</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> convidou você para colaborar editando o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> PSIU</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
 
-					<blockquote>
-						<p>
-							Rodrigo, você poderia pode favor me ajudar a completar as informações do PSIU?
-						</p>
-						<p>
-							Já publiquei sobre Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum. Agora acho que você poderia ajudar mais com Maecenas sed diam eget risus varius blandit sit amet non magna. :)
-						</p>
-					</blockquote>
-				</div>
+						<blockquote>
+							<p>
+								Rodrigo, você poderia pode favor me ajudar a completar as informações do PSIU?
+							</p>
+							<p>
+								Já publiquei sobre Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum. Agora acho que você poderia ajudar mais com Maecenas sed diam eget risus varius blandit sit amet non magna. :)
+							</p>
+						</blockquote>
+					</div>
 
-					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-							<span class="icon-cog icon-gray"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="conteudo-criar.shtml">Editar conteúdo agora</a>
-							</li>
-							<li class="divider"></li>
-							<li class="danger-link">
-								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
-							</li>
-						</ul>
-					</div><!-- btn-group -->
 				</li>
 
 				<li class="vcard activity">
-				<div class="notf">
-					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-					<a href="perfil.shtml" class="fn">Max Guenes</a> convidou você para colaborar editando o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> convidou você para colaborar editando o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
 
-					<blockquote>
-						<p>
-							Encontrei "Arduíno" e gostaria de convidá-lo(a) a colaborar e editar este conteúdo.
-						</p>
-					</blockquote>
-				</div>
+						<blockquote>
+							<p>
+								Encontrei "Arduíno" e gostaria de convidá-lo(a) a colaborar e editar este conteúdo.
+							</p>
+						</blockquote>
+					</div>
 
-					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-							<span class="icon-cog icon-gray"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="conteudo-criar.shtml">Editar conteúdo agora</a>
-							</li>
-							<li class="divider"></li>
-							<li class="danger-link">
-								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
-							</li>
-						</ul>
-					</div><!-- btn-group -->
 				</li>
 
 				<li class="vcard activity">
-				<div class="notf">
-					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-					<a href="perfil.shtml" class="fn">Max Guenes</a> editou o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
-				</div>
-					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-							<span class="icon-cog icon-gray"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="conteudo.shtml">Ver conteúdo agora</a>
-							</li>
-							<li class="divider"></li>
-							<li class="danger-link">
-								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
-							</li>
-						</ul>
-					</div><!-- btn-group -->
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> editou o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					</div>
 				</li>
 
 				<li class="vcard activity">
-				<div class="notf">
-					<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
-					<a href="perfil.shtml" class="fn">Max Guenes</a> colaborou com o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> publicando <a href="status.shtml">uma atualização</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
-				</div>
-					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-							<span class="icon-cog icon-gray"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="conteudo.shtml">Ver atualização agora</a>
-							</li>
-							<li class="divider"></li>
-							<li class="danger-link">
-								<a href="#"><i class="icon-remove-circle icon-gray"></i> Excluir notificação</a>
-							</li>
-						</ul>
-					</div><!-- btn-group -->
+					<div class="notf">
+						<a href="perfil.shtml" class="photo"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes"></a>
+						<a href="perfil.shtml" class="fn">Max Guenes</a> colaborou com o conteúdo <a href="conteudo.shtml"><i class="icon-file icon-gray"></i> Nome do conteúdo</a> publicando <a href="status.shtml">uma atualização</a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>
+					</div>
 				</li>
 			</ul>
 

@@ -16,7 +16,10 @@ $(window).load(function(){
 });
 
 !function ($) {
-
+ //auto focus input
+ if ( $("#login-form, #form-criar-conteudo, #form-criar-comunidade") ) {
+   $('input[tabindex=1], textarea[tabindex=1]').focus();
+ }
 
 //sidebar border (apenas para desktop)
 
@@ -93,6 +96,13 @@ $('table td .btn-group').children().hover(function() {
 	$(this).closest('tr').siblings().stop().fadeTo(500,1);
 });
 
+$('#inbox-pvt-intro li button').children().hover(function() {
+	$(this).closest('li').siblings().stop().fadeTo(500,0.45);
+}, function() {
+	$(this).closest('li').siblings().stop().fadeTo(500,1);
+});
+
+
 //pega destinatario do modal de mensagem privada
 $('.send-msg').click(function(){
 	var n = $(this).closest('.row').find("h3 a").text();
@@ -139,8 +149,10 @@ if ( $("#stream .video-embed") ) {
 }
 
 //tooltips
+$('#inbox-pvt-intro .singletip').tooltip({placement: 'left'});
 $('.singletip, #grid-comunidades img, #grid-conteudos img, #grid-amigos img, #grid-projetos img, .visivel-para i, #grid-eventos img').tooltip();
-$('#form-status .nav a').tooltip({placement: 'bottom'});
+$('#form-status .nav a, #form-topico .nav a, #form-reply .nav a').tooltip({placement: 'bottom'});
+
 
 //textarea de comentarios
 $('.textarea-comment').autoResize({
@@ -160,7 +172,10 @@ $("#terms-textarea").focus(function(){
 $('.notifications .vcard .notf').click(function(){
 	$(this).parent().toggleClass('unread');
 	var numItems = $('.unread').length;
-	$('#side-notf-unread').html(numItems);
+	$('#side-notf-unread, .notf-num').html(numItems);
+		if(numItems == 0) {$('.notf-txt-num').html('')}
+		if(numItems == 1) {$('.notf-txt-num').html('não lida')}
+		if(numItems > 1) {$('.notf-txt-num').html('não lidas')}
 })
 
 //checkbox desligar emails
@@ -207,6 +222,19 @@ $(".wysiwyg").cleditor({
 			"margin:4px; font:13px 'Helvetica Neue', Helvetica, Arial, sans-serif; cursor:text",
 			width:'99%',
 		});                
+
+//campo de localizacao pais estrageiro
+$('#location').change(function () {
+          var str = "";
+          $("#location option:selected").each(function () {
+                str += $(this).val();
+		    	if ( str=='ex' ) {
+					$("#outropais").fadeIn().focus();
+				} else {
+					$("#outropais").fadeOut();
+				}
+              });
+        })
 
 
 /* multi upload */
@@ -264,6 +292,29 @@ var uploader = new qq.FileUploader({
 	showMessage: function(message){alert(message);}
 
 });
+
+//upload doc
+var uploader = new qq.FileUploader({
+    // pass the dom node (ex. $(selector)[0] for jQuery users)
+    element: document.getElementById('file-uploader-docs'),
+    // path to server-side upload script
+    action: url_for('ajax/ajaxUlpoadArquivos'),//'../uploads/',
+    multiple: false,
+	// validation    
+	// ex. ['jpg', 'jpeg', 'png', 'gif'] or []
+	allowedExtensions: ['txt', 'rtf', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods', 'odg', 'fodg'],
+
+	messages: {
+            typeError		: "'{file}' tem um formato inválido. Apenas os formatos de documentos ({extensions}) são aceitos neste caso.",
+            sizeError		: "'{file}' é muito grande, o tamanho máximo do arquivo é: {sizeLimit}.",
+            minSizeError	: "'{file}' é muito pequeno, o tamaho mínimo do arquivo é: {minSizeLimit}.",
+            emptyError		: "'{file}' está vazio, por favor tente novamente.",
+            onLeave			: "Os arquivos estão sendo enviados, se você sair agora o envio será cancelado."            
+	},
+	showMessage: function(message){alert(message);}
+});
+
+
 
 }(window.jQuery)
 

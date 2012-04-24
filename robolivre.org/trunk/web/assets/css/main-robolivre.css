@@ -62,7 +62,10 @@ body.home .brand,
 	display: block;
 }
 
+.clear {clear: both; float: left; width:100%;}
+
 .navbar-fixed-top {position: fixed}
+
 .brand {
 	background: url(../img/rl/logo.png) no-repeat;
 	height: 40px;
@@ -153,7 +156,7 @@ body.home .top-login {
 		vertical-align: middle;
 	}
 	.login-dropdown .dropdown ul {width: 400px}
-	.dropdown-menu .logout-link a:hover, .dropdown-menu .danger-link a:hover {background-color: #DA4F49;}
+	.dropdown-menu .logout-link a:hover, .dropdown-menu .danger-link a:hover {background-color: #DA4F49 !important;}
 
 #user-menu .label {
 	position: absolute;
@@ -237,10 +240,22 @@ body.home .top-login {
 	#stream.forum-item .vcard {
 		border-top: 1px solid #ddd;
 	}
-	#stream.forum-item .reply {
+	#stream.forum-item .reply,
+	#stream #msg-item .reply,
+	#stream #msg-item .more-msg {
 		border-top: 1px dotted #ccc;
 		margin-left: 9%;
 		width:90%;
+	}
+	#stream #msg-item .more-msg {
+		border-top: 1px solid #ccc;
+		padding: 15px 0 0;
+		margin-top: 10px;
+		float: left;
+		clear: both;
+	}
+	#stream #msg-item .more-msg .btn {
+		width:100%;
 	}
 	#forum-pag, #nav-topic {
 		height:auto;
@@ -250,6 +265,7 @@ body.home .top-login {
 	}
 	#form-pag ul {padding: 20px 0;}
 	#stream ul .activity {width: 100%}
+	ul .activity .actions {padding-bottom:10px;}
 	#stream ul .vcard .entry {
 		float: left;
 		width: 85%;
@@ -286,7 +302,7 @@ body.home .top-login {
 	margin-top: 0;
 }
 #stream .notifications .unread {
-	background-color: #faf7e7;
+	background-color: #fff3cc;
 	border-top: 1px dotted #049cdb;
 }
 #stream .notifications blockquote {
@@ -357,7 +373,8 @@ body.home .top-login {
 	#stream .comments .photo {margin-right: 2px}
 	.comments form {margin-bottom: 0}
 	.textarea-comment {width: 93%; margin-top: 2px; margin-bottom: 0; font-size: 12px}
-	.forum-item .textarea-comment {margin-bottom: 5px; width:98%;}
+	.forum-item .textarea-comment,
+	#msg-item .textarea-comment {margin-bottom: 5px; width:98%;}
 	#form-reply {width:100%;}
 	#stream .shared-item {
 		position: relative; 
@@ -562,6 +579,7 @@ footer .pull-left {width: 45%;}
 	margin: 0 10px 30px;
 }
 
+.nav-tabs .label {line-height:100%;}
 
 .list-conteudos img {vertical-align: middle}
 
@@ -615,15 +633,21 @@ footer .pull-left {width: 45%;}
 #fromField .add-on img {width: 20px}
 
 #forum-intro {margin-bottom: 25px}
-#forum-intro ul, #docs-intro table {margin-bottom: 8px}
+#forum-intro ul, 
+#docs-intro table,
+#inbox-pvt-intro ul {margin-bottom: 8px}
 #forum-intro ul a, 
 #forum-intro ul a small, 
+#inbox-pvt-intro ul a, 
+#inbox-pvt-intro ul a small, 
 #docs-intro table a, 
 #docs-intro table a small {display: block}
 #forum-intro ul a:hover,
 #docs-intro table a:hover {text-decoration: none}
-#forum-intro ul a {position: relative; padding-right: 40px}
-#forum-intro ul a .label {
+#forum-intro ul a,
+#inbox-pvt-intro ul a {position: relative; padding-right: 40px}
+#forum-intro ul a .label,
+#inbox-pvt-intro ul a .label {
 	font-family: "Helvetica", "Arial", sans-serif;
 	padding-bottom: 1px;
 	font-weight: normal;
@@ -632,11 +656,34 @@ footer .pull-left {width: 45%;}
 	top: 8px;
 }
 #forum-intro ul a small,
+#inbox-pvt-intro ul a small,
 #docs-intro table a small {
 	font-size: 85%;
 	color: #aaa
 }
+#inbox-pvt-intro ul .unread a {
+	background-color: #fff9e6;
+	font-weight: bold;
+}
 table .col-sec {width: 10%}
+#inbox-pvt-intro ul .unread .icon-gray {opacity: 1}
+#inbox-pvt-intro ul li {position: relative}
+#inbox-pvt-intro ul li .label {
+	position: absolute;
+	right: 10px;
+	top: 8px;
+	z-index: 100;
+	padding: 0;
+	opacity: .8;
+	border: 0;
+}
+#inbox-pvt-intro ul li .label .close {
+	padding: 1px 6px 4px;
+	padding-top: 0;
+	line-height:100%;
+}
+#inbox-pvt-intro .sent-user {vertical-align: middle;}
+##inbox-pvt-intro .close {cursor: pointer;}
 
 /* WYSIWYG Editor */
 .cleditorMain {border:1px solid #999; padding:0 1px 1px; background-color:white;}
@@ -909,7 +956,10 @@ li.as-result-item.active h4 {
 	clear: both;
 }
 
-.twtr-ft, .twtr-hd {display: none}
+/* hide */
+.twtr-ft, 
+.twtr-hd,
+#outropais {display: none}
 .twtr-tweet-wrap {padding: 6px 0!important}
 
 /* Webkit Hacks  */
@@ -957,7 +1007,7 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 	border: none;
 }
 
-#form-criar-conteudo .as-original input {
+.as-original input {
 	border: 0;
 	outline: 0;
 	box-shadow: none;
@@ -976,7 +1026,10 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 /* // Landscape phones and down */
 @media (max-width: 480px) {
 	#user-menu {float: left}
-	
+
+.nav-collapse {overflow: auto;}
+.nav-collapse a:hover {color:#fff !important; background:#08C !important;}
+
 #searchsubmit {display: none}
 
 #top-login {
@@ -1015,6 +1068,9 @@ footer .pull-left {width:100%;}
 		width: 95%
 	}
 	.navbar .brand {margin-left: 15px}
+
+.nav-collapse {overflow: auto;}
+.nav-collapse a:hover {color:#fff !important; background:#08C !important;}
 
 #searchsubmit {display: none}
 
@@ -1061,6 +1117,9 @@ footer .pull-left {width:100%;}
 		width: 95%
 	}
 
+.nav-collapse {overflow: auto;}
+.nav-collapse a:hover {color:#fff !important; background:#08C !important;}
+
 #searchsubmit {display: none}
 
 #login, #login-pass {width: 32%}
@@ -1071,6 +1130,7 @@ footer .pull-left {width:100%;}
 .textarea-comment {width: 91%;}
 
 footer .pull-left {width:25%;}
+#user-menu .nav-collapse a:hover {color:#005580}
 
 }
 

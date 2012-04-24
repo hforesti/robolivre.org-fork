@@ -4,49 +4,56 @@
 
   <hr class="only-mobile">
 
-  <div class="span7 offset1">
+  <div class="span8 offset2">
 
     <ul class="breadcrumb">
       <li>
         <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
       </li>
       <li>
-        <a href="conteudos.shtml">Conteúdos</a> <span class="divider">/</span>
+        <a href="comunidades.shtml">Comunidades</a> <span class="divider">/</span>
       </li>
       <li class="active">
-        Criar conteúdo
-        <!--     Editar conteúdo -->
+        Criar comunidade
+        <!--     Editar comunidade -->
       </li>
     </ul>
 
 
     <div class="page-header">
-      <h1>Criar conteúdo</h1>
-      <!-- <h1>Editar conteúdo</h1> -->
+      <h1>Criar comunidade</h1>
+      <!-- <h1>Editar comunidade</h1> -->
     </div>
 
-    <form action="#" id="form-criar-conteudo">
+    <form action="#" id="form-criar-comunidade">
       <fieldset>
+<!-- Modelo de campo com erro -->
+<!--
+        <div class="control-group error">
+          <div class="controls">
+            <input type="text" class="span8" id="input01" placeholder="Nome da comunidade" value="" tabindex="1">
+            <span class="help-inline">Por favor informe um nome para a sua comunidade</span>
+          </div>
+        </div>
+ -->
         <div class="control-group">
           <div class="controls">
-            <input type="text" class="span7" id="input01" placeholder="Nome" value="Título do conteúdo que veio do modal">
+            <input type="text" class="span8" id="input01" placeholder="Nome da comunidade" value="" tabindex="1">
           </div>
         </div>
 
         <div class="control-group">
           <div class="controls">
-            <textarea class="span7 wysiwyg" id="textarea" rows="9" placeholder="O que você tem para compartilhar?" tabindex="1"></textarea>
+            <textarea class="span8" id="textarea" rows="3" placeholder="Descreva rapidamente a comunidade" tabindex="2"></textarea>
           </div>
         </div>
 
         <hr>
 
         <fieldset class="control-group">
-          <h3>Classificar conteúdo</h3>
+          <h3>Classificar comunidade</h3>
 
-          <p class="alert alert-info"><i class="icon-info-sign icon-gray"></i> Classifique este conteúdo com Marcadores e relacione com nossos <strong>Temas de aula</strong>, assim ele ficará mais fácil de ser encontrado aqui no site.</p>
-
-
+          <p class="alert alert-info"><i class="icon-info-sign icon-gray"></i> Classifique esta comunidade com Marcadores e/ou relacione com nossos <strong>Temas de aula</strong>, assim ela ficará mais fácil de ser encontrada aqui no site.</p>
 
           <div class="tabbable">
             <ul class="nav nav-tabs">
@@ -150,6 +157,7 @@
 
           <hr>
 
+
           <div class="control-group clearfix">
             <label class="control-label" for="fileInput">Imagem principal</label>
 
@@ -159,9 +167,9 @@
                 <img src="assets/img/rl/170.gif" alt="140" id="thumb" class="thumbnail" />
               </div>
 
-              <div class="span5">				
+              <div class="span3">				
                 <div class="controls">				
-                  <p class="help-block">Escolha uma imagem que represente este conteúdo</p>
+                  <p class="help-block">Escolha uma imagem que represente esta comunidade</p>
                   <div id="file-uploader-img">       
                     <noscript>          
                       <input class="input-file" id="fileInput" type="file">
@@ -172,58 +180,16 @@
             </div><!-- row -->
 
           </div><!-- control-group -->
-          <hr>
-          <div class="control-group">
-            <label class="control-label" for="fileInput2">Documentos</label>
-            <div class="controls">
-
-              <div id="file-uploader">
-                <noscript>
-                  <input class="input-file" id="fileInput2" type="file">
-                </noscript>
-              </div>
-
-              <p class="help-block">Você pode anexar arquivos a este conteúdo. (Ex.: PDFs, Apresentações, Manuais).</p>
-            </div>
-          </div>
-          <hr>
-          <div class="control-group">
-            <label class="control-label" for="optionsCheckbox">Notificações</label>
-            <div class="controls">
-              <label class="checkbox">
-                <input type="checkbox" id="optionsCheckbox" value="option1" checked>
-                Receber e-mail quando um novo conteúdo relacionado a este for criado ou quando este for modificado por seus amigos
-              </label>
-            </div>
-          </div>
-
-        </fieldset>          
-
+        </fieldset>
 
         <div class="form-actions">
-          <button type="submit" class="btn btn-primary btn-large">Publicar</button>
-          <!--             <button type="submit" class="btn btn-primary btn-large">Atualizar conteúdo</button> -->
+          <button type="submit" class="btn btn-primary btn-large" tabindex="3">Criar comunidade</button>
+          <!--<button type="submit" class="btn btn-primary btn-large" tabindex="3">Atualizar dados</button> -->
         </div>
       </fieldset>
-
     </form>
 
-
   </div><!-- /miolo -->
-
-
-  <div class="span3" id="sidebar-wdgt">
-
-    <div class="alert">
-      <h6>Notas:</h6>
-      <ol>
-        <li>Seus amigos poderão editar este conteúdo para colaborar e agregar conhecimento.</li>
-
-        <li>O conteúdo aqui postado estará sob a licença: <a href="http://creativecommons.org/licenses/by-sa/3.0/deed.pt">Atribuição-Partilha nos Mesmos Termos 3.0 não Adaptada (CC BY-SA 3.0)</a>.</li>
-      </ol>
-    </div>
-
-  </div><!-- /aside -->
 
 </div><!-- /row -->
 
