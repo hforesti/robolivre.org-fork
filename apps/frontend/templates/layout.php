@@ -21,7 +21,7 @@
     </head>
         <?php if (!UsuarioLogado::getInstancia()->isLogado()) { ?>
         <body class="home">
-        <?php }//teste! ?>
+        <?php } ?>
         <?php if (UsuarioLogado::getInstancia()->isLogado()) { ?>
         <body>
             <!-- Navbar
