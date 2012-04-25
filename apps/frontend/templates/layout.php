@@ -21,7 +21,7 @@
     </head>
         <?php if (!UsuarioLogado::getInstancia()->isLogado()) { ?>
         <body class="home">
-        <?php } ?>
+        <?php } //teste commit netbeans ?>
         <?php if (UsuarioLogado::getInstancia()->isLogado()) { ?>
         <body>
             <!-- Navbar
