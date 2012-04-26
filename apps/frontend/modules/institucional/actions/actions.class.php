@@ -49,10 +49,6 @@ class institucionalActions extends sfActions {
         
     }
 
-    public function executeClipping() {
-        
-    }
-
     public function executeApresentacoes() {
         
     }

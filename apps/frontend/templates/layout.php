@@ -101,7 +101,6 @@
                 <ul>
                     <li><a href="<?php echo url_for("institucional/sobre") ?>">Sobre a Robô Livre</a></li>
                     <li><a href="<?php echo url_for("institucional/instituicoesParceiras") ?>">Instituições parceiras</a></li>
-                    <li><a href="<?php echo url_for("institucional/clipping") ?>">Clipping</a></li>
                     <li><a href="<?php echo url_for("institucional/apresentacoes") ?>">Apresentações</a></li>
                     <li><a href="<?php echo url_for("institucional/publicacoesCientificas") ?>">Publicações científicas</a></li>
                 </ul>
@@ -109,10 +108,11 @@
 
 
             <div class="span3">
-                <h4><a href="<?php echo url_for("termos/index") ?>">Termos legais</a></h4>
+                <h4><a href="<?php echo url_for("imprensa/index") ?>">Imprensa</a></h4>
                 <ul>
-                    <li><a href="<?php echo url_for("termos/index") ?>">Termos de uso</a></li>
-                    <li><a href="<?php echo url_for("termos/politica") ?>">Política de privacidade</a></li>
+                    <li><a href="<?php echo url_for("imprensa/index") ?>">Robô Livre na mídia</a></li>
+                    <li><a href="http://blog.robolivre.org">Blog</a></li>
+                    <li><a href="<?php echo url_for("imprensa/downloads") ?>">Downloads</a></li>
                 </ul>
             </div>
 
@@ -132,6 +132,7 @@
                 <h4><a href="<?php echo url_for("contato/index") ?>">Contato</a></h4>
                 <ul>
                     <li><a href="<?php echo url_for("contato/index") ?>">Fale Conosco</a></li>
+                    <li><a href="<?php echo url_for("contato/reportarErro") ?>">Reportar problema</a></li>
                 </ul>
             </div>
 
@@ -145,7 +146,7 @@
 		<div class="pull-left">
         <p>Esta obra está sob a licença <a href="http://creativecommons.org/licenses/by/3.0/br/deed.pt_BR">Creative Commons Atribuição 3.0 Brasil</a>
         </p>
-        <p id="other-links"><a href="sobre.shtml">Créditos</a> / <a href="sobre.shtml">Reportar um erro</a>
+        <p id="other-links"><a href="<?php echo url_for("institucional/creditos") ?>">Créditos</a> / <a href="<?php echo url_for("termos/index") ?>">Termos de uso</a> / <a href="<?php echo url_for("termos/privacidade") ?>">Política de privacidade</a>
         </p>
     	</div>
       <div id="co-workers" class="pull-right">

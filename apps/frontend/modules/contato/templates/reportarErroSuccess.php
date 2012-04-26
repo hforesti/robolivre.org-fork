@@ -3,8 +3,8 @@
     <div class="span4">
         <h6>Contato</h6>
         <ul class="nav nav-tabs nav-stacked">
-            <li class="active"><a href="<?php echo url_for("contato/index"); ?>">Fale Conosco</a></li>
-            <li><a href="<?php echo url_for("contato/reportarErro"); ?>">Reportar problema</a></li>
+            <li><a href="<?php echo url_for("contato/index"); ?>">Fale Conosco</a></li>
+            <li class="active"><a href="<?php echo url_for("contato/reportarErro"); ?>">Reportar problema</a></li>
         </ul>
         <a href="<?php echo url_for("inicial/index"); ?>" class="btn"><i class="icon-chevron-left icon-gray"></i> Início</a>
     </div>
@@ -13,14 +13,12 @@
     <div class="span8">
 
         <div class="page-header">
-            <h1>Fale Conosco</h1>
+            <h1>Reportar problema</h1>
         </div>
 
+        <p>Encontrou algum problema? Decreva-o para nossa equipe e tentaremos achar o robô reposável.</p>
 
         <?php if (isset($formContato)) { ?>
-            <div class="alert alert-info">
-                Está com alguma dúvida? Verificou se ela já foi respondida no <strong><a href="<?php echo url_for("ajuda/perguntas") ?>">nosso FAQ</a></strong>?
-            </div>
             <?php
             $erros = $formContato->getErrorSchema()->getErrors();
             $valoresInciais = $formContato->getTaintedValues();
@@ -43,9 +41,7 @@
                 </div>
             <?php } ?>
 
-            <p>Entre em contato com nossos robôs, quer dizer… com a nossa equipe :)</p>
-
-            <form action="<?php echo url_for("contato/enviarEmailContato") ?>" class="form-horizontal">
+            <form action="<?php echo url_for("contato/enviarEmailReportarErro") ?>" class="form-horizontal">
                 <fieldset>
 
                     <?php
@@ -88,22 +84,10 @@
                         </div>
                     </div>
 
-                    <?php
-                    $class = "";
-                    if (isset($erros['telefone'])) {
-                        $class = "error";
-                    }
-                    ?>
-                    <div class="control-group <?php echo $class ?>">
-                        <label class="control-label" for="telefone">Telefone</label>
-                        <div class="controls">
-                            <?php echo $formContato->getWidget('telefone')->render($formContato->getName() . "[telefone]", (isset($valoresInciais['telefone']) ? $valoresInciais['telefone'] : null), array('class' => "input-xlarge", 'id' => 'telefone')); ?>
-                            <p class="help-block">Opcional</p>
-                        </div>
-                    </div>
+                   
                     <?php echo $formContato->renderHiddenFields() ?>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn btn-primary">Reportar agora</button>
                     </div>
                 </fieldset>
             </form>
