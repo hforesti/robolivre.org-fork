@@ -48,15 +48,15 @@
                                 </li>
                                 
                                 <?php $class = $sf_context->getModuleName()=="comunidade"? "active" : "" ?>
-                                <li class="<?php echo $class ?>">
+                                <?php /*<li class="<?php echo $class ?>">
                                     <a href="<?php echo url_for("comunidades/index") ?>">Comunidades</a>
-                                </li>
+                                </li>*/ ?>
                                 <li class="divider-vertical"></li>
                             </ul>
-                            <form id="form_busca_navbar" class="navbar-search pull-left" action="<?php echo url_for('perfil/lista') ?>">
+                            <?php /*<form id="form_busca_navbar" class="navbar-search pull-left" action="<?php echo url_for('perfil/lista') ?>">
                                 <input type="text" class="search-query span4" placeholder="Buscar robôs, comunidades, amigos…">
                                 <input id="searchsubmit" alt="Buscar" type="image" onclick="document.getElementById('form_busca_navbar').submit()" src="<?php echo image_path('/assets/img/rl/btn-search.png') ?>">
-                            </form>
+                            </form> */?>
 
                             <ul class="nav" id="user-menu">
                                 <li class="dropdown">
@@ -97,41 +97,41 @@
         <div class="row" id="footer-utility">
 
             <div class="span3">
-                <h4><a href="sobre.shtml">Insitucional</a></h4>
+                <h4><a href="<?php echo url_for("institucional/index") ?>">Insitucional</a></h4>
                 <ul>
-                    <li><a href="sobre.shtml">Sobre a Robô Livre</a></li>
-                    <li><a href="sobre.shtml">Instituições parceiras</a></li>
-                    <li><a href="sobre.shtml">Clipping</a></li>
-                    <li><a href="sobre.shtml">Apresentações</a></li>
-                    <li><a href="sobre.shtml">Publicações científicas</a></li>
+                    <li><a href="<?php echo url_for("institucional/sobre") ?>">Sobre a Robô Livre</a></li>
+                    <li><a href="<?php echo url_for("institucional/instituicoesParceiras") ?>">Instituições parceiras</a></li>
+                    <li><a href="<?php echo url_for("institucional/clipping") ?>">Clipping</a></li>
+                    <li><a href="<?php echo url_for("institucional/apresentacoes") ?>">Apresentações</a></li>
+                    <li><a href="<?php echo url_for("institucional/publicacoesCientificas") ?>">Publicações científicas</a></li>
                 </ul>
             </div>
 
 
             <div class="span3">
-                <h4><a href="sobre.shtml">Termos legais</a></h4>
+                <h4><a href="<?php echo url_for("termos/index") ?>">Termos legais</a></h4>
                 <ul>
-                    <li><a href="termo-de-uso.shtml">Termos de uso</a></li>
-                    <li><a href="privacidade.shtml">Política de privacidade</a></li>
+                    <li><a href="<?php echo url_for("termos/index") ?>">Termos de uso</a></li>
+                    <li><a href="<?php echo url_for("termos/politica") ?>">Política de privacidade</a></li>
                 </ul>
             </div>
 
             <div class="span3">
-                <h4><a href="ajuda.shtml">Ajuda</a></h4>
+                <h4><a href="<?php echo url_for("ajuda/index") ?>">Ajuda</a></h4>
                 <ul>
-                    <li><a href="ajuda.shtml">Iniciando no Robô Livre</a></li>
-                    <li><a href="faq.shtml">Perguntas frequentes</a></li>
+                    <li><a href="<?php echo url_for("ajuda/index") ?>">Iniciando no Robô Livre</a></li>
+                    <li><a href="<?php echo url_for("ajuda/perguntas") ?>">Perguntas frequentes</a></li>
                 </ul>
             </div>
 
-<!--            <div class="span1">
+            <?php /*<div class="span1">
                 <h4><a href="loja.shtml">Loja</a></h4>
-            </div>-->
+            </div>*/ ?>
 
             <div class="span2">
-                <h4><a href="contato.shtml">Contato</a></h4>
+                <h4><a href="<?php echo url_for("contato/index") ?>">Contato</a></h4>
                 <ul>
-                    <li><a href="contato.shtml">Fale Conosco</a></li>
+                    <li><a href="<?php echo url_for("contato/index") ?>">Fale Conosco</a></li>
                 </ul>
             </div>
 
@@ -154,8 +154,8 @@
       		<li id="a-capes"><a href="http://www.capes.gov.br/" rel="co-worker" title="CAPES">CAPES</a></li>
       		<li id="a-cnpq"><a href="http://www.cnpq.br/" rel="co-worker" title="CNPq">CNPq</a></li>
       		<li id="a-facepe"><a href="http://www.facepe.br/" rel="co-worker" title="FACEPE">FACEPE</a></li>
-      		<!-- <li class="heading"><h6>Realização</h6></li>
-      		<li id="a-mix"><a href="http://www.facepe.br/" rel="co-worker" title="Mix Tecnologia">Mix Tecnologia</a></li> -->
+      		<?php /* <li class="heading"><h6>Realização</h6></li>
+      		<li id="a-mix"><a href="http://www.facepe.br/" rel="co-worker" title="Mix Tecnologia">Mix Tecnologia</a></li> */ ?>
       	</ul>
       </div>
       </footer>

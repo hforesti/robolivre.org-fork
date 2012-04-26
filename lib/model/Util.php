@@ -140,6 +140,27 @@ class Util {
         return $v->getRootDir() . "/web/assets/img/thumbnails";
     }
     
+    public static function getDiretorioArquivosInstitucionais() {
+        $v = sfProjectConfiguration::getActive();
+        return $v->getRootDir() . "/web/arquivosInstitucionais";
+    }
+    
+    public static function imprimeListaArquivos($lista){
+        sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
+        $string = "";
+        foreach($lista as $item){
+            
+            
+            $string .= "<tr>";
+            $string .= "    <td>".($item['novo']?"<span class=\"label label-info\">Novo</span>":""). "<a href=\"/arquivosInstitucionais/".$item['arquivo']."\">".$item['nome']."</a></td>";
+            $string .= "    <td>".$item['extensao']."</td>";
+            $string .= "</tr>";
+            
+        }
+        
+        echo $string;
+    }
+    
     public static function getDiretorioFotosPublicacoes($idUsuario = null) {
         $v = sfProjectConfiguration::getActive();
         $dir = $v->getRootDir() . "/web/assets/img/publicacoes";

@@ -32,3 +32,6 @@ all:
 
     # Enable the database manager
     use_database:           true
+  .actions:
+    error_404_module: erros 
+    error_404_action: 404error
