@@ -4,10 +4,10 @@
 
 <div class="span4">
 <h6>Contato</h6>
-  <ul class="nav nav-tabs nav-stacked">
-    <li class="active"><a href="contato.shtml">Fale conosco</a></li>
-    <li><a href="contato-reportar.shtml">Reportar problema</a></li>
-  </ul>
+	<ul class="nav nav-tabs nav-stacked">
+		<li><a href="contato.shtml">Fale conosco</a></li>
+    <li class="active"><a href="contato-reportar.shtml">Reportar problema</a></li>
+	</ul>
 		<a href="profile-home.shtml" class="btn"><i class="icon-chevron-left icon-gray"></i> Início</a>
 </div>
 
@@ -15,18 +15,15 @@
 <div class="span8">
 
 <div class="page-header">
-<h1>Fale Conosco</h1>
-</div>
-<div class="alert alert-info">
-Está com alguma dúvida? Verificou se ela já foi respondida no <strong><a href="faq.shtml">nosso FAQ</a></strong>?
+<h1>Reportar problema</h1>
 </div>
 
-          <p>Entre em contato com nossos robôs, quer dizer… com a nossa equipe :)</p>
+          <p>Encontrou algum problema? Decreva-o para nossa equipe e tentaremos achar o robô reposável.</p>
 
 <form class="form-horizontal">
         <fieldset>
           <div class="control-group">
-            <label class="control-label" for="textarea">Mensagem</label>
+            <label class="control-label" for="textarea">Descreva o problema</label>
             <div class="controls">
               <textarea class="input-xlarge" id="textarea" rows="8"></textarea>
             </div>
@@ -43,20 +40,12 @@ Está com alguma dúvida? Verificou se ela já foi respondida no <strong><a href
             <label class="control-label" for="input02">Seu E-mail</label>
             <div class="controls">
               <input type="email" class="input-xlarge" id="input02">
-              <p class="help-block">Responderemos sua mensagem para este e-mail informado</p>
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label" for="input03">Telefone</label>
-            <div class="controls">
-              <input type="tel" class="input-medium" id="input03" placeholder="DDD + Telefone">
-              <p class="help-block">Opcional</p>
+              <p class="help-block">Caso seja necessário, responderemos sua mensagem para este e-mail informado</p>
             </div>
           </div>
 
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary">Reportar agora</button>
           </div>
         </fieldset>
       </form>

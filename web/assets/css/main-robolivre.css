@@ -487,6 +487,7 @@ footer .pull-left {width: 45%;}
 #footer-utility ul {
 	list-style: none;
 	margin-left: 0;
+	margin-bottom: 20px;
 }
 #footer-utility ul li {margin: 6px 0}
 #footer-utility h4 {text-transform: uppercase}
