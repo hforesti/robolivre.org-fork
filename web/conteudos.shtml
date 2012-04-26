@@ -1,12 +1,27 @@
 <!--#include virtual="includes/header.html" -->
 
-<div class="row">
+<div class="modal fade" id="modalInfo">
+  <div class="modal-header">
+    <h3>Simples como 1, 2, 3</h3>
+  </div>
+  <div class="modal-body">
+    <p>Antes de começar a buscar e criar conteúdos:</p>
 
+      <p><span class="label label-success">1</span> Pense <strong>Conteúdo</strong> aqui na rede como galhos de uma árvore;</p>
+       <p><span class="label label-success">2</span> Em cada conteúdo é possível encontrar coisas "penduradas" (Imagens, links...);</p>
+      <p><span class="label label-success">3</span> Eles podem estar conectados, ou seja, ser conteúdos relacionados.</p>
+
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary btn-large" data-dismiss="modal"><i class="icon-ok icon-white"></i> Começar a explorar e colaborar</a>
+  </div>
+</div>
+
+<div class="row">
 
 <hr class="only-mobile">
 
 <div class="span10 offset1">
-
 
 <div class="page-header">
 
@@ -220,7 +235,6 @@
 </div>
 
 </div><!-- /miolo -->
-
 
 
 </div><!-- /row -->
