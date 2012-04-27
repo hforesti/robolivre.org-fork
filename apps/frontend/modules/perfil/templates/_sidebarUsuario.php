@@ -1,3 +1,10 @@
+<?php
+
+if(!isset($opcao))
+    $opcao = "atualizacao";
+
+?>
+
 <div class="span2" id="sidebar">
     <div class="avatar">
         <a href="<?php echo url_for('perfil/exibir?u=' . $usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada(Util::IMAGEM_GRANDE)) ?>" alt="<?php echo $usuario->getNome(); ?>" class="photo"></a>
@@ -32,11 +39,11 @@
     </div><!-- /avatar -->
 
     <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="<?php echo url_for('perfil/exibir?u=' . $usuario->getIdUsuario()) ?>"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
-        <li><a href="<?php echo url_for('perfil/exibirConteudos?u=' . $usuario->getIdUsuario()) ?>"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+        <li <?php echo ($opcao=="atualizacao")?"class=\"active\"":"" ?>><a href="<?php echo url_for('perfil/exibir?u=' . $usuario->getIdUsuario()) ?>"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+        <li  <?php echo ($opcao=="conteudos")?"class=\"active\"":"" ?>><a href="<?php echo url_for('perfil/exibirConteudos?u=' . $usuario->getIdUsuario()) ?>"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
         <?php /*<li><a href="#"><span class="icon-gray icon-comment"></span> Comunidades</a></li> */ ?>
         <?php /*<li><a href="#"><span class="icon-gray icon-folder-open"></span> Projetos</a></li> */ ?>
-        <li><a href="#"><span class="icon-gray icon-user"></span> Amigos</a></li>
-        <li><a href="<?php echo url_for('perfil/informacao?u=' . $usuario->getIdUsuario()) ?>"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
+        <li  <?php echo ($opcao=="amigos")?"class=\"active\"":"" ?>><a href="<?php echo url_for('perfil/exibirAmigos?u=' . $usuario->getIdUsuario()) ?>"><span class="icon-gray icon-user"></span> Amigos</a></li>
+        <li  <?php echo ($opcao=="informacao")?"class=\"active\"":"" ?>><a href="<?php echo url_for('perfil/informacao?u=' . $usuario->getIdUsuario()) ?>"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
     </ul>
 </div><!-- /sidebar -->

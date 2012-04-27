@@ -17,6 +17,10 @@ class Conteudos extends BaseConteudos
     private $tipoSolicitacao;
     private $conjunto;
     private $nomeProprietario;
+    private $quantidadeImagens;
+    private $quantidadeVideos;
+    private $quantidadeLinks;
+    private $quantidadeSeguidores;
     
     const PROPRIETARIO = -1;
     const NAO_PARTICIPA = -2;
@@ -81,4 +85,37 @@ class Conteudos extends BaseConteudos
         $imagem = ($this->getConjunto()!=null)? $this->getConjunto()->getImagemPerfil() : "";
         return Util::validaImagem($imagem, $tipoImagem,Util::TIPO_IMAGEM_CONTEUDO);
     }
+    
+    public function getQuantidadeImagens() {
+        return $this->quantidadeImagens;
+    }
+
+    public function setQuantidadeImagens($quantidadeImagens) {
+        $this->quantidadeImagens = $quantidadeImagens;
+    }
+
+    public function getQuantidadeVideos() {
+        return $this->quantidadeVideos;
+    }
+
+    public function setQuantidadeVideos($quantidadeVideos) {
+        $this->quantidadeVideos = $quantidadeVideos;
+    }
+
+    public function getQuantidadeLinks() {
+        return $this->quantidadeLinks;
+    }
+
+    public function setQuantidadeLinks($quantidadeLinks) {
+        $this->quantidadeLinks = $quantidadeLinks;
+    }
+    
+    public function getQuantidadeSeguidores() {
+        return $this->quantidadeSeguidores;
+    }
+
+    public function setQuantidadeSeguidores($quantidadeSeguidores) {
+        $this->quantidadeSeguidores = $quantidadeSeguidores;
+    }
+
 }

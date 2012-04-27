@@ -62,8 +62,9 @@ class inicialActions extends sfActions {
             $objUsuario = Doctrine::getTable('Usuarios')->login($login, $senha);
             
             if ($request->getParameter('lembrar') == 1) {
-                setcookie("cooLogin", $form->getValue('login'), time() + 3600, "/");
-                setcookie("cooSenha",md5($form->getValue('senha')), time() + 3600, "/");
+                //1296000 = 15 dias
+                sfContext::getInstance()->getResponse()->setCookie('cooLogin', $form->getValue('login'),  time() + 1296000, '/');
+                sfContext::getInstance()->getResponse()->setCookie('cooSenha', md5($form->getValue('senha')),  time() + 1296000, '/');
             }
             
             if ($objUsuario) {
@@ -96,6 +97,12 @@ class inicialActions extends sfActions {
         if ($form->isValid()) {
             $usuarios = $form->save();
             if ($usuarios) {
+                
+                if ($request->getParameter('lembrar') == 1) {
+                    //1296000 = 15 dias
+                    sfContext::getInstance()->getResponse()->setCookie('cooLogin', $form->getValue('login'),  time() + 1296000, '/');
+                    sfContext::getInstance()->getResponse()->setCookie('cooSenha', md5($form->getValue('senha')),  time() + 1296000, '/');
+                }
 
                 $logSistema = new LogsSistema();
                 $logSistema->setIdUsuario($usuarios->getIdUsuario());

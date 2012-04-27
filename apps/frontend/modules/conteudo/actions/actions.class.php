@@ -11,11 +11,11 @@
 class conteudoActions extends sfActions {
 
     public function execute($request) {
-        if (!UsuarioLogado::getInstancia()->isLogado()) {
-            $this->redirect("inicial/index");
-        } else {
+//        if (!UsuarioLogado::getInstancia()->isLogado()) {
+//            $this->redirect("inicial/index");
+//        } else {
             return parent::execute($request);
-        }
+//        }
     }
     
     /**

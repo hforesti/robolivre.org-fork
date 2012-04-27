@@ -16,6 +16,102 @@ class UsuariosTable extends Doctrine_Table {
         return Doctrine_Core::getTable('Usuarios');
     }
 
+    public function filtroAmigosPerfil($idUsuario, $nome = null, $indicePagina = 1) {
+        $arrayRetorno = array();
+        $qtdAmigos = 0;
+        $arrayAmigos = array();
+
+        $queryAmigos = "
+            SELECT u.*
+            FROM usuarios u 
+            LEFT JOIN amigos a 
+            ON id_usuario = id_usuario_a OR id_usuario = id_usuario_b
+            WHERE id_usuario <> $idUsuario AND a.aceito = 1 AND (a.id_usuario_a = $idUsuario OR a.id_usuario_b = $idUsuario)";
+        if ($nome != null && trim($nome)!="") {
+            $queryAmigos .= "  AND u.nome LIKE '%$nome%'";
+        }
+        
+        $queryAmigos .= "     ORDER BY u.nome
+            LIMIT " . (($indicePagina - 1) * Util::QUANTIDADE_PAGINACAO) . ", " . Util::QUANTIDADE_PAGINACAO;
+        
+        $queryQuantidade = "
+            SELECT COUNT(*) AS \"quantidade\"
+            FROM usuarios u 
+            LEFT JOIN amigos a 
+            ON id_usuario = id_usuario_a OR id_usuario = id_usuario_b
+            WHERE id_usuario <> $idUsuario AND a.aceito = 1 AND (a.id_usuario_a = $idUsuario OR a.id_usuario_b = $idUsuario)";
+        if ($nome != null && trim($nome)!="") {
+            $queryQuantidade .= "  AND u.nome LIKE '%$nome%'";
+        }
+        
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($queryQuantidade);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $qtdAmigos = $reg['quantidade'];
+                break;
+            }
+        }
+
+        $statement = $connection->prepare($queryAmigos);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $objUsuario = new Usuarios();
+                $objUsuario->setCurso($reg['curso']);
+                $objUsuario->setDataNascimento($reg['data_nascimento']);
+                $objUsuario->setEmail($reg['email']);
+                $objUsuario->setEndereco($reg['endereco']);
+                $objUsuario->setHabilidades($reg['habilidades']);
+                $objUsuario->setNivelEscolaridade($reg['nivel_escolaridade']);
+                $objUsuario->setIdUsuario($reg['id_usuario']);
+                $objUsuario->setLogin($reg['login']);
+                $objUsuario->setSexo($reg['sexo']);
+                $objUsuario->setSite($reg['site']);
+                $objUsuario->setSiteEmpresa($reg['site_empresa']);
+                $objUsuario->setSobreMim($reg['sobre_mim']);
+                $objUsuario->setNome($reg['nome']);
+                $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+                $objUsuario->setDataCriacaoPerfil($reg['data_criacao_perfil']);
+                $objUsuario->setEmpresa($reg['empresa']);
+                $objUsuario->setEscola($reg['escola']);
+                $objUsuario->setProfissao($reg['profissao']);
+                $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
+                
+                $arrayAmigos[] = $objUsuario;
+            }
+        }
+        
+        $total = (int) ($qtdAmigos / Util::QUANTIDADE_PAGINACAO);
+        //caso a divisão real seja maior que a divisão inteira (resto)
+        if (($qtdAmigos / Util::QUANTIDADE_PAGINACAO) > $total) {
+            ++$total;
+        }
+
+        $arrayRetorno['quantidade'] = $qtdAmigos;
+        $arrayRetorno['amigos'] = $arrayAmigos;
+        $arrayRetorno['totalPaginas'] = $total;
+
+        return $arrayRetorno;
+    }
+    
     public function getAmigosPerfil($idUsuario) {
 
         $arrayRetorno = array();
@@ -180,7 +276,7 @@ class UsuariosTable extends Doctrine_Table {
         if ($resultado) {
             foreach ($resultado as $reg) {
                 $objUsuario = new Usuarios();
-
+                
                 $objUsuario->setCurso($reg['curso']);
                 $objUsuario->setDataNascimento($reg['data_nascimento']);
                 $objUsuario->setEmail($reg['email']);

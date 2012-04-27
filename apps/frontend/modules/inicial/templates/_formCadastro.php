@@ -130,7 +130,7 @@ $valoresInciais = $form->getTaintedValues();
             <label class="control-label" for="optionsCheckbox">Lembrar dados</label>
             <div class="controls">
                 <label class="checkbox">
-                    <input type="checkbox" id="optionsCheckbox" value="option1">
+                <input type="checkbox" name="lembrar" value="1" >
                     Não estou em um computador público e quero me manter conectado
                 </label>
             </div>

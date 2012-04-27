@@ -1,3 +1,10 @@
+<?php
+
+if(!isset($opcao))
+    $opcao = "atualizacao";
+
+?>
+
 <div class="span2" id="sidebar">
     <div class="avatar">
         <a href="<?php url_for('perfil/index'); ?>"><img src="<?php echo image_path(UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_GRANDE)); ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>" class="photo"></a>
@@ -20,12 +27,12 @@
     </div><!-- /avatar -->
 
     <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="<?php url_for('perfil/index'); ?>"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
-        <li><a href="<?php echo url_for('perfil/exibirConteudos?u='.UsuarioLogado::getInstancia()->getIdUsuario()) ?>"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
+        <li <?php echo ($opcao=="atualizacao")?"class=\"active\"":"" ?>><a href="<?php url_for('perfil/index'); ?>"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+        <li <?php echo ($opcao=="conteudos")?"class=\"active\"":"" ?>><a href="<?php echo url_for('perfil/exibirConteudos?u='.UsuarioLogado::getInstancia()->getIdUsuario()) ?>"><span class="icon-gray icon-file"></span> Conteúdos</a></li>
         <?php /*<li><a href="comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li> */?>
-        <li><a href="<?php echo url_for('perfil/solicitacoes') ?>"><?php if (UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() > 0) { ?><span class="label label-warning" title="<?php echo UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() ?> nova(s) solicitações de amizade"><?php echo UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() ?></span><?php } ?><span class="icon-gray icon-user"></span> Amigos</a></li>
+        <li <?php echo ($opcao=="solicitacoes")?"class=\"active\"":"" ?>><a href="<?php echo url_for('perfil/exibirAmigos?u=' . UsuarioLogado::getInstancia()->getIdUsuario()) ?>"><?php if (UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() > 0) { ?><span class="label label-warning" title="<?php echo UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() ?> nova(s) solicitações de amizade"><?php echo UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() ?></span><?php } ?><span class="icon-gray icon-user"></span> Amigos</a></li>
         <?php /* <li><a href="projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li> */ ?>
         <li><hr></li>
-        <li><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
+        <li <?php echo ($opcao=="mensagem")?"class=\"active\"":"" ?>><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
     </ul>
 </div><!-- /sidebar -->

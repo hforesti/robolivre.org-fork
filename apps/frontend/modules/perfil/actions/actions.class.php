@@ -19,12 +19,7 @@ class perfilActions extends sfActions {
             return parent::execute($request);
         }
     }
-    
-    /**
-     * Executes index action
-     *
-     * @param sfRequest $request A request object
-     */
+
     public function executeIndex(sfWebRequest $request) {
         
         $this->usuario = new Usuarios(null,false,UsuarioLogado::getInstancia());
@@ -59,6 +54,8 @@ class perfilActions extends sfActions {
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
         }
         
+        $this->forward404Unless($this->usuario);
+        
         {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
@@ -79,7 +76,6 @@ class perfilActions extends sfActions {
     
     public function executeEditarPerfil(sfWebRequest $request) {
         $this->forward404Unless($usuarios = Doctrine_Core::getTable('Usuarios')->find(array(UsuarioLogado::getInstancia()->getIdUsuario())), sprintf('Object usuarios does not exist (%s).', UsuarioLogado::getInstancia()->getIdUsuario()));
-//        $usuarios = new Usuarios(null, false, UsuarioLogado::getInstancia());
         $this->formUsuario = new UsuariosForm($usuarios,null,null,  UsuariosForm::SOMENTE_INFO);
     }
     
@@ -103,8 +99,6 @@ class perfilActions extends sfActions {
         }
     }
     
-   
-    
     public function executeInformacao(sfWebRequest $request) {
         $id = $request->getParameter("u");
         
@@ -113,6 +107,8 @@ class perfilActions extends sfActions {
         }else{
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
         }
+        
+        $this->forward404Unless($this->usuario);
         
         {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
@@ -132,17 +128,20 @@ class perfilActions extends sfActions {
 
         //Util::pre(array($request->getFiles(),$request->getPostParameters()), true);
         $form = new PublicacoesForm();
+        $parametros = $request->getParameter($form->getName());
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         $form->updateObject();
         $objPublicacao = $form->getObject();
         $objPublicacao->setDataPublicacao(date('Y-m-d H:i:s'));
+        $objPublicacao->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
+        $objPublicacao->setComentario($parametros['comentario']);
         
         $tipoConteudoPublicacao = $request->getParameter('tipo_conteudo_publicacao');
         if($tipoConteudoPublicacao != Publicacoes::TIPO_LINK && $tipoConteudoPublicacao != Publicacoes::TIPO_NORMAL){
             
             $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_PUBLICACOES);
             if(!$pasta){
-                echo "sem pasta <br/>";
+                
                 $pasta = new Pastas();
                 $pasta->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
                 $pasta->setNome("Publicações de ".UsuarioLogado::getInstancia()->getNome());
@@ -266,8 +265,45 @@ class perfilActions extends sfActions {
         }
     }
     
+    public function executeExibirAmigos(sfWebRequest $request) {
+        $id = $request->getParameter("u");
+
+        if (isset($id) && $id != "" && is_numeric($id)) {
+            $id = $request->getParameter("u");
+
+            if (!isset($id) || $id == UsuarioLogado::getInstancia()->getIdUsuario()) {
+                $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia());
+            } else {
+                $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
+            }
+
+            $this->forward404Unless($this->usuario);
+
+            if ($this->usuario) {
+                
+                $nome = $request->getParameter("nome");
+                $pagina = $request->getParameter("pagina");
+                
+                if(!isset($nome) || trim($nome)==""){
+                    $nome = "";
+                }
+                
+                if (!isset($pagina) || $pagina == "" || !is_numeric($pagina)) {
+                    $pagina = 1;
+                }
+                
+                $arrayRetorno = Doctrine::getTable("Usuarios")->filtroAmigosPerfil($this->usuario->getIdUsuario(), $nome, $pagina);
+                $this->quantidadeAmigos = $arrayRetorno['quantidade'];
+                $this->amigos = $arrayRetorno['amigos'];
+                $this->nome = $nome;
+                $this->quantidadeTotalPaginas = $arrayRetorno['totalPaginas'];
+                $this->pagina = $pagina;
+            }
+        }
+    }
     public function executeExibirConteudos(sfWebRequest $request) {
         $id = $request->getParameter("u");
+        
         if (isset($id) && $id != "" && is_numeric($id)) {
             $id = $request->getParameter("u");
 
@@ -277,10 +313,37 @@ class perfilActions extends sfActions {
                 $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
             }
             
+            $this->forward404Unless($this->usuario);
+
             if($this->usuario){
-                $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
+                
+                
+                $nome = $request->getParameter("nome");
+                $pagina = $request->getParameter("pagina");
+                $isProprietario = $request->getParameter("proprietario");
+                if(!isset($nome) || trim($nome)==""){
+                    $nome = "";
+                }
+                
+                if(!isset($isProprietario) || $isProprietario==""){
+                    $isProprietario = false;
+                }  else {
+                    $isProprietario = true;
+                }
+                
+                if (!isset($pagina) || $pagina == "" || !is_numeric($pagina)) {
+                    $pagina = 1;
+                }
+                
+                $arrayRetorno = Doctrine::getTable("Conteudos")->filtroConteudosPerfil($this->usuario->getIdUsuario(),$isProprietario,$nome,$pagina);
                 $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
                 $this->arrayConteudoSeguido = $arrayRetorno['conteudos'];
+                $this->quantidadeTotalPaginas = $arrayRetorno['totalPaginas'];
+                $this->nome = $nome;
+                $this->pagina = $pagina;
+                $this->proprietario = $isProprietario;
+                        
+                
             }else{
                $this->redirect('perfil/index');
             }
@@ -319,8 +382,7 @@ class perfilActions extends sfActions {
         $this->setTemplate('atualizarFoto');
         
     }
-    
-    
+     
     public function executeConfirmarFotoPerfil(sfWebRequest $request) {
         $nome_arquivo = $request->getParameter('arq');
         

@@ -44,7 +44,7 @@ class UsuarioLogado{
                 $this->setEscola($objUsuario->getEscola());
                 $this->setProfissao($objUsuario->getProfissao());
                 $this->setAulaRobolivre($objUsuario->getAulaRobolivre());
-
+                
                 $_SESSION['sesStatusLogin'] = 'logado';
                 $_SESSION['sesIP'] = $_SERVER['REMOTE_ADDR'];
 
@@ -68,17 +68,11 @@ class UsuarioLogado{
     }
 
     public function deslogar() {
-        
         unset($_SESSION['sesStatusLogin'], $_SESSION['sesIP'], $_SESSION['sesNome'], $_SESSION['sesLogin'], $_SESSION['sesEmail'], $_SESSION['sesCurso'], $_SESSION['sesDataNascimento'], $_SESSION['sesEndereco'], $_SESSION['sesHabilidades'], $_SESSION['sesIdNivelEscolaridade'], $_SESSION['sesIdUsuario'], $_SESSION['sesSite'], $_SESSION['sesSiteEmpresa'], $_SESSION['sesSobreMim'], $_SESSION['sesSexo'],$_SESSION['sesDataCriacaoPerfil']);
-        if (isset($_SERVER['HTTP_COOKIE'])) {
-            $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
-            foreach ($cookies as $cookie) {
-                $parts = explode('=', $cookie);
-                $name = trim($parts[0]);
-                setcookie($name, '', time() - 1000);
-                setcookie($name, '', time() - 1000, '/');
-            }
-        }
+        
+        sfContext::getInstance()->getResponse()->setCookie('cooLogin', '', time() - 3600, '/');
+        sfContext::getInstance()->getResponse()->setCookie('cooSenha', '', time() - 3600, '/');
+        
     }
 
     public function atualizaSolicitacoes() {
@@ -104,6 +98,11 @@ class UsuarioLogado{
                 $this->setTwitter($objUsuario->getTwitter());
                 $this->setParametrosPrivacidade($objUsuario->getParametrosPrivacidade());
                 $this->setImagemPerfil($objUsuario->getImagemPerfil());
+                $this->setDataCriacaoPerfil($objUsuario->getDataCriacaoPerfil());
+                $this->setEmpresa($objUsuario->getEmpresa());
+                $this->setEscola($objUsuario->getEscola());
+                $this->setProfissao($objUsuario->getProfissao());
+                $this->setAulaRobolivre($objUsuario->getAulaRobolivre());
             }
 
             $this->atualizaSolicitacoes();
@@ -124,7 +123,6 @@ class UsuarioLogado{
             if(isset($_COOKIE['cooLogin']) && $_COOKIE['cooLogin']!="" && isset($_COOKIE['cooSenha']) && $_COOKIE['cooSenha']!="" ){
                 $objUsuario = Doctrine::getTable('Usuarios')->login($_COOKIE['cooLogin'], $_COOKIE['cooSenha']);
                 self::$instancia->logar($objUsuario);
-               
             }
 
         }else{
@@ -140,7 +138,11 @@ class UsuarioLogado{
     public function getDiffTempoAtualizacao() {
         return time() - $this->getUltimaAtualizacao();
     }
-
+    
+    public function isUsuarioPublico() {
+        return !($this->isLogado());
+    }
+    
     public function isLogado() {
         if (isset($_SESSION) && isset($_SESSION['sesStatusLogin']) && $_SESSION['sesStatusLogin'] == 'logado') {
             return true;
@@ -184,9 +186,13 @@ class UsuarioLogado{
     public function getNivelEscolaridade() {
         return $_SESSION['sesIdNivelEscolaridade'];
     }
-
+        
     public function getIdUsuario() {
-        return $_SESSION['sesIdUsuario'];
+        if($this->isUsuarioPublico()){
+            return "NULL";
+        }else{
+            return $_SESSION['sesIdUsuario'];
+        }
     }
 
     public function getLogin() {

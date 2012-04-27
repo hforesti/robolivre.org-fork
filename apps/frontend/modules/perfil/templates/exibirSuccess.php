@@ -15,7 +15,7 @@
                 <?php if($usuario->getProfissao()!=""){?>
                     <strong><?php echo $usuario->getProfissao() ?></strong>
                     <?php if($usuario->getEmpresa()!=""){ ?>
-                        <?php echo $usuario->getEmpresa() ?>
+                        em <?php echo $usuario->getEmpresa() ?>
                     <?php } ?>
                      ‧ 
                 <?php } ?>

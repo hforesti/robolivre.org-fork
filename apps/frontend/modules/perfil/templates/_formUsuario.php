@@ -120,7 +120,7 @@ if ($valoresInciais['data_nascimento'] != null && $valoresInciais['data_nascimen
         <div class="control-group">
             <label class="control-label" for="escola">Escola/Instituição</label>
             <div class="controls">
-                <input type="text" id="escola" value="UFPE" placeholder="Nome" class="span5">
+                <?php echo $form->getWidget('escola')->render($form->getName() . "[escola]", $valoresInciais['escola'], array('class' => "span4", 'id' => 'escola', 'placeholder' => "Nome da escola ou instituição de ensino", 'type' => 'text')); ?>
             </div>
         </div>
 

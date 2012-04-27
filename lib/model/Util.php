@@ -14,6 +14,7 @@ include_once "tipografia/php-typography.php";
  */
 class Util {
 
+    const QUANTIDADE_PAGINACAO = 10;
     const SEPARADOR_PARAMETRO = '[[*]]';
     const IMAGEM_GRANDE = 1;
     const IMAGEM_MEDIA = 2;

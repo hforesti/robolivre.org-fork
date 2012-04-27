@@ -291,18 +291,21 @@ class conteudosActions extends sfActions
     public function executePublicar(sfWebRequest $request) {
         
         $form = new PublicacoesForm();
-
+        $parametros = $request->getParameter($form->getName());
+        
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         $form->updateObject();
         $objPublicacao = $form->getObject();
         $objPublicacao->setDataPublicacao(date('Y-m-d H:i:s'));
+        $objPublicacao->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
+        $objPublicacao->setComentario($parametros['comentario']);
+        
         $tipoConteudoPublicacao = $request->getParameter('tipo_conteudo_publicacao');
         
         if($tipoConteudoPublicacao != Publicacoes::TIPO_LINK && $tipoConteudoPublicacao != Publicacoes::TIPO_NORMAL){
             
             $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_ANEXOS_CONJUNTO,$request->getParameter('id_conjunto'),Conjuntos::TIPO_CONTEUDO);
             if(!$pasta){
-                echo "sem pasta <br/>";
                 $pasta = new Pastas();
                 $pasta->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
                 $pasta->setNome("Anexo de ".UsuarioLogado::getInstancia()->getNome()." no Conteudo ".$request->getParameter('nome_conteudo'));
@@ -366,7 +369,6 @@ class conteudosActions extends sfActions
             $objPublicacao->setPrivacidadePublicacao($request->getParameter('privacidade_publicacao'));
         }
         
-
         $objPublicacao->save();
 //        die("redirect conteudo/exibir/" . Util::criaSlug($request->getParameter('nome_conteudo')));
         $this->redirect("conteudo/" . Util::criaSlug($request->getParameter('nome_conteudo')));

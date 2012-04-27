@@ -50,20 +50,24 @@
         <p><small>Adicionado por <?php echo Util::getTagUsuario($conteudo->getNomeProprietario(), $conteudo->getConjunto()->getIdUsuario()) ?>. Última atualização <?php echo $ultimaAtulizacao; ?></small></p>
 
         <div class="page-header">
-            <a href="#" class="btn btn-success pull-right"><i class="icon-ok icon-white"></i> Seguir conteúdo</a>
-            <!-- <a href="#" class="btn pull-right"><i class="icon-remove"></i> Parar de seguir</a> -->
-
+            
+            <?php if(!UsuarioLogado::getInstancia()->isUsuarioPublico()){ ?>
+                <a href="#" class="btn btn-success pull-right"><i class="icon-ok icon-white"></i> Seguir conteúdo</a>
+                <!-- <a href="#" class="btn pull-right"><i class="icon-remove"></i> Parar de seguir</a> -->
+            <?php } ?>
             <h1><?php echo $conteudo->getNome(); ?></h1>
 
         </div>
+        
+        <?php if($conteudo->getDescricao()!=""){ ?>
+            <p><?php echo $conteudo->getDescricao(); ?></p>
+            <hr>
+        <?php } ?>
+        <?php if(!UsuarioLogado::getInstancia()->isUsuarioPublico()){ ?>
+            <?php include_partial('formPublicacao', array('form' => $formPublicacao,'nome_conteudo' => $conteudo->getNome() ,'id_conjunto' => $conteudo->getIdConjunto())) ?>
+            <hr>
+        <?php } ?>
 
-        <p><?php echo $conteudo->getDescricao(); ?></p>
-
-        <hr>
-
-        <?php include_partial('formPublicacao', array('form' => $formPublicacao,'nome_conteudo' => $conteudo->getNome() ,'id_conjunto' => $conteudo->getIdConjunto())) ?>
-
-        <hr>
 
 
         <div id="stream">
