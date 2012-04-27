@@ -26,6 +26,7 @@ body.home {
 	background: url(../img/rl/bg.png) repeat-x center top;
 	padding-top:25px
 }
+body.home h3 a {color: #333}
 
 h1, h2 {
     font-family: 'RobotoThin', sans-serif;
