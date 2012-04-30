@@ -64,8 +64,6 @@ body.home .brand,
 
 .clear {clear: both; float: left; width:100%;}
 
-.navbar-fixed-top {position: fixed}
-
 .brand {
 	background: url(../img/rl/logo.png) no-repeat;
 	height: 40px;
@@ -96,7 +94,8 @@ body.home .top-login {
   		background-color: rgba(0, 0, 0, 0.03);
 	}
 	.navbar .nav li.dropdown .dropdown-toggle .caret, 
-	.navbar .nav li.dropdown.open .caret {
+	.navbar .nav li.dropdown.open .caret, 
+	.navbar .nav li.dropdown.open a:hover .caret {
 		border-top-color: #939393;
 		border-bottom-color: #939393;
 	}
