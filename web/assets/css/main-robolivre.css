@@ -15,7 +15,6 @@
          url('../fonts/Roboto-Thin-webfont.svg#RobotoThin') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 body {
@@ -96,7 +95,11 @@ body.home .top-login {
 	.navbar .nav .active > a, .navbar .nav .active > a:hover {
   		background-color: rgba(0, 0, 0, 0.03);
 	}
-	.navbar .nav .dropdown-toggle .caret, .navbar .nav .open.dropdown .caret {border-top-color: #939393}
+	.navbar .nav li.dropdown .dropdown-toggle .caret, 
+	.navbar .nav li.dropdown.open .caret {
+		border-top-color: #939393;
+		border-bottom-color: #939393;
+	}
 	.dropdown.open .dropdown-toggle {color: #000}
 	.navbar-search {margin-left: 5px}
 	.navbar-search .search-query {
@@ -132,7 +135,7 @@ body.home .top-login {
 		right: 10px
 	}
 	.btn-navbar {border-radius: 6px}
-	.btn-navbar .icon-bar {background-color: #08c}
+	.navbar .btn-navbar .icon-bar {background-color: #08c}
 	#login-form ul.extras {
 		margin: 0;
 		position: relative;
@@ -417,6 +420,8 @@ body.home .top-login {
 }
 .btn-load-more .btn {width: 96%}
 #shink-content {float: none; margin-bottom: -60px}
+
+.thumbnails .thumbnail strong {display: block;}
 
 #sidebar {
 	border:1px inset #e8e6e6;
@@ -1028,9 +1033,30 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
  */
 /* // Landscape phones and down */
 @media (max-width: 480px) {
-	#user-menu {float: left}
+.container {
+	padding-left:10px;
+	padding-right:10px;
+}
+	#user-menu,
+	.navbar .nav {
+		float: left;
+		width: 100%;
+	}
+	#user-menu .dropdown {
+		width: 100%;
+	}
+	#user-menu li,
+	.navbar .nav li {
+		float: left;
+		width: 49%;
+		white-space: normal;
+	}
+	.navbar .nav li a {
+		white-space: normal;
+	}
+	.navbar-search {clear: both;}
+	.nav-collapse .dropdown-menu {margin: 0;}
 
-.nav-collapse {overflow: auto;}
 .nav-collapse a:hover {color:#fff !important; background:#08C !important;}
 
 #searchsubmit {display: none}
@@ -1065,14 +1091,36 @@ footer .pull-left {width:100%;}
 }
 
 /* // Landscape phone to portrait tablet */
-@media (max-width: 768px) {
-	#user-menu {float: left}
+@media (max-width: 767px) {
+.container,
+.navbar-fixed-top {
+	padding-left:10px;
+	padding-right:10px;
+}
+	#user-menu,
+	.navbar .nav {
+		float: left;
+		width: 100%;
+	}
+	#user-menu .dropdown {
+		width: 100%;
+	}
+	#user-menu li,
+	.navbar .nav li {
+		float: left;
+		width: 49%;
+		white-space: normal;
+	}
+	.navbar .nav li a {
+		white-space: normal;
+	}
+	.navbar-search {clear: both;}
+	.nav-collapse .dropdown-menu {margin: 0;}
 	.navbar-search .search-query {
 		width: 95%
 	}
 	.navbar .brand {margin-left: 15px}
 
-.nav-collapse {overflow: auto;}
 .nav-collapse a:hover {color:#fff !important; background:#08C !important;}
 
 #searchsubmit {display: none}
@@ -1086,6 +1134,11 @@ footer .pull-left {width:100%;}
 #esqueci {
 	position: static;
 }
+
+#sidebar .avatar {float:left; width: 49%}
+#sidebar .nav {float:right; width: 49%}
+.only-mobile {display: block; clear: both}
+#form-status {clear: both}
 
 #top-login {
 	margin-top: 15px;
@@ -1115,12 +1168,29 @@ footer .pull-left {width:100%;}
 
 /* // Um computador por aluno */
 @media (min-width: 768px) and (max-width: 800px) {
-	#user-menu {float: left}
+	#user-menu,
+	.navbar .nav {
+		float: left;
+		width: 100%;
+	}
+	#user-menu .dropdown {
+		width: 100%;
+	}
+	#user-menu li,
+	.navbar .nav li {
+		float: left;
+		width: 49%;
+		white-space: normal;
+	}
+	.navbar .nav li a {
+		white-space: normal;
+	}
+	.navbar-search {clear: both;}
+	.nav-collapse .dropdown-menu {margin: 0;}
 	.navbar-search .search-query {
 		width: 95%
 	}
 
-.nav-collapse {overflow: auto;}
 .nav-collapse a:hover {color:#fff !important; background:#08C !important;}
 
 #searchsubmit {display: none}
@@ -1139,7 +1209,6 @@ footer .pull-left {width:25%;}
 
 /* // Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 980px) {
-background: aqua;
 	#user-menu {float: left}
 	.navbar-search .search-query {
 		width: 95%
