@@ -2,8 +2,14 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 
+
+
 conteudo:
   url:    conteudo/:slug
+  param:  { module: conteudo, action: exibir }
+  
+conteudo_acao:
+  url:    conteudo/:slug/:acao/*
   param:  { module: conteudo, action: exibir }
 
 # default rules

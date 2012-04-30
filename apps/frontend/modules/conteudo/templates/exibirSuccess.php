@@ -2,27 +2,27 @@
 
     <div class="span2" id="sidebar">
         <div class="avatar">
-            <a href="<?php echo url_for('conteudo/').Util::criaSlug($conteudo->getNome()); ?>"><img src="<?php echo image_path($conteudo->getImagemPerfil(Util::IMAGEM_GRANDE)) ?>" alt="Arduino" class="photo"></a>
+            <a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>"><img src="<?php echo image_path($conteudo->getImagemPerfil(Util::IMAGEM_GRANDE)) ?>" alt="Arduino" class="photo"></a>
             <div class="btn-group">
-                <?php if($conteudo->getConjunto()->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()){ ?>
-                <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-                    <span class="icon-cog icon-gray"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="settings.shtml">Atualizar imagem</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo url_for('conteudos/editar?u='.$conteudo->getIdConjunto()) ?>">Editar conteúdo</a>
-                    </li>
-                </ul>
+                <?php if ($conteudo->getTipoUsuario()== Conteudos::PROPRIETARIO) { ?>
+                    <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+                        <span class="icon-cog icon-gray"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="settings.shtml">Atualizar imagem</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo url_for('conteudos/editar?u=' . $conteudo->getIdConjunto()) ?>">Editar conteúdo</a>
+                        </li>
+                    </ul>
                 <?php } ?>
             </div>
 
         </div><!-- /avatar -->
         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="#"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
-            <li><a href="amigos.shtml"><span class="icon-gray icon-user"></span> Seguidores <span class="label label-info"><?php echo $quantidadeParticipantes ?></span></a></li>
+            <li class="active"><a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+            <li><a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirSeguidores") ; ?>"><span class="icon-gray icon-user"></span> Seguidores <span class="label label-info"><?php echo $quantidadeParticipantes ?></span></a></li>
             <li><a href="imagens.shtml"><span class="icon-gray icon-picture"></span> Imagens <span class="label label-info"></span></a></li>
             <li><a href="videos.shtml"><span class="icon-gray icon-film"></span> Vídeos <span class="label label-info"></span></a></li>
             <li><a href="links.shtml"><span class="icon-gray icon-share-alt"></span> Links <span class="label label-info"></span></a></li>
@@ -37,34 +37,37 @@
 
         <ul class="breadcrumb">
             <li>
-                <a href="<?php echo url_for('perfil/index');?>">Início</a> <span class="divider">/</span>
+                <a href="<?php echo url_for('perfil/index'); ?>">Início</a> <span class="divider">/</span>
             </li>
             <li>
-                <a href="<?php echo url_for('conteudos/index');?>">Conteúdos</a> <span class="divider">/</span>
+                <a href="<?php echo url_for('conteudos/index'); ?>">Conteúdos</a> <span class="divider">/</span>
             </li>
             <li class="active">
-                <a href="<?php echo url_for('conteudo/').Util::criaSlug($conteudo->getNome()); ?>"><?php echo $conteudo->getNome(); ?></a>
+                <a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>"><?php echo $conteudo->getNome(); ?></a>
             </li>
         </ul>
 
         <p><small>Adicionado por <?php echo Util::getTagUsuario($conteudo->getNomeProprietario(), $conteudo->getConjunto()->getIdUsuario()) ?>. Última atualização <?php echo $ultimaAtulizacao; ?></small></p>
 
         <div class="page-header">
-            
-            <?php if(!UsuarioLogado::getInstancia()->isUsuarioPublico()){ ?>
-                <a href="#" class="btn btn-success pull-right"><i class="icon-ok icon-white"></i> Seguir conteúdo</a>
-                <!-- <a href="#" class="btn pull-right"><i class="icon-remove"></i> Parar de seguir</a> -->
+
+            <?php if (!UsuarioLogado::getInstancia()->isUsuarioPublico()) { ?>
+                <?php if($conteudo->getTipoSolicitacao()!=Conteudos::PARTICIPANTE){ ?>
+                    <a href="<?php echo url_for('conteudos/solicitarParticipacao?u='.$conteudo->getIdConjunto()) ?>" class="btn btn-success pull-right"><i class="icon-ok icon-white"></i> Seguir conteúdo</a>
+                <?php }else if($conteudo->getTipoSolicitacao()==Conteudos::PARTICIPANTE && $conteudo->getTipoUsuario()!= Conteudos::PROPRIETARIO){ ?>
+                    <a href="<?php echo url_for('conteudos/removerParticipacao?u='.$conteudo->getIdConjunto()) ?>" class="btn pull-right"><i class="icon-remove"></i> Parar de seguir</a>
+                <?php }?>
             <?php } ?>
             <h1><?php echo $conteudo->getNome(); ?></h1>
 
         </div>
-        
-        <?php if($conteudo->getDescricao()!=""){ ?>
+
+        <?php if ($conteudo->getDescricao() != "") { ?>
             <p><?php echo $conteudo->getDescricao(); ?></p>
             <hr>
         <?php } ?>
-        <?php if(!UsuarioLogado::getInstancia()->isUsuarioPublico()){ ?>
-            <?php include_partial('formPublicacao', array('form' => $formPublicacao,'nome_conteudo' => $conteudo->getNome() ,'id_conjunto' => $conteudo->getIdConjunto())) ?>
+        <?php if (!UsuarioLogado::getInstancia()->isUsuarioPublico()) { ?>
+            <?php include_partial('formPublicacao', array('form' => $formPublicacao, 'nome_conteudo' => $conteudo->getNome(), 'id_conjunto' => $conteudo->getIdConjunto())) ?>
             <hr>
         <?php } ?>
 
@@ -91,17 +94,17 @@
         <div id="grid-conteudos" class="wdgt">
             <h3><a href="conteudos.shtml">Conteúdos relacionados <small><?php echo $quantidadeConteudosRelacionados; ?></small></a></h3>
             <ul class="thumbnails">
-                <?php foreach($arrayConteudosRelacionados as $conteudoRelacionado){ ?>
-                <?php $innerHTML = "<img src='".image_path($conteudoRelacionado->getImagemPerfil())."' alt='". $conteudoRelacionado->getNome() ."' title='".$conteudoRelacionado->getNome()."'>"; ?>
+                <?php foreach ($arrayConteudosRelacionados as $conteudoRelacionado) { ?>
+                    <?php $innerHTML = "<img src='" . image_path($conteudoRelacionado->getImagemPerfil()) . "' alt='" . $conteudoRelacionado->getNome() . "' title='" . $conteudoRelacionado->getNome() . "'>"; ?>
                     <li class="span1"><?php echo Util::getTagConteudoSlug($innerHTML, $conteudoRelacionado->getNome(), "thumbnail") ?></li>
                 <?php } ?>
             </ul>
             <a href="conteudos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-conteudos -->
 
-        <hr>
+        <?php /*<hr>
 
-<!--  <div id="grid-projetos" class="wdgt">
+        <div id="grid-projetos" class="wdgt">
             <h3><a href="projetos.shtml" title="Ver tudo">Projetos relacionados <small>15</small></a></h3>
             <ul class="thumbnails">
                 <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
@@ -113,14 +116,15 @@
             </ul>
             <a href="projetos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div> grid-comunidades -->
+         */ ?>
 
         <hr>
 
         <div id="grid-amigos" class="wdgt">
             <h3><a href="amigos.shtml" title="Ver tudo">Seguidores <small><?php echo $quantidadeParticipantes ?></small></a></h3>
             <ul class="thumbnails">
-                <?php foreach($arrayParticipantes as $usuario): ?>
-                <li ><a href="<?php echo url_for('perfil/exibir?u='.$usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada()) ?>" alt="<?php echo $usuario->getNome() ?>" title="<?php echo $usuario->getNome() ?>"></a></li>
+                <?php foreach ($arrayParticipantes as $usuario): ?>
+                    <li ><a href="<?php echo url_for('perfil/exibir?u=' . $usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada()) ?>" alt="<?php echo $usuario->getNome() ?>" title="<?php echo $usuario->getNome() ?>"></a></li>
                 <?php endforeach; ?>
             </ul>
             <a href="amigos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
@@ -140,9 +144,9 @@
     }
     
     function getPublicacoesAntigasConteudos() {      
-    try{        
-        $.ajax({
-                url: <?php echo "'" . url_for("ajax/ajaxReceberMaisPublicacaoConteudo") . "?id_conjunto=".$conteudo->getIdConjunto()."&ultimo_id_publicacao='+getUltimoId()" ?>,
+        try{        
+            $.ajax({
+                url: <?php echo "'" . url_for("ajax/ajaxReceberMaisPublicacaoConteudo") . "?id_conjunto=" . $conteudo->getIdConjunto() . "&ultimo_id_publicacao='+getUltimoId()" ?>,
                 success: function(resposta){
                     if(resposta!=""){
                         $("#ul-steam").append(resposta);
@@ -151,7 +155,7 @@
                     }
                 }
             });
-            }catch(e){alert(e);}
+        }catch(e){alert(e);}
     }//END getPublicacoesAntigas
     
     

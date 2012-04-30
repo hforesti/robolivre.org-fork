@@ -84,14 +84,26 @@ class conteudosActions extends sfActions
         $participacao = new ParticipantesConjuntos();
         $id = $request->getParameter("u");
         
-        if(isset($id) && $id != UsuarioLogado::getInstancia()->getIdUsuario()){
-            $participacao->solicitarParticipacao($id);
-            Doctrine::getTable("ParticipantesConjuntos")->solicitarParticipacao($participacao);
-            $slug = Doctrine::getTable("Conjuntos")->getSlug($id);
-            $this->redirect("conteudo/$slug");
-        }else{
-            throw new Exception("ID da participação não encontrado");
-        }
+        $this->forward404Unless(isset($id) && $id!="");
+
+        $participacao->solicitarParticipacao($id);
+        Doctrine::getTable("ParticipantesConjuntos")->solicitarParticipacao($participacao);
+        $slug = Doctrine::getTable("Conjuntos")->getSlug($id);
+        $this->redirect("conteudo/$slug");
+
+    }
+    
+    public function executeRemoverParticipacao(sfWebRequest $request) {
+        $participacao = new ParticipantesConjuntos();
+        $id = $request->getParameter("u");
+        
+        $this->forward404Unless(isset($id) && $id!="");
+
+        $participacao->solicitarParticipacao($id);
+        Doctrine::getTable("ParticipantesConjuntos")->removerParticipacao($participacao);
+        $slug = Doctrine::getTable("Conjuntos")->getSlug($id);
+        $this->redirect("conteudo/$slug");
+
     }
     
     private function criarTumbnails(sfWebRequest $request,$slugConteudo){

@@ -26,7 +26,7 @@ class ConteudosTable extends Doctrine_Table {
             FROM conteudos c 
             LEFT JOIN conjuntos i ON c.id_conjunto = i.id_conjunto AND c.id_tipo_conjunto = i.id_tipo_conjunto  
             LEFT JOIN participantes_conjuntos p ON p.id_conjunto = i.id_conjunto AND p.id_tipo_conjunto = i.id_tipo_conjunto
-            WHERE p.id_usuario = $idUsuario OR i.id_usuario = $idUsuario
+            WHERE p.id_usuario = $idUsuario AND p.aceito  = 1 OR i.id_usuario = $idUsuario
             LIMIT 0, 20
         ";
 
@@ -35,7 +35,7 @@ class ConteudosTable extends Doctrine_Table {
             FROM conteudos c 
             LEFT JOIN conjuntos i ON c.id_conjunto = i.id_conjunto AND c.id_tipo_conjunto = i.id_tipo_conjunto  
             LEFT JOIN participantes_conjuntos p ON p.id_conjunto = i.id_conjunto AND p.id_tipo_conjunto = i.id_tipo_conjunto
-            WHERE p.id_usuario = $idUsuario OR i.id_usuario = $idUsuario
+            WHERE p.id_usuario = $idUsuario AND p.aceito  = 1 OR i.id_usuario = $idUsuario
         ";
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
@@ -156,6 +156,7 @@ class ConteudosTable extends Doctrine_Table {
 
                 if ($conjunto->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()) {
                     $conteudo->setTipoUsuario(Conteudos::PROPRIETARIO);
+                    $conteudo->setTipoSolicitacao(Conteudos::PARTICIPANTE);
                 } else {
                     $conteudo->setTipoUsuario($reg['t.id_tipo_permissao_conjunto']);
                     if ($reg['participante'] == null) {
@@ -295,6 +296,7 @@ class ConteudosTable extends Doctrine_Table {
                 
                 if ($conjunto->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()) {
                     $conteudo->setTipoUsuario(Conteudos::PROPRIETARIO);
+                    $conteudo->setTipoSolicitacao(Conteudos::PARTICIPANTE);
                 } else {
                     $conteudo->setTipoUsuario($reg['t.id_tipo_permissao_conjunto']);
                     if ($reg['participante'] == null) {
@@ -376,6 +378,7 @@ class ConteudosTable extends Doctrine_Table {
 
                 if ($conjunto->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()) {
                     $conteudo->setTipoUsuario(Conteudos::PROPRIETARIO);
+                    $conteudo->setTipoSolicitacao(Conteudos::PARTICIPANTE);
                 } else {
                     $conteudo->setTipoUsuario($reg['t.id_tipo_permissao_conjunto']);
                     if ($reg['participante'] == null) {

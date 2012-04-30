@@ -14,10 +14,10 @@ class conteudoActions extends sfActions {
 //        if (!UsuarioLogado::getInstancia()->isLogado()) {
 //            $this->redirect("inicial/index");
 //        } else {
-            return parent::execute($request);
+        return parent::execute($request);
 //        }
     }
-    
+
     /**
      * Executes index action
      *
@@ -26,31 +26,74 @@ class conteudoActions extends sfActions {
     public function executeIndex(sfWebRequest $request) {
         $this->redirect("conteudos/index");
     }
-    
+
     public function executeExibir(sfWebRequest $request) {
+
+
+        $acao = $request->getParameter('acao');
+
+        switch ($acao) {
+
+            case 'exibirSeguidores' : $this->executeExibirSeguidores($request);
+                return;
+            case '' :
+            case 'index' :
+                break;
+            default: $this->forward404("Ação '$acao' inexistente em conteudo");
+                return;
+        }
+
         $slug = $request->getParameter('slug');
-        
-        if(!isset($slug)){
+
+        if (!isset($slug)) {
             $this->redirect('conteudos/index');
-        }else{
+        } else {
             $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
             $this->formPublicacao = new PublicacoesForm();
             $this->publicacoesConjunto = Doctrine::getTable("Publicacoes")->getPublicacoesDoConjunto($this->conteudo->getIdConjunto()); //array();
             $chaves = array_keys($this->publicacoesConjunto);
-            $this->ultimaAtulizacao = Util::getDataFormatada($this->publicacoesConjunto[$chaves[0]]->getDataPublicacao());
-            
-            {
+            $this->ultimaAtulizacao = Util::getDataFormatada($this->publicacoesConjunto[$chaves[0]]->getDataPublicacao()); {
                 $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
                 $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
-                $this->arrayParticipantes = array_splice($arrayRetorno['participantes'],0,6);
-            }
-            
-            {
+                $this->arrayParticipantes = array_splice($arrayRetorno['participantes'], 0, 6);
+            } {
                 $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosRelacionados($this->conteudo->getIdConjunto());
                 $this->quantidadeConteudosRelacionados = $arrayRetorno['quantidade'];
-                $this->arrayConteudosRelacionados = array_splice($arrayRetorno['conteudos'],0,9);
+                $this->arrayConteudosRelacionados = array_splice($arrayRetorno['conteudos'], 0, 9);
             }
-            
         }
     }
+
+    public function executeExibirSeguidores(sfWebRequest $request) {
+        
+        $slug = $request->getParameter('slug');
+
+        $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
+
+
+        $this->forward404Unless($this->conteudo);
+
+
+
+        $nome = $request->getParameter("nome");
+        $pagina = $request->getParameter("pagina");
+
+        if (!isset($nome) || trim($nome) == "") {
+            $nome = "";
+        }
+
+        if (!isset($pagina) || $pagina == "" || !is_numeric($pagina)) {
+            $pagina = 1;
+        }
+
+        $arrayRetorno = Doctrine::getTable("Usuarios")->filtroSeguidoresConteudo($this->conteudo->getIdConjunto(), $nome, $pagina);
+        $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
+        $this->participantes = $arrayRetorno['participantes'];
+        $this->nome = $nome;
+        $this->quantidadeTotalPaginas = $arrayRetorno['totalPaginas'];
+        $this->pagina = $pagina;
+        
+        $this->setTemplate("exibirSeguidores");
+    }
+
 }

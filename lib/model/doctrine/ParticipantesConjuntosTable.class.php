@@ -38,7 +38,7 @@ class ParticipantesConjuntosTable extends Doctrine_Table
             $statement->execute();
         } else {
             $query = "UPDATE participantes_conjuntos 
-                 SET aceito = 0
+                 SET aceito = 1
                 WHERE id_usuario = " . $participacao->getIdUsuario() . " AND id_conjunto = " . $participacao->getIdConjunto()." AND id_tipo_conjunto = " . $participacao->getIdTipoConjunto();
             $connection = Doctrine_Manager::getInstance()
                             ->getCurrentConnection()->getDbh();
@@ -75,6 +75,21 @@ class ParticipantesConjuntosTable extends Doctrine_Table
 
         $objPublicacao->save();
         
+    }
+    
+    public function removerParticipacao(ParticipantesConjuntos $participacao){
+        
+        $query = "UPDATE participantes_conjuntos 
+                SET aceito = NULL
+            WHERE id_usuario = " . $participacao->getIdUsuario() . " AND id_conjunto = " . $participacao->getIdConjunto()." AND id_tipo_conjunto = " . $participacao->getIdTipoConjunto().";
+                UPDATE publicacoes 
+                SET visivel = 0 WHERE tipo_publicacao = ".Publicacoes::SEGUIR_CONTEUDO." AND id_usuario = " . $participacao->getIdUsuario() . " AND id_conjunto = " . $participacao->getIdConjunto()."";
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+        $statement = $connection->prepare($query);
+        // Make Statement  
+        $statement->execute();
     }
     
     

@@ -73,7 +73,7 @@
             <a href="conteudos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-conteudos -->
 
-        <hr>
+        <?php /*<hr>
 
         <div id="grid-comunidades" class="wdgt">
             <h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
@@ -87,6 +87,7 @@
             </ul>
             <a href="comunidades.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-comunidades -->
+         */ ?>
 
         <hr>
 

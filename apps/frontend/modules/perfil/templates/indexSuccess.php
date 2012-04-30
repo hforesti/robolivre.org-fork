@@ -1,9 +1,7 @@
-<!--#include virtual="includes/header.html" -->
-
 <div class="row">
 
     <?php include_partial('sidebarUsuarioLogado') ?>
-    
+
     <hr class="only-mobile">
 
     <div class="span7">
@@ -37,7 +35,8 @@
 
                     <ul id="ul-steam-conteudos">
                         <?php foreach ($publicacoesHome['conteudos'] as $publicacao) { ?>                    
-                            <?php echo $publicacao->imprimir();
+                            <?php
+                            echo $publicacao->imprimir();
 
                             /* 'formPublicacao',array('form' => $formPublicacao,
                               'id_publicacao_original' => $publicacao->getIdPublicacao(),
@@ -66,7 +65,8 @@
                 <div class="tab-pane fade in" id="2">
                     <ul id="ul-steam-amigos">
                         <?php foreach ($publicacoesHome['amigos'] as $publicacao) { ?>                    
-                            <?php echo $publicacao->imprimir();
+                            <?php
+                            echo $publicacao->imprimir();
 
                             /* 'formPublicacao',array('form' => $formPublicacao,
                               'id_publicacao_original' => $publicacao->getIdPublicacao(),
@@ -82,47 +82,47 @@
 
         </div><!-- stream -->
 
-        
+
 
     </div><!-- /miolo -->
 
 
     <div class="span3" id="sidebar-wdgt">
-                
+
         <div id="grid-conteudos" class="wdgt">
-            <h3><a href="<?php echo url_for('perfil/exibirConteudos?u='.UsuarioLogado::getInstancia()->getIdUsuario()) ?>">Conteúdos seguidos <small><?php echo $quantidadeConteudoSeguido; ?></small></a></h3>
+            <h3><a href="<?php echo url_for('perfil/exibirConteudos?u=' . UsuarioLogado::getInstancia()->getIdUsuario()) ?>">Conteúdos seguidos <small><?php echo $quantidadeConteudoSeguido; ?></small></a></h3>
             <ul class="thumbnails">
-                <?php foreach($arrayConteudoSeguido as $conteudo): ?>
-                    <?php $innerHTML = "<img src='".image_path($conteudo->getImagemPerfil())."' alt='". $conteudo->getNome() ."' title='".$conteudo->getNome()."'>"; ?>
+                <?php foreach ($arrayConteudoSeguido as $conteudo): ?>
+                    <?php $innerHTML = "<img src='" . image_path($conteudo->getImagemPerfil()) . "' alt='" . $conteudo->getNome() . "' title='" . $conteudo->getNome() . "'>"; ?>
                     <li class="span1"><?php echo Util::getTagConteudoSlug($innerHTML, $conteudo->getNome(), "thumbnail") ?></li>
-                <?php endforeach; ?>
+<?php endforeach; ?>
             </ul>
-            <a href="<?php echo url_for('perfil/exibirConteudos?u='.UsuarioLogado::getInstancia()->getIdUsuario()) ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+            <a href="<?php echo url_for('perfil/exibirConteudos?u=' . UsuarioLogado::getInstancia()->getIdUsuario()) ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-conteudos -->
 
-        <hr>
+        <?php /*<hr>
 
-<!--        <div id="grid-comunidades" class="wdgt">
-            <h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
-            <ul class="thumbnails">
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-            </ul>
-            <a href="comunidades.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
-        </div> grid-comunidades -->
+        <div id="grid-comunidades" class="wdgt">
+                    <h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
+                    <ul class="thumbnails">
+                        <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                        <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                        <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                        <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                        <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                        <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
+                    </ul>
+                    <a href="comunidades.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+                </div> grid-comunidades */?>
 
         <hr>
 
         <div id="grid-amigos" class="wdgt">
             <h3><a href="amigos.shtml" title="Ver tudo">Amigos <small><?php echo $quantidadeAmigos ?></small></a></h3>
             <ul class="thumbnails">
-                <?php foreach($arrayAmigos as $usuario): ?>
-                <li ><a href="<?php echo url_for('perfil/exibir?u='.$usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada()) ?>" alt="<?php echo $usuario->getNome() ?>" title="<?php echo $usuario->getNome() ?>"></a></li>
-                <?php endforeach; ?>
+                <?php foreach ($arrayAmigos as $usuario): ?>
+                    <li ><a href="<?php echo url_for('perfil/exibir?u=' . $usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada()) ?>" alt="<?php echo $usuario->getNome() ?>" title="<?php echo $usuario->getNome() ?>"></a></li>
+<?php endforeach; ?>
             </ul>
             <a href="amigos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-amigos -->
@@ -153,30 +153,30 @@
     }
     
     function getPublicacoesAntigasAmigos() {        
-            $.ajax({
-                url: <?php echo "'" . url_for("ajax/ajaxReceberMaisPublicacaoAmigosHome") . "?ultimo_id_publicacao='+getUltimoIdAmigos()" ?>,
-                success: function(resposta){
-                    if(resposta!=""){
-                        $("#ul-steam-amigos").append(resposta);
-                    }else{
-                        $("#pagination2").remove();
-                    }
+        $.ajax({
+            url: <?php echo "'" . url_for("ajax/ajaxReceberMaisPublicacaoAmigosHome") . "?ultimo_id_publicacao='+getUltimoIdAmigos()" ?>,
+            success: function(resposta){
+                if(resposta!=""){
+                    $("#ul-steam-amigos").append(resposta);
+                }else{
+                    $("#pagination2").remove();
                 }
-            });
+            }
+        });
         
     }//END getPublicacoesAntigas
     
     function getPublicacoesAntigasConteudos() {      
-            $.ajax({
-                url: <?php echo "'" . url_for("ajax/ajaxReceberMaisPublicacaoConteudosHome") . "?ultimo_id_publicacao='+getUltimoIdConteudos()" ?>,
-                success: function(resposta){
-                    if(resposta!=""){
-                        $("#ul-steam-conteudos").append(resposta);
-                    }else{
-                        $("#pagination").remove();
-                    }
+        $.ajax({
+            url: <?php echo "'" . url_for("ajax/ajaxReceberMaisPublicacaoConteudosHome") . "?ultimo_id_publicacao='+getUltimoIdConteudos()" ?>,
+            success: function(resposta){
+                if(resposta!=""){
+                    $("#ul-steam-conteudos").append(resposta);
+                }else{
+                    $("#pagination").remove();
                 }
-            });
+            }
+        });
     }//END getPublicacoesAntigas
     
     

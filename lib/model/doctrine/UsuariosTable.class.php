@@ -16,6 +16,106 @@ class UsuariosTable extends Doctrine_Table {
         return Doctrine_Core::getTable('Usuarios');
     }
 
+    public function filtroSeguidoresConteudo($idConjunto, $nome = null, $indicePagina = 1) {
+        $arrayRetorno = array();
+        $qtdParticipantes = 0;
+        $arrayAmigos = array();
+
+        $queryParticipantes = "
+            SELECT u.*
+            FROM usuarios u 
+            LEFT JOIN participantes_conjuntos p 
+            ON u.id_usuario = p.id_usuario AND p.id_conjunto = $idConjunto
+            LEFT JOIN conjuntos i
+            ON  u.id_usuario  = i.id_usuario AND i.id_conjunto = $idConjunto
+            WHERE ((p.aceito = 1 AND p.id_conjunto = $idConjunto) OR u.id_usuario = i.id_usuario)";
+        if ($nome != null && trim($nome)!="") {
+            $queryParticipantes .= "  AND u.nome LIKE '%$nome%' ";
+        }
+        
+        $queryParticipantes .= " ORDER BY u.nome
+            LIMIT " . (($indicePagina - 1) * Util::QUANTIDADE_PAGINACAO) . ", " . Util::QUANTIDADE_PAGINACAO;
+        
+        $queryQuantidade = "
+            SELECT COUNT(*) AS \"quantidade\"
+            FROM usuarios u 
+            LEFT JOIN participantes_conjuntos p 
+            ON u.id_usuario = p.id_usuario  AND p.id_conjunto = $idConjunto
+            LEFT JOIN conjuntos i
+            ON  u.id_usuario  = i.id_usuario AND i.id_conjunto = $idConjunto
+            WHERE ((p.aceito = 1 AND p.id_conjunto = $idConjunto) OR u.id_usuario = i.id_usuario)";
+        if ($nome != null && trim($nome)!="") {
+            $queryQuantidade .= "  AND u.nome LIKE '%$nome%' ";
+        }
+        
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($queryQuantidade);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $qtdParticipantes = $reg['quantidade'];
+                break;
+            }
+        }
+
+        $statement = $connection->prepare($queryParticipantes);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $objUsuario = new Usuarios();
+                $objUsuario->setCurso($reg['curso']);
+                $objUsuario->setDataNascimento($reg['data_nascimento']);
+                $objUsuario->setEmail($reg['email']);
+                $objUsuario->setEndereco($reg['endereco']);
+                $objUsuario->setHabilidades($reg['habilidades']);
+                $objUsuario->setNivelEscolaridade($reg['nivel_escolaridade']);
+                $objUsuario->setIdUsuario($reg['id_usuario']);
+                $objUsuario->setLogin($reg['login']);
+                $objUsuario->setSexo($reg['sexo']);
+                $objUsuario->setSite($reg['site']);
+                $objUsuario->setSiteEmpresa($reg['site_empresa']);
+                $objUsuario->setSobreMim($reg['sobre_mim']);
+                $objUsuario->setNome($reg['nome']);
+                $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+                $objUsuario->setDataCriacaoPerfil($reg['data_criacao_perfil']);
+                $objUsuario->setEmpresa($reg['empresa']);
+                $objUsuario->setEscola($reg['escola']);
+                $objUsuario->setProfissao($reg['profissao']);
+                $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
+                
+                $arrayAmigos[] = $objUsuario;
+            }
+        }
+        
+        $total = (int) ($qtdParticipantes / Util::QUANTIDADE_PAGINACAO);
+        //caso a divisão real seja maior que a divisão inteira (resto)
+        if (($qtdParticipantes / Util::QUANTIDADE_PAGINACAO) > $total) {
+            ++$total;
+        }
+
+        $arrayRetorno['quantidade'] = $qtdParticipantes;
+        $arrayRetorno['participantes'] = $arrayAmigos;
+        $arrayRetorno['totalPaginas'] = $total;
+
+        return $arrayRetorno;
+    }
+    
     public function filtroAmigosPerfil($idUsuario, $nome = null, $indicePagina = 1) {
         $arrayRetorno = array();
         $qtdAmigos = 0;
@@ -190,7 +290,7 @@ class UsuariosTable extends Doctrine_Table {
             SELECT u.*
             FROM usuarios u 
             LEFT JOIN participantes_conjuntos p 
-            ON u.id_usuario = p.id_usuario
+            ON u.id_usuario = p.id_usuario AND p.id_conjunto = $idConjunto
             LEFT JOIN conjuntos i
             ON  u.id_usuario  = i.id_usuario AND i.id_conjunto = $idConjunto
             WHERE (p.aceito = 1 AND p.id_conjunto = $idConjunto) OR u.id_usuario = i.id_usuario
@@ -200,7 +300,7 @@ class UsuariosTable extends Doctrine_Table {
             SELECT COUNT(*) AS \"quantidade\"
             FROM usuarios u 
             LEFT JOIN participantes_conjuntos p 
-            ON u.id_usuario = p.id_usuario
+            ON u.id_usuario = p.id_usuario AND p.id_conjunto = $idConjunto
             LEFT JOIN conjuntos i
             ON  u.id_usuario  = i.id_usuario AND i.id_conjunto = $idConjunto
             WHERE (p.aceito = 1 AND p.id_conjunto = $idConjunto) OR u.id_usuario = i.id_usuario";
