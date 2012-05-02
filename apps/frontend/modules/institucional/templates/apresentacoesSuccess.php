@@ -50,7 +50,7 @@
         </table>
 
         <p>
-            Não encontrou uma apresentação nossa? <a href="<?php echo url_for("contato") ?>">Entre em contato conosco</a>.
+            Não encontrou uma apresentação nossa? <a href="<?php echo url_for("contato/index") ?>">Entre em contato conosco</a>.
         </p>
 
     </div>
