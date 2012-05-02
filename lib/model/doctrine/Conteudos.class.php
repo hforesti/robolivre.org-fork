@@ -21,6 +21,7 @@ class Conteudos extends BaseConteudos
     private $quantidadeVideos;
     private $quantidadeLinks;
     private $quantidadeSeguidores;
+    private $pontos;
     
     const PROPRIETARIO = -1;
     const NAO_PARTICIPA = -2;
@@ -116,6 +117,14 @@ class Conteudos extends BaseConteudos
 
     public function setQuantidadeSeguidores($quantidadeSeguidores) {
         $this->quantidadeSeguidores = $quantidadeSeguidores;
+    }
+    
+    public function getPontos() {
+        return $this->pontos;
+    }
+
+    public function setPontos($pontos) {
+        $this->pontos = $pontos;
     }
 
 }

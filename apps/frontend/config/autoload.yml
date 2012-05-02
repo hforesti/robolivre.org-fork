@@ -1,0 +1,6 @@
+autoload:
+  bibliotecas:
+    name:      Biblioteca classes Robolivre
+    ext:       php
+    path:      %SF_LIB_DIR%/robolivre
+    recursive: true

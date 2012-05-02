@@ -96,6 +96,7 @@ class Publicacoes extends BasePublicacoes {
         sfContext::getInstance()->getConfiguration()->loadHelpers(array('Helper', 'Tag', 'Url', 'Asset'));
         
         $comMenuDropDown = true;
+        $comPermaLink = true;
         $string = "";
         if ($this->getTipoPublicacao() == self::PUBLICACAO_COMUM) {
             $string .= "<li class=\"vcard\">";
@@ -155,11 +156,165 @@ class Publicacoes extends BasePublicacoes {
                 $string .= "<li class=\"visivel-para\"><i class=\"icon-eye-open\" title=\"Público\"></i></li>";
             }else if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_SOMENTE_AMIGOS){
                 $string .= "<li class=\"visivel-para\"><i class=\"icon-user\" title=\"Só para amigos\"></i></li>";
+                $comPermaLink = false;
+                $comMenuDropDown = false;
             }else if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_PRIVADA){
-                $string .= "<li class=\"visivel-para\"><i class=\"icon-lock\" title=\"Privada\"></i></li>";
+                $string .= "<li class=\"visivel-para\"><i class=\"icon-lock\" title=\"Privado\"></i></li>";
+                $comPermaLink = false;
+                $comMenuDropDown = false;
             }
             
-            $string .= "<span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">" . Util::getDataSimplificada($this->getDataPublicacao()) . "</span>";
+            if($comPermaLink){
+             $time = "<a href=\"".  url_for("publicacao/exibir?u=".$this->getIdPublicacao())."\">".Util::getDataSimplificada($this->getDataPublicacao())."</a>";
+            }else{
+                $time = Util::getDataSimplificada($this->getDataPublicacao());
+            }
+            $string .= "<span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">$time</span>";
+            $string .= "</ul>";
+            
+            $string .= "<ul class=\"comments\">";
+            if(count($this->getGrupoComentarios())>0){
+                
+                foreach ($this->getGrupoComentarios() as $comentario) {
+                    $string .= "<li><a href=\"" . url_for('perfil/exibir?u=' . $comentario->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario()) . "\" alt=\"".$comentario->getNomeUsuario()."\" title=\"".$comentario->getNomeUsuario()."\"></a>";
+                    $string .= Util::getTagUsuario($comentario->getNomeUsuario(), $comentario->getIdUsuario());
+                    $string .= "<div class=\"comment\">";
+                    $string .= "<p>".Util::getTextoFormatado($comentario->getComentario())."</p>";
+                    $string .= "</div>";
+                    $string .= "<a class=\"close\" title=\"Excluir seu comentário\">&times;</a>";
+                    $string .= "</li>";
+                    
+                    
+                }
+                
+                
+            }
+
+            //se tem formulário de comentário
+            if($nomeForm!=null && $arrayParametrosInclude != null){
+                include_partial($nomeForm, $arrayParametrosInclude);
+            }
+
+            $string .= "</ul>";
+            
+            $string .= "</div><!-- entry -->";
+            
+            
+            
+            
+         /** ATIVIDADES **/   
+            
+            
+        //CRIACAO DE CONTEUDO OU COMUNIODADE    
+        } else if ($this->getTipoPublicacao() == self::CRIACAO_CONJUNTO) {
+            $comMenuDropDown = false;
+            $string .= "<li class=\"vcard activity\">";
+            $string .= "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario(Util::IMAGEM_MINIATURA)) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
+            $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
+            $string .= " criou ";
+            $string .= Util::getTagConteudo($this->getNomeConjunto(),"fn",true);
+            $string .= ". <span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">" . Util::getDataSimplificada($this->getDataPublicacao()) . "</span>";
+           
+        //SEGUINDO CONTEÚDO
+        } else if ($this->getTipoPublicacao() == self::SEGUIR_CONTEUDO) {
+            $comMenuDropDown = false;
+            $string .= "<li class=\"vcard activity\">";
+            $string .= "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario(Util::IMAGEM_MINIATURA)) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
+            $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
+
+            $string .= " está seguindo ";
+            $string .= Util::getTagConteudo($this->getNomeConjunto(),"fn",true);
+            $string .= ". <span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">" . Util::getDataSimplificada($this->getDataPublicacao()) . "</span>";
+        }
+
+        if($comMenuDropDown){
+                $string .= "<div class=\"btn-group\">";
+                $string .= "<a class=\"btn btn-mini dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" title=\"Opções\">";
+                $string .= "<span class=\"icon-share  icon-gray\"></span>";
+                $string .= "</a>";        
+                $string .= "<ul class=\"dropdown-menu\">";
+                $string .= "<li>";
+                $string .= "<a href=\"#\">Compartilhar no Twitter</a>";
+                $string .= "</li>";
+                $string .= "<li>";
+                $string .= "<a href=\"#\">Compartilhar no Facebook</a>";
+                $string .= "</li>";
+                $string .= "<li class=\"divider\"></li>";
+                $string .= "<li>";
+                $string .= "<a href=\"#\"><i class=\"icon-flag\"></i> Reportar abuso</a>";
+                $string .= "</li>";
+                $string .= "</ul>";
+                $string .= "</div>";
+        }
+        $string .= "<input type='hidden' name='id_ultima_publicacao' class='input-id-ultima-publicacao' value='".$this->getIdPublicacao()."' >";
+        $string .= "</li>";
+        return $string;
+    }
+    
+    public function getImpressaoEmConteudo($nomeForm = null,$arrayParametrosInclude = null) {
+       
+        sfContext::getInstance()->getConfiguration()->loadHelpers(array('Helper', 'Tag', 'Url', 'Asset'));
+        
+        $comMenuDropDown = true;
+        $comPermaLink = true;
+        $string = "";
+        if ($this->getTipoPublicacao() == self::PUBLICACAO_COMUM) {
+            $string .= "<li class=\"vcard\">";
+            $string .= "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\">";
+            $string .= "<img src=\"" . image_path($this->getImagemPerfilUsuario()) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\">";
+                
+            
+                 
+            //NO CONJUNTO (COMUNIDADE OU CONTEUDO)
+            if ($this->getIdConjunto() != null) {
+                $string .= "<img src=\"" . image_path($this->getImagemPerfilConjunto()) . "\" alt=\"" . $this->getNomeConjunto() . "\" title=\"" . $this->getNomeConjunto() . "\" class=\"sub-icon\">";
+                $string .="</a>";
+                $string .= "<div class=\"entry\">";       
+                $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
+            }
+            
+            if($this->getLink()!="" && $this->getLink()!=null){
+                $title = Util::getTitle($this->getLink());
+                $string .="<blockquote><p>";
+                $string .="<a target=\"_blank\" href=\"".$this->getLink()."\">$title</a>";
+                $string .="</p></blockquote>";
+            }else if($this->getIdPasta()!=null && $this->getIdPasta()!=""){
+                if($this->getIdImagem()!=null && $this->getIdImagem()!=""){
+                    $imagem = Doctrine::getTable('Imagens')->find(array($this->getIdImagem(),$this->getIdUsuario(),$this->getIdPasta()));
+                    $array = explode(".",$imagem->getNomeArquivo());
+                    
+                    $diretorioArquivo = Util::getLinkFotosPublicacoes($this->getIdUsuario())."/".$array[0].'_min'.'.'.$array[1];
+                    
+                    $string .= "<div class=\"share-content\">";
+                    $string .= "<img src=\"".image_path($diretorioArquivo)."\" alt=\"Imagem compartilhada\" class=\"thumbnail\">";
+                    $string .= "</div>";
+                    
+                }else if($this->getIdVideo()!=null && $this->getIdVideo()!=""){
+                    
+                }
+            }
+            
+            $string .= "<p>".Util::getTextoFormatado($this->getComentario())."</p>";
+            $string .= "<ul class=\"meta\">";
+            
+            if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_PUBLICA){
+                $string .= "<li class=\"visivel-para\"><i class=\"icon-eye-open\" title=\"Público\"></i></li>";
+            }else if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_SOMENTE_AMIGOS){
+                $string .= "<li class=\"visivel-para\"><i class=\"icon-user\" title=\"Só para amigos\"></i></li>";
+                $comPermaLink = false;
+                $comMenuDropDown = false;
+            }else if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_PRIVADA){
+                $string .= "<li class=\"visivel-para\"><i class=\"icon-lock\" title=\"Privado\"></i></li>";
+                $comPermaLink = false;
+                $comMenuDropDown = false;
+            }
+            
+            if($comPermaLink){
+             $time = "<a href=\"".  url_for("publicacao/exibir?u=".$this->getIdPublicacao())."\">".Util::getDataSimplificada($this->getDataPublicacao())."</a>";
+            }else{
+                $time = Util::getDataSimplificada($this->getDataPublicacao());
+            }
+            $string .= "<span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">$time</span>";
             $string .= "</ul>";
             
             $string .= "<ul class=\"comments\">";

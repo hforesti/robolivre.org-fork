@@ -1,10 +1,25 @@
-<div class="row">
+<div class="modal fade" id="modalInfo">
+    <div class="modal-header">
+        <h3>Simples como 1, 2, 3</h3>
+    </div>
+    <div class="modal-body">
+        <p>Antes de começar a buscar e criar conteúdos:</p>
 
+        <p><span class="label label-success">1</span> Pense <strong>Conteúdo</strong> aqui na rede como galhos de uma árvore;</p>
+        <p><span class="label label-success">2</span> Em cada conteúdo é possível encontrar coisas "penduradas" (Imagens, links...);</p>
+        <p><span class="label label-success">3</span> Eles podem estar conectados, ou seja, ser conteúdos relacionados.</p>
+
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn btn-primary btn-large" data-dismiss="modal"><i class="icon-ok icon-white"></i> Começar a explorar e colaborar</a>
+    </div>
+</div>
+
+<div class="row">
 
     <hr class="only-mobile">
 
     <div class="span10 offset1">
-
 
         <div class="page-header">
 
@@ -43,182 +58,172 @@
 
 
         <div id="explore" class="clearfix">
-<h2>Explore nosso mundo de conteúdos</h2>
-<form class="form-search" action="#">
-  <input type="text" id="search-content" class="span5 search-query" placeholder="Procurar conteúdo…">
-</form>
+            <h2>Explore nosso mundo de conteúdos</h2>
+            <form class="form-search" action="#">
+                <input type="text" id="search-content" class="span5 search-query" placeholder="Procurar conteúdo…">
+            </form>
 
-	<div id="featured">
+            <div id="featured">
 
-<ul class="nav nav-pills">
-  <li class="active">
-    <a href="#thumbs" data-toggle="tab"><i class="icon-fire icon-gray"></i> Mais Populares</a>
-  </li>
-  <li><a href="#tags" data-toggle="tab"><i class="icon-tags icon-gray"></i> Nuvem de Tags</a></li>
-</ul>
+                <ul class="nav nav-pills">
+                    <li class="active">
+                        <a href="#thumbs" data-toggle="tab"><i class="icon-fire icon-gray"></i> Mais Populares</a>
+                    </li>
+                    <li><a href="#tags" data-toggle="tab"><i class="icon-tags icon-gray"></i> Nuvem de Tags</a></li>
+                </ul>
 
-<hr>
+                <hr>
 
-<div class="tab-content">
-  <div class="tab-pane active fade in" id="thumbs">
+                <div class="tab-content">
+                    <div class="tab-pane active fade in" id="thumbs">
 
-	<ul class="thumbnails">
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Nome do conteúdo</h5></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Apostila de C para PIC</h5></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Sistema de Processamento Principal - ARM</h5></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Arduino</h5> <span class="label label-info">Tema de aula</span></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Projeto Mecânico 22</h5></div></li>
-	</ul>
+                        <ul>
+                            <?php foreach($melhoresConteudos as $conteudo){ ?>
+                            <li>
+                                <div class="thumbnail">
+                                    <?php $innerHTML = "<img src='" . image_path($conteudo->getImagemPerfil(Util::IMAGEM_GRANDE)) . "' alt='" . $conteudo->getNome() . "' title='" . $conteudo->getNome() . "'>"; ?>
+                                    <?php echo Util::getTagConteudoSlug($innerHTML, $conteudo->getNome()) ?>
+                                    <h4><?php echo $conteudo->getNome(); ?></h4>
+                                    <?php if($conteudo->getTemaAula()){ ?>
+                                        <span class="label label-info">Tema de aula</span>
+                                    <?php } ?>
+                                </div>
+                            </li>
+                            <?php } ?>
+                        </ul>
 
-	<ul class="thumbnails">
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Encoder</h5> <span class="label label-info">Tema de aula</span></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>ProUCA</h5></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>MSWLogo</h5></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Encoder</h5> <span class="label label-info">Tema de aula</span></div></li>
-		<li class="span2"><div class="thumbnail"><a href="conteudo.shtml"><img src="/assets/img/rl/170.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a> <h5>Iniciando com o Arduino</h5></div></li>
-	</ul>
-  </div>
-
-
-  <div class="tab-pane fade in" id="tags">
-  
-	<div id="tagcloud">
-		<a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">LAME4</a>
-		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Nasdaq</a>
-		<a href="conteudo.shtml" title="14 itens" style="font-size: 15.0636942675px;">Apresentações</a>
-		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Programa</a>
-		<a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Programação</a>
-		<a href="conteudo.shtml" title="5 itens" style="font-size: 22.2611464968px;">LAME4</a>
-		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">C++</a>
-		<a href="conteudo.shtml" title="14 itens" style="font-size: 25.0636942675px;">New Highs New Lows</a>
-		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Programa</a>
-		<a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Projeto</a>
-		<a href="conteudo.shtml" title="4 itens" style="font-size: 11.7006369427px;">Animação</a>
-		<a href="conteudo.shtml" title="5 itens" style="font-size: 22.2611464968px;">Bípede</a>
-		<a href="conteudo.shtml" title="4 itens" style="font-size: 11.7006369427px;">cattec</a>
-		<a href="conteudo.shtml" title="96 itens" style="font-size: 20.7388535032px;">Circuitos</a>
-		<a href="conteudo.shtml" title="42 itens" style="font-size: 18.2165605096px;">Código Fonte</a>
-		<a href="conteudo.shtml" title="6 itens" style="font-size: 12.7515923567px;">Com rodas</a>
-		<a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Documento</a>
-		<a href="conteudo.shtml" title="7 itens" style="font-size: 13.101910828px;">GGBR4</a>
-		<a href="conteudo.shtml" title="3 itens" style="font-size: 21px;">GVTT3</a>
-		<a href="conteudo.shtml" title="147 itens" style="font-size: 22px;">Ibov</a>
-		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">ITAU4</a>
-		<a href="conteudo.shtml" title="3 itens" style="font-size: 52px;" class="nofade">Arduino</a>
-		<a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">ITUB4</a>
-		<a href="conteudo.shtml" title="18 itens" style="font-size: 15.7643312102px;">Evento</a>
-		<a href="conteudo.shtml" title="36 itens" style="font-size: 17.7961783439px;">LAD</a>
-		<a href="conteudo.shtml" title="36 itens" style="font-size: 32px;" class="nofade">Open source</a>
-		<a href="conteudo.shtml" title="5 itens" style="font-size: 22.2611464968px;">LAME4</a>
-		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Nasdaq</a>
-		<a href="conteudo.shtml" title="14 itens" style="font-size: 15.0636942675px;">New Highs New Lows</a>
-		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Programa</a>
-		<a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Programação</a>
-		<a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">LAME4</a>
-		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Nasdaq</a>
-		<a href="conteudo.shtml" title="14 itens" style="font-size: 25.0636942675px;">New Highs New Lows</a>
-		<a href="conteudo.shtml" title="3 itens" style="font-size: 11px;">Programa</a>
-		<a href="conteudo.shtml" title="82 itens" style="font-size: 20.2484076433px;">Projeto</a>
-	</div>	
-	
-  </div>
-</div>
+                    </div>
 
 
-	</div>
+                    <div class="tab-pane fade in" id="tags">
 
-</div><!-- #explore -->
+                        <div id="tagcloud">
+                            <?php echo Util::getNuvemTags(); ?>
+                        </div>	
 
-<hr>
-
-<div class="row" id="institucional-content">
-	<h3>Conteúdo da Equipe Robô Livre</h3>
-
-<div class="span5 list-conteudos">
-	<h6>Apresentações</h6>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Arquivo</th>
-      <th>Formato</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><span class="label label-info">Novo</span> <a href="#">Mattis Pharetra Sit Amet</a></td>
-      <td>PPT</td>
-    </tr>
-    <tr>
-      <td><span class="label label-info">Novo</span> <a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
-      <td>PPT</td>
-    </tr>
-    <tr>
-      <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
-      <td>PDF</td>
-    </tr>
-    <tr>
-      <td><a href="#">Mattis Pharetra Sit Amet</a></td>
-      <td>ZIP</td>
-    </tr>
-    <tr>
-      <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
-      <td>PDF</td>
-    </tr>
-  </tbody>
-</table>
-
-</div><!-- list-conteudos -->
-
-<div class="span5 list-conteudos">
-	<h6>Publicações científicas</h6>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Arquivo</th>
-      <th>Formato</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><span class="label label-info">Novo</span> <a href="#">Mattis Pharetra Sit Amet</a></td>
-      <td>PDF</td>
-    </tr>
-    <tr>
-      <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit</a></td>
-      <td>PDF</td>
-    </tr>
-    <tr>
-      <td><a href="#">Mattis Pharetra Sit Amet</a></td>
-      <td>DOC</td>
-    </tr>
-    <tr>
-      <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
-      <td>ZIP</td>
-    </tr>
-    <tr>
-      <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
-      <td>PDF</td>
-    </tr>
-  </tbody>
-</table>
-
-</div><!-- list-conteudos -->
+                    </div>
+                </div>
 
 
-</div>
+            </div>
 
-</div><!-- /miolo -->
+        </div><!-- #explore -->
 
+        <hr>
+
+        <div class="row" id="institucional-content">
+            <h3>Conteúdo da Equipe Robô Livre</h3>
+
+            <div class="span5 list-conteudos">
+                <h6>Apresentações</h6>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Arquivo</th>
+                            <th>Formato</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="label label-info">Novo</span> <a href="#">Mattis Pharetra Sit Amet</a></td>
+                            <td>PPT</td>
+                        </tr>
+                        <tr>
+                            <td><span class="label label-info">Novo</span> <a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
+                            <td>PPT</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
+                            <td>PDF</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Mattis Pharetra Sit Amet</a></td>
+                            <td>ZIP</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
+                            <td>PDF</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div><!-- list-conteudos -->
+
+            <div class="span5 list-conteudos">
+                <h6>Publicações científicas</h6>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Arquivo</th>
+                            <th>Formato</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="label label-info">Novo</span> <a href="#">Mattis Pharetra Sit Amet</a></td>
+                            <td>PDF</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit</a></td>
+                            <td>PDF</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Mattis Pharetra Sit Amet</a></td>
+                            <td>DOC</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
+                            <td>ZIP</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
+                            <td>PDF</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div><!-- list-conteudos -->
+
+
+        </div>
+
+    </div><!-- /miolo -->
 
 
 </div><!-- /row -->
 
+
+<script src="<?php echo javascript_path("/assets/js/autoSuggestv14/jquery.autoSuggest.minified.js") ?>"></script>
 <script type="text/javascript">
-    //<![CDATA[
-    
-    var SEPARADOR_PARAMETRO = '<?php echo Util::SEPARADOR_PARAMETRO ?>';
-    
+//<![CDATA[
+        
+        $("#search-content").autoSuggest("<?php echo url_for('ajax/ajaxAutoSuggestConteudo'); ?>", 
+        {
+            minChars: 2, 
+            matchCase: false,
+            resultsHighlight: true,
+            selectedItemProp: "name",
+            searchObjProps: "name",
+            startText: "Procurar conteúdo…",
+            emptyText: "Nenhuma sugestão encontrada",
+            resultClick: function(data){
+                try{
+                    url = url_for("conteudo/"+getSlug(data['attributes']['name']));
+                    window.location = url;
+                }catch(e){alert(e);}
+            },
+
+            formatList: function(data, elem){
+                    //var new_elem = elem.html("<i class='icon-tag icon-gray'></i>"+ data.name);
+                    //return new_elem;
+                    var my_image = data.image;
+                    var new_elem = elem.html("<img src='"+my_image+"' alt='"+ data.name+"'><h4 style='display:inline'>"+ data.name+"<h4><a href='conteudo.shtml'></a><br clear='all'>");
+                    return new_elem;
+            }
+        });
+        
+
     function getSlug(nome){
         arraySlug = nome.toLowerCase().split(" ");
         retorno = "";
@@ -252,7 +257,7 @@
                     if(resposta == "ok"){
                         document.forms["formNovoConteudo"].submit();
                     }else{
-                        var erros = resposta.split(SEPARADOR_PARAMETRO);
+                        var erros = resposta.split('<?php echo Util::SEPARADOR_PARAMETRO ?>');
                         idConjunto = erros[0].split('=')[1];
                         nomeConteudo = erros[1].split('=')[1];
                         

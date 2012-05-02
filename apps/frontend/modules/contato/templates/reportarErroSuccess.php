@@ -51,7 +51,7 @@
                     }
                     ?>
                     <div class="control-group <?php echo $class ?>">
-                        <label class="control-label" for="mensagem">Mensagem</label>
+                        <label class="control-label" for="mensagem">Descreva o problema</label>
                         <div class="controls">
                             <?php echo $formContato->getWidget('mensagem')->render($formContato->getName() . "[mensagem]", (isset($valoresInciais['mensagem']) ? $valoresInciais['mensagem'] : null), array('class' => "input-xlarge", 'id' => 'mensagem', 'rows' => 8)); ?>
                         </div>

@@ -140,7 +140,30 @@ class UsuarioLogado{
     }
     
     public function isUsuarioPublico() {
-        return !($this->isLogado());
+        if (!($this->isLogado())){
+            $modulo = sfContext::getInstance()->getModuleName();
+            $acao = sfContext::getInstance()->getActionName();
+                       
+            switch($modulo){
+                case "inicial" : 
+                    if(is_numeric(array_search($acao, array('telaLogin')))){
+                        return true;
+                    }
+                    break;
+                case "conteudo":
+                        return true;
+                case "conteudos":
+                    if(is_numeric(array_search($acao, array('index')))){
+                        return true;
+                    }
+                    break;
+                case "publicacoes":
+                    return true;
+                default: break;
+            }
+        }
+        
+        return false;
     }
     
     public function isLogado() {

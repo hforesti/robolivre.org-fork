@@ -1,5 +1,3 @@
-<!--#include virtual="includes/header-home.html" -->
-
 <div class="container">
     <!-- Topo
       ================================================== -->
@@ -17,7 +15,7 @@
         <a class="brand span3" href="<?php echo url_for("inicial/index") ?>">Robô Livre</a>
 
         <div id="top-login" class="span4 pull-right">
-            <?php include_partial('formLogin', array('form' => $formLogin)) ?>
+            <?php include_partial('formLoginInicial', array('form' => $formLogin)) ?>
             <div class="modal fade" id="modalEsqueci">
                 <div class="modal-header">
                     <a class="close" data-dismiss="modal">×</a>

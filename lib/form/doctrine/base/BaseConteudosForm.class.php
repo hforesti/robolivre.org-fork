@@ -23,6 +23,7 @@ abstract class BaseConteudosForm extends BaseFormDoctrine
       'descricao'               => new sfWidgetFormTextarea(),
       'enviar_email_criador'    => new sfWidgetFormInputText(),
       'nome_repositorio_github' => new sfWidgetFormInputText(),
+      'tema_aula'               => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -34,6 +35,7 @@ abstract class BaseConteudosForm extends BaseFormDoctrine
       'descricao'               => new sfValidatorString(array('required' => false)),
       'enviar_email_criador'    => new sfValidatorInteger(array('required' => false)),
       'nome_repositorio_github' => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'tema_aula'               => new sfValidatorInteger(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('conteudos[%s]');

@@ -8,16 +8,8 @@
  * @author     Max Guenes
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class conteudosActions extends sfActions
+class conteudosActions extends robolivreAction
 {
-    public function execute($request) {
-        if (!UsuarioLogado::getInstancia()->isLogado()) {
-            $this->redirect("inicial/index");
-        } else {
-//            $this->exibirConteudo($request);
-            return parent::execute($request);
-        }
-    }
 
     /**
      * Executes index action
@@ -25,7 +17,7 @@ class conteudosActions extends sfActions
      * @param sfRequest $request A request object
      */
     public function executeIndex(sfWebRequest $request) {
-        $this->conteudos = Doctrine::getTable("Conteudos")->getConteudosListagem();
+        $this->melhoresConteudos = Doctrine::getTable("Conteudos")->getConteudosListagem();
     }
 
     public function executeCriar(sfWebRequest $request) {
@@ -373,16 +365,15 @@ class conteudosActions extends sfActions
             $objPublicacao->setIdPublicacaoOriginal($request->getParameter('id_publicacao_original'));
         }
 
-        if ($request->getParameter('id_conjunto') != "") {
-            $objPublicacao->setIdConjunto($request->getParameter('id_conjunto'));
-        }
+        $objPublicacao->setIdConjunto($request->getParameter('id_conjunto'));
+        $objPublicacao->setIdTipoConjunto(Conjuntos::TIPO_CONTEUDO);
         
         if($request->getParameter('privacidade_publicacao')!=""){
             $objPublicacao->setPrivacidadePublicacao($request->getParameter('privacidade_publicacao'));
         }
         
         $objPublicacao->save();
-//        die("redirect conteudo/exibir/" . Util::criaSlug($request->getParameter('nome_conteudo')));
+
         $this->redirect("conteudo/" . Util::criaSlug($request->getParameter('nome_conteudo')));
     }
 }

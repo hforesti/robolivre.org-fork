@@ -14,7 +14,7 @@ default:
 
   stylesheets:    [/assets/css/bootstrap.min.css,/assets/css/main-robolivre.css]
 
-  javascripts:    [/assets/js/bootstrap.min.js,/assets/js/jquery.placeholder.min.js,/assets/js/jquery.autoresize.min.js,/assets/js/CLEditor1_3_0/jquery.cleditor.min.js, /assets/js/autoSuggestv14/jquery.autoSuggest.minified.js,  /assets/js/file-uploader/fileuploader.js  ,/assets/js/main-robolivre.js]
+  javascripts:    [/assets/js/bootstrap.min.js,/assets/js/jquery.placeholder.min.js,/assets/js/jquery.imagesloaded.min.js,/assets/js/jquery.masonry.min.js,/assets/js/jquery.autoresize.min.js,/assets/js/CLEditor1_3_0/jquery.cleditor.min.js, /assets/js/autoSuggestv14/jquery.autoSuggest.minified.js,  /assets/js/file-uploader/fileuploader.js  ,/assets/js/main-robolivre.js]
 
   has_layout:     true
   layout:         layout

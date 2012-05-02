@@ -16,6 +16,170 @@ class ConteudosTable extends Doctrine_Table {
         return Doctrine_Core::getTable('Conteudos');
     }
 
+    public function getConteudosNuvemTag() {
+        
+        $arrayRetorno = array();
+
+        $SQLPontuacao = $this->getSQLPontuacaoConteudo();
+        
+        $queryConteudos = "
+            SELECT c.*,pts.pontos,
+            i.id_conjunto as \"i.id_conjunto\",i.id_tipo_conjunto as \"i.id_tipo_conjunto\",i.id_usuario AS \"i.id_usuario\",i.imagem_perfil AS \"i.imagem_perfil\"
+            FROM conteudos c 
+            LEFT JOIN conjuntos i ON c.id_conjunto = i.id_conjunto AND c.id_tipo_conjunto = i.id_tipo_conjunto  
+            LEFT JOIN ($SQLPontuacao) pts ON pts.id_conteudo = c.id_conteudo
+            ORDER BY  pts.pontos DESC
+            LIMIT 0, 36";
+        
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+        
+        $statement = $connection->prepare($queryConteudos);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $conteudo = new Conteudos();
+
+                $conteudo->setIdConteudo($reg['id_conteudo']);
+                $conteudo->setIdConjunto($reg['id_conjunto']);
+                $conteudo->setNome($reg['nome']);
+                
+                $conteudo->setPontos($reg['pontos']);
+                
+                $conjunto = new Conjuntos();
+                $conjunto->setImagemPerfil($reg['i.imagem_perfil']);
+
+                $conteudo->setConjunto($conjunto);
+                
+                $arrayRetorno[] = $conteudo;
+            }
+        }
+        
+        return $arrayRetorno;
+    }
+    
+    public function filtroConteudosRelacionadosConteudo($idConjunto,$nome = null, $indicePagina = 1)  {
+        
+        $arrayRetorno = array();
+        $qtdConteudosSeguidos = 0;
+
+        $SQLPontuacao = $this->getSQLPontuacaoConteudo();
+        $SQLQuantidadesArquivos = $this->getSQLQuantidadesArquivosConteudo();
+        $SQLQuantidadesSeguidores = $this->getSQLQuantidadesSeguidores();
+        
+        $queryConteudos = "
+            SELECT c.*,
+            i.id_conjunto as \"i.id_conjunto\",i.id_tipo_conjunto as \"i.id_tipo_conjunto\",i.id_usuario AS \"i.id_usuario\",i.imagem_perfil AS \"i.imagem_perfil\",
+            qts.imagens , qts.videos, qts.links,IF (seg.seguidores is not null,seg.seguidores+1,1) as \"seguidores\"
+            FROM conteudos c 
+            LEFT JOIN conjuntos i ON c.id_conjunto = i.id_conjunto AND c.id_tipo_conjunto = i.id_tipo_conjunto  
+            LEFT JOIN tags_conteudos t ON t.id_conjunto_referencia = c.id_conjunto OR t.id_conjunto_referenciado = c.id_conjunto 
+            LEFT JOIN ($SQLPontuacao) pts ON pts.id_conteudo = c.id_conteudo
+            LEFT JOIN ($SQLQuantidadesArquivos) qts ON qts.id_conjunto = c.id_conjunto
+            LEFT JOIN ($SQLQuantidadesSeguidores) seg ON seg.id_conjunto = c.id_conjunto
+            WHERE c.id_conjunto <> $idConjunto AND (t.id_conjunto_referencia = $idConjunto OR t.id_conjunto_referenciado = $idConjunto) ";
+        if ($nome != null && trim($nome)!="") {
+            $queryConteudos .= "  AND c.nome LIKE '%$nome%'";
+        }
+        
+        $queryConteudos .= "ORDER BY pts.pontos,c.nome
+            LIMIT " . (($indicePagina - 1) * Util::QUANTIDADE_PAGINACAO) . ", " . Util::QUANTIDADE_PAGINACAO;
+
+        $queryQuantidade = "
+            SELECT COUNT(*) AS \"quantidade\"
+            FROM conteudos c 
+            LEFT JOIN conjuntos i ON c.id_conjunto = i.id_conjunto AND c.id_tipo_conjunto = i.id_tipo_conjunto  
+            LEFT JOIN tags_conteudos t ON t.id_conjunto_referencia = c.id_conjunto OR t.id_conjunto_referenciado = c.id_conjunto 
+            LEFT JOIN ($SQLPontuacao) pts ON pts.id_conteudo = c.id_conteudo
+            LEFT JOIN ($SQLQuantidadesArquivos) qts ON qts.id_conjunto = c.id_conjunto
+            LEFT JOIN ($SQLQuantidadesSeguidores) seg ON seg.id_conjunto = c.id_conjunto
+            WHERE c.id_conjunto <> $idConjunto AND (t.id_conjunto_referencia = $idConjunto OR t.id_conjunto_referenciado = $idConjunto) ";
+        if ($nome != null && trim($nome)!="") {
+            $queryQuantidade .= "  AND c.nome LIKE '%$nome%'";
+        }
+        //$queryQuantidade .= " GROUP BY c.id_conjunto ";
+        
+        //die("$queryConteudos<br/><br/>$queryQuantidade");
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+        //die($queryQuantidade);
+        $statement = $connection->prepare($queryQuantidade);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+
+        $arrayConteudos = array();
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $qtdConteudosSeguidos = $reg['quantidade'];
+                break;
+            }
+        }
+
+        $statement = $connection->prepare($queryConteudos);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+
+        $arrayConteudos = array();
+                
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $conteudo = new Conteudos();
+
+                $conteudo->setIdConteudo($reg['id_conteudo']);
+                $conteudo->setIdTipoConjunto($reg['id_tipo_conjunto']);
+                $conteudo->setIdConjunto($reg['id_conjunto']);
+                $conteudo->setIdSuperTipo($reg['id_super_tipo']);
+                $conteudo->setNome($reg['nome']);
+                $conteudo->setDescricao($reg['descricao']);
+                $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
+                $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
+                $conteudo->setTemaAula($reg['tema_aula']);
+                
+                $conteudo->setQuantidadeImagens($reg['imagens']);
+                $conteudo->setQuantidadeVideos($reg['videos']);
+                $conteudo->setQuantidadeLinks($reg['links']);
+                $conteudo->setQuantidadeSeguidores($reg['seguidores']);
+                
+                $conjunto = new Conjuntos();
+                $conjunto->setIdConjunto($reg['i.id_conjunto']);
+                $conjunto->setIdUsuario($reg['i.id_usuario']);
+                $conjunto->setIdTipoConjunto($reg['i.id_tipo_conjunto']);
+                $conjunto->setImagemPerfil($reg['i.imagem_perfil']);
+
+                $conteudo->setConjunto($conjunto);
+                
+                $arrayConteudos[] = $conteudo;
+            }
+        }
+
+        $total = (int) ($qtdConteudosSeguidos / Util::QUANTIDADE_PAGINACAO);
+        //caso a divisão real seja maior que a divisão inteira (resto)
+        if (($qtdConteudosSeguidos / Util::QUANTIDADE_PAGINACAO) > $total) {
+            ++$total;
+        }
+
+        $arrayRetorno['quantidade'] = $qtdConteudosSeguidos;
+        $arrayRetorno['conteudos'] = $arrayConteudos;
+        $arrayRetorno['totalPaginas'] = $total;
+
+        return $arrayRetorno;
+    }
     public function getConteudosSeguidosPerfil($idUsuario) {
         $arrayRetorno = array();
         $qtdConteudosSeguidos = 0;
@@ -78,7 +242,8 @@ class ConteudosTable extends Doctrine_Table {
                 $conteudo->setDescricao($reg['descricao']);
                 $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
                 $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
-
+                $conteudo->setTemaAula($reg['tema_aula']);
+                
                 $conjunto = new Conjuntos();
                 $conjunto->setIdConjunto($reg['i.id_conjunto']);
                 $conjunto->setIdUsuario($reg['i.id_usuario']);
@@ -144,7 +309,8 @@ class ConteudosTable extends Doctrine_Table {
                 $conteudo->setDescricao($reg['descricao']);
                 $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
                 $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
-
+                $conteudo->setTemaAula($reg['tema_aula']);
+                
                 $conjunto = new Conjuntos();
                 $conjunto->setIdConjunto($reg['i.id_conjunto']);
                 $conjunto->setIdUsuario($reg['i.id_usuario']);
@@ -280,6 +446,7 @@ class ConteudosTable extends Doctrine_Table {
                 $conteudo->setDescricao($reg['descricao']);
                 $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
                 $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
+                $conteudo->setTemaAula($reg['tema_aula']);
                 
                 $conteudo->setQuantidadeImagens($reg['imagens']);
                 $conteudo->setQuantidadeVideos($reg['videos']);
@@ -366,7 +533,8 @@ class ConteudosTable extends Doctrine_Table {
                 $conteudo->setDescricao($reg['descricao']);
                 $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
                 $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
-
+                $conteudo->setTemaAula($reg['tema_aula']);
+                
                 $conjunto = new Conjuntos();
                 $conjunto->setIdConjunto($reg['i.id_conjunto']);
                 $conjunto->setIdUsuario($reg['i.id_usuario']);
@@ -395,15 +563,17 @@ class ConteudosTable extends Doctrine_Table {
     }
 
     public function buscaPorNomeParcial($nome) {
-
-        $nome = strtolower($nome);
-
+        
         $retorno = array();
+        $nome = strtolower(trim($nome));
+
+        $slug = Util::criaSlug($nome);
+        
         $query = "SELECT c.nome,c.id_conteudo,u.id_conjunto, u.imagem_perfil
             FROM conteudos c 
             LEFT JOIN conjuntos u ON c.id_conjunto = u.id_conjunto
-            WHERE LOWER(c.nome) LIKE '$nome%' OR LOWER(c.nome) LIKE '% $nome%'";
-
+            WHERE u.slug LIKE '$slug%' OR u.slug LIKE '%$slug%'";
+        //die($query);
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
         // Get Connection of Database  
@@ -549,7 +719,8 @@ class ConteudosTable extends Doctrine_Table {
                 $conteudo->setDescricao($reg['descricao']);
                 $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
                 $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
-
+                $conteudo->setTemaAula($reg['tema_aula']);
+                
                 $conjunto = new Conjuntos();
                 $conjunto->setIdConjunto($id_conjunto);
                 $conjunto->setIdUsuario($reg['u.id_usuario']);
@@ -569,13 +740,36 @@ class ConteudosTable extends Doctrine_Table {
 
         $arrayRetorno = array();
 
-        $q = Doctrine_Query::create()
-                ->select('*')
-                ->from('Conteudos')
-                ->leftJoin("Conjuntos");
+        $SQLPontuacao = $this->getSQLPontuacaoConteudo();
+        $SQLQuantidadesArquivos = $this->getSQLQuantidadesArquivosConteudo();
+        $SQLQuantidadesSeguidores = $this->getSQLQuantidadesSeguidores();
+        
+        $queryConteudos = "
+            SELECT c.*,pts.pontos,IF (p.aceito is not null,p.aceito,null) as \"participante\",
+            i.id_conjunto as \"i.id_conjunto\",i.id_tipo_conjunto as \"i.id_tipo_conjunto\",i.id_usuario AS \"i.id_usuario\",i.imagem_perfil AS \"i.imagem_perfil\",
+            qts.imagens , qts.videos, qts.links,IF (seg.seguidores is not null,seg.seguidores+1,1) as \"seguidores\",
+            t.id_tipo_permissao_conjunto as \"t.id_tipo_permissao_conjunto\"
+            FROM conteudos c 
+            LEFT JOIN conjuntos i ON c.id_conjunto = i.id_conjunto AND c.id_tipo_conjunto = i.id_tipo_conjunto  
+            LEFT JOIN participantes_conjuntos p ON p.id_conjunto = i.id_conjunto AND p.id_tipo_conjunto = i.id_tipo_conjunto
+            LEFT JOIN tipos_permissoes_conjuntos t ON t.id_tipo_permissao_conjunto = p.id_tipo_permissao_conjunto       
+            LEFT JOIN ($SQLPontuacao) pts ON pts.id_conteudo = c.id_conteudo
+            LEFT JOIN ($SQLQuantidadesArquivos) qts ON qts.id_conjunto = c.id_conjunto
+            LEFT JOIN ($SQLQuantidadesSeguidores) seg ON seg.id_conjunto = c.id_conjunto
+            ORDER BY  pts.pontos DESC
+            LIMIT 0, 12";
+        
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+        
+        $statement = $connection->prepare($queryConteudos);
+        // Make Statement  
 
+        $statement->execute();
+        // Execute Query  
 
-        $resultado = $q->fetchArray();
+        $resultado = $statement->fetchAll();
 
         if ($resultado) {
             foreach ($resultado as $reg) {
@@ -589,25 +783,61 @@ class ConteudosTable extends Doctrine_Table {
                 $conteudo->setDescricao($reg['descricao']);
                 $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
                 $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
+                $conteudo->setTemaAula($reg['tema_aula']);
+                
+                $conteudo->setPontos($reg['pontos']);
+                $conteudo->setQuantidadeImagens($reg['imagens']);
+                $conteudo->setQuantidadeVideos($reg['videos']);
+                $conteudo->setQuantidadeLinks($reg['links']);
+                $conteudo->setQuantidadeSeguidores($reg['seguidores']);
+                
+                $conjunto = new Conjuntos();
+                $conjunto->setIdConjunto($reg['i.id_conjunto']);
+                $conjunto->setIdUsuario($reg['i.id_usuario']);
+                $conjunto->setIdTipoConjunto($reg['i.id_tipo_conjunto']);
+                $conjunto->setImagemPerfil($reg['i.imagem_perfil']);
 
+                $conteudo->setConjunto($conjunto);
+                
+                if ($conjunto->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()) {
+                    $conteudo->setTipoUsuario(Conteudos::PROPRIETARIO);
+                    $conteudo->setTipoSolicitacao(Conteudos::PARTICIPANTE);
+                } else {
+                    $conteudo->setTipoUsuario($reg['t.id_tipo_permissao_conjunto']);
+                    if ($reg['participante'] == null) {
+                        $conteudo->setTipoSolicitacao(Conteudos::SEM_SOLICITACAO);
+                    } else {
+                        $conteudo->setTipoSolicitacao($reg['participante']);
+                    }
+                }
+                
                 $arrayRetorno[] = $conteudo;
             }
         }
-
+        
         return $arrayRetorno;
     }
 
     public function validaNomeConteudo($nome, $idConjunto = "") {
 
-        $q = Doctrine_Query::create()
-                ->select('*')
-                ->from('Conteudos')
-                ->where("nome = '$nome'");
-        if ($idConjunto != "") {
-            $q->andWhere("id_conjunto <> $idConjunto");
-        }
+        $slug = Util::criaSlug($nome);
 
-        $resultado = $q->fetchArray();
+        $query = "SELECT *
+        FROM conteudos c 
+        LEFT JOIN conjuntos i ON c.id_conjunto = i.id_conjunto AND c.id_tipo_conjunto = i.id_tipo_conjunto 
+        WHERE i.slug = '$slug'";
+
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($query);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
 
         if ($resultado) {
             foreach ($resultado as $reg) {
@@ -621,7 +851,8 @@ class ConteudosTable extends Doctrine_Table {
                 $conteudo->setDescricao($reg['descricao']);
                 $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
                 $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
-
+                $conteudo->setTemaAula($reg['tema_aula']);
+                
                 return $conteudo;
             }
         }
@@ -694,7 +925,8 @@ class ConteudosTable extends Doctrine_Table {
                 $conteudo->setDescricao($reg['descricao']);
                 $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
                 $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
-
+                $conteudo->setTemaAula($reg['tema_aula']);
+                
                 $conjunto = new Conjuntos();
                 $conjunto->setIdConjunto($reg['u.id_conjunto']);
                 $conjunto->setIdUsuario($reg['u.id_usuario']);

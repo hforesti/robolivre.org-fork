@@ -1,6 +1,6 @@
 <?php
 
-include_once "tipografia/php-typography.php";
+//include_once "tipografia/php-typography.php";
 
 /*
  * To change this template, choose Tools | Templates
@@ -13,7 +13,9 @@ include_once "tipografia/php-typography.php";
  * @author maxguenes
  */
 class Util {
-
+    
+    //1296000 = 15 dias
+    const TEMPO_COOKIE = 1296000;
     const QUANTIDADE_PAGINACAO = 10;
     const SEPARADOR_PARAMETRO = '[[*]]';
     const IMAGEM_GRANDE = 1;
@@ -30,7 +32,7 @@ class Util {
 
         $url = url_for('conteudo/' . self::criaSlug($nomeConteudo));
 
-        return (($comImagemReferencia) ? "<i class=\"icon-tag icon-gray\"></i>" : "") . "<a href=\"$url\" class=\"$class\">$nomeConteudo</a>";
+        return (($comImagemReferencia) ? "<i class=\"icon-file icon-gray\"></i>" : "") . "<a href=\"$url\" class=\"$class\">$nomeConteudo</a>";
     }
 
     public static function getTagConteudoSlug($innerHTML, $slug, $class = "") {
@@ -187,6 +189,9 @@ class Util {
     public static function criaSlug($slug) {
         $slug = trim($slug);
         $slug = strtolower($slug);
+        
+        $slug = str_replace(" ", "-", $slug);
+        
         $retorno = "";
 
         foreach (explode(" ", $slug) as $parte) {
@@ -283,6 +288,21 @@ class Util {
         //22/01/2012 às 08h00
         $dataHora = self::dataBrHora($data);
         return $dataHora[0]." às ".str_replace(":", "h", $dataHora[1]);
+    }
+    
+    public static function getNuvemTags(){
+        /*
+         max = 52px
+         min = 10px
+        <a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">LAME4</a>
+         */
+        $cs = Doctrine::getTable("Conteudos")->getConteudosNuvemTag();
+        
+        foreach($cs as $c){
+           echo $c->getNome()." - PTS:".$c->getPontos()."<br/>";
+        }
+        
+        return "";
     }
 }
 

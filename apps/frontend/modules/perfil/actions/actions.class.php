@@ -8,18 +8,8 @@
  * @author     Max Guenes
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class perfilActions extends sfActions {
+class perfilActions extends robolivreAction {
     
-    public function execute($request) {
-        
-        if(!UsuarioLogado::getInstancia()->isLogado()){
-            $this->redirect("inicial/index");
-        }
-        else{
-            return parent::execute($request);
-        }
-    }
-
     public function executeIndex(sfWebRequest $request) {
         
         $this->usuario = new Usuarios(null,false,UsuarioLogado::getInstancia());

@@ -90,7 +90,7 @@ class ajaxActions extends sfActions {
         $publicacoesPerfil = Doctrine::getTable("Publicacoes")->getPublicacoesDoConjunto($id_conjunto,$id_ultima_publicacao);
        
         foreach($publicacoesPerfil as $publicacao){
-            $publicacao->imprimir();
+            echo $publicacao->getImpressaoEmConteudo();
         }
         
         $this->mensagem = "";
@@ -158,10 +158,10 @@ class ajaxActions extends sfActions {
     }
     
     public function executeAjaxUlpoadArquivos(sfWebRequest $request) {
-        sfContext::getInstance()->getLogger()->info("ENTROU UPLOAD ARQUIVOS");
-        sfContext::getInstance()->getLogger()->info(print_r($_GET,true));
-        sfContext::getInstance()->getLogger()->info(print_r($_POST,true));
-        sfContext::getInstance()->getLogger()->info(print_r($_FILES,true));
+//        sfContext::getInstance()->getLogger()->info("ENTROU UPLOAD ARQUIVOS");
+//        sfContext::getInstance()->getLogger()->info(print_r($_GET,true));
+//        sfContext::getInstance()->getLogger()->info(print_r($_POST,true));
+//        sfContext::getInstance()->getLogger()->info(print_r($_FILES,true));
         // list of valid extensions, ex. array("jpeg", "xml", "bmp")
         $allowedExtensions = array();
         // max file size in bytes
@@ -174,12 +174,12 @@ class ajaxActions extends sfActions {
     }
     
     public function executeAjaxUlpoadImagens(sfWebRequest $request) {
-        sfContext::getInstance()->getLogger()->info("ENTROU UPLOAD IMAGENS");
-        sfContext::getInstance()->getLogger()->info(print_r($_GET,true));
-        sfContext::getInstance()->getLogger()->info(print_r($_POST,true));
-        sfContext::getInstance()->getLogger()->info(print_r($_FILES,true));
+//        sfContext::getInstance()->getLogger()->info("ENTROU UPLOAD IMAGENS");
+//        sfContext::getInstance()->getLogger()->info(print_r($_GET,true));
+//        sfContext::getInstance()->getLogger()->info(print_r($_POST,true));
+//        sfContext::getInstance()->getLogger()->info(print_r($_FILES,true));
         // list of valid extensions, ex. array("jpeg", "xml", "bmp")
-        $allowedExtensions = array();
+        $allowedExtensions = array("jpeg","png","jpg", "xml", "bmp");
         
         // max file size in bytes
         $sizeLimit = 0.5 * 1024 * 1024;

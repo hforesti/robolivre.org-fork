@@ -217,6 +217,7 @@ if(!isset($conteudo)){
             minChars: 2, 
             preFill:carregar,
             matchCase: false,
+            resultsHighlight: true,
             selectedItemProp: "name",
             searchObjProps: "name",
             startText: "Ex.: Open Source, UNIX",

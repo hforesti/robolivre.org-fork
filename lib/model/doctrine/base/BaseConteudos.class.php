@@ -15,6 +15,7 @@ Doctrine_Manager::getInstance()->bindComponent('Conteudos', 'doctrine');
  * @property string $descricao
  * @property integer $enviar_email_criador
  * @property string $nome_repositorio_github
+ * @property integer $tema_aula
  * 
  * @method integer   getIdConteudo()              Returns the current record's "id_conteudo" value
  * @method integer   getIdTipoConjunto()          Returns the current record's "id_tipo_conjunto" value
@@ -24,6 +25,7 @@ Doctrine_Manager::getInstance()->bindComponent('Conteudos', 'doctrine');
  * @method string    getDescricao()               Returns the current record's "descricao" value
  * @method integer   getEnviarEmailCriador()      Returns the current record's "enviar_email_criador" value
  * @method string    getNomeRepositorioGithub()   Returns the current record's "nome_repositorio_github" value
+ * @method integer   getTemaAula()                Returns the current record's "tema_aula" value
  * @method Conteudos setIdConteudo()              Sets the current record's "id_conteudo" value
  * @method Conteudos setIdTipoConjunto()          Sets the current record's "id_tipo_conjunto" value
  * @method Conteudos setIdConjunto()              Sets the current record's "id_conjunto" value
@@ -32,6 +34,7 @@ Doctrine_Manager::getInstance()->bindComponent('Conteudos', 'doctrine');
  * @method Conteudos setDescricao()               Sets the current record's "descricao" value
  * @method Conteudos setEnviarEmailCriador()      Sets the current record's "enviar_email_criador" value
  * @method Conteudos setNomeRepositorioGithub()   Sets the current record's "nome_repositorio_github" value
+ * @method Conteudos setTemaAula()                Sets the current record's "tema_aula" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -111,6 +114,16 @@ abstract class BaseConteudos extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => 100,
+             ));
+        $this->hasColumn('tema_aula', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'default' => '0',
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
              ));
     }
 

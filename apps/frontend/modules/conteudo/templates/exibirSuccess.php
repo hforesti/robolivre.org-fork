@@ -1,35 +1,6 @@
 <div class="row">
-
-    <div class="span2" id="sidebar">
-        <div class="avatar">
-            <a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>"><img src="<?php echo image_path($conteudo->getImagemPerfil(Util::IMAGEM_GRANDE)) ?>" alt="Arduino" class="photo"></a>
-            <div class="btn-group">
-                <?php if ($conteudo->getTipoUsuario()== Conteudos::PROPRIETARIO) { ?>
-                    <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-                        <span class="icon-cog icon-gray"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="settings.shtml">Atualizar imagem</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo url_for('conteudos/editar?u=' . $conteudo->getIdConjunto()) ?>">Editar conteúdo</a>
-                        </li>
-                    </ul>
-                <?php } ?>
-            </div>
-
-        </div><!-- /avatar -->
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
-            <li><a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirSeguidores") ; ?>"><span class="icon-gray icon-user"></span> Seguidores <span class="label label-info"><?php echo $quantidadeParticipantes ?></span></a></li>
-            <li><a href="imagens.shtml"><span class="icon-gray icon-picture"></span> Imagens <span class="label label-info"></span></a></li>
-            <li><a href="videos.shtml"><span class="icon-gray icon-film"></span> Vídeos <span class="label label-info"></span></a></li>
-            <li><a href="links.shtml"><span class="icon-gray icon-share-alt"></span> Links <span class="label label-info"></span></a></li>
-            <li><a href="docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info"></span></a></li>
-            <li><a href="projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos relacionados <span class="label label-info"></span></a></li>
-        </ul>
-    </div><!-- /sidebar -->
+    
+    <?php include_partial('sidebarConteudo',array('conteudo'=>$conteudo,'quantidadeParticipantes'=>$quantidadeParticipantes)) ?>
 
     <hr class="only-mobile">
 
@@ -77,7 +48,7 @@
             <h3>Atualizações recentes</h3>
             <ul id="ul-steam">
                 <?php foreach ($publicacoesConjunto as $publicacao) { ?>
-                    <?php print_r($publicacao->imprimir()); ?>
+                    <?php echo $publicacao->getImpressaoEmConteudo(); ?>
                 <?php } ?>
             </ul>
 
@@ -92,14 +63,14 @@
     <div class="span3" id="sidebar-wdgt">
 
         <div id="grid-conteudos" class="wdgt">
-            <h3><a href="conteudos.shtml">Conteúdos relacionados <small><?php echo $quantidadeConteudosRelacionados; ?></small></a></h3>
+            <h3><a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirSeguidores") ; ?>">Conteúdos relacionados <small><?php echo $quantidadeConteudosRelacionados; ?></small></a></h3>
             <ul class="thumbnails">
                 <?php foreach ($arrayConteudosRelacionados as $conteudoRelacionado) { ?>
                     <?php $innerHTML = "<img src='" . image_path($conteudoRelacionado->getImagemPerfil()) . "' alt='" . $conteudoRelacionado->getNome() . "' title='" . $conteudoRelacionado->getNome() . "'>"; ?>
                     <li class="span1"><?php echo Util::getTagConteudoSlug($innerHTML, $conteudoRelacionado->getNome(), "thumbnail") ?></li>
                 <?php } ?>
             </ul>
-            <a href="conteudos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+            <a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirSeguidores") ; ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-conteudos -->
 
         <?php /*<hr>
@@ -150,6 +121,7 @@
                 success: function(resposta){
                     if(resposta!=""){
                         $("#ul-steam").append(resposta);
+                        $('.visivel-para i').tooltip();
                     }else{
                         $("#pagination").remove();
                     }

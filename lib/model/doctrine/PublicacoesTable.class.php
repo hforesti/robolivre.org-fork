@@ -16,6 +16,65 @@ class PublicacoesTable extends Doctrine_Table {
         return Doctrine_Core::getTable('Publicacoes');
     }
 
+    public function getPublicacaoPermalink($idPublicacao) {
+        
+        $query = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,
+        r.nome AS \"nome_usuario_referencia\",i.imagem_perfil AS \"imagem_perfil_conjunto\",
+        IF (i.id_tipo_conjunto = 1,con.nome,com.nome) as \"nome_conjunto\"
+        FROM publicacoes p 
+        LEFT JOIN amigos a ON a.id_usuario_a = p.id_usuario OR a.id_usuario_b = p.id_usuario
+        LEFT JOIN usuarios u ON u.id_usuario = p.id_usuario
+        LEFT JOIN conjuntos i ON p.id_conjunto = i.id_conjunto
+        LEFT JOIN conteudos con ON con.id_tipo_conjunto = i.id_tipo_conjunto AND con.id_conjunto = i.id_conjunto 
+        LEFT JOIN comunidades com ON com.id_tipo_conjunto = i.id_tipo_conjunto AND com.id_conjunto = i.id_conjunto 
+        LEFT JOIN usuarios r ON p.id_usuario_referencia = r.id_usuario
+        WHERE p.id_publicacao = $idPublicacao AND p.visivel =  1 AND p.tipo_publicacao = ".Publicacoes::PUBLICACAO_COMUM." AND p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_PUBLICA."
+        GROUP BY p.id_publicacao";
+
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($query);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $publicacao = new Publicacoes();
+
+                $publicacao->setDataPublicacao($reg['data_publicacao']);
+                $publicacao->setLink($reg['link']);
+                $publicacao->setComentario($reg['comentario']);
+                $publicacao->setIdUsuarioReferencia($reg['id_usuario_referencia']);
+                $publicacao->setIdPublicacaoOriginal($reg['id_publicacao_original']);
+                $publicacao->setIdUsuarioOriginal($reg['id_usuario_original']);
+                $publicacao->setIdImagem($reg['id_imagem']);
+                $publicacao->setIdVideo($reg['id_video']);
+                $publicacao->setIdPasta($reg['id_pasta']);
+                $publicacao->setIdDiarioBordo($reg['id_diario_bordo']);
+                $publicacao->setIdConjunto($reg['id_conjunto']);
+                $publicacao->setIdTipoConjunto($reg['id_tipo_conjunto']);
+                $publicacao->setIdConteudo($reg['id_conteudo']);
+                $publicacao->setIdUsuario($reg['id_usuario']);
+                $publicacao->setIdPublicacao($reg['id_publicacao']);
+                $publicacao->setNomeUsuario($reg['nome']);
+                $publicacao->setImagemPerfilUsuario($reg['imagem_perfil']);
+                $publicacao->setNomeConjunto($reg['nome_conjunto']);
+                $publicacao->setNomeUsuarioReferencia($reg['nome_usuario_referencia']);
+                $publicacao->setTipoPublicacao($reg['tipo_publicacao']);
+                $publicacao->setImagemPerfilConjunto($reg['imagem_perfil_conjunto']);
+                $publicacao->setPrivacidadePublicacao($reg['privacidade_publicacao']);
+                return $publicacao;
+            }
+        }
+        return false;
+    }
+    
     public function publicar(Publicacoes $publicacao) {
 
         $id_usuario = $publicacao->getIdUsuario();

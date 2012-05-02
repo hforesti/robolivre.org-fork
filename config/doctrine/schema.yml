@@ -152,6 +152,14 @@ Conteudos:
       primary: false
       notnull: false
       autoincrement: false
+    tema_aula:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
 DiariosBordo:
   connection: doctrine
   tableName: diarios_bordo

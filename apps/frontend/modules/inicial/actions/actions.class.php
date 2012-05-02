@@ -8,16 +8,16 @@
  * @author     Max Guenes
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class inicialActions extends sfActions {
+class inicialActions extends robolivreAction {
 
     
     
     public function execute($request) {
-        if (UsuarioLogado::getInstancia()->isLogado()) {
+        if (UsuarioLogado::getInstancia()->isLogado() && sfContext::getInstance()->getActionName() == "index") {
             $this->redirect('perfil/index');
             return;
         }
-        parent::execute($request);
+        parent::execute($request,false);
     }
     
     /**
@@ -44,12 +44,54 @@ class inicialActions extends sfActions {
 
     public function executeCadastro(sfWebRequest $request) {
         $form = new UsuariosForm(null, null, null, UsuariosForm::SOMENTE_INFO_CADASTRO);
+        
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+        
         $form->validaDadosIniciais();
+
         $this->form = $form;
     }
 
+    public function executeTelaLogin(sfWebRequest $request) {
+        $this->formLogin = new UsuariosForm(null, null, null, UsuariosForm::LOGIN);
+    }
+    
     public function executeLogin(sfWebRequest $request) {
+        $form = new UsuariosForm(null, null, null, UsuariosForm::LOGIN);
+
+        $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+        if ($form->isValid()) {
+            
+            $login = $form->getValue('login');
+            $senha = md5($form->getValue('senha'));
+
+            $objUsuario = Doctrine::getTable('Usuarios')->login($login, $senha);
+            
+            if ($request->getParameter('lembrar') == 1) {
+                //1296000 = 15 dias
+                sfContext::getInstance()->getResponse()->setCookie('cooLogin', $form->getValue('login'),  time() + Util::TEMPO_COOKIE, '/');
+                sfContext::getInstance()->getResponse()->setCookie('cooSenha', md5($form->getValue('senha')),  time() + Util::TEMPO_COOKIE, '/');
+            }
+            
+            if ($objUsuario) {
+                UsuarioLogado::getInstancia()->logar($objUsuario);
+                $this->redirect('perfil/index');
+                return;
+            } else {
+                $form->getErrorSchema()->addError(new sfValidatorError($form->getValidator('login'),"Senha não corresponde ao login informado. Por favor, tente novamente"));
+                $this->formLogin = $form;
+                $this->setTemplate('telaLogin');
+                return;
+            }
+        }else{
+            $this->formLogin = $form;
+            $this->formNovoUsuario = new UsuariosForm(null, null, null, UsuariosForm::SIMPLES);
+            $this->setTemplate('index');
+            return;
+        }
+    }
+    
+    public function executeLoginInicial(sfWebRequest $request) {
 
         $form = new UsuariosForm(null, null, null, UsuariosForm::LOGIN);
 

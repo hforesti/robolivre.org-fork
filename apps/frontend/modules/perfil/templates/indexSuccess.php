@@ -95,7 +95,7 @@
                 <?php foreach ($arrayConteudoSeguido as $conteudo): ?>
                     <?php $innerHTML = "<img src='" . image_path($conteudo->getImagemPerfil()) . "' alt='" . $conteudo->getNome() . "' title='" . $conteudo->getNome() . "'>"; ?>
                     <li class="span1"><?php echo Util::getTagConteudoSlug($innerHTML, $conteudo->getNome(), "thumbnail") ?></li>
-<?php endforeach; ?>
+            <?php endforeach; ?>
             </ul>
             <a href="<?php echo url_for('perfil/exibirConteudos?u=' . UsuarioLogado::getInstancia()->getIdUsuario()) ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-conteudos -->
@@ -118,13 +118,13 @@
         <hr>
 
         <div id="grid-amigos" class="wdgt">
-            <h3><a href="amigos.shtml" title="Ver tudo">Amigos <small><?php echo $quantidadeAmigos ?></small></a></h3>
+            <h3><a href="<?php echo url_for('perfil/exibirAmigos?u=' . UsuarioLogado::getInstancia()->getIdUsuario()) ?>" title="Ver tudo">Amigos <small><?php echo $quantidadeAmigos ?></small></a></h3>
             <ul class="thumbnails">
-                <?php foreach ($arrayAmigos as $usuario): ?>
-                    <li ><a href="<?php echo url_for('perfil/exibir?u=' . $usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada()) ?>" alt="<?php echo $usuario->getNome() ?>" title="<?php echo $usuario->getNome() ?>"></a></li>
-<?php endforeach; ?>
+                <?php foreach($arrayAmigos as $amigo): ?>
+                <li ><a href="<?php echo url_for('perfil/exibir?u='.$amigo->getIdUsuario()) ?>"><img src="<?php echo image_path($amigo->getImagemPerfilFormatada()) ?>" alt="<?php echo $amigo->getNome() ?>" title="<?php echo $amigo->getNome() ?>"></a></li>
+                <?php endforeach; ?>
             </ul>
-            <a href="amigos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+            <a href="<?php echo url_for('perfil/exibirAmigos?u=' . UsuarioLogado::getInstancia()->getIdUsuario()) ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-amigos -->
 
         <hr>
@@ -158,6 +158,7 @@
             success: function(resposta){
                 if(resposta!=""){
                     $("#ul-steam-amigos").append(resposta);
+                    $('.visivel-para i').tooltip();
                 }else{
                     $("#pagination2").remove();
                 }
@@ -172,6 +173,7 @@
             success: function(resposta){
                 if(resposta!=""){
                     $("#ul-steam-conteudos").append(resposta);
+                    $('.visivel-para i').tooltip();
                 }else{
                     $("#pagination").remove();
                 }

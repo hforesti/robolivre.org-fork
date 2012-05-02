@@ -28,10 +28,11 @@ all:
     csrf_secret:            UniqueSecret
     # Output escaping settings
     escaping_strategy:    false  
-    #escaping_method:        ESC_SPECIALCHARS
-
-    # Enable the database manager
+    #escaping_method:        ESC_SPECIALCHARS    
+    timeout:     86400
+    # Session lifetime in seconds 86400-> 1 dia
     use_database:           true
+    # Enable the database manager
   .actions:
     error_404_module: erros 
     error_404_action: 404error
