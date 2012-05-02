@@ -455,7 +455,7 @@ body.home .top-login {
 		margin-top: -2px;
 		margin-right: -9px;
 	}
-	#sidebar .nav li .label-info {
+	#sidebar .nav li .label-info, #sidebar .nav li .badge-info {
 		margin-top: 1px;
 		padding: 0px 3px;
 		line-height: 130%;
@@ -1032,6 +1032,7 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
  */
 /* // Landscape phones and down */
 @media (max-width: 480px) {
+body{padding-top:0;}
 .container {
 	padding-left:10px;
 	padding-right:10px;
@@ -1091,6 +1092,7 @@ footer .pull-left {width:100%;}
 
 /* // Landscape phone to portrait tablet */
 @media (max-width: 767px) {
+body{padding-top:0;}
 .container,
 .navbar-fixed-top {
 	padding-left:10px;
@@ -1167,6 +1169,9 @@ footer .pull-left {width:100%;}
 
 /* // Um computador por aluno */
 @media (min-width: 768px) and (max-width: 800px) {
+.navbar-fixed-top {
+	position: fixed;
+}
 	#user-menu,
 	.navbar .nav {
 		float: left;
@@ -1208,6 +1213,9 @@ footer .pull-left {width:25%;}
 
 /* // Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 980px) {
+.navbar-fixed-top {
+	position: fixed;
+}
 	#user-menu {float: left}
 	.navbar-search .search-query {
 		width: 95%

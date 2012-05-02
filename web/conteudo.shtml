@@ -34,7 +34,8 @@
 			<li><a href="conteudo-imagens.shtml"><span class="icon-gray icon-picture"></span> Imagens <span class="label label-info">15</span></a></li>
 			<li><a href="conteudo-videos.shtml"><span class="icon-gray icon-film"></span> Vídeos <span class="label label-info">9</span></a></li>
 			<li><a href="conteudo-links.shtml"><span class="icon-gray icon-share-alt"></span> Links <span class="label label-info">5</span></a></li>
-			<li><a href="conteudo-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos relacionados <span class="label label-info">15</span></a></li>
+			<li><a href="conteudo-conteudos.shtml"><span class="icon-gray icon-tag"></span> Conteúdos relac... <span class="label label-info">5</span></a></li>
+			<li><a href="conteudo-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos relac... <span class="label label-info">15</span></a></li>
 			<li><a href="conteudo-amigos.shtml"><span class="icon-gray icon-user"></span> Seguidores <span class="label label-info">150</span></a></li>
 		</ul>
 	</div><!-- /sidebar -->
