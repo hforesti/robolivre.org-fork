@@ -140,7 +140,7 @@ class Publicacoes extends BasePublicacoes {
                     $diretorioArquivo = Util::getLinkFotosPublicacoes($this->getIdUsuario())."/".$array[0].'_min'.'.'.$array[1];
                     
                     $string .= "<div class=\"share-content\">";
-                    $string .= "<img src=\"$diretorioArquivo\" alt=\"Imagem compartilhada\" class=\"thumbnail\">";
+                    $string .= "<img src=\"".image_path($diretorioArquivo)."\" alt=\"Imagem compartilhada\" class=\"thumbnail\">";
                     $string .= "</div>";
                     
                 }else if($this->getIdVideo()!=null && $this->getIdVideo()!=""){
@@ -207,6 +207,7 @@ class Publicacoes extends BasePublicacoes {
            
         //SEGUINDO CONTEÚDO
         } else if ($this->getTipoPublicacao() == self::SEGUIR_CONTEUDO) {
+            $comMenuDropDown = false;
             $string .= "<li class=\"vcard activity\">";
             $string .= "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario(Util::IMAGEM_MINIATURA)) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
             $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
