@@ -15,7 +15,110 @@ class UsuariosTable extends Doctrine_Table {
     public static function getInstance() {
         return Doctrine_Core::getTable('Usuarios');
     }
+    
+    public function validaToken($idUsuario, $token) {
 
+        $q = Doctrine_Query::create()
+                ->select('*')
+                ->from('Usuarios')
+                ->where("(id_usuario = $idUsuario AND token='$token')")
+                ->andWhere("senha = '$senha'")
+                ->andWhere("ativo = 1");
+
+
+        $resultado = $q->fetchArray();
+
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $objUsuario = new Usuarios();
+
+                $objUsuario->setCurso($reg['curso']);
+                $objUsuario->setDataNascimento($reg['data_nascimento']);
+                $objUsuario->setEmail($reg['email']);
+                $objUsuario->setEndereco($reg['endereco']);
+                $objUsuario->setHabilidades($reg['habilidades']);
+                $objUsuario->setNivelEscolaridade($reg['nivel_escolaridade']);
+                $objUsuario->setIdUsuario($reg['id_usuario']);
+                $objUsuario->setLogin($reg['login']);
+                $objUsuario->setSexo($reg['sexo']);
+                $objUsuario->setSite($reg['site']);
+                $objUsuario->setSiteEmpresa($reg['site_empresa']);
+                $objUsuario->setSobreMim($reg['sobre_mim']);
+                $objUsuario->setNome($reg['nome']);
+                $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+                $objUsuario->setDataCriacaoPerfil($reg['data_criacao_perfil']);
+                $objUsuario->setEmpresa($reg['empresa']);
+                $objUsuario->setEscola($reg['escola']);
+                $objUsuario->setProfissao($reg['profissao']);
+                $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
+                
+                return $objUsuario;
+            }
+        }
+        return false;
+    }
+    
+    public function esqueciSenha($email) {
+
+        $token = Util::getTokenAleatorio();
+        
+        $query = "UPDATE usuarios 
+                 SET token = '$token'
+                WHERE email = '$email' AND ativo = 1";
+
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+        $statement = $connection->prepare($query);
+        // Make Statement  
+        $statement->execute();
+        
+        $query = "SELECT u.*
+        FROM usuarios u 
+        WHERE u.email = '$email' AND u.ativo = 1";
+        
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($query);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+        if ($resultado) {
+            foreach ($resultado as $reg) {
+                $objUsuario = new Usuarios();
+                
+                $objUsuario->setCurso($reg['curso']);
+                $objUsuario->setDataNascimento($reg['data_nascimento']);
+                $objUsuario->setEmail($reg['email']);
+                $objUsuario->setEndereco($reg['endereco']);
+                $objUsuario->setHabilidades($reg['habilidades']);
+                $objUsuario->setNivelEscolaridade($reg['nivel_escolaridade']);
+                $objUsuario->setIdUsuario($reg['id_usuario']);
+                $objUsuario->setLogin($reg['login']);
+                $objUsuario->setSexo($reg['sexo']);
+                $objUsuario->setSite($reg['site']);
+                $objUsuario->setSiteEmpresa($reg['site_empresa']);
+                $objUsuario->setSobreMim($reg['sobre_mim']);
+                $objUsuario->setNome($reg['nome']);
+                $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+                $objUsuario->setDataCriacaoPerfil($reg['data_criacao_perfil']);
+                $objUsuario->setEmpresa($reg['empresa']);
+                $objUsuario->setEscola($reg['escola']);
+                $objUsuario->setProfissao($reg['profissao']);
+                $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
+                $objUsuario->setToken($token);
+                
+                return $objUsuario;
+            }
+        }
+        return false;
+    }
+    
     public function filtroSeguidoresConteudo($idConjunto, $nome = null, $indicePagina = 1) {
         $arrayRetorno = array();
         $qtdParticipantes = 0;
@@ -505,6 +608,8 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setEscola($reg['escola']);
                 $objUsuario->setProfissao($reg['profissao']);
                 $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
+                $objUsuario->setParametrosEmail($reg['parametros_email']);
+
                 
                 return $objUsuario;
             }
@@ -553,6 +658,7 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setEscola($reg['escola']);
                 $objUsuario->setProfissao($reg['profissao']);
                 $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
+                $objUsuario->setParametrosEmail($reg['parametros_email']);
                 
                 return $objUsuario;
             }

@@ -16,6 +16,19 @@ class PublicacoesTable extends Doctrine_Table {
         return Doctrine_Core::getTable('Publicacoes');
     }
 
+    public function removePublicacao($idPublicacao) {
+        $query = "UPDATE publicacoes 
+                 SET visivel = 0
+                WHERE id_publicacao = $idPublicacao";
+        
+            $connection = Doctrine_Manager::getInstance()
+                            ->getCurrentConnection()->getDbh();
+            // Get Connection of Database  
+            $statement = $connection->prepare($query);
+            // Make Statement  
+            $statement->execute();
+    }
+    
     public function getPublicacaoPermalink($idPublicacao) {
         
         $query = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,
@@ -343,7 +356,13 @@ class PublicacoesTable extends Doctrine_Table {
         LEFT JOIN conteudos con ON con.id_tipo_conjunto = i.id_tipo_conjunto AND con.id_conjunto = i.id_conjunto 
         LEFT JOIN comunidades com ON com.id_tipo_conjunto = i.id_tipo_conjunto AND com.id_conjunto = i.id_conjunto 
         LEFT JOIN usuarios r ON p.id_usuario_referencia = r.id_usuario
-        WHERE p.id_conjunto IS NULL AND p.visivel =  1 AND (a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado) AND a.aceito = 1";
+        
+        WHERE p.id_conjunto IS NULL AND p.visivel =  1 AND (a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado) AND a.aceito = 1
+        
+        AND (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_PUBLICA." OR
+        (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_SOMENTE_AMIGOS." AND (a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado))
+        OR (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_PRIVADA." AND p.id_usuario = $id_usuario_logado)
+        )";
         
         //pegar mais 10 publicacoes depois da publicação [$ultimo_id_publicacao]
         if($ultimo_id_publicacao!=null){
@@ -425,7 +444,9 @@ class PublicacoesTable extends Doctrine_Table {
     
     public function getPublicacoesDoPerfil($id_usuario,$ultimo_id_publicacao=null) {
         $arrayRetorno = array();
-                    
+        
+        $id_usuario_logado = UsuarioLogado::getInstancia()->getIdUsuario();
+        
         $query = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,
         r.nome AS \"nome_usuario_referencia\",i.imagem_perfil AS \"imagem_perfil_conjunto\",
         IF (i.id_tipo_conjunto = 1,con.nome,com.nome) as \"nome_conjunto\"
@@ -435,9 +456,19 @@ class PublicacoesTable extends Doctrine_Table {
         LEFT JOIN conteudos con ON con.id_tipo_conjunto = i.id_tipo_conjunto AND con.id_conjunto = i.id_conjunto 
         LEFT JOIN comunidades com ON com.id_tipo_conjunto = i.id_tipo_conjunto AND com.id_conjunto = i.id_conjunto 
         LEFT JOIN usuarios r ON p.id_usuario_referencia = r.id_usuario
-        WHERE p.visivel =  1 AND (p.id_usuario = $id_usuario OR p.id_usuario_original = $id_usuario OR p.id_usuario_referencia = $id_usuario)";
+        
+        LEFT JOIN amigos a ON (a.id_usuario_a = u.id_usuario OR a.id_usuario_b = u.id_usuario)
         
         
+        WHERE p.visivel =  1 
+        AND (p.id_usuario = $id_usuario OR p.id_usuario_original = $id_usuario OR p.id_usuario_referencia = $id_usuario)
+        AND (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_PUBLICA." OR
+        (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_SOMENTE_AMIGOS." AND (a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado))
+        OR (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_PRIVADA." AND p.id_usuario = $id_usuario_logado)
+        )
+        
+        ";
+                
         //pegar mais 10 publicacoes depois da publicação [$ultimo_id_publicacao]
         if($ultimo_id_publicacao!=null){
             $query .= " AND p.id_publicacao < $ultimo_id_publicacao";

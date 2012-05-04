@@ -33,6 +33,17 @@ class perfilActions extends robolivreAction {
 
     }
     
+    public function executeNovaSenha(sfWebRequest $request) {
+        $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
+        $this->forward404Unless($this->usuario);
+    }
+    
+    public function executeConfiguracoes(sfWebRequest $request) {
+        $usuarios = new Usuarios(null,false,UsuarioLogado::getInstancia());
+        $this->formUsuario = new UsuariosForm($usuarios, null, null, UsuariosForm::CONFIGURACAO);
+
+    }
+    
     public function executeExibir(sfWebRequest $request) {
         
         

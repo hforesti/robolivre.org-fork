@@ -907,8 +907,8 @@ Usuarios:
       primary: false
       notnull: false
       autoincrement: false
-    parametros_privacidade:
-      type: string(255)
+    parametros_email:
+      type: string(100)
       fixed: false
       unsigned: false
       primary: false
@@ -949,6 +949,13 @@ Usuarios:
       unsigned: false
       primary: false
       notnull: true
+      autoincrement: false
+    token:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
       autoincrement: false
 Videos:
   connection: doctrine

@@ -290,19 +290,103 @@ class Util {
         return $dataHora[0]." às ".str_replace(":", "h", $dataHora[1]);
     }
     
-    public static function getNuvemTags(){
+    public static function getNuvemTags($max = 48,$min = 10){
         /*
          max = 52px
          min = 10px
         <a href="conteudo.shtml" title="5 itens" style="font-size: 12.2611464968px;">LAME4</a>
          */
+        $string = "";
         $cs = Doctrine::getTable("Conteudos")->getConteudosNuvemTag();
         
+        
+        $diff = $max - $min;
+//        $maiorPts = $cs[0]->getPontos();
+//        $menorPts = $cs[count($cs)-1]->getPontos();
+        $total = 0;
         foreach($cs as $c){
-           echo $c->getNome()." - PTS:".$c->getPontos()."<br/>";
+            $total += $c->getPontos();
         }
         
-        return "";
+        
+        shuffle($cs);
+        foreach($cs as $c){
+           $string.= "<a href=\"".  url_for("conteudo/".self::criaSlug($c->getNome()))."\" title=\"".$c->getPontos()." ".(($c->getPontos()>0)?"itens":"item")."\" style=\"font-size: ".((($c->getPontos()/$total)*($diff))+$min)."px;\">".$c->getNome()."</a>&nbsp;&nbsp;";
+        }
+        
+        return $string;
+    }
+    
+    public static function enviarEmail($assunto, $texto, $email) {
+
+        $mail = new PHPMailer();
+
+        # send via SMTP
+        $mail->IsSMTP();
+
+        # setando o idioma
+        $mail->SetLanguage("br");
+
+        # setando a porta de smt a ser utilizada. Neste caso, a 587 que o GMail utiliza		
+        $mail->SMTP_PORT = "587";
+
+        # ajusto o tipo de comunicaÃ§Ã£o a ser utilizada, no caso, a TLS do GMail
+        $mail->SMTPSecure = "false";
+
+        # especifico o endereÃ§o do servidor smtp do GMail
+        //$mail->Host = "smtp.gmail.com"; 
+        $mail->Host = "smtp.mixtecnologia.com.br";
+        
+                
+        # ativo a autenticaÃ§Ã£o SMTP, no caso do GMail, Ã© necessÃ¡rio
+        $mail->SMTPAuth = true;
+
+        # UsuÃ¡rio SMTP do GMail
+        $mail->Username = "robolivre@mixtecnologia.com.br";
+
+        # Senha do usuÃ¡rio SMTP do GMail
+        $mail->Password = "r0Bm.3eFsP";
+
+        $mail->From = "smtp@mixtecnologia.com.br";
+        # coloque aqui o seu correio, para que a autenticaÃ§Ã£o nÃ£o barre a mensagem
+        $mail->FromName = utf8_decode("Robolivre");
+
+        # EndereÃ§o do destinatÃ¡rio
+        $mail->AddAddress($email);
+
+        # DefiniÃ§Ã£o de quebra de linha
+        $mail->WordWrap = 50;
+
+        # envio como HTML se 'true'
+        $mail->IsHTML(true);
+        $mail->Subject = $assunto;
+
+        # "ConteÃºdo da mensagem HTML"
+        $mail->Body = $texto;
+
+        # "Para mensagens somente texto"
+        $mail->AltBody = $texto;
+
+        # Enviando
+        if ($mail->Send())
+            return true;
+        else
+            return false;
+    }
+    
+    public static function getTokenAleatorio($l = 15) {
+        $str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $tmp = "";
+        while (strlen($tmp) < $l) {
+            $tmp .= $str{mt_rand(0, strlen($str))};
+        }
+        return $tmp;
+    }
+    
+    public static function getAbsoluteUrl($url){
+	$dir = url_for($url, true);
+	return _compute_public_path($dir, sfConfig::get('sf_web_dir_name','web'),'png', true);
+
     }
 }
 

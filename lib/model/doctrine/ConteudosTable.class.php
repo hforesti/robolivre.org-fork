@@ -882,8 +882,7 @@ class ConteudosTable extends Doctrine_Table {
             LEFT JOIN conjuntos u ON u.id_conjunto = c.id_conjunto
             LEFT JOIN tags_conteudos t
             ON c.id_conjunto = t.id_conjunto_referencia OR c.id_conjunto = t.id_conjunto_referenciado
-            WHERE c.id_conjunto <> $idConjunto AND (t.id_conjunto_referencia = $idConjunto OR t.id_conjunto_referenciado = $idConjunto)
-            GROUP BY c.id_conjunto";
+            WHERE c.id_conjunto <> $idConjunto AND (t.id_conjunto_referencia = $idConjunto OR t.id_conjunto_referenciado = $idConjunto)";
 
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();

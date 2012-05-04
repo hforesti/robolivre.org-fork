@@ -3,7 +3,10 @@
 
 
 
-
+novaSenha:
+  url: /perfil/novaSenha/*
+  param: { module: perfil, action: novaSenha }
+  
 conteudo:
   url:    conteudo/:slug
   param:  { module: conteudo, action: exibir }

@@ -37,7 +37,7 @@ class UsuarioLogado{
                 $this->setSobreMim($objUsuario->getSobreMim());
                 $this->setNome($objUsuario->getNome());
                 $this->setTwitter($objUsuario->getTwitter());
-                $this->setParametrosPrivacidade($objUsuario->getParametrosPrivacidade());
+                $this->setParametrosEmail($objUsuario->getParametrosEmail());
                 $this->setImagemPerfil($objUsuario->getImagemPerfil());
                 $this->setDataCriacaoPerfil($objUsuario->getDataCriacaoPerfil());
                 $this->setEmpresa($objUsuario->getEmpresa());
@@ -96,7 +96,7 @@ class UsuarioLogado{
                 $this->setSobreMim($objUsuario->getSobreMim());
                 $this->setNome($objUsuario->getNome());
                 $this->setTwitter($objUsuario->getTwitter());
-                $this->setParametrosPrivacidade($objUsuario->getParametrosPrivacidade());
+                $this->setParametrosEmail($objUsuario->getParametrosEmail());
                 $this->setImagemPerfil($objUsuario->getImagemPerfil());
                 $this->setDataCriacaoPerfil($objUsuario->getDataCriacaoPerfil());
                 $this->setEmpresa($objUsuario->getEmpresa());
@@ -152,6 +152,11 @@ class UsuarioLogado{
                     break;
                 case "conteudo":
                         return true;
+                case "perfil":
+                        if(is_numeric(array_search($acao, array('novaSenha')))){
+                            return true;
+                        }
+                        break;
                 case "conteudos":
                     if(is_numeric(array_search($acao, array('index')))){
                         return true;
@@ -311,8 +316,8 @@ class UsuarioLogado{
         return Util::validaImagem($imagem, $tipoImagem,Util::TIPO_IMAGEM_USUARIO);
     }
 
-    public function getParametrosPrivacidade() {
-        return $_SESSION['sesParametrosPrivacidade'];
+    public function getParametrosEmail() {
+        return $_SESSION['sesParametrosEmail'];
     }
 
     public function getTwitter() {
@@ -323,8 +328,8 @@ class UsuarioLogado{
         $_SESSION['sesImagemPerfil'] = $valor;
     }
 
-    public function setParametrosPrivacidade($valor) {
-        $_SESSION['sesParametrosPrivacidade'] = $valor;
+    public function setParametrosEmail($valor) {
+        $_SESSION['sesParametrosEmail'] = $valor;
     }
 
     public function setTwitter($valor) {

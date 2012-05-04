@@ -10,7 +10,7 @@
  *
  * @author maxguenes
  */
-class robolivreAction extends sfActions {
+abstract class robolivreAction extends sfActions {
 
     public function execute($request,$executarTeste = true) {
         if ($executarTeste && !UsuarioLogado::getInstancia()->isLogado() && !UsuarioLogado::getInstancia()->isUsuarioPublico()) {

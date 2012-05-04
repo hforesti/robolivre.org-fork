@@ -15,6 +15,7 @@ class UsuariosForm extends BaseUsuariosForm {
     const SOMENTE_INFO_CADASTRO = 2;
     const SOMENTE_INFO = 3;
     const LOGIN = 4;
+    const CONFIGURACAO = 5;
 
     public $tipoFormulario = 0;
 
@@ -65,7 +66,7 @@ class UsuariosForm extends BaseUsuariosForm {
                     'id_usuario' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_usuario')), 'empty_value' => $this->getObject()->get('id_usuario'), 'required' => false)),
                     'nome' => new sfValidatorString(array('max_length' => 255)),
                     'login' => new sfValidatorString(array('max_length' => 45)),
-                    'email' => new sfValidatorEmail(array('max_length' => 100),array('invalid'=>'O e-mail não parece ser válido. Verifique a digitação.')),
+                    'email' => new sfValidatorEmail(array('max_length' => 100), array('invalid' => 'O e-mail não parece ser válido. Verifique a digitação.')),
                     'tp_frm' => new sfValidatorString(array('max_length' => 100))
                 ));
                 break;
@@ -80,19 +81,19 @@ class UsuariosForm extends BaseUsuariosForm {
                     'confirmacao_senha' => new sfWidgetFormInputPassword(),
                     'confirmacao_email' => new sfWidgetFormInputText(),
                     'tp_frm' => new sfWidgetFormInputHidden(array(), array('value' => $this->tipoFormulario)),
-                    'data_criacao_perfil'    => new sfWidgetFormDateTime(),
+                    'data_criacao_perfil' => new sfWidgetFormDateTime(),
                 ));
 
                 $this->setValidators(array(
                     'id_usuario' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_usuario')), 'empty_value' => $this->getObject()->get('id_usuario'), 'required' => false)),
                     'nome' => new sfValidatorString(array('max_length' => 255)),
                     'login' => new sfValidatorString(array('max_length' => 45)),
-                    'email' => new sfValidatorEmail(array('max_length' => 100),array('invalid'=>'O e-mail não parece ser válido. Verifique a digitação.')),
+                    'email' => new sfValidatorEmail(array('max_length' => 100), array('invalid' => 'O e-mail não parece ser válido. Verifique a digitação.')),
                     'senha' => new sfValidatorString(array('max_length' => 100)),
                     'confirmacao_senha' => new sfValidatorString(array('max_length' => 100, 'required' => false)),
                     'confirmacao_email' => new sfValidatorEmail(array('max_length' => 100, 'required' => false)),
                     'tp_frm' => new sfValidatorString(array('max_length' => 100)),
-                     'data_criacao_perfil'    => new sfValidatorDateTime(),
+                    'data_criacao_perfil' => new sfValidatorDateTime(),
                 ));
                 break;
             case self::SOMENTE_INFO:
@@ -118,7 +119,7 @@ class UsuariosForm extends BaseUsuariosForm {
                     'id_usuario' => $this->validatorSchema['id_usuario'],
                     'nivel_escolaridade' => $this->validatorSchema['nivel_escolaridade'],
                     //'nome' => $this->validatorSchema['nome'],
-                    'email' => new sfValidatorEmail(array('max_length' => 100),array('invalid'=>'O e-mail não parece ser válido. Verifique a digitação.')),
+                    'email' => new sfValidatorEmail(array('max_length' => 100), array('invalid' => 'O e-mail não parece ser válido. Verifique a digitação.')),
                     'endereco' => $this->validatorSchema['endereco'],
                     'habilidades' => $this->validatorSchema['habilidades'],
                     'curso' => $this->validatorSchema['curso'],
@@ -132,6 +133,22 @@ class UsuariosForm extends BaseUsuariosForm {
                     'escola' => $this->validatorSchema['escola'],
                     'empresa' => $this->validatorSchema['empresa'],
                 ));
+                break;
+            case self::CONFIGURACAO:
+                
+                $this->setWidgets(array_merge(array(
+                    'nome' => new sfWidgetFormInputText(),
+                    'senha' => new sfWidgetFormInputPassword(),
+                    'senhaNova' => new sfWidgetFormInputPassword(),
+                    'confirmacaoSenhaNova' => new sfWidgetFormInputPassword(),                    
+                ),  Configuracoes::getWidgetsInputsConfiguracao()));
+                $this->setValidators(array_merge(array(
+                    'nome' => new sfValidatorString(array('max_length' => 255)),
+                    'senha' => new sfValidatorString(array('max_length' => 100)),
+                    'senhaNova' => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+                    'confirmacaoSenhaNova' => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+                ),  Configuracoes::getWidgetsValidationsConfiguracao()));
+
                 break;
         }
 
@@ -161,8 +178,7 @@ class UsuariosForm extends BaseUsuariosForm {
             $this->widgetSchema['sexo'] = new sfWidgetFormSelect(array(
                         'choices' => Sexo::getDescricoes()
                     ));
-        }        
-        
+        }
     }
 
     public function validaDadosIniciais() {

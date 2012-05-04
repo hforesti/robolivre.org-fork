@@ -92,13 +92,13 @@
         <hr>
 
         <div id="grid-amigos" class="wdgt">
-            <h3><a href="amigos.shtml" title="Ver tudo">Seguidores <small><?php echo $quantidadeParticipantes ?></small></a></h3>
+            <h3><a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirSeguidores") ; ?>" title="Ver tudo">Seguidores <small><?php echo $quantidadeParticipantes ?></small></a></h3>
             <ul class="thumbnails">
                 <?php foreach ($arrayParticipantes as $usuario): ?>
                     <li ><a href="<?php echo url_for('perfil/exibir?u=' . $usuario->getIdUsuario()) ?>"><img src="<?php echo image_path($usuario->getImagemPerfilFormatada()) ?>" alt="<?php echo $usuario->getNome() ?>" title="<?php echo $usuario->getNome() ?>"></a></li>
                 <?php endforeach; ?>
             </ul>
-            <a href="amigos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+            <a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirSeguidores") ; ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-amigos -->
 
         <hr>

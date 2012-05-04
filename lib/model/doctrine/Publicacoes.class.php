@@ -241,7 +241,7 @@ class Publicacoes extends BasePublicacoes {
                 $string .= "</li>";
                 $string .= "<li class=\"divider\"></li>";
                 $string .= "<li>";
-                $string .= "<a href=\"#\"><i class=\"icon-flag\"></i> Reportar abuso</a>";
+                $string .= "<a href=\"".url_for("publicacao/remover?u=".$this->getIdPublicacao())."\"><i class=\"icon-flag\"></i> Reportar abuso</a>";
                 $string .= "</li>";
                 $string .= "</ul>";
                 $string .= "</div>";
@@ -344,11 +344,7 @@ class Publicacoes extends BasePublicacoes {
             
             $string .= "</div><!-- entry -->";
             
-            
-            
-            
          /** ATIVIDADES **/   
-            
             
         //CRIACAO DE CONTEUDO OU COMUNIODADE    
         } else if ($this->getTipoPublicacao() == self::CRIACAO_CONJUNTO) {
@@ -370,6 +366,8 @@ class Publicacoes extends BasePublicacoes {
             $string .= " está seguindo ";
             $string .= Util::getTagConteudo($this->getNomeConjunto(),"fn",true);
             $string .= ". <span class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">" . Util::getDataSimplificada($this->getDataPublicacao()) . "</span>";
+        }else{
+            return "";
         }
 
         if($comMenuDropDown){
@@ -386,7 +384,7 @@ class Publicacoes extends BasePublicacoes {
                 $string .= "</li>";
                 $string .= "<li class=\"divider\"></li>";
                 $string .= "<li>";
-                $string .= "<a href=\"#\"><i class=\"icon-flag\"></i> Reportar abuso</a>";
+                $string .= "<a href=\"".url_for("publicacao/remover?u=".$this->getIdPublicacao())."\"><i class=\"icon-flag\"></i> Reportar abuso</a>";
                 $string .= "</li>";
                 $string .= "</ul>";
                 $string .= "</div>";

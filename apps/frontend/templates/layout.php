@@ -95,10 +95,10 @@
 
                                         <li class="divider"></li>
                                         <li>
-                                            <a href="settings.shtml"><i class="icon-cog icon-gray"></i> Configurações</a>
+                                            <a href="<?php echo url_for('perfil/configuracoes') ?>"><i class="icon-cog icon-gray"></i> Configurações</a>
                                         </li>
                                         <li>
-                                            <a href="help.shtml"><i class="icon-question-sign icon-gray"></i> Ajuda</a>
+                                            <a href="<?php echo url_for("ajuda/index") ?>"><i class="icon-question-sign icon-gray"></i> Ajuda</a>
                                         </li>
                                         <li class="divider"></li>
                                         <li class="logout-link">

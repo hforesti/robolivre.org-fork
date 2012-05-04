@@ -20,6 +20,19 @@ class publicacaoActions extends robolivreAction {
         $this->redirect("publicacao/exibir?u=" . $request->hasParameter('u'));
     }
 
+    public function executeRemover(sfWebRequest $request) {
+        $ultimaUrl = $request->getReferer();
+        
+        if($request->hasParameter('u')){
+            Doctrine::getTable('Publicacoes')->removePublicacao($request->getParameter('u'));
+            $this->redirect($ultimaUrl);
+        }else{
+            $this->forward404();
+        }
+        
+        
+    }
+    
     public function executeExibir(sfWebRequest $request) {
         if($request->hasParameter('u')){
             $this->publicacao = Doctrine::getTable('Publicacoes')->getPublicacaoPermalink($request->getParameter('u'));
@@ -70,7 +83,7 @@ class publicacaoActions extends robolivreAction {
         }else{
             $this->forward404();
         }
-        
      }
+     
 
 }

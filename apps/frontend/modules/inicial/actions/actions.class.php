@@ -29,7 +29,32 @@ class inicialActions extends robolivreAction {
         $this->formNovoUsuario = new UsuariosForm(null, null, null, UsuariosForm::SIMPLES);
         $this->formLogin = new UsuariosForm(null, null, null, UsuariosForm::LOGIN);
     }
+    
+    public function executeEsqueciSenha(sfWebRequest $request){
+        
+        sfContext::getInstance()->getConfiguration()->loadHelpers(array('Tag','Url'));
+            
+        $email = $request->getParameter("email");
+        
+        $usuario = Doctrine::getTable('Usuarios')->esqueciSenha($email);
 
+        if($usuario){
+            $link = url_for("perfil/novaSenha?token=".$usuario->getToken()."&u=".$usuario->getIdUsuario(),true);
+
+            Util::enviarEmail("Sua nova senha", "Para criar uma nova senha, entre no link : $link", $usuario->getEmail()) ;
+            
+            $this->mensagem = "<strong>Tudo bem!</strong> Um link para recuperar sua senha foi enviado para o seu email <em>".$usuario->getEmail()."</em>.";
+            
+        }else{
+            $this->erro = "O endereço de email <strong>$email</strong> não está cadastrado no nosso site. Tente novamente.";
+        }
+        
+        $this->formNovoUsuario = new UsuariosForm(null, null, null, UsuariosForm::SIMPLES);
+        $this->formLogin = new UsuariosForm(null, null, null, UsuariosForm::LOGIN);
+        $this->setTemplate("index");
+        
+    }
+    
     public function executeCreate(sfWebRequest $request) {
 
         $this->forward404Unless($request->isMethod(sfRequest::POST));

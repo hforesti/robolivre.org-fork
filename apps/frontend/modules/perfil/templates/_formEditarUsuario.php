@@ -16,20 +16,12 @@ if ($valoresInciais['data_nascimento'] != null && $valoresInciais['data_nascimen
 ?>
 
 
+
+
 <form id="form-editar-info" class="form-horizontal" action="<?php echo url_for('perfil/editarRegistro'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
     <?php if (!$form->getObject()->isNew()): ?>
         <input type="hidden" name="sf_method" value="put" />
     <?php endif; ?>
-    <fieldset>
-        <legend>Configurações e imagem</legend>
-        <div class="control-group">
-
-            <a href="settings.shtml" class="btn btn-mini"><i class="icon-cog icon-gray"></i> Alterar senha, nome e configurações</a> 
-            <a href="settings-avatar.shtml" class="btn btn-mini"><i class="icon-picture icon-gray"></i> Alterar minha imagem</a>
-        </div>
-
-    </fieldset>
-
     <fieldset>
         <legend>Pessoais</legend>
 
@@ -91,11 +83,26 @@ if ($valoresInciais['data_nascimento'] != null && $valoresInciais['data_nascimen
             <div class="controls">
                 <div class="input-append">
                     <?php echo $form->getWidget('email')->render($form->getName() . "[email]", $valoresInciais['email'], array('class' => "span4", 'id' => 'email', 'placeholder' => "Ex: voce@email.com", 'type' => "email")); ?>
-                    <span class="add-on"><i class="icon-ok icon-gray"></i> Confirmado</span>
+                    <span class="add-on">
+                        <i class="icon-exclamation-sign icon-gray"></i>
+                        Confirmado
+                    </span>
                 </div>
                 <p class="help-block">
                     Atualizando seu email você receberá um link para confirmação no novo endereço informado.</p>
             </div>
+            
+            <?php /*<div class="control-group warning">
+                <label class="control-label" for="email">E-mail <i class="icon-user icon-gray singletip" title="Apenas amigos podem ver"></i></label>
+                <div class="controls">
+
+                    <div class="input-append">
+                        <input type="email" id="email" value="rodrigo@robolivre.org" placeholder="Ex: voce@email.com" class="span4"><span class="add-on"><i class="icon-exclamation-sign icon-gray"></i> Confirmação pendente</span>
+                    </div>
+                    <p class="help-block">É importante confirmarmos seu email. Verifique sua caixa de entrada e também de spam.<br><strong>Não recebeu nosso email de confirmação? <a href="#">Reenviar agora</a></strong></p>
+                </div>
+
+            </div>*/ ?>
         </div>
 
 
