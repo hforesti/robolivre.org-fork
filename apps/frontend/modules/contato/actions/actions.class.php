@@ -23,7 +23,7 @@ class contatoActions extends sfActions {
         $form = new ContatoForm();
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if($form->isValid()){
-            
+            //enviar email de contato para robolivre@robolivre.org
         }else{
             $this->formContato = $form;
         }
@@ -40,7 +40,7 @@ class contatoActions extends sfActions {
         $form = new ContatoForm();
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if($form->isValid()){
-            
+            //enviar email de erro para robolivre@robolivre.org
         }else{
             $this->formContato = $form;
         }

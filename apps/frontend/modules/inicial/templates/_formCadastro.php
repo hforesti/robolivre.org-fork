@@ -27,7 +27,7 @@ $valoresInciais = $form->getTaintedValues();
         <div id="div-nome" class="control-group <?php echo $class ?>">
             <label class="control-label" for="nome">Nome e Sobrenome</label>
             <div class="controls">
-                <?php echo $form->getWidget('nome')->render($form->getName() . "[nome]", null, array('id' => 'nome', 'placeholder' => "Nome e Sobrenome", 'class' => 'span5', 'value' => $valoresInciais['nome'],'onBlur'=>'validaCampoNome(this)')); ?>
+                <?php echo $form->getWidget('nome')->render($form->getName() . "[nome]", null, array('id' => 'nome', 'placeholder' => "Nome e Sobrenome", 'class' => 'span5', 'value' => $valoresInciais['nome'],'onChange'=>'validaCampoNome(this)','onBlur'=>'validaCampoNome(this)')); ?>
                 <span id="help-nome" class="help-inline"><?php echo ($descricao != "")?$descricao:"" ?></span>
             </div>
         </div>
@@ -49,7 +49,7 @@ $valoresInciais = $form->getTaintedValues();
         <div id="div-login" class="control-group <?php echo $class ?>">
             <label class="control-label" for="username">Nome de usuário</label>
             <div class="controls">
-                <?php echo $form->getWidget('login')->render($form->getName() . "[login]", null, array('id' => 'username', 'placeholder' => "Nome de usuário", 'value' => $valoresInciais['login'],'onBlur'=>'validaForm()')); ?>
+                <?php echo $form->getWidget('login')->render($form->getName() . "[login]", null, array('id' => 'username', 'placeholder' => "Nome de usuário", 'value' => $valoresInciais['login'],'onKeyUp'=>'validaForm()','onBlur'=>'validaForm()')); ?>
                 <span id="help-login" class="help-inline"><?php echo ($descricao != "")?$descricao:"" ?></span>
             </div>
         </div>
@@ -74,7 +74,7 @@ $valoresInciais = $form->getTaintedValues();
         <div id="div-email" class="control-group <?php echo $class ?>">
             <label class="control-label" for="email">Seu e-mail</label>
             <div class="controls">
-                <?php echo $form->getWidget('email')->render($form->getName() . "[email]", null, array('id' => 'email', 'placeholder' => "E-mail", 'value' => $valoresInciais['email'],'onBlur'=>'validaForm()')); ?>
+                <?php echo $form->getWidget('email')->render($form->getName() . "[email]", null, array('id' => 'email', 'placeholder' => "E-mail", 'value' => $valoresInciais['email'],'onKeyUp'=>'validaForm()','onBlur'=>'validaForm()')); ?>
                 <span id="help-email" class="help-inline"><?php echo ($descricao != "")?$descricao:"" ?></span>
             </div>
         </div>
@@ -268,6 +268,8 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
         
         document.getElementById('div-'+id).className = "control-group "+classe;
         document.getElementById('help-'+id).innerHTML = descricao;
+        
+        verificaFormValidado();
     }
     
     function atualizaCamposAjax(mensagem){
@@ -287,6 +289,7 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
                 url: <?php echo "'".url_for("ajax/ajaxValidacaoFormCadastro") . "?usuarios[nome]='+getValue('nome')+'&usuarios[login]='+getValue('username')+'&usuarios[email]='+getValue('email')+'&usuarios[senha]='+getValue('pass')+'&usuarios[_csrf_token]='+getValue('usuarios__csrf_token')" ?>,
                 success: function(resposta){
                     atualizaCamposAjax(resposta);
+                    verificaFormValidado();
                 }
             });
     }//END validaForm
@@ -297,9 +300,14 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
             verificaFormValidado();
         }
     );
+    $("#cadastro-form input[type=text], #cadastro-form input[type=email], #cadastro-form input[type=password]").change(
+        function(){
+            verificaFormValidado();
+        }
+    );
     function verificaFormValidado(){
         document.getElementById("btn-submit").disabled = false;
-        if($("#cadastro-form .control-group").hasClass('error')){
+        if($("#cadastro-form .control-group").hasClass('error') || $("#cadastro-form .control-group").hasClass('warning')){
             document.getElementById("btn-submit").disabled = true;
         }
     }
@@ -348,7 +356,7 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
             
             isValido = false;
         }
-        
+        verificaFormValidado();
         return isValido;
     }
     

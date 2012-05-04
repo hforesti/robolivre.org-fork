@@ -34,14 +34,22 @@ class perfilActions extends robolivreAction {
     }
     
     public function executeNovaSenha(sfWebRequest $request) {
-        $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
+        $id = $request->getParameter('u');
+        $token = $request->getParameter('token');
+        $this->usuario = Doctrine::getTable("Usuarios")->validaToken($id,$token);
         $this->forward404Unless($this->usuario);
     }
     
     public function executeConfiguracoes(sfWebRequest $request) {
         $usuarios = new Usuarios(null,false,UsuarioLogado::getInstancia());
         $this->formUsuario = new UsuariosForm($usuarios, null, null, UsuariosForm::CONFIGURACAO);
-
+    }
+    
+    public function executeGravarConfiguracoes(sfWebRequest $request){
+        echo ConfiguracoesEmailUsario::getTodosParametrosConfiguracao($request->getPostParameter('usuarios'));
+        Util::pre($request->getPostParameters(),true);
+        $usuarios = new Usuarios(null,false,UsuarioLogado::getInstancia());
+        $form = new UsuariosForm($usuarios, null, null, UsuariosForm::CONFIGURACAO);
     }
     
     public function executeExibir(sfWebRequest $request) {

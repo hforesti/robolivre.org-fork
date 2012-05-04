@@ -1,3 +1,12 @@
+<?php
+$valoresInciais = $formUsuario->getDefaults();
+$taintedValues = $formUsuario->getTaintedValues();
+if(!empty($taintedValues)){
+    $valoresInciais = array_merge($valoresInciais, $taintedValues);
+}
+
+?>
+
 <div class="row">
 
     <?php include_partial('sidebarUsuarioLogado') ?>
@@ -19,7 +28,7 @@
             </li>
         </ul>
 
-        <form id="form-editar-conf" class="form-horizontal" action="#">
+        <form id="form-editar-conf" class="form-horizontal" method="post" action="<?php echo url_for("perfil/gravarConfiguracoes") ?>">
 
             <ul class="nav nav-tabs" id="tabs-home">
                 <li class="active">
@@ -48,35 +57,42 @@
                         <div class="control-group">
                             <label class="control-label">Amigos</label>
                             
-                            <?php // foreach(){ ?>
+                            <?php foreach(ConfiguracoesEmailUsario::getChavesConfiguracoesAmigo() as $chave){ ?>
+                            <?php $widget = $formUsuario->getWidget("amigo_$chave")?>
                             <div class="controls">
                                 <label class="checkbox">
-                                    <input type="checkbox" id="optionsCheckbox1" value="option1" checked="checked">
-                                    Receber email quando alguém lhe adicionar como amigo
+                                    <?php echo $widget->render($formUsuario->getName() ."[amigo_$chave]") ?>
+                                    <?php echo $widget->getLabel() ?>
                                 </label>
                             </div>
-                            <?php // } ?>
+                            <?php  } ?>
                         </div>
                         <hr>
 
                         <div class="control-group">
                             <label class="control-label">Conteúdos</label>
+                            <?php foreach(ConfiguracoesEmailUsario::getChavesConfiguracoesConteudo() as $chave){ ?>
+                            <?php $widget = $formUsuario->getWidget("conteudo_$chave")?>
                             <div class="controls">
                                 <label class="checkbox">
-                                    <input type="checkbox" id="optionsCheckbox2" value="option2" checked="checked">
-                                    Receber email quando alguém lhe convidar para colaborar com um conteúdo
-                                </label> 
+                                    <?php echo $widget->render($formUsuario->getName() ."[conteudo_$chave]") ?>
+                                    <?php echo $widget->getLabel() ?>
+                                </label>
                             </div>
+                            <?php  } ?>
                         </div>
                         <hr>
                         <div class="control-group">
                             <label class="control-label">Informativo Robô livre</label>
+                            <?php foreach(ConfiguracoesEmailUsario::getChavesConfiguracoesInformativo() as $chave){ ?>
+                            <?php $widget = $formUsuario->getWidget("informativo_$chave")?>
                             <div class="controls">
                                 <label class="checkbox">
-                                    <input type="checkbox" id="optionsCheckbox4" value="option4" checked="checked">
-                                    Receber nossa super newsletter com super novidades da rede e dos nossos super projetos :-)
-                                </label> 
+                                    <?php echo $widget->render($formUsuario->getName() ."[informativo_$chave]") ?>
+                                    <?php echo $widget->getLabel() ?>
+                                </label>
                             </div>
+                            <?php  } ?>
                         </div>
                     </div>
                 </fieldset>
@@ -86,7 +102,7 @@
                     <div class="control-group">
                         <label class="control-label" for="pass">Nova senha</label>
                         <div class="controls">
-                            <input id="pass" type="password" placeholder="Nova senha" value="senha1234" />
+                            <?php echo $formUsuario->getWidget('senhaNova')->render($formUsuario->getName() . "[senhaNova]", null , array('id' => 'pass-new', 'placeholder' => "Nova senha")); ?>                            
                             <span class="help-inline">informe a nova senha</span>
                         </div>
                     </div>
@@ -94,7 +110,7 @@
                     <div class="control-group">
                         <label class="control-label" for="pass-conf">Confirme a nova senha</label>
                         <div class="controls">
-                            <input id="pass-conf" type="password" placeholder="Repetir a senha" />
+                            <?php echo $formUsuario->getWidget('confirmacaoSenhaNova')->render($formUsuario->getName() . "[confirmacaoSenhaNova]", null , array('id' => 'pass-conf', 'placeholder' => "Repetir a senha")); ?>                            
                         </div>
                     </div>
                 </fieldset>
@@ -103,7 +119,7 @@
                     <div class="control-group">
                         <label class="control-label" for="pass">Nome e sobrenome</label>
                         <div class="controls">
-                            <input type="text" class="span5" id="realname" placeholder="Informe seu nome Completo" value="Rodrigo Medeiros">
+                            <?php echo $formUsuario->getWidget('nome')->render($formUsuario->getName() . "[nome]", $valoresInciais['nome'] , array('class'=>"span5",'id' => 'realname', 'placeholder' => "Informe seu nome Completo")); ?>                            
                         </div>
                     </div>
                 </fieldset>
@@ -115,13 +131,14 @@
             <div class="control-group">
                 <label class="control-label" for="pass">Senha atual</label>
                 <div class="controls">
-                    <input id="pass" type="password" placeholder="Sua senha" value="" />
+                    <?php echo $formUsuario->getWidget('senha')->render($formUsuario->getName() . "[senha]", null , array('id' => 'pass', 'placeholder' => "Sua senha")); ?>                            
                     <span class="help-inline">Para alterar informe a sua senha atual</span>
                 </div>
             </div>
 
             </fieldset>
             <div class="form-actions">
+                <?php echo $formUsuario->renderHiddenFields() ?>
                 <button type="submit" class="btn btn-primary" id="update-info">Salvar alterações</button>
             </div>
             </fieldset>

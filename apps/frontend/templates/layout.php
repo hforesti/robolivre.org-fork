@@ -56,6 +56,29 @@
                     </div>
                 </div>
             </div>    
+            <div class="modal fade" id="modalLogin">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+                    <h3>Entrar</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form" class="form-inline" action="#">
+                        <input id="login" type="email" placeholder="e-mail ou usuário" tabindex="1" />
+                        <input id="login-pass" type="password" placeholder="senha" tabindex="2" />
+
+                        <input value="entrar" type="submit" class="btn btn-primary" tabindex="4" />
+
+                        <label class="checkbox">
+                            <input type="checkbox" name="optionsCheckboxList1" value="option1" tabindex="3">
+                            lembrar-me
+                        </label>	
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <a href="#" class="btn" data-dismiss="modal">Fechar</a>
+                </div>
+            </div>
         <?php } else if (UsuarioLogado::getInstancia()->isLogado()) { ?>
         <body>
             <!-- Navbar
@@ -118,29 +141,7 @@
         <div id="conteudoPagina" class="container">
             <?php echo $sf_content ?>
             <hr>
-            <div class="modal fade" id="modalLogin">
-                <div class="modal-header">
-                    <a class="close" data-dismiss="modal">×</a>
-                    <h3>Entrar</h3>
-                </div>
-                <div class="modal-body">
-                    <form id="login-form" class="form-inline" action="#">
-                        <input id="login" type="email" placeholder="e-mail ou usuário" tabindex="1" />
-                        <input id="login-pass" type="password" placeholder="senha" tabindex="2" />
-
-                        <input value="entrar" type="submit" class="btn btn-primary" tabindex="4" />
-
-                        <label class="checkbox">
-                            <input type="checkbox" name="optionsCheckboxList1" value="option1" tabindex="3">
-                            lembrar-me
-                        </label>	
-                    </form>
-                </div>
-
-                <div class="modal-footer">
-                    <a href="#" class="btn" data-dismiss="modal">Fechar</a>
-                </div>
-            </div>
+            
             <div class="row" id="footer-utility">
 
                 <div class="span3">

@@ -141,13 +141,13 @@ class UsuariosForm extends BaseUsuariosForm {
                     'senha' => new sfWidgetFormInputPassword(),
                     'senhaNova' => new sfWidgetFormInputPassword(),
                     'confirmacaoSenhaNova' => new sfWidgetFormInputPassword(),                    
-                ),  Configuracoes::getWidgetsInputsConfiguracao()));
+                ),  ConfiguracoesEmailUsario::getWidgetsInputsConfiguracao()));
                 $this->setValidators(array_merge(array(
                     'nome' => new sfValidatorString(array('max_length' => 255)),
                     'senha' => new sfValidatorString(array('max_length' => 100)),
                     'senhaNova' => new sfValidatorString(array('max_length' => 100, 'required' => false)),
                     'confirmacaoSenhaNova' => new sfValidatorString(array('max_length' => 100, 'required' => false)),
-                ),  Configuracoes::getWidgetsValidationsConfiguracao()));
+                ),  ConfiguracoesEmailUsario::getWidgetsValidatorsConfiguracao()));
 
                 break;
         }
@@ -208,14 +208,14 @@ class UsuariosForm extends BaseUsuariosForm {
                     return false;
                 }
             } catch (ExceptionEmailELoginExistente $e) {
-                $error = new sfValidatorError($this->validatorSchema['email'], 'Email já existe');
+                $error = new sfValidatorError($this->validatorSchema['email'], 'Email já está sendo usado em outro cadastro');
                 $this->errorSchema->addError($error, 'email');
 
                 $error = new sfValidatorError($this->validatorSchema['login'], 'Nome de usuário já está sendo usado, por favor escolha outro.');
                 $this->errorSchema->addError($error, 'login');
                 return false;
             } catch (ExceptionEmailExistente $e) {
-                $error = new sfValidatorError($this->validatorSchema['email'], 'Email já existe');
+                $error = new sfValidatorError($this->validatorSchema['email'], 'Email já está sendo usado em outro cadastro');
                 $this->errorSchema->addError($error, 'email');
                 return false;
             } catch (ExceptionLoginExitente $e) {
