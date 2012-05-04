@@ -1,0 +1,45 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+  <hr class="only-mobile">
+
+  <div class="span8 offset2">
+
+    <div class="page-header">
+
+      <h1>Redefinir a sua senha</h1>
+    </div>
+
+    <form id="login-form-standalone" action="senha-reset-ok.shtml" class="form-horizontal">
+
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label" for="login-pass"><strong>Nova</strong> senha</label>
+          <div class="controls">
+           <input class="span4" id="login-pass" type="password" tabindex="1" />
+           <div class="help-block">Pelo menos 6 caracteres</div>
+         </div>
+       </div>
+
+        <div class="control-group">
+          <label class="control-label" for="login-pass-confirm">Confirmar nova senha</label>
+          <div class="controls">
+           <input class="span4" id="login-pass-confirm" type="password" placeholder="Repita a nova senha para confirmar" tabindex="2" />
+         </div>
+       </div>
+
+      <div class="form-actions">
+        <input value="Redefinir senha" type="submit" class="btn btn-primary btn-large" tabindex="3" />
+      </div>
+
+    </fieldset>
+
+</form>
+
+
+</div><!-- /miolo -->
+
+</div><!-- /row -->
+
+<!--#include virtual="includes/footer.html" -->
