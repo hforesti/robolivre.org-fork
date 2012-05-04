@@ -22,6 +22,7 @@
 <ul>
 	<li><a href="http://glyphicons.com/">Glyphicons Free</a></li>
 	<li><a href="http://thenounproject.com/">The Noun Project</a></li>
+	<li>Fonte <a href="http://developer.android.com/design/style/typography.html">Roboto</a></li>
 </ul>
 
 <h2>Software</h2>
