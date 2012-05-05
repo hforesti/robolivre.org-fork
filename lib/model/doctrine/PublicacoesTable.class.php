@@ -301,7 +301,7 @@ class PublicacoesTable extends Doctrine_Table {
         LEFT JOIN  participantes_conjuntos pc ON pc.id_conjunto = p.id_conjunto
         LEFT JOIN usuarios r ON p.id_usuario_referencia = r.id_usuario
         WHERE p.id_conjunto IS NOT NULL AND p.visivel =  1 
-        AND pc.id_usuario = $id_usuario_logado AND pc.aceito = 1 OR i.id_usuario = $id_usuario_logado";
+        AND (pc.id_usuario = $id_usuario_logado AND pc.aceito = 1 OR i.id_usuario = $id_usuario_logado)";
         
         //pegar mais 10 publicacoes depois da publicação [$ultimo_id_publicacao]
         if($ultimo_id_publicacao!=null){
@@ -321,7 +321,7 @@ class PublicacoesTable extends Doctrine_Table {
         LEFT JOIN  participantes_conjuntos pc ON pc.id_conjunto = p.id_conjunto
         LEFT JOIN usuarios r ON p.id_usuario_referencia = r.id_usuario
         WHERE p.id_conjunto IS NOT NULL AND p.visivel =  1 
-        AND pc.id_usuario = $id_usuario_logado AND pc.aceito = 1";
+        AND (pc.id_usuario = $id_usuario_logado AND pc.aceito = 1 OR i.id_usuario = $id_usuario_logado)";
         
         //pegar mais 10 publicacoes depois da publicação [$ultimo_id_publicacao]
         if($ultimo_id_publicacao!=null){
