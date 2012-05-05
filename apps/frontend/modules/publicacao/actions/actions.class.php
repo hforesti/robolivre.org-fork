@@ -44,8 +44,7 @@ class publicacaoActions extends robolivreAction {
                 $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
                 $this->formPublicacao = new PublicacoesForm();
                 $this->publicacoesConjunto = Doctrine::getTable("Publicacoes")->getPublicacoesDoConjunto($this->conteudo->getIdConjunto()); //array();
-                $chaves = array_keys($this->publicacoesConjunto);
-                $this->ultimaAtulizacao = Util::getDataFormatada($this->publicacoesConjunto[$chaves[0]]->getDataPublicacao()); 
+                
                 {
                     $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
                     $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
