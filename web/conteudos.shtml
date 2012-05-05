@@ -70,6 +70,11 @@
 </div>
 
 
+<div class="alert">
+  <a class="close" data-dismiss="alert" href="#">×</a>
+  <a href="#modalInfo" data-toggle="modal"><i class="icon-question-sign icon-gray"></i> Mostrar instruções novamente</a>
+</div>
+
 <div id="explore" class="clearfix">
 <h2>Explore nosso mundo de conteúdos</h2>
 <form class="form-search" action="#">

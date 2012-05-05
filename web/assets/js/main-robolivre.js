@@ -107,6 +107,16 @@ $('#inbox-pvt-intro li button').children().hover(function() {
 	$(this).closest('li').siblings().stop().fadeTo(500,1);
 });
 
+//pega ID do status para confirmar exclusao
+$('.action-delete a').click(function(){
+	var id = $(this).closest('.vcard').attr("id");
+	//quando iniciar a mostrar o modal, pega ID
+	$('#modalDelete').on('show', function () {
+		ref = $("#modalDelete .btn-danger").attr("href");
+		$("#modalDelete .btn-danger").attr("href","excluir?p="+id);
+	})
+});
+
 
 //pega destinatario do modal de mensagem privada
 $('.send-msg').click(function(){
