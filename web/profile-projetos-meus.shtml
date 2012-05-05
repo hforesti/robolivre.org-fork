@@ -30,8 +30,10 @@
 	<li><a href="profile-amigos.shtml"><span class="label label-warning" title="2 novas solicitações de amizade">40</span> <span class="icon-gray icon-user"></span> Amigos</a></li>
 	<li><a href="profile-eventos.shtml"><span class="icon-gray icon-calendar"></span> Eventos</a></li>
 	<li class="active"><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
-				<li><hr></li>
-	<li><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
+	<li><a href="perfil-info.shtml"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
+	<li><hr></li>
+	<li><a href="inbox.shtml"><span class="label label-warning" id="side-notf-unread" title="2 notificações não lidas">2</span> <span class="icon-gray icon-bell"></span> Notificações</a></li>
+	<li><a href="inbox-pvt.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
 </ul>
 </div><!-- /sidebar -->
 

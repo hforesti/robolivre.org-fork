@@ -55,19 +55,16 @@
 				<a href="conteudo.shtml">Arduíno</a>
 			</li>
 		</ul>
-
+			<p><span class="label label-info">Tema de aula</span></p>
 		<p>
-			<!-- <span class="label label-info">Tema de aula</span> -->
-			<small>Adicionado por <a href="perfil.shtml">Henrique Foresti</a>. Última atualização 21/01/2011</small>
+			<small>Adicionado por <a href="perfil.shtml">Henrique Foresti</a>. Última modificação 21/01/2011</small>
 		</p>
 
 		<div class="page-header">
 			<a href="#" class="btn btn-success pull-right"><i class="icon-ok icon-white"></i> Seguir conteúdo</a>
 			<!-- <a href="#" class="btn pull-right"><i class="icon-remove"></i> Parar de seguir</a> -->
-
 			<h1>Arduino</h1>
 		</div>
-
 
 		<div class="entry" id="main-entry">
 			<p>A plataforma Arduino foi desenvolvida na <strong>Itália</strong> e, por ser uma plataforma aberta, várias versões surgiram e qualquer pessoa pode facilmente construir a sua, com base nos protótipos disponíveis na internet.</p>

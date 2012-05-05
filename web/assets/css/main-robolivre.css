@@ -48,6 +48,7 @@ input, textarea { color: #000; }
 .placeholder { color: #aaa; }
 .only-mobile {display: none}
 .btn, .label {border-radius: 14px}
+.label {cursor: default;}
 .btn-large {border-radius: 22px}
 .icon-gray {opacity: 0.4}
 #sidebar .nav .active .icon-gray, .dropdown-menu li a:hover i, #explore .nav .active a i {background-image: url(../img/glyphicons-halflings-white.png);}
@@ -545,7 +546,7 @@ footer .pull-left {width: 45%;}
 #explore #tagcloud {
 	margin: 0 auto;
 	width: 80%;
-	line-height: 180%;
+	line-height: 290%;
 	padding-bottom: 20px;
 }
 #explore #tagcloud a {padding: 0 4px}
