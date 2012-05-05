@@ -266,10 +266,19 @@ var uploaderImg = new qq.FileUploader({
 	showMessage: function(message){ 
                 alert(message);
                 $("#thumb").attr("src",url_for("assets/img/rl/170.gif")); 
+                $("#i-medium").attr("src",url_for("assets/img/rl/60.gif")); 
+                $("#i-small").attr("src",url_for("assets/img/rl/20.gif")); 
                 $("#imagem_selecionada").val("");
             },
         onComplete: function(id, fileName, responseJSON){
-            $("#thumb").attr("src",url_for("uploads/"+ fileName));
+            var arr = fileName.split(".");
+            var extensao = arr[1];
+            var nome = arr[0];
+            
+            $("#thumb").attr("src",url_for("uploads/"+ nome +"_tmp_large."+extensao));
+            $("#i-medium").attr("src",url_for("uploads/"+ nome +"_tmp_60."+extensao)); 
+            $("#i-small").attr("src",url_for("uploads/"+ nome +"_tmp_20."+extensao)); 
+            
             $("#imagem_selecionada").val(fileName);
         }
 });
