@@ -215,6 +215,7 @@ body.home .top-login {
 	float: left;
 	width: 100%;
 }
+	#stream .well {clear: both; text-align: center;}
 	#stream #tabs-home {width: 100%; margin-top: 30px; position: relative}
 	#stream #tabs-home li {float: right}
 	#stream #tabs-home li i {margin-top: 3px}
@@ -274,16 +275,18 @@ body.home .top-login {
 		width: 85%;
 	}
 	#stream .meta {
-		font-size: 88%;
 		float: left;
 		clear: both;
-		margin-top: -10px
+		margin-top: -5px;
+		margin-bottom: 5px;
 	}
 	#stream .activity .time {font-size: 11px; color: #bbb}
-	#stream .meta li {
+	#stream .meta > li {
+		font-size: 88%;
 		float: left;
 		margin-right: 8px
 	}
+	#stream .meta .share-now {font-size:122%;}
 	#stream .meta .time {padding-top: 1px}
 	#stream .meta .time a, 
 	#stream .meta, 
@@ -343,13 +346,13 @@ body.home .top-login {
 		box-shadow: 1px 2px 25px rgba(255, 255, 255, 1); 
 	}
 
-	#stream .vcard .btn-group {
+	#stream .vcard .btn-group.drop-options {
 		position: absolute;
 		top: -5px;
 		right: 2px;
 	}
 	#stream .vcard .dropdown-toggle span, #stream .vcard .meta i {opacity: .5}
-	#stream .vcard .dropdown-menu,
+	#stream .vcard .drop-options .dropdown-menu,
 	#docs-intro td .dropdown-menu {
 		right: 0;
 		left: auto;
@@ -510,6 +513,7 @@ footer .pull-left {width: 45%;}
 	float: right;
 	margin-left: 10px
 }
+#form-status .nav-tabs {margin-bottom: 8px;}
 
 #temas-aula-list label {
 	margin-bottom: 15px

@@ -117,14 +117,35 @@
 <!-- =============================================== -->
 <!-- ! Modelo de compartilhamento apenas de status   -->
 <!-- =============================================== -->
-		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
+		<li class="vcard">
+			<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Max Guenes</a> em <i class="icon-tag icon-gray"></i><a href="conteudo.shtml">Arduino</a>
+
 			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
 			os robôs. Novos formatos?</p>
+
 					<ul class="meta">
 						<li class="visivel-para"><i class="icon-user" title="Só para amigos"></i></li>
-						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a>
+						</li>
+
+						<li class="share-now">
+						<div class="btn-group">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Compartilhar">
+						    <span class="icon-share icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li class="go-twitter">
+								<a href="https://twitter.com/share?url=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&text=Olha+o+que+encontrei+na+rede+%40robolivre%3A&related=robolivre">Compartilhar no <strong>Twitter</strong></a>
+						      </li>
+						      <li class="go-fb">
+						        <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&t=Publicação na rede Robô livre">Compartilhar no <strong>Facebook</strong></a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
+						</li>
+
 					</ul>
 
 			<ul class="comments">
@@ -137,26 +158,22 @@
 				</li>
 			</ul><!-- comments -->
 
-					
 			</div><!-- entry -->
 
-			<div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 
@@ -171,6 +188,23 @@
 					<ul class="meta">
 						<li class="visivel-para"><i class="icon-eye-open" title="Público"></i></li>
 						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+
+						<li class="share-now">
+						<div class="btn-group">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Compartilhar">
+						    <span class="icon-share icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li class="go-twitter">
+								<a href="https://twitter.com/share?url=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&text=Olha+o+que+encontrei+na+rede+%40robolivre%3A&related=robolivre">Compartilhar no <strong>Twitter</strong></a>
+						      </li>
+						      <li class="go-fb">
+						        <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&t=Publicação na rede Robô livre">Compartilhar no <strong>Facebook</strong></a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
+						</li>
+
 					</ul>
 			<ul class="comments">
 				<li><a href="perfil.shtml"><img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" title="Rodrigo Medeiros" class="photo"> <span class="fn">Rodrigo Medeiros</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>:
@@ -199,23 +233,20 @@
 
 			</div><!-- entry -->
 
-		    <div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 
@@ -230,6 +261,7 @@
 					<ul class="meta">
 						<li class="visivel-para"><i class="icon-lock" title="Privado"></i></li>
 						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+
 					</ul>
 			<ul class="comments">
 				<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes" class="photo"> <span class="fn">Max Guenes</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>:
@@ -251,23 +283,20 @@
 
 			</div><!-- entry -->
 
-		    <div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 
@@ -303,23 +332,20 @@
 
 			</div><!-- entry -->
 
-		    <div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 
@@ -337,6 +363,7 @@
 					<ul class="meta">
 						<li class="visivel-para"><i class="icon-lock" title="Privado"></i></li>
 						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+
 					</ul>
 			<ul class="comments">
 				<li>
@@ -350,23 +377,20 @@
 
 			</div><!-- entry -->
 
-		    <div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 
@@ -380,6 +404,7 @@
 					<ul class="meta">
 						<li class="visivel-para"><i class="icon-lock" title="Privado"></i></li>
 						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+
 					</ul>
 			<ul class="comments">
 				<li>
@@ -393,23 +418,20 @@
 
 			</div><!-- entry -->
 
-		    <div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 	</ul>
@@ -433,6 +455,7 @@
 <!-- ========================== -->
 
 	<div class="tab-pane fade in" id="2">
+
 	<ul>
 
 <!-- ======================== -->
@@ -468,6 +491,23 @@
 					<ul class="meta">
 						<li class="visivel-para"><i class="icon-user" title="Só para amigos"></i></li>
 						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+
+						<li class="share-now">
+						<div class="btn-group">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Compartilhar">
+						    <span class="icon-share icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li class="go-twitter">
+								<a href="https://twitter.com/share?url=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&text=Olha+o+que+encontrei+na+rede+%40robolivre%3A&related=robolivre">Compartilhar no <strong>Twitter</strong></a>
+						      </li>
+						      <li class="go-fb">
+						        <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&t=Publicação na rede Robô livre">Compartilhar no <strong>Facebook</strong></a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
+						</li>
+
 					</ul>
 
 			<ul class="comments">
@@ -483,23 +523,20 @@
 					
 			</div><!-- entry -->
 
-			<div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 
@@ -514,6 +551,23 @@
 					<ul class="meta">
 						<li class="visivel-para"><i class="icon-user" title="Só para amigos"></i></li>
 						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+
+						<li class="share-now">
+						<div class="btn-group">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Compartilhar">
+						    <span class="icon-share icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li class="go-twitter">
+								<a href="https://twitter.com/share?url=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&text=Olha+o+que+encontrei+na+rede+%40robolivre%3A&related=robolivre">Compartilhar no <strong>Twitter</strong></a>
+						      </li>
+						      <li class="go-fb">
+						        <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&t=Publicação na rede Robô livre">Compartilhar no <strong>Facebook</strong></a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
+						</li>
+
 					</ul>
 
 			<ul class="comments">
@@ -529,23 +583,20 @@
 					
 			</div><!-- entry -->
 
-			<div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 
@@ -560,6 +611,23 @@
 					<ul class="meta">
 						<li class="visivel-para"><i class="icon-eye-open" title="Público"></i></li>
 						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+
+						<li class="share-now">
+						<div class="btn-group">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Compartilhar">
+						    <span class="icon-share icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li class="go-twitter">
+								<a href="https://twitter.com/share?url=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&text=Olha+o+que+encontrei+na+rede+%40robolivre%3A&related=robolivre">Compartilhar no <strong>Twitter</strong></a>
+						      </li>
+						      <li class="go-fb">
+						        <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&t=Publicação na rede Robô livre">Compartilhar no <strong>Facebook</strong></a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
+						</li>
+
 					</ul>
 			<ul class="comments">
 				<li><a href="perfil.shtml"><img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" title="Rodrigo Medeiros" class="photo"> <span class="fn">Rodrigo Medeiros</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>:
@@ -588,23 +656,20 @@
 
 			</div><!-- entry -->
 
-		    <div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 
@@ -619,6 +684,7 @@
 					<ul class="meta">
 						<li class="visivel-para"><i class="icon-lock" title="Privado"></i></li>
 						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+
 					</ul>
 			<ul class="comments">
 				<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes" class="photo"> <span class="fn">Max Guenes</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>:
@@ -640,23 +706,20 @@
 
 			</div><!-- entry -->
 
-		    <div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 
@@ -692,23 +755,20 @@
 
 			</div><!-- entry -->
 
-		    <div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 
@@ -726,6 +786,7 @@
 					<ul class="meta">
 						<li class="visivel-para"><i class="icon-lock" title="Privado"></i></li>
 						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+
 					</ul>
 			<ul class="comments">
 				<li>
@@ -739,23 +800,20 @@
 
 			</div><!-- entry -->
 
-		    <div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 
@@ -769,6 +827,7 @@
 					<ul class="meta">
 						<li class="visivel-para"><i class="icon-lock" title="Privado"></i></li>
 						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
+
 					</ul>
 			<ul class="comments">
 				<li>
@@ -782,23 +841,20 @@
 
 			</div><!-- entry -->
 
-		    <div class="btn-group">
-			  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-			    <span class="icon-share  icon-gray"></span>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			      <li>
-			        <a href="#">Compartilhar no Twitter</a>
-			      </li>
-			      <li>
-			        <a href="#">Compartilhar no Facebook</a>
-			      </li>
-				<li class="divider"></li>
-			      <li>
-			        <a href="#"><i class="icon-flag"></i> Reportar abuso</a>
-			      </li>
-				</ul>
-			</div><!-- btn-group -->
+						<div class="btn-group drop-options">
+						  	<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+						    <span class="icon-cog icon-gray"></span>
+						  	</a>
+						  	<ul class="dropdown-menu">
+						      <li>
+						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
+						      </li>
+							<li class="divider"></li>
+						      <li>
+						        <a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+						      </li>
+							</ul>
+						</div><!-- btn-group -->
 
 		</li>
 	</ul>
@@ -826,7 +882,7 @@
 
 <div id="grid-conteudos" class="wdgt">
 	<h3><a href="conteudos.shtml" title="Ver tudo">Conteúdos seguidos <small>1</small></a></h3>
-<div class="alert"><a href="conteudos.shtml">Descubra mais conteúdos para seguir</a></div>
+<div class="alert"><a href="conteudos.shtml"><i class="icon-gray icon-info-sign"></i> Descubra conteúdos para seguir</a></div>
 
 	<ul class="thumbnails">
 		<li class="span1"><a href="conteudo.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a></li>
@@ -838,8 +894,6 @@
 
 <div id="grid-comunidades" class="wdgt">
 		<h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
-
-
 
 	<ul class="thumbnails">
 		<li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="assets/img/rl/60.gif" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
@@ -873,5 +927,32 @@
 
 </div><!-- /row -->
 
+<div class="modal fade" id="modalDelete">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Excluir atualização</h3>
+  </div>
+  <div class="modal-body">
+  <p>Tem certeza de que deseja excluir a atualização?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-danger">Sim, excluir agora</a> <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+  </div>
+</div>
+
+<div class="modal fade" id="modalAbuse">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Reportar abuso</h3>
+  </div>
+  <div class="modal-body">
+  <p>Tem certeza de que deseja reportar a atualização para nossa equipe?</p>
+  <p><small>Reporte caso ache que essa atualização apresenta conteúdo ofensivo, inadequado ou propaganda indesejada (spam).</small></p>
+  
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-danger">Reportar</a> <a href="#" class="btn" data-dismiss="modal">Deixa pra lá</a> 
+  </div>
+</div>
 
 <!--#include virtual="includes/footer.html" -->
