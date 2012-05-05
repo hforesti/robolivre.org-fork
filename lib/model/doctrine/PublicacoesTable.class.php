@@ -170,11 +170,44 @@ class PublicacoesTable extends Doctrine_Table {
             $query .= " AND p.id_publicacao < $ultimo_id_publicacao";
         }
         
-        
-        
         $query .= " GROUP BY p.id_publicacao
         ORDER BY p.data_publicacao DESC
         LIMIT 0, 10 ";
+        
+        $queryCont = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,i.imagem_perfil AS \"imagem_perfil_conjunto\",
+        IF (i.id_tipo_conjunto = 1,con.nome,com.nome) as \"nome_conjunto\"
+        FROM publicacoes p 
+        LEFT JOIN usuarios u ON u.id_usuario = p.id_usuario
+        LEFT JOIN conjuntos i ON p.id_conjunto = i.id_conjunto
+        LEFT JOIN conteudos con ON con.id_tipo_conjunto = i.id_tipo_conjunto AND con.id_conjunto = i.id_conjunto 
+        LEFT JOIN comunidades com ON com.id_tipo_conjunto = i.id_tipo_conjunto AND com.id_conjunto = i.id_conjunto 
+        WHERE p.visivel =  1 AND p.id_conjunto = $id_conjunto";
+        
+        //pegar mais 10 publicacoes depois da publicação [$ultimo_id_publicacao]
+        if($ultimo_id_publicacao!=null){
+            $queryCont .= " AND p.id_publicacao < $ultimo_id_publicacao";
+        }
+        
+        $queryCont .= " GROUP BY p.id_publicacao
+        ORDER BY p.data_publicacao DESC
+        LIMIT 0, 10 ";
+        
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($queryCont);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+        
+        $quantidade = 0;
+        if ($resultado) {
+            $quantidade = count($resultado);
+        }
         
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
@@ -187,13 +220,13 @@ class PublicacoesTable extends Doctrine_Table {
         // Execute Query  
 
         $resultado = $statement->fetchAll();
-        
+        $arrayPublicacoes = array();
         if ($resultado) {
             foreach ($resultado as $reg) {
 
                 //se já existe um objeto instanciado com esse id, não precisa instanciar novamente
-                if (isset($arrayRetorno[$reg['id_publicacao']])) {
-                    $publicacao = $arrayRetorno[$reg['id_publicacao']];
+                if (isset($arrayPublicacoes[$reg['id_publicacao']])) {
+                    $publicacao = $arrayPublicacoes[$reg['id_publicacao']];
                 } else {
                     $publicacao = new Publicacoes();
                 }
@@ -224,15 +257,15 @@ class PublicacoesTable extends Doctrine_Table {
                 if ($publicacao->getIdPublicacaoOriginal() != null && $publicacao->getIdUsuarioOriginal() != null) {
 
                     //se no array, existir a publicação original, é so adicionar o comentario no objeto
-                    if (isset($arrayRetorno[$publicacao->getIdPublicacaoOriginal()])) {
-                        $arrayRetorno[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
+                    if (isset($arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()])) {
+                        $arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
                     }//senão, cria um objeto temporário
                     else {
-                        $arrayRetorno[$publicacao->getIdPublicacaoOriginal()] = new Publicacoes();
-                        $arrayRetorno[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
+                        $arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()] = new Publicacoes();
+                        $arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
                     }
                 } else {
-                    $arrayRetorno[$publicacao->getIdPublicacao()] = $publicacao;
+                    $arrayPublicacoes[$publicacao->getIdPublicacao()] = $publicacao;
                 }
             }
             
@@ -245,6 +278,10 @@ class PublicacoesTable extends Doctrine_Table {
             }
         }
 
+        $arrayRetorno['publicacoes'] = $arrayPublicacoes;
+        $arrayRetorno['quantidade'] = $quantidade;
+        
+        
         return $arrayRetorno;
     }
     
@@ -257,13 +294,14 @@ class PublicacoesTable extends Doctrine_Table {
         r.nome AS \"nome_usuario_referencia\",i.imagem_perfil AS \"imagem_perfil_conjunto\",
         IF (i.id_tipo_conjunto = 1,con.nome,com.nome) as \"nome_conjunto\"
         FROM publicacoes p 
-        LEFT JOIN amigos a ON a.id_usuario_a = p.id_usuario OR a.id_usuario_b = p.id_usuario
         LEFT JOIN usuarios u ON u.id_usuario = p.id_usuario
         LEFT JOIN conjuntos i ON p.id_conjunto = i.id_conjunto
         LEFT JOIN conteudos con ON con.id_tipo_conjunto = i.id_tipo_conjunto AND con.id_conjunto = i.id_conjunto 
         LEFT JOIN comunidades com ON com.id_tipo_conjunto = i.id_tipo_conjunto AND com.id_conjunto = i.id_conjunto 
+        LEFT JOIN  participantes_conjuntos pc ON pc.id_conjunto = p.id_conjunto
         LEFT JOIN usuarios r ON p.id_usuario_referencia = r.id_usuario
-        WHERE p.id_conjunto IS NOT NULL AND p.visivel =  1 AND (a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado) AND a.aceito = 1";
+        WHERE p.id_conjunto IS NOT NULL AND p.visivel =  1 
+        AND pc.id_usuario = $id_usuario_logado AND pc.aceito = 1 OR i.id_usuario = $id_usuario_logado";
         
         //pegar mais 10 publicacoes depois da publicação [$ultimo_id_publicacao]
         if($ultimo_id_publicacao!=null){
@@ -273,6 +311,42 @@ class PublicacoesTable extends Doctrine_Table {
         $query .= " GROUP BY p.id_publicacao
         ORDER BY p.data_publicacao DESC
         LIMIT 0, 10 ";
+        
+        $queryCont = "SELECT count(*) as \"quantidade\"
+        FROM publicacoes p 
+        LEFT JOIN usuarios u ON u.id_usuario = p.id_usuario
+        LEFT JOIN conjuntos i ON p.id_conjunto = i.id_conjunto
+        LEFT JOIN conteudos con ON con.id_tipo_conjunto = i.id_tipo_conjunto AND con.id_conjunto = i.id_conjunto 
+        LEFT JOIN comunidades com ON com.id_tipo_conjunto = i.id_tipo_conjunto AND com.id_conjunto = i.id_conjunto 
+        LEFT JOIN  participantes_conjuntos pc ON pc.id_conjunto = p.id_conjunto
+        LEFT JOIN usuarios r ON p.id_usuario_referencia = r.id_usuario
+        WHERE p.id_conjunto IS NOT NULL AND p.visivel =  1 
+        AND pc.id_usuario = $id_usuario_logado AND pc.aceito = 1";
+        
+        //pegar mais 10 publicacoes depois da publicação [$ultimo_id_publicacao]
+        if($ultimo_id_publicacao!=null){
+            $queryCont .= " AND p.id_publicacao < $ultimo_id_publicacao";
+        }
+        
+        $queryCont .= " GROUP BY p.id_publicacao
+        ORDER BY p.data_publicacao DESC";
+        
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($queryCont);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+        
+        $quantidade = 0;
+        if ($resultado) {
+            $quantidade = count($resultado);
+        }
         
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
@@ -287,13 +361,13 @@ class PublicacoesTable extends Doctrine_Table {
         $resultado = $statement->fetchAll();
         
 //        Util::pre($resultado);
-        
+        $arrayPublicacoes = array();
         if ($resultado) {
             foreach ($resultado as $reg) {
 
                 //se já existe um objeto instanciado com esse id, não precisa instanciar novamente
-                if (isset($arrayRetorno[$reg['id_publicacao']])) {
-                    $publicacao = $arrayRetorno[$reg['id_publicacao']];
+                if (isset($arrayPublicacoes[$reg['id_publicacao']])) {
+                    $publicacao = $arrayPublicacoes[$reg['id_publicacao']];
                 } else {
                     $publicacao = new Publicacoes();
                 }
@@ -325,18 +399,22 @@ class PublicacoesTable extends Doctrine_Table {
                 if ($publicacao->getIdPublicacaoOriginal() != null && $publicacao->getIdUsuarioOriginal() != null) {
 
                     //se no array, existir a publicação original, é so adicionar o comentario no objeto
-                    if (isset($arrayRetorno[$publicacao->getIdPublicacaoOriginal()])) {
-                        $arrayRetorno[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
+                    if (isset($arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()])) {
+                        $arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
                     } //senão, cria um objeto temporário
                     else {
-                        $arrayRetorno[$publicacao->getIdPublicacaoOriginal()] = new Publicacoes();
-                        $arrayRetorno[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
+                        $arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()] = new Publicacoes();
+                        $arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
                     }
                 } else {
-                    $arrayRetorno[$publicacao->getIdPublicacao()] = $publicacao;
+                    $arrayPublicacoes[$publicacao->getIdPublicacao()] = $publicacao;
                 }
             }
         }
+        
+        $arrayRetorno['publicacoes'] = $arrayPublicacoes;
+        $arrayRetorno['quantidade'] = $quantidade;
+        
         
         return $arrayRetorno;
     }
@@ -357,7 +435,7 @@ class PublicacoesTable extends Doctrine_Table {
         LEFT JOIN comunidades com ON com.id_tipo_conjunto = i.id_tipo_conjunto AND com.id_conjunto = i.id_conjunto 
         LEFT JOIN usuarios r ON p.id_usuario_referencia = r.id_usuario
         
-        WHERE p.id_conjunto IS NULL AND p.visivel =  1 AND (a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado) AND a.aceito = 1
+        WHERE p.id_conjunto IS NULL AND p.visivel =  1 AND (((a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado) AND a.aceito = 1) OR p.id_usuario = $id_usuario_logado)
         
         AND (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_PUBLICA." OR
         (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_SOMENTE_AMIGOS." AND (a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado))
@@ -373,6 +451,49 @@ class PublicacoesTable extends Doctrine_Table {
         ORDER BY p.data_publicacao DESC
         LIMIT 0, 10 ";
         
+        
+        $queryCont = "SELECT count(*) as \"quantidade\"
+        FROM publicacoes p 
+        LEFT JOIN amigos a ON a.id_usuario_a = p.id_usuario OR a.id_usuario_b = p.id_usuario
+        LEFT JOIN usuarios u ON u.id_usuario = p.id_usuario
+        LEFT JOIN conjuntos i ON p.id_conjunto = i.id_conjunto
+        LEFT JOIN conteudos con ON con.id_tipo_conjunto = i.id_tipo_conjunto AND con.id_conjunto = i.id_conjunto 
+        LEFT JOIN comunidades com ON com.id_tipo_conjunto = i.id_tipo_conjunto AND com.id_conjunto = i.id_conjunto 
+        LEFT JOIN usuarios r ON p.id_usuario_referencia = r.id_usuario
+        
+        WHERE p.id_conjunto IS NULL AND p.visivel =  1 AND (a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado) AND a.aceito = 1
+        
+        AND (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_PUBLICA." OR
+        (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_SOMENTE_AMIGOS." AND (a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado))
+        OR (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_PRIVADA." AND p.id_usuario = $id_usuario_logado)
+        )";
+        
+        //pegar mais 10 publicacoes depois da publicação [$ultimo_id_publicacao]
+        if($ultimo_id_publicacao!=null){
+            $queryCont .= " AND p.id_publicacao < $ultimo_id_publicacao";
+        }
+        
+        $queryCont .= " GROUP BY p.id_publicacao
+        ORDER BY p.data_publicacao DESC";
+        
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($queryCont);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+        
+        $quantidade = 0;
+        if ($resultado) {
+            $quantidade = count($resultado);
+        }
+        
+        
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
         // Get Connection of Database  
@@ -385,11 +506,12 @@ class PublicacoesTable extends Doctrine_Table {
 
         $resultado = $statement->fetchAll();
         
+        $arrayPublicacoes = array();
         if ($resultado) {
             foreach ($resultado as $reg) {
                 //se já existe um objeto instanciado com esse id, não precisa instanciar novamente
-                if (isset($arrayRetorno[$reg['id_publicacao']])) {
-                    $publicacao = $arrayRetorno[$reg['id_publicacao']];
+                if (isset($arrayPublicacoes[$reg['id_publicacao']])) {
+                    $publicacao = $arrayPublicacoes[$reg['id_publicacao']];
                 } else {
                     $publicacao = new Publicacoes();
                 }
@@ -421,18 +543,22 @@ class PublicacoesTable extends Doctrine_Table {
                 if ($publicacao->getIdPublicacaoOriginal() != null && $publicacao->getIdUsuarioOriginal() != null) {
 
                     //se no array, existir a publicação original, é so adicionar o comentario no objeto
-                    if (isset($arrayRetorno[$publicacao->getIdPublicacaoOriginal()])) {
-                        $arrayRetorno[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
+                    if (isset($arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()])) {
+                        $arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
                     } //senão, cria um objeto temporário
                     else {
-                        $arrayRetorno[$publicacao->getIdPublicacaoOriginal()] = new Publicacoes();
-                        $arrayRetorno[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
+                        $arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()] = new Publicacoes();
+                        $arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
                     }
                 } else {
-                    $arrayRetorno[$publicacao->getIdPublicacao()] = $publicacao;
+                    $arrayPublicacoes[$publicacao->getIdPublicacao()] = $publicacao;
                 }
             }
         }
+        
+        $arrayRetorno['publicacoes'] = $arrayPublicacoes;
+        $arrayRetorno['quantidade'] = $quantidade;
+        
         
         return $arrayRetorno;
     }
@@ -478,6 +604,53 @@ class PublicacoesTable extends Doctrine_Table {
         ORDER BY p.data_publicacao DESC
         LIMIT 0, 10 ";
         
+        $queryCont = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,
+        r.nome AS \"nome_usuario_referencia\",i.imagem_perfil AS \"imagem_perfil_conjunto\",
+        IF (i.id_tipo_conjunto = 1,con.nome,com.nome) as \"nome_conjunto\"
+        FROM publicacoes p 
+        LEFT JOIN usuarios u ON u.id_usuario = p.id_usuario
+        LEFT JOIN conjuntos i ON p.id_conjunto = i.id_conjunto
+        LEFT JOIN conteudos con ON con.id_tipo_conjunto = i.id_tipo_conjunto AND con.id_conjunto = i.id_conjunto 
+        LEFT JOIN comunidades com ON com.id_tipo_conjunto = i.id_tipo_conjunto AND com.id_conjunto = i.id_conjunto 
+        LEFT JOIN usuarios r ON p.id_usuario_referencia = r.id_usuario
+        
+        LEFT JOIN amigos a ON (a.id_usuario_a = u.id_usuario OR a.id_usuario_b = u.id_usuario)
+        
+        
+        WHERE p.visivel =  1 
+        AND (p.id_usuario = $id_usuario OR p.id_usuario_original = $id_usuario OR p.id_usuario_referencia = $id_usuario)
+        AND (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_PUBLICA." OR
+        (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_SOMENTE_AMIGOS." AND (a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado))
+        OR (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_PRIVADA." AND p.id_usuario = $id_usuario_logado)
+        )
+        
+        ";
+                
+        //pegar mais 10 publicacoes depois da publicação [$ultimo_id_publicacao]
+        if($ultimo_id_publicacao!=null){
+            $queryCont .= " AND p.id_publicacao < $ultimo_id_publicacao";
+        }
+        
+        $queryCont .= " GROUP BY p.id_publicacao
+        ORDER BY p.data_publicacao DESC";
+        
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+
+        $statement = $connection->prepare($queryCont);
+        // Make Statement  
+
+        $statement->execute();
+        // Execute Query  
+
+        $resultado = $statement->fetchAll();
+        
+        $quantidade = 0;
+        if ($resultado) {
+            $quantidade = count($resultado);
+        }
+        
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
         // Get Connection of Database  
@@ -491,13 +664,13 @@ class PublicacoesTable extends Doctrine_Table {
         $resultado = $statement->fetchAll();
         
 //        Util::pre($resultado);
-        
+        $arrayPublicacoes = array();
         if ($resultado) {
             foreach ($resultado as $reg) {
 
                 //se já existe um objeto instanciado com esse id, não precisa instanciar novamente
-                if (isset($arrayRetorno[$reg['id_publicacao']])) {
-                    $publicacao = $arrayRetorno[$reg['id_publicacao']];
+                if (isset($arrayPublicacoes[$reg['id_publicacao']])) {
+                    $publicacao = $arrayPublicacoes[$reg['id_publicacao']];
                 } else {
                     $publicacao = new Publicacoes();
                 }
@@ -529,27 +702,31 @@ class PublicacoesTable extends Doctrine_Table {
                 if ($publicacao->getIdPublicacaoOriginal() != null && $publicacao->getIdUsuarioOriginal() != null) {
 
                     //se no array, existir a publicação original, é so adicionar o comentario no objeto
-                    if (isset($arrayRetorno[$publicacao->getIdPublicacaoOriginal()])) {
-                        $arrayRetorno[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
+                    if (isset($arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()])) {
+                        $arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
                     }//senão, cria um objeto temporário
                     else {
-                        $arrayRetorno[$publicacao->getIdPublicacaoOriginal()] = new Publicacoes();
-                        $arrayRetorno[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
+                        $arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()] = new Publicacoes();
+                        $arrayPublicacoes[$publicacao->getIdPublicacaoOriginal()]->adicionarPublicacaoComentario($publicacao);
                     }
                 } else {
-                    $arrayRetorno[$publicacao->getIdPublicacao()] = $publicacao;
+                    $arrayPublicacoes[$publicacao->getIdPublicacao()] = $publicacao;
                 }
             }
             
-            foreach(array_keys($arrayRetorno) as $chave){
-                if($arrayRetorno[$chave]->getIdPublicacao() == ""){
-                    $array = $arrayRetorno[$chave]->getGrupoComentarios();
-                    $arrayRetorno[$chave] = $this->findOneBy("id_publicacao", $array[0]->getIdPublicacaoOriginal());
-                    $arrayRetorno[$chave]->setGrupoComentarios(array_reverse($array));
+            foreach(array_keys($arrayPublicacoes) as $chave){
+                if($arrayPublicacoes[$chave]->getIdPublicacao() == ""){
+                    $array = $arrayPublicacoes[$chave]->getGrupoComentarios();
+                    $arrayPublicacoes[$chave] = $this->findOneBy("id_publicacao", $array[0]->getIdPublicacaoOriginal());
+                    $arrayPublicacoes[$chave]->setGrupoComentarios(array_reverse($array));
                 }
             }
         }
-
+        
+        $arrayRetorno['publicacoes'] = $arrayPublicacoes;
+        $arrayRetorno['quantidade'] = $quantidade;
+        
+        
         return $arrayRetorno;
     }
 

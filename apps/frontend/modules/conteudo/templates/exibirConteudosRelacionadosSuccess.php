@@ -21,7 +21,7 @@
                 <?php foreach ($arrayConteudosRelacionados as $conteudoRelacionado) { ?>
                     <li class="row <?php echo ($conteudoRelacionado->getTipoUsuario() == Conteudos::PROPRIETARIO) ? "mine" : "" ?>">
                         <div class="span8">
-                            <a href="conteudo.shtml" class="photo"><img src="<?php echo image_path($conteudoRelacionado->getImagemPerfil()) ?>" alt="<?php echo $conteudoRelacionado->getNome() ?>" title="<?php $conteudoRelacionado->getNome() ?>" class="thumbnail"></a> 
+                            <a href="<?php echo url_for("conteudo/".Util::criaSlug($conteudoRelacionado->getNome())) ?>" class="photo"><img src="<?php echo image_path($conteudoRelacionado->getImagemPerfil()) ?>" alt="<?php echo $conteudoRelacionado->getNome() ?>" title="<?php $conteudoRelacionado->getNome() ?>" class="thumbnail"></a> 
                             <h3><?php echo Util::getTagConteudoSlug($conteudoRelacionado->getNome(), $conteudoRelacionado->getNome()) ?> ‧ <?php echo ($conteudoRelacionado->getTipoUsuario() == Conteudos::PROPRIETARIO) ? "<small>Criado por você</small>" : "" ?></h3>
                             <p class="meta">Última atualização 21/01/2012 às 21:50<br>
                                 <a href="conteudo-imagens.shtml"><?php echo $conteudoRelacionado->getQuantidadeImagens() ?> imagens</a> ‧ <a href="conteudo-videos.shtml"><?php echo $conteudoRelacionado->getQuantidadeVideos() ?> vídeos</a> ‧ <a href="conteudo-links.shtml"><?php echo $conteudoRelacionado->getQuantidadeLinks() ?> links</a> ‧ <a href="conteudo-docs.shtml">0 documentos</a> ‧<a href="conteudo-seguidores.shtml"><?php echo $conteudoRelacionado->getQuantidadeSeguidores() ?> seguidores</a></p>

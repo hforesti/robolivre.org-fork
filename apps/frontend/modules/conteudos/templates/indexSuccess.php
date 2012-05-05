@@ -209,7 +209,7 @@
             emptyText: "Nenhuma sugestão encontrada",
             resultClick: function(data){
                 try{
-                    url = url_for("conteudo/"+getSlug(data['attributes']['name']));
+                    url = url_for("conteudo/"+data['attributes']['slug']);
                     window.location = url;
                 }catch(e){alert(e);}
             },
@@ -260,8 +260,9 @@
                         var erros = resposta.split('<?php echo Util::SEPARADOR_PARAMETRO ?>');
                         idConjunto = erros[0].split('=')[1];
                         nomeConteudo = erros[1].split('=')[1];
+                        slugConteudo = erros[2].split('=')[1];
                         
-                        url_conteudo = "<?php echo url_for('conteudo/'); ?>"+getSlug(nomeConteudo);
+                        url_conteudo = "<?php echo url_for('conteudo/'); ?>"+slugConteudo;
                                                 
                         $("#div-modal").append("<div id='alert-modalNovoConteudo' class='alert'><a href='"+url_conteudo+"'>"+nomeConteudo+"</a> é um conteúdo que já existe na nossa rede. <br>Deseja colaborar com ele? <a href='"+url_conteudo+"'><strong>Acesse agora</strong></a></div>");
                         

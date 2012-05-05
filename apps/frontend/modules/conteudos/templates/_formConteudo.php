@@ -1,10 +1,21 @@
 <?php 
-$valoresInciais = $form->getTaintedValues();
+$valoresInciais = $form->getDefaults();
+$taintedValues = $form->getTaintedValues();
+if(!empty($taintedValues)){
+    $valoresInciais = array_merge($valoresInciais, $taintedValues);
+}
 
 if(!isset($conteudo)){
     $evento = 'conteudos/gravar';
+    $imagem = "/assets/img/rl/170.gif";
+    $nomeArquivoImagem = "";
+    $idConteudo = "";
 }else{
     $nomeConteudo = $conteudo->getNome();
+    $idConteudo = $conteudo->getIdConteudo();
+    $imagem = $conteudo->getImagemPerfil(Util::IMAGEM_GRANDE);
+    $nomeArquivoImagem = $conteudo->getNomeArquivoImagemPerfil();
+    
     $evento = 'conteudos/gravarEdicao';
 }
 ?>
@@ -25,7 +36,7 @@ if(!isset($conteudo)){
 
                 <div class="control-group">
                     <div class="controls">
-                        <?php  echo $form->getWidget('descricao')->render($form->getName() . "[descricao]",array_key_exists('descricao',$valoresInciais)?$valoresInciais['descicao']:"", array('id' => 'textarea','rows' => 9, 'placeholder' => "O que você tem para compartilhar?", 'class' => 'span7 wysiwyg')); ?>
+                        <?php echo $form->getWidget('descricao')->render($form->getName() . "[descricao]",$valoresInciais['descricao'], array('id' => 'textarea','rows' => 9, 'placeholder' => "O que você tem para compartilhar?", 'class' => 'span7 wysiwyg')); ?>
                     </div>
                 </div>
 
@@ -58,76 +69,22 @@ if(!isset($conteudo)){
 
                             <div class="tab-pane fade in" id="2">
                                 <div class="controls row" id="temas-aula-list">
-
+                                    <?php $temas = Util::getCheckboxesTemaAula($idConteudo); ?>
+                                    <?php $qtdTemas = count($temas); ?>
                                     <div class="span3">
+                                        <?php for($i=0;$i<=($qtdTemas/2)-1;++$i){?>
                                         <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox1" value="option1"> Robótica Definições e História - Robô na Ficção
+                                            <?php echo $temas[$i]; ?>
                                         </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox2" value="option2"> Robótica Classificação dos Robôs
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox3" value="option3"> Controle de Robôs - Protocolos de comunicação
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox4" value="option3"> Design - Levantamento de requisitos e Funcionalidades
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox5" value="option3"> Eletrônica Componentes eletrônicos
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox6" value="option3"> Eletrônica Soldagem
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox7" value="option3"> Arduino
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox8" value="option3"> Programação Logo Turtle, Schetch, Arduino
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox9" value="option3"> Programação IDE Arduino
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox10" value="option1"> Desenho Técnico - Cads, Programas de geometria
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox11" value="option2"> Mecânica - Materiais e Processos de fabricação
-                                        </label>
+                                        <?php } ?>
+                                        
                                     </div>
                                     <div class="span3 offset1">
+                                        <?php for($i=($qtdTemas/2);$i<$qtdTemas;++$i){?>
                                         <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox12" value="option3"> Usinagem de Nylon - Corte, Furo, Rosca
+                                            <?php echo $temas[$i]; ?>
                                         </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox14" value="option3"> Sensores magnéticos (Red Switch)
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox15" value="option3"> Sensores Infra Vermelho
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox16" value="option3"> Motores , Caixa de Redução
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox17" value="option3"> Motores Contínuos
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox18" value="option3"> Ponte H - com relés - com transistores, com chips
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox19" value="option3"> Encoder
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox20" value="option3"> Servo Motores
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox21" value="option3"> Motores de Passo
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox22" value="option3"> Motores Brush Less
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" id="inlineCheckbox23" value="option3"> Transmissão de Dados
-                                        </label>
+                                        <?php } ?>
                                     </div>
 
                                 </div><!-- controls row -->
@@ -146,8 +103,8 @@ if(!isset($conteudo)){
 
                         <div class="row">
                             <div class="preview span2" id="img-preview">
-                                <img src="<?php echo image_path("/assets/img/rl/170.gif"); ?>" alt="140" id="thumb" class="thumbnail" />
-                                <input type="hidden" value="" id="imagem_selecionada" name="imagem_selecionada">
+                                <img src="<?php echo image_path($imagem); ?>" alt="140" id="thumb" class="thumbnail" />
+                                <input type="hidden" value="<?php echo $nomeArquivoImagem; ?>" id="imagem_selecionada" name="imagem_selecionada">
                             </div>
 
                             <div class="span5">				

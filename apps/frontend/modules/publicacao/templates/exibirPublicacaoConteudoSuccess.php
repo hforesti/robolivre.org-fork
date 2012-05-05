@@ -36,31 +36,15 @@
     <div class="span3" id="sidebar-wdgt">
 
         <div id="grid-conteudos" class="wdgt">
-            <h3><a href="conteudos.shtml">Conteúdos relacionados <small><?php echo $quantidadeConteudosRelacionados; ?></small></a></h3>
+            <h3><a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirConteudos") ; ?>">Conteúdos relacionados <small><?php echo $quantidadeConteudosRelacionados; ?></small></a></h3>
             <ul class="thumbnails">
                 <?php foreach ($arrayConteudosRelacionados as $conteudoRelacionado) { ?>
                     <?php $innerHTML = "<img src='" . image_path($conteudoRelacionado->getImagemPerfil()) . "' alt='" . $conteudoRelacionado->getNome() . "' title='" . $conteudoRelacionado->getNome() . "'>"; ?>
                     <li class="span1"><?php echo Util::getTagConteudoSlug($innerHTML, $conteudoRelacionado->getNome(), "thumbnail") ?></li>
                 <?php } ?>
             </ul>
-            <a href="conteudos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+            <a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirConteudos") ; ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-conteudos -->
-
-        <?php /*<hr>
-
-        <div id="grid-projetos" class="wdgt">
-            <h3><a href="projetos.shtml" title="Ver tudo">Projetos relacionados <small>15</small></a></h3>
-            <ul class="thumbnails">
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-            </ul>
-            <a href="projetos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
-        </div> grid-comunidades -->
-         */ ?>
 
         <hr>
 

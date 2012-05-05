@@ -1,6 +1,6 @@
 <div class="row">
 
-    <?php include_partial('sidebarUsuario',array('usuario'=>$usuario,'opcao'=>'conteudos')) ?>
+    <?php include_partial('sidebarUsuarioLogado',array('opcao'=>'conteudos')) ?>
 
     <hr class="only-mobile">
 
@@ -16,10 +16,10 @@
                 <div class="span6">
                     <ul class="nav nav-pills">
                         <li <?php echo ($proprietario)?"":"class=\"active\"" ?>>
-                            <a href="<?php echo url_for("perfil/exibirConteudos?u=".$usuario->getIdUsuario().((trim($nome)=="")?"":"&nome=$nome")) ?>">Atualizados recentemente</a>
+                            <a href="<?php echo url_for("perfil/exibirConteudosHome".((trim($nome)=="")?"":"?nome=$nome")) ?>">Atualizados recentemente</a>
                         </li>
                         <li <?php echo ($proprietario)?"class=\"active\"":"" ?>>
-                            <a href="<?php echo url_for("perfil/exibirConteudos?u=".$usuario->getIdUsuario()."&proprietario=1".((trim($nome)=="")?"":"&nome=$nome")) ?>">Criados por <?php echo ($usuario->getIdUsuario()==UsuarioLogado::getInstancia()->getIdUsuario())?"você":Util::getNomeSimplificado($usuario->getNome()) ?></a>
+                            <a href="<?php echo url_for("perfil/exibirConteudosHome?proprietario=1".((trim($nome)=="")?"":"&nome=$nome")) ?>">Criados por <?php echo ($usuario->getIdUsuario()==UsuarioLogado::getInstancia()->getIdUsuario())?"você":Util::getNomeSimplificado($usuario->getNome()) ?></a>
                         </li>
                     </ul>
                 </div>
@@ -78,13 +78,13 @@
             <div class="pagination">
                 <ul>
                     <?php if($pagina>1){ ?>
-                        <li><a href="<?php echo url_for("perfil/exibirConteudos?u=".$usuario->getIdUsuario().(($proprietario)?"&proprietario=1":"")."&pagina=".($pagina-1).((trim($nome)=="")?"":"&nome=$nome")) ?>"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li>
+                        <li><a href="<?php echo url_for("perfil/exibirConteudosHome?pagina=".($pagina-1).(($proprietario)?"&proprietario=1":"").((trim($nome)=="")?"":"&nome=$nome")) ?>"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li>
                     <?php } ?>
                     <?php for($i=1;$i<=$quantidadeTotalPaginas;++$i){ ?>
-                        <li <?php echo ($i==$pagina)?"class=\"active\"":""; ?>><a href="<?php echo url_for("perfil/exibirConteudos?u=".$usuario->getIdUsuario().(($proprietario)?"&proprietario=1":"")."&pagina=$i".((trim($nome)=="")?"":"&nome=$nome")) ?>"><?php echo $i ?></a></li>
+                        <li <?php echo ($i==$pagina)?"class=\"active\"":""; ?>><a href="<?php echo url_for("perfil/exibirConteudosHome?pagina=$i".(($proprietario)?"&proprietario=1":"").((trim($nome)=="")?"":"&nome=$nome")) ?>"><?php echo $i ?></a></li>
                     <?php } ?>
                     <?php if($pagina<$quantidadeTotalPaginas){ ?>    
-                        <li><a href="<?php echo url_for("perfil/exibirConteudos?u=".$usuario->getIdUsuario().(($proprietario)?"&proprietario=1":"")."&pagina=".($pagina+1).((trim($nome)=="")?"":"&nome=$nome")) ?>">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
+                        <li><a href="<?php echo url_for("perfil/exibirConteudosHome?pagina=".($pagina+1).(($proprietario)?"&proprietario=1":"").((trim($nome)=="")?"":"&nome=$nome")) ?>">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
                     <?php } ?>
                 </ul>
 

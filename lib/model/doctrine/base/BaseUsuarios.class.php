@@ -129,14 +129,14 @@ abstract class BaseUsuarios extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 45,
              ));
-        $this->hasColumn('senha', 'string', 45, array(
+        $this->hasColumn('senha', 'string', 255, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 45,
+             'length' => 255,
              ));
         $this->hasColumn('email', 'string', 100, array(
              'type' => 'string',

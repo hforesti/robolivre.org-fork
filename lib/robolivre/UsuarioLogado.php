@@ -163,6 +163,11 @@ class UsuarioLogado{
                     }
                     break;
                 case "publicacoes":
+                case "ajuda":
+                case "institucional":
+                case "contato":
+                case "imprensa":
+                case "termos":
                     return true;
                 default: break;
             }

@@ -40,10 +40,10 @@ class inicialActions extends robolivreAction {
 
         if($usuario){
             $link = url_for("perfil/novaSenha?token=".$usuario->getToken()."&u=".$usuario->getIdUsuario(),true);
-
+            
             Util::enviarEmail("Sua nova senha", "Para criar uma nova senha, entre no link : $link", $usuario->getEmail()) ;
             
-            $this->mensagem = "<strong>Tudo bem!</strong> Um link para recuperar sua senha foi enviado para o seu email <em>".$usuario->getEmail()."</em>.";
+            $this->mensagem = "$link <strong>Tudo bem!</strong> Um link para recuperar sua senha foi enviado para o seu email <em>".$usuario->getEmail()."</em>.";
             
         }else{
             $this->erro = "O endereço de email <strong>$email</strong> não está cadastrado no nosso site. Tente novamente.";
@@ -178,8 +178,13 @@ class inicialActions extends robolivreAction {
                 $logSistema->setDataPublicacao(date('Y-m-d H:i:s'));
                 $logSistema->setParametros("IP:" . $_SERVER['REMOTE_ADDR']);
                 $logSistema->save();
-
+                
+                
                 UsuarioLogado::getInstancia()->logar($usuarios);
+                
+                $participacao = new ParticipantesConjuntos();
+                $participacao->solicitarParticipacao(0);
+                Doctrine::getTable("ParticipantesConjuntos")->solicitarParticipacao($participacao,false);
 
                 $this->redirect('perfil/index');
                 return;

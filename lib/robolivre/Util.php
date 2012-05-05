@@ -109,7 +109,7 @@ class Util {
         $valor = self::getDiffData($data); //getDiaSemana($dataRetorno[0]).", ".$dataRetorno[0]." ".$dataRetorno[1];
         //entre segundo de publicação
         if ($valor >= 0 && $valor < 60) {
-            return "hà " . $valor . (($valor <= 1) ? " segundo" : " segundos");
+            return "há " . $valor . (($valor <= 1) ? " segundo" : " segundos");
             //entre minutos de publicação
         } else if ($valor < 3600) {
             $valor = round($valor / 60);
@@ -117,7 +117,7 @@ class Util {
             //entre horas de publicação
         } else if ($valor < 3600) {
             $valor = round($valor / 60);
-            return "hà " . $valor . (($valor <= 1) ? " hora" : " horas");
+            return "há " . $valor . (($valor <= 1) ? " hora" : " horas");
             //retorna a data completa    
         } else {
             $dataRetorno = self::dataBrHora($data);
@@ -185,25 +185,39 @@ class Util {
         
         return $dir."/".md5("usu_$idUsuario");        
     }
-
-    public static function criaSlug($slug) {
-        $slug = trim($slug);
-        $slug = strtolower($slug);
-        
-        $slug = str_replace(" ", "-", $slug);
-        
-        $retorno = "";
-
-        foreach (explode(" ", $slug) as $parte) {
-            if ($retorno == "") {
-                $retorno = $parte;
-            } else {
-                $retorno .= "-" . $parte;
-            }
-        }
-
-        return $retorno;
+    
+    
+    public static function removeAcento($str) {
+        $a = array('À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Æ', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ð', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'Ø', 'Ù', 'Ú', 'Û', 'Ü', 'Ý', 'ß', 'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ø', 'ù', 'ú', 'û', 'ü', 'ý', 'ÿ', 'Ā', 'ā', 'Ă', 'ă', 'Ą', 'ą', 'Ć', 'ć', 'Ĉ', 'ĉ', 'Ċ', 'ċ', 'Č', 'č', 'Ď', 'ď', 'Đ', 'đ', 'Ē', 'ē', 'Ĕ', 'ĕ', 'Ė', 'ė', 'Ę', 'ę', 'Ě', 'ě', 'Ĝ', 'ĝ', 'Ğ', 'ğ', 'Ġ', 'ġ', 'Ģ', 'ģ', 'Ĥ', 'ĥ', 'Ħ', 'ħ', 'Ĩ', 'ĩ', 'Ī', 'ī', 'Ĭ', 'ĭ', 'Į', 'į', 'İ', 'ı', 'Ĳ', 'ĳ', 'Ĵ', 'ĵ', 'Ķ', 'ķ', 'Ĺ', 'ĺ', 'Ļ', 'ļ', 'Ľ', 'ľ', 'Ŀ', 'ŀ', 'Ł', 'ł', 'Ń', 'ń', 'Ņ', 'ņ', 'Ň', 'ň', 'ŉ', 'Ō', 'ō', 'Ŏ', 'ŏ', 'Ő', 'ő', 'Œ', 'œ', 'Ŕ', 'ŕ', 'Ŗ', 'ŗ', 'Ř', 'ř', 'Ś', 'ś', 'Ŝ', 'ŝ', 'Ş', 'ş', 'Š', 'š', 'Ţ', 'ţ', 'Ť', 'ť', 'Ŧ', 'ŧ', 'Ũ', 'ũ', 'Ū', 'ū', 'Ŭ', 'ŭ', 'Ů', 'ů', 'Ű', 'ű', 'Ų', 'ų', 'Ŵ', 'ŵ', 'Ŷ', 'ŷ', 'Ÿ', 'Ź', 'ź', 'Ż', 'ż', 'Ž', 'ž', 'ſ', 'ƒ', 'Ơ', 'ơ', 'Ư', 'ư', 'Ǎ', 'ǎ', 'Ǐ', 'ǐ', 'Ǒ', 'ǒ', 'Ǔ', 'ǔ', 'Ǖ', 'ǖ', 'Ǘ', 'ǘ', 'Ǚ', 'ǚ', 'Ǜ', 'ǜ', 'Ǻ', 'ǻ', 'Ǽ', 'ǽ', 'Ǿ', 'ǿ');
+        $b = array('A', 'A', 'A', 'A', 'A', 'A', 'AE', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'D', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U', 'U', 'Y', 's', 'a', 'a', 'a', 'a', 'a', 'a', 'ae', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'u', 'y', 'y', 'A', 'a', 'A', 'a', 'A', 'a', 'C', 'c', 'C', 'c', 'C', 'c', 'C', 'c', 'D', 'd', 'D', 'd', 'E', 'e', 'E', 'e', 'E', 'e', 'E', 'e', 'E', 'e', 'G', 'g', 'G', 'g', 'G', 'g', 'G', 'g', 'H', 'h', 'H', 'h', 'I', 'i', 'I', 'i', 'I', 'i', 'I', 'i', 'I', 'i', 'IJ', 'ij', 'J', 'j', 'K', 'k', 'L', 'l', 'L', 'l', 'L', 'l', 'L', 'l', 'l', 'l', 'N', 'n', 'N', 'n', 'N', 'n', 'n', 'O', 'o', 'O', 'o', 'O', 'o', 'OE', 'oe', 'R', 'r', 'R', 'r', 'R', 'r', 'S', 's', 'S', 's', 'S', 's', 'S', 's', 'T', 't', 'T', 't', 'T', 't', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'W', 'w', 'Y', 'y', 'Y', 'Z', 'z', 'Z', 'z', 'Z', 'z', 's', 'f', 'O', 'o', 'U', 'u', 'A', 'a', 'I', 'i', 'O', 'o', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'A', 'a', 'AE', 'ae', 'O', 'o');
+        return str_replace($a, $b, $str);
     }
+
+    public static function criaSlug($str) {
+        //echo "$str </br>";
+        return (strtolower(preg_replace(array('/[^a-zA-Z0-9 -]/', '/[ -]+/', '/^-|-$/'), array('', '-', ''), self::removeAcento($str))));
+    }
+
+//    public static function criaSlug($slug) {
+//        $slug = trim($slug);
+//        $slug = strtolower($slug);
+//
+//        $slug = str_replace(" ", "-", $slug);
+//
+//        $slug = str_replace(" ", "-", $slug);
+//
+//        $retorno = "";
+//
+//        foreach (explode(" ", $slug) as $parte) {
+//            if ($retorno == "") {
+//                $retorno = $parte;
+//            } else {
+//                $retorno .= "-" . $parte;
+//            }
+//        }
+//
+//        return $retorno;
+//    }
 
     public static function imprimir($valor) {
         echo $valor;
@@ -288,6 +302,20 @@ class Util {
         //22/01/2012 às 08h00
         $dataHora = self::dataBrHora($data);
         return $dataHora[0]." às ".str_replace(":", "h", $dataHora[1]);
+    }
+    
+    
+    
+    public static function getCheckboxesTemaAula($id=""){
+        $arrayRetorno = array();
+        //<input type="checkbox" id="inlineCheckbox1" value="option1"> Robótica Definições e História - Robô na Ficção
+        $ta = Doctrine::getTable("Conteudos")->getTemasAula($id);        
+        
+        foreach($ta as $c){
+            $arrayRetorno[] = "<input type=\"checkbox\" ".($c->getTag()?"checked=\"checked\"":"")." name=\"tema_aula[".$c->getIdConjunto()."]\" id=\"inlineCheckbox".$c->getIdConjunto()."\" value=\"".$c->getIdConjunto().Util::SEPARADOR_PARAMETRO.$c->getIdConteudo()."\">". $c->getNome();
+        }
+        
+        return $arrayRetorno;
     }
     
     public static function getNuvemTags($max = 48,$min = 10){

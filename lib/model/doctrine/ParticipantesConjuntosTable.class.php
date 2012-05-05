@@ -17,7 +17,7 @@ class ParticipantesConjuntosTable extends Doctrine_Table
         return Doctrine_Core::getTable('ParticipantesConjuntos');
     }
     
-    public function solicitarParticipacao(ParticipantesConjuntos $participacao) {
+    public function solicitarParticipacao(ParticipantesConjuntos $participacao,$comPublicacao=true) {
 
         $q = Doctrine_Query::create()
                 ->select("count(*) as quantidade")
@@ -66,14 +66,15 @@ class ParticipantesConjuntosTable extends Doctrine_Table
         $logSistema->save();
         
         $id_conjunto = $participacao->getIdConjunto();
-                
-        $objPublicacao = new Publicacoes();
-        $objPublicacao->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
-        $objPublicacao->setDataPublicacao(date('Y-m-d H:i:s'));
-        $objPublicacao->setIdConjunto($id_conjunto);
-        $objPublicacao->setTipoPublicacao(Publicacoes::SEGUIR_CONTEUDO);
+        if($comPublicacao){
+            $objPublicacao = new Publicacoes();
+            $objPublicacao->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
+            $objPublicacao->setDataPublicacao(date('Y-m-d H:i:s'));
+            $objPublicacao->setIdConjunto($id_conjunto);
+            $objPublicacao->setTipoPublicacao(Publicacoes::SEGUIR_CONTEUDO);
 
-        $objPublicacao->save();
+            $objPublicacao->save();
+        }
         
     }
     

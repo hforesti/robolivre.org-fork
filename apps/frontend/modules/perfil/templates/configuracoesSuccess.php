@@ -5,6 +5,8 @@ if(!empty($taintedValues)){
     $valoresInciais = array_merge($valoresInciais, $taintedValues);
 }
 
+//Util::pre($valoresInciais);
+
 ?>
 
 <div class="row">
@@ -56,12 +58,12 @@ if(!empty($taintedValues)){
                         <hr>
                         <div class="control-group">
                             <label class="control-label">Amigos</label>
-                            
+                            <?php $parametrosGrupo = ConfiguracoesEmailUsario::getParametrosDoGrupo(ConfiguracoesEmailUsario::GRUPO_AMIGO, $valoresInciais['parametros_email'])?>
                             <?php foreach(ConfiguracoesEmailUsario::getChavesConfiguracoesAmigo() as $chave){ ?>
                             <?php $widget = $formUsuario->getWidget("amigo_$chave")?>
                             <div class="controls">
                                 <label class="checkbox">
-                                    <?php echo $widget->render($formUsuario->getName() ."[amigo_$chave]") ?>
+                                    <?php echo $widget->render($formUsuario->getName() ."[amigo_$chave]",  strstr($parametrosGrupo, $chave)) ?>
                                     <?php echo $widget->getLabel() ?>
                                 </label>
                             </div>
@@ -71,11 +73,12 @@ if(!empty($taintedValues)){
 
                         <div class="control-group">
                             <label class="control-label">Conteúdos</label>
+                            <?php $parametrosGrupo = ConfiguracoesEmailUsario::getParametrosDoGrupo(ConfiguracoesEmailUsario::GRUPO_CONTEUDO, $valoresInciais['parametros_email'])?>
                             <?php foreach(ConfiguracoesEmailUsario::getChavesConfiguracoesConteudo() as $chave){ ?>
                             <?php $widget = $formUsuario->getWidget("conteudo_$chave")?>
                             <div class="controls">
                                 <label class="checkbox">
-                                    <?php echo $widget->render($formUsuario->getName() ."[conteudo_$chave]") ?>
+                                    <?php echo $widget->render($formUsuario->getName() ."[conteudo_$chave]",  strstr($parametrosGrupo, $chave)) ?>
                                     <?php echo $widget->getLabel() ?>
                                 </label>
                             </div>
@@ -84,11 +87,12 @@ if(!empty($taintedValues)){
                         <hr>
                         <div class="control-group">
                             <label class="control-label">Informativo Robô livre</label>
+                            <?php $parametrosGrupo = ConfiguracoesEmailUsario::getParametrosDoGrupo(ConfiguracoesEmailUsario::GRUPO_INFORMATIVO, $valoresInciais['parametros_email'])?>
                             <?php foreach(ConfiguracoesEmailUsario::getChavesConfiguracoesInformativo() as $chave){ ?>
                             <?php $widget = $formUsuario->getWidget("informativo_$chave")?>
                             <div class="controls">
                                 <label class="checkbox">
-                                    <?php echo $widget->render($formUsuario->getName() ."[informativo_$chave]") ?>
+                                    <?php echo $widget->render($formUsuario->getName() ."[informativo_$chave]",  strstr($parametrosGrupo, $chave)) ?>
                                     <?php echo $widget->getLabel() ?>
                                 </label>
                             </div>

@@ -104,7 +104,7 @@ class conteudosActions extends robolivreAction
         if(!isset($nome_arquivo)||$nome_arquivo=="" ){
             return "";
         }
-        
+        try{
 //        die("nome do arquivo $nome_arquivo");
         $diretorioThumbnail = Util::getDiretorioThumbnail();
         
@@ -121,14 +121,25 @@ class conteudosActions extends robolivreAction
         $thumbnail = new sfThumbnail(20, 20);
         $thumbnail->loadFile($diretorio_arquivo);
         $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slugConteudo . '_20.' . $extensao);
+        }catch(Exception $e){
+            if(strstr($e->getMessage()," is not readable.")){
+                return $nome_arquivo;
+            }else{
+                throw $e;
+            }
+        }
         
         return '_avatar_con_' . $slugConteudo . '_#.'.$extensao;
     }
     
     public function executeGravar(sfWebRequest $request) {
-
+        
         $arrayTags = $request->getPostParameter('tags');
         $arrayTags = explode(",", $arrayTags);
+        $arrayTagsTemaAula = $request->getPostParameter('tema_aula');
+        
+        
+        $arrayTags = array_unique(array_merge($arrayTags, $arrayTagsTemaAula));
         
         $form = new ConteudosForm();
 
@@ -189,6 +200,12 @@ class conteudosActions extends robolivreAction
             $this->redirect('conteudo/'.$this->conteudo->getConjunto()->getSlug());
         } else {
             $this->formConteudo = $form;
+            $erros = $form->getErrorSchema()->getErrors();
+            if (isset($erros['nome'])) {
+                $objConteudo = $form->getObject();
+                $this->nomeConteudoErro = $objConteudo->getNome();
+            }
+            
             
             /* FAZER ARRAY TAGS VIRAR OBJETO, VER MODELO TagsConteudosTable->getTagsConteudo() */
             $this->tags = array();
@@ -208,7 +225,6 @@ class conteudosActions extends robolivreAction
         if ($form->isValid()) {
             $form->updateObject(); 
             $valores = $form->getTaintedValues();
-//            Util::pre($request->getPostParameters());
             $objConteudo = $form->getObject();
             
             $objConteudo->setIdConjunto($valores['id_conjunto']);
@@ -218,9 +234,8 @@ class conteudosActions extends robolivreAction
             $objConteudo->setDescricao($valores['descricao']);
             $objConteudo->setEnviarEmailCriador($valores['enviar_email_criador']);
             
-//            echo "id_Conjunto = ".$objConteudo->getIdConjunto()."<br/>";
             $slug = Util::criaSlug($objConteudo->getNome());
-            $nomeArquivo = $this->criarTumbnails($request, $slug );
+            $nomeArquivo = $this->criarTumbnails($request, $slug);
             $objConteudo->getConjunto()->setImagemPerfil($nomeArquivo);
             $this->conteudo = Doctrine::getTable("Conteudos")->editarConteudo($objConteudo);
             
@@ -285,6 +300,15 @@ class conteudosActions extends robolivreAction
             $this->redirect('conteudo/'.$slug);
         } else {
             $this->formConteudo = $form;
+            $this->conteudo = $form->getObject();
+
+            $erros = $form->getErrorSchema()->getErrors();
+            
+            if (isset($erros['nome'])) {
+                $taintedValues = $form->getTaintedValues();
+                $this->nomeConteudoErro = $taintedValues['nome'];
+            }
+            $this->conteudo->setImagemPerfil($request->getParameter('imagem_selecionada'));
             
             /* FAZER ARRAY TAGS VIRAR OBJETO, VER MODELO TagsConteudosTable->getTagsConteudo() */
             $this->tags = array();

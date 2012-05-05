@@ -18,7 +18,7 @@
             </li>
         </ul>
 
-        <p><small>Adicionado por <?php echo Util::getTagUsuario($conteudo->getNomeProprietario(), $conteudo->getConjunto()->getIdUsuario()) ?>. Última atualização <?php echo $ultimaAtulizacao; ?></small></p>
+        <p><small>Adicionado por <?php echo Util::getTagUsuario($conteudo->getNomeProprietario(), $conteudo->getConjunto()->getIdUsuario()) ?>: <?php echo $dataCriacao ?>. Última modificação <?php echo $ultimaAtulizacao; ?></small></p>
 
         <div class="page-header">
 
@@ -47,16 +47,16 @@
         <div id="stream">
             <h3>Atualizações recentes</h3>
             <ul id="ul-steam">
-                <?php foreach ($publicacoesConjunto as $publicacao) { ?>
+                <?php foreach ($publicacoesConjunto['publicacoes'] as $publicacao) { ?>
                     <?php echo $publicacao->getImpressaoEmConteudo(); ?>
                 <?php } ?>
             </ul>
 
 
         </div><!-- stream -->
-
+        <?php if($publicacoesConjunto['quantidade']>=10){?>
         <div class="btn-load-more" id="pagination"><a href="#pagination" onclick="getPublicacoesAntigasConteudos()" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
-
+        <?php } ?>
     </div><!-- /miolo -->
 
 
@@ -72,22 +72,6 @@
             </ul>
             <a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirSeguidores") ; ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-conteudos -->
-
-        <?php /*<hr>
-
-        <div id="grid-projetos" class="wdgt">
-            <h3><a href="projetos.shtml" title="Ver tudo">Projetos relacionados <small>15</small></a></h3>
-            <ul class="thumbnails">
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-                <li class="span1"><a href="projeto.shtml" class="thumbnail"><img src="/assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto"></a></li>
-            </ul>
-            <a href="projetos.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
-        </div> grid-comunidades -->
-         */ ?>
 
         <hr>
 

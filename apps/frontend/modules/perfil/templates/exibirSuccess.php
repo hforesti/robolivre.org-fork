@@ -40,7 +40,7 @@
 
             <ul id="ul-steam">
                
-                <?php foreach ($publicacoesPerfil as $publicacao) { ?>                    
+                <?php foreach ($publicacoesPerfil['publicacoes'] as $publicacao) { ?>                    
                         <?php print_r( $publicacao->imprimir());
                                 
                             /*'formPublicacao',array('form' => $formPublicacao,
@@ -53,9 +53,9 @@
 
 
         </div><!-- stream -->
-
+        <?php if($publicacoesPerfil['quantidade']>=10){ ?>
         <div class="btn-load-more" id="pagination"><a href="#pagination" onclick="getPublicacoesAntigas()" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
-
+        <?php } ?>
     </div><!-- /miolo -->
 
 
@@ -72,22 +72,6 @@
             </ul>
             <a href="<?php echo url_for('perfil/exibirConteudos?u=' . $usuario->getIdUsuario()) ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-conteudos -->
-
-        <?php /*<hr>
-
-        <div id="grid-comunidades" class="wdgt">
-            <h3><a href="comunidades.shtml" title="Ver tudo">Comunidades <small>15</small></a></h3>
-            <ul class="thumbnails">
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-                <li class="span1"><a href="comunidade.shtml" class="thumbnail"><img src="<?php echo image_path('/assets/img/rl/60.gif') ?>" alt="Nome da comunidade" title="Nome da comunidade"></a></li>
-            </ul>
-            <a href="comunidades.shtml" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
-        </div><!-- grid-comunidades -->
-         */ ?>
 
         <hr>
 
@@ -153,6 +137,33 @@
     </div>
 </div>
 <?php } ?>
+<div class="modal fade" id="modalDelete">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Excluir atualização</h3>
+  </div>
+  <div class="modal-body">
+  <p>Tem certeza de que deseja excluir a atualização?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-danger">Sim, excluir agora</a> <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+  </div>
+</div>
+
+<div class="modal fade" id="modalAbuse">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Reportar abuso</h3>
+  </div>
+  <div class="modal-body">
+  <p>Tem certeza de que deseja reportar a atualização para nossa equipe?</p>
+  <p><small>Reporte caso ache que essa atualização apresenta conteúdo ofensivo, inadequado ou propaganda indesejada (spam).</small></p>
+  
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-danger">Reportar</a> <a href="#" class="btn" data-dismiss="modal">Deixa pra lá</a> 
+  </div>
+</div>
 
 <script type="text/javascript">
     //<![CDATA[

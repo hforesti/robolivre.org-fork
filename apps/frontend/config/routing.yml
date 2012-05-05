@@ -3,9 +3,6 @@
 
 
 
-novaSenha:
-  url: /perfil/novaSenha/*
-  param: { module: perfil, action: novaSenha }
   
 conteudo:
   url:    conteudo/:slug
@@ -14,6 +11,11 @@ conteudo:
 conteudo_acao:
   url:    conteudo/:slug/:acao/*
   param:  { module: conteudo, action: exibir }
+
+#novaSenha:
+#  url: perfil/novaSenha/*
+#  param: { module: perfil, action: novaSenha }
+
 
 # default rules
 homepage:

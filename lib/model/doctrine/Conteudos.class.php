@@ -22,6 +22,8 @@ class Conteudos extends BaseConteudos
     private $quantidadeLinks;
     private $quantidadeSeguidores;
     private $pontos;
+    private $tag = false;
+    
     
     const PROPRIETARIO = -1;
     const NAO_PARTICIPA = -2;
@@ -82,6 +84,9 @@ class Conteudos extends BaseConteudos
         $this->nomeProprietario = $nomeProprietario;
     }
     
+    public function getNomeArquivoImagemPerfil() {
+        return ($this->getConjunto()!=null)? $this->getConjunto()->getImagemPerfil() : "/assets/img/rl/170.gif";
+    }
     public function getImagemPerfil($tipoImagem = Util::IMAGEM_MEDIA) {
         $imagem = ($this->getConjunto()!=null)? $this->getConjunto()->getImagemPerfil() : "";
         return Util::validaImagem($imagem, $tipoImagem,Util::TIPO_IMAGEM_CONTEUDO);
@@ -125,6 +130,14 @@ class Conteudos extends BaseConteudos
 
     public function setPontos($pontos) {
         $this->pontos = $pontos;
+    }
+    
+    public function getTag() {
+        return $this->tag;
+    }
+
+    public function setTag($tag) {
+        $this->tag = $tag;
     }
 
 }

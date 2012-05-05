@@ -59,6 +59,7 @@ class ajaxActions extends sfActions {
             $json['value'] = $conteudo->getIdConjunto().Util::SEPARADOR_PARAMETRO.$conteudo->getIdConteudo();
             $json['name'] = $conteudo->getNome();
             $json['image'] = $conteudo->getImagemPerfil();
+            $json['slug'] = Util::criaSlug($conteudo->getNome());
             $data[] = $json;
         }
         
@@ -75,7 +76,7 @@ class ajaxActions extends sfActions {
         if(!$objConteudo){
             $mensagem = "ok";
         } else {
-            $mensagem .= "id_conjunto=" . $objConteudo->getIdConjunto() . Util::SEPARADOR_PARAMETRO . "nome=" . $objConteudo->getNome();
+            $mensagem .= "id_conjunto=" . $objConteudo->getIdConjunto() . Util::SEPARADOR_PARAMETRO . "nome=" . $objConteudo->getNome(). Util::SEPARADOR_PARAMETRO . "slug=" .  Util::criaSlug($objConteudo->getNome());
         }
 
         $this->mensagem = $mensagem;
@@ -87,7 +88,7 @@ class ajaxActions extends sfActions {
 
         $publicacoesPerfil = Doctrine::getTable("Publicacoes")->getPublicacoesDoPerfil($id_usuario,$id_ultima_publicacao);
        
-        foreach($publicacoesPerfil as $publicacao){
+        foreach($publicacoesPerfil['publicacoes'] as $publicacao){
             $publicacao->imprimir(); //getImpressao();
         }
         
@@ -111,7 +112,7 @@ class ajaxActions extends sfActions {
 
         $publicacoesPerfil = Doctrine::getTable("Publicacoes")->getPublicacoesDoConjunto($id_conjunto,$id_ultima_publicacao);
        
-        foreach($publicacoesPerfil as $publicacao){
+        foreach($publicacoesPerfil['publicacoes'] as $publicacao){
             echo $publicacao->getImpressaoEmConteudo();
         }
         
@@ -123,7 +124,7 @@ class ajaxActions extends sfActions {
 
         $publicacoesPerfil = Doctrine::getTable("Publicacoes")->getPublicacoesHomeConteudo($id_ultima_publicacao);
        
-        foreach($publicacoesPerfil as $publicacao){
+        foreach($publicacoesPerfil['publicacoes'] as $publicacao){
             $publicacao->imprimir();
         }
         
@@ -135,7 +136,7 @@ class ajaxActions extends sfActions {
 
         $publicacoesPerfil = Doctrine::getTable("Publicacoes")->getPublicacoesHomeAmigos($id_ultima_publicacao);
        
-        foreach($publicacoesPerfil as $publicacao){
+        foreach($publicacoesPerfil['publicacoes'] as $publicacao){
             $publicacao->imprimir();
         }
         
@@ -196,10 +197,7 @@ class ajaxActions extends sfActions {
     }
     
     public function executeAjaxUlpoadImagens(sfWebRequest $request) {
-//        sfContext::getInstance()->getLogger()->info("ENTROU UPLOAD IMAGENS");
-//        sfContext::getInstance()->getLogger()->info(print_r($_GET,true));
-//        sfContext::getInstance()->getLogger()->info(print_r($_POST,true));
-//        sfContext::getInstance()->getLogger()->info(print_r($_FILES,true));
+        
         // list of valid extensions, ex. array("jpeg", "xml", "bmp")
         $allowedExtensions = array("jpeg","png","jpg", "xml", "bmp");
         
@@ -208,8 +206,47 @@ class ajaxActions extends sfActions {
 
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
         $result = $uploader->handleUpload('uploads/');
+        
+        $this->criarTumbnails($_GET['qqfile']);
+        
         // to pass data through iframe you will need to encode all html tags
         echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
     }
+    
+    
+    
+    private function criarTumbnails($nome_arquivo_completo){
+        $array = explode(".", $nome_arquivo_completo);
+        $nome_arquivo  = $array[0];
+        $extensao = end($array);
+
+        if(!isset($nome_arquivo)||$nome_arquivo=="" ){
+            return "";
+        }
+        try{
+//        die("nome do arquivo $nome_arquivo");
+        $diretorioThumbnail = sfConfig::get('sf_upload_dir');
+
+        $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo_completo;
+        $thumbnail = new sfThumbnail(170, 170,true,true);
+        $thumbnail->loadFile($diretorio_arquivo);
+        $thumbnail->save($diretorioThumbnail."/".$nome_arquivo."_tmp_large." . $extensao);
+
+        $thumbnail = new sfThumbnail(60, 60);
+        $thumbnail->loadFile($diretorio_arquivo);
+        $thumbnail->save($diretorioThumbnail."/".$nome_arquivo."_tmp_60." . $extensao);
+
+        $thumbnail = new sfThumbnail(20, 20);
+        $thumbnail->loadFile($diretorio_arquivo);
+        $thumbnail->save($diretorioThumbnail."/".$nome_arquivo."_tmp_20." . $extensao);
+        
+        
+        }catch(Exception $e){
+                throw $e;
+        }
+        
+        return "/".$nome_arquivo."_tmp_#.".$extensao;
+    }
+    
     
 }

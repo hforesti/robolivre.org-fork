@@ -12,17 +12,23 @@ Doctrine_Manager::getInstance()->bindComponent('Conjuntos', 'doctrine');
  * @property integer $id_usuario
  * @property string $imagem_perfil
  * @property string $slug
+ * @property timestamp $ultima_modificacao
+ * @property timestamp $data_criacao
  * 
- * @method integer   getIdConjunto()       Returns the current record's "id_conjunto" value
- * @method integer   getIdTipoConjunto()   Returns the current record's "id_tipo_conjunto" value
- * @method integer   getIdUsuario()        Returns the current record's "id_usuario" value
- * @method string    getImagemPerfil()     Returns the current record's "imagem_perfil" value
- * @method string    getSlug()             Returns the current record's "slug" value
- * @method Conjuntos setIdConjunto()       Sets the current record's "id_conjunto" value
- * @method Conjuntos setIdTipoConjunto()   Sets the current record's "id_tipo_conjunto" value
- * @method Conjuntos setIdUsuario()        Sets the current record's "id_usuario" value
- * @method Conjuntos setImagemPerfil()     Sets the current record's "imagem_perfil" value
- * @method Conjuntos setSlug()             Sets the current record's "slug" value
+ * @method integer   getIdConjunto()         Returns the current record's "id_conjunto" value
+ * @method integer   getIdTipoConjunto()     Returns the current record's "id_tipo_conjunto" value
+ * @method integer   getIdUsuario()          Returns the current record's "id_usuario" value
+ * @method string    getImagemPerfil()       Returns the current record's "imagem_perfil" value
+ * @method string    getSlug()               Returns the current record's "slug" value
+ * @method timestamp getUltimaModificacao()  Returns the current record's "ultima_modificacao" value
+ * @method timestamp getDataCriacao()        Returns the current record's "data_criacao" value
+ * @method Conjuntos setIdConjunto()         Sets the current record's "id_conjunto" value
+ * @method Conjuntos setIdTipoConjunto()     Sets the current record's "id_tipo_conjunto" value
+ * @method Conjuntos setIdUsuario()          Sets the current record's "id_usuario" value
+ * @method Conjuntos setImagemPerfil()       Sets the current record's "imagem_perfil" value
+ * @method Conjuntos setSlug()               Sets the current record's "slug" value
+ * @method Conjuntos setUltimaModificacao()  Sets the current record's "ultima_modificacao" value
+ * @method Conjuntos setDataCriacao()        Sets the current record's "data_criacao" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -76,6 +82,24 @@ abstract class BaseConjuntos extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => 100,
+             ));
+        $this->hasColumn('ultima_modificacao', 'timestamp', 25, array(
+             'type' => 'timestamp',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 25,
+             ));
+        $this->hasColumn('data_criacao', 'timestamp', 25, array(
+             'type' => 'timestamp',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 25,
              ));
     }
 

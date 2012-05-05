@@ -13,7 +13,11 @@ class perfilActions extends robolivreAction {
     public function executeIndex(sfWebRequest $request) {
         
         $this->usuario = new Usuarios(null,false,UsuarioLogado::getInstancia());
-//        die($this->usuario->getImagemPerfil());
+        
+        
+        $this->iniciaTabAmigo = $request->hasParameter("i");
+        
+        
         $this->publicacoesHome = Doctrine::getTable("Publicacoes")->getPublicacoesHome();
         
         {
@@ -46,8 +50,8 @@ class perfilActions extends robolivreAction {
     }
     
     public function executeGravarConfiguracoes(sfWebRequest $request){
+        
         echo ConfiguracoesEmailUsario::getTodosParametrosConfiguracao($request->getPostParameter('usuarios'));
-        Util::pre($request->getPostParameters(),true);
         $usuarios = new Usuarios(null,false,UsuarioLogado::getInstancia());
         $form = new UsuariosForm($usuarios, null, null, UsuariosForm::CONFIGURACAO);
     }
@@ -218,7 +222,7 @@ class perfilActions extends robolivreAction {
             $id_usuario = $request->getParameter('id_usuario_referencia');
         
         $objPublicacao->save();
-        $this->redirect("perfil/exibir?u=".$id_usuario);
+        $this->redirect("perfil/index?&i=1");
     }
     
     public function executeLista(sfWebRequest $request) {
@@ -310,6 +314,31 @@ class perfilActions extends robolivreAction {
             }
         }
     }
+    
+    public function executeExibirAmigosHome(sfWebRequest $request) {
+
+        $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia());
+
+
+        $nome = $request->getParameter("nome");
+        $pagina = $request->getParameter("pagina");
+
+        if (!isset($nome) || trim($nome) == "") {
+            $nome = "";
+        }
+
+        if (!isset($pagina) || $pagina == "" || !is_numeric($pagina)) {
+            $pagina = 1;
+        }
+
+        $arrayRetorno = Doctrine::getTable("Usuarios")->filtroAmigosPerfil($this->usuario->getIdUsuario(), $nome, $pagina);
+        $this->quantidadeAmigos = $arrayRetorno['quantidade'];
+        $this->amigos = $arrayRetorno['amigos'];
+        $this->nome = $nome;
+        $this->quantidadeTotalPaginas = $arrayRetorno['totalPaginas'];
+        $this->pagina = $pagina;
+    }
+    
     public function executeExibirConteudos(sfWebRequest $request) {
         $id = $request->getParameter("u");
         
@@ -361,6 +390,36 @@ class perfilActions extends robolivreAction {
         }
     }
     
+    public function executeExibirConteudosHome(sfWebRequest $request) {
+
+        $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia());
+
+        $nome = $request->getParameter("nome");
+        $pagina = $request->getParameter("pagina");
+        $isProprietario = $request->getParameter("proprietario");
+        if (!isset($nome) || trim($nome) == "") {
+            $nome = "";
+        }
+
+        if (!isset($isProprietario) || $isProprietario == "") {
+            $isProprietario = false;
+        } else {
+            $isProprietario = true;
+        }
+
+        if (!isset($pagina) || $pagina == "" || !is_numeric($pagina)) {
+            $pagina = 1;
+        }
+
+        $arrayRetorno = Doctrine::getTable("Conteudos")->filtroConteudosPerfil($this->usuario->getIdUsuario(), $isProprietario, $nome, $pagina);
+        $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
+        $this->arrayConteudoSeguido = $arrayRetorno['conteudos'];
+        $this->quantidadeTotalPaginas = $arrayRetorno['totalPaginas'];
+        $this->nome = $nome;
+        $this->pagina = $pagina;
+        $this->proprietario = $isProprietario;
+    }
+    
     public function executeLogout(sfWebRequest $request) {
         UsuarioLogado::getInstancia()->deslogar();
         $this->redirect('inicial/index');
@@ -393,7 +452,7 @@ class perfilActions extends robolivreAction {
     }
      
     public function executeConfirmarFotoPerfil(sfWebRequest $request) {
-        $nome_arquivo = $request->getParameter('arq');
+        $nome_arquivo = $request->getParameter('imagem_selecionada');
         
         $diretorioThumbnail = Util::getDiretorioThumbnail();
         

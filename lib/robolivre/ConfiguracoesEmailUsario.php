@@ -115,6 +115,20 @@ class ConfiguracoesEmailUsario {
     }
    
     
+    public static function getParametrosDoGrupo($grupo,$parametros){
+        $parametrosGrupo = "";
+        
+        if (isset($parametros) && $parametros != "") {
+            foreach(explode(self::SEPARADOR_GRUPOS,trim($parametros)) as $p) {
+                if($p[0] == $grupo){
+                    return str_replace(array('[',']'), array('','',''), substr($p, 1));
+                }
+            }
+        }
+        
+        return $parametrosGrupo;
+    }
+    
     public static function getTodosParametrosConfiguracao($array){
         
         $retorno = "";
@@ -136,17 +150,19 @@ class ConfiguracoesEmailUsario {
         }
         
         if($parametrosInformativo!=""){
-            $retorno .= self::GRUPO_INFORMATIVO."[$parametrosInformativo]".self::SEPARADOR_GRUPOS;
+            $retorno .= self::GRUPO_INFORMATIVO."[".trim($parametrosInformativo)."]".self::SEPARADOR_GRUPOS;
         }
         if($parametrosAmigos!=""){
-            $retorno .= self::GRUPO_AMIGO."[$parametrosAmigos]".self::SEPARADOR_GRUPOS;
+            $retorno .= self::GRUPO_AMIGO."[".trim($parametrosAmigos)."]".self::SEPARADOR_GRUPOS;
         }
         if($parametrosConteudo!=""){
-            $retorno .= self::GRUPO_CONTEUDO."[$parametrosConteudo]".self::SEPARADOR_GRUPOS;
+            $retorno .= self::GRUPO_CONTEUDO."[".trim($parametrosConteudo)."]".self::SEPARADOR_GRUPOS;
         }
         
         return $retorno;
     }
+    
+    
 }
 
 ?>

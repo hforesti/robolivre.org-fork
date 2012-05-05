@@ -44,7 +44,7 @@ class ConteudosForm extends BaseConteudosForm {
             $valores = $this->getTaintedValues();
             $nomeConteudo = $valores['nome'];
             $idConjunto = $valores['id_conjunto'];
-            
+
             if(Doctrine::getTable("Conteudos")->validaNomeConteudo($nomeConteudo,$idConjunto)){
                 $error = new sfValidatorError($this->validatorSchema['nome'], 'Este conteúdo já existe');
                 $this->errorSchema->addError($error, 'nome');

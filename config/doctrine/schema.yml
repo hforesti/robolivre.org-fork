@@ -95,6 +95,20 @@ Conjuntos:
       primary: false
       notnull: true
       autoincrement: false
+    ultima_modificacao:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    data_criacao:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
 Conteudos:
   connection: doctrine
   tableName: conteudos
@@ -808,7 +822,7 @@ Usuarios:
       notnull: true
       autoincrement: false
     senha:
-      type: string(45)
+      type: string(255)
       fixed: false
       unsigned: false
       primary: false

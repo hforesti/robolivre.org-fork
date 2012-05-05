@@ -45,10 +45,13 @@ class conteudoActions extends robolivreAction {
             $this->redirect('conteudos/index');
         } else {
             $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
+            $this->forward404Unless($this->conteudo);
             $this->formPublicacao = new PublicacoesForm();
             $this->publicacoesConjunto = Doctrine::getTable("Publicacoes")->getPublicacoesDoConjunto($this->conteudo->getIdConjunto()); //array();
             $chaves = array_keys($this->publicacoesConjunto);
-            $this->ultimaAtulizacao = Util::getDataFormatada($this->publicacoesConjunto[$chaves[0]]->getDataPublicacao()); 
+            $this->dataCriacao = Util::getDataFormatada($this->conteudo->getConjunto()->getDataCriacao()); 
+            $this->ultimaAtulizacao = Util::getDataFormatada($this->conteudo->getConjunto()->getUltimaModificacao()); 
+            
             {
                 $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
                 $this->quantidadeParticipantes = $arrayRetorno['quantidade'];

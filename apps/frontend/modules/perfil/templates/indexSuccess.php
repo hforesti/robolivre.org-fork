@@ -18,10 +18,10 @@
                     <li class="no-link">
                         <h6>Atualizações recentes de:</h6>
                     </li>
-                    <li class="active">
+                    <li class="<?php echo ($iniciaTabAmigo)?"":"active" ?>">
                         <a href="#1" data-toggle="tab"><h3><i class="icon-tag icon-gray"></i> Conteúdos</h3></a>
                     </li>
-                    <li>
+                    <li class="<?php echo ($iniciaTabAmigo)?"active":"" ?>">
                         <a href="#2" data-toggle="tab"><h3><i class="icon-user icon-gray"></i> Perfil e Amigos</h3></a>
                     </li>
                 </ul>
@@ -29,12 +29,12 @@
                 <!-- ================================== -->
                 <!-- ! TAB: Atualizações de "Conteúdos"   -->
                 <!-- ================================== -->
-                <div class="tab-pane fade in active" id="1">
+                <div class="tab-pane fade in <?php echo ($iniciaTabAmigo)?"":"active" ?>" id="1">
 
 <!-- <a href="#" class="btn btn-primary" id="refresh"><i class="icon-refresh icon-white"></i> 6 novas atualizações. Exibir agora.</a> -->
 
                     <ul id="ul-steam-conteudos">
-                        <?php foreach ($publicacoesHome['conteudos'] as $publicacao) { ?>                    
+                        <?php foreach ($publicacoesHome['conteudos']['publicacoes'] as $publicacao) { ?>                    
                             <?php
                             echo $publicacao->imprimir();
 
@@ -45,7 +45,9 @@
 
 <?php } ?>
                     </ul>
+                    <?php if($publicacoesHome['conteudos']['quantidade']>=10){?>
                     <div id="pagination" class="btn-load-more"><a href="#pagination" onclick="atualizaDados(1)" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
+                    <?php } ?>
                 </div><!-- tab-pane #1 -->
 
 
@@ -61,21 +63,30 @@
                 <!-- ========================== -->
                 <!-- ! TAB: Atualizações sociais   -->
                 <!-- ========================== -->
+                
+                <div class="tab-pane fade in <?php echo ($iniciaTabAmigo)?"active":"" ?>" id="2">
+                    <?php if(count($publicacoesHome['amigos']['publicacoes'])>0){ ?>
+                        <ul id="ul-steam-amigos">
+                            <?php foreach ($publicacoesHome['amigos']['publicacoes'] as $publicacao) { ?>                    
+                                <?php
+                                echo $publicacao->imprimir();
 
-                <div class="tab-pane fade in" id="2">
-                    <ul id="ul-steam-amigos">
-                        <?php foreach ($publicacoesHome['amigos'] as $publicacao) { ?>                    
-                            <?php
-                            echo $publicacao->imprimir();
+                                /* 'formPublicacao',array('form' => $formPublicacao,
+                                'id_publicacao_original' => $publicacao->getIdPublicacao(),
+                                'id_usuario_original' => $publicacao->getIdUsuario())); */
+                                ?>
 
-                            /* 'formPublicacao',array('form' => $formPublicacao,
-                              'id_publicacao_original' => $publicacao->getIdPublicacao(),
-                              'id_usuario_original' => $publicacao->getIdUsuario())); */
-                            ?>
-
-<?php } ?>
-                    </ul>
-                    <div id="pagination2" class="btn-load-more"><a href="#pagination2" onclick="atualizaDados(2)" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
+                        <?php } ?>
+                        </ul>
+                        <?php if($publicacoesHome['amigos']['quantidade']>=10){?>
+                        <div id="pagination2" class="btn-load-more"><a href="#pagination2" onclick="atualizaDados(2)" class="btn"><i class="icon-chevron-down"></i> Carregar atualizações mais antigas</a></div>
+                        <?php }?>
+                    <?php }else{ ?>
+                        <div class="well">
+                                <p>Nesta aba você sempre verá atualizações publicadas por você, pelos seus amigos e atividades como novas amizades da sua rede.</p>
+                        </div>
+                    <?php } ?>
+                    
                 </div><!-- tab-pane #2 -->
 
             </div><!-- tab-content -->
@@ -91,6 +102,9 @@
 
         <div id="grid-conteudos" class="wdgt">
             <h3><a href="<?php echo url_for('perfil/exibirConteudos?u=' . UsuarioLogado::getInstancia()->getIdUsuario()) ?>">Conteúdos seguidos <small><?php echo $quantidadeConteudoSeguido; ?></small></a></h3>
+            <?php if(count($arrayConteudoSeguido)==0 || (count($arrayConteudoSeguido)==1 && $arrayConteudoSeguido[0]->getIdConjunto()==0)){ ?>
+            <div class="alert"><a href="<?php echo url_for("conteudos/index") ?>">Descubra conteúdos para seguir</a></div>
+            <?php } ?>
             <ul class="thumbnails">
                 <?php foreach ($arrayConteudoSeguido as $conteudo): ?>
                     <?php $innerHTML = "<img src='" . image_path($conteudo->getImagemPerfil()) . "' alt='" . $conteudo->getNome() . "' title='" . $conteudo->getNome() . "'>"; ?>
@@ -132,6 +146,34 @@
     </div><!-- /aside -->
 
 </div><!-- /row -->
+
+<div class="modal fade" id="modalDelete">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Excluir atualização</h3>
+  </div>
+  <div class="modal-body">
+  <p>Tem certeza de que deseja excluir a atualização?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-danger">Sim, excluir agora</a> <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+  </div>
+</div>
+
+<div class="modal fade" id="modalAbuse">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Reportar abuso</h3>
+  </div>
+  <div class="modal-body">
+  <p>Tem certeza de que deseja reportar a atualização para nossa equipe?</p>
+  <p><small>Reporte caso ache que essa atualização apresenta conteúdo ofensivo, inadequado ou propaganda indesejada (spam).</small></p>
+  
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-danger">Reportar</a> <a href="#" class="btn" data-dismiss="modal">Deixa pra lá</a> 
+  </div>
+</div>
 
 <script type="text/javascript">
     //<![CDATA[

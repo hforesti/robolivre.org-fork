@@ -144,7 +144,7 @@ if ($valoresInciais['data_nascimento'] != null && $valoresInciais['data_nascimen
             <div class="controls">
                 <label class="checkbox">
                     <?php echo $form->getWidget('aula_robolivre')->render($form->getName() . "[aula_robolivre]", ($valoresInciais['aula_robolivre'] != 0) ? $valoresInciais['aula_robolivre'] : false, array('id' => 'optionsCheckbox')); ?>
-                    Sim, participo das aulas presenciais da Robô Livre <a href="sobre.shtml" title="Mais informações sobre nossas aulas" class="singletip"><i class="icon-info-sign"></i></a>
+                    Sim, participo das aulas presenciais da Robô Livre <a href="<?php echo url_for("institucional/index") ?>" title="Mais informações sobre nossas aulas" class="singletip"><i class="icon-info-sign"></i></a>
                 </label> 
             </div>
         </div>
