@@ -117,7 +117,7 @@
 <!-- =============================================== -->
 <!-- ! Modelo de compartilhamento apenas de status   -->
 <!-- =============================================== -->
-		<li class="vcard">
+		<li class="vcard" id="status-02">
 			<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Max Guenes</a> em <i class="icon-tag icon-gray"></i><a href="conteudo.shtml">Arduino</a>
@@ -165,7 +165,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
@@ -180,7 +180,7 @@
 <!-- ================================================================= -->
 <!-- ! Modelos de compartilhamento apenas de status com comentários   -->
 <!-- ================================================================= -->
-		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
+		<li class="vcard" id="status-03"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Max Guenes</a> em <i class="icon-tag icon-gray"></i><a href="conteudo.shtml">Arduino</a>
 			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
@@ -238,7 +238,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
@@ -253,7 +253,7 @@
 <!-- ============================================================================================== -->
 <!-- ! Modelos de status da pessoa (a li tem a classe my-status para indicar que o status é meu)   -->
 <!-- ============================================================================================== -->		
-		<li class="vcard my-status"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/avatar-60.jpg" alt="Rodrigo Medeiros" title="Rodrigo Medeiros"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
+		<li class="vcard my-status" id="status-20"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/avatar-60.jpg" alt="Rodrigo Medeiros" title="Rodrigo Medeiros"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Rodrigo Medeiros</a> em <i class="icon-tag icon-gray"></i><a href="conteudo.shtml">Arduino</a>
 			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
@@ -288,7 +288,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
@@ -303,7 +303,7 @@
 <!-- ======================================== -->
 <!-- ! Modelo de compartilhamento de vídeo   -->
 <!-- ======================================== -->
-		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
+		<li class="vcard" id="status-04"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Max Guenes</a> em <i class="icon-tag icon-gray"></i><a href="conteudo.shtml">Arduino</a>
 				<div class="share-content">
@@ -337,7 +337,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
@@ -352,7 +352,7 @@
 <!-- ====================================== -->
 <!-- ! Modelo de compartilhamento de foto   -->
 <!-- ====================================== -->
-		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
+		<li class="vcard" id="status-05"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Max Guenes</a> em <i class="icon-tag icon-gray"></i><a href="conteudo.shtml">Arduino</a>
 				<div class="share-content">
@@ -382,7 +382,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
@@ -395,7 +395,7 @@
 		</li>
 
 		
-		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
+		<li class="vcard" id="status-06"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"> <img src="assets/img/rl/20.gif" alt="Arduino" title="Arduino" class="sub-icon"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Max Guenes</a> em <i class="icon-tag icon-gray"></i><a href="conteudo.shtml">Arduino</a>
 			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
@@ -423,7 +423,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
@@ -480,7 +480,7 @@
 <!-- ====================================== -->
 <!-- ! Modelo de compartilhamento de link   -->
 <!-- ====================================== -->
-		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+		<li class="vcard" id="status-01"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Max Guenes</a>
 			<blockquote><p>
@@ -528,7 +528,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
@@ -543,7 +543,7 @@
 <!-- =============================================== -->
 <!-- ! Modelo de compartilhamento apenas de status   -->
 <!-- =============================================== -->
-		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+		<li class="vcard" id="status-010"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Max Guenes</a>
 			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
@@ -588,7 +588,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
@@ -603,7 +603,7 @@
 <!-- ================================================================= -->
 <!-- ! Modelos de compartilhamento apenas de status com comentários   -->
 <!-- ================================================================= -->
-		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+		<li class="vcard" id="status-011"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Max Guenes</a>
 			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
@@ -661,7 +661,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
@@ -711,7 +711,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
@@ -726,7 +726,7 @@
 <!-- ======================================== -->
 <!-- ! Modelo de compartilhamento de vídeo   -->
 <!-- ======================================== -->
-		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+		<li class="vcard" id="status-012"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Max Guenes</a>
 				<div class="share-content">
@@ -760,7 +760,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
@@ -775,7 +775,7 @@
 <!-- ====================================== -->
 <!-- ! Modelo de compartilhamento de foto   -->
 <!-- ====================================== -->
-		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+		<li class="vcard" id="status-013"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Max Guenes</a>
 				<div class="share-content">
@@ -805,7 +805,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
@@ -818,7 +818,7 @@
 		</li>
 
 		
-		<li class="vcard"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+		<li class="vcard" id="status-014"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
 			<div class="entry">
 			<a href="perfil.shtml" class="fn">Max Guenes</a>
 			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
@@ -846,7 +846,7 @@
 						    <span class="icon-cog icon-gray"></span>
 						  	</a>
 						  	<ul class="dropdown-menu">
-						      <li>
+						      <li class="action-delete">
 						        <a data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir atualização</a>
 						      </li>
 							<li class="divider"></li>
