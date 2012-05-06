@@ -1,0 +1,30 @@
+    [qqfile] => 183213_208455612501969_100000125964564_920497_6472483_n1324679756.jpg
+)
+
+May 05 17:13:48 symfony [info] Array
+(
+)
+
+May 05 17:13:48 symfony [info] Array
+(
+)
+
+May 05 17:13:48 symfony [warning] {sfWebDebugLogger}  Warning at /home/maxguenes/GitHub/robolivre.org/apps/frontend/modules/ajax/actions/actions.class.php on line 231 (explode() expects parameter 2 to be string, array given)
+May 05 17:13:48 symfony [err] {sfWebDebugLogger}  Strict notice at /home/maxguenes/GitHub/robolivre.org/apps/frontend/modules/ajax/actions/actions.class.php on line 231 (Only variables should be passed by reference)
+May 05 17:13:48 symfony [warning] {sfWebDebugLogger}  Warning at /home/maxguenes/GitHub/robolivre.org/apps/frontend/modules/ajax/actions/actions.class.php on line 231 (end() expects parameter 1 to be array, null given)
+May 05 17:13:48 symfony [info] {ajaxActions} Change template to "CURRENT/retornoAjax"
+May 05 17:13:48 symfony [info] {sfPHPView} Render "/home/maxguenes/GitHub/robolivre.org/apps/frontend/modules/ajax/templates/retornoAjaxSuccess.php"
+May 05 17:13:48 symfony [warning] {sfWebDebugLogger}  Warning at /home/sfproject/lib/vendor/symfony/lib/response/sfWebResponse.class.php on line 336 (Cannot modify header information - headers already sent by (output started at /home/maxguenes/GitHub/robolivre.org/apps/frontend/modules/ajax/actions/actions.class.php:231))
+May 05 17:13:48 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+May 05 17:13:48 symfony [warning] {sfWebDebugLogger}  Warning at /home/sfproject/lib/vendor/symfony/lib/response/sfWebResponse.class.php on line 357 (Cannot modify header information - headers already sent by (output started at /home/maxguenes/GitHub/robolivre.org/apps/frontend/modules/ajax/actions/actions.class.php:231))
+May 05 17:13:48 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 05 17:13:48 symfony [info] {sfWebDebugLogger} Configuration 2.68 ms (9)
+May 05 17:13:48 symfony [info] {sfWebDebugLogger} Factories 11.99 ms (1)
+May 05 17:13:48 symfony [info] {sfWebDebugLogger} Action "ajax/ajaxUlpoadImagens" 7.28 ms (1)
+May 05 17:13:48 symfony [info] {sfWebDebugLogger} View "Success" for "ajax/ajaxUlpoadImagens" 4.67 ms (1)
+May 05 17:13:48 symfony [info] {sfWebResponse} Send content (0 o)
+May 05 17:13:48 symfony [err] {sfError404Exception} Empty module and/or action after parsing the URL "/uploads/183213_208455612501969_100000125964564_920497_6472483_n1324679756.jpg" (/).
+May 05 17:13:48 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 05 17:13:48 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 05 17:13:48 symfony [info] {sfWebDebugLogger} Configuration 1.53 ms (5)
+May 05 17:13:48 symfony [info] {sfWebDebugLogger} Factories 16.24 ms (1)
