@@ -101,7 +101,7 @@
     <div class="span3" id="sidebar-wdgt">
 
         <div id="grid-conteudos" class="wdgt">
-            <h3><a href="<?php echo url_for('perfil/exibirConteudos?u=' . UsuarioLogado::getInstancia()->getIdUsuario()) ?>">Conteúdos seguidos <small><?php echo $quantidadeConteudoSeguido; ?></small></a></h3>
+            <h3><a href="<?php echo url_for('perfil/exibirConteudosHome') ?>">Conteúdos seguidos <small><?php echo $quantidadeConteudoSeguido; ?></small></a></h3>
             <?php if(count($arrayConteudoSeguido)==0 || (count($arrayConteudoSeguido)==1 && $arrayConteudoSeguido[0]->getIdConjunto()==0)){ ?>
             <div class="alert"><a href="<?php echo url_for("conteudos/index") ?>">Descubra conteúdos para seguir</a></div>
             <?php } ?>
@@ -111,7 +111,7 @@
                     <li class="span1"><?php echo Util::getTagConteudoSlug($innerHTML, $conteudo->getNome(), "thumbnail") ?></li>
             <?php endforeach; ?>
             </ul>
-            <a href="<?php echo url_for('perfil/exibirConteudos?u=' . UsuarioLogado::getInstancia()->getIdUsuario()) ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+            <a href="<?php echo url_for('perfil/exibirConteudosHome') ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-conteudos -->
 
         <?php /*<hr>
@@ -132,13 +132,13 @@
         <hr>
 
         <div id="grid-amigos" class="wdgt">
-            <h3><a href="<?php echo url_for('perfil/exibirAmigos?u=' . UsuarioLogado::getInstancia()->getIdUsuario()) ?>" title="Ver tudo">Amigos <small><?php echo $quantidadeAmigos ?></small></a></h3>
+            <h3><a href="<?php echo url_for('perfil/exibirAmigosHome') ?>" title="Ver tudo">Amigos <small><?php echo $quantidadeAmigos ?></small></a></h3>
             <ul class="thumbnails">
                 <?php foreach($arrayAmigos as $amigo): ?>
                 <li ><a href="<?php echo url_for('perfil/exibir?u='.$amigo->getIdUsuario()) ?>"><img src="<?php echo image_path($amigo->getImagemPerfilFormatada()) ?>" alt="<?php echo $amigo->getNome() ?>" title="<?php echo $amigo->getNome() ?>"></a></li>
                 <?php endforeach; ?>
             </ul>
-            <a href="<?php echo url_for('perfil/exibirAmigos?u=' . UsuarioLogado::getInstancia()->getIdUsuario()) ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+            <a href="<?php echo url_for('perfil/exibirAmigosHome') ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-amigos -->
 
         <hr>

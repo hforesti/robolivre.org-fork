@@ -44,10 +44,6 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="send-msg" data-toggle="modal" href="#modalSendMsg">Enviar mensagem privada</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
                                     <a data-toggle="modal" href="#modalRemoveFriend">Remover dos amigos</a>
                                 </li>
                             </ul>

@@ -24,9 +24,6 @@ if(!isset($opcao))
                             <a data-toggle="modal" href="#modalAdd">Responder solicitação</a>
                         </li>
                     <?php } ?>
-                    <li>
-                        <a href="enviar-msg.shtml">Enviar mensagem privada</a>
-                    </li>
                     <li class="divider"></li>
                     <li>
                         <a data-toggle="modal" href="#modalIgnore"><i class="icon-ban-circle icon-gray"></i> Ignorar usuário</a>

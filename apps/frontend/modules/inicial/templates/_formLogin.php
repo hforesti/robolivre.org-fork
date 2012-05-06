@@ -1,4 +1,5 @@
-<form action="<?php echo url_for('inicial/login'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<form id="login-form-standalone" class="form-horizontal" action="<?php echo url_for('inicial/login'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+    <fieldset>
     <div class="control-group">
         <label class="control-label" for="login">E-mail ou usuário</label>
         <div class="controls">
@@ -9,7 +10,7 @@
     <div class="control-group">
         <label class="control-label" for="login-pass">Senha</label>
         <div class="controls">
-            <?php echo $form->getWidget('senha')->render($form->getName() . "[senha]", null, array('class'=>'input-xlarge','type'=>"password",'id' => 'login-pass', 'placeholder' => "senha", 'tabindex' => "2")); ?>
+            <?php echo $form->getWidget('senha')->render($form->getName() . "[senha]", null, array('class'=>'input-xlarge','type'=>"password",'id' => 'login-pass', 'placeholder' => "Sua senha", 'tabindex' => "2")); ?>
         </div>
     </div>
 
@@ -28,4 +29,5 @@
         <input value="entrar" type="submit" class="btn btn-primary btn-large" tabindex="4" />
     </div>
         <?php echo $form->renderHiddenFields() ?>
+    </fieldset>
 </form>

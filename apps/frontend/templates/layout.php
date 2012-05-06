@@ -34,9 +34,8 @@
                         <a class="brand" href="<?php echo url_for("inicial/index") ?>">Robô Livre</a>
                         <div class="nav-collapse">
                             <ul class="nav">
-                                <?php $class = ($sf_context->getModuleName() == "perfil" && $sf_context->getActionName() == "index" ) ? "active" : "" ?>
-                                <li class="<?php echo $class ?>">
-                                    <a href="<?php echo url_for("perfil/index") ?>">Início</a>
+                                <li class="">
+                                    <a href="<?php echo url_for("inicial/index") ?>">Início</a>
                                 </li>
 
                                 <?php $class = ($sf_context->getModuleName() == "conteudos" || $sf_context->getModuleName() == "conteudo") ? "active" : "" ?>
@@ -46,16 +45,20 @@
 
                                 <li class="divider-vertical"></li>
                             </ul>
+                            <?php if($sf_context->getModuleName() != "inicial" || $sf_context->getActionName()!="telaLogin"){ ?>
                             <ul class="nav pull-right">
                                 <li class="divider-vertical"></li>
                                 <li>
                                     <a data-toggle="modal" href="#modalLogin">Entrar</a>
                                 </li>
                             </ul>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div> 
+            <?php if($sf_context->getModuleName() != "inicial" || $sf_context->getActionName()!="telaLogin"){ ?>
+
             <div class="modal fade" id="modalLogin">
                 <div class="modal-header">
                     <a class="close" data-dismiss="modal">×</a>
@@ -79,6 +82,7 @@
                     <a href="#" class="btn" data-dismiss="modal">Fechar</a>
                 </div>
             </div>
+            <?php } ?>
         <?php } else if (UsuarioLogado::getInstancia()->isLogado()) { ?>
         <body>
             <!-- Navbar

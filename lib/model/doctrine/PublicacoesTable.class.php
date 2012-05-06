@@ -149,7 +149,7 @@ class PublicacoesTable extends Doctrine_Table {
         $statement->execute();
     }
     
-    public function getPublicacoesDoConjunto($id_conjunto,$ultimo_id_publicacao=null) {
+    public function getPublicacoesDoConjunto($id_conjunto,$ultimo_id_publicacao=null,$tipoFiltro="") {
         $arrayRetorno = array();
         
         if(!isset($id_conjunto)){
@@ -170,9 +170,23 @@ class PublicacoesTable extends Doctrine_Table {
             $query .= " AND p.id_publicacao < $ultimo_id_publicacao";
         }
         
+        switch($tipoFiltro){
+            case "video":
+                $query .= " AND p.id_video IS NOT NULL";
+                break;
+            case "imagem":
+                $query .= " AND p.id_imagem IS NOT NULL";
+                break;
+            case "link":
+                $query .= " AND p.link IS NOT NULL";
+                break;
+            default: break;
+        }
+        
         $query .= " GROUP BY p.id_publicacao
         ORDER BY p.data_publicacao DESC
         LIMIT 0, 10 ";
+        //echo $query;
         
         $queryCont = "SELECT p.*,u.nome,u.imagem_perfil,p.id_usuario,i.imagem_perfil AS \"imagem_perfil_conjunto\",
         IF (i.id_tipo_conjunto = 1,con.nome,com.nome) as \"nome_conjunto\"
@@ -186,6 +200,20 @@ class PublicacoesTable extends Doctrine_Table {
         //pegar mais 10 publicacoes depois da publicação [$ultimo_id_publicacao]
         if($ultimo_id_publicacao!=null){
             $queryCont .= " AND p.id_publicacao < $ultimo_id_publicacao";
+        }
+        
+        
+        switch($tipoFiltro){
+            case "video":
+                $queryCont .= " AND id_video IS NOT NULL";
+                break;
+            case "imagem":
+                $queryCont .= " AND id_imagem IS NOT NULL";
+                break;
+            case "link":
+                $queryCont .= " AND link IS NOT NULL";
+                break;
+            default: break;
         }
         
         $queryCont .= " GROUP BY p.id_publicacao
@@ -438,7 +466,7 @@ class PublicacoesTable extends Doctrine_Table {
         WHERE p.id_conjunto IS NULL AND p.visivel =  1 AND (((a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado) AND a.aceito = 1) OR p.id_usuario = $id_usuario_logado)
         
         AND (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_PUBLICA." OR
-        (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_SOMENTE_AMIGOS." AND (a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado))
+        (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_SOMENTE_AMIGOS." AND p.id_usuario = $id_usuario_logado AND (a.id_usuario_a = $id_usuario_logado OR a.id_usuario_b = $id_usuario_logado )AND a.aceito = 1)
         OR (p.privacidade_publicacao = ".Publicacoes::PRIVACIDADE_PRIVADA." AND p.id_usuario = $id_usuario_logado)
         )";
         
@@ -450,7 +478,7 @@ class PublicacoesTable extends Doctrine_Table {
         $query .= " GROUP BY p.id_publicacao
         ORDER BY p.data_publicacao DESC
         LIMIT 0, 10 ";
-        
+        //echo $query;
         
         $queryCont = "SELECT count(*) as \"quantidade\"
         FROM publicacoes p 

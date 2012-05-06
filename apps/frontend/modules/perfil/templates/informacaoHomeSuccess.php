@@ -1,7 +1,7 @@
 
 <div class="row">
 
-        <?php include_partial('sidebarUsuario',array('usuario'=>$usuario,'opcao'=>'informacao')) ?>
+        <?php include_partial('sidebarUsuarioLogado',array('opcao'=>'informacao')) ?>
 
 
 	<hr class="only-mobile">

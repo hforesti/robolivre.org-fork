@@ -199,7 +199,7 @@ class ajaxActions extends sfActions {
     public function executeAjaxUlpoadImagens(sfWebRequest $request) {
         
         // list of valid extensions, ex. array("jpeg", "xml", "bmp")
-        $allowedExtensions = array("jpeg","png","jpg", "xml", "bmp");
+        $allowedExtensions = array('jpg', 'jpeg', 'png', 'gif');
         
         // max file size in bytes
         $sizeLimit = 0.5 * 1024 * 1024;

@@ -22,6 +22,7 @@ class Conteudos extends BaseConteudos
     private $quantidadeLinks;
     private $quantidadeSeguidores;
     private $pontos;
+    private $podeColaborar;
     private $tag = false;
     
     
@@ -138,6 +139,14 @@ class Conteudos extends BaseConteudos
 
     public function setTag($tag) {
         $this->tag = $tag;
+    }
+    
+    public function getPodeColaborar() {
+        return $this->podeColaborar;
+    }
+
+    public function setPodeColaborar($podeColaborar) {
+        $this->podeColaborar = $podeColaborar;
     }
 
 }

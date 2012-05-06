@@ -60,7 +60,7 @@
 
         <div class="span6">
             <h1>É fácil fazer...</h1>
-            <p>A robolivre.org é uma plataforma de desenvolvimento colaborativo e está disponível desde 2005 para ajudar a mostrar, que a robótica pode e deve ser desenvolvida por qualquer pessoa que tenha interesse. <a href="sobre.shtml">Mais sobre…</a></p>
+            <p>A robolivre.org é uma plataforma de desenvolvimento colaborativo e está disponível desde 2005 para ajudar a mostrar, que a robótica pode e deve ser desenvolvida por qualquer pessoa que tenha interesse. <a href="<?php echo url_for("institucional/sobre") ?>">Mais sobre…</a></p>
         </div>
 
 

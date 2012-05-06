@@ -1,3 +1,4 @@
+
 <div class="row">
 
     <?php include_partial('sidebarConteudo',array('conteudo'=>$conteudo,'opcao'=>'conteudos','quantidadeParticipantes'=>$quantidadeParticipantes)) ?>
@@ -24,37 +25,48 @@
                             <a href="<?php echo url_for("conteudo/".Util::criaSlug($conteudoRelacionado->getNome())) ?>" class="photo"><img src="<?php echo image_path($conteudoRelacionado->getImagemPerfil()) ?>" alt="<?php echo $conteudoRelacionado->getNome() ?>" title="<?php $conteudoRelacionado->getNome() ?>" class="thumbnail"></a> 
                             <h3><?php echo Util::getTagConteudoSlug($conteudoRelacionado->getNome(), $conteudoRelacionado->getNome()) ?> ‧ <?php echo ($conteudoRelacionado->getTipoUsuario() == Conteudos::PROPRIETARIO) ? "<small>Criado por você</small>" : "" ?></h3>
                             <p class="meta">Última atualização 21/01/2012 às 21:50<br>
-                                <a href="conteudo-imagens.shtml"><?php echo $conteudoRelacionado->getQuantidadeImagens() ?> imagens</a> ‧ <a href="conteudo-videos.shtml"><?php echo $conteudoRelacionado->getQuantidadeVideos() ?> vídeos</a> ‧ <a href="conteudo-links.shtml"><?php echo $conteudoRelacionado->getQuantidadeLinks() ?> links</a> ‧ <a href="conteudo-docs.shtml">0 documentos</a> ‧<a href="conteudo-seguidores.shtml"><?php echo $conteudoRelacionado->getQuantidadeSeguidores() ?> seguidores</a></p>
+                                <a href="<?php echo url_for("conteudo/".Util::criaSlug($conteudoRelacionado->getNome()))."/imagem" ?>"><?php echo $conteudoRelacionado->getQuantidadeImagens() ?> imagens</a> ‧ <a href="<?php echo url_for("conteudo/".Util::criaSlug($conteudoRelacionado->getNome()))."/video" ?>"><?php echo $conteudoRelacionado->getQuantidadeVideos() ?> vídeos</a> ‧ <a href="<?php echo url_for("conteudo/".Util::criaSlug($conteudoRelacionado->getNome()))."/link" ?>"><?php echo $conteudoRelacionado->getQuantidadeLinks() ?> links</a> ‧ <a href="<?php echo url_for("conteudo/".Util::criaSlug($conteudoRelacionado->getNome()))."/documento" ?>">0 documentos</a> ‧<a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudoRelacionado->getNome())."&acao=exibirSeguidores") ; ?>"><?php echo $conteudoRelacionado->getQuantidadeSeguidores() ?> seguidores</a></p>
                         </div>
-                        <div class="btn-group">
-                            <?php if ($conteudoRelacionado->getConjunto()->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()) { ?>
+                         <?php if ($conteudoRelacionado->getPodeColaborar() || $conteudoRelacionado->getTipoUsuario() != Conteudos::PROPRIETARIO && $conteudoRelacionado->getTipoSolicitacao()==Conteudos::PARTICIPANTE) { ?>
+                            <div class="btn-group">
                                 <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
                                     <span class="icon-cog icon-gray"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="<?php echo url_for('conteudos/editar?u=' . $conteudoRelacionado->getIdConjunto()) ?>">Colaborar/Editar conteúdo</a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="modal" href="#modalRemoveContent<?php echo $conteudoRelacionado->getIdConjunto() ?>">Parar de seguir</a>
-                                    </li>
-                                </ul>
-                            <div class="modal fade" id="modalRemoveContent<?php echo $conteudoRelacionado->getIdConjunto() ?>">
-                                <div class="modal-header">
-                                    <a class="close" data-dismiss="modal">×</a>
-                                    <h3>Parar de seguir</h3>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Deseja parar de seguir o conteúdo <strong><?php echo $conteudoRelacionado->getNome() ?></strong>?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="<?php echo url_for("conteudos/pararSeguir?u=".$conteudoRelacionado->getIdConjunto()) ?>" class="btn btn-danger">Parar de seguir</a> 
+                                    <?php if ($conteudoRelacionado->getPodeColaborar()) { ?>
+                                        <li>
+                                            <a href="<?php echo url_for('conteudos/editar?u=' . $conteudoRelacionado->getIdConjunto()) ?>">Colaborar/Editar conteúdo </a>
+                                        </li>
+                                    <?php } ?>
+                                        
+                                    <?php if (($conteudoRelacionado->getTipoUsuario() != Conteudos::PROPRIETARIO) && ($conteudoRelacionado->getTipoSolicitacao() == Conteudos::PARTICIPANTE)) { ?>
+                                        <li>
+                                            <a data-toggle="modal" href="#modalRemoveContent<?php echo $conteudoRelacionado->getIdConjunto() ?>">Parar de seguir</a>
+                                        </li>
+                                    <?php } ?>
 
-                                    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
-                                </div>
-                            </div>
-                            <?php } ?>
-                        </div>    
+                                </ul>
+                                <?php if ($conteudoRelacionado->getTipoUsuario() != Conteudos::PROPRIETARIO) { ?>
+                                    <div class="modal fade" id="modalRemoveContent<?php echo $conteudoRelacionado->getIdConjunto() ?>">
+                                        <div class="modal-header">
+                                            <a class="close" data-dismiss="modal">×</a>
+                                            <h3>Parar de seguir</h3>
+                                        </div>                    
+
+
+                                        <div class="modal-body">
+                                            <p>Deseja parar de seguir o conteúdo <strong><?php echo $conteudoRelacionado->getNome() ?></strong>?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="<?php echo url_for("conteudos/pararSeguir?u=" . $conteudoRelacionado->getIdConjunto()) ?>" class="btn btn-danger">Parar de seguir</a> 
+
+                                            <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+                                        </div>
+
+                                    </div>
+                                <?php } ?>
+                            </div>     
+                        <?php } ?>
                     </li>
                 <?php } ?>
 

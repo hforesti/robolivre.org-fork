@@ -20,6 +20,15 @@ class conteudoActions extends robolivreAction {
                 return;
             case 'exibirConteudosRelacionados' : $this->executeExibirConteudosRelacionados($request);
                 return;
+            case 'video' :
+                    $this->executeExibir($request,"video");
+                    return;  
+            case 'link' :
+                    $this->executeExibir($request,"link");
+                    return;  
+            case 'imagem' :
+                    $this->executeExibir($request,"imagem");
+                    return;  
             case '' :
             case 'index' :
                 break;
@@ -37,17 +46,18 @@ class conteudoActions extends robolivreAction {
         $this->redirect("conteudos/index");
     }
 
-    public function executeExibir(sfWebRequest $request) {
+    public function executeExibir(sfWebRequest $request,$tipoFiltro="") {
 
         $slug = $request->getParameter('slug');
 
         if (!isset($slug)) {
             $this->redirect('conteudos/index');
         } else {
+            $this->tipoFiltro = $tipoFiltro;
             $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
             $this->forward404Unless($this->conteudo);
             $this->formPublicacao = new PublicacoesForm();
-            $this->publicacoesConjunto = Doctrine::getTable("Publicacoes")->getPublicacoesDoConjunto($this->conteudo->getIdConjunto()); //array();
+            $this->publicacoesConjunto = Doctrine::getTable("Publicacoes")->getPublicacoesDoConjunto($this->conteudo->getIdConjunto(),null,$tipoFiltro); //array();
             $chaves = array_keys($this->publicacoesConjunto);
             $this->dataCriacao = Util::getDataFormatada($this->conteudo->getConjunto()->getDataCriacao()); 
             $this->ultimaAtulizacao = Util::getDataFormatada($this->conteudo->getConjunto()->getUltimaModificacao()); 

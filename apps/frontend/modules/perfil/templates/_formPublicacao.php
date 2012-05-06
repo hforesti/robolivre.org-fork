@@ -73,6 +73,27 @@
             adicionarErro("Digite link do video do Youtube");
             $("#error").show();
             return false;
+        }else if(tipo=="<?php echo Publicacoes::TIPO_FOTO?>"){ 
+            if(document.getElementById('fileInput').value == ""){
+                adicionarErro("Adicione um arquivo de imagem");
+                
+                $("#error").show();
+                return false;
+            }else{
+                
+                var partes = document.getElementById('fileInput').value.split(".");
+                
+                if(partes.length<2){ 
+                    adicionarErro("Adicione um arquivo de imagem");
+                    $("#error").show();
+                    return false;
+                }else if($.inArray(partes[1], (Array('jpg', 'jpeg', 'png', 'gif'))) == -1){
+                    adicionarErro("Arquivo enviado não é uma imagem");
+                    $("#error").show();
+                    return false;
+                }
+                
+            }
         }
 
     });

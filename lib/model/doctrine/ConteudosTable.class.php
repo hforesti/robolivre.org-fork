@@ -114,23 +114,26 @@ class ConteudosTable extends Doctrine_Table {
         $SQLPontuacao = $this->getSQLPontuacaoConteudo();
         $SQLQuantidadesArquivos = $this->getSQLQuantidadesArquivosConteudo();
         $SQLQuantidadesSeguidores = $this->getSQLQuantidadesSeguidores();
-        
+        $id_usuario_logado = UsuarioLogado::getInstancia()->getIdUsuario();
         $queryConteudos = "
-            SELECT c.*,
+            SELECT c.*,IF (p.aceito is not null,p.aceito,null) as \"participante\",IF (a.aceito is not null,a.aceito,null) as \"pode_colaborar\",
             i.id_conjunto as \"i.id_conjunto\",i.id_tipo_conjunto as \"i.id_tipo_conjunto\",i.id_usuario AS \"i.id_usuario\",i.imagem_perfil AS \"i.imagem_perfil\",
             qts.imagens , qts.videos, qts.links,IF (seg.seguidores is not null,seg.seguidores+1,1) as \"seguidores\"
             FROM conteudos c 
             LEFT JOIN conjuntos i ON c.id_conjunto = i.id_conjunto AND c.id_tipo_conjunto = i.id_tipo_conjunto  
             LEFT JOIN tags_conteudos t ON t.id_conjunto_referencia = c.id_conjunto OR t.id_conjunto_referenciado = c.id_conjunto 
+            LEFT JOIN participantes_conjuntos p ON p.id_usuario = $id_usuario_logado AND p.id_conjunto = i.id_conjunto AND p.id_tipo_conjunto = i.id_tipo_conjunto
             LEFT JOIN ($SQLPontuacao) pts ON pts.id_conteudo = c.id_conteudo
             LEFT JOIN ($SQLQuantidadesArquivos) qts ON qts.id_conjunto = c.id_conjunto
             LEFT JOIN ($SQLQuantidadesSeguidores) seg ON seg.id_conjunto = c.id_conjunto
+            LEFT JOIN usuarios u ON u.id_usuario = i.id_usuario
+            LEFT JOIN amigos a ON (a.id_usuario_a = u.id_usuario AND id_usuario_b = $id_usuario_logado) OR (a.id_usuario_b = u.id_usuario AND id_usuario_a = $id_usuario_logado)
             WHERE c.id_conjunto <> $idConjunto AND (t.id_conjunto_referencia = $idConjunto OR t.id_conjunto_referenciado = $idConjunto) ";
         if ($nome != null && trim($nome)!="") {
             $queryConteudos .= "  AND c.nome LIKE '%$nome%'";
         }
         
-        $queryConteudos .= "ORDER BY pts.pontos,c.nome
+        $queryConteudos .= " ORDER BY pts.pontos,c.nome
             LIMIT " . (($indicePagina - 1) * Util::QUANTIDADE_PAGINACAO) . ", " . Util::QUANTIDADE_PAGINACAO;
 
         $queryQuantidade = "
@@ -138,9 +141,12 @@ class ConteudosTable extends Doctrine_Table {
             FROM conteudos c 
             LEFT JOIN conjuntos i ON c.id_conjunto = i.id_conjunto AND c.id_tipo_conjunto = i.id_tipo_conjunto  
             LEFT JOIN tags_conteudos t ON t.id_conjunto_referencia = c.id_conjunto OR t.id_conjunto_referenciado = c.id_conjunto 
+            LEFT JOIN participantes_conjuntos p ON p.id_usuario = $id_usuario_logado AND p.id_conjunto = i.id_conjunto AND p.id_tipo_conjunto = i.id_tipo_conjunto
             LEFT JOIN ($SQLPontuacao) pts ON pts.id_conteudo = c.id_conteudo
             LEFT JOIN ($SQLQuantidadesArquivos) qts ON qts.id_conjunto = c.id_conjunto
             LEFT JOIN ($SQLQuantidadesSeguidores) seg ON seg.id_conjunto = c.id_conjunto
+            LEFT JOIN usuarios u ON u.id_usuario = i.id_usuario
+            LEFT JOIN amigos a ON (a.id_usuario_a = u.id_usuario AND id_usuario_b = $id_usuario_logado) OR (a.id_usuario_b = u.id_usuario AND id_usuario_a = $id_usuario_logado)
             WHERE c.id_conjunto <> $idConjunto AND (t.id_conjunto_referencia = $idConjunto OR t.id_conjunto_referenciado = $idConjunto) ";
         if ($nome != null && trim($nome)!="") {
             $queryQuantidade .= "  AND c.nome LIKE '%$nome%'";
@@ -162,10 +168,7 @@ class ConteudosTable extends Doctrine_Table {
 
         $arrayConteudos = array();
         if ($resultado) {
-            foreach ($resultado as $reg) {
-                $qtdConteudosSeguidos = $reg['quantidade'];
-                break;
-            }
+            $qtdConteudosSeguidos = count($resultado);            
         }
 
         $statement = $connection->prepare($queryConteudos);
@@ -204,7 +207,24 @@ class ConteudosTable extends Doctrine_Table {
                 $conjunto->setImagemPerfil($reg['i.imagem_perfil']);
 
                 $conteudo->setConjunto($conjunto);
-                
+                if ($conjunto->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()) {
+                    $conteudo->setTipoUsuario(Conteudos::PROPRIETARIO);
+                    $conteudo->setTipoSolicitacao(Conteudos::PARTICIPANTE);
+                    $conteudo->setPodeColaborar(true);
+                } else {
+                    
+                    if ($reg['participante'] == null || $reg['participante'] == 0) {
+                        $conteudo->setTipoSolicitacao(Conteudos::SEM_SOLICITACAO);
+                    } else {
+                        $conteudo->setTipoSolicitacao(Conteudos::PARTICIPANTE);
+                    }
+
+                    if($reg['pode_colaborar']== null){
+                        $conteudo->setPodeColaborar(false);
+                    }else{
+                        $conteudo->setPodeColaborar(true);
+                    }
+                }
                 $arrayConteudos[] = $conteudo;
             }
         }
@@ -405,9 +425,9 @@ class ConteudosTable extends Doctrine_Table {
         $SQLPontuacao = $this->getSQLPontuacaoConteudo();
         $SQLQuantidadesArquivos = $this->getSQLQuantidadesArquivosConteudo();
         $SQLQuantidadesSeguidores = $this->getSQLQuantidadesSeguidores();
-        
+        $id_usuario_logado = UsuarioLogado::getInstancia()->getIdUsuario();
         $queryConteudos = "
-            SELECT c.*,IF (p.aceito is not null,p.aceito,null) as \"participante\",
+            SELECT c.*,IF (p.aceito is not null,p.aceito,null) as \"participante\",IF (a.aceito is not null,a.aceito,null) as \"pode_colaborar\",
             i.id_conjunto as \"i.id_conjunto\",i.id_tipo_conjunto as \"i.id_tipo_conjunto\",i.id_usuario AS \"i.id_usuario\",i.imagem_perfil AS \"i.imagem_perfil\",
             qts.imagens , qts.videos, qts.links,IF (seg.seguidores is not null,seg.seguidores+1,1) as \"seguidores\",
             t.id_tipo_permissao_conjunto as \"t.id_tipo_permissao_conjunto\"
@@ -418,6 +438,8 @@ class ConteudosTable extends Doctrine_Table {
             LEFT JOIN ($SQLPontuacao) pts ON pts.id_conteudo = c.id_conteudo
             LEFT JOIN ($SQLQuantidadesArquivos) qts ON qts.id_conjunto = c.id_conjunto
             LEFT JOIN ($SQLQuantidadesSeguidores) seg ON seg.id_conjunto = c.id_conjunto
+            LEFT JOIN usuarios u ON u.id_usuario = i.id_usuario
+            LEFT JOIN amigos a ON (a.id_usuario_a = u.id_usuario AND id_usuario_b = $id_usuario_logado) OR (a.id_usuario_b = u.id_usuario AND id_usuario_a = $id_usuario_logado)
             WHERE (p.id_usuario = $idUsuario OR i.id_usuario = $idUsuario)";
         if ($nome != null && trim($nome)!="") {
             $queryConteudos .= "  AND c.nome LIKE '%$nome%'";
@@ -425,7 +447,7 @@ class ConteudosTable extends Doctrine_Table {
         if($isProprietario){
             $queryConteudos .= "  AND i.id_usuario = ".UsuarioLogado::getInstancia()->getIdUsuario();
         }
-        $queryConteudos .= "     ORDER BY pts.pontos,c.nome
+        $queryConteudos .= " GROUP BY i.id_conjunto ORDER BY i.ultima_modificacao DESC,pts.pontos,c.nome
             LIMIT " . (($indicePagina - 1) * Util::QUANTIDADE_PAGINACAO) . ", " . Util::QUANTIDADE_PAGINACAO;
 
         $queryQuantidade = "
@@ -444,7 +466,7 @@ class ConteudosTable extends Doctrine_Table {
         if($isProprietario){
             $queryQuantidade .= "  AND i.id_usuario = ".UsuarioLogado::getInstancia()->getIdUsuario();
         }
-        
+        $queryQuantidade.=" GROUP BY i.id_conjunto ";
         //die("$queryConteudos<br/><br/>$queryQuantidade");
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
@@ -460,10 +482,7 @@ class ConteudosTable extends Doctrine_Table {
 
         $arrayConteudos = array();
         if ($resultado) {
-            foreach ($resultado as $reg) {
-                $qtdConteudosSeguidos = $reg['quantidade'];
-                break;
-            }
+                $qtdConteudosSeguidos = count($resultado);
         }
 
         $statement = $connection->prepare($queryConteudos);
@@ -505,14 +524,22 @@ class ConteudosTable extends Doctrine_Table {
                 if ($conjunto->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()) {
                     $conteudo->setTipoUsuario(Conteudos::PROPRIETARIO);
                     $conteudo->setTipoSolicitacao(Conteudos::PARTICIPANTE);
+                    $conteudo->setPodeColaborar(true);
                 } else {
                     $conteudo->setTipoUsuario($reg['t.id_tipo_permissao_conjunto']);
-                    if ($reg['participante'] == null) {
+                    if ($reg['participante'] == null || $reg['participante'] == 0) {
                         $conteudo->setTipoSolicitacao(Conteudos::SEM_SOLICITACAO);
                     } else {
-                        $conteudo->setTipoSolicitacao($reg['participante']);
+                        $conteudo->setTipoSolicitacao(Conteudos::PARTICIPANTE);
+                    }
+                    if($reg['pode_colaborar']== null){
+                        $conteudo->setPodeColaborar(false);
+                    }else{
+                        $conteudo->setPodeColaborar(true);
                     }
                 }
+                
+                
                 
                 $arrayConteudos[] = $conteudo;
             }
@@ -536,7 +563,7 @@ class ConteudosTable extends Doctrine_Table {
         $slug = strtolower($slug);
 
         $id_usuario_logado = UsuarioLogado::getInstancia()->getIdUsuario();
-        $query = "SELECT IF (p.aceito is not null,p.aceito,null) as \"participante\",c.*,
+        $query = "SELECT IF (p.aceito is not null,p.aceito,null) as \"participante\",IF (a.aceito is not null,a.aceito,null) as \"pode_colaborar\",c.*,
         i.id_conjunto as \"i.id_conjunto\",i.id_tipo_conjunto as \"i.id_tipo_conjunto\",i.id_usuario AS \"i.id_usuario\",i.imagem_perfil AS \"i.imagem_perfil\",i.data_criacao as \"i.data_criacao\",i.ultima_modificacao as \"i.ultima_modificacao\",
         t.id_tipo_permissao_conjunto as \"t.id_tipo_permissao_conjunto\",
         u.nome as \"u.nome\"
@@ -545,6 +572,7 @@ class ConteudosTable extends Doctrine_Table {
         LEFT JOIN participantes_conjuntos p ON p.id_usuario = $id_usuario_logado AND p.id_conjunto = i.id_conjunto AND p.id_tipo_conjunto = i.id_tipo_conjunto
         LEFT JOIN tipos_permissoes_conjuntos t ON t.id_tipo_permissao_conjunto = p.id_tipo_permissao_conjunto       
         LEFT JOIN usuarios u ON i.id_usuario = u.id_usuario
+        LEFT JOIN amigos a ON (a.id_usuario_a = u.id_usuario AND id_usuario_b = $id_usuario_logado) OR (a.id_usuario_b = u.id_usuario AND id_usuario_a = $id_usuario_logado)
         WHERE i.slug = '$slug'";
 
         $connection = Doctrine_Manager::getInstance()
@@ -591,12 +619,19 @@ class ConteudosTable extends Doctrine_Table {
                 if ($conjunto->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()) {
                     $conteudo->setTipoUsuario(Conteudos::PROPRIETARIO);
                     $conteudo->setTipoSolicitacao(Conteudos::PARTICIPANTE);
+                    $conteudo->setPodeColaborar(true);
                 } else {
                     $conteudo->setTipoUsuario($reg['t.id_tipo_permissao_conjunto']);
                     if ($reg['participante'] == null) {
                         $conteudo->setTipoSolicitacao(Conteudos::SEM_SOLICITACAO);
                     } else {
                         $conteudo->setTipoSolicitacao($reg['participante']);
+                    }
+                    
+                    if($reg['pode_colaborar']== null){
+                        $conteudo->setPodeColaborar(false);
+                    }else{
+                        $conteudo->setPodeColaborar(true);
                     }
                 }
                 return $conteudo;

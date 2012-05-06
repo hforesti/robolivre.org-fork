@@ -137,6 +137,24 @@ class perfilActions extends robolivreAction {
         
     }
     
+    public function executeInformacaoHome(sfWebRequest $request) {
+        
+        $this->usuario = new Usuarios(null,false,UsuarioLogado::getInstancia());
+        
+        {
+            $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
+            $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
+            $this->arrayConteudoSeguido = array_splice($arrayRetorno['conteudos'],0,6);
+        }
+        
+        {
+            $arrayRetorno = Doctrine::getTable("Usuarios")->getAmigosPerfil($this->usuario->getIdUsuario());
+            $this->quantidadeAmigos = $arrayRetorno['quantidade'];
+            $this->arrayAmigos = array_splice($arrayRetorno['amigos'],0,6);
+        }
+        
+    }
+    
     public function executePublicar(sfWebRequest $request) {
 
         //Util::pre(array($request->getFiles(),$request->getPostParameters()), true);

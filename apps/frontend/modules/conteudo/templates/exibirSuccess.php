@@ -1,6 +1,34 @@
+<?php 
+
+if($tipoFiltro!=""){
+    $opcao = $tipoFiltro;
+    switch($tipoFiltro){
+        case 'imagem':
+            $labelAtualizacoes = "<small>Imagens</small>";
+            $nomeAtualizacao = "imagens publicadas.";
+            break;
+        case 'video':
+            $labelAtualizacoes = "<small>Vídeos</small>";
+            $nomeAtualizacao = "vídeos publicados.";
+            break;
+        case 'link':
+            $labelAtualizacoes = "<small>Links</small>";
+            $nomeAtualizacao = "links publicados.";
+            break;
+        default: $labelAtualizacoes = "";
+            $nomeAtualizacao = "atualizações publicadas.";
+            break;
+    }
+}else{
+    $labelAtualizacoes = "";
+    $nomeAtualizacao = "atualizações publicadas.";
+    $opcao = null;
+}
+
+?>
 <div class="row">
     
-    <?php include_partial('sidebarConteudo',array('conteudo'=>$conteudo,'quantidadeParticipantes'=>$quantidadeParticipantes)) ?>
+    <?php include_partial('sidebarConteudo',array('conteudo'=>$conteudo,'quantidadeParticipantes'=>$quantidadeParticipantes,'opcao'=>$opcao)) ?>
 
     <hr class="only-mobile">
 
@@ -45,13 +73,23 @@
 
 
         <div id="stream">
-            <h3>Atualizações recentes</h3>
+            <h3>Atualizações recentes <?php echo $labelAtualizacoes ?></h3>
+            <?php if(count($publicacoesConjunto['publicacoes'])>0){ ?>
+                
+                
             <ul id="ul-steam">
                 <?php foreach ($publicacoesConjunto['publicacoes'] as $publicacao) { ?>
                     <?php echo $publicacao->getImpressaoEmConteudo(); ?>
                 <?php } ?>
             </ul>
-
+            <?php }else{ ?>
+            <div class="well">
+    <p><?php echo $conteudo->getNome()?> ainda não tem <?php echo $nomeAtualizacao ?></p>
+            <p>
+                    <a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>" class="btn">Limpar filtro agora</a>
+            </p>
+    </div>
+            <?php } ?>
 
         </div><!-- stream -->
         <?php if($publicacoesConjunto['quantidade']>=10){?>

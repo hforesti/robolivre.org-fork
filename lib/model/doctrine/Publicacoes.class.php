@@ -99,7 +99,14 @@ class Publicacoes extends BasePublicacoes {
         $comPermaLink = true;
         $string = "";
         if ($this->getTipoPublicacao() == self::PUBLICACAO_COMUM) {
-            $string .= "<li class=\"vcard\">";
+            
+            if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_PUBLICA){
+                $id = "id=\"".$this->getIdPublicacao()."\"";
+            }else{
+                $id = "";
+            }
+            
+            $string .= "<li $id class=\"vcard\">";
             $string .= "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\">";
             $string .= "<img src=\"" . image_path($this->getImagemPerfilUsuario()) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\">";
                 
@@ -182,6 +189,7 @@ class Publicacoes extends BasePublicacoes {
                 $time = Util::getDataSimplificada($this->getDataPublicacao());
             }
             $string .= "<li class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">$time</li>";
+            
             if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_PUBLICA){
                 $string .= "<li class=\"share-now\">";
                 $string .= "<div class=\"btn-group\">";
@@ -339,11 +347,11 @@ class Publicacoes extends BasePublicacoes {
             }else if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_SOMENTE_AMIGOS){
                 $string .= "<li class=\"visivel-para\"><i class=\"icon-user\" title=\"Só para amigos\"></i></li>";
                 $comPermaLink = false;
-                $comMenuDropDown = false;
+                $comMenuDropDown = true;
             }else if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_PRIVADA){
                 $string .= "<li class=\"visivel-para\"><i class=\"icon-lock\" title=\"Privado\"></i></li>";
                 $comPermaLink = false;
-                $comMenuDropDown = false;
+                $comMenuDropDown = true;
             }
             
             if($comPermaLink){
@@ -352,7 +360,25 @@ class Publicacoes extends BasePublicacoes {
                 $time = Util::getDataSimplificada($this->getDataPublicacao());
             }
             $string .= "<li class=\"time\" title=\"" . Util::getDataFormatada($this->getDataPublicacao()) . "\">$time</li>";
+            if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_PUBLICA){
+                $string .= "<li class=\"share-now\">";
+                $string .= "<div class=\"btn-group\">";
+                $string .= "        <a class=\"btn btn-mini dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" title=\"Compartilhar\">";
+                $string .= "    <span class=\"icon-share icon-gray\"></span>";
+                $string .= "        </a>";
+                $string .= "        <ul class=\"dropdown-menu\">";
+                $string .= "        <li class=\"go-twitter\">";
+                $string .= "                <a href=\"https://twitter.com/share?url=".url_for("publicacao/exibir?u=".$this->getIdPublicacao(),true)."&text=Olha+o+que+encontrei+na+rede+%40robolivre%3A&related=robolivre\">Compartilhar no <strong>Twitter</strong></a>";
+                $string .= "        </li>";
+                $string .= "        <li class=\"go-fb\">";
+                $string .= "        <a href=\"https://www.facebook.com/sharer.php?u=".url_for("publicacao/exibir?u=".$this->getIdPublicacao(),true)."&t=Publicação na rede Robô livre\">Compartilhar no <strong>Facebook</strong></a>";
+                $string .= "        </li>";
+                $string .= "        </ul>";
+                $string .= "</div><!-- btn-group -->";
+                $string .= "</li>";
+            }
             $string .= "</ul>";
+            
             
             $string .= "<ul class=\"comments\">";
             if(count($this->getGrupoComentarios())>0){
@@ -385,7 +411,7 @@ class Publicacoes extends BasePublicacoes {
             
         //CRIACAO DE CONTEUDO OU COMUNIODADE    
         } else if ($this->getTipoPublicacao() == self::CRIACAO_CONJUNTO) {
-            $comMenuDropDown = false;
+            $comMenuDropDown = true;
             $string .= "<li class=\"vcard activity\">";
             $string .= "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario(Util::IMAGEM_MINIATURA)) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
             $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
@@ -395,7 +421,7 @@ class Publicacoes extends BasePublicacoes {
            
         //SEGUINDO CONTEÚDO
         } else if ($this->getTipoPublicacao() == self::SEGUIR_CONTEUDO) {
-            $comMenuDropDown = false;
+            $comMenuDropDown = true;
             $string .= "<li class=\"vcard activity\">";
             $string .= "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario(Util::IMAGEM_MINIATURA)) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
             $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
@@ -408,22 +434,21 @@ class Publicacoes extends BasePublicacoes {
         }
 
         if($comMenuDropDown){
-                $string .= "<div class=\"btn-group\">";
+            $string .= "<div class=\"btn-group drop-options\">";
                 $string .= "<a class=\"btn btn-mini dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" title=\"Opções\">";
-                $string .= "<span class=\"icon-share  icon-gray\"></span>";
-                $string .= "</a>";        
-                $string .= "<ul class=\"dropdown-menu\">";
-                $string .= "<li>";
-                $string .= "<a href=\"#\">Compartilhar no Twitter</a>";
-                $string .= "</li>";
-                $string .= "<li>";
-                $string .= "<a href=\"#\">Compartilhar no Facebook</a>";
-                $string .= "</li>";
-                $string .= "<li class=\"divider\"></li>";
-                $string .= "<li>";
-                $string .= "<a href=\"".url_for("publicacao/remover?u=".$this->getIdPublicacao())."\"><i class=\"icon-flag\"></i> Reportar abuso</a>";
-                $string .= "</li>";
-                $string .= "</ul>";
+                $string .= "                <span class=\"icon-cog icon-gray\"></span>";
+                $string .= "            </a>";
+                $string .= "            <ul class=\"dropdown-menu\">";
+                if($this->getIdUsuario()==UsuarioLogado::getInstancia()->getIdUsuario()){
+                    $string .= "                <li>";
+                    $string .= "                    <a data-toggle=\"modal\" href=\"#modalDelete\"><i class=\"icon-remove-circle icon-gray\"></i> Excluir atualização</a>";
+                    $string .= "                </li>";
+                    $string .= "                <li class=\"divider\"></li>";
+                }
+                $string .= "                <li>";
+                $string .= "                    <a data-toggle=\"modal\" href=\"#modalAbuse\"><i class=\"icon-flag\"></i> Reportar abuso ou spam</a>";
+                $string .= "                </li>";
+                $string .= "            </ul>";
                 $string .= "</div>";
         }
         $string .= "<input type='hidden' name='id_ultima_publicacao' class='input-id-ultima-publicacao' value='".$this->getIdPublicacao()."' >";

@@ -32,6 +32,7 @@ if(!isset($opcao))
         <?php /*<li><a href="comunidades.shtml"><span class="icon-gray icon-comment"></span> Comunidades</a></li> */?>
         <li <?php echo ($opcao=="solicitacoes")?"class=\"active\"":"" ?>><a href="<?php echo url_for('perfil/exibirAmigosHome') ?>"><?php if (UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() > 0) { ?><span class="label label-warning" title="<?php echo UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() ?> nova(s) solicitações de amizade"><?php echo UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() ?></span><?php } ?><span class="icon-gray icon-user"></span> Amigos</a></li>
         <?php /* <li><a href="projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li> */ ?>
+        <li <?php echo ($opcao=="informacao")?"class=\"active\"":"" ?>><a href="<?php echo url_for('perfil/informacaoHome') ?>"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
         <li><hr></li>
         <?php /* <li <?php echo ($opcao=="mensagem")?"class=\"active\"":"" ?>><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li> */ ?>
     </ul>
