@@ -313,7 +313,11 @@ var uploader = new qq.FileUploader({
             emptyError		: "'{file}' está vazio, por favor tente novamente.",
             onLeave			: "Os arquivos estão sendo enviados, se você sair agora o envio será cancelado."            
 	},
-	showMessage: function(message){alert(message);}
+	showMessage: function(message){alert(message);},
+        onComplete: function(id, fileName, responseJSON){
+            var valores = $("#documentos_selecionados").val();
+            $("#documentos_selecionados").val(valores+"[[*]]"+fileName);
+        }
 
 });
 
