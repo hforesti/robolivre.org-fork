@@ -1,14 +1,14 @@
 <div class="row">
 
+
 <div class="span4">
 <h6>Institucional</h6>
-	<ul class="nav nav-tabs nav-stacked">
-		<li class="active"><a href="sobre.shtml">Sobre a Robô Livre</a></li>
-		<li><a href="sobre.shtml">Instituições parceiras</a></li>
-		<li><a href="sobre.shtml">Clipping</a></li>
-		<li><a href="sobre.shtml">Apresentações</a></li>
-		<li><a href="sobre.shtml">Publicações científicas</a></li>
-	</ul>
+    <ul class="nav nav-tabs nav-stacked">
+        <li><a href="<?php echo url_for("institucional/sobre") ?>">Sobre a Robô Livre</a></li>
+        <li class="active"><a href="<?php echo url_for("institucional/instituicoesParceiras") ?>">Instituições parceiras</a></li>
+        <li><a href="<?php echo url_for("institucional/apresentacoes") ?>">Apresentações</a></li>
+        <li><a href="<?php echo url_for("institucional/publicacoesCientificas") ?>">Publicações científicas</a></li>
+    </ul>
         <a href="<?php echo url_for("perfil/index") ?>" class="btn"><i class="icon-chevron-left icon-gray"></i> Início</a>
 </div>
 
@@ -69,11 +69,6 @@
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.cnpq.br/"><img src="<?php echo image_path("/assets/img/rl/logo-cnpq.png") ?>" alt="CNPq"></a>
-    </div>
-  </li>
-  <li class="span2">
-    <div class="thumbnail">
       <a href="http://www.pe.senai.br/"><img src="<?php echo image_path("/assets/img/rl/logo-senai.png") ?>" alt="SENAI"></a>
     </div>
   </li>
@@ -85,6 +80,26 @@
   <li class="span2">
     <div class="thumbnail">
       <a href="http://www.fing.edu.uy/inco/proyectos/butia/"><img src="<?php echo image_path("/assets/img/rl/logo-butia.png") ?>" alt="Butiá"></a>
+    </div>
+  </li>
+  <li class="span2">
+    <div class="thumbnail">
+      <a href="http://www.mixtecnologia.com.br/"><img src="<?php echo image_path("/assets/img/rl/logo-mix.png") ?>" alt="Mix Tecnologia"></a>
+    </div>
+  </li>
+  <li class="span2">
+    <div class="thumbnail">
+      <a href="http://www.cnpq.br/"><img src="<?php echo image_path("/assets/img/rl/logo-cnpq.png") ?>" alt="CNPq"></a>
+    </div>
+  </li>
+  <li class="span2">
+    <div class="thumbnail">
+      <a href="http://www.facepe.br/"><img src="<?php echo image_path("/assets/img/rl/logo-facepe.png") ?>" alt="FACEPE"></a>
+    </div>
+  </li>
+  <li class="span2">
+    <div class="thumbnail">
+      <a href="http://www.capes.gov.br/"><img src="<?php echo image_path("/assets/img/rl/logo-capes.png") ?>" alt="CAPES"></a>
     </div>
   </li>
 </ul>
