@@ -140,7 +140,7 @@ if(!isset($conteudo)){
                         <label class="control-label" for="optionsCheckbox">Notificações</label>
                         <div class="controls">
                             <label class="checkbox">
-                                <?php echo $form->getWidget('enviar_email_criador')->render($form->getName() . "[enviar_email_criador]", array_key_exists('enviar_email_criador',$valoresInciais)?$valoresInciais['enviar_email_criador']:"", array('id' => 'optionsCheckbox','value' => 'on','checked'=>'checked')); ?>
+                                <?php echo $form->getWidget('enviar_email_criador')->render($form->getName() . "[enviar_email_criador]", array_key_exists('enviar_email_criador',$valoresInciais)&& $valoresInciais['enviar_email_criador']==1, array('id' => 'optionsCheckbox')); ?>
                                 Receber e-mail quando um novo conteúdo relacionado a este for criado ou quando este for modificado por seus amigos
                             </label>
                         </div>

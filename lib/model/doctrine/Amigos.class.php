@@ -12,6 +12,26 @@
  */
 class Amigos extends BaseAmigos
 {
+    
+    private $nomeUsuarioSolicitacao;
+    private $imagemPerfilUsuarioSolicitacao;
+    
+    public function getImagemPerfilUsuarioSolicitacao() {
+        return $this->imagemPerfilUsuarioSolicitacao;
+    }
+
+    public function setImagemPerfilUsuarioSolicitacao($imagemPerfilUsuarioSolicitacao) {
+        $this->imagemPerfilUsuarioSolicitacao = $imagemPerfilUsuarioSolicitacao;
+    }
+
+    public function getNomeUsuarioSolicitacao() {
+        return $this->nomeUsuarioSolicitacao;
+    }
+
+    public function setNomeUsuarioSolicitacao($nomeUsuarioSolicitacao) {
+        $this->nomeUsuarioSolicitacao = $nomeUsuarioSolicitacao;
+    }
+
     public function solicitarAmizade($id_usuario_amigo) {
         parent::_set('id_usuario_a', UsuarioLogado::getInstancia()->getIdUsuario());
         parent::_set('id_usuario_b', $id_usuario_amigo);

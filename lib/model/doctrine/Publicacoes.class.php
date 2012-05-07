@@ -100,7 +100,7 @@ class Publicacoes extends BasePublicacoes {
         $string = "";
         if ($this->getTipoPublicacao() == self::PUBLICACAO_COMUM) {
             
-            if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_PUBLICA){
+            if($this->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()){
                 $id = "id=\"".$this->getIdPublicacao()."\"";
             }else{
                 $id = "";
@@ -271,13 +271,15 @@ class Publicacoes extends BasePublicacoes {
                 $string .= "                <span class=\"icon-cog icon-gray\"></span>";
                 $string .= "            </a>";
                 $string .= "            <ul class=\"dropdown-menu\">";
-                $string .= "                <li>";
-                $string .= "                    <a data-toggle=\"modal\" href=\"#modalDelete\"><i class=\"icon-remove-circle icon-gray\"></i> Excluir atualização</a>";
-                $string .= "                </li>";
-                $string .= "                <li class=\"divider\"></li>";
-                $string .= "                <li>";
-                $string .= "                    <a data-toggle=\"modal\" href=\"#modalAbuse\"><i class=\"icon-flag\"></i> Reportar abuso ou spam</a>";
-                $string .= "                </li>";
+                if(UsuarioLogado::getInstancia()->getIdUsuario() == $this->getIdUsuario()){
+                    $string .= "                <li class=\"action-delete\">";
+                    $string .= "                    <a data-toggle=\"modal\" href=\"#modalDelete\"><i class=\"icon-remove-circle icon-gray\"></i> Excluir atualização</a>";
+                    $string .= "                </li>";
+                }else{
+                    $string .= "                <li>";
+                    $string .= "                    <a data-toggle=\"modal\" href=\"#modalAbuse\"><i class=\"icon-flag\"></i> Reportar abuso ou spam</a>";
+                    $string .= "                </li>";
+                }
                 $string .= "            </ul>";
                 $string .= "</div>";
         }
@@ -294,7 +296,14 @@ class Publicacoes extends BasePublicacoes {
         $comPermaLink = true;
         $string = "";
         if ($this->getTipoPublicacao() == self::PUBLICACAO_COMUM) {
-            $string .= "<li class=\"vcard\">";
+            
+            if($this->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()){
+                $id = "id=\"".$this->getIdPublicacao()."\"";
+            }else{
+                $id = "";
+            }
+            
+            $string .= "<li $id class=\"vcard\">";
             $string .= "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\">";
             $string .= "<img src=\"" . image_path($this->getImagemPerfilUsuario()) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\">";
                 
@@ -412,7 +421,7 @@ class Publicacoes extends BasePublicacoes {
             
         //CRIACAO DE CONTEUDO OU COMUNIODADE    
         } else if ($this->getTipoPublicacao() == self::CRIACAO_CONJUNTO) {
-            $comMenuDropDown = true;
+            $comMenuDropDown = false;
             $string .= "<li class=\"vcard activity\">";
             $string .= "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario(Util::IMAGEM_MINIATURA)) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
             $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
@@ -422,7 +431,7 @@ class Publicacoes extends BasePublicacoes {
            
         //SEGUINDO CONTEÚDO
         } else if ($this->getTipoPublicacao() == self::SEGUIR_CONTEUDO) {
-            $comMenuDropDown = true;
+            $comMenuDropDown = false;
             $string .= "<li class=\"vcard activity\">";
             $string .= "<a href=\"" . url_for('perfil/exibir?u=' . $this->getIdUsuario()) . "\" class=\"photo\"><img src=\"" . image_path($this->getImagemPerfilUsuario(Util::IMAGEM_MINIATURA)) . "\" alt=\"".$this->getNomeUsuario()."\" title=\"".$this->getNomeUsuario()."\"></a>";
             $string .= Util::getTagUsuario($this->getNomeUsuario(), $this->getIdUsuario());
@@ -440,15 +449,16 @@ class Publicacoes extends BasePublicacoes {
                 $string .= "                <span class=\"icon-cog icon-gray\"></span>";
                 $string .= "            </a>";
                 $string .= "            <ul class=\"dropdown-menu\">";
-                if($this->getIdUsuario()==UsuarioLogado::getInstancia()->getIdUsuario()){
-                    $string .= "                <li>";
+                if(UsuarioLogado::getInstancia()->getIdUsuario() == $this->getIdUsuario()){
+                    $string .= "                <li class=\"action-delete\">";
                     $string .= "                    <a data-toggle=\"modal\" href=\"#modalDelete\"><i class=\"icon-remove-circle icon-gray\"></i> Excluir atualização</a>";
                     $string .= "                </li>";
-                    $string .= "                <li class=\"divider\"></li>";
+                }else{
+                    $string .= "                <li>";
+                    $string .= "                    <a data-toggle=\"modal\" href=\"#modalAbuse\"><i class=\"icon-flag\"></i> Reportar abuso ou spam</a>";
+                    $string .= "                </li>";
                 }
-                $string .= "                <li>";
-                $string .= "                    <a data-toggle=\"modal\" href=\"#modalAbuse\"><i class=\"icon-flag\"></i> Reportar abuso ou spam</a>";
-                $string .= "                </li>";
+
                 $string .= "            </ul>";
                 $string .= "</div>";
         }

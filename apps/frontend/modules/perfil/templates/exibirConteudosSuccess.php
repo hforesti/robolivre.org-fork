@@ -9,7 +9,7 @@
         <div class="list-mgmt">
 
             <div class="row">
-                <h2 class="span7">Conteúdos seguidos por você ‧ <small><?php echo $quantidadeConteudoSeguido ?></small></h2>	
+                <h2 class="span7">Conteúdos seguidos por <?php echo Util::getNomeSimplificado($usuario->getNome()) ?> ‧ <small><?php echo $quantidadeConteudoSeguido ?></small></h2>	
             </div>
 
             <div class="row">

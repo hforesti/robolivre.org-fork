@@ -17,9 +17,12 @@ class PublicacoesTable extends Doctrine_Table {
     }
 
     public function removePublicacao($idPublicacao) {
+        
+        $idUsuarioLogado = UsuarioLogado::getInstancia()->getIdUsuario();
+        
         $query = "UPDATE publicacoes 
                  SET visivel = 0
-                WHERE id_publicacao = $idPublicacao";
+                WHERE id_publicacao = $idPublicacao AND id_usuario = $idUsuarioLogado";
         
             $connection = Doctrine_Manager::getInstance()
                             ->getCurrentConnection()->getDbh();

@@ -10,13 +10,16 @@ Doctrine_Manager::getInstance()->bindComponent('Amigos', 'doctrine');
  * @property integer $id_usuario_a
  * @property integer $id_usuario_b
  * @property integer $aceito
+ * @property timestamp $data_solicitacao
  * 
- * @method integer getIdUsuarioA()   Returns the current record's "id_usuario_a" value
- * @method integer getIdUsuarioB()   Returns the current record's "id_usuario_b" value
- * @method integer getAceito()       Returns the current record's "aceito" value
- * @method Amigos  setIdUsuarioA()   Sets the current record's "id_usuario_a" value
- * @method Amigos  setIdUsuarioB()   Sets the current record's "id_usuario_b" value
- * @method Amigos  setAceito()       Sets the current record's "aceito" value
+ * @method integer   getIdUsuarioA()       Returns the current record's "id_usuario_a" value
+ * @method integer   getIdUsuarioB()       Returns the current record's "id_usuario_b" value
+ * @method integer   getAceito()           Returns the current record's "aceito" value
+ * @method timestamp getDataSolicitacao()  Returns the current record's "data_solicitacao" value
+ * @method Amigos    setIdUsuarioA()       Sets the current record's "id_usuario_a" value
+ * @method Amigos    setIdUsuarioB()       Sets the current record's "id_usuario_b" value
+ * @method Amigos    setAceito()           Sets the current record's "aceito" value
+ * @method Amigos    setDataSolicitacao()  Sets the current record's "data_solicitacao" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -53,6 +56,15 @@ abstract class BaseAmigos extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => 4,
+             ));
+        $this->hasColumn('data_solicitacao', 'timestamp', 25, array(
+             'type' => 'timestamp',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 25,
              ));
     }
 

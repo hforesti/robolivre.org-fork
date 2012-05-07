@@ -22,6 +22,13 @@ Amigos:
       default: '0'
       notnull: false
       autoincrement: false
+    data_solicitacao:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
 Comunidades:
   connection: doctrine
   tableName: comunidades
@@ -472,7 +479,7 @@ Pastas:
       notnull: false
       autoincrement: false
     nome:
-      type: string(45)
+      type: string(100)
       fixed: false
       unsigned: false
       primary: false

@@ -107,9 +107,10 @@ class AmigosTable extends Doctrine_Table {
         $arrayRetorno = array();
         if(isset($idUsuarioLogado)){
             $query =
-                    "SELECT a.id_usuario_a,u.nome
+                    "SELECT a.id_usuario_a,u.nome,u.imagem_perfil,a.data_solicitacao
             FROM usuarios u RIGHT JOIN amigos a ON a.id_usuario_a = u.id_usuario
-            where a.id_usuario_b = $idUsuarioLogado and a.aceito = 0";
+            where a.id_usuario_b = $idUsuarioLogado and a.aceito = 0
+            order by a.data_solicitacao DESC";
             $connection = Doctrine_Manager::getInstance()
                             ->getCurrentConnection()->getDbh();
             // Get Connection of Database  
@@ -121,8 +122,19 @@ class AmigosTable extends Doctrine_Table {
 
             if ($resultado) {
                 foreach ($resultado as $reg) {
-                    $array = array('id' => $reg['id_usuario_a'], 'nome' => $reg['nome']);
-                    $arrayRetorno[$reg['id_usuario_a']] = $array;
+                    $amigos = new Amigos();
+                    
+                    $amigos->setIdUsuarioA($reg['id_usuario_a']);
+                    $amigos->setDataSolicitacao($reg['data_solicitacao']);
+                    $amigos->setNomeUsuarioSolicitacao($reg['nome']);
+                    $amigos->setImagemPerfilUsuarioSolicitacao($reg['imagem_perfil']);
+                    $arrayData = Util::dataBrHora($reg['data_solicitacao']);
+                    
+                    if(!isset($arrayRetorno[$arrayData[0]])){
+                        $arrayRetorno[$arrayData[0]] = array();
+                    }
+                    $arrayRetorno[$arrayData[0]][] = $amigos;
+                    
                 }
             }
         }

@@ -74,14 +74,14 @@ abstract class BasePastas extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 8,
              ));
-        $this->hasColumn('nome', 'string', 45, array(
+        $this->hasColumn('nome', 'string', 100, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,
-             'length' => 45,
+             'length' => 100,
              ));
         $this->hasColumn('descricao', 'string', 255, array(
              'type' => 'string',

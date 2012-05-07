@@ -113,7 +113,7 @@ $('.action-delete a').click(function(){
 	//quando iniciar a mostrar o modal, pega ID
 	$('#modalDelete').on('show', function () {
 		ref = $("#modalDelete .btn-danger").attr("href");
-		$("#modalDelete .btn-danger").attr("href","excluir?p="+id);
+		$("#modalDelete .btn-danger").attr("href",url_for('publicacao/remover?u=')+id);
 	})
 });
 

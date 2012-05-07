@@ -247,9 +247,20 @@ class perfilActions extends robolivreAction {
         $this->listaUsuario = Doctrine::getTable("Usuarios")->getUsuariosListagem();
     }
     
-    public function executeSolicitacoes(sfWebRequest $request){
+    public function executeNotificacoes(sfWebRequest $request){
         UsuarioLogado::getInstancia()->atualizaSolicitacoes();
-        $this->usuario = new Usuarios(null,false,UsuarioLogado::getInstancia());
+        
+        {
+            $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
+            $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
+            $this->arrayConteudoSeguido = array_splice($arrayRetorno['conteudos'],0,6);
+        }
+        
+        {
+            $arrayRetorno = Doctrine::getTable("Usuarios")->getAmigosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
+            $this->quantidadeAmigos = $arrayRetorno['quantidade'];
+            $this->arrayAmigos = array_splice($arrayRetorno['amigos'],0,6);
+        }
     }
     
     public function executeAceitarSolicitacao(sfWebRequest $request){
@@ -259,8 +270,10 @@ class perfilActions extends robolivreAction {
         if(isset($id) && $id != UsuarioLogado::getInstancia()->getIdUsuario()){
             $amizade->setSolicitacao($id);
             Doctrine::getTable("Amigos")->aceitarAmizade($amizade);
-            UsuarioLogado::getInstancia()->removeSolicitacao($id);
+            //UsuarioLogado::getInstancia()->removeSolicitacao($id);
+            UsuarioLogado::getInstancia()->atualizaSolicitacoes();
             $this->redirect('perfil/exibir?u='.$id);
+            
         }else{
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
             $this->redirect('perfil/index');
@@ -274,7 +287,8 @@ class perfilActions extends robolivreAction {
         if(isset($id) && $id != UsuarioLogado::getInstancia()->getIdUsuario()){
             $amizade->setSolicitacao($id);
             Doctrine::getTable("Amigos")->recusarAmizade($amizade);
-            UsuarioLogado::getInstancia()->removeSolicitacao($id);
+            //UsuarioLogado::getInstancia()->removeSolicitacao($id);
+            UsuarioLogado::getInstancia()->atualizaSolicitacoes();
             $this->redirect('perfil/index');
         }else{
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);

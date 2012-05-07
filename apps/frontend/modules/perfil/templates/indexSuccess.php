@@ -156,7 +156,8 @@
   <p>Tem certeza de que deseja excluir a atualização?</p>
   </div>
   <div class="modal-footer">
-    <a href="#" class="btn btn-danger">Sim, excluir agora</a> <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+      <a href="<?php echo url_for('publicacao/remover?u=') ?>" class="btn btn-danger">Sim, excluir agora</a>
+    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
   </div>
 </div>
 

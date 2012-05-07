@@ -336,11 +336,17 @@ class conteudosActions extends robolivreAction
                 $pasta->save();
                 
                 $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_ANEXOS_CONJUNTO,$this->conteudo->getIdConjunto(),Conjuntos::TIPO_CONTEUDO);
+                if(!file_exists(sfConfig::get('sf_upload_dir')."/documentos/$slug")){
+                   mkdir(sfConfig::get('sf_upload_dir')."/documentos/$slug");
+                }
             }
             foreach($arrayArquivos as $nomeArquivo){
                 if($nomeArquivo!=""){
-                   
-                    copy(sfConfig::get('sf_upload_dir')."/".$nomeArquivo, sfConfig::get('sf_upload_dir')."/documentos/$slug/".$nomeArquivo);
+                    $arrayFile = explode(".",$nomeArquivo);
+                    $nomeFile = $arrayFile[0];
+                    $extensao = end($arrayFile);
+                    $idUsuarioLogado = UsuarioLogado::getInstancia()->getIdUsuario();
+                    copy(sfConfig::get('sf_upload_dir')."/".$nomeArquivo,sfConfig::get('sf_upload_dir')."/documentos/$slug/".$nomeFile."_".$idUsuarioLogado."_".time().".".$extensao);
 
                     $documento = new Documentos();
                     $documento->setIdPasta($pasta->getIdPasta());

@@ -128,6 +128,21 @@ if($tipoFiltro!=""){
     </div><!-- /aside -->
 
 </div><!-- /row -->
+
+<div class="modal fade" id="modalDelete">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Excluir atualização</h3>
+  </div>
+  <div class="modal-body">
+  <p>Tem certeza de que deseja excluir a atualização?</p>
+  </div>
+  <div class="modal-footer">
+      <a href="<?php echo url_for('publicacao/remover?u=') ?>" class="btn btn-danger">Sim, excluir agora</a>
+    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
+  </div>
+</div>
+
 <script type="text/javascript">
     //<![CDATA[
     
