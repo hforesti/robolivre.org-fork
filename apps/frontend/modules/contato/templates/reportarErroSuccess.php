@@ -16,7 +16,7 @@
             <h1>Reportar problema</h1>
         </div>
 
-        <p>Encontrou algum problema? Decreva-o para nossa equipe e tentaremos achar o robô reposável.</p>
+        <p>Encontrou algum problema? Decreva-o para nossa equipe e encaminharemos para o robô responsável :)</p>
 
         <?php if (isset($formContato)) { ?>
             <?php
@@ -80,7 +80,7 @@
                         <label class="control-label" for="email">Seu E-mail</label>
                         <div class="controls">
                             <?php echo $formContato->getWidget('email')->render($formContato->getName() . "[email]", (isset($valoresInciais['email']) ? $valoresInciais['email'] : null), array('class' => "input-xlarge", 'id' => 'email')); ?>
-                            <p class="help-block">Responderemos sua mensagem para este e-mail informado</p>
+                            <p class="help-block">Caso seja necessário, responderemos sua mensagem para este e-mail informado</p>
                         </div>
                     </div>
 

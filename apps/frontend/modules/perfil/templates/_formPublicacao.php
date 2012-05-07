@@ -1,7 +1,7 @@
 <?php if (!isset($id_publicacao_original) || !isset($id_usuario_original)) { ?>
 <form id="form-status" action="<?php echo url_for('perfil/publicar'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 <ul class="nav nav-tabs">
-  <li id="<?php echo Publicacoes::TIPO_NORMAL ?>" class="aba-publicacao active"><a href="#tab-status" data-toggle="tab">Atualizar status</a></li>
+  <li id="<?php echo Publicacoes::TIPO_NORMAL ?>" class="aba-publicacao active"><a href="#tab-status" data-toggle="tab">Compartilhar</a></li>
   <li id="<?php echo Publicacoes::TIPO_FOTO ?>" class="aba-publicacao"><a href="#tab-foto" data-toggle="tab" title="Adicionar Foto"><i class="icon-picture"></i></a></li>
   <li id="<?php echo Publicacoes::TIPO_VIDEO ?>" class="aba-publicacao"><a href="#tab-video" data-toggle="tab" title="Adicionar Vídeo"><i class="icon-film"></i></a></li>
   <li id="<?php echo Publicacoes::TIPO_LINK ?>" class="aba-publicacao"><a href="#tab-link" data-toggle="tab" title="Adicionar Link"><i class="icon-share-alt icon-gray-alt"></i></a></li>
@@ -33,7 +33,7 @@
             <input type="hidden" name="id_usuario_referencia" value="<?php echo $id_usuario_referencia ?>" />
         <?php } ?>
         <input type="hidden" id="tipo_conteudo_publicacao" name="tipo_conteudo_publicacao" value="normal" />
-        <?php echo $form->getWidget('comentario')->render($form->getName() . "[comentario]", null, array('class'=>"input-xlarge span7",'id' => 'status','rows'=>"3", 'placeholder' => "O que você tem pesquisado sobre os robôs?",'tabindex'=>"1")); ?>
+        <?php echo $form->getWidget('comentario')->render($form->getName() . "[comentario]", null, array('class'=>"input-xlarge span7",'id' => 'status','rows'=>"3", 'placeholder' => "O que você quer compartilhar sobre robôs?",'tabindex'=>"1")); ?>
 	
 </fieldset>
 

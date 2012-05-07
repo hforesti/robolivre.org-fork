@@ -43,7 +43,7 @@
 
 <form id="form-status" action="status.shtml">
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#tab-status" data-toggle="tab">Atualizar status</a></li>
+  <li class="active"><a href="#tab-status" data-toggle="tab">Compartilhar</a></li>
   <li><a href="#tab-foto" data-toggle="tab" title="Adicionar Foto"><i class="icon-picture"></i></a></li>
   <li><a href="#tab-video" data-toggle="tab" title="Adicionar Vídeo"><i class="icon-film"></i></a></li>
   <li><a href="#tab-link" data-toggle="tab" title="Adicionar Link"><i class="icon-share-alt icon-gray-alt"></i></a></li>
@@ -73,7 +73,7 @@
 </fieldset>
 
 <fieldset>
-	<textarea class="input-xlarge span7" id="status" rows="3" placeholder="O que você tem pesquisado sobre os robôs?" tabindex="1"></textarea>
+	<textarea class="input-xlarge span7" id="status" rows="3" placeholder="O que você quer compartilhar sobre robôs?" tabindex="1"></textarea>
 
 </fieldset>
 

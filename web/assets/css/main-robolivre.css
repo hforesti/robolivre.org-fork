@@ -695,6 +695,15 @@ table .col-sec {width: 10%}
 #inbox-pvt-intro .sent-user {vertical-align: middle;}
 #inbox-pvt-intro .close {cursor: pointer;}
 
+#modalInfo .img-step {
+	display: block;
+	height: 150px;
+	width: 150px;
+}
+.img-step.step1 {background: url(../img/rl/tutorial123_1.png) no-repeat center;}
+.img-step.step2 {background: url(../img/rl/tutorial123_2.png) no-repeat center;}
+.img-step.step3 {background: url(../img/rl/tutorial123_3.png) no-repeat center;}
+
 .fourofour {background: url(../img/rl/404.png) no-repeat bottom center; padding-bottom:280px;}
 
 /* WYSIWYG Editor */
