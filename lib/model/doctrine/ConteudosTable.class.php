@@ -16,6 +16,18 @@ class ConteudosTable extends Doctrine_Table {
         return Doctrine_Core::getTable('Conteudos');
     }
     
+    public function atualizarImagemConteudo($idConjunto, $imagem) {
+        $query = "UPDATE conjuntos 
+                 SET imagem_perfil = '$imagem'
+                WHERE id_conjunto = $idConjunto";
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+        $statement = $connection->prepare($query);
+        // Make Statement  
+        $statement->execute();
+    }
+    
     public function getTemasAula($idConjunto = ""){
         $arrayRetorno = array();
  

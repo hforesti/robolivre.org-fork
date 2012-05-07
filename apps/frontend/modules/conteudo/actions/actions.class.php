@@ -20,6 +20,10 @@ class conteudoActions extends robolivreAction {
                 return;
             case 'exibirConteudosRelacionados' : $this->executeExibirConteudosRelacionados($request);
                 return;
+            case 'atualizarFoto' : $this->executeAtualizarFoto($request);
+                return;
+            case 'modificarFotoConteudo' : $this->executeModificarFotoConteudo($request);
+                return;
             case 'video' :
                     $this->executeExibir($request,"video");
                     return;  
@@ -45,7 +49,52 @@ class conteudoActions extends robolivreAction {
     public function executeIndex(sfWebRequest $request) {
         $this->redirect("conteudos/index");
     }
+    
+    public function executeAtualizarFoto(sfWebRequest $request) {
+        $slug = $request->getParameter('slug');
 
+        $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
+        {
+            $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
+            $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
+            $this->arrayParticipantes = array_splice($arrayRetorno['participantes'], 0, 6);
+        } 
+        $this->formUpload = new AtualizacaoFotoForm();
+        $this->setTemplate("atualizarFoto");
+    }
+    
+    public function executeModificarFotoConteudo(sfWebRequest $request) {
+        
+        $slug = $request->getParameter('slug');
+
+        $conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
+        
+        $nome_arquivo = $request->getParameter('imagem_selecionada');
+        
+        $diretorioThumbnail = Util::getDiretorioThumbnail();
+        
+        $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo;
+        $extensao = end(explode(".", $nome_arquivo));
+        $thumbnail = new sfThumbnail(170, 170);
+        $thumbnail->loadFile($diretorio_arquivo);
+        $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slugConteudo . '_large.' . $extensao);
+
+        $thumbnail = new sfThumbnail(60, 60);
+        $thumbnail->loadFile($diretorio_arquivo);
+        $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slugConteudo . '_60.' . $extensao);
+
+        $thumbnail = new sfThumbnail(20, 20);
+        $thumbnail->loadFile($diretorio_arquivo);
+        $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slugConteudo . '_20.' . $extensao);
+        
+        $objUsuario = Doctrine::getTable("Conteudos")->atualizarImagemConteudo($conteudo->getIdConjunto(),'/_avatar_con_' . $slugConteudo . '_#.'.$extensao);
+        
+        UsuarioLogado::getInstancia()->atualizaInformacoes($objUsuario);
+        
+        $this->redirect("conteudo/$slug");
+        
+    }
+    
     public function executeExibir(sfWebRequest $request,$tipoFiltro="") {
 
         $slug = $request->getParameter('slug');

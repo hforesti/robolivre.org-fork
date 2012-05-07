@@ -19,7 +19,7 @@
                 </div>
             <?php } ?>  
 
-            <?php include_partial('formLogin', array('form' => $formLogin)) ?>
+            <?php include_partial('formLogin', array('form' => $formLogin,'ultimaPagina'=> $ultimaPagina)) ?>
 
             </fieldset>
 

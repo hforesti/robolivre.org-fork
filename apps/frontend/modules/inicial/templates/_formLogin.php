@@ -23,7 +23,8 @@
             </label>
         </div>
     </div>
-    <input type="hidden" name="tp_frm" value="<?php $form->getTipoFormulario(); ?>" />
+    <input type="hidden" name="tp_frm" value="<?php  echo $form->getTipoFormulario(); ?>" />
+    <input type="hidden" name="ultima_pagina" value="<?php echo $ultimaPagina ?>" />
 
     <div class="form-actions">
         <input value="entrar" type="submit" class="btn btn-primary btn-large" tabindex="4" />

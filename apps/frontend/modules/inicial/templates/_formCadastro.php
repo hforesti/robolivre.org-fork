@@ -131,7 +131,8 @@ $valoresInciais = $form->getTaintedValues();
             <div class="controls">
                 <label class="checkbox">
                 <input type="checkbox" name="lembrar" value="1" >
-                    Não estou em um computador público e quero me manter conectado
+                    Quero me manter conectado na rede<br />
+                    <span class="help-inline">Marque apenas se <strong>não</strong> estiver em um computador público.</span>
                 </label>
             </div>
         </div>
@@ -366,8 +367,8 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
         }catch(e){alert(e);}
         var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
         if (!regex.test(key)) {
-        event.preventDefault();
-        return false;
+        //event.preventDefault();
+        //return false;
         }
     });
     

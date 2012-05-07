@@ -273,6 +273,13 @@ Documentos:
       primary: false
       notnull: false
       autoincrement: false
+    nome_documento:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
 Imagens:
   connection: doctrine
   tableName: imagens

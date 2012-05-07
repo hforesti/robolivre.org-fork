@@ -26,7 +26,7 @@ class PastasTable extends Doctrine_Table
         
         $q = Doctrine_Query::create()
                 ->select('*')
-                ->from('Pastas')
+                ->from('pastas')
                 ->where("id_usuario =  $idUsuario");
                 if($idConjunto==null){
                     $q = $q->andWhere("id_conjunto IS NULL");
@@ -38,7 +38,7 @@ class PastasTable extends Doctrine_Table
                     $q = $q->andWhere("tipo_pasta = $tipoPasta");
                 }
                 
-                
+                //die( $q);
         $resultado = $q->fetchArray();
         
         if ($resultado) {

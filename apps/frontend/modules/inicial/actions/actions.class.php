@@ -78,12 +78,17 @@ class inicialActions extends robolivreAction {
     }
 
     public function executeTelaLogin(sfWebRequest $request) {
+        $this->ultimaPagina = $request->getReferer();
         $this->formLogin = new UsuariosForm(null, null, null, UsuariosForm::LOGIN);
     }
     
     public function executeLogin(sfWebRequest $request) {
         $form = new UsuariosForm(null, null, null, UsuariosForm::LOGIN);
-
+        if($request->hasParameter('ultima_pagina')){
+            $ultimaPagina = $request->getParameter('ultima_pagina');
+        }else{
+            $ultimaPagina = "perfil/index";
+        }
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if ($form->isValid()) {
             
@@ -100,7 +105,7 @@ class inicialActions extends robolivreAction {
             
             if ($objUsuario) {
                 UsuarioLogado::getInstancia()->logar($objUsuario);
-                $this->redirect('perfil/index');
+                $this->redirect($ultimaPagina);
                 return;
             } else {
                 $form->getErrorSchema()->addError(new sfValidatorError($form->getValidator('login'),"Senha não corresponde ao login informado. Por favor, tente novamente"));

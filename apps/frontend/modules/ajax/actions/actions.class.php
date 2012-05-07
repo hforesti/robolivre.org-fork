@@ -23,10 +23,29 @@ class ajaxActions extends sfActions {
             $this->forward404();
         }
     }
-    
-    public function executeAjaxValidaLinkYoutube(sfWebRequest $request){
-        
-    }
+//    
+//    public function executeAjaxValidaLinkYoutube(sfWebRequest $request){
+//        $link = $request->getParameter("link");
+//        
+//        preg_match('#(\.be/|/embed/|/v/|/watch\?v=)([A-Za-z0-9_-]{5,11})#', $link, $matches);
+//        if(isset($matches[2]) && $matches[2] != ''){
+//            $YoutubeCode = $matches[2];
+//        }
+//        
+//        $fh = fopen("http://gdata.youtube.com/feeds/api/videos/$YoutubeCode", "r");
+//        $str = fread($fh, 10); 
+//        fclose($fh);
+//        
+//        //Invalid id -> 10 char
+//        sfContext::getInstance()->getLogger()->info("ENTROU AJAX: achou $str");
+//        if($str=="Invalid id"){
+//            $mensagem = "ok";
+//        }else{
+//            $mensagem = "falso";
+//        }
+//        
+//        $this->mensagem = $mensagem;
+//    }
     
     public function executeAjaxEsqueciSenha(sfWebRequest $request){
         sfContext::getInstance()->getConfiguration()->loadHelpers(array('Tag','Url'));
@@ -191,7 +210,7 @@ class ajaxActions extends sfActions {
 //        sfContext::getInstance()->getLogger()->info(print_r($_POST,true));
 //        sfContext::getInstance()->getLogger()->info(print_r($_FILES,true));
         // list of valid extensions, ex. array("jpeg", "xml", "bmp")
-        $allowedExtensions = array();
+        $allowedExtensions = array('txt', 'rtf', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods', 'odg', 'fodg');
         // max file size in bytes
         $sizeLimit = 0.5 * 1024 * 1024;
 

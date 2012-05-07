@@ -9,7 +9,7 @@
         <div class="list-mgmt">
 
             <div class="row">
-                <h2 class="span7">Seus amigos ‧ <small><?php echo $quantidadeParticipantes ?></small></h2>
+                <h2 class="span7">Seguidores ‧ <small><?php echo $quantidadeParticipantes ?></small></h2>
 
                 <form action="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirSeguidores") ; ?>" class="list-filter">
                     <input type="text" name="nome" id="nome" value="<?php echo $nome ?>" class="span3 search-query" placeholder="Buscar na lista de amigos">

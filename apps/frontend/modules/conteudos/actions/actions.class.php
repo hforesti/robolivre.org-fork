@@ -35,6 +35,7 @@ class conteudosActions extends robolivreAction
         }
     }
     
+    
     public function executeEditar(sfWebRequest $request){
         $idConjunto = $request->getParameter('u');
         $objConteudo = Doctrine::getTable('Conteudos')->buscaPorId($idConjunto);
@@ -43,6 +44,8 @@ class conteudosActions extends robolivreAction
         $this->formConteudo = new ConteudosForm($objConteudo);
         $this->nomeConteudo = $objConteudo->getNome();
         $this->tags = Doctrine::getTable('TagsConteudos')->getTagsConteudo($idConjunto);
+        
+//        Util::pre($this->tags);
     }
     
     public function executePreviaFoto(sfWebRequest $request){
@@ -105,7 +108,7 @@ class conteudosActions extends robolivreAction
             return "";
         }
         try{
-//        die("nome do arquivo $nome_arquivo");
+        
         $diretorioThumbnail = Util::getDiretorioThumbnail();
         
         $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo;
@@ -137,12 +140,12 @@ class conteudosActions extends robolivreAction
         $arrayTags = $request->getPostParameter('tags');
         $arrayTags = explode(",", $arrayTags);
         $arrayTagsTemaAula = $request->getPostParameter('tema_aula');
-        
-        
         $arrayTags = array_unique(array_merge($arrayTags, $arrayTagsTemaAula));
         
+        $arrayArquivos = explode(Util::SEPARADOR_PARAMETRO,$request->getPostParameter('documentos_selecionados'));
+        
         $form = new ConteudosForm();
-
+        
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if ($form->isValid()) {
             $form->updateObject(); 
@@ -192,6 +195,35 @@ class conteudosActions extends robolivreAction
                 }
             }
             
+            $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_ANEXOS_CONJUNTO,$this->conteudo->getIdConjunto(),Conjuntos::TIPO_CONTEUDO);
+            
+            if(!$pasta){
+                $pasta = new Pastas();
+                $pasta->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
+                $pasta->setNome("Anexo de ".UsuarioLogado::getInstancia()->getNome()." no Conteudo ".$request->getParameter('nome_conteudo'));
+                $pasta->setDescricao("Arquivos anexos de ".UsuarioLogado::getInstancia()->getNome()." no Conteudo ".$request->getParameter('nome_conteudo'));
+                $pasta->setTipoPasta(Pastas::TIPO_PASTA_ANEXOS_CONJUNTO);
+                $pasta->setIdConjunto($this->conteudo->getIdConjunto());
+                $pasta->setIdTipoConjunto(Conjuntos::TIPO_CONTEUDO);
+                
+                $pasta->save();
+                
+                $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_ANEXOS_CONJUNTO,$this->conteudo->getIdConjunto(),Conjuntos::TIPO_CONTEUDO);
+            }
+            
+            foreach($arrayArquivos as $nomeArquivo){
+                if($nomeArquivo!=""){
+                    $documento = new Documentos();
+                    $documento->setIdPasta($pasta->getIdPasta());
+                    $documento->setIdUsuario($pasta->getIdUsuario());
+                    $documento->setIsCodigoFonte(false);
+                    $documento->setNomeArquivo($nomeArquivo);
+                    $documento->setNomeDocumento($nomeArquivo);
+                    
+                    $documento->save();
+                }
+            }
+            
             foreach ($arrayObjTag as $objTag) {
                 Util::pre($objTag->getData());
                 $objTag->save();
@@ -217,6 +249,10 @@ class conteudosActions extends robolivreAction
 
         $arrayTags = $request->getPostParameter('tags');
         $arrayTags = explode(",", $arrayTags);
+        $arrayTagsTemaAula = $request->getPostParameter('tema_aula');
+        $arrayTags = array_unique(array_merge($arrayTags, $arrayTagsTemaAula));
+        
+        $arrayArquivos = explode(Util::SEPARADOR_PARAMETRO,$request->getPostParameter('documentos_selecionados'));
         
         $form = new ConteudosForm();
         
@@ -238,7 +274,6 @@ class conteudosActions extends robolivreAction
             $nomeArquivo = $this->criarTumbnails($request, $slug);
             $objConteudo->getConjunto()->setImagemPerfil($nomeArquivo);
             $this->conteudo = Doctrine::getTable("Conteudos")->editarConteudo($objConteudo);
-            
             $tagsExistentes = Doctrine::getTable('TagsConteudos')->getTagsConteudo($this->conteudo->getIdConjunto());
             
             $arrayObjTag = array();
@@ -288,6 +323,36 @@ class conteudosActions extends robolivreAction
                 }
             }
             
+            $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_ANEXOS_CONJUNTO,$this->conteudo->getIdConjunto(),Conjuntos::TIPO_CONTEUDO);
+            if(!$pasta){
+                $pasta = new Pastas();
+                $pasta->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
+                $pasta->setNome("Anexo de ".UsuarioLogado::getInstancia()->getNome()." no Conteudo ".$request->getParameter('nome_conteudo'));
+                $pasta->setDescricao("Arquivos anexos de ".UsuarioLogado::getInstancia()->getNome()." no Conteudo ".$request->getParameter('nome_conteudo'));
+                $pasta->setTipoPasta(Pastas::TIPO_PASTA_ANEXOS_CONJUNTO);
+                $pasta->setIdConjunto($this->conteudo->getIdConjunto());
+                $pasta->setIdTipoConjunto(Conjuntos::TIPO_CONTEUDO);
+                
+                $pasta->save();
+                
+                $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_ANEXOS_CONJUNTO,$this->conteudo->getIdConjunto(),Conjuntos::TIPO_CONTEUDO);
+            }
+            foreach($arrayArquivos as $nomeArquivo){
+                if($nomeArquivo!=""){
+                   
+                    copy(sfConfig::get('sf_upload_dir')."/".$nomeArquivo, sfConfig::get('sf_upload_dir')."/documentos/$slug/".$nomeArquivo);
+
+                    $documento = new Documentos();
+                    $documento->setIdPasta($pasta->getIdPasta());
+                    $documento->setIdUsuario($pasta->getIdUsuario());
+                    $documento->setIsCodigoFonte(false);
+                    $documento->setNomeArquivo($nomeArquivo);
+                    $documento->setNomeDocumento($nomeArquivo);
+                    
+                    $documento->save();
+                }
+            }
+            
             foreach ($arrayObjTag as $objTag) {
                 Util::pre($objTag->getData());
                 $objTag->save();
@@ -332,19 +397,19 @@ class conteudosActions extends robolivreAction
         
         if($tipoConteudoPublicacao != Publicacoes::TIPO_LINK && $tipoConteudoPublicacao != Publicacoes::TIPO_NORMAL){
             
-            $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_ANEXOS_CONJUNTO,$request->getParameter('id_conjunto'),Conjuntos::TIPO_CONTEUDO);
+            $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_PUBLICACOES_CONJUNTO,$request->getParameter('id_conjunto'),Conjuntos::TIPO_CONTEUDO);
             if(!$pasta){
                 $pasta = new Pastas();
                 $pasta->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
-                $pasta->setNome("Anexo de ".UsuarioLogado::getInstancia()->getNome()." no Conteudo ".$request->getParameter('nome_conteudo'));
+                $pasta->setNome("Publicações de ".UsuarioLogado::getInstancia()->getNome()." no Conteudo ".$request->getParameter('nome_conteudo'));
                 $pasta->setDescricao("Arquivos enviados das publicações de ".UsuarioLogado::getInstancia()->getNome()." no Conteudo ".$request->getParameter('nome_conteudo'));
-                $pasta->setTipoPasta(Pastas::TIPO_PASTA_ANEXOS_CONJUNTO);
+                $pasta->setTipoPasta(Pastas::TIPO_PASTA_PUBLICACOES_CONJUNTO);
                 $pasta->setIdConjunto($request->getParameter('id_conjunto'));
                 $pasta->setIdTipoConjunto(Conjuntos::TIPO_CONTEUDO);
                 
                 $pasta->save();
                 
-                $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_ANEXOS_CONJUNTO,$request->getParameter('id_conjunto'),Conjuntos::TIPO_CONTEUDO);
+                $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_PUBLICACOES_CONJUNTO,$request->getParameter('id_conjunto'),Conjuntos::TIPO_CONTEUDO);
             }
             
             if($tipoConteudoPublicacao== Publicacoes::TIPO_VIDEO){

@@ -15,7 +15,7 @@ if(!isset($opcao))
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="settings.shtml">Atualizar imagem</a>
+                        <a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=atualizarFoto") ?>">Atualizar imagem</a>
                     </li>
                     <li>
                         <a href="<?php echo url_for('conteudos/editar?u=' . $conteudo->getIdConjunto()) ?>">Editar conteúdo</a>

@@ -124,12 +124,13 @@ if(!isset($conteudo)){
                     <div class="control-group">
                         <label class="control-label" for="fileInput2">Documentos</label>
                         <div class="controls">
-
+                            
                             <div id="file-uploader">       
                                 <noscript>          
                                 <input class="input-file" id="fileInput2" type="file">
                                 </noscript>         
                             </div>
+                            <input type="hidden" id="documentos_selecionados" name="documentos_selecionados">
 
                             <p class="help-block">Você pode anexar arquivos a este conteúdo. (Ex.: PDFs, Apresentações, Manuais).</p>
                         </div>
@@ -182,7 +183,11 @@ if(!isset($conteudo)){
             formatList: function(data, elem){
                     var new_elem = elem.html("<i class='icon-tag icon-gray'></i>"+ data.name);
                     return new_elem;
-            }
+            },
+//            selectionRemoved: function(elem){
+//                var valores = document.getElementById('tags').value = $('.as-values')[0].value;
+//                alert(valores.split(","));
+//            }
         });
         
         $("#form-criar-conteudo").submit(function() {

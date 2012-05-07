@@ -193,7 +193,7 @@ class UsuariosForm extends BaseUsuariosForm {
             }
         } else if ($valores['login'] != null && $valores['login'] != "") {
             if (!preg_match("/^[a-z]+[\w.-]*$/i", $valores['login'])) {
-                $error = new sfValidatorError($this->validatorSchema['login'], 'O nome do usuário ser ser composto por letra,underline ou .');
+                $error = new sfValidatorError($this->validatorSchema['login'], 'Use apenas letras (a-z), números (0-9), ponto (.) e underline (_).');
                 $this->errorSchema->addError($error, 'login');
                 $valido = false;
             }
@@ -242,7 +242,7 @@ class UsuariosForm extends BaseUsuariosForm {
                 $valido = false;
             }
         } else if ($valores['login'] != null && $valores['login'] != "") {
-            if (!preg_match("/^[a-z]+[\w.-]*$/i", $valores['login'])) {
+            if (!preg_match("/^[a-z0-9]+[\w.-]*$/i", $valores['login'])) {
                 $error = new sfValidatorError($this->validatorSchema['login'], 'O nome do usuário ser ser composto por letra,underline ou .');
                 $this->errorSchema->addError($error, 'login');
                 $valido = false;

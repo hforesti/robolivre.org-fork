@@ -101,14 +101,14 @@ if($tipoFiltro!=""){
     <div class="span3" id="sidebar-wdgt">
 
         <div id="grid-conteudos" class="wdgt">
-            <h3><a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirSeguidores") ; ?>">Conteúdos relacionados <small><?php echo $quantidadeConteudosRelacionados; ?></small></a></h3>
+            <h3><a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirConteudosRelacionados") ; ?>">Conteúdos relacionados <small><?php echo $quantidadeConteudosRelacionados; ?></small></a></h3>
             <ul class="thumbnails">
                 <?php foreach ($arrayConteudosRelacionados as $conteudoRelacionado) { ?>
                     <?php $innerHTML = "<img src='" . image_path($conteudoRelacionado->getImagemPerfil()) . "' alt='" . $conteudoRelacionado->getNome() . "' title='" . $conteudoRelacionado->getNome() . "'>"; ?>
                     <li class="span1"><?php echo Util::getTagConteudoSlug($innerHTML, $conteudoRelacionado->getNome(), "thumbnail") ?></li>
                 <?php } ?>
             </ul>
-            <a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirSeguidores") ; ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
+            <a href="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirConteudosRelacionados") ; ?>" class="more" title="Ver tudo"><i class="icon-chevron-right"></i></a>
         </div><!-- grid-conteudos -->
 
         <hr>

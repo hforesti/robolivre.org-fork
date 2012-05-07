@@ -14,6 +14,7 @@ Doctrine_Manager::getInstance()->bindComponent('Documentos', 'doctrine');
  * @property integer $is_codigo_fonte
  * @property string $repositorio_github
  * @property integer $ordenacao
+ * @property string $nome_documento
  * 
  * @method integer    getIdDocumento()        Returns the current record's "id_documento" value
  * @method integer    getIdUsuario()          Returns the current record's "id_usuario" value
@@ -22,6 +23,7 @@ Doctrine_Manager::getInstance()->bindComponent('Documentos', 'doctrine');
  * @method integer    getIsCodigoFonte()      Returns the current record's "is_codigo_fonte" value
  * @method string     getRepositorioGithub()  Returns the current record's "repositorio_github" value
  * @method integer    getOrdenacao()          Returns the current record's "ordenacao" value
+ * @method string     getNomeDocumento()      Returns the current record's "nome_documento" value
  * @method Documentos setIdDocumento()        Sets the current record's "id_documento" value
  * @method Documentos setIdUsuario()          Sets the current record's "id_usuario" value
  * @method Documentos setIdPasta()            Sets the current record's "id_pasta" value
@@ -29,6 +31,7 @@ Doctrine_Manager::getInstance()->bindComponent('Documentos', 'doctrine');
  * @method Documentos setIsCodigoFonte()      Sets the current record's "is_codigo_fonte" value
  * @method Documentos setRepositorioGithub()  Sets the current record's "repositorio_github" value
  * @method Documentos setOrdenacao()          Sets the current record's "ordenacao" value
+ * @method Documentos setNomeDocumento()      Sets the current record's "nome_documento" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -99,6 +102,15 @@ abstract class BaseDocumentos extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => 4,
+             ));
+        $this->hasColumn('nome_documento', 'string', 255, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 255,
              ));
     }
 

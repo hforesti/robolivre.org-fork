@@ -70,10 +70,19 @@
             adicionarErro("Digite o link da publicação");
             $("#error").show();
             return false;
-        }else if(tipo=="<?php echo Publicacoes::TIPO_VIDEO ?>" && document.getElementById('url_video').value == ""){
-            adicionarErro("Digite link do video do Youtube");
-            $("#error").show();
-            return false;
+        }else if(tipo=="<?php echo Publicacoes::TIPO_VIDEO ?>"){
+            if(document.getElementById('url_video').value == ""){
+                adicionarErro("Digite link do video do Youtube");
+                $("#error").show();
+                return false;
+            }
+            
+            var matches = $('#url_video').val().match(/http:\/\/(?:www\.)?youtube.*watch\?v=([a-zA-Z0-9\-_]+)/);
+            if (matches) {
+                adicionarErro("Nossos robôs não identificaram o link como sendo do YouTube. Por favor tente novamente.");
+                $("#error").show();
+                return false;
+            }
         }else if(tipo=="<?php echo Publicacoes::TIPO_FOTO?>"){ 
             if(document.getElementById('fileInput').value == ""){
                 adicionarErro("Adicione um arquivo de imagem");

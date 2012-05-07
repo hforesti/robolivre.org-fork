@@ -1,6 +1,6 @@
 <div class="row">
 
-  <?php include_partial('sidebarUsuarioLogado',array('opcao'=>'none')) ?>
+  <?php include_partial('sidebarConteudo',array('conteudo'=> $conteudo,'quantidadeParticipantes'=>$quantidadeParticipantes, 'opcao'=>'none')) ?>
 
 
   <hr class="only-mobile">
@@ -12,10 +12,13 @@
         <a href="<?php echo url_for("perfil/index") ?>">Início</a> <span class="divider">/</span>
       </li>
       <li>
-        <a href="<?php echo url_for("perfil/configuracoes") ?>">Configurações</a> <span class="divider">/</span>
+        <a href="<?php echo url_for("conteudos/index") ?>">Conteúdos</a> <span class="divider">/</span>
+      </li>
+      <li>
+        <a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>">Arduino</a> <span class="divider">/</span>
       </li>
       <li class="active">
-        Alterar foto
+        Alterar imagem
       </li>
     </ul>
 
@@ -24,14 +27,14 @@
       <h1>Alterar foto</h1>
     </div>
 
-      <form action="<?php echo url_for("perfil/confirmarFotoPerfil") ?>" method="post" id="form-upload-avatar">
+      <form action="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=modificarFotoConteudo") ; ?>" method="post" id="form-upload-avatar">
           <div class="control-group clearfix">
             <label class="control-label" for="fileInput">Sua imagem (Até 8MB)</label>
             <div class="row">
               <div class="preview span2" id="img-preview">
-                <img src="<?php echo UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_GRANDE) ?>" alt="Sua imagem" id="thumb" class="thumbnail" />
-                <img src="<?php echo UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_MEDIA) ?>" alt="Sua imagem menos" id="i-medium" class="thumbnail" /> 
-                <img src="<?php echo UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_MINIATURA) ?>" alt="Sua imagem em miniatura" id="i-small" class="thumbnail" />
+                <img src="<?php echo $conteudo->getImagemPerfil(Util::IMAGEM_GRANDE) ?>" alt="Sua imagem" id="thumb" class="thumbnail" />
+                <img src="<?php echo $conteudo->getImagemPerfil(Util::IMAGEM_MEDIA) ?>" alt="Sua imagem menos" id="i-medium" class="thumbnail" /> 
+                <img src="<?php echo $conteudo->getImagemPerfil(Util::IMAGEM_MINIATURA) ?>" alt="Sua imagem em miniatura" id="i-small" class="thumbnail" />
                 <input type="hidden" value="<?php echo $nomeArquivoImagem; ?>" id="imagem_selecionada" name="imagem_selecionada">
               </div>
 

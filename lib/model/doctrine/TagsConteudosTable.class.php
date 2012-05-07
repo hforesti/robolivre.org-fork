@@ -35,8 +35,8 @@ class TagsConteudosTable extends Doctrine_Table
 
         $query = "SELECT * 
         FROM tags_conteudos t 
-        LEFT JOIN conteudos c ON c.id_conjunto = t.id_conjunto_referenciado
-        WHERE t.id_conjunto_referencia = $idConjunto";
+        LEFT JOIN conteudos c ON (c.id_conjunto = t.id_conjunto_referenciado AND t.id_conjunto_referencia = $idConjunto) OR (t.id_conjunto_referencia = c.id_conjunto AND t.id_conjunto_referenciado = $idConjunto)
+        WHERE t.id_conjunto_referencia = $idConjunto OR t.id_conjunto_referenciado = $idConjunto";
 //        die($query);
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
