@@ -91,9 +91,7 @@ class ajaxActions extends sfActions {
         $id_usuario = $request->getParameter('id_usuario');
 
         $publicacoesPerfil = Doctrine::getTable("Publicacoes")->getPublicacoesDoPerfil($id_usuario,$id_ultima_publicacao);
-        header("Content-type: text/html; charset=iso-8859-1");
-
-        echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\" ?>";
+       
         foreach($publicacoesPerfil['publicacoes'] as $publicacao){
             $publicacao->imprimir(); //getImpressao();
         }
@@ -117,9 +115,7 @@ class ajaxActions extends sfActions {
         $id_conjunto = $request->getParameter('id_conjunto');
 
         $publicacoesPerfil = Doctrine::getTable("Publicacoes")->getPublicacoesDoConjunto($id_conjunto,$id_ultima_publicacao);
-        header("Content-type: text/html; charset=iso-8859-1");
-
-        echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\" ?>";
+       
         foreach($publicacoesPerfil['publicacoes'] as $publicacao){
             echo $publicacao->getImpressaoEmConteudo();
         }
@@ -131,9 +127,7 @@ class ajaxActions extends sfActions {
         $id_ultima_publicacao = $request->getParameter('ultimo_id_publicacao');
 
         $publicacoesPerfil = Doctrine::getTable("Publicacoes")->getPublicacoesHomeConteudo($id_ultima_publicacao);
-        header("Content-type: text/html; charset=iso-8859-1");
-
-        echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\" ?>";
+       
         foreach($publicacoesPerfil['publicacoes'] as $publicacao){
             $publicacao->imprimir();
         }
@@ -145,10 +139,8 @@ class ajaxActions extends sfActions {
         $id_ultima_publicacao = $request->getParameter('ultimo_id_publicacao');
 
         $publicacoesPerfil = Doctrine::getTable("Publicacoes")->getPublicacoesHomeAmigos($id_ultima_publicacao);
-       
         header("Content-type: text/html; charset=iso-8859-1");
 
-        echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\" ?>";
         foreach($publicacoesPerfil['publicacoes'] as $publicacao){
             $publicacao->imprimir();
         }
