@@ -267,7 +267,14 @@ class Util {
         }
         return $imagem;
     }
-
+    
+    public static function formataLink($url){
+        if(strstr(substr($url, 0,4) , "http")){
+            return $url;
+        }else{
+            return "http://".$url;
+        }
+    }
     /*
      * Get the title element from a URL
      * Author: Danny Battison

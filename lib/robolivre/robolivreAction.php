@@ -13,6 +13,9 @@
 abstract class robolivreAction extends sfActions {
 
     public function execute($request,$executarTeste = true) {
+        
+        $this->formLoginLayout = new UsuariosForm(null, null, null, UsuariosForm::LOGIN);
+        
         if ($executarTeste && !UsuarioLogado::getInstancia()->isLogado() && !UsuarioLogado::getInstancia()->isUsuarioPublico()) {
             $this->redirect("inicial/telaLogin");
         } else {

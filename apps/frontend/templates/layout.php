@@ -65,12 +65,13 @@
                     <h3>Entrar</h3>
                 </div>
                 <div class="modal-body">
-                    <form id="login-form" class="form-inline" action="#">
-                        <input id="login" type="email" placeholder="e-mail ou usuário" tabindex="1" />
-                        <input id="login-pass" type="password" placeholder="senha" tabindex="2" />
-
+                    <?php $form = new UsuariosForm(null, null, null, UsuariosForm::LOGIN); ?>
+                    <form id="login-form" class="form-inline" method="post" action="<?php echo url_for('inicial/login'); ?>">
+                        <?php echo $form->getWidget('login')->render($form->getName() . "[login]", null, array('id' => 'login', 'placeholder' => "e-mail ou usuário", 'tabindex' => "1")); ?>
+                        <?php echo $form->getWidget('senha')->render($form->getName() . "[senha]", null, array('type'=>"password",'id' => 'login-pass', 'placeholder' => "senha", 'tabindex' => "2")); ?>
+                        <?php echo $form->renderHiddenFields() ?>
                         <input value="entrar" type="submit" class="btn btn-primary" tabindex="4" />
-
+                        <?php ?>
                         <label class="checkbox">
                             <input type="checkbox" name="optionsCheckboxList1" value="option1" tabindex="3">
                             lembrar-me

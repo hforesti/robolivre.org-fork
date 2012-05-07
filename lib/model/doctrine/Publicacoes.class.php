@@ -136,9 +136,10 @@ class Publicacoes extends BasePublicacoes {
             }
             
             if($this->getLink()!="" && $this->getLink()!=null){
-                $title = Util::getTitle($this->getLink());
+                $link = Util::formataLink($this->getLink());
+                $title = Util::getTitle($link);
                 $string .="<blockquote><p>";
-                $string .="<a target=\"_blank\" href=\"".$this->getLink()."\">$title</a>";
+                $string .="<a target=\"_blank\" href=\"$link\">$title</a>";
                 $string .="</p></blockquote>";
             }else if($this->getIdPasta()!=null && $this->getIdPasta()!=""){
                 if($this->getIdImagem()!=null && $this->getIdImagem()!=""){

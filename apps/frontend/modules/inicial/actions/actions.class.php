@@ -110,8 +110,7 @@ class inicialActions extends robolivreAction {
             }
         }else{
             $this->formLogin = $form;
-            $this->formNovoUsuario = new UsuariosForm(null, null, null, UsuariosForm::SIMPLES);
-            $this->setTemplate('index');
+            $this->setTemplate('telaLogin');
             return;
         }
     }
@@ -144,13 +143,12 @@ class inicialActions extends robolivreAction {
                 $this->formNovoUsuario = new UsuariosForm(null, null, null, UsuariosForm::SIMPLES);
                 
                         
-                $this->setTemplate('index');
+                $this->setTemplate('telaLogin');
                 return;
             }
         }else{
             $this->formLogin = $form;
-            $this->formNovoUsuario = new UsuariosForm(null, null, null, UsuariosForm::SIMPLES);
-            $this->setTemplate('index');
+            $this->setTemplate('telaLogin');
             return;
         }
 
