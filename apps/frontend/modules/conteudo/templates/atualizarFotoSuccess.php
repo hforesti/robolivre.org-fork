@@ -32,9 +32,9 @@
             <label class="control-label" for="fileInput">Sua imagem (Até 8MB)</label>
             <div class="row">
               <div class="preview span2" id="img-preview">
-                <img src="<?php echo $conteudo->getImagemPerfil(Util::IMAGEM_GRANDE) ?>" alt="Sua imagem" id="thumb" class="thumbnail" />
-                <img src="<?php echo $conteudo->getImagemPerfil(Util::IMAGEM_MEDIA) ?>" alt="Sua imagem menos" id="i-medium" class="thumbnail" /> 
-                <img src="<?php echo $conteudo->getImagemPerfil(Util::IMAGEM_MINIATURA) ?>" alt="Sua imagem em miniatura" id="i-small" class="thumbnail" />
+                  <img src="<?php echo image_path($conteudo->getImagemPerfil(Util::IMAGEM_GRANDE)) ?>" alt="Sua imagem" id="thumb" class="thumbnail" />
+                <img src="<?php echo image_path($conteudo->getImagemPerfil(Util::IMAGEM_MEDIA)) ?>" alt="Sua imagem menos" id="i-medium" class="thumbnail" /> 
+                <img src="<?php echo image_path($conteudo->getImagemPerfil(Util::IMAGEM_MINIATURA)) ?>" alt="Sua imagem em miniatura" id="i-small" class="thumbnail" />
                 <input type="hidden" value="<?php echo $nomeArquivoImagem; ?>" id="imagem_selecionada" name="imagem_selecionada">
               </div>
 

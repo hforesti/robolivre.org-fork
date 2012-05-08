@@ -97,7 +97,7 @@ class conteudoActions extends robolivreAction {
         $slug = $request->getParameter('slug');
 
         $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
-        $this->forward404Unless($this->conteudo);
+        $this->forward404Unless($this->conteudo && $this->conteudo->getPodeColaborar());
         {
             $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
             $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
@@ -111,7 +111,7 @@ class conteudoActions extends robolivreAction {
         $slug = $request->getParameter('slug');
 
         $conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
-        $this->forward404Unless($conteudo);
+        $this->forward404Unless($conteudo && $conteudo->getPodeColaborar);
 
         $nome_arquivo = $request->getParameter('imagem_selecionada');
         
