@@ -140,6 +140,7 @@ $erros = $formUsuario->getErrorSchema()->getErrors();
                     <div class="control-group <?php echo $class ?>">
                         <label class="control-label" for="pass">Nome e sobrenome</label>
                         <div class="controls">
+                            <?php echo $formUsuario->getWidget('nome')->render($formUsuario->getName() . "[nome]", $valoresInciais['nome'] , array('class'=>"span5",'id' => 'realname', 'placeholder' => "Informe seu Nome e sobrenome")); ?>                            
                             <?php echo $formUsuario->getWidget('nome')->render($formUsuario->getName() . "[nome]", $valoresInciais['nome'] , array('class'=>"span5",'id' => 'realname', 'placeholder' => "Informe seu nome Completo")); ?>                            
                             <span class="help-inline"><?php echo $descricao ?></span>
                         </div>

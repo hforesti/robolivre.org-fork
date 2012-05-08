@@ -46,7 +46,7 @@ if($tipoFiltro!=""){
             </li>
         </ul>
 
-        <p><small>Adicionado por <?php echo Util::getTagUsuario($conteudo->getNomeProprietario(), $conteudo->getConjunto()->getIdUsuario()) ?>: <?php echo $dataCriacao ?>. Última modificação <?php echo $ultimaAtulizacao; ?></small></p>
+        <p><small>Adicionado por <?php echo Util::getTagUsuario($conteudo->getNomeProprietario(), $conteudo->getConjunto()->getIdUsuario()) ?>: <?php echo $dataCriacao ?>. Última modificação: <?php echo $ultimaAtulizacao; ?></small></p>
 
         <div class="page-header">
 
