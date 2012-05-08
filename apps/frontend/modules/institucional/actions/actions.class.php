@@ -21,28 +21,6 @@ class institucionalActions extends robolivreAction {
 
     public function executeSobre() {
         
-        // pega o endereço do diretório
-        $diretorio = Util::getDiretorioArquivosInstitucionais();
-        
-        // abre o diretório
-        $ponteiro = opendir($diretorio);
-        // monta os vetores com os itens encontrados na pasta
-        while ($nome_itens = readdir($ponteiro)) {
-            if($nome_itens!="." && $nome_itens!=".."){
-                $path_parts = pathinfo($diretorio."/".$nome_itens);
-                //echo "Modificado em ".date ("d/m/Y H:i:s.",filemtime($diretorio."/".$nome_itens));
-                //Util::pre($path_parts);
-                
-                $array['nome'] = $path_parts['filename'];
-                $array['extensao'] = $path_parts['extension'];
-                $array['arquivo'] = $path_parts['basename'];
-                $array['novo'] = false;
-                $itens[] = $array;
-            }
-        }
-        
-        $this->arquivos = $itens;
-        
     }
 
     public function executeInstituicoesParceiras() {

@@ -23,12 +23,14 @@ class perfilActions extends robolivreAction {
         {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
+            shuffle($arrayRetorno['conteudos']);
             $this->arrayConteudoSeguido = array_splice($arrayRetorno['conteudos'],0,6);
         }
         
         {
             $arrayRetorno = Doctrine::getTable("Usuarios")->getAmigosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
             $this->quantidadeAmigos = $arrayRetorno['quantidade'];
+            shuffle($arrayRetorno['amigos']);
             $this->arrayAmigos = array_splice($arrayRetorno['amigos'],0,6);
         }
         
@@ -97,12 +99,14 @@ class perfilActions extends robolivreAction {
         {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
+            shuffle($arrayRetorno['conteudos']);
             $this->arrayConteudoSeguido = array_splice($arrayRetorno['conteudos'],0,6);
         }
         
         {
             $arrayRetorno = Doctrine::getTable("Usuarios")->getAmigosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeAmigos = $arrayRetorno['quantidade'];
+            shuffle($arrayRetorno['amigos']);
             $this->arrayAmigos = array_splice($arrayRetorno['amigos'],0,6);
         }
         
@@ -151,12 +155,14 @@ class perfilActions extends robolivreAction {
         {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
+            shuffle($arrayRetorno['conteudos']);
             $this->arrayConteudoSeguido = array_splice($arrayRetorno['conteudos'],0,6);
         }
         
         {
             $arrayRetorno = Doctrine::getTable("Usuarios")->getAmigosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeAmigos = $arrayRetorno['quantidade'];
+            shuffle($arrayRetorno['amigos']);
             $this->arrayAmigos = array_splice($arrayRetorno['amigos'],0,6);
         }
         
@@ -169,12 +175,14 @@ class perfilActions extends robolivreAction {
         {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
+            shuffle($arrayRetorno['conteudos']);
             $this->arrayConteudoSeguido = array_splice($arrayRetorno['conteudos'],0,6);
         }
         
         {
             $arrayRetorno = Doctrine::getTable("Usuarios")->getAmigosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeAmigos = $arrayRetorno['quantidade'];
+            shuffle($arrayRetorno['amigos']);
             $this->arrayAmigos = array_splice($arrayRetorno['amigos'],0,6);
         }
         
@@ -278,12 +286,14 @@ class perfilActions extends robolivreAction {
         {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
+            shuffle($arrayRetorno['conteudos']);
             $this->arrayConteudoSeguido = array_splice($arrayRetorno['conteudos'],0,6);
         }
         
         {
             $arrayRetorno = Doctrine::getTable("Usuarios")->getAmigosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
             $this->quantidadeAmigos = $arrayRetorno['quantidade'];
+            shuffle($arrayRetorno['amigos']);
             $this->arrayAmigos = array_splice($arrayRetorno['amigos'],0,6);
         }
     }

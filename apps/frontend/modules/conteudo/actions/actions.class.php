@@ -24,6 +24,8 @@ class conteudoActions extends robolivreAction {
                 return;
             case 'modificarFotoConteudo' : $this->executeModificarFotoConteudo($request);
                 return;
+            case 'exibirDocumentos' : $this->executeExibirDocumentos($request);
+                return;
             case 'video' :
                     $this->executeExibir($request,"video");
                     return;  
@@ -50,14 +52,55 @@ class conteudoActions extends robolivreAction {
         $this->redirect("conteudos/index");
     }
     
+    public function executeExibirDocumentos(sfWebRequest $request) {
+        $slug = $request->getParameter('slug');
+        $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
+        $this->forward404Unless($this->conteudo);
+        
+        $nome = $request->getParameter("nome");
+        $pagina = $request->getParameter("pagina");
+        $proprietario = $request->getParameter("proprietario");
+
+        if (!isset($proprietario)) {
+            $proprietario = false;
+        }else{
+            $proprietario = true;
+        }
+        
+        if (!isset($nome) || trim($nome) == "") {
+            $nome = "";
+        }
+
+        if (!isset($pagina) || $pagina == "" || !is_numeric($pagina)) {
+            $pagina = 1;
+        }
+        
+        {
+            $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
+            $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
+        } 
+        
+        {
+            $arrayDocumentos = Doctrine::getTable("Documentos")->filtroDocumentosConteudo($this->conteudo->getIdConjunto(),$proprietario, $nome, $pagina);
+            $this->documentos = $arrayDocumentos['documentos'];
+            $this->quantidadeDocumentos = $arrayDocumentos['quantidade'];
+            $this->quantidadeTotalPaginas = $arrayDocumentos['totalPaginas'];
+            $this->nome = $nome;
+            $this->pagina = $pagina;
+            $this->proprietario = $proprietario;
+        }
+        
+        $this->setTemplate("exibirDocumentos");
+    }
+    
     public function executeAtualizarFoto(sfWebRequest $request) {
         $slug = $request->getParameter('slug');
 
         $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
+        $this->forward404Unless($this->conteudo);
         {
             $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
             $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
-            $this->arrayParticipantes = array_splice($arrayRetorno['participantes'], 0, 6);
         } 
         $this->formUpload = new AtualizacaoFotoForm();
         $this->setTemplate("atualizarFoto");
@@ -68,7 +111,8 @@ class conteudoActions extends robolivreAction {
         $slug = $request->getParameter('slug');
 
         $conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
-        
+        $this->forward404Unless($conteudo);
+
         $nome_arquivo = $request->getParameter('imagem_selecionada');
         
         $diretorioThumbnail = Util::getDiretorioThumbnail();
@@ -114,10 +158,12 @@ class conteudoActions extends robolivreAction {
             {
                 $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
                 $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
+                shuffle($arrayRetorno['participantes']);
                 $this->arrayParticipantes = array_splice($arrayRetorno['participantes'], 0, 6);
             } {
                 $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosRelacionados($this->conteudo->getIdConjunto());
                 $this->quantidadeConteudosRelacionados = $arrayRetorno['quantidade'];
+                shuffle($arrayRetorno['conteudos']);
                 $this->arrayConteudosRelacionados = array_splice($arrayRetorno['conteudos'], 0, 9);
             }
         }

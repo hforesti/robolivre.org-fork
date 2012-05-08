@@ -124,26 +124,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><span class="label label-info">Novo</span> <a href="#">Mattis Pharetra Sit Amet</a></td>
-                            <td>PPT</td>
-                        </tr>
-                        <tr>
-                            <td><span class="label label-info">Novo</span> <a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
-                            <td>PPT</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
-                            <td>PDF</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Mattis Pharetra Sit Amet</a></td>
-                            <td>ZIP</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
-                            <td>PDF</td>
-                        </tr>
+                        <?php Util::imprimeListaArquivos("arquivosDownloadImprensa") ?>
                     </tbody>
                 </table>
 
@@ -160,26 +141,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><span class="label label-info">Novo</span> <a href="#">Mattis Pharetra Sit Amet</a></td>
-                            <td>PDF</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit</a></td>
-                            <td>PDF</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Mattis Pharetra Sit Amet</a></td>
-                            <td>DOC</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
-                            <td>ZIP</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum</a></td>
-                            <td>PDF</td>
-                        </tr>
+                        <?php Util::imprimeListaArquivos("arquivosPublicacoesCientificas") ?>
                     </tbody>
                 </table>
 

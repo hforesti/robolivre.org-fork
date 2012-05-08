@@ -646,6 +646,7 @@ class ConteudosTable extends Doctrine_Table {
                         $conteudo->setPodeColaborar(true);
                     }
                 }
+                
                 return $conteudo;
             }
         }

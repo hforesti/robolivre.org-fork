@@ -15,7 +15,7 @@
         <a href="<?php echo url_for("conteudos/index") ?>">Conteúdos</a> <span class="divider">/</span>
       </li>
       <li>
-        <a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>">Arduino</a> <span class="divider">/</span>
+        <a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>"><?php echo $conteudo->getNome() ?></a> <span class="divider">/</span>
       </li>
       <li class="active">
         Alterar imagem

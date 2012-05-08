@@ -12,4 +12,9 @@
  */
 class Documentos extends BaseDocumentos
 {
+    public function getExtensaoArquivo(){
+        $arquivo = $this->getNomeArquivo();
+        $array = explode(".", $arquivo);
+        return end($array);
+    }
 }
