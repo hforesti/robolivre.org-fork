@@ -111,7 +111,7 @@ class conteudoActions extends robolivreAction {
         $slug = $request->getParameter('slug');
 
         $conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
-        $this->forward404Unless($conteudo && $conteudo->getPodeColaborar);
+        $this->forward404Unless($conteudo && $conteudo->getPodeColaborar());
 
         $nome_arquivo = $request->getParameter('imagem_selecionada');
         
