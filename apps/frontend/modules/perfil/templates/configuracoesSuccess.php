@@ -123,7 +123,7 @@ if(!empty($taintedValues)){
                     <div class="control-group">
                         <label class="control-label" for="pass">Nome e sobrenome</label>
                         <div class="controls">
-                            <?php echo $formUsuario->getWidget('nome')->render($formUsuario->getName() . "[nome]", $valoresInciais['nome'] , array('class'=>"span5",'id' => 'realname', 'placeholder' => "Informe seu nome Completo")); ?>                            
+                            <?php echo $formUsuario->getWidget('nome')->render($formUsuario->getName() . "[nome]", $valoresInciais['nome'] , array('class'=>"span5",'id' => 'realname', 'placeholder' => "Informe seu Nome e sobrenome")); ?>                            
                         </div>
                     </div>
                 </fieldset>

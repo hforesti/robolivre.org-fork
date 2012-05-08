@@ -30,7 +30,7 @@ if(!isset($conteudo)){
                         $nomeConteudo = array_key_exists('nome',$valoresInciais)?$valoresInciais['nome']:"";
                     }
                     ?>
-                    <?php echo $form->getWidget('nome')->render($form->getName() . "[nome]", $nomeConteudo, array('id' => 'nome', 'placeholder' => "Título do contúdo", 'class' => 'span7')); ?>
+                    <?php echo $form->getWidget('nome')->render($form->getName() . "[nome]", $nomeConteudo, array('id' => 'nome', 'placeholder' => "Nome do conteúdo", 'class' => 'span7')); ?>
                     </div>
                 </div>
 

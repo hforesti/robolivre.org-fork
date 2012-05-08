@@ -328,11 +328,12 @@ body.home .top-login {
 #stream .notifications .vcard:hover {
 	border-top: 1px solid #049cdb;
 }
-.notifications .vcard .notf {
-	cursor: pointer;
+.notifications .vcard .notf, 
+.requests .vcard .notf {
 	padding-bottom: 10px;
 	width: 99% !important;
 }
+.notifications .vcard .notf {cursor: pointer}
 #stream .alert {clear: both;}
 	#stream .photo {
 		float: left;

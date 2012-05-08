@@ -17,13 +17,6 @@
                 </form>
             </div>
 
-            <!-- ========================================================== -->
-            <!-- ! Modelo de alerta quando tiver solicitação de amizade   -->
-            <!-- ========================================================== -->
-            <!--<div class="alert">
-                    Você possui <strong>2 solicitações de amizade</strong> sem resposta. <a href="inbox.shtml">Confira nas suas notificações</a>.
-            </div>-->
-
             <ul>
                 
                 <?php foreach ($amigos as $amigo) { ?>
