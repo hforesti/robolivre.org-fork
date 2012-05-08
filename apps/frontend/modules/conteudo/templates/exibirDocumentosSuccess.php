@@ -70,7 +70,7 @@ $slug = Util::criaSlug($conteudo->getNome());
                         <?php foreach ($documentos as $documento){ ?>
                         
                         <tr>
-                            <td><a href="/uploads/documentos/<?php echo $slug ?>/<?php echo $documento->getNomeArquivo() ?>"><i class="icon-file icon-gray"></i> <?php echo $documento->getNomeDocumento() ?> <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small></a></td>
+                            <td><a href="<?php echo image_path("/uploads/documentos/$slug/".$documento->getNomeArquivo()) ?>"><i class="icon-file icon-gray"></i> <?php echo $documento->getNomeDocumento() ?> <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small></a></td>
                             <td><?php echo strtoupper($documento->getExtensaoArquivo()) ?></td>
 <!--                            <td><a href="#"><span class="label label-info">100</span></a></td>-->
                             <td>
