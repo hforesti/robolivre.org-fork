@@ -20,6 +20,21 @@ class conteudosActions extends robolivreAction
         $this->melhoresConteudos = Doctrine::getTable("Conteudos")->getConteudosListagem();
     }
 
+    
+    
+    public function executeRemoverDocumento(sfWebRequest $request) {
+        $ultimaUrl = $request->getReferer();
+        $slug = $request->getParameter('slug');
+        $conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
+        $this->forward404Unless($conteudo,"Conteudo $slug não encontrado");
+        if($conteudo->getPodeColaborar() && $request->hasParameter('u')){
+            Doctrine::getTable('Documentos')->removeDocumento($request->getParameter('u'));
+            $this->redirect($ultimaUrl);
+        }else{
+            $this->forward404("Não pode colaborar com o conteudo");
+        }
+    }
+    
     public function executeCriar(sfWebRequest $request) {
         $this->formConteudo = new ConteudosForm();
         
@@ -196,7 +211,6 @@ class conteudosActions extends robolivreAction
             }
             
             $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_ANEXOS_CONJUNTO,$this->conteudo->getIdConjunto(),Conjuntos::TIPO_CONTEUDO);
-            
             if(!$pasta){
                 $pasta = new Pastas();
                 $pasta->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
@@ -209,16 +223,24 @@ class conteudosActions extends robolivreAction
                 $pasta->save();
                 
                 $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(),Pastas::TIPO_PASTA_ANEXOS_CONJUNTO,$this->conteudo->getIdConjunto(),Conjuntos::TIPO_CONTEUDO);
+                if(!file_exists(sfConfig::get('sf_upload_dir')."/documentos/$slug")){
+                   mkdir(sfConfig::get('sf_upload_dir')."/documentos/$slug");
+                }
             }
-            
             foreach($arrayArquivos as $nomeArquivo){
-                if($nomeArquivo!=""){
+                if($nomeArquivo!="" && file_exists(sfConfig::get('sf_upload_dir')."/".$nomeArquivo)){
+                    $arrayFile = explode(".",$nomeArquivo);
+                    $nomeFile = $arrayFile[0];
+                    $extensao = end($arrayFile);
+                    $idUsuarioLogado = UsuarioLogado::getInstancia()->getIdUsuario();
+                    copy(sfConfig::get('sf_upload_dir')."/".$nomeArquivo,sfConfig::get('sf_upload_dir')."/documentos/$slug/".$nomeFile."_".$idUsuarioLogado."_".time().".".$extensao);
+
                     $documento = new Documentos();
                     $documento->setIdPasta($pasta->getIdPasta());
                     $documento->setIdUsuario($pasta->getIdUsuario());
                     $documento->setIsCodigoFonte(false);
-                    $documento->setNomeArquivo($nomeArquivo);
-                    $documento->setNomeDocumento($nomeArquivo);
+                    $documento->setNomeArquivo($nomeFile."_".$idUsuarioLogado."_".time().".".$extensao);
+                    $documento->setNomeDocumento($nomeFile."_".$idUsuarioLogado."_".time().".".$extensao);
                     
                     $documento->save();
                 }
@@ -231,15 +253,23 @@ class conteudosActions extends robolivreAction
             
             $this->redirect('conteudo/'.$this->conteudo->getConjunto()->getSlug());
         } else {
+            $valores = $form->getTaintedValues();
             $this->formConteudo = $form;
             $erros = $form->getErrorSchema()->getErrors();
+            
             if (isset($erros['nome'])) {
-                $objConteudo = $form->getObject();
-                $this->nomeConteudoErro = $objConteudo->getNome();
+                $this->nomeConteudoErro = $valores['nome'];
             }
             
             
             /* FAZER ARRAY TAGS VIRAR OBJETO, VER MODELO TagsConteudosTable->getTagsConteudo() */
+//            
+//            $arrayTags = array();
+//            
+//            foreach($arrayTags as $tagRecuperar){
+//                
+//            }
+            
             $this->tags = array();
             $this->setTemplate("criar");
         }
@@ -341,7 +371,7 @@ class conteudosActions extends robolivreAction
                 }
             }
             foreach($arrayArquivos as $nomeArquivo){
-                if($nomeArquivo!=""){
+                if($nomeArquivo!="" && file_exists(sfConfig::get('sf_upload_dir')."/".$nomeArquivo)){
                     $arrayFile = explode(".",$nomeArquivo);
                     $nomeFile = $arrayFile[0];
                     $extensao = end($arrayFile);
@@ -352,8 +382,8 @@ class conteudosActions extends robolivreAction
                     $documento->setIdPasta($pasta->getIdPasta());
                     $documento->setIdUsuario($pasta->getIdUsuario());
                     $documento->setIsCodigoFonte(false);
-                    $documento->setNomeArquivo($nomeArquivo);
-                    $documento->setNomeDocumento($nomeArquivo);
+                    $documento->setNomeArquivo($nomeFile."_".$idUsuarioLogado."_".time().".".$extensao);
+                    $documento->setNomeDocumento($nomeFile."_".$idUsuarioLogado."_".time().".".$extensao);
                     
                     $documento->save();
                 }

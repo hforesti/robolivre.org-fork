@@ -10,7 +10,7 @@
         <div class="list-mgmt">
 
             <div class="row">
-                <h2 class="span7">Conteúdos seguidos por você ‧ <small><?php echo $quantidadeConteudosRelacionados ?></small></h2>	
+                <h2 class="span7">Conteúdos relacionados ‧ <small><?php echo $quantidadeConteudosRelacionados ?></small></h2>	
             
                 <form action="<?php echo url_for('@conteudo_acao?slug='. Util::criaSlug($conteudo->getNome())."&acao=exibirConteudosRelacionados") ?>" class="list-filter">
                     <input type="text" id="nome" value="<?php echo $nome; ?>" name="nome" class="span3 search-query" placeholder="Buscar na lista de conteúdos">

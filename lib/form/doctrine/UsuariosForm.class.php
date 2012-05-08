@@ -16,6 +16,7 @@ class UsuariosForm extends BaseUsuariosForm {
     const SOMENTE_INFO = 3;
     const LOGIN = 4;
     const CONFIGURACAO = 5;
+    const REDEFINIR_SENHA = 6;
 
     public $tipoFormulario = 0;
 
@@ -143,11 +144,23 @@ class UsuariosForm extends BaseUsuariosForm {
                     'confirmacaoSenhaNova' => new sfWidgetFormInputPassword(),                    
                 ),  ConfiguracoesEmailUsario::getWidgetsInputsConfiguracao()));
                 $this->setValidators(array_merge(array(
-                    'nome' => new sfValidatorString(array('max_length' => 255)),
-                    'senha' => new sfValidatorString(array('max_length' => 100)),
+                    'nome' => new sfValidatorString(array('max_length' => 255),array('required'=>'Por favor preencha seu nome e sobrenome.')),
+                    'senha' => new sfValidatorString(array('max_length' => 100),array('required'=>'Senha informada não está correta. Verifique a digitação.')),
                     'senhaNova' => new sfValidatorString(array('max_length' => 100, 'required' => false)),
                     'confirmacaoSenhaNova' => new sfValidatorString(array('max_length' => 100, 'required' => false)),
                 ),  ConfiguracoesEmailUsario::getWidgetsValidatorsConfiguracao()));
+
+                break;
+            case self::REDEFINIR_SENHA:
+                
+                $this->setWidgets(array(
+                    'senhaNova' => new sfWidgetFormInputPassword(),
+                    'confirmacaoSenhaNova' => new sfWidgetFormInputPassword(),                    
+                ));
+                $this->setValidators(array(
+                    'senhaNova' => new sfValidatorString(array('max_length' => 100, 'required' => true),array('required'=>'Por favor preencha')),
+                    'confirmacaoSenhaNova' => new sfValidatorString(array('max_length' => 100, 'required' => true),array('required'=>'Por favor repita a nova senha')),
+                ));
 
                 break;
         }
@@ -250,8 +263,30 @@ class UsuariosForm extends BaseUsuariosForm {
         }
 
         if ($this->isNew()) {
+            
+            if ($this->getTipoFormulario() == self::CONFIGURACAO) {
 
-            if ($this->getTipoFormulario() != self::LOGIN) {
+                $login = UsuarioLogado::getInstancia()->getEmail();
+                if($valores['senha']!="" && !Doctrine::getTable('Usuarios')->login($login, md5($valores['senha']))){
+                    $error = new sfValidatorError($this->validatorSchema['senha'], 'Senha informada não está correta. Verifique a digitação.');
+                    $this->errorSchema->addError($error, 'senha');
+                    $valido = false;
+                }
+                
+                if(isset($valores['senhaNova']) && $valores['senhaNova'] != $valores['confirmacaoSenhaNova']){
+                    $error = new sfValidatorError($this->validatorSchema['confirmacaoSenhaNova'], 'Repita a mesma senha');
+                    $this->errorSchema->addError($error, 'confirmacaoSenhaNova');
+                    $valido = false;
+                }
+                
+            }else if ($this->getTipoFormulario() != self::REDEFINIR_SENHA) {
+                
+                if(isset($valores['senhaNova']) && $valores['senhaNova'] != $valores['confirmacaoSenhaNova']){
+                    $error = new sfValidatorError($this->validatorSchema['confirmacaoSenhaNova'], 'Repita a mesma senha');
+                    $this->errorSchema->addError($error, 'confirmacaoSenhaNova');
+                    $valido = false;
+                }
+            }else if ($this->getTipoFormulario() != self::LOGIN) {
 
                 $email = $valores['email'];
                 $login = $valores['login'];
@@ -278,7 +313,7 @@ class UsuariosForm extends BaseUsuariosForm {
                 } catch (Exception $e) {
                     die($e->getMessage());
                 }
-            }
+            } 
         }
 
         return $valido;

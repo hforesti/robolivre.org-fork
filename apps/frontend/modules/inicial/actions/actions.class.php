@@ -78,13 +78,13 @@ class inicialActions extends robolivreAction {
     }
 
     public function executeTelaLogin(sfWebRequest $request) {
-        $this->ultimaPagina = $request->getReferer();
+        $this->ultimaPagina = $request->getAttribute('ultima_pagina');
         $this->formLogin = new UsuariosForm(null, null, null, UsuariosForm::LOGIN);
     }
     
     public function executeLogin(sfWebRequest $request) {
         $form = new UsuariosForm(null, null, null, UsuariosForm::LOGIN);
-        if($request->hasParameter('ultima_pagina')){
+        if($request->hasParameter('ultima_pagina') && $request->getParameter('ultima_pagina')!=""){
             $ultimaPagina = $request->getParameter('ultima_pagina');
         }else{
             $ultimaPagina = "perfil/index";

@@ -45,7 +45,8 @@
 
                                 <li class="divider-vertical"></li>
                             </ul>
-                            <?php if($sf_context->getModuleName() != "inicial" || $sf_context->getActionName()!="telaLogin"){ ?>
+                            <?php if(!($sf_context->getModuleName() == "inicial" && is_numeric(array_search($sf_context->getActionName(), array('telaLogin','loginInicial','login'))))
+                                    && !($sf_context->getModuleName() == "perfil" && is_numeric(array_search($sf_context->getActionName(), array('novaSenha','processarNovaSenha'))))){ ?>
                             <ul class="nav pull-right">
                                 <li class="divider-vertical"></li>
                                 <li>
@@ -57,12 +58,13 @@
                     </div>
                 </div>
             </div> 
-            <?php if($sf_context->getModuleName() != "inicial" || $sf_context->getActionName()!="telaLogin"){ ?>
-
+            <?php if(!($sf_context->getModuleName() == "inicial" && is_numeric(array_search($sf_context->getActionName(), array('telaLogin','loginInicial','login'))))
+                        && !($sf_context->getModuleName() == "perfil" && is_numeric(array_search($sf_context->getActionName(), array('novaSenha','processarNovaSenha'))))){ ?>
+            
             <div class="modal fade" id="modalLogin">
                 <div class="modal-header">
                     <a class="close" data-dismiss="modal">×</a>
-                    <h3>Entrar</h3>
+                    <h3>Entrar <?php echo $sf_context->getModuleName()." ".$sf_context->getActionName()?></h3>
                 </div>
                 <div class="modal-body">
                     <?php $form = new UsuariosForm(null, null, null, UsuariosForm::LOGIN); ?>

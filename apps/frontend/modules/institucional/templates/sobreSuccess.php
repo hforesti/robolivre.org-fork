@@ -42,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php /*TABELA DE ARQUIVOS DA PASTA "/web/arquivosInstitucionais" */ Util::imprimeListaArquivos($arquivos) ?>
+                <?php Util::imprimeListaArquivos("arquivosInstitucionais") ?>
             </tbody>
         </table>
 

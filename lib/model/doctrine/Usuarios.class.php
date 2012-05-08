@@ -46,7 +46,8 @@ class Usuarios extends BaseUsuarios
             parent::_set('escola',$usuario_logado->getEscola());
             parent::_set('profissao',$usuario_logado->getProfissao());
             parent::_set('aula_robolivre',$usuario_logado->getAulaRobolivre());
-            
+            parent::_set('parametros_email',$usuario_logado->getParametrosEmail());
+//            die($usuario_logado->getParametrosEmail());
             $this->setTipoSolicitacaoAmizade(self::PROPRIO_USUARIO);
         }
     }

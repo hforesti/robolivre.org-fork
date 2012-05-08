@@ -57,9 +57,23 @@
     </div>
 
     <div class="row" id="intro">
-
+        <?php 
+//        $config = HTMLPurifier_Config::createDefault();
+//        
+//        $config->set('Core.Encoding', 'UTF-8');
+//        $config->set('HTML.Doctype', 'HTML 4.01 Transitional');
+//        $config->set('HTML.Allowed', 'p,b,a[href],i');
+//        $config->set('URI.Base', 'http://www.example.com');
+//        $config->set('URI.MakeAbsolute', true);
+//        $config->set('AutoFormat.AutoParagraph', true);
+//        $config->set('Cache.SerializerPath', '/home/maxguenes/GitHub/robolivre.org/lib/robolivre/htmlpurifier-4.4.0/library/HTMLPurifier/DefinitionCache/Serializer');
+//        
+//        $purifier = new HTMLPurifier();
+//        $clean_html = $purifier->purify( "<b>BOLD</b>" );
+        //<?php// echo $clean_html
+        ?>
         <div class="span6">
-            <h1>É fácil fazer...</h1>
+            <h1>É fácil fazer... </h1>
             <p>A robolivre.org é uma plataforma de desenvolvimento colaborativo e está disponível desde 2005 para ajudar a mostrar, que a robótica pode e deve ser desenvolvida por qualquer pessoa que tenha interesse. <a href="<?php echo url_for("institucional/sobre") ?>">Mais sobre…</a></p>
         </div>
 

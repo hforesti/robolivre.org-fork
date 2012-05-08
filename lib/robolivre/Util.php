@@ -147,16 +147,61 @@ class Util {
         $v = sfProjectConfiguration::getActive();
         return $v->getRootDir() . "/web/arquivosInstitucionais";
     }
+    public static function getDiretorioArquivosPublicacoesCientificas() {
+        $v = sfProjectConfiguration::getActive();
+        return $v->getRootDir() . "/web/arquivosPublicacoesCientificas";
+    }
+    public static function getDiretorioArquivosDownloadImprensa() {
+        $v = sfProjectConfiguration::getActive();
+        return $v->getRootDir() . "/web/arquivosDownloadImprensa";
+    }
     
-    public static function imprimeListaArquivos($lista){
+    private static function getArrayArquivosDiretorio($diretorio){
+        $itens = array();
+        // abre o diretório
+        $ponteiro = opendir($diretorio);
+        // monta os vetores com os itens encontrados na pasta
+        while ($nome_itens = readdir($ponteiro)) {
+            if($nome_itens!="." && $nome_itens!=".."){
+                $path_parts = pathinfo($diretorio."/".$nome_itens);
+                
+                $array['nome'] = $path_parts['filename'];
+                $array['extensao'] = $path_parts['extension'];
+                $array['arquivo'] = $path_parts['basename'];
+                //2592000 = 1 mes
+                if((microtime(true) - filemtime($diretorio."/".$nome_itens))<=2592000){
+                    $array['novo'] = true;
+                }else{
+                    $array['novo'] = false;
+                }
+                $itens[] = $array;
+            }
+        }
+        
+        return $itens;
+    }
+    
+    public static function imprimeListaArquivos($pasta){
+        if($pasta[0]=='/'){
+            $pasta = substr($pasta, 1);
+        }
+        $v = sfProjectConfiguration::getActive();
+        $diretorio = $v->getRootDir() . "/web/".$pasta;
+        
+        $lista = self::getArrayArquivosDiretorio($diretorio);
+        
         sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
         $string = "";
-        foreach($lista as $item){
-            
+        foreach(array_splice($lista, 0, 5) as $item){
+            if(strlen($item['nome'])>50 ){
+                $nomeArquivo = substr($item['nome'], 0,50)."...";
+            }else{
+                $nomeArquivo = $item['nome'];
+            }
             
             $string .= "<tr>";
-            $string .= "    <td>".($item['novo']?"<span class=\"label label-info\">Novo</span>":""). "<a href=\"/arquivosInstitucionais/".$item['arquivo']."\">".$item['nome']."</a></td>";
-            $string .= "    <td>".$item['extensao']."</td>";
+            $string .= "    <td>".($item['novo']?"<span class=\"label label-info\">Novo</span>":""). "<a href=\"/$pasta/".$item['arquivo']."\">".$nomeArquivo."</a></td>";
+            $string .= "    <td>".strtoupper($item['extensao'])."</td>";
             $string .= "</tr>";
             
         }
@@ -248,11 +293,11 @@ class Util {
             if (!isset($imagem) || $imagem == "") {
                 switch ($tamanhoImagem) {
                     case Util::IMAGEM_GRANDE:
-                        return "/assets/img/rl/170.gif";
+                        return "/assets/img/rl/_conteudo-default-large.png";
                     case Util::IMAGEM_MEDIA:
-                        return "/assets/img/rl/60.gif";
+                        return "/assets/img/rl/_conteudo-default-60.png";
                     case Util::IMAGEM_MINIATURA:
-                        return "/assets/img/rl/20.gif";
+                        return "/assets/img/rl/_conteudo-default-20.png";
                 }
             } else {
                 switch ($tamanhoImagem) {

@@ -146,14 +146,14 @@ class UsuarioLogado{
                        
             switch($modulo){
                 case "inicial" : 
-                    if(is_numeric(array_search($acao, array('telaLogin')))){
+                    if(is_numeric(array_search($acao, array('telaLogin','loginInicial','login')))){
                         return true;
                     }
                     break;
                 case "conteudo":
                         return true;
                 case "perfil":
-                        if(is_numeric(array_search($acao, array('novaSenha')))){
+                        if(is_numeric(array_search($acao, array('novaSenha','processarNovaSenha')))){
                             return true;
                         }
                         break;

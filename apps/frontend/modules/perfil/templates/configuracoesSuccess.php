@@ -5,7 +5,7 @@ if(!empty($taintedValues)){
     $valoresInciais = array_merge($valoresInciais, $taintedValues);
 }
 
-//Util::pre($valoresInciais);
+$erros = $formUsuario->getErrorSchema()->getErrors();
 
 ?>
 
@@ -102,28 +102,47 @@ if(!empty($taintedValues)){
                 </fieldset>
 
                 <fieldset class="tab-pane fade in" id="senha">
-
-                    <div class="control-group">
+                    
+                    <div id="div-nova-senha" class="control-group">
                         <label class="control-label" for="pass">Nova senha</label>
                         <div class="controls">
                             <?php echo $formUsuario->getWidget('senhaNova')->render($formUsuario->getName() . "[senhaNova]", null , array('id' => 'pass-new', 'placeholder' => "Nova senha")); ?>                            
-                            <span class="help-inline">informe a nova senha</span>
+                            <span id="help-forca-senha" class="help-inline">informe a nova senha</span>
                         </div>
                     </div>
-
-                    <div class="control-group">
+                    <?php 
+                    $class = "";
+                    $descricao = "";
+                    if (isset($erros['confirmacaoSenhaNova'])) {
+                        $class = "error";
+                        $descricao = $erros['confirmacaoSenhaNova'];
+                    }
+                    ?>
+                    <div id="div-confirmacao-senha" class="control-group <?php echo $class ?>">
                         <label class="control-label" for="pass-conf">Confirme a nova senha</label>
                         <div class="controls">
                             <?php echo $formUsuario->getWidget('confirmacaoSenhaNova')->render($formUsuario->getName() . "[confirmacaoSenhaNova]", null , array('id' => 'pass-conf', 'placeholder' => "Repetir a senha")); ?>                            
+                            <span id="help-confirmacao-senha" class="help-inline"><?php echo $descricao ?></span>
                         </div>
                     </div>
                 </fieldset>
-
+                
                 <fieldset class="tab-pane fade in" id="nomecomp">
-                    <div class="control-group">
+                    <?php 
+                    $class = "";
+                    $descricao = "";
+                    if (isset($erros['nome'])) {
+                        $class = "error";
+                        $descricao = $erros['nome'];
+                    }
+                    ?>
+                    
+                    <div class="control-group <?php echo $class ?>">
                         <label class="control-label" for="pass">Nome e sobrenome</label>
                         <div class="controls">
                             <?php echo $formUsuario->getWidget('nome')->render($formUsuario->getName() . "[nome]", $valoresInciais['nome'] , array('class'=>"span5",'id' => 'realname', 'placeholder' => "Informe seu Nome e sobrenome")); ?>                            
+                            <?php echo $formUsuario->getWidget('nome')->render($formUsuario->getName() . "[nome]", $valoresInciais['nome'] , array('class'=>"span5",'id' => 'realname', 'placeholder' => "Informe seu nome Completo")); ?>                            
+                            <span class="help-inline"><?php echo $descricao ?></span>
                         </div>
                     </div>
                 </fieldset>
@@ -131,12 +150,20 @@ if(!empty($taintedValues)){
             </div><!-- /tab-content -->
 
             <hr>
-
-            <div class="control-group">
+            
+            <?php 
+            $class = "";
+            $descricao = "Para alterar informe a sua senha atual";
+            if (isset($erros['senha'])) {
+                $class = "error";
+                $descricao = $erros['senha'];
+            }
+            ?>
+            <div class="control-group <?php echo $class ?>">
                 <label class="control-label" for="pass">Senha atual</label>
                 <div class="controls">
                     <?php echo $formUsuario->getWidget('senha')->render($formUsuario->getName() . "[senha]", null , array('id' => 'pass', 'placeholder' => "Sua senha")); ?>                            
-                    <span class="help-inline">Para alterar informe a sua senha atual</span>
+                    <span class="help-inline"><?php echo $descricao ?></span>
                 </div>
             </div>
 
@@ -154,3 +181,57 @@ if(!empty($taintedValues)){
 
 
 </div><!-- /row -->
+<script type="text/javascript">
+    //<![CDATA[
+    
+    function atualizaForcaSenha(){
+
+        var forca = getForcaSenha(document.getElementById('pass-new'),document.getElementById('help-forca-senha'));
+        if(forca == 1){
+            document.getElementById('div-nova-senha').className = "control-group";
+            document.getElementById('help-forca-senha').innerHTML = "informe a nova senha";
+        }else if(forca){
+            document.getElementById('div-nova-senha').className = "control-group error";
+        }else{
+            document.getElementById('div-nova-senha').className = "control-group success";
+        }
+        
+        validaConfirmacaoSenhaEmail();
+    }
+    
+    function verificaFormValidado(){
+        if($("#form-editar-conf .control-group").hasClass('error') || $("#form-editar-conf .control-group").hasClass('warning')){
+            return false;
+        }
+    }
+    
+    function validaConfirmacaoSenhaEmail(){
+
+        var isValido = true;
+       
+        if(document.getElementById('pass-new').value == document.getElementById('pass-conf').value){
+            document.getElementById('div-confirmacao-senha').className = "control-group success";
+            document.getElementById('help-confirmacao-senha').innerHTML = "";
+        }else{
+            document.getElementById('div-confirmacao-senha').className = "control-group error";
+            document.getElementById('help-confirmacao-senha').innerHTML = "Repita a mesma senha acima!";
+            
+            isValido = false;
+        }
+        
+        return isValido;
+    }
+    
+    $('#pass-new').keyup(function() {
+       atualizaForcaSenha();
+    });
+    $('#pass-conf').keyup(function() {
+       validaConfirmacaoSenhaEmail();
+    });
+    
+     $("#form-editar-conf").submit(function() {
+        return validaConfirmacaoSenhaEmail() && verificaFormValidado();
+    }); 
+
+    //]]>   
+</script>

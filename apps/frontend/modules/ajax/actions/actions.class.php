@@ -23,7 +23,7 @@ class ajaxActions extends sfActions {
             $this->forward404();
         }
     }
-//    
+
 //    public function executeAjaxValidaLinkYoutube(sfWebRequest $request){
 //        $link = $request->getParameter("link");
 //        
@@ -229,7 +229,7 @@ class ajaxActions extends sfActions {
         $sizeLimit = 0.5 * 1024 * 1024;
 
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-        $result = $uploader->handleUpload('uploads/');
+        $result = $uploader->handleUpload('uploads/',true);
         
         $this->criarTumbnails($_GET['qqfile']);
         
