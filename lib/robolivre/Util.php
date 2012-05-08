@@ -293,11 +293,11 @@ class Util {
             if (!isset($imagem) || $imagem == "") {
                 switch ($tamanhoImagem) {
                     case Util::IMAGEM_GRANDE:
-                        return "/assets/img/rl/170.gif";
+                        return "/assets/img/rl/_conteudo-default-large.png";
                     case Util::IMAGEM_MEDIA:
-                        return "/assets/img/rl/60.gif";
+                        return "/assets/img/rl/_conteudo-default-60.png";
                     case Util::IMAGEM_MINIATURA:
-                        return "/assets/img/rl/20.gif";
+                        return "/assets/img/rl/_conteudo-default-20.png";
                 }
             } else {
                 switch ($tamanhoImagem) {
