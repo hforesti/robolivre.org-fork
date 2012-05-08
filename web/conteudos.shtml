@@ -9,13 +9,13 @@
 
 <div class="row-fluid">
       <div class="span4">
-        <span class="img-step step1"></span>
+        <span class="img-step step1 hidden-phone"></span>
         <span class="label label-success">1</span> <strong>Conteúdos</strong> aqui na rede são como galhos de uma árvore</div>
       <div class="span4">
-        <span class="img-step step2"></span>
+        <span class="img-step step2 hidden-phone"></span>
         <span class="label label-success">2</span> Em cada conteúdo é possível encontrar coisas "penduradas"<br> (<i class="icon-picture"></i> Imagens, <i class="icon-share-alt"></i> Links...)</div>
       <div class="span4">
-        <span class="img-step step3"></span>
+        <span class="img-step step3 hidden-phone"></span>
         <span class="label label-success">3</span> Conteúdos podem estar conectados, ou seja,<br> <i class="icon-tag"></i> Conteúdos relacionados</div>
 
 </div>
