@@ -16,6 +16,7 @@ class UsuariosForm extends BaseUsuariosForm {
     const SOMENTE_INFO = 3;
     const LOGIN = 4;
     const CONFIGURACAO = 5;
+    const REDEFINIR_SENHA = 6;
 
     public $tipoFormulario = 0;
 
@@ -150,6 +151,18 @@ class UsuariosForm extends BaseUsuariosForm {
                 ),  ConfiguracoesEmailUsario::getWidgetsValidatorsConfiguracao()));
 
                 break;
+            case self::REDEFINIR_SENHA:
+                
+                $this->setWidgets(array(
+                    'senhaNova' => new sfWidgetFormInputPassword(),
+                    'confirmacaoSenhaNova' => new sfWidgetFormInputPassword(),                    
+                ));
+                $this->setValidators(array(
+                    'senhaNova' => new sfValidatorString(array('max_length' => 100, 'required' => true),array('required'=>'Por favor preencha')),
+                    'confirmacaoSenhaNova' => new sfValidatorString(array('max_length' => 100, 'required' => true),array('required'=>'Por favor repita a nova senha')),
+                ));
+
+                break;
         }
 
         if ($this->getTipoFormulario() == self::LOGIN) {
@@ -266,6 +279,13 @@ class UsuariosForm extends BaseUsuariosForm {
                     $valido = false;
                 }
                 
+            }else if ($this->getTipoFormulario() != self::REDEFINIR_SENHA) {
+                
+                if(isset($valores['senhaNova']) && $valores['senhaNova'] != $valores['confirmacaoSenhaNova']){
+                    $error = new sfValidatorError($this->validatorSchema['confirmacaoSenhaNova'], 'Repita a mesma senha');
+                    $this->errorSchema->addError($error, 'confirmacaoSenhaNova');
+                    $valido = false;
+                }
             }else if ($this->getTipoFormulario() != self::LOGIN) {
 
                 $email = $valores['email'];

@@ -153,7 +153,7 @@ class UsuarioLogado{
                 case "conteudo":
                         return true;
                 case "perfil":
-                        if(is_numeric(array_search($acao, array('novaSenha')))){
+                        if(is_numeric(array_search($acao, array('novaSenha','processarNovaSenha')))){
                             return true;
                         }
                         break;

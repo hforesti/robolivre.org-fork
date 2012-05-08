@@ -34,19 +34,53 @@
         <h3>Recuperar Senha</h3>
     </div>
     <div class="modal-body">
-        <form id="esqueci-form" class="form-inline" action="#">
-            <div class="alert fade in">
-                <strong>Tudo bem!</strong> Um link para recuperar sua senha foi enviado para o seu email <em>rodrigo@robolivre.org</em>.
+        <form id="esqueci-form" method="post" class="form-inline" action="<?php echo url_for("inicial/esqueciSenha") ?>">
+
+            <div id="alerta-esqueci-senha" class="alert fade in">
+
             </div>
 
-            <input id="email-esqueci" type="email" placeholder="Seu endereço de e-mail ou nome de usuário" class="span4" />
+            <input id="email-esqueci" name="email" type="email" placeholder="Seu endereço de e-mail" class="span4" />
 
-            <input value="Recuperar senha" type="submit" class="btn btn-primary" tabindex="4" />
-
-
+            <input id="btn-recuperar-senha" value="Recuperar senha" type="submit" class="btn btn-primary" tabindex="4" />
         </form>
     </div>
     <div class="modal-footer">
         <a href="#" class="btn" data-dismiss="modal">Fechar</a>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#alerta-esqueci-senha").hide();
+    });
+
+    function getValue(id) {
+        return document.getElementById(id).value;
+    }
+
+    $("#esqueci-form").submit(function(){
+        try{
+
+        $("#btn-recuperar-senha").append("<img src='<?php echo image_path('/assets/img/rl/loading.gif'); ?>' id='imagem-load' alt='Carregando'>");
+
+        $.ajax({
+            url: <?php echo "'" . url_for("ajax/ajaxEsqueciSenha") . "?email='+getValue('email-esqueci')" ?>,
+            success: function(resposta){
+
+                $("#imagem-load").remove();
+                $("#alerta-esqueci-senha").show();
+
+                if(resposta == "false"){
+                    $("#alerta-esqueci-senha").html("O endereço de email <strong>"+getValue('email-esqueci')+"</strong> não está cadastrado no nosso site. Tente novamente.");
+                }else{
+                    $("#alerta-esqueci-senha").html(resposta);                        
+                }
+            }
+        });
+        }catch(e){
+            alert(e);
+        }
+        return false;
+    });
+</script>

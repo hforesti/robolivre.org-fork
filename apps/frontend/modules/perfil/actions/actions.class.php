@@ -42,8 +42,46 @@ class perfilActions extends robolivreAction {
     public function executeNovaSenha(sfWebRequest $request) {
         $id = $request->getParameter('u');
         $token = $request->getParameter('token');
+
         $this->usuario = Doctrine::getTable("Usuarios")->validaToken($id,$token);
         $this->forward404Unless($this->usuario);
+        
+        $this->formSenha = new UsuariosForm(null, array(), null, UsuariosForm::REDEFINIR_SENHA);
+        $this->resultado = false;
+        $this->token = $token;
+        $this->id = $id;
+    }
+    public function executeProcessarNovaSenha(sfWebRequest $request) {
+        $id = $request->getParameter('u');
+        $token = $request->getParameter('token');
+        
+        $usuario = Doctrine::getTable("Usuarios")->validaToken($id,$token);
+        $this->forward404Unless($usuario);
+        
+        $form = new UsuariosForm($usuario, null, null, UsuariosForm::REDEFINIR_SENHA);
+        
+        $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+        if($form->isValid()){
+            $valores = $form->getTaintedValues();
+            $objUsuario = $form->getObject();
+            
+            if(isset($valores['senhaNova']) && $valores['senhaNova']!=""){
+                $objUsuario->setSenha($valores['senhaNova']);
+            }
+            $objUsuario->setIdUsuario($id);
+            $objUsuario->setToken($token);
+            
+            $usuario = Doctrine::getTable('Usuarios')->redefinirSenhaUsuario($objUsuario);
+            
+            $this->resultado = true;
+        }else{
+            $this->formSenha = $form;
+            $this->resultado = false;
+            $this->token = $token;
+            $this->id = $id;
+        }
+        
+        $this->setTemplate('novaSenha');
     }
     
     public function executeConfiguracoes(sfWebRequest $request) {

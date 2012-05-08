@@ -22,7 +22,6 @@ class UsuariosTable extends Doctrine_Table {
                 ->select('*')
                 ->from('Usuarios')
                 ->where("(id_usuario = $idUsuario AND token='$token')")
-                ->andWhere("senha = '$senha'")
                 ->andWhere("ativo = 1");
 
 
@@ -51,6 +50,61 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setEscola($reg['escola']);
                 $objUsuario->setProfissao($reg['profissao']);
                 $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
+                
+                return $objUsuario;
+            }
+        }
+        return false;
+    }
+    
+    public function redefinirSenhaUsuario($objUsuario) {
+
+        $query = "UPDATE usuarios 
+                 SET 
+             senha = '".$objUsuario->getSenha()."', token = NULL
+            WHERE id_usuario = '".$objUsuario->getIdUsuario()."' AND token = '".$objUsuario->getToken()."' AND ativo = 1";
+
+        $connection = Doctrine_Manager::getInstance()
+                        ->getCurrentConnection()->getDbh();
+        // Get Connection of Database  
+        $statement = $connection->prepare($query);
+        // Make Statement  
+        $statement->execute();
+        
+        $q = Doctrine_Query::create()
+                ->select('*')
+                ->from('Usuarios')
+                ->where("id_usuario = ".$objUsuario->getIdUsuario())
+                ->andWhere("ativo = 1");
+
+
+        $resultado = $q->fetchArray();
+
+        if ($resultado) { 
+            foreach ($resultado as $reg) {
+                $objUsuario = new Usuarios();
+
+                $objUsuario->setCurso($reg['curso']);
+                $objUsuario->setDataNascimento($reg['data_nascimento']);
+                $objUsuario->setEmail($reg['email']);
+                $objUsuario->setEndereco($reg['endereco']);
+                $objUsuario->setHabilidades($reg['habilidades']);
+                $objUsuario->setNivelEscolaridade($reg['nivel_escolaridade']);
+                $objUsuario->setIdUsuario($reg['id_usuario']);
+                $objUsuario->setLogin($reg['login']);
+                $objUsuario->setSexo($reg['sexo']);
+                $objUsuario->setSite($reg['site']);
+                $objUsuario->setSiteEmpresa($reg['site_empresa']);
+                $objUsuario->setSobreMim($reg['sobre_mim']);
+                $objUsuario->setNome($reg['nome']);
+                $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+                $objUsuario->setDataCriacaoPerfil($reg['data_criacao_perfil']);
+                $objUsuario->setEmpresa($reg['empresa']);
+                $objUsuario->setEscola($reg['escola']);
+                $objUsuario->setProfissao($reg['profissao']);
+                $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
+                $objUsuario->setParametrosEmail($reg['parametros_email']);
+
                 
                 return $objUsuario;
             }
