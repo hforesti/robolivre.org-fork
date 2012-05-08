@@ -1,5 +1,6 @@
 <?php
 $arrayNotificacoes = UsuarioLogado::getInstancia()->getSolicitacoesPendentes();
+$quantidadeSolicitacoes = UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes();
 //Util::pre(array_keys($arrayNotificacoes));
 ?>
 
@@ -15,7 +16,7 @@ $arrayNotificacoes = UsuarioLogado::getInstancia()->getSolicitacoesPendentes();
         <div id="stream">
 
             <div class="page-header">
-                <h1>Notificações ‧ <small><span class="notf-num">2</span> <span class="notf-txt-num">não lidas</span></small> </h1>
+                <h1>Notificações ‧ <small><span class="notf-num"><?php echo $quantidadeSolicitacoes ?></span> <span class="notf-txt-num">não lidas</span></small> </h1>
             </div>
             <?php foreach (array_keys($arrayNotificacoes) as $data) { ?>
                 <?php $notificacoes = $arrayNotificacoes[$data]; ?>                    

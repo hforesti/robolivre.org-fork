@@ -163,7 +163,7 @@ class ConteudosTable extends Doctrine_Table {
         if ($nome != null && trim($nome)!="") {
             $queryQuantidade .= "  AND c.nome LIKE '%$nome%'";
         }
-        //$queryQuantidade .= " GROUP BY c.id_conjunto ";
+        $queryQuantidade .= " GROUP BY c.id_conjunto ";
         
         //die("$queryConteudos<br/><br/>$queryQuantidade");
         $connection = Doctrine_Manager::getInstance()

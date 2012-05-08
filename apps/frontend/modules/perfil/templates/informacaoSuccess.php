@@ -38,7 +38,7 @@
 		<hr>
 
                 
-                <?php if($usuario->getSite()!="" || $usuario->getEmail()!=""){ ?>
+                <?php if(($usuario->getSite()!="") || ($usuario->getEmail()!="" && ($usuario->getTipoSolicitacaoAmizade()== Usuarios::PROPRIO_USUARIO || $usuario->getTipoSolicitacaoAmizade()== Usuarios::AMIGO))){ ?>
 		<h6><i class="icon-envelope icon-gray"></i> Contatos</h6>
 		<p class="row">
                         <?php if($usuario->getSite()!=""){ ?>

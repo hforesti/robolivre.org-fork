@@ -51,9 +51,34 @@ class perfilActions extends robolivreAction {
     
     public function executeGravarConfiguracoes(sfWebRequest $request){
         
-        echo ConfiguracoesEmailUsario::getTodosParametrosConfiguracao($request->getPostParameter('usuarios'));
+        //echo 
         $usuarios = new Usuarios(null,false,UsuarioLogado::getInstancia());
         $form = new UsuariosForm($usuarios, null, null, UsuariosForm::CONFIGURACAO);
+        $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+        
+        //Util::pre($request->getParameter($form->getName()));
+        if($form->isValid()){
+
+            $valores = $form->getTaintedValues();
+            
+            $objUsuario = $form->getObject();
+            $objUsuario->setParametrosEmail(ConfiguracoesEmailUsario::getTodosParametrosConfiguracao($request->getPostParameter('usuarios')));
+            if(isset($valores['senhaNova']) && $valores['senhaNova']!=""){
+                $objUsuario->setSenha($valores['senhaNova']);
+            }
+            
+            if(isset($valores['nome']) && $valores['nome']!=""){
+                $objUsuario->setNome($valores['nome']);
+            }
+            
+            $usuario = Doctrine::getTable('Usuarios')->editarConfiguracaoUsuario($objUsuario);
+            
+            UsuarioLogado::getInstancia()->atualizaInformacoes($usuario);
+            $this->redirect("perfil/index");
+        }else{
+           $this->formUsuario = $form;
+           $this->setTemplate('configuracoes');
+        }
     }
     
     public function executeExibir(sfWebRequest $request) {

@@ -37,7 +37,7 @@
         <h3>Atualizações recentes</h3>
 
         <div id="stream">
-
+            <?php if(count($publicacoesPerfil['publicacoes'] )>0){  ?>
             <ul id="ul-steam">
                
                 <?php foreach ($publicacoesPerfil['publicacoes'] as $publicacao) { ?>                    
@@ -50,7 +50,11 @@
                 <?php } ?>
                 
             </ul>
-
+            <?php }else{ ?>
+            <div class="well">
+                Usuário ainda não publicou em seu perfil
+            </div>
+            <?php } ?>
 
         </div><!-- stream -->
         <?php if($publicacoesPerfil['quantidade']>=10){ ?>

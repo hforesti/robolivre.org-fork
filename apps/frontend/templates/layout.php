@@ -45,7 +45,7 @@
 
                                 <li class="divider-vertical"></li>
                             </ul>
-                            <?php if($sf_context->getModuleName() != "inicial" || $sf_context->getActionName()!="telaLogin"){ ?>
+                            <?php if($sf_context->getModuleName() != "inicial" || !is_numeric(array_search($sf_context->getActionName(), array('telaLogin','loginInicial','login')))){ ?>
                             <ul class="nav pull-right">
                                 <li class="divider-vertical"></li>
                                 <li>

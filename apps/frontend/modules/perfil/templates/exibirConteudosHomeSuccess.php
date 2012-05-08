@@ -28,7 +28,7 @@
                     <input type="text" id="nome" value="<?php echo $nome; ?>" name="nome" class="span4 search-query" placeholder="Buscar na lista de conteúdos">
                 </form>
             </div>
-
+            <?php if(count($arrayConteudoSeguido)>0){ ?>
             <ul>
 
                 <?php foreach ($arrayConteudoSeguido as $conteudo) { ?>
@@ -98,7 +98,15 @@
                 <p class="pull-right">Exibindo de <?php echo ((($pagina - 1) * Util::QUANTIDADE_PAGINACAO) + 1) ?> a <?php echo ($pagina == $quantidadeTotalPaginas) ? $quantidadeConteudoSeguido : $pagina * Util::QUANTIDADE_PAGINACAO ?></p>
 
             </div>
-
+            <?php } else if($proprietario) { ?>
+                <div class="well">
+                <p>Você ainda não criou um <strong>conteúdo</strong>. <a href="<?php echo url_for("conteudos/criar") ?>">Criar agora</a>?</p>
+                        <p>
+                                ou<br>
+                                <a href="<?php echo url_for("perfil/exibirConteudosHome") ?>" class="btn">Ver conteúdos seguidos por você</a>
+                        </p>
+                </div>
+            <?php }?>
         </div>
 
     </div><!-- /miolo -->

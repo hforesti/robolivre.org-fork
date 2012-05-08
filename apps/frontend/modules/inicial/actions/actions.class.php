@@ -84,7 +84,7 @@ class inicialActions extends robolivreAction {
     
     public function executeLogin(sfWebRequest $request) {
         $form = new UsuariosForm(null, null, null, UsuariosForm::LOGIN);
-        if($request->hasParameter('ultima_pagina')){
+        if($request->hasParameter('ultima_pagina') && $request->getParameter('ultima_pagina')!=""){
             $ultimaPagina = $request->getParameter('ultima_pagina');
         }else{
             $ultimaPagina = "perfil/index";
