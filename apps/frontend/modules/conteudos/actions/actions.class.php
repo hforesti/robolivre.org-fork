@@ -253,15 +253,23 @@ class conteudosActions extends robolivreAction
             
             $this->redirect('conteudo/'.$this->conteudo->getConjunto()->getSlug());
         } else {
+            $valores = $form->getTaintedValues();
             $this->formConteudo = $form;
             $erros = $form->getErrorSchema()->getErrors();
+            
             if (isset($erros['nome'])) {
-                $objConteudo = $form->getObject();
-                $this->nomeConteudoErro = $objConteudo->getNome();
+                $this->nomeConteudoErro = $valores['nome'];
             }
             
             
             /* FAZER ARRAY TAGS VIRAR OBJETO, VER MODELO TagsConteudosTable->getTagsConteudo() */
+//            
+//            $arrayTags = array();
+//            
+//            foreach($arrayTags as $tagRecuperar){
+//                
+//            }
+            
             $this->tags = array();
             $this->setTemplate("criar");
         }
