@@ -152,10 +152,16 @@ class conteudosActions extends robolivreAction
     
     public function executeGravar(sfWebRequest $request) {
         
-        $arrayTags = $request->getPostParameter('tags');
+        $arrayTags = $request->getParameter('tags');
         $arrayTags = explode(",", $arrayTags);
+        
         $arrayTagsTemaAula = $request->getPostParameter('tema_aula');
-        $arrayTags = array_unique(array_merge($arrayTags, $arrayTagsTemaAula));
+        
+        foreach($arrayTagsTemaAula as $tema){
+            $arrayTags[] = $tema;
+        }
+        $arrayTags = array_unique($arrayTags);
+        
         
         $arrayArquivos = explode(Util::SEPARADOR_PARAMETRO,$request->getPostParameter('documentos_selecionados'));
         
@@ -263,24 +269,42 @@ class conteudosActions extends robolivreAction
             
             
             /* FAZER ARRAY TAGS VIRAR OBJETO, VER MODELO TagsConteudosTable->getTagsConteudo() */
-//            
-//            $arrayTags = array();
-//            
-//            foreach($arrayTags as $tagRecuperar){
-//                
-//            }
             
-            $this->tags = array();
+            $arrayTagsRetorno = array();
+            
+            foreach($arrayTags as $tagRecuperar){
+                if($tagRecuperar==""){
+                    continue;
+                }
+                $tag = new TagsConteudos();
+                if(strstr($tagRecuperar, Util::SEPARADOR_PARAMETRO)){
+                    $array = explode(Util::SEPARADOR_PARAMETRO, $tagRecuperar);
+                    $conteudo = Doctrine::getTable("Conteudos")->buscaPorId($array[0]);
+                    $tag->setConteudo($conteudo);
+                }else{
+                    $objConteudo = new Conteudos();
+                    $objConteudo->setNome($tagRecuperar);
+                    $tag->setConteudo($objConteudo);
+                }
+                $arrayTagsRetorno[$tagRecuperar] = $tag;
+            }
+            $this->tags = $arrayTagsRetorno;
             $this->setTemplate("criar");
         }
     }
     
     public function executeGravarEdicao(sfWebRequest $request) {
 
-        $arrayTags = $request->getPostParameter('tags');
+        
+        $arrayTags = $request->getParameter('tags');
         $arrayTags = explode(",", $arrayTags);
+        
         $arrayTagsTemaAula = $request->getPostParameter('tema_aula');
-        $arrayTags = array_unique(array_merge($arrayTags, $arrayTagsTemaAula));
+        
+        foreach($arrayTagsTemaAula as $tema){
+            $arrayTags[] = $tema;
+        }
+        $arrayTags = array_unique($arrayTags);
         
         $arrayArquivos = explode(Util::SEPARADOR_PARAMETRO,$request->getPostParameter('documentos_selecionados'));
         
@@ -411,8 +435,26 @@ class conteudosActions extends robolivreAction
             }
             $this->conteudo->setImagemPerfil($request->getParameter('imagem_selecionada'));
             
-            /* FAZER ARRAY TAGS VIRAR OBJETO, VER MODELO TagsConteudosTable->getTagsConteudo() */
-            $this->tags = array();
+            $arrayTagsRetorno = array();
+            
+            foreach($arrayTags as $tagRecuperar){
+                if($tagRecuperar==""){
+                    continue;
+                }
+                $tag = new TagsConteudos();
+                if(strstr($tagRecuperar, Util::SEPARADOR_PARAMETRO)){
+                    $array = explode(Util::SEPARADOR_PARAMETRO, $tagRecuperar);
+                    $conteudo = Doctrine::getTable("Conteudos")->buscaPorId($array[0]);
+                    $tag->setConteudo($conteudo);
+                }else{
+                    $objConteudo = new Conteudos();
+                    $objConteudo->setNome($tagRecuperar);
+                    $tag->setConteudo($objConteudo);
+                }
+                $arrayTagsRetorno[$tagRecuperar] = $tag;
+            }
+            $this->tags = $arrayTagsRetorno;
+            
             $this->setTemplate("editar");
         }
     }

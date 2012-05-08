@@ -963,6 +963,20 @@ class ConteudosTable extends Doctrine_Table {
 
         return false;
     }
+    
+    function getNomeConteudosEmArrayIdConjunto($array){
+        $valueArray = "";
+        foreach($array as $id){
+            $valueArray .= "$id,";
+        }
+        
+        $valueArray = "(".substr($valueArray, 0, strlen($valueArray)-1).")";
+        
+        $query = "SELECT c.id_conjunto,c.nome
+        FROM conteudos c 
+        WHERE c.id_conjunto IN $valueArray ";
+        
+    }
 
     function getConteudosRelacionados($idConjunto) {
         $arrayRetorno = array();

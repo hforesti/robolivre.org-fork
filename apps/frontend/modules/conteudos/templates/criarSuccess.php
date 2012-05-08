@@ -29,7 +29,7 @@
         </div>
         <?php } ?>
 
-        <?php include_partial('formConteudo', array('form' => $formConteudo,'nomeConteudo' => $nomeConteudo)); ?>
+        <?php include_partial('formConteudo', array('form' => $formConteudo,'nomeConteudo' => $nomeConteudo,'tags'=>$tags)); ?>
 
     </div><!-- /miolo -->
 
