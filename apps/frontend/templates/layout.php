@@ -57,8 +57,8 @@
                     </div>
                 </div>
             </div> 
-            <?php if($sf_context->getModuleName() != "inicial" || $sf_context->getActionName()!="telaLogin"){ ?>
-
+            <?php if($sf_context->getModuleName() != "inicial" || !is_numeric(array_search($sf_context->getActionName(), array('telaLogin','loginInicial','login')))){ ?>
+            
             <div class="modal fade" id="modalLogin">
                 <div class="modal-header">
                     <a class="close" data-dismiss="modal">×</a>
