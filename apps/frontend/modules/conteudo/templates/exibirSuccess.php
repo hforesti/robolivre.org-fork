@@ -2,24 +2,30 @@
 
 if($tipoFiltro!=""){
     $opcao = $tipoFiltro;
+    $comBotaoLimparFiltro = false;
     switch($tipoFiltro){
         case 'imagem':
+            $comBotaoLimparFiltro = true;
             $labelAtualizacoes = "<small>Imagens</small>";
             $nomeAtualizacao = "imagens publicadas.";
             break;
         case 'video':
+            $comBotaoLimparFiltro = true;
             $labelAtualizacoes = "<small>Vídeos</small>";
             $nomeAtualizacao = "vídeos publicados.";
             break;
         case 'link':
+            $comBotaoLimparFiltro = true;
             $labelAtualizacoes = "<small>Links</small>";
             $nomeAtualizacao = "links publicados.";
             break;
         default: $labelAtualizacoes = "";
+            $comBotaoLimparFiltro = false;
             $nomeAtualizacao = "atualizações publicadas.";
             break;
     }
 }else{
+    $comBotaoLimparFiltro = false;
     $labelAtualizacoes = "";
     $nomeAtualizacao = "atualizações publicadas.";
     $opcao = null;
@@ -85,9 +91,11 @@ if($tipoFiltro!=""){
             <?php }else{ ?>
             <div class="well">
     <p><?php echo $conteudo->getNome()?> ainda não tem <?php echo $nomeAtualizacao ?></p>
+            <?php if($comBotaoLimparFiltro){ ?>
             <p>
-                    <a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>" class="btn">Limpar filtro agora</a>
+                <a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>" class="btn">Limpar filtro agora</a>
             </p>
+            <?php } ?>
     </div>
             <?php } ?>
 
