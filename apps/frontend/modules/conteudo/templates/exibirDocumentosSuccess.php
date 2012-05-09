@@ -110,9 +110,9 @@ $slug = Util::criaSlug($conteudo->getNome());
                         <li><a href="<?php echo url_for('@conteudo_acao?slug='. $slug."&acao=exibirDocumentos&pagina=".($pagina+1).((trim($nome)=="")?"":"&nome=$nome").(($proprietario) ? "&proprietario=1" : "")) ?>">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
                     <?php } ?>
                 </ul>
-
+                <?php if($quantidadeTotalPaginas>0){ ?>
                 <p class="pull-right">Exibindo de <?php echo ((($pagina-1)*Util::QUANTIDADE_PAGINACAO)+1) ?> a <?php echo ($pagina==$quantidadeTotalPaginas)? $quantidadeParticipantes:$pagina*Util::QUANTIDADE_PAGINACAO ?></p>
-
+                <?php } ?>
             </div>
 
 
