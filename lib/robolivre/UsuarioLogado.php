@@ -122,7 +122,12 @@ class UsuarioLogado{
         if(!self::$instancia->isLogado()){
             if(isset($_COOKIE['cooLogin']) && $_COOKIE['cooLogin']!="" && isset($_COOKIE['cooSenha']) && $_COOKIE['cooSenha']!="" ){
                 $objUsuario = Doctrine::getTable('Usuarios')->login($_COOKIE['cooLogin'], $_COOKIE['cooSenha']);
-                self::$instancia->logar($objUsuario);
+                if($objUsuario){
+                    self::$instancia->logar($objUsuario);
+                }else{
+                    sfContext::getInstance()->getResponse()->setCookie('cooLogin', '', time() - 3600, '/');
+                    sfContext::getInstance()->getResponse()->setCookie('cooSenha', '', time() - 3600, '/');
+                }
             }
 
         }else{
