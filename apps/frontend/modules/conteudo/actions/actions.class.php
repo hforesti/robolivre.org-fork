@@ -120,15 +120,15 @@ class conteudoActions extends robolivreAction {
         $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo;
 
         $extensao = end(explode(".", $nome_arquivo));
-        $thumbnail = new sfThumbnail(170, 170);
+        $thumbnail = new sfThumbnail(170, 170,false,true);
         $thumbnail->loadFile($diretorio_arquivo);
         $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slug . '_large.' . $extensao);
 
-        $thumbnail = new sfThumbnail(60, 60);
+        $thumbnail = new sfThumbnail(60, 60,false,true);
         $thumbnail->loadFile($diretorio_arquivo);
         $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slug . '_60.' . $extensao);
 
-        $thumbnail = new sfThumbnail(20, 20);
+        $thumbnail = new sfThumbnail(20, 20,false,true);
         $thumbnail->loadFile($diretorio_arquivo);
         $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slug . '_20.' . $extensao);
         

@@ -247,29 +247,31 @@ class ajaxActions extends sfActions {
         if(!isset($nome_arquivo)||$nome_arquivo=="" ){
             return "";
         }
+        
+        $idUsuarioLogado = UsuarioLogado::getInstancia()->getIdUsuario();
         try{
 //        die("nome do arquivo $nome_arquivo");
         $diretorioThumbnail = sfConfig::get('sf_upload_dir');
 
         $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo_completo;
-        $thumbnail = new sfThumbnail(170, 170,true,true);
+        $thumbnail = new sfThumbnail(170, 170,false,true);
         $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail."/".$nome_arquivo."_tmp_large." . $extensao);
+        $thumbnail->save($diretorioThumbnail."/".$nome_arquivo."_tmp_".$idUsuarioLogado."_large." . $extensao);
 
-        $thumbnail = new sfThumbnail(60, 60);
+        $thumbnail = new sfThumbnail(60, 60,false,true);
         $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail."/".$nome_arquivo."_tmp_60." . $extensao);
+        $thumbnail->save($diretorioThumbnail."/".$nome_arquivo."_tmp_".$idUsuarioLogado."_60." . $extensao);
 
-        $thumbnail = new sfThumbnail(20, 20);
+        $thumbnail = new sfThumbnail(20, 20,false,true);
         $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail."/".$nome_arquivo."_tmp_20." . $extensao);
+        $thumbnail->save($diretorioThumbnail."/".$nome_arquivo."_tmp_".$idUsuarioLogado."_20." . $extensao);
         
         
         }catch(Exception $e){
                 throw $e;
         }
         
-        return "/".$nome_arquivo."_tmp_#.".$extensao;
+        return "/".$nome_arquivo."_tmp_".$idUsuarioLogado."_#.".$extensao;
     }
     
     
