@@ -20,7 +20,7 @@ if($tipoFiltro!=""){
             $nomeAtualizacao = "links publicados.";
             break;
         default: $labelAtualizacoes = "";
-            $comBotaoLimparFiltro = false;
+            $comBotaoLimparFiltro = true;
             $nomeAtualizacao = "atualizações publicadas.";
             break;
     }
