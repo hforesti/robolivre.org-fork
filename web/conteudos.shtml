@@ -17,7 +17,6 @@
       <div class="span4">
         <span class="img-step step3 hidden-phone"></span>
         <span class="label label-success">3</span> Conteúdos podem estar conectados, ou seja,<br> <i class="icon-tag"></i> Conteúdos relacionados</div>
-
 </div>
 
   </div>
@@ -38,7 +37,7 @@
 
 <a href="#modalEsqueci" data-toggle="modal" class="btn btn-success pull-right"><i class="icon-plus icon-white"></i> Criar novo conteúdo</a>
 
-<h1>Conteúdos</h1>
+<h1>Conteúdos <a href="#modalInfo" data-toggle="modal" title="Sobre o conceito de 'conteúdo' aqui na rede"><i class="icon-question-sign icon-gray"></i></a></h1>
 
 <!-- modal -->
 <div class="modal fade" id="modalEsqueci">
@@ -78,10 +77,11 @@
 
 </div>
 
-
-<div class="alert">
+<div class="row">
+<div class="alert span4 offset3">
   <a class="close" data-dismiss="alert" href="#">×</a>
   <a href="#modalInfo" data-toggle="modal"><i class="icon-question-sign icon-gray"></i> Mostrar instruções novamente</a>
+</div>
 </div>
 
 <div id="explore" class="clearfix">
