@@ -281,13 +281,14 @@ var uploaderImg = new qq.FileUploader({
                 $("#imagem_selecionada").val("");
             },
         onComplete: function(id, fileName, responseJSON){
-            var arr = fileName.split(".");
+            var arquivo = responseJSON['arquivo'];
+            var arr = arquivo.split(".");
             var extensao = arr[1];
             var nome = arr[0];
             
-            $("#thumb").attr("src",url_for("uploads/"+ nome +"_tmp_large."+extensao));
-            $("#i-medium").attr("src",url_for("uploads/"+ nome +"_tmp_60."+extensao)); 
-            $("#i-small").attr("src",url_for("uploads/"+ nome +"_tmp_20."+extensao)); 
+            $("#thumb").attr("src",url_for("uploads/"+ arquivo.replace("#", "large")));
+            $("#i-medium").attr("src",url_for("uploads/"+ arquivo.replace("#", "60"))); 
+            $("#i-small").attr("src",url_for("uploads/"+ arquivo.replace("#", "20"))); 
             
             $("#imagem_selecionada").val(fileName);
         }

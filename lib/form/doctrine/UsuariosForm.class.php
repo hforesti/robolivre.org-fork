@@ -236,7 +236,7 @@ class UsuariosForm extends BaseUsuariosForm {
                 $this->errorSchema->addError($error, 'login');
                 return false;
             } catch (Exception $e) {
-                die($e->getMessage());
+                throw $e;
             }
         }
     }
@@ -311,7 +311,7 @@ class UsuariosForm extends BaseUsuariosForm {
                     $this->errorSchema->addError($error, 'login');
                     $valido = false;
                 } catch (Exception $e) {
-                    die($e->getMessage());
+                    throw $e;
                 }
             } 
         }

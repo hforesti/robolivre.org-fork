@@ -23,29 +23,6 @@ class ajaxActions extends sfActions {
             $this->forward404();
         }
     }
-
-//    public function executeAjaxValidaLinkYoutube(sfWebRequest $request){
-//        $link = $request->getParameter("link");
-//        
-//        preg_match('#(\.be/|/embed/|/v/|/watch\?v=)([A-Za-z0-9_-]{5,11})#', $link, $matches);
-//        if(isset($matches[2]) && $matches[2] != ''){
-//            $YoutubeCode = $matches[2];
-//        }
-//        
-//        $fh = fopen("http://gdata.youtube.com/feeds/api/videos/$YoutubeCode", "r");
-//        $str = fread($fh, 10); 
-//        fclose($fh);
-//        
-//        //Invalid id -> 10 char
-//        sfContext::getInstance()->getLogger()->info("ENTROU AJAX: achou $str");
-//        if($str=="Invalid id"){
-//            $mensagem = "ok";
-//        }else{
-//            $mensagem = "falso";
-//        }
-//        
-//        $this->mensagem = $mensagem;
-//    }
     
     public function executeAjaxEsqueciSenha(sfWebRequest $request){
         sfContext::getInstance()->getConfiguration()->loadHelpers(array('Tag','Url'));
@@ -231,7 +208,7 @@ class ajaxActions extends sfActions {
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
         $result = $uploader->handleUpload('uploads/',true);
         
-        $this->criarTumbnails($_GET['qqfile']);
+        $result['arquivo'] = $this->criarTumbnails($_GET['qqfile']);
         
         // to pass data through iframe you will need to encode all html tags
         echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
@@ -250,29 +227,112 @@ class ajaxActions extends sfActions {
         
         $idUsuarioLogado = UsuarioLogado::getInstancia()->getIdUsuario();
         try{
-//        die("nome do arquivo $nome_arquivo");
+
         $diretorioThumbnail = sfConfig::get('sf_upload_dir');
 
         $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo_completo;
-        $thumbnail = new sfThumbnail(170, 170,false,true);
-        $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail."/".$nome_arquivo."_tmp_".$idUsuarioLogado."_large." . $extensao);
-
-        $thumbnail = new sfThumbnail(60, 60,false,true);
-        $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail."/".$nome_arquivo."_tmp_".$idUsuarioLogado."_60." . $extensao);
-
-        $thumbnail = new sfThumbnail(20, 20,false,true);
-        $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail."/".$nome_arquivo."_tmp_".$idUsuarioLogado."_20." . $extensao);
+        
+        
+        $img = new sfImage($diretorio_arquivo, 'image/jpg');
+        
+        if($img->getHeight()>170 && $img->getWidth()>170){
+            
+            if($img->getWidth()>$img->getHeight()){
+                $scale = 170/$img->getHeight();
+            }else{
+                $scale = 170/$img->getWidth();
+            }
+            
+            $img->scale($scale);
+            
+            if($img->getWidth()>$img->getHeight()){
+                $largura = ($img->getWidth()/2);
+                $pontoX = $largura-(170/2);
+                
+                if($pontoX<0){
+                    $pontoX = 0;
+                }
+                $pontoY = 0;
+            }else{
+                $altura = ($img->getHeight()/2);
+                $pontoY = $altura-(170/2);
+                
+                if($pontoY<0){
+                    $pontoY = 0;
+                }
+                $pontoX = 0;
+            }
+            
+            $img->crop($pontoX,$pontoY,170,170); 
+        }else{
+            
+            if($img->getWidth()>$img->getHeight()){
+                $scale = 170/$img->getHeight();
+            }else{
+                $scale = 170/$img->getWidth();
+            }
+            
+            $img->scale($scale);
+            
+            if($img->getWidth()>$img->getHeight()){
+                $largura = ($img->getWidth()/2);
+                $pontoX = $largura-(170/2);
+                
+                if($pontoX<0){
+                    $pontoX = 0;
+                }
+                $pontoY = 0;
+            }else{
+                $altura = ($img->getHeight()/2);
+                $pontoY = $altura-(170/2);
+                
+                if($pontoY<0){
+                    $pontoY = 0;
+                }
+                $pontoX = 0;
+            }
+            $img->crop($pontoX,$pontoY,170,170); 
+        }
+                
+        $img->setQuality(75);
+        $img->saveAs($diretorioThumbnail."/".$nome_arquivo."_tmp_".$idUsuarioLogado."_large." . $extensao);
+        $img->thumbnail(60, 60);
+        $img->setQuality(75);
+        $img->saveAs($diretorioThumbnail."/".$nome_arquivo."_tmp_".$idUsuarioLogado."_60." . $extensao);
+        $img->thumbnail(20, 20);
+        $img->setQuality(75);
+        $img->saveAs($diretorioThumbnail."/".$nome_arquivo."_tmp_".$idUsuarioLogado."_20." . $extensao);
         
         
         }catch(Exception $e){
-                throw $e;
+            sfContext::getInstance()->getLogger()->info("ERRO!!!!".$e->getMessage());
+            throw $e;
         }
         
-        return "/".$nome_arquivo."_tmp_".$idUsuarioLogado."_#.".$extensao;
+        return $nome_arquivo."_tmp_".$idUsuarioLogado."_#.".$extensao;
     }
     
     
+//    public function executeAjaxValidaLinkYoutube(sfWebRequest $request){
+//        $link = $request->getParameter("link");
+//        
+//        preg_match('#(\.be/|/embed/|/v/|/watch\?v=)([A-Za-z0-9_-]{5,11})#', $link, $matches);
+//        if(isset($matches[2]) && $matches[2] != ''){
+//            $YoutubeCode = $matches[2];
+//        }
+//        
+//        $fh = fopen("http://gdata.youtube.com/feeds/api/videos/$YoutubeCode", "r");
+//        $str = fread($fh, 10); 
+//        fclose($fh);
+//        
+//        //Invalid id -> 10 char
+//        sfContext::getInstance()->getLogger()->info("ENTROU AJAX: achou $str");
+//        if($str=="Invalid id"){
+//            $mensagem = "ok";
+//        }else{
+//            $mensagem = "falso";
+//        }
+//        
+//        $this->mensagem = $mensagem;
+//    }
 }

@@ -1,7 +1,7 @@
 <?php
 
-require_once '/home/maxguenes/GitHub/robolivre.org/lib/vendor/symfony/lib/autoload/sfCoreAutoload.class.php';
-require_once '/home/maxguenes/GitHub/robolivre.org/lib/robolivre/htmlpurifier-4.4.0/library/HTMLPurifier.auto.php';
+require_once '/home/robolivre/GitHub/robolivre.org/lib/vendor/symfony/lib/autoload/sfCoreAutoload.class.php';
+require_once '/home/robolivre/GitHub/robolivre.org/lib/robolivre/htmlpurifier-4.4.0/library/HTMLPurifier.auto.php';
 sfCoreAutoload::register();
 
 class ProjectConfiguration extends sfProjectConfiguration
@@ -10,7 +10,6 @@ class ProjectConfiguration extends sfProjectConfiguration
   {
     $this->enablePlugins('sfDoctrinePlugin');
     $this->enablePlugins('sfProtoculousPlugin');
-    $this->enablePlugins('sfThumbnailPlugin');
     $this->enablePlugins('sfFormExtraPlugin');
     $this->enablePlugins('sfImageTransformPlugin');
   }
