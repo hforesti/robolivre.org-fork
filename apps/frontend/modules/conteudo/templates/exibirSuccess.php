@@ -70,7 +70,11 @@ if($tipoFiltro!=""){
         </div>
 
         <?php if ($conteudo->getDescricao() != "") { ?>
-            <p><?php echo $conteudo->getDescricao(); ?></p>
+            <div class="entry" id="main-entry">
+            <?php echo $conteudo->getDescricao(); ?>
+            </div>
+            <div class="btn-load-more clear-fix" id="shink-content"><button class="btn"><i class="icon-chevron-down"></i> mostrar descrição completa</button></div>
+
             <hr>
         <?php } ?>
         <?php if (!UsuarioLogado::getInstancia()->isUsuarioPublico()) { ?>

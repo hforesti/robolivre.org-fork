@@ -33,6 +33,11 @@ class contatoActions extends robolivreAction {
     }
 
     public function executeReportarErro(sfWebRequest $request) {
+        
+        if($request->hasParameter('mensagem_sistema')){
+            $this->mensagemSistema = $request->getParameter('mensagem_sistema');
+        }
+        
         $this->formContato = new ContatoForm();
     }
 
@@ -41,8 +46,20 @@ class contatoActions extends robolivreAction {
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if($form->isValid()){
             //enviar email de erro para robolivre@robolivre.org
+            $valores = $form->getTaintedValues();
+            $mensagem = $valores['mensagem'];
+            if($request->hasParameter('mensagem_sistema')){
+                $mensagemSistema = $request->getParameter('mensagem_sistema');
+            }else{
+                $mensagemSistema = null;
+            }
+            
+            Util::enviarEmail("[robolivre.org] Reportar Erro", Util::getTextoEmailReportarErro($mensagem, $valores['nome'],$valores['email'],$mensagemSistema), Util::getEmailContato());
         }else{
             $this->formContato = $form;
+            if($request->hasParameter('mensagem_sistema')){
+                $this->mensagemSistema = $request->getParameter('mensagem_sistema');
+            }
         }
         
         $this->setTemplate("reportarErro");

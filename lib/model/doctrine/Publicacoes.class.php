@@ -277,7 +277,7 @@ class Publicacoes extends BasePublicacoes {
                     $string .= "                </li>";
                 }else{
                     $string .= "                <li>";
-                    $string .= "                    <a data-toggle=\"modal\" href=\"#modalAbuse\"><i class=\"icon-flag\"></i> Reportar abuso ou spam</a>";
+                    $string .= "                    <a data-toggle=\"modal\" href=\"".  url_for("contato/reportarErro?mensagem_sistema=publicacao-exibir-u=".$this->getIdPublicacao())."\"><i class=\"icon-flag\"></i> Reportar abuso ou spam</a>";
                     $string .= "                </li>";
                 }
                 $string .= "            </ul>";
@@ -455,7 +455,7 @@ class Publicacoes extends BasePublicacoes {
                     $string .= "                </li>";
                 }else{
                     $string .= "                <li>";
-                    $string .= "                    <a data-toggle=\"modal\" href=\"#modalAbuse\"><i class=\"icon-flag\"></i> Reportar abuso ou spam</a>";
+                    $string .= "                    <a data-toggle=\"modal\" href=\"".  url_for("contato/reportarErro?mensagem_sistema=publicacao-exibir-u=".$this->getIdPublicacao())."\"><i class=\"icon-flag\"></i> Reportar abuso ou spam</a>";
                     $string .= "                </li>";
                 }
 

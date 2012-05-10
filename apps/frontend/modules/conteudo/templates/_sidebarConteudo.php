@@ -20,6 +20,19 @@ if(!isset($opcao))
                     <li>
                         <a href="<?php echo url_for('conteudos/editar?u=' . $conteudo->getIdConjunto()) ?>">Editar conteúdo</a>
                     </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="<?php echo url_for("contato/reportarErro?mensagem_sistema=conteudo-exibir-slug=".Util::criaSlug($conteudo->getNome())) ?>"><i class="icon-flag"></i> Reportar problema</a>
+                    </li>
+                </ul>
+            <?php }else{ ?>
+                <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+                    <span class="icon-cog icon-gray"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="<?php echo url_for("contato/reportarErro?mensagem_sistema=conteudo-exibir-slug=".Util::criaSlug($conteudo->getNome())) ?>"><i class="icon-flag"></i> Reportar problema</a>
+                    </li>
                 </ul>
             <?php } ?>
         </div>

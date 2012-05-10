@@ -15,7 +15,7 @@
         <div class="page-header">
             <h1>Reportar problema</h1>
         </div>
-
+        
         <p>Encontrou algum problema? Decreva-o para nossa equipe e encaminharemos para o robô responsável :)</p>
 
         <?php if (isset($formContato)) { ?>
@@ -41,7 +41,7 @@
                 </div>
             <?php } ?>
 
-            <form action="<?php echo url_for("contato/enviarEmailReportarErro") ?>" class="form-horizontal">
+        <form action="<?php echo url_for("contato/enviarEmailReportarErro") ?>" method="post" class="form-horizontal">
                 <fieldset>
 
                     <?php
@@ -87,6 +87,9 @@
                    
                     <?php echo $formContato->renderHiddenFields() ?>
                     <div class="form-actions">
+                        <?php if(isset($mensagemSistema) && $mensagemSistema!=""){ ?>
+                        <input type="hidden" name="mensagem_sistema" value="<?php echo $mensagemSistema ?>" >
+                        <?php } ?>
                         <button type="submit" class="btn btn-primary">Reportar agora</button>
                     </div>
                 </fieldset>

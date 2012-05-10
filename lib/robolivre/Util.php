@@ -549,7 +549,30 @@ class Util {
             <div><br></div>
             <div>Obrigado,</div>
             <div>Ethnos - O robô de perfil e cadastro</div>";
-        //"Para criar uma nova senha, entre no link : $urlComToken";
+    }
+    
+    public static function getTextoEmailReportarErro($mensagem,$nomeUsuario,$email,$mensagemSisetma=null){
+        $string =  
+        "   <div><br></div>
+            <div>Reportaram um erro:</div>
+            <div>Nome: $nomeUsuario</div>
+            <div>Email: $email</div>
+            <div><br></div>
+            <div>Mensagem: $mensagem</div>
+            <div><br></div>";
+        
+        if($mensagemSisetma!=null){
+            $string.="<div>Mensagem do Sistema: $mensagemSisetma</div>
+                <div><br></div>
+                ";
+        }
+        
+        return $string;
+    }
+    
+    
+    public static function getEmailContato(){
+        return "maxguenes@gmail.com";
     }
 }
 
