@@ -118,19 +118,89 @@ class conteudoActions extends robolivreAction {
         $diretorioThumbnail = Util::getDiretorioThumbnail();
         
         $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo;
-
         $extensao = end(explode(".", $nome_arquivo));
-        $thumbnail = new sfThumbnail(170, 170,false,true);
-        $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slug . '_large.' . $extensao);
-
-        $thumbnail = new sfThumbnail(60, 60,false,true);
-        $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slug . '_60.' . $extensao);
-
-        $thumbnail = new sfThumbnail(20, 20,false,true);
-        $thumbnail->loadFile($diretorio_arquivo);
-        $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slug . '_20.' . $extensao);
+        
+        $img = new sfImage($diretorio_arquivo, 'image/jpg');
+        
+        if($img->getHeight()>170 && $img->getWidth()>170){
+            
+            if($img->getWidth()>$img->getHeight()){
+                $scale = 170/$img->getHeight();
+            }else{
+                $scale = 170/$img->getWidth();
+            }
+            
+            $img->scale($scale);
+            
+            if($img->getWidth()>$img->getHeight()){
+                $largura = ($img->getWidth()/2);
+                $pontoX = $largura-(170/2);
+                
+                if($pontoX<0){
+                    $pontoX = 0;
+                }
+                $pontoY = 0;
+            }else{
+                $altura = ($img->getHeight()/2);
+                $pontoY = $altura-(170/2);
+                
+                if($pontoY<0){
+                    $pontoY = 0;
+                }
+                $pontoX = 0;
+            }
+            
+            $img->crop($pontoX,$pontoY,170,170); 
+        }else{
+            
+            if($img->getWidth()>$img->getHeight()){
+                $scale = 170/$img->getHeight();
+            }else{
+                $scale = 170/$img->getWidth();
+            }
+            
+            $img->scale($scale);
+            
+            if($img->getWidth()>$img->getHeight()){
+                $largura = ($img->getWidth()/2);
+                $pontoX = $largura-(170/2);
+                
+                if($pontoX<0){
+                    $pontoX = 0;
+                }
+                $pontoY = 0;
+            }else{
+                $altura = ($img->getHeight()/2);
+                $pontoY = $altura-(170/2);
+                
+                if($pontoY<0){
+                    $pontoY = 0;
+                }
+                $pontoX = 0;
+            }
+            $img->crop($pontoX,$pontoY,170,170); 
+        }
+                
+        $img->setQuality(75);
+        $img->saveAs($diretorioThumbnail.'/_avatar_con_' . $slug . '_large.' . $extensao);
+        $img->thumbnail(60, 60);
+        $img->setQuality(75);
+        $img->saveAs($diretorioThumbnail.'/_avatar_con_' . $slug . '_60.' . $extensao);
+        $img->thumbnail(20, 20);
+        $img->setQuality(75);
+        $img->saveAs($diretorioThumbnail.'/_avatar_con_' . $slug . '_20.' . $extensao);
+        
+//        $thumbnail = new sfThumbnail(170, 170,false,true);
+//        $thumbnail->loadFile($diretorio_arquivo);
+//        $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slug . '_large.' . $extensao);
+//
+//        $thumbnail = new sfThumbnail(60, 60,false,true);
+//        $thumbnail->loadFile($diretorio_arquivo);
+//        $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slug . '_60.' . $extensao);
+//
+//        $thumbnail = new sfThumbnail(20, 20,false,true);
+//        $thumbnail->loadFile($diretorio_arquivo);
+//        $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slug . '_20.' . $extensao);
         
         $objUsuario = Doctrine::getTable("Conteudos")->atualizarImagemConteudo($conteudo->getIdConjunto(),'_avatar_con_' . $slug . '_#.'.$extensao);
         
