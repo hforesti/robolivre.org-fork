@@ -92,7 +92,9 @@ class perfilActions extends robolivreAction {
     public function executeGravarConfiguracoes(sfWebRequest $request){
         
         $usuarios = new Usuarios(null,false,UsuarioLogado::getInstancia());
+        $this->retorno = false;
         $form = new UsuariosForm($usuarios, null, null, UsuariosForm::CONFIGURACAO);
+        $parametrosEmail = ConfiguracoesEmailUsario::getTodosParametrosConfiguracao($request->getPostParameter('usuarios'));
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         
         if($form->isValid()){
@@ -100,7 +102,7 @@ class perfilActions extends robolivreAction {
             $valores = $form->getTaintedValues();
             
             $objUsuario = $form->getObject();
-            $objUsuario->setParametrosEmail(ConfiguracoesEmailUsario::getTodosParametrosConfiguracao($request->getPostParameter('usuarios')));
+            $objUsuario->setParametrosEmail($parametrosEmail);
             if(isset($valores['senhaNova']) && $valores['senhaNova']!=""){
                 $objUsuario->setSenha($valores['senhaNova']);
             }
@@ -112,11 +114,15 @@ class perfilActions extends robolivreAction {
             $usuario = Doctrine::getTable('Usuarios')->editarConfiguracaoUsuario($objUsuario);
             
             UsuarioLogado::getInstancia()->atualizaInformacoes($usuario);
-            $this->redirect("perfil/index");
+            $usuarios = new Usuarios(null,false,UsuarioLogado::getInstancia());
+            $this->formUsuario = new UsuariosForm($usuarios, null, null, UsuariosForm::CONFIGURACAO);
+            $this->retorno = true;
         }else{
+           $this->parametrosEmail = $parametrosEmail;
            $this->formUsuario = $form;
-           $this->setTemplate('configuracoes');
         }
+        
+        $this->setTemplate('configuracoes');
     }
     
     public function executeExibir(sfWebRequest $request) {

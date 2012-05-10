@@ -318,13 +318,13 @@ class conteudosActions extends robolivreAction
             $form->updateObject(); 
             $valores = $form->getTaintedValues();
             $objConteudo = $form->getObject();
-            //die($valores['descricao']);
+
             $objConteudo->setIdConjunto($valores['id_conjunto']);
             $objConteudo->setIdTipoConjunto($valores['id_tipo_conjunto']);
             $objConteudo->setIdConteudo($valores['id_conteudo']);
             $objConteudo->setNome(Util::getHtmlPurificado($valores['nome']));
             $objConteudo->setDescricao(Util::getHtmlPurificadoDescricao($valores['descricao']));
-            die($objConteudo->getDescricao());
+            
             $objConteudo->setEnviarEmailCriador($valores['enviar_email_criador']);
                         
             $slug = Util::criaSlug($objConteudo->getNome());

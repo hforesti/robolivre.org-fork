@@ -5,9 +5,22 @@ if(!empty($taintedValues)){
     $valoresInciais = array_merge($valoresInciais, $taintedValues);
 }
 
-$erros = $formUsuario->getErrorSchema()->getErrors();
+if(isset($parametrosEmail)){
+    $valoresInciais['parametros_email'] = $parametrosEmail;
+}
 
-//Util::pre($valoresInciais);
+$erros = $formUsuario->getErrorSchema()->getErrors();
+$classNome = "";
+$classSenha = "";
+$classEmail = "";
+
+if(isset($erros['nome'])){
+    $classNome = "active";
+}else if(isset($erros['confirmacaoSenhaNova'])||isset($erros['senhaNova'])){
+    $classSenha = "active";
+}else{
+    $classEmail = "active";
+}
 
 ?>
 
@@ -31,28 +44,33 @@ $erros = $formUsuario->getErrorSchema()->getErrors();
                     Configurações
             </li>
         </ul>
-
+        <?php if(isset($retorno) && $retorno){ ?>
+        <div class="alert alert-success fade in">
+            <a class="close" data-dismiss="alert" href="#">×</a>
+            Suas configurações foram salvas com sucesso!
+        </div>
+        <?php } ?>
         <form id="form-editar-conf" class="form-horizontal" method="post" action="<?php echo url_for("perfil/gravarConfiguracoes") ?>">
 
             <ul class="nav nav-tabs" id="tabs-home">
-                <li class="active">
+                <li class="<?php echo $classEmail ?>">
                     <a href="#notific" data-toggle="tab"><i class="icon-inbox icon-gray"></i> Notificações por email</a>
                 </li>
-                <li>
+                <li class="<?php echo $classSenha ?>">
                     <a href="#senha" data-toggle="tab"><i class="icon-asterisk icon-gray"></i> Alterar Senha</a>
                 </li>
-                <li>
+                <li class="<?php echo $classNome ?>">
                     <a href="#nomecomp" data-toggle="tab"><i class="icon-user icon-gray"></i> Nome e sobrenome</a>
                 </li>
             </ul>
 
             <div class="tab-content">
-                <fieldset class="tab-pane active fade in" id="notific">
+                <fieldset class="tab-pane <?php echo $classEmail ?> fade in" id="notific">
                     <div class="control-group" id="turnEmailOff">
                         <label class="control-label">Desligar tudo</label>
                         <div class="controls">
                             <label class="checkbox">
-                                <input type="checkbox" id="optionTurnEmailOff" value="optionOffAll">
+                                <input type="checkbox" id="optionTurnEmailOff" <?php echo ($valoresInciais['parametros_email']==""||$valoresInciais['parametros_email']==null||$valoresInciais['parametros_email']==ConfiguracoesEmailUsario::NENHUM_PARAMETRO)?"checked=\"true\"":"" ?> value="<?php echo ConfiguracoesEmailUsario::NENHUM_PARAMETRO ?>">
                                 <strong>Parar de receber qualquer tipo de notificação por email</strong>
                             </label>
                             <span class="help-inline">Se está recebendo muitas mensagens da nossa rede, marque esta opção para desligar todas as notificações por email.</span> 
@@ -103,7 +121,7 @@ $erros = $formUsuario->getErrorSchema()->getErrors();
                     </div>
                 </fieldset>
 
-                <fieldset class="tab-pane fade in" id="senha">
+                <fieldset class="tab-pane <?php echo $classSenha ?> fade in" id="senha">
                     
                     <div id="div-nova-senha" class="control-group">
                         <label class="control-label" for="pass">Nova senha</label>
@@ -129,7 +147,7 @@ $erros = $formUsuario->getErrorSchema()->getErrors();
                     </div>
                 </fieldset>
                 
-                <fieldset class="tab-pane fade in" id="nomecomp">
+                <fieldset class="tab-pane <?php echo $classNome ?> fade in" id="nomecomp">
                     <?php 
                     $class = "";
                     $descricao = "";
@@ -139,11 +157,11 @@ $erros = $formUsuario->getErrorSchema()->getErrors();
                     }
                     ?>
                     
-                    <div class="control-group <?php echo $class ?>">
+                    <div id="div-realname" class="control-group <?php echo $class ?>">
                         <label class="control-label" for="pass">Nome e sobrenome</label>
                         <div class="controls">
                             <?php echo $formUsuario->getWidget('nome')->render($formUsuario->getName() . "[nome]", $valoresInciais['nome'] , array('class'=>"span5",'id' => 'realname', 'placeholder' => "Informe seu Nome e sobrenome")); ?>                            
-                            <span class="help-inline"><?php echo $descricao ?></span>
+                            <span id="help-realname" class="help-inline"><?php echo $descricao ?></span>
                         </div>
                     </div>
                 </fieldset>
@@ -160,11 +178,11 @@ $erros = $formUsuario->getErrorSchema()->getErrors();
                 $descricao = $erros['senha'];
             }
             ?>
-            <div class="control-group <?php echo $class ?>">
+            <div id="div-senha" class="control-group <?php echo $class ?>">
                 <label class="control-label" for="pass">Senha atual</label>
                 <div class="controls">
                     <?php echo $formUsuario->getWidget('senha')->render($formUsuario->getName() . "[senha]", null , array('id' => 'pass', 'placeholder' => "Sua senha")); ?>                            
-                    <span class="help-inline"><?php echo $descricao ?></span>
+                    <span id="help-senha" class="help-inline"><?php echo $descricao ?></span>
                 </div>
             </div>
 
@@ -222,6 +240,16 @@ $erros = $formUsuario->getErrorSchema()->getErrors();
         
         return isValido;
     }
+    
+    $('#pass').keyup(function() {
+        document.getElementById('div-senha').className = "control-group";
+        document.getElementById('help-senha').innerHTML = "";
+    });
+    
+    $('#realname').keyup(function() {
+        document.getElementById('div-realname').className = "control-group";
+        document.getElementById('help-realname').innerHTML = "";
+    });
     
     $('#pass-new').keyup(function() {
        atualizaForcaSenha();
