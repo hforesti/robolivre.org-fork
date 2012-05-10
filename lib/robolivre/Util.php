@@ -535,6 +535,22 @@ class Util {
         $purifier = new HTMLPurifier($config);
         return $purifier->purify($entrada);
     }
+    
+    public static function getTextoEmailEsqueciSenha($urlComToken,$nomeUsuario){
+        return 
+        "   <div><br></div><div>Alguém solicitou que a sua senha fosse redefinida na seguinte conta:</div>
+            <div><br></div>
+            <div>Nome de usuário: $nomeUsuario</div>
+            <div><br></div>
+            <div>Se for um mal entendido, apenas ignore este email e nada será alterado.</div>
+            <div><br></div>
+            <div>Para seguir em frente e redefinir a senha, visite o seguinte endereço:</div>
+            <div>$urlComToken</div>
+            <div><br></div>
+            <div>Obrigado,</div>
+            <div>Ethnos - O robô de perfil e cadastro</div>";
+        //"Para criar uma nova senha, entre no link : $urlComToken";
+    }
 }
 
 ?>

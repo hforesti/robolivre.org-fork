@@ -41,7 +41,7 @@ class inicialActions extends robolivreAction {
         if($usuario){
             $link = url_for("perfil/novaSenha?token=".$usuario->getToken()."&u=".$usuario->getIdUsuario(),true);
             
-            Util::enviarEmail("Sua nova senha", "Para criar uma nova senha, entre no link : $link", $usuario->getEmail()) ;
+            Util::enviarEmail("[robolivre.org] Redefinir senha", Util::getTextoEmailEsqueciSenha($link,$usuario->getNome()) , $usuario->getEmail()) ;
             
             $this->mensagem = "$link <strong>Tudo bem!</strong> Um link para recuperar sua senha foi enviado para o seu email <em>".$usuario->getEmail()."</em>.";
             
