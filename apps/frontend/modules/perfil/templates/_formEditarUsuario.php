@@ -1,13 +1,11 @@
 <?php
 $valoresInciais = $form->getDefaults();
-//Util::pre($valoresInciais);
 
 $dia = "";
 $mes = "";
 $ano = "";
 if ($valoresInciais['data_nascimento'] != null && $valoresInciais['data_nascimento'] != "") {
     $arrayData = explode("-", $valoresInciais['data_nascimento']);
-//    Util::pre($arrayData);
     $dia = $arrayData[2];
     $mes = "" . $arrayData[1];
     $ano = $arrayData[0];
@@ -82,8 +80,7 @@ if ($valoresInciais['data_nascimento'] != null && $valoresInciais['data_nascimen
 
             <div class="controls">
                 <div class="input-append">
-                    <?php echo $form->getWidget('email')->render($form->getName() . "[email]", $valoresInciais['email'], array('class' => "span4", 'id' => 'email', 'placeholder' => "Ex: voce@email.com", 'type' => "email")); ?>
-                    <span class="add-on">
+                    <?php echo $form->getWidget('email')->render($form->getName() . "[email]", $valoresInciais['email'], array('class' => "span4", 'id' => 'email', 'placeholder' => "Ex: voce@email.com", 'type' => "email")); ?><span class="add-on">
                         <i class="icon-exclamation-sign icon-gray"></i>
                         Confirmado
                     </span>

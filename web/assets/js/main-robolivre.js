@@ -404,7 +404,7 @@ function getForcaSenha(inputPassword,spanHelp) {
                     }
                 }
                 if(erro){
-                    resposta = 'Não coloque a senha '+str;
+                    resposta = 'Sua senha não pode ser '+str;
                 }
             }
         }

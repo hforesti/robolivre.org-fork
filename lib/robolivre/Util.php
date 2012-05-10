@@ -156,6 +156,25 @@ class Util {
         return $v->getRootDir() . "/web/arquivosDownloadImprensa";
     }
     
+    public static function functionBubbleSortArquivos($items){
+        $temp = "";
+        $size = count($items);
+                
+        for ($i = 1; $i < $size; $i++) {
+            for ($j = 1; $j < $size - $i; $j++) {
+                
+                if ($items[$j + 1]['tempo'] < $items[$j]['tempo']) {
+                    
+                    $temp = $items[$j];
+                    $items[$j] = $items[$j + 1];
+                    $items[$j + 1] = $temp;
+                }
+            }
+        }
+        
+        return array_reverse($items);
+    }
+    
     private static function getArrayArquivosDiretorio($diretorio){
         $itens = array();
         // abre o diretório
@@ -163,14 +182,17 @@ class Util {
         // monta os vetores com os itens encontrados na pasta
         while ($nome_itens = readdir($ponteiro)) {
             if($nome_itens!="." && $nome_itens!=".."){
-                $path_parts = pathinfo($diretorio."/".$nome_itens);
                 
+                $tempo = filemtime($diretorio."/".$nome_itens);
+                
+                $path_parts = pathinfo($diretorio."/".$nome_itens);
                 $array['nome'] = $path_parts['filename'];
                 $array['extensao'] = $path_parts['extension'];
                 $array['arquivo'] = $path_parts['basename'];
+                $array['tempo'] = $tempo;
                 //2592000 = 1 mes
-                if((microtime(true) - filemtime($diretorio."/".$nome_itens))<=2592000){
-                    $array['novo'] = true;
+                if((microtime(true) - $tempo)<=2592000){
+                    $array['novo'] = false;
                 }else{
                     $array['novo'] = false;
                 }
@@ -178,10 +200,23 @@ class Util {
             }
         }
         
+        if(count($itens)>1){
+            $itens = self::functionBubbleSortArquivos($itens);
+        }
+        
+        
         return $itens;
     }
     
-    public static function imprimeListaArquivos($pasta){
+    public static function getNomeReduzido($nome,$quantidadeMaxima){
+        if(strlen($nome)>$quantidadeMaxima ){
+            return substr($nome, 0,$quantidadeMaxima)."&hellip;";
+        }else{
+            return $nome;
+        }
+    }
+    
+    public static function imprimeListaArquivos($pasta,$quantidadeArquivos=null){
         if($pasta[0]=='/'){
             $pasta = substr($pasta, 1);
         }
@@ -192,15 +227,21 @@ class Util {
         
         sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
         $string = "";
-        foreach(array_splice($lista, 0, 5) as $item){
-            if(strlen($item['nome'])>50 ){
-                $nomeArquivo = substr($item['nome'], 0,50)."...";
-            }else{
-                $nomeArquivo = $item['nome'];
-            }
+        
+        $arrayLista = array();
+        
+        if($quantidadeArquivos==null){
+            $arrayLista = $lista;
+        }else{
+            $arrayLista = array_splice($lista, 0, $quantidadeArquivos);
+        }
+        
+        foreach($arrayLista as $item){
+           
+            $nomeArquivo = self::getNomeReduzido($item['nome'],40);
             
             $string .= "<tr>";
-            $string .= "    <td>".($item['novo']?"<span class=\"label label-info\">Novo</span>":""). "<a href=\"/$pasta/".$item['arquivo']."\">".$nomeArquivo."</a></td>";
+            $string .= "    <td>".($item['novo']?"<span class=\"label label-info\">Novo</span> ":""). "<a href=\"/$pasta/".$item['arquivo']."\">".$nomeArquivo."</a></td>";
             $string .= "    <td>".strtoupper($item['extensao'])."</td>";
             $string .= "</tr>";
             
@@ -467,6 +508,32 @@ class Util {
 	$dir = url_for($url, true);
 	return _compute_public_path($dir, sfConfig::get('sf_web_dir_name','web'),'png', true);
 
+    }
+    
+    public static function getHtmlPurificado($entrada){
+        return strip_tags($entrada);
+    }
+    
+    public static function getHtmlPurificadoDescricao($entrada){
+        
+        sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url','Tag'));
+
+        $config = HTMLPurifier_Config::createDefault();
+        
+        $config->set('Core.Encoding', 'UTF-8');
+        $config->set('HTML.Doctype', 'HTML 4.01 Transitional');
+        $config->set('HTML.Allowed', 'p,b,a[href],i,strike,sup,sub,span[style],ul,ol,li,blockquote,br');
+        $config->set('URI.Base', url_for(""));
+        $config->set('URI.MakeAbsolute', true);
+        $config->set('AutoFormat.AutoParagraph', true);
+        $config->set('AutoFormat.Linkify', true);
+        $config->set('AutoFormat.Linkify', true);
+        $config->set('CSS.AllowedProperties', array('background-color'));
+        $config->set('AutoFormat.RemoveSpansWithoutAttributes', true);
+        $config->set('Cache.SerializerPath', '/home/maxguenes/GitHub/robolivre.org/lib/robolivre/htmlpurifier-4.4.0/library/HTMLPurifier/DefinitionCache/Serializer');
+        
+        $purifier = new HTMLPurifier($config);
+        return $purifier->purify($entrada);
     }
 }
 

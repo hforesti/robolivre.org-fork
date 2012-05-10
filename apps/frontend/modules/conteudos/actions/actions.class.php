@@ -59,8 +59,6 @@ class conteudosActions extends robolivreAction
         $this->formConteudo = new ConteudosForm($objConteudo);
         $this->nomeConteudo = $objConteudo->getNome();
         $this->tags = Doctrine::getTable('TagsConteudos')->getTagsConteudo($idConjunto);
-        
-//        Util::pre($this->tags);
     }
     
     public function executePreviaFoto(sfWebRequest $request){
@@ -74,7 +72,6 @@ class conteudosActions extends robolivreAction
                 $extension = $file->getExtension($file->getOriginalExtension());
                 $file->save(sfConfig::get('sf_upload_dir').'/'.$filename.$extension);
                 
-                Util::pre($filename.$extension);
             }
         }
         
@@ -170,7 +167,13 @@ class conteudosActions extends robolivreAction
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if ($form->isValid()) {
             $form->updateObject(); 
+            $valores = $form->getTaintedValues();
+
             $objConteudo = $form->getObject();
+            
+            $objConteudo->setNome(Util::getHtmlPurificado($valores['nome']));
+            $objConteudo->setDescricao(Util::getHtmlPurificadoDescricao($valores['descricao']));
+
             $nomeArquivo = $this->criarTumbnails($request,  Util::criaSlug($objConteudo->getNome()));
             $objConteudo->getConjunto()->setImagemPerfil($nomeArquivo);
             $this->conteudo = Doctrine::getTable("Conteudos")->gravarConteudo($objConteudo);
@@ -201,7 +204,7 @@ class conteudosActions extends robolivreAction
                         }else{
                             $conteudoNovo = new Conteudos();
                             
-                            $conteudoNovo->setNome($tag);
+                            $conteudoNovo->setNome(Util::getHtmlPurificado($tag));
                             $conteudoNovo->setDescricao("");
                             $conteudoNovo->setEnviarEmailCriador(true);
                             
@@ -253,7 +256,6 @@ class conteudosActions extends robolivreAction
             }
             
             foreach ($arrayObjTag as $objTag) {
-                Util::pre($objTag->getData());
                 $objTag->save();
             }
             
@@ -316,14 +318,15 @@ class conteudosActions extends robolivreAction
             $form->updateObject(); 
             $valores = $form->getTaintedValues();
             $objConteudo = $form->getObject();
-            
+            //die($valores['descricao']);
             $objConteudo->setIdConjunto($valores['id_conjunto']);
             $objConteudo->setIdTipoConjunto($valores['id_tipo_conjunto']);
             $objConteudo->setIdConteudo($valores['id_conteudo']);
-            $objConteudo->setNome($valores['nome']);
-            $objConteudo->setDescricao($valores['descricao']);
+            $objConteudo->setNome(Util::getHtmlPurificado($valores['nome']));
+            $objConteudo->setDescricao(Util::getHtmlPurificadoDescricao($valores['descricao']));
+            die($objConteudo->getDescricao());
             $objConteudo->setEnviarEmailCriador($valores['enviar_email_criador']);
-            
+                        
             $slug = Util::criaSlug($objConteudo->getNome());
             $nomeArquivo = $this->criarTumbnails($request, $slug);
             $objConteudo->getConjunto()->setImagemPerfil($nomeArquivo);
@@ -362,7 +365,7 @@ class conteudosActions extends robolivreAction
                         }else{
                             $conteudoNovo = new Conteudos();
                             
-                            $conteudoNovo->setNome($tag);
+                            $conteudoNovo->setNome(Util::getHtmlPurificado($tag));
                             $conteudoNovo->setDescricao("");
                             $conteudoNovo->setEnviarEmailCriador(true);
                             
@@ -414,7 +417,6 @@ class conteudosActions extends robolivreAction
             }
             
             foreach ($arrayObjTag as $objTag) {
-                Util::pre($objTag->getData());
                 $objTag->save();
             }
             
@@ -469,7 +471,7 @@ class conteudosActions extends robolivreAction
         $objPublicacao = $form->getObject();
         $objPublicacao->setDataPublicacao(date('Y-m-d H:i:s'));
         $objPublicacao->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
-        $objPublicacao->setComentario($parametros['comentario']);
+        $objPublicacao->setComentario(Util::getHtmlPurificado($parametros['comentario']));
         
         $tipoConteudoPublicacao = $request->getParameter('tipo_conteudo_publicacao');
         

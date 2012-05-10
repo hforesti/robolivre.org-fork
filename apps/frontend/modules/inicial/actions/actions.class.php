@@ -161,8 +161,11 @@ class inicialActions extends robolivreAction {
     }
 
     protected function processForm(sfWebRequest $request, sfForm $form) {
-
-        $form->bind(array_merge($request->getParameter($form->getName()), array('data_criacao_perfil'=>date('Y-m-d H:i:s'))), $request->getFiles($form->getName()));
+        $arrayValores = $request->getParameter($form->getName());
+        
+        $arrayValores['nome'] = Util::getHtmlPurificado($arrayValores['nome']);
+        
+        $form->bind($arrayValores, $request->getFiles($form->getName()));
 
         if ($form->isValid()) {
             $usuarios = $form->save();

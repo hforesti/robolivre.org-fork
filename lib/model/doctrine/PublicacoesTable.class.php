@@ -404,7 +404,6 @@ class PublicacoesTable extends Doctrine_Table {
 
         $resultado = $statement->fetchAll();
         
-//        Util::pre($resultado);
         $arrayPublicacoes = array();
         if ($resultado) {
             foreach ($resultado as $reg) {
@@ -707,7 +706,6 @@ class PublicacoesTable extends Doctrine_Table {
 
         $resultado = $statement->fetchAll();
         
-//        Util::pre($resultado);
         $arrayPublicacoes = array();
         if ($resultado) {
             foreach ($resultado as $reg) {

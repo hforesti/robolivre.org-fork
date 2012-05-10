@@ -101,7 +101,7 @@
                         <a class="brand" href="<?php echo url_for("perfil/index") ?>">Robô Livre</a>
                         <div class="nav-collapse">
                             <ul class="nav">
-                                <?php $class = ($sf_context->getModuleName() == "perfil" && $sf_context->getActionName() == "index" ) ? "active" : "" ?>
+                                <?php $class = ($sf_context->getModuleName() == "perfil" && (strstr($sf_context->getActionName(),"Home") ||  is_numeric(array_search($sf_context->getActionName(), array("index",'editarPerfil','atualizarFoto','configuracoes','gravarConfiguracoes','notificacoes'))))) ? "active" : "" ?>
                                 <li class="<?php echo $class ?>">
                                     <a href="<?php echo url_for("perfil/index") ?>">Início</a>
                                 </li>

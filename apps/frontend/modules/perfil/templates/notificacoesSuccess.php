@@ -1,7 +1,6 @@
 <?php
 $arrayNotificacoes = UsuarioLogado::getInstancia()->getSolicitacoesPendentes();
 $quantidadeSolicitacoes = UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes();
-//Util::pre(array_keys($arrayNotificacoes));
 ?>
 
 <div class="row">

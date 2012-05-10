@@ -91,12 +91,10 @@ class perfilActions extends robolivreAction {
     
     public function executeGravarConfiguracoes(sfWebRequest $request){
         
-        //echo 
         $usuarios = new Usuarios(null,false,UsuarioLogado::getInstancia());
         $form = new UsuariosForm($usuarios, null, null, UsuariosForm::CONFIGURACAO);
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         
-        //Util::pre($request->getParameter($form->getName()));
         if($form->isValid()){
 
             $valores = $form->getTaintedValues();
@@ -166,13 +164,22 @@ class perfilActions extends robolivreAction {
         $this->forward404Unless($usuarios = Doctrine_Core::getTable('Usuarios')->find(array($id)), sprintf('Object usuarios does not exist (%s).', $id));
         $form = new UsuariosForm($usuarios,null,null,  UsuariosForm::SOMENTE_INFO);
         
-        $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-        //Util::pre($form->getTaintedValues(),true);
+        $postParameters = $request->getParameter($form->getName());
+        
+        
+        $postParameters['sobre_mim'] = Util::getHtmlPurificado($postParameters['sobre_mim']);
+        $postParameters['escola'] = Util::getHtmlPurificado($postParameters['escola']);
+        $postParameters['curso'] = Util::getHtmlPurificado($postParameters['curso']);
+        $postParameters['profissao'] = Util::getHtmlPurificado($postParameters['profissao']);
+        $postParameters['empresa'] = Util::getHtmlPurificado($postParameters['empresa']);
+
+        
+        $form->bind($postParameters, $request->getFiles($form->getName()));
 
         if ($form->isValid()) {
             $usuarios = $form->save();
             UsuarioLogado::getInstancia()->atualizaInformacoes($usuarios);
-            $this->redirect('perfil/informacao?u=' . $usuarios->getIdUsuario());
+            $this->redirect('perfil/informacaoHome');
         }else{
             $this->formUsuario = $form;
             $this->setTemplate('editarPerfil');
@@ -228,7 +235,6 @@ class perfilActions extends robolivreAction {
     
     public function executePublicar(sfWebRequest $request) {
 
-        //Util::pre(array($request->getFiles(),$request->getPostParameters()), true);
         $form = new PublicacoesForm();
         $parametros = $request->getParameter($form->getName());
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
@@ -236,7 +242,7 @@ class perfilActions extends robolivreAction {
         $objPublicacao = $form->getObject();
         $objPublicacao->setDataPublicacao(date('Y-m-d H:i:s'));
         $objPublicacao->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
-        $objPublicacao->setComentario($parametros['comentario']);
+        $objPublicacao->setComentario(Util::getHtmlPurificado($parametros['comentario']));
         
         $tipoConteudoPublicacao = $request->getParameter('tipo_conteudo_publicacao');
         if($tipoConteudoPublicacao != Publicacoes::TIPO_LINK && $tipoConteudoPublicacao != Publicacoes::TIPO_NORMAL){

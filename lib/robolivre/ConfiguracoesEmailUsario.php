@@ -14,6 +14,7 @@ class ConfiguracoesEmailUsario {
     
     const SEPARADOR_GRUPOS = " ";
     
+    const TODOS_PARAMETROS = "-T";
     const GRUPO_INFORMATIVO = "i";
     const GRUPO_AMIGO = "a";
     const GRUPO_CONTEUDO = "c";

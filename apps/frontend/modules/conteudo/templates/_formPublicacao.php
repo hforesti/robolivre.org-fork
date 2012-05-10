@@ -1,6 +1,16 @@
+<?php
+
+if(!isset($nome_conteudo)){
+    $nomeAbaCompartilhar = "Compartilhar sobre este Conteudo";
+}else{
+    $nomeAbaCompartilhar = "Compartilhar sobre ".Util::getNomeReduzido($nome_conteudo, 45);
+}
+
+?>
+
 <form id="form-status" action="<?php echo url_for('conteudos/publicar'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 <ul class="nav nav-tabs">
-  <li id="<?php echo Publicacoes::TIPO_NORMAL ?>" class="aba-publicacao active"><a href="#tab-status" data-toggle="tab">Compartilhar</a></li>
+  <li id="<?php echo Publicacoes::TIPO_NORMAL ?>" class="aba-publicacao active"><a href="#tab-status" data-toggle="tab"><?php echo $nomeAbaCompartilhar ?></a></li>
   <li id="<?php echo Publicacoes::TIPO_FOTO ?>" class="aba-publicacao"><a href="#tab-foto" data-toggle="tab" title="Adicionar Foto"><i class="icon-picture"></i></a></li>
   <li id="<?php echo Publicacoes::TIPO_VIDEO ?>" class="aba-publicacao"><a href="#tab-video" data-toggle="tab" title="Adicionar Vídeo"><i class="icon-film"></i></a></li>
   <li id="<?php echo Publicacoes::TIPO_LINK ?>" class="aba-publicacao"><a href="#tab-link" data-toggle="tab" title="Adicionar Link"><i class="icon-share-alt icon-gray-alt"></i></a></li>

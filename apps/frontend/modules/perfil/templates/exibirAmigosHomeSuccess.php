@@ -68,9 +68,12 @@
                         <li><a href="<?php echo url_for("perfil/exibirAmigosHome?pagina=".($pagina+1).((trim($nome)=="")?"":"&nome=$nome")) ?>">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
                     <?php } ?>
                 </ul>
-
+                
+                <?php if($quantidadeTotalPaginas>0){ ?>
                 <p class="pull-right">Exibindo de <?php echo ((($pagina-1)*Util::QUANTIDADE_PAGINACAO)+1) ?> a <?php echo ($pagina==$quantidadeTotalPaginas)? $quantidadeAmigos:$pagina*Util::QUANTIDADE_PAGINACAO ?></p>
-
+                <?php } ?>
+                
+                
             </div>
 
         </div>

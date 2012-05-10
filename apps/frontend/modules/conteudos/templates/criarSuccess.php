@@ -6,14 +6,13 @@
 
         <ul class="breadcrumb">
             <li>
-                <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+                <a href="<?php echo url_for("perfil/index") ?>">Início</a> <span class="divider">/</span>
             </li>
             <li>
-                <a href="conteudos.shtml">Conteúdos</a> <span class="divider">/</span>
+                <a href="<?php echo url_for("conteudos/index") ?>">Conteúdos</a> <span class="divider">/</span>
             </li>
             <li class="active">
                 Criar conteúdo
-                <!--     Editar conteúdo -->
             </li>
         </ul>
 

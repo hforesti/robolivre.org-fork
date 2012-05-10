@@ -492,8 +492,6 @@ class UsuariosTable extends Doctrine_Table {
         $arrayRetorno['quantidade'] = $qtdAmigos;
         $arrayRetorno['amigos'] = $arrayAmigos;
 
-//        Util::pre($arrayRetorno, true);
-
         return $arrayRetorno;
     }
 
@@ -563,8 +561,6 @@ class UsuariosTable extends Doctrine_Table {
 
         $arrayRetorno['quantidade'] = $qtdAmigos;
         $arrayRetorno['participantes'] = $arrayParticipantes;
-
-//        Util::pre($arrayRetorno, true);
 
         return $arrayRetorno;
     }

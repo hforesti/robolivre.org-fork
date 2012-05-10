@@ -7,6 +7,8 @@ if(!empty($taintedValues)){
 
 $erros = $formUsuario->getErrorSchema()->getErrors();
 
+Util::pre($valoresInciais);
+
 ?>
 
 <div class="row">
@@ -63,7 +65,7 @@ $erros = $formUsuario->getErrorSchema()->getErrors();
                             <?php $widget = $formUsuario->getWidget("amigo_$chave")?>
                             <div class="controls">
                                 <label class="checkbox">
-                                    <?php echo $widget->render($formUsuario->getName() ."[amigo_$chave]",  strstr($parametrosGrupo, $chave)) ?>
+                                    <?php echo $widget->render($formUsuario->getName() ."[amigo_$chave]",  strstr($parametrosGrupo, $chave)||$valoresInciais['parametros_email']==ConfiguracoesEmailUsario::TODOS_PARAMETROS) ?>
                                     <?php echo $widget->getLabel() ?>
                                 </label>
                             </div>
@@ -78,7 +80,7 @@ $erros = $formUsuario->getErrorSchema()->getErrors();
                             <?php $widget = $formUsuario->getWidget("conteudo_$chave")?>
                             <div class="controls">
                                 <label class="checkbox">
-                                    <?php echo $widget->render($formUsuario->getName() ."[conteudo_$chave]",  strstr($parametrosGrupo, $chave)) ?>
+                                    <?php echo $widget->render($formUsuario->getName() ."[conteudo_$chave]",  strstr($parametrosGrupo, $chave)||$valoresInciais['parametros_email']==ConfiguracoesEmailUsario::TODOS_PARAMETROS) ?>
                                     <?php echo $widget->getLabel() ?>
                                 </label>
                             </div>
@@ -92,7 +94,7 @@ $erros = $formUsuario->getErrorSchema()->getErrors();
                             <?php $widget = $formUsuario->getWidget("informativo_$chave")?>
                             <div class="controls">
                                 <label class="checkbox">
-                                    <?php echo $widget->render($formUsuario->getName() ."[informativo_$chave]",  strstr($parametrosGrupo, $chave)) ?>
+                                    <?php echo $widget->render($formUsuario->getName() ."[informativo_$chave]",  strstr($parametrosGrupo, $chave)||$valoresInciais['parametros_email']==ConfiguracoesEmailUsario::TODOS_PARAMETROS) ?>
                                     <?php echo $widget->getLabel() ?>
                                 </label>
                             </div>

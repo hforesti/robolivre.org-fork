@@ -62,7 +62,9 @@ $slug = Util::criaSlug($conteudo->getNome());
                             <th>Arquivo</th>
                             <th class="col-sec">Formato</th>
 <!--                            <th class="col-sec">Downloads</th>-->
-                            <th class="col-sec">Opções</th>
+                            <?php if($proprietario){ ?>
+                                <th class="col-sec">Opções</th>
+                            <?php } ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,13 +75,14 @@ $slug = Util::criaSlug($conteudo->getNome());
                             <td><a href="<?php echo image_path("/uploads/documentos/$slug/".$documento->getNomeArquivo()) ?>"><i class="icon-file icon-gray"></i> <?php echo $documento->getNomeDocumento() ?> <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small></a></td>
                             <td><?php echo strtoupper($documento->getExtensaoArquivo()) ?></td>
 <!--                            <td><a href="#"><span class="label label-info">100</span></a></td>-->
+                            <?php if($proprietario){ ?>
                             <td>
                                 <div class="btn-group">
                                     <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
                                         <span class="icon-cog icon-gray"></span>
                                     </a>
+                                    <?php if ($proprietario && $conteudo->getPodeColaborar() || UsuarioLogado::getInstancia()->getIdUsuario()==$documento->getIdUsuario()) { ?>
                                     <ul class="dropdown-menu">
-                                        <?php if ($conteudo->getPodeColaborar() || UsuarioLogado::getInstancia()->getIdUsuario()==$documento->getIdUsuario()) { ?>
 <!--                                        <li>
                                             <a data-toggle="modal" href="#modalEditName">Editar título</a>
                                         </li>-->
@@ -87,10 +90,11 @@ $slug = Util::criaSlug($conteudo->getNome());
                                         <li>
                                             <a class="send-msg" href="<?php echo url_for("conteudos/removerDocumento?slug=$slug&u=".$documento->getIdDocumento()) ?>"><i class="icon-remove-circle icon-gray"></i> Excluir arquivo</a>
                                         </li>
-                                        <?php } ?>
                                     </ul>
+                                    <?php } ?>
                                 </div><!-- btn-group -->
                             </td>
+                            <?php } ?>
                         </tr>
                         <?php } ?>
                     </tbody>

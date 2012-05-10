@@ -19,7 +19,6 @@ if(!isset($conteudo)){
     $evento = 'conteudos/gravarEdicao';
 }
 ?>
-<?php // Util::pre($valoresInciais) ?>
 
 <form id="form-criar-conteudo" action="<?php echo url_for($evento); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
             <fieldset>
@@ -140,7 +139,7 @@ if(!isset($conteudo)){
                         <label class="control-label" for="optionsCheckbox">Notificações</label>
                         <div class="controls">
                             <label class="checkbox">
-                                <?php echo $form->getWidget('enviar_email_criador')->render($form->getName() . "[enviar_email_criador]", array_key_exists('enviar_email_criador',$valoresInciais)&& $valoresInciais['enviar_email_criador']==1, array('id' => 'optionsCheckbox')); ?>
+                                <?php echo $form->getWidget('enviar_email_criador')->render($form->getName() . "[enviar_email_criador]", (!array_key_exists('enviar_email_criador',$valoresInciais) || $valoresInciais['enviar_email_criador']==null) || (array_key_exists('enviar_email_criador',$valoresInciais) && $valoresInciais['enviar_email_criador']==1), array('id' => 'optionsCheckbox')); ?>
                                 Receber e-mail quando um novo conteúdo relacionado a este for criado ou quando este for modificado por seus amigos
                             </label>
                         </div>
@@ -151,8 +150,11 @@ if(!isset($conteudo)){
 
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary btn-large">Publicar</button>
-                    <!--             <button type="submit" class="btn btn-primary btn-large">Atualizar conteúdo</button> -->
+                    <?php if(!isset($conteudo)){ ?>
+                        <button type="submit" class="btn btn-primary btn-large">Publicar</button>
+                    <?php }else{ ?>
+                        <button type="submit" class="btn btn-primary btn-large">Atualizar conteúdo</button> 
+                    <?php } ?>
                 </div>
             </fieldset>
 
@@ -183,11 +185,7 @@ if(!isset($conteudo)){
             formatList: function(data, elem){
                     var new_elem = elem.html("<i class='icon-tag icon-gray'></i>"+ data.name);
                     return new_elem;
-            },
-//            selectionRemoved: function(elem){
-//                var valores = document.getElementById('tags').value = $('.as-values')[0].value;
-//                alert(valores.split(","));
-//            }
+            }
         });
         
         $("#form-criar-conteudo").submit(function() {

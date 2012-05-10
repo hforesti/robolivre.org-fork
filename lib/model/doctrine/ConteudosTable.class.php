@@ -333,8 +333,6 @@ class ConteudosTable extends Doctrine_Table {
         $arrayRetorno['quantidade'] = $qtdConteudosSeguidos;
         $arrayRetorno['conteudos'] = $arrayConteudos;
 
-//        Util::pre($arrayRetorno, true);
-
         return $arrayRetorno;
     }
 
@@ -367,9 +365,6 @@ class ConteudosTable extends Doctrine_Table {
         // Execute Query  
 
         $resultado = $statement->fetchAll();
-
-//        Util::pre($statement);
-//        Util::pre($resultado,true);
 
         if ($resultado) {
             foreach ($resultado as $reg) {
@@ -601,9 +596,6 @@ class ConteudosTable extends Doctrine_Table {
 
         $resultado = $statement->fetchAll();
 
-//        Util::pre($statement);
-//        Util::pre($resultado,true);
-
         if ($resultado) {
             foreach ($resultado as $reg) {
                 $conteudo = new Conteudos();
@@ -724,7 +716,7 @@ class ConteudosTable extends Doctrine_Table {
         $query = "UPDATE conteudos 
                  SET nome = '" . $conteudo->getNome() . "',descricao= " . $connection->quote($conteudo->getDescricao()) . " ,enviar_email_criador=" . $conteudo->getEnviarEmailCriador() . "
                 WHERE id_conjunto = " . $conteudo->getIdConjunto();
-
+//        die($query);
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
         // Get Connection of Database  
@@ -1058,8 +1050,6 @@ class ConteudosTable extends Doctrine_Table {
 
         $arrayRetorno['quantidade'] = $qtdConteudos;
         $arrayRetorno['conteudos'] = $arrayConteudos;
-
-//        Util::pre($arrayRetorno, true);
 
         return $arrayRetorno;
     }

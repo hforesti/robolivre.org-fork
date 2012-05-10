@@ -15,10 +15,12 @@
             <li>
                 <a href="<?php echo url_for('conteudos/index'); ?>">Conteúdos</a> <span class="divider">/</span>
             </li>
-            <li class="active">
-                <a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>"><?php echo $conteudo->getNome(); ?></a>
+            <li>
+                <a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>"><?php echo $conteudo->getNome(); ?></a> <span class="divider">/</span>
             </li>
-
+            <li class="active">
+                <a href="<?php echo url_for("publicacao/exibir?u=".$publicacao->getIdPublicacao() ) ?>">Post</a>
+            </li>
         </ul>
 
         <div id="stream">

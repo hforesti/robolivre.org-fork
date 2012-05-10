@@ -124,7 +124,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php Util::imprimeListaArquivos("arquivosDownloadImprensa") ?>
+                        <?php Util::imprimeListaArquivos("arquivosDownloadImprensa",5) ?>
                     </tbody>
                 </table>
 
@@ -141,7 +141,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php Util::imprimeListaArquivos("arquivosPublicacoesCientificas") ?>
+                        <?php Util::imprimeListaArquivos("arquivosPublicacoesCientificas",5) ?>
                     </tbody>
                 </table>
 

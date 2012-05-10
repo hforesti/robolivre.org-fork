@@ -51,7 +51,9 @@ if($tipoFiltro!=""){
                 <a href="<?php echo url_for('conteudo/') . Util::criaSlug($conteudo->getNome()); ?>"><?php echo $conteudo->getNome(); ?></a>
             </li>
         </ul>
-
+        <?php if($conteudo->getTemaAula()){ ?>
+        <p><span class="label label-info">Tema de aula</span></p>
+        <?php } ?>
         <p><small>Adicionado por <?php echo Util::getTagUsuario($conteudo->getNomeProprietario(), $conteudo->getConjunto()->getIdUsuario()) ?>: <?php echo $dataCriacao ?>. Última modificação: <?php echo $ultimaAtulizacao; ?></small></p>
 
         <div class="page-header">
