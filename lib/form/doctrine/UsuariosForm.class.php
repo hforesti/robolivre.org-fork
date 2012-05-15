@@ -94,7 +94,7 @@ class UsuariosForm extends BaseUsuariosForm {
                     'confirmacao_senha' => new sfValidatorString(array('max_length' => 100, 'required' => false)),
                     'confirmacao_email' => new sfValidatorEmail(array('max_length' => 100, 'required' => false)),
                     'tp_frm' => new sfValidatorString(array('max_length' => 100)),
-                    'data_criacao_perfil' => new sfValidatorDateTime(),
+                    'data_criacao_perfil' => new sfValidatorDateTime(array('required' => false)),
                 ));
                 break;
             case self::SOMENTE_INFO:
