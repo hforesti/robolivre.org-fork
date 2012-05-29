@@ -1,0 +1,110 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+	<div class="span2" id="sidebar">
+		<div class="avatar">
+			<a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Arduino" class="photo"></a>
+			<div class="btn-group">
+				<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+					<span class="icon-cog icon-gray"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+					</li>
+					<li>
+						<a href="conteudo-avatar.shtml">Atualizar imagem</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a data-toggle="modal" href="#modalColabInvite">Convidar amigos a colaborar</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="#"><i class="icon-flag"></i> Reportar problema</a>
+					</li>
+				</ul>
+			</div>
+  <h1>Arduino</h1>
+		</div><!-- /avatar -->
+		<ul class="nav nav-pills nav-stacked">
+			<li><a href="#"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+			<li class="active"><a href="conteudo-docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info">5</span></a></li>
+			<li><a href="conteudo-imagens.shtml"><span class="icon-gray icon-picture"></span> Imagens <span class="label label-info">15</span></a></li>
+			<li><a href="conteudo-videos.shtml"><span class="icon-gray icon-film"></span> Vídeos <span class="label label-info">9</span></a></li>
+			<li><a href="conteudo-links.shtml"><span class="icon-gray icon-share-alt"></span> Links <span class="label label-info">5</span></a></li>
+			<li><a href="conteudo-conteudos.shtml"><span class="icon-gray icon-tag"></span> Conteúdos relac... <span class="label label-info">5</span></a></li>
+			<li><a href="conteudo-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos relac... <span class="label label-info">15</span></a></li>
+			<li><a href="conteudo-amigos.shtml"><span class="icon-gray icon-user"></span> Seguidores <span class="label label-info">150</span></a></li>
+		</ul>
+	</div><!-- /sidebar -->
+
+	<hr class="only-mobile">
+
+<div class="span10">
+
+  <ul class="breadcrumb">
+    <li>
+      <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+    </li>
+    <li>
+      <a href="conteudos.shtml">Conteúdos</a> <span class="divider">/</span>
+    </li>
+    <li>
+      <a href="conteudo.shtml">Arduino</a> <span class="divider">/</span>
+    </li>
+    <li>
+      <a href="conteudo-docs.shtml">Documentos</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+      Adicionar documento
+    </li>
+  </ul>
+
+    <form id="form-docs" class="tabs" action="conteudo-docs.shtml">
+
+<!-- Modelo de campo com erro -->
+<!--
+        <div class="control-group error">
+          <div class="controls">
+            <input type="text" class="span10" id="input01" placeholder="Título do documento" value="" tabindex="1">
+            <span class="help-inline">Por favor informe um título para o documento</span>
+          </div>
+        </div>
+ -->
+
+        <div class="control-group">
+          <div class="controls">
+            <input type="text" class="span10" id="input01" placeholder="Título do documento" value="" tabindex="1">
+          </div>
+        </div>
+
+          <div class="control-group">
+            <label class="control-label" for="fileInputDocs">Arquivo</label>
+            <div class="controls">
+
+              <div id="file-uploader-docs">
+                <noscript>
+                  <input class="input-file" id="fileInput2" type="file">
+                </noscript>
+              </div>
+
+              <p class="help-block">Você deve anexar um arquivo. (Ex.: PDF, Apresentação, Manual).</p>
+            </div>
+          </div>
+          <hr>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-large" tabindex="3">Adicionar documento</button>
+        </div>
+
+    </form>
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->

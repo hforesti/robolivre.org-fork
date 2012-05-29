@@ -2,58 +2,47 @@
 
 <div class="row">
 
-<div class="span2" id="sidebar">
-<div class="avatar">
-	<a href="comunidade.shtml"><img src="assets/img/rl/170.gif" alt="Poeta Manuel Bandeira" class="photo"></a>
+	<div class="span2" id="sidebar">
+		<div class="avatar">
+			<a href="conteudo.shtml"><img src="assets/img/rl/170.gif" alt="Arduino" class="photo"></a>
+			<div class="btn-group">
+				<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+					<span class="icon-cog icon-gray"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="conteudo-criar.shtml">Colaborar/Editar conteúdo</a>
+					</li>
+					<li>
+						<a href="conteudo-avatar.shtml">Atualizar imagem</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a data-toggle="modal" href="#modalColabInvite">Convidar amigos a colaborar</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="#"><i class="icon-flag"></i> Reportar problema</a>
+					</li>
+				</ul>
+			</div>
 
-    <div class="btn-group">
-		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-		<span class="icon-cog icon-gray"></span>
-		</a>
-		<ul class="dropdown-menu">
-			<li>
-				<a data-toggle="modal" href="#modalInvite">Convidar amigos</a>
-			</li>
-		    <li class="divider"></li>
-		  <li>
-			<a href="#"><i class="icon-flag"></i> Reportar problema</a>
-		  </li>
-	</ul>
-	</div>
+  <h1>Arduino</h1>
+		</div><!-- /avatar -->
 
-
-<!-- ========================================== -->
-<!-- ! Menu apenas para o criador e moderador   -->
-<!-- ========================================== -->
-<!--
-    <div class="btn-group">
-		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-		<span class="icon-cog icon-gray"></span>
-		</a>
-		<ul class="dropdown-menu">
-			<li>
-				<a href="conteudo-criar.shtml">Editar dados</a>
-			</li>
-			<li>
-				<a data-toggle="modal" href="#modalImgUpload">Atualizar imagem</a>
-			</li>
+		<ul class="nav nav-pills nav-stacked">
+			<li><a href="#"><span class="icon-gray icon-refresh"></span> Atualizações</a></li>
+			<li class="active"><a href="conteudo-docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info">5</span></a></li>
+			<li><a href="conteudo-imagens.shtml"><span class="icon-gray icon-picture"></span> Imagens <span class="label label-info">15</span></a></li>
+			<li><a href="conteudo-videos.shtml"><span class="icon-gray icon-film"></span> Vídeos <span class="label label-info">9</span></a></li>
+			<li><a href="conteudo-links.shtml"><span class="icon-gray icon-share-alt"></span> Links <span class="label label-info">5</span></a></li>
+			<li><a href="conteudo-conteudos.shtml"><span class="icon-gray icon-tag"></span> Conteúdos relac... <span class="label label-info">5</span></a></li>
+			<li><a href="conteudo-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos relac... <span class="label label-info">15</span></a></li>
+			<li><a href="conteudo-amigos.shtml"><span class="icon-gray icon-user"></span> Seguidores <span class="label label-info">150</span></a></li>
 		</ul>
-	</div>
--->
-	<h1>Poeta Manuel Bandeira</h1>
+	</div><!-- /sidebar -->
 
-</div><!-- /avatar -->
-
-<ul class="nav nav-pills nav-stacked">
-	<li><a href="comunidade.shtml"><span class="icon-gray icon-info-sign"></span> Resumo</a></li>
-	<li><a href="comunidade-forum.shtml"><span class="icon-gray icon-comment"></span> Fórum <span class="label label-info">50</span></a></li>
-	<li><a href="comunidade-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos <span class="label label-info">150</span></a></li>
-	<li class="active"><a href="comunidade-docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info">5</span></a></li>
-	<li><a href="comunidade-amigos.shtml"><span class="icon-gray icon-user"></span> Participantes <span class="label label-info">15</span></a></li>
-</ul>
-</div><!-- /sidebar -->
-
-<hr class="only-mobile">
+	<hr class="only-mobile">
 
 <div class="span10">
 
@@ -62,13 +51,13 @@
     <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
   </li>
   <li>
-    <a href="comunidades">Comunidades</a> <span class="divider">/</span>
+    <a href="conteudos.shtml">Conteúdos</a> <span class="divider">/</span>
   </li>
   <li>
-    <a href="comunidade.shtml">Poeta Manuel Bandeira</a> <span class="divider">/</span>
+    <a href="conteudo.shtml">Arduino</a> <span class="divider">/</span>
   </li>
   <li class="active">
-    <a href="comunidade-docs.shtml">Documentos</a>
+    <a href="conteudo-docs.shtml">Documentos</a>
   </li>
 </ul>
 
@@ -78,7 +67,7 @@
 <div class="row">
 	<h2 class="span7">Documentos ‧ <small>25</small></h2>	
 	<div class="span3">
-		<a href="comunidade-docs-criar.shtml" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar documento</a>
+		<a href="conteudo-docs-criar.shtml" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar documento</a>
 	</div>
 </div>
 

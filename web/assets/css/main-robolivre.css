@@ -613,7 +613,8 @@ footer .pull-left {width: 45%;}
 .list-mgmt .nav .mine a, 
 #forum-intro li.mine a, 
 .list-mgmt ul .mine .meta a,
-.forum-item ul .mine .entry a {
+.forum-item ul .mine .entry a,
+#docs-intro .mine a {
 	color: #008e42;
 }
 .list-mgmt ul .photo {
