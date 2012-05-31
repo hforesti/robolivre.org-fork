@@ -83,7 +83,6 @@ body.home .brand {
 body.home .top-login {
 	margin-bottom: 40px;
 }
-	#user-menu {float: right; margin-right: 0}
 	.navbar-inner {
 		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05),inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 	}
