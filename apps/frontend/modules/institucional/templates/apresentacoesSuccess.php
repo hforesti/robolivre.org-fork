@@ -30,7 +30,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <?php Util::imprimeListaArquivos("arquivosApresentacoes") ?>
+<!--                <tr>
                     <td><span class="label label-info">Novo</span> <a href="#">Mattis Pharetra Sit Amet</a></td>
                     <td>PPT</td>
                 </tr>
@@ -45,7 +46,7 @@
                 <tr>
                     <td><a href="#">Mattis Pharetra Sit Amet</a></td>
                     <td>ZIP</td>
-                </tr>
+                </tr>-->
             </tbody>
         </table>
 

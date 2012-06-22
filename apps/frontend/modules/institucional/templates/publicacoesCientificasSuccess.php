@@ -15,7 +15,7 @@
     <div class="span8">
 
         <div class="page-header">
-            <h1>Apresentações</h1>
+            <h1>Publicações Cientificas</h1>
         </div>
 
         <p>Aqui você encontra um diretório de downloads onde estarão sempre disponíveis os arquivos de publicações científicas da nossa equipe. Confira a tabela a seguir:</p>

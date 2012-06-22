@@ -1,0 +1,293 @@
+<?php
+include_once('../../includes/inc_inicio.php');
+include_once ('email.php');
+
+$retorno = ''; $result = ''; 
+$direct = 'home/'; 
+if(isset($_GET['t'])) {
+
+	switch ($_GET['t']) {
+	
+		case 'inserir': 
+
+			if($_POST['curso'] != "" 	  && $_POST['nome'] != "" 	   && $_POST['dataNascimento']    && $_POST['sexo'] != ""   &&   
+			   $_POST['logradouro'] != "" && $_POST['numero'] != ""    && $_POST['bairro'] != "" && 
+			   $_POST['cidade'] != ""    && $_POST['uf'] != "" 		  && $_POST['email'] != "" &&  
+			   $_POST['telefone1'] != ""  && $_POST['rg'] != "" 		  && $_POST['orgao'] != "" && $_POST['cpf'] != "") {
+				
+				$flagInserir = true;
+				
+				if(!Usuario::isCPFPossivelCadastrar($_POST['cpf'])) {
+					$flagInserir = false;
+					$mensagem = "CPF já cadastrado";
+				}
+//				if(!Usuario::isEmailPossivelCadastrar($_POST['email'])) {
+//					$flagInserir = false;
+//					$mensagem = "Email já cadastrado";
+//				}
+				
+				/*$param[] = array('referencia' => ':usu_cpf','valor' => $_POST['cpf'],'tipo' => 'STR');
+				$where   = ' usu_cpf = :usu_cpf ';
+				
+				$objUsuario = Usuario::listar($where, $param);
+				
+				if($objUsuario) {
+					$flagInserir = false;
+					$mesangem = "CPF j� cadastrado";
+				}*/
+				
+				if($flagInserir) {
+				
+					$objUsuario = new Usuario('', 
+											  $_POST['curso'],
+											  $_POST['nome'], 
+											  Util::dataIng($_POST['dataNascimento']), 
+											  $_POST['sexo'], 
+											  $_POST['logradouro'], 
+											  $_POST['numero'], 
+											  $_POST['complemento'], 
+											  $_POST['bairro'], 
+											  $_POST['cep'], 
+											  $_POST['cidade'], 
+											  $_POST['uf'], 
+											  $_POST['email'], 
+											  $_POST['telefone1'], 
+											  $_POST['telefone2'], 
+											  $_POST['rg'], 
+											  $_POST['orgao'], 
+											  Util::dataIng($_POST['emissao']), 
+											  $_POST['cpf'], 
+											  "",
+											  1,
+                                                                                          isset($_POST['experiencia'])?1:0);
+											  
+					try {
+						$idUsuario = $objUsuario->inserir();	
+						$retorno = 'sucesso';
+						
+						$objUsuario = Usuario::buscar($idUsuario);
+						
+						$codigoReferencia = "USU".substr(md5($objUsuario->getEmail().$objUsuario->getDataNascimento()), 0, 5);
+						
+						$objPagamento = new Pagamento("", $idUsuario, "", 0, $codigoReferencia);
+						$idPagamento = $objPagamento->inserir();
+						
+						$objPagamento = Pagamento::buscar($idPagamento);
+
+						try{
+                                          require_once '../../classes/api/PHPMailer.php';    
+                                          enviarEmail(utf8_decode("Mega Vestibular - [PRÉ-CADASTRO]"),(pegarMensagemEmailCadastroComSucesso($objUsuario)), $objUsuario->getEmail());
+					  enviarEmail(("Mega Vestibular - [ATENÇÃO]"),((pegarMensagemEmailAvisoPagamento())),$objUsuario->getEmail());
+                                          }catch(Exception $e){}
+
+						require_once "finalizar.php";				
+						
+						pagar($objUsuario, $objPagamento);
+					}
+					catch (BancoExcecao $ex) {
+						$direct = 'usuario-inserir'; 
+						$retorno = "Ocorreu algum erro durante seu cadastro. Favor tentar novamente.";
+					}
+					catch (Exception $e) {
+						$direct = 'usuario-inserir';
+						$retorno = "Ocorreu algum erro durante seu cadastro. Favor tentar novamente.";
+					}
+				} // FIm do if($flagInserir)
+				
+				else {
+					$direct = 'usuario-inserir';
+					$retorno = $mensagem;
+				}
+			
+			} // FIM do if
+			
+			break;
+			
+		
+		case "editar":
+		
+			break;
+			
+			
+		case "carregarCidade":
+			
+			$param[] = array("referencia" => ":uf_id", "valor" => $_POST['uf'], "tipo" => "INT");
+			$where   = " uf_id = :uf_id ";
+			
+			$objCidade = Cidade::listar($where, $param, "cid_nome");
+			
+			$tabela = Cidade::montarSelect($objCidade);
+			
+			$retorno[] = array("tabela" => $tabela);
+
+			$json = new Services_JSON();
+			$result = $json->encode($retorno);				
+			
+			echo $result;exit;
+		
+			break;		
+			
+		
+		case "verificaCpf":
+			
+			if(!Usuario::isCPFPossivelCadastrar($_POST['cpf']))
+				$retorno[] = array("resposta" => "true");
+			else
+				$retorno[] = array("resposta" => "false");
+			
+			$json = new Services_JSON();
+			$result = $json->encode($retorno);				
+			
+			echo $result;exit;
+			
+			break;	
+			
+			
+		case "verificaEmail":
+			
+			if(!Usuario::isEmailPossivelCadastrar($_POST['email'])) 
+				$retorno[] = array("resposta" => "true");
+			else
+				$retorno[] = array("resposta" => "false");
+			
+			$json = new Services_JSON();
+			$result = $json->encode($retorno);				
+			
+			echo $result;exit;
+			
+			break;	
+			
+		case "redirecionar-segunda-via":
+                        $result = "-";
+			   require_once 'segunda-via.php';
+			   break;
+
+		case "redirecionar-segunda-via-cancelado":
+                        $result = "-";
+			   require_once 'segunda-via-cancelado.php';
+			   break;
+
+		case "redirecionar-cartao-inscricao":
+                        $result = "-";
+			   require_once 'cartao-inscricao.php';
+			   break;
+	
+		case "segunda-via":
+
+			$param[] = array('referencia' => ':usu_data_nascimento','valor' => Util::dataIng($_POST['data_nascimento']),'tipo' => 'STR');
+			$where   = ' usu_data_nascimento = :usu_data_nascimento ';
+			
+			$param[] = array('referencia' => ':usu_email','valor' => $_POST['email'],'tipo' => 'STR');
+			$where  .= ' AND usu_email = :usu_email ';
+			
+			$objUsuario = Usuario::listar($where, $param);
+			
+			if($objUsuario) {
+				
+				$param = array();
+				$param[] = array('referencia' => ':usu_id','valor' => $objUsuario[0]->getId(),'tipo' => 'STR');
+				$where   = '  p.usu_id = :usu_id ';
+				
+				$objPagamento = Pagamento::listar($where, $param, "", 1);
+				
+				if($objPagamento) {
+					require_once "finalizar.php";				
+					pagar($objUsuario[0], $objPagamento[0]);
+				} 
+			}
+				
+				
+			else {
+				
+				$direct = 'paginas/usuario/processo.php';
+				$retorno = "?t=redirecionar-segunda-via&email=".$_POST['email']."&id=erro";			
+			}
+			
+			break;
+		
+		       
+                case "segunda-via-cancelado":
+                    
+                    $param[] = array('referencia' => ':usu_data_nascimento','valor' => Util::dataIng($_POST['data_nascimento']),'tipo' => 'STR');
+			$where   = ' usu_data_nascimento = :usu_data_nascimento ';
+			
+			$param[] = array('referencia' => ':usu_email','valor' => $_POST['email'],'tipo' => 'STR');
+			$where  .= ' AND usu_email = :usu_email ';
+			
+			$objUsuario = Usuario::listar($where, $param);
+			
+			if($objUsuario) {
+                                
+                                $idCurso = $objUsuario[0]->getCurso()->getId();
+                                $objUsuario[0]->setCurso($idCurso);
+                            
+				$idUsuario = $objUsuario[0]->inserir();	
+                                $retorno = 'sucesso';
+
+                                $objUsuario = Usuario::buscar($idUsuario);
+
+                                $codigoReferencia = "USU".substr(md5($objUsuario->getEmail().$objUsuario->getDataNascimento()), 0, 5);
+
+                                $objPagamento = new Pagamento("", $idUsuario, "", 0, $codigoReferencia);
+                                $idPagamento = $objPagamento->inserir();
+
+                                $objPagamento = Pagamento::buscar($idPagamento);
+
+                                try{
+                                    require_once '../../classes/api/PHPMailer.php';    
+                                }catch(Exception $e){
+                                    
+                                }
+                                require_once "finalizar.php";
+                                pagar($objUsuario, $objPagamento);
+			}
+				
+				
+			else {
+				
+				$direct = 'paginas/usuario/processo.php';
+				$retorno = "?t=redirecionar-segunda-via-cancelado&email=".$_POST['email']."&id=erro";			
+			}
+                    
+                    break;
+                        
+
+		case "cartao-inscricao":
+			
+			$param[] = array('referencia' => ':usu_data_nascimento','valor' => Util::dataIng($_POST['data_nascimento']),'tipo' => 'STR');
+			$where   = ' usu_data_nascimento = :usu_data_nascimento ';
+			
+			$param[] = array('referencia' => ':usu_email','valor' => $_POST['email'],'tipo' => 'STR');
+			$where  .= ' AND usu_email = :usu_email ';
+			
+			$objUsuario = Usuario::listar($where, $param);
+
+			if($objUsuario) {	
+				$direct = 'paginas/usuario/processo.php';
+				$retorno = "?t=redirecionar-cartao-inscricao&email=".$_POST['email']."&id=valida";
+				echo "<script>
+					window.top.location.href = '".Util::baseUrl().$direct.$retorno."';
+					</script>";
+				return;
+			}
+				
+				
+			else {
+				$direct = 'paginas/usuario/processo.php';
+				$retorno = "?t=redirecionar-cartao-inscricao&email=".$_POST['email']."&id=erro";			
+			}
+			
+			break;			
+			
+	}
+}
+
+if($result == "") {
+?>
+	<script language= "JavaScript">
+		location.href="<?php echo Util::baseUrl().$direct.$retorno; ?>";
+	</script>
+<?php
+}
+?>
+

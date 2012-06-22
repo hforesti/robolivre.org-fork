@@ -12,7 +12,7 @@
 
 
         <div id="stream" class="tabbable">
-
+                <div class="row">
             <div class="tab-content">
                 <ul class="nav nav-tabs pull-right" id="tabs-home">
                     <li class="no-link">
@@ -29,7 +29,7 @@
                 <!-- ================================== -->
                 <!-- ! TAB: Atualizações de "Conteúdos"   -->
                 <!-- ================================== -->
-                <div class="tab-pane fade in <?php echo ($iniciaTabAmigo)?"":"active" ?>" id="1">
+                <div class="span7 tab-pane fade in <?php echo ($iniciaTabAmigo)?"":"active" ?>" id="1">
 
 <!-- <a href="#" class="btn btn-primary" id="refresh"><i class="icon-refresh icon-white"></i> 6 novas atualizações. Exibir agora.</a> -->
 
@@ -64,7 +64,7 @@
                 <!-- ! TAB: Atualizações sociais   -->
                 <!-- ========================== -->
                 
-                <div class="tab-pane fade in <?php echo ($iniciaTabAmigo)?"active":"" ?>" id="2">
+                <div class="span7 tab-pane fade in <?php echo ($iniciaTabAmigo)?"active":"" ?>" id="2">
                     <?php if(count($publicacoesHome['amigos']['publicacoes'])>0){ ?>
                         <ul id="ul-steam-amigos">
                             <?php foreach ($publicacoesHome['amigos']['publicacoes'] as $publicacao) { ?>                    
@@ -90,7 +90,7 @@
                 </div><!-- tab-pane #2 -->
 
             </div><!-- tab-content -->
-
+                </div>
         </div><!-- stream -->
 
 
