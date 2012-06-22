@@ -54,9 +54,9 @@
 <!-- ========================================================== -->
 <!-- ! Modelo de alerta quando tiver solicitação de amizade   -->
 <!-- ========================================================== -->
-			<!--<div class="alert">
+			<div class="alert">
 				Você possui <strong>2 solicitações de amizade</strong> sem resposta. <a href="inbox.shtml">Confira nas suas notificações</a>.
-			</div>-->
+			</div>
 
 	<ul>
 		<li class="row">

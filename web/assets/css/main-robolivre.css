@@ -148,12 +148,8 @@ body.home .top-login {
 		left: 120px
 	}
 	#top-login .extras li {padding-top: 2px}
-	.dropdown img {
-		height: 20px;
-		width: 20px;
-		vertical-align: middle;
-	}
-	.dropdown img {
+	#user-menu .dropdown-toggle {white-space: nowrap;}
+	#user-menu .dropdown img {
 		height: 20px;
 		width: 20px;
 		vertical-align: middle;
@@ -161,13 +157,11 @@ body.home .top-login {
 	.login-dropdown .dropdown ul {width: 400px}
 	.dropdown-menu .logout-link a:hover, .dropdown-menu .danger-link a:hover {background-color: #DA4F49 !important;}
 
-#user-menu .label {
-	position: absolute;
-	top: 7px;
-	left: 6px;
-	padding: 0 2px;
-	line-height: 130%
-}
+	#user-menu .label {
+		position: absolute;
+		top: 4px;
+		left: 3px;
+	}
 
 #top-login {
 	float: right;
