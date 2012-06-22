@@ -92,6 +92,8 @@
 
 <div id="stream" class="tabbable">
 
+<div class="row">
+
 <div class="tab-content">
 <ul class="nav nav-tabs pull-right" id="tabs-home">
 	<li class="no-link">
@@ -105,10 +107,12 @@
   </li>
 </ul>
 
+
+
 <!-- ================================== -->
 <!-- ! TAB: Atualizações de "Conteúdos"   -->
 <!-- ================================== -->
-	<div class="tab-pane fade in active" id="1">
+	<div class="tab-pane fade in active span7" id="1">
 
 <!-- <a href="#" class="btn btn-primary" id="refresh"><i class="icon-refresh icon-white"></i> 6 novas atualizações. Exibir agora.</a> -->
 
@@ -454,7 +458,7 @@
 <!-- ! TAB: Atualizações sociais   -->
 <!-- ========================== -->
 
-	<div class="tab-pane fade in" id="2">
+	<div class="tab-pane fade in span7" id="2">
 
 	<ul>
 
@@ -869,7 +873,7 @@
 	
 </div><!-- tab-content -->
 
-
+</div><!-- row -->
 
 
 </div><!-- stream -->

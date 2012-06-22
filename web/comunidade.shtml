@@ -43,7 +43,7 @@
 </div><!-- /avatar -->
 
 <ul class="nav nav-pills nav-stacked">
-	<li class="active"><a href="comunidade.shtml"><span class="icon-gray icon-info-sign"></span> Resumo</a></li>
+	<li class="active"><a href="comunidade.shtml"><span class="icon-gray icon-info-sign"></span> Geral</a></li>
 	<li><a href="comunidade-forum.shtml"><span class="icon-gray icon-comment"></span> Fórum <span class="label label-info">50</span></a></li>
 	<li><a href="comunidade-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos <span class="label label-info">150</span></a></li>
 	<li><a href="comunidade-docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info">5</span></a></li>

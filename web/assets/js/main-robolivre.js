@@ -1,3 +1,10 @@
+// para scripts exclusivos para IE
+if ( $.browser.msie ) { //if IE
+  	$('body').addClass('ie');
+  } else {
+  	$('body').addClass('no-ie');
+  }
+
 //float do grid de thumbs
 $(window).load(function(){
 	var $container = $('#explore .tab-pane ul');
@@ -140,12 +147,12 @@ $('.bt-reply a').click(function() {
 
 //animacao respira Explore
 function toFade() { //reduces the opacity
-	$("#explore h2").animate({opacity: '.5'}, 1600, function() {
+	$(".no-ie #explore h2").animate({opacity: '.5'}, 1600, function() {
 		resetFade();
 	});
 }
 function resetFade(){ //increase opacity
-	$("#explore h2").animate({opacity: '1'}, 600, function(){
+	$(".no-ie #explore h2").animate({opacity: '1'}, 600, function(){
 		toFade();
 	});
 }
@@ -250,7 +257,6 @@ $('#location').change(function () {
 				}
               });
         })
-
 
 /* multi upload */
 //upload img
