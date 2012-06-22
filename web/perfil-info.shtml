@@ -59,11 +59,12 @@
 		</ul>
 
 		<div clas="entry">
-			<!-- modelo de mensagens se a pessoa está ignorada ou esperando resposta -->
-			<!--<p class="alert alert-error"><i class="icon-exclamation-sign icon-gray"></i> Usuário ignorado</p>
-			<p class="alert"><i class="icon-exclamation-sign icon-gray"></i> Aguardando resposta da sua solicitação de amizade.</p> -->
-
 			<h6><i class="icon-user icon-gray"></i> Sobre Henrique</h6>
+			<!-- modelo de mensagens -->
+			<!-- 
+			<p class="alert alert-error"><i class="icon-exclamation-sign icon-gray"></i> Usuário ignorado</p>
+			<p class="alert pull-right"><i class="icon-exclamation-sign icon-gray"></i> Aguardando resposta da sua solicitação de amizade.</p>
+			<a href="profile-info-editar.shtml" class="btn btn-primary pull-right"><i class="icon-edit icon-white"></i> Editar perfil</a> -->
 
 			<!-- modelo de botao para editar perfil caso seja o perfil dele -->
 			<!-- <a href="profile-info-editar.shtml" class="btn btn-primary pull-right"><i class="icon-edit icon-white"></i> Editar perfil</a> -->
