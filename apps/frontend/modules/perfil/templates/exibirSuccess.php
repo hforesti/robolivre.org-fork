@@ -1,6 +1,12 @@
 <div class="row">
 
-<?php include_partial('sidebarUsuario',array('usuario'=>$usuario)) ?>
+<?php 
+if ($usuario->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario()){
+    include_partial('sidebarUsuarioLogado');
+}else{
+    include_partial('sidebarUsuario',array('usuario'=>$usuario)); 
+}
+?>
 
 <hr class="only-mobile">
     
@@ -99,48 +105,7 @@
 <!-- ====================== -->
 <!-- ! Caixas de mensagem   -->
 <!-- ====================== -->
-<div class="modal fade" id="modalIgnore">
-    <div class="modal-header">
-        <a class="close" data-dismiss="modal">×</a>
-        <h3>Ignorar</h3>
-    </div>
-    <div class="modal-body">
-        <p>Você não verá mais as atualizações de <strong><?php echo $usuario->getNome(); ?></strong>. Tem certeza de que deseja ignorar seu conteúdo?</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn btn-danger">Ignorar <?php echo $usuario->getNome(); ?></a> <a href="#" class="btn" data-dismiss="modal">Cancelar</a> 
-    </div>
-</div>
 
-<?php if ($usuario->getTipoSolicitacaoAmizade() == Usuarios::SEM_SOLICITACAO) { ?>
-<div class="modal fade" id="modalAdd">
-    <div class="modal-header">
-        <a class="close" data-dismiss="modal">×</a>
-        <h3>Adicionar amigo</h3>
-    </div>
-    <div class="modal-body">
-        <p>Tem certeza de que deseja adicionar <strong><?php echo $usuario->getNome(); ?></strong> como amigo?</p>
-    </div>
-    <div class="modal-footer">
-        <a href="<?php echo url_for('perfil/solicitarAmizade?u='.$usuario->getIdUsuario()) ?>" class="btn btn-primary">Adicionar</a> <a href="#" class="btn" data-dismiss="modal">Cancelar</a> 
-    </div>
-</div>
-<?php } else if ($usuario->getTipoSolicitacaoAmizade() == Usuarios::AGUARDANDO_CONFIRMACAO) { ?>
-<div class="modal fade" id="modalAdd">
-    <div class="modal-header">
-        <a class="close" data-dismiss="modal">×</a>
-        <h3>Responder solicitação</h3>
-    </div>
-    <div class="modal-body">
-        <p>Deseja aceitar a solicitação de amizade de <strong><?php echo $usuario->getNome(); ?></strong>?</p>
-    </div>
-    <div class="modal-footer">
-        <a href="<?php echo url_for('perfil/aceitarSolicitacao') . "?u=" . $usuario->getIdUsuario() ?>" class="btn btn-primary">Aceitar</a> 
-        <a href="<?php echo url_for('perfil/recusarSolicitacao') . "?u=" . $usuario->getIdUsuario() ?>" class="btn btn-danger">Rejeitar</a> 
-        <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> 
-    </div>
-</div>
-<?php } ?>
 <div class="modal fade" id="modalDelete">
   <div class="modal-header">
     <a class="close" data-dismiss="modal">×</a>

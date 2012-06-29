@@ -449,12 +449,12 @@ class ConteudosTable extends Doctrine_Table {
             LEFT JOIN ($SQLQuantidadesSeguidores) seg ON seg.id_conjunto = c.id_conjunto
             LEFT JOIN usuarios u ON u.id_usuario = i.id_usuario
             LEFT JOIN amigos a ON (a.id_usuario_a = u.id_usuario AND id_usuario_b = $id_usuario_logado) OR (a.id_usuario_b = u.id_usuario AND id_usuario_a = $id_usuario_logado)
-            WHERE (p.id_usuario = $idUsuario OR i.id_usuario = $idUsuario)";
+            WHERE ((p.id_usuario = $idUsuario AND p.aceito=1) OR i.id_usuario = $idUsuario)";
         if ($nome != null && trim($nome) != "") {
             $queryConteudos .= "  AND c.nome LIKE '%$nome%'";
         }
         if ($isProprietario) {
-            $queryConteudos .= "  AND i.id_usuario = " . UsuarioLogado::getInstancia()->getIdUsuario();
+            $queryConteudos .= "  AND i.id_usuario = " . $idUsuario;
         }
         $queryConteudos .= " GROUP BY i.id_conjunto ORDER BY i.ultima_modificacao DESC,pts.pontos,c.nome
             LIMIT " . (($indicePagina - 1) * Util::QUANTIDADE_PAGINACAO) . ", " . Util::QUANTIDADE_PAGINACAO;
@@ -468,12 +468,12 @@ class ConteudosTable extends Doctrine_Table {
             LEFT JOIN ($SQLPontuacao) pts ON pts.id_conteudo = c.id_conteudo
             LEFT JOIN ($SQLQuantidadesArquivos) qts ON qts.id_conjunto = c.id_conjunto
             LEFT JOIN ($SQLQuantidadesSeguidores) seg ON seg.id_conjunto = c.id_conjunto
-            WHERE (p.id_usuario = $idUsuario OR i.id_usuario = $idUsuario)";
+            WHERE ((p.id_usuario = $idUsuario AND p.aceito=1) OR i.id_usuario = $idUsuario)";
         if ($nome != null && trim($nome) != "") {
             $queryQuantidade .= "  AND c.nome LIKE '%$nome%'";
         }
         if ($isProprietario) {
-            $queryQuantidade .= "  AND i.id_usuario = " . UsuarioLogado::getInstancia()->getIdUsuario();
+            $queryQuantidade .= "  AND i.id_usuario = " . $idUsuario;
         }
         $queryQuantidade.=" GROUP BY i.id_conjunto ";
         //die("$queryConteudos<br/><br/>$queryQuantidade");
@@ -541,13 +541,12 @@ class ConteudosTable extends Doctrine_Table {
                     } else {
                         $conteudo->setTipoSolicitacao(Conteudos::PARTICIPANTE);
                     }
-                    if ($reg['pode_colaborar'] == null) {
+                    if (!$reg['pode_colaborar']) {
                         $conteudo->setPodeColaborar(false);
                     } else {
                         $conteudo->setPodeColaborar(true);
                     }
                 }
-
 
 
                 $arrayConteudos[] = $conteudo;
@@ -634,7 +633,7 @@ class ConteudosTable extends Doctrine_Table {
                         $conteudo->setTipoSolicitacao($reg['participante']);
                     }
 
-                    if ($reg['pode_colaborar'] == null) {
+                    if (!$reg['pode_colaborar']) {
                         $conteudo->setPodeColaborar(false);
                     } else {
                         $conteudo->setPodeColaborar(true);

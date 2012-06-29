@@ -365,6 +365,19 @@ class perfilActions extends robolivreAction {
         }
     }
     
+    public function executeRemoverAmigo(sfWebRequest $request){
+        $id = $request->getParameter("u");
+        if(isset($id) && $id != UsuarioLogado::getInstancia()->getIdUsuario()){
+            $amizade = new Amigos();
+            $amizade->setSolicitacao($id);
+            
+            Doctrine::getTable("Amigos")->recusarAmizade($amizade);
+            $this->redirect('perfil/exibirAmigosHome');
+        }else{
+            $this->redirect('perfil/exibirAmigosHome');
+        }
+    }
+    
     public function executeRecusarSolicitacao(sfWebRequest $request){
         $amizade = new Amigos();
         $id = $request->getParameter("u");
@@ -402,7 +415,7 @@ class perfilActions extends robolivreAction {
             $id = $request->getParameter("u");
 
             if (!isset($id) || $id == UsuarioLogado::getInstancia()->getIdUsuario()) {
-                $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia());
+                $this->redirect('exibirAmigosHome');
             } else {
                 $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
             }
