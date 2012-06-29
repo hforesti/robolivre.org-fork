@@ -1,0 +1,77 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+	<div class="avatar">
+		<a href="projeto.shtml"><img src="assets/img/rl/170.gif" alt="R.A.F." class="photo"></a>
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li class="active"><a href="projeto.shtml"><i class="icon-gray icon-info-sign"></i> Geral</a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+
+<ul class="breadcrumb">
+  <li>
+    <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="projetos.shtml">Projetos</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <a href="projeto.shtml">Top Secret R.A.F.</a>
+  </li>
+</ul>
+
+<div class="page-header">
+
+	<div class="row">
+		<div class="span7">
+			<span class="label label-important">Projeto privado</span>
+			<h1>Top Secret R.A.F.</h1>
+		</div>
+
+		<div class="span3">
+		<div class="pull-right">
+		  <a href="#" class="btn btn-success pull-right"><i class="icon-ok icon-white"></i> Solicitar participação</a>
+		</div>
+
+		</div>
+
+	</div>
+	</div>
+
+
+<div class="row-fluid">
+
+	<div class="well span6" id="project-info">
+
+			<p>
+			<small>
+				<i class="icon-lock singletip" title="Privado"></i> ‧ Criado por <a href="perfil.shtml">Henrique Foresti</a> em 22/01/2012 às 08h00
+			</small>
+			</p>
+	<hr>
+			<p>R.A.F. (Robô Apanhador de Frutas) que nasceu na Oficina Robô Livre da Expoidea 2012 justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+
+			<strong>Website:</strong> <a href="http://robolivre.org">robolivre.org</a>
+
+	</div>
+
+
+</div>
+
+
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->

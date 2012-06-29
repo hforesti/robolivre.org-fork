@@ -54,11 +54,12 @@
 		    <a href="profile-projetos.shtml">Atualizados recentemente</a>
 		  </li>
 		  <li class="active"><a href="profile-projetos-meus.shtml">Criados por você</a></li>
+		  <li><a href="profile-projetos-meus.shtml">Você é Colaborador</a></li>
 	  </ul>
 	</div>
 	
-	<form class="list-filter">
-	        <input type="text" class="span4 search-query" placeholder="Buscar na lista de projetos">
+	<form class="list-filter pull-right">
+	        <input type="text" class="span3 search-query" placeholder="Buscar na lista de projetos">
 	</form>
 </div>
 

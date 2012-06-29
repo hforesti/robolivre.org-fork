@@ -27,11 +27,11 @@ body.home {
 }
 body.home h3 a {color: #333}
 
-h1, h2 {
+h1, h2, .lead {
     font-family: 'RobotoThin', sans-serif;
     font-weight: normal;
 }
-h3, h4, h5, h6 {
+h3, h4, h5, h6, .lead small {
     font-family: 'RobotoCondensed', sans-serif;
     font-weight: normal;
 }
@@ -444,14 +444,21 @@ body.home .top-login {
 		left: -7px;
 	}
 	.avatar .btn-group > a, .vcard .btn-group > a {
-		padding: 1px 3px 3px;
+		padding: 2px 1px 3px;
 		opacity: 0.9;
+	}
+	#sidebar .nav-pills > li > a {
+		padding-right: 5px;
+		padding-left: 5px;
+		white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
 	}
 	#sidebar .nav li {position: relative}
 	#sidebar .nav li .label {
 		float: right;
-		margin-top: -2px;
-		margin-right: -9px;
+		margin-right: -4px;
 	}
 	#sidebar .nav li .label-info, #sidebar .nav li .badge-info {
 		margin-top: 1px;
@@ -579,7 +586,7 @@ footer .pull-left {width: 45%;}
 }
 #explore .tab-content li {
 	float: left;
-	width: 173px;
+	width: 170px;
 	margin: 0 10px 30px;
 }
 
@@ -605,6 +612,7 @@ footer .pull-left {width: 45%;}
 .list-mgmt ul .mine h3 a, 
 .list-mgmt .nav .mine a, 
 #forum-intro li.mine a, 
+#diario-intro li.mine a, 
 .list-mgmt ul .mine .meta a,
 .forum-item ul .mine .entry a,
 #docs-intro .mine a {
@@ -637,21 +645,25 @@ footer .pull-left {width: 45%;}
 #modalSendMsg .uneditable-input {cursor: default}
 #fromField .add-on img {width: 20px}
 
-#forum-intro {margin-bottom: 25px}
+#forum-intro, 
+#diario-intro {margin-bottom: 25px}
 #forum-intro ul, 
 #docs-intro table,
+#diario-intro ul,
 #inbox-pvt-intro ul {margin-bottom: 8px}
 #forum-intro ul a, 
 #forum-intro ul a small, 
+#diario-intro ul a, 
+#diario-intro ul a small,
+#docs-intro ul a small,
 #inbox-pvt-intro ul a, 
 #inbox-pvt-intro ul a small, 
 #docs-intro table a, 
 #docs-intro table a small {display: block}
 #forum-intro ul a:hover,
+#diario-intro ul a:hover,
 #docs-intro table a:hover {text-decoration: none}
-#forum-intro ul a,
 #inbox-pvt-intro ul a {position: relative; padding-right: 40px}
-#forum-intro ul a .label,
 #inbox-pvt-intro ul a .label {
 	font-family: "Helvetica", "Arial", sans-serif;
 	padding-bottom: 1px;
@@ -661,8 +673,10 @@ footer .pull-left {width: 45%;}
 	top: 8px;
 }
 #forum-intro ul a small,
+#diario-intro ul a small,
 #inbox-pvt-intro ul a small,
-#docs-intro table a small {
+#docs-intro table a small,
+#docs-intro ul a small {
 	font-size: 85%;
 	color: #aaa
 }
@@ -690,7 +704,46 @@ table .col-sec {width: 10%}
 #inbox-pvt-intro .sent-user {vertical-align: middle;}
 #inbox-pvt-intro .close {cursor: pointer;}
 
-#modalInfo .img-step {
+#stats {
+	list-style: none
+}
+#stats .lead {
+	font-size: 210%;
+	text-align: center;
+	margin-bottom: 0;
+}
+#stats .lead a {
+	letter-spacing: -.1em;
+}
+#stats .lead a:hover {
+	color: #000;
+	text-decoration: none;
+}
+#stats .lead small {
+	display: block;
+	font-size: 46%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#stats .lead a small {
+	letter-spacing: normal;
+}
+
+#project-info {
+	margin-bottom: 30px
+}
+#project-info hr {
+	margin-top: 8px
+}
+#project-info #cont-rel img {
+	margin-bottom: 3px
+}
+#images-intro .thumbnails {
+	margin-bottom: 0;
+}
+#images-intro a:hover {text-decoration: none;}
+
+.img-step {
 	display: block;
 	height: 150px;
 	width: 150px;
@@ -1102,10 +1155,13 @@ footer .pull-left {width:100%;}
 /* // Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 body{padding-top:0;}
-.container,
+.container {
+	padding-left: 10px;
+	padding-right: 10px;
+}
 .navbar-fixed-top {
-	padding-left:10px;
-	padding-right:10px;
+	margin-left: 0;
+	margin-right: 0;
 }
 	#user-menu,
 	.navbar .nav {
@@ -1164,6 +1220,11 @@ body{padding-top:0;}
 #sidebar-wdgt {clear: both}
 .textarea-comment {width: 88%;}
 #footer-utility h4 {margin-top: 30px}
+
+#stats .span1 {
+	float: left;
+	margin-right: 10px
+}
 
 footer .pull-left {width:100%;}
 #co-workers {float: left; clear: both;}

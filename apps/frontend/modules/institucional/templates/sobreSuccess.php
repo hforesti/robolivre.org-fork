@@ -11,12 +11,19 @@
         <a href="<?php echo url_for("perfil/index") ?>" class="btn"><i class="icon-chevron-left icon-gray"></i> Início</a>
 </div>
 
-
     <div class="span8">
 
         <div class="page-header">
             <h1>Sobre a Robô Livre</h1>
         </div>
+
+<div class="row">
+    <blockquote class="pull-right clear-fix">
+      <p>Robô Livre é um veículo de transformação social</p>
+      <small>H.d. Mabuse ∙ C.E.S.A.R.</small>
+    </blockquote>
+</div>
+<hr>
 
         <p>A Plataforma Robótica Livre está disponível desde 2005 para ajudar a desmistificar a tecnologia. Mostramos as pessoas que é fácil fazer. :) 
             O nosso principal objetivo é mostrar que a robótica pode e deve ser desenvolvida por qualquer pessoa que tenha interesse, independente de possuir conhecimentos técnicos sobre o tema ou qualquer formação.
