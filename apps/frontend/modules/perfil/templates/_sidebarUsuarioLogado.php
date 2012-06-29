@@ -7,7 +7,7 @@ $quantidadeSolicitacoes = UsuarioLogado::getInstancia()->getQuantidadeSolicitaco
 $quantidadeNotificacoes = $quantidadeSolicitacoes;// + NOTIFICACOES
 ?>
 
-<div class="span2 " id="sidebar">
+<div class="span2" id="sidebar">
     <div class="avatar">
         <a href="<?php echo url_for('perfil/index'); ?>"><img src="<?php echo image_path(UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_GRANDE)); ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>" class="photo"></a>
         <div class="btn-group">
