@@ -39,6 +39,7 @@
                 <tr>
                     <th>Arquivo</th>
                     <th>Formato</th>
+                    <th>Tamanho</th>
                 </tr>
             </thead>
             <tbody>
