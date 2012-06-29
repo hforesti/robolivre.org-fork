@@ -54,11 +54,12 @@
 		    <a href="profile-projetos.shtml">Atualizados recentemente</a>
 		  </li>
 		  <li><a href="profile-projetos-meus.shtml">Criados por você</a></li>
+		  <li><a href="profile-projetos-meus.shtml">Você é Colaborador</a></li>
 	  </ul>
 	</div>
 	
-	<form class="list-filter">
-	        <input type="text" class="span4 search-query" placeholder="Buscar na lista de projetos">
+	<form class="list-filter pull-right">
+	        <input type="text" class="span3 search-query" placeholder="Buscar na lista de projetos">
 	</form>
 </div>
 
@@ -70,33 +71,25 @@
 		<li class="row mine">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a> ‧ <small>Criado por você</small></h3>
-		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Ativo</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Em andamento</span> ‧ Última atualização 21/01/2012 às 21:50<br>
 		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
-		<div class="btn-group">
+		<div class="btn-group nav">
 		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
 			<span class="icon-cog icon-gray"></span>
 		</a>
 			<ul class="dropdown-menu">
+  					<li class="nav-header">Gerenciar</li>
 				<li>
-					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
-				</li>
-				<li>
-					<a href="comunidade-upload.shtml">Adicionar imagem</a>
-				</li>
-				<li>
-					<a href="comunidade-upload.shtml">Adicionar documento</a>
-				</li>
-				<li>
-					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
+					<a href="projeto-amigos-colaboradores.shtml">Colaboradores</a>
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a href="projeto-criar.shtml">Editar projeto</a>
+					<a href="projeto-editar.shtml">Editar projeto</a>
 				</li>
 				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Excluir projeto</a>
+					<a href="projeto-editar-imagem.shtml">Alterar imagem</a>
 				</li>
 			</ul>
 		</div><!-- btn-group -->
@@ -104,31 +97,18 @@
 
 		<li class="row">
 		<div class="span8">
-		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Ativo</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a> ‧ <small>Você é Colaborador</small></h3>
+		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Em andamento</span> ‧ Última atualização 21/01/2012 às 21:50<br>
 		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
-		<div class="btn-group">
+		<div class="btn-group nav">
 		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
 			<span class="icon-cog icon-gray"></span>
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
-				</li>
-				<li>
-					<a href="comunidade-upload.shtml">Adicionar imagem</a>
-				</li>
-				<li>
-					<a href="comunidade-upload.shtml">Adicionar documento</a>
-				</li>
-				<li>
-					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
+					<a href="projeto-editar.shtml">Deixar de ser colaborador</a>
 				</li>
 			</ul>
 		</div><!-- btn-group -->
@@ -147,20 +127,7 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="projeto-diario-criar.shtml">Criar registro no Diário de bordo</a>
-				</li>
-				<li>
-					<a href="comunidade-upload.shtml">Adicionar imagem</a>
-				</li>
-				<li>
-					<a href="comunidade-upload.shtml">Adicionar documento</a>
-				</li>
-				<li>
-					<a href="projeto-codigo-criar.shtml">Adicionar código fonte</a>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<a data-toggle="modal" href="#modalRemoveCommunity">Deixar de seguir</a>
+					<a href="projeto-editar.shtml">Parar de seguir</a>
 				</li>
 			</ul>
 		</div><!-- btn-group -->
@@ -265,7 +232,7 @@
 		<li class="row">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Ativo</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Em andamento</span> ‧ Última atualização 21/01/2012 às 21:50<br>
 		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 
@@ -297,7 +264,7 @@
 		<li class="row">
 		<div class="span8">
 		<a href="projeto.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Nome do projeto" title="Nome do projeto" class="thumbnail"></a> <h3><a href="projeto.shtml">Nome do projeto</a></h3>
-		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Ativo</span> ‧ Última atualização 21/01/2012 às 21:50<br>
+		<p class="meta"><span class="label label-success"><i class="icon-play-circle icon-white"></i> Em andamento</span> ‧ Última atualização 21/01/2012 às 21:50<br>
 		<a href="projeto-docs.shtml">5 documentos</a> ‧ <a href="projeto-imagens.shtml">5 imagens</a> ‧ <a href="comunidade-seguidores.shtml">2 registro no Diário de bordo</a></p>
 		</div>
 

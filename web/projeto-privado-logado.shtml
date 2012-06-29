@@ -34,7 +34,6 @@
 	<li><a href="projeto-docs.shtml"><i class="icon-gray icon-book"></i> Documentos</a></li>
 	<li><a href="projeto-codigos.shtml"><i class="icon-gray icon-list-alt"></i> Códigos</a></li>
 	<li><hr></li>
-	<li><a href="projeto-conteudos.shtml"><i class="icon-gray icon-tag"></i> Conteúdos relacionados</a></li>
 	<li><a href="projeto-amigos.shtml"><i class="icon-gray icon-user"></i> Participantes</a></li>
 </ul>
 </div><!-- /sidebar -->
@@ -51,7 +50,7 @@
     <a href="projetos.shtml">Projetos</a> <span class="divider">/</span>
   </li>
   <li class="active">
-    <a href="projeto.shtml">R.A.F. (Robô Apanhador de Frutas)</a>
+    <a href="projeto.shtml">Top Secret R.A.F.</a>
   </li>
 </ul>
 
@@ -59,36 +58,8 @@
 
 	<div class="row">
 		<div class="span7">
-			<h1>R.A.F. (Robô Apanhador de Frutas)</h1>
-		</div>
-
-		<div class="span3">
-		
-		<div class="btn-group pull-right">
-		  <a href="#" class="btn btn-success"><i class="icon-ok icon-white"></i> Seguir projeto</a>
-		  <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-		    <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu">
-		  <li>
-		    <a href="projeto-convite-solicitar.shtml">Quero ser um colaborador</a>
-		  </li>
-		  </ul>
-		</div>
-
-		<!-- Modelo de botão para seguidor
-		 <div class="btn-group pull-right">
-		  <a href="#" class="btn"><i class="icon-remove"></i> Parar de seguir projeto</a>
-		  <button class="btn dropdown-toggle" data-toggle="dropdown">
-		    <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu">
-		  <li>
-		    <a href="projeto-convite-solicitar.shtml">Quero ser um colaborador</a>
-		  </li>
-		  </ul>
-		</div> -->
-
+			<span class="label label-important">Projeto privado</span>
+			<h1>Top Secret R.A.F.</h1>
 		</div>
 
 	</div>
@@ -126,17 +97,12 @@
 		</p>
 		</li>
 
-		<li class="span1 offset3">
+		<li class="span1 offset4">
 		<p class="lead">
 			<a href="projeto-amigos-colaboradores.shtml" title="06 colaboradores">06 <small>colaboradores</small></a>
 		</p>
 		</li>
 
-		<li class="span1">
-		<p class="lead">
-			<a href="projeto-amigos.shtml" title="26 seguidores">26 <small>seguidores</small></a>
-		</p>
-		</li>
 	</ul>
 
 <hr>
@@ -146,7 +112,7 @@
 	<div class="well span6" id="project-info">
 			<p>
 			<small>
-				<i class="icon-eye-open icon-gray singletip" title="Público"></i> ‧ Criado por <a href="perfil.shtml">Henrique Foresti</a> em 22/01/2012 às 08h00 ‧ Última atualização em 21/01/2012 às 21:50 ‧ <span class="label label-success"><i class="icon-play-circle icon-white"></i> Em andamento</span>
+				<i class="icon-lock singletip" title="Privado"></i> ‧ Criado por <a href="perfil.shtml">Henrique Foresti</a> em 22/01/2012 às 08h00 ‧ Última atualização em 21/01/2012 às 21:50 ‧ <span class="label label-success"><i class="icon-play-circle icon-white"></i> Em andamento</span>
 			</small>
 			</p>
 	<hr>
@@ -154,29 +120,9 @@
 
 			<strong>Website:</strong> <a href="http://robolivre.org">robolivre.org</a>
 
-	<hr>
-
-		<div id="cont-rel">
-		<h4><span class="icon-gray icon-tag"></span> <a href="projeto-amigos.shtml" title="Ver tudo">Conteúdos relacionados <small>16</small></a></h4>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-		</div>
-
 	<!-- Modelo de botão para criador -->
-	<!-- <hr>
-		<a href="projeto-editar.shtml" class="btn btn-primary"><i class="icon-edit icon-white"></i> Editar projeto</a> -->
+	<hr>
+		<a href="projeto-editar.shtml" class="btn btn-primary"><i class="icon-edit icon-white"></i> Editar projeto</a>
 
 	</div>
 

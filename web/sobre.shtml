@@ -21,20 +21,30 @@
 <h1>Sobre a Robô Livre</h1>
 </div>
 
-<h2>Nossa filosofia</h2>
-<p>
-<strong>Modelo de página com vários tipos de conteúdo. Por exemplo, subtítulos, tabela para downloads de apresentações ou artigos publicados, grid de imagens da equipe ou para logo de parceiros. </strong></p>
+<div class="row">
+    <blockquote class="pull-right clear-fix">
+      <p>Robô Livre é um veículo de transformação social</p>
+      <small>H.d. Mabuse ∙ C.E.S.A.R.</small>
+    </blockquote>
+</div>
+<hr>
 
-<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla vitae elit libero, a pharetra augue. Nullam quis risus eget urna mollis ornare vel eu leo.
-</p>
-<h3>Tortor mauris condimentum nibh</h3>
-<p>
-Donec ullamcorper nulla non metus auctor fringilla. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        <p>A Plataforma Robótica Livre está disponível desde 2005 para ajudar a desmistificar a tecnologia. Mostramos as pessoas que é fácil fazer. :) 
+            O nosso principal objetivo é mostrar que a robótica pode e deve ser desenvolvida por qualquer pessoa que tenha interesse, independente de possuir conhecimentos técnicos sobre o tema ou qualquer formação.
+        Nosso desenvolvimento é colaborativo. Aqui você encontrará vários projetos de robôs que poderão ser montados, utilizados, copiados ou desenvolvidos por qualquer pessoa. Todos nossos projetos e metodologias são abertos, liberados e garantidos pelas licenças <strong>GNU GPL</strong> e <strong>GNU FDL</strong>.
+        </p>
 
-<h4>Fusce dapibus</h4>
-<p>
-Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nulla vitae elit libero, a pharetra augue. Etiam porta sem malesuada magna mollis euismod.
-</p>
+        <h2>Metodologia</h2>
+        <p>Desenvolvida em parceria com o programa de Pós-graduação em Educação Matemática e Tecnológica da UFPE (EDUMATEC) e a Univerdade da República do Uruguai (UdelaR), nossa metodologia se baseia em três pontos para estabelecer um diferencial em relação aos demais modelos de aprendizado da Robótica:</p>
+        <ol>
+            <li>"É fácil fazer". A convicção de que a Robótica pode e deve ser trabalhada por qualquer pessoa, independentemente de sua formação, idade, condição sociocultural e conhecimento prévio.</li>
+            <li>Desenvolvimento colaborativo. Todos os artefatos e conteúdos produzidos e disponibilidados são baseados nas licenças GNU (GPL e FDL).</li>
+            <li>Abordagem de ensino desenvolvida de forma horizontal. Trocando a hierarquização na relação facilitador-aluno por uma forma democrática e parcitipativa por meio da prática.</li>
+        </ol>
+
+        <p>Informações mais detalhadas sobre nossa plataforma você encontra no nosso Release oficial. O download dele pode ser feito a seguir.</p>
+
+  
 
 <h2>Downloads</h2>
 <table class="table table-striped table-bordered">

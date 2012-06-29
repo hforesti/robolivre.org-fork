@@ -33,6 +33,22 @@
 
 <h2>2º Criar conteúdos</h2>
 
+<h3>Entender "Conteúdo" aqui é simples como 1, 2, 3</h3>
+
+<div class="row-fluid">
+      <div class="span4">
+        <span class="img-step step1"></span>
+        <span class="label label-success">1</span> <strong>Conteúdos</strong> aqui na rede são como galhos de uma árvore</div>
+      <div class="span4">
+        <span class="img-step step2"></span>
+        <span class="label label-success">2</span> Em cada conteúdo é possível encontrar coisas "penduradas"<br> (<i class="icon-picture"></i> Imagens, <i class="icon-share-alt"></i> Links...)</div>
+      <div class="span4">
+        <span class="img-step step3"></span>
+        <span class="label label-success">3</span> Conteúdos podem estar conectados, ou seja,<br> <i class="icon-tag"></i> Conteúdos relacionados</div>
+</div>
+
+<div class="row">
+	<hr>
 <h4>Crie e compartilhe conteúdos</h4>
 
 <p>Compartilhe conteúdo, interaja com as pesssoas que tem o mesmo interesse e
@@ -41,6 +57,7 @@ faça o seu conteúdo crescer na rede.</p>
 <p>Na página de conteúdo você visualiza os conteúdos que estão cadastrados na rede. Nele você pode verificar o que é tema de aula e o que são conteúdos relacionados aos temas.</p>
 
 <p>Clicando em "Seguir conteúdo" você passa a receber todas as atualizações e colaborações feitas neste conteúdo.</p>
+</div>
 
 </div>
 

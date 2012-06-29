@@ -43,6 +43,13 @@ $(document).ready(function(){
     });
 }); 
 
+//links externos
+$('a[rel="external"]')
+	.click( function() {
+	window.open( $(this).attr('href') );
+	return false;
+})
+
 //oculta parte da descricao do conteudo
 var ch = $('#main-entry').height();
 $('#main-entry').css({
@@ -59,6 +66,11 @@ $('#shink-content .btn').click(function(){
 	});
 	$(this).parent().fadeOut(700);
 	return false;
+})
+
+//carousel imprensa
+$('.carousel').carousel({
+  interval: 4000
 })
 
 //oculta topbar do safari mobile
@@ -172,7 +184,7 @@ if ( $("#stream .video-embed") ) {
 
 //tooltips
 $('#inbox-pvt-intro .singletip').tooltip({placement: 'left'});
-$('.singletip, #grid-comunidades img, #grid-conteudos img, #grid-amigos img, #grid-projetos img, .visivel-para i, #grid-eventos img').tooltip();
+$('.singletip, #grid-comunidades img, #grid-conteudos img, #grid-amigos img, #grid-projetos img, .visivel-para i, #grid-eventos img, #cont-rel img').tooltip();
 $('#form-status .nav a, #form-topico .nav a, #form-reply .nav a').tooltip({placement: 'bottom'});
 
 
