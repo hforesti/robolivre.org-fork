@@ -45,48 +45,50 @@
 
                                 <li class="divider-vertical"></li>
                             </ul>
-                            <?php if(!($sf_context->getModuleName() == "inicial" && is_numeric(array_search($sf_context->getActionName(), array('telaLogin','loginInicial','login'))))
-                                    && !($sf_context->getModuleName() == "perfil" && is_numeric(array_search($sf_context->getActionName(), array('novaSenha','processarNovaSenha'))))){ ?>
-                            <ul class="nav pull-right">
-                                <li class="divider-vertical"></li>
-                                <li>
-                                    <a data-toggle="modal" href="#modalLogin">Entrar</a>
-                                </li>
-                            </ul>
-                            <?php } ?>
+                            <?php if (!($sf_context->getModuleName() == "inicial" && is_numeric(array_search($sf_context->getActionName(), array('telaLogin', 'loginInicial', 'login'))))
+                                    && !($sf_context->getModuleName() == "perfil" && is_numeric(array_search($sf_context->getActionName(), array('novaSenha', 'processarNovaSenha'))))) {
+                                ?>
+                                <ul class="nav pull-right">
+                                    <li class="divider-vertical"></li>
+                                    <li>
+                                        <a data-toggle="modal" href="#modalLogin">Entrar</a>
+                                    </li>
+                                </ul>
+    <?php } ?>
                         </div>
                     </div>
                 </div>
             </div> 
-            <?php if(!($sf_context->getModuleName() == "inicial" && is_numeric(array_search($sf_context->getActionName(), array('telaLogin','loginInicial','login'))))
-                        && !($sf_context->getModuleName() == "perfil" && is_numeric(array_search($sf_context->getActionName(), array('novaSenha','processarNovaSenha'))))){ ?>
-            
-            <div class="modal fade" id="modalLogin">
-                <div class="modal-header">
-                    <a class="close" data-dismiss="modal">×</a>
-                    <h3>Entrar <?php echo $sf_context->getModuleName()." ".$sf_context->getActionName()?></h3>
-                </div>
-                <div class="modal-body">
-                    <?php $form = new UsuariosForm(null, null, null, UsuariosForm::LOGIN); ?>
-                    <form id="login-form" class="form-inline" method="post" action="<?php echo url_for('inicial/login'); ?>">
-                        <?php echo $form->getWidget('login')->render($form->getName() . "[login]", null, array('id' => 'login', 'placeholder' => "e-mail ou usuário", 'tabindex' => "1")); ?>
-                        <?php echo $form->getWidget('senha')->render($form->getName() . "[senha]", null, array('type'=>"password",'id' => 'login-pass', 'placeholder' => "senha", 'tabindex' => "2")); ?>
-                        <?php echo $form->renderHiddenFields() ?>
-                        <input value="entrar" type="submit" class="btn btn-primary" tabindex="4" />
-                        <?php ?>
-                        <label class="checkbox">
-                            <input type="checkbox" name="optionsCheckboxList1" value="option1" tabindex="3">
-                            lembrar-me
-                        </label>	
-                    </form>
-                </div>
+            <?php if (!($sf_context->getModuleName() == "inicial" && is_numeric(array_search($sf_context->getActionName(), array('telaLogin', 'loginInicial', 'login'))))
+                    && !($sf_context->getModuleName() == "perfil" && is_numeric(array_search($sf_context->getActionName(), array('novaSenha', 'processarNovaSenha'))))) {
+                ?>
 
-                <div class="modal-footer">
-                    <a href="#" class="btn" data-dismiss="modal">Fechar</a>
+                <div class="modal fade" id="modalLogin">
+                    <div class="modal-header">
+                        <a class="close" data-dismiss="modal">×</a>
+                        <h3>Entrar <?php echo $sf_context->getModuleName() . " " . $sf_context->getActionName() ?></h3>
+                    </div>
+                    <div class="modal-body">
+                            <?php $form = new UsuariosForm(null, null, null, UsuariosForm::LOGIN); ?>
+                        <form id="login-form" class="form-inline" method="post" action="<?php echo url_for('inicial/login'); ?>">
+                            <?php echo $form->getWidget('login')->render($form->getName() . "[login]", null, array('id' => 'login', 'placeholder' => "e-mail ou usuário", 'tabindex' => "1")); ?>
+                            <?php echo $form->getWidget('senha')->render($form->getName() . "[senha]", null, array('type' => "password", 'id' => 'login-pass', 'placeholder' => "senha", 'tabindex' => "2")); ?>
+                            <?php echo $form->renderHiddenFields() ?>
+                            <input value="entrar" type="submit" class="btn btn-primary" tabindex="4" />
+        <?php ?>
+                            <label class="checkbox">
+                                <input type="checkbox" name="optionsCheckboxList1" value="option1" tabindex="3">
+                                lembrar-me
+                            </label>	
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a href="#" class="btn" data-dismiss="modal">Fechar</a>
+                    </div>
                 </div>
-            </div>
-            <?php } ?>
-        <?php } else if (UsuarioLogado::getInstancia()->isLogado()) { ?>
+    <?php } ?>
+<?php } else if (UsuarioLogado::getInstancia()->isLogado()) { ?>
         <body>
             <!-- Navbar
             ================================================== -->
@@ -101,12 +103,12 @@
                         <a class="brand" href="<?php echo url_for("perfil/index") ?>">Robô Livre</a>
                         <div class="nav-collapse">
                             <ul class="nav">
-                                <?php $class = ($sf_context->getModuleName() == "perfil" && (strstr($sf_context->getActionName(),"Home") ||  is_numeric(array_search($sf_context->getActionName(), array("index",'editarPerfil','atualizarFoto','configuracoes','gravarConfiguracoes','notificacoes'))))) ? "active" : "" ?>
+    <?php $class = ($sf_context->getModuleName() == "perfil" && (strstr($sf_context->getActionName(), "Home") || is_numeric(array_search($sf_context->getActionName(), array("index", 'editarPerfil', 'atualizarFoto', 'configuracoes', 'gravarConfiguracoes', 'notificacoes'))))) ? "active" : "" ?>
                                 <li class="<?php echo $class ?>">
                                     <a href="<?php echo url_for("perfil/index") ?>">Início</a>
                                 </li>
 
-                                <?php $class = ($sf_context->getModuleName() == "conteudos" || $sf_context->getModuleName() == "conteudo") ? "active" : "" ?>
+    <?php $class = ($sf_context->getModuleName() == "conteudos" || $sf_context->getModuleName() == "conteudo") ? "active" : "" ?>
                                 <li class="<?php echo $class ?>">
                                     <a href="<?php echo url_for("conteudos/index") ?>">Conteúdos</a>
                                 </li>
@@ -117,6 +119,10 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo image_path(UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_MINIATURA)) ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>"> <?php echo Util::getNomeSimplificado(UsuarioLogado::getInstancia()->getNome()); ?> <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="<?php url_for('perfil/notificacoes') ?>"><i class="icon-asterisk icon-gray"></i> <span class="badge badge-warning">2</span> Solicitações de amizade</a>
+                                        </li>
+                                        <li class="divider"></li>
                                         <li>
 
                                             <a href="<?php echo url_for('perfil/exibir?u=' . UsuarioLogado::getInstancia()->getIdUsuario()) ?>"><i class="icon-user icon-gray"></i> Ver meu perfil</a>
@@ -143,12 +149,12 @@
             </div>    
         <?php } else { ?>
         <body class="home">
-        <?php } ?>
+            <?php } ?>
 
         <div id="conteudoPagina" class="container">
-            <?php echo $sf_content ?>
+<?php echo $sf_content ?>
             <hr>
-            
+
             <div class="row" id="footer-utility">
 
                 <div class="span3">
@@ -210,8 +216,8 @@
                         <li id="a-capes"><a href="http://www.capes.gov.br/" rel="co-worker" title="CAPES">CAPES</a></li>
                         <li id="a-cnpq"><a href="http://www.cnpq.br/" rel="co-worker" title="CNPq">CNPq</a></li>
                         <li id="a-facepe"><a href="http://www.facepe.br/" rel="co-worker" title="FACEPE">FACEPE</a></li>
-                        <?php /* <li class="heading"><h6>Realização</h6></li>
-                          <li id="a-mix"><a href="http://www.facepe.br/" rel="co-worker" title="Mix Tecnologia">Mix Tecnologia</a></li> */ ?>
+<?php /* <li class="heading"><h6>Realização</h6></li>
+  <li id="a-mix"><a href="http://www.facepe.br/" rel="co-worker" title="Mix Tecnologia">Mix Tecnologia</a></li> */ ?>
                     </ul>
                 </div>
             </footer>
@@ -224,7 +230,7 @@
         </script>
         <!-- Le javascript
         ================================================== -->    
-        <?php include_javascripts() ?>
+<?php include_javascripts() ?>
 
         <div class="fade-rl"></div>
     </body>
