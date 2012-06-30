@@ -15,7 +15,7 @@ class UsuariosTable extends Doctrine_Table {
     public static function getInstance() {
         return Doctrine_Core::getTable('Usuarios');
     }
-    
+
     public function validaToken($idUsuario, $token) {
 
         $q = Doctrine_Query::create()
@@ -50,19 +50,19 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setEscola($reg['escola']);
                 $objUsuario->setProfissao($reg['profissao']);
                 $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
-                
+
                 return $objUsuario;
             }
         }
         return false;
     }
-    
+
     public function redefinirSenhaUsuario($objUsuario) {
 
         $query = "UPDATE usuarios 
                  SET 
-             senha = '".$objUsuario->getSenha()."', token = NULL
-            WHERE id_usuario = '".$objUsuario->getIdUsuario()."' AND token = '".$objUsuario->getToken()."' AND ativo = 1";
+             senha = '" . $objUsuario->getSenha() . "', token = NULL
+            WHERE id_usuario = '" . $objUsuario->getIdUsuario() . "' AND token = '" . $objUsuario->getToken() . "' AND ativo = 1";
 
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
@@ -70,17 +70,17 @@ class UsuariosTable extends Doctrine_Table {
         $statement = $connection->prepare($query);
         // Make Statement  
         $statement->execute();
-        
+
         $q = Doctrine_Query::create()
                 ->select('*')
                 ->from('Usuarios')
-                ->where("id_usuario = ".$objUsuario->getIdUsuario())
+                ->where("id_usuario = " . $objUsuario->getIdUsuario())
                 ->andWhere("ativo = 1");
 
 
         $resultado = $q->fetchArray();
 
-        if ($resultado) { 
+        if ($resultado) {
             foreach ($resultado as $reg) {
                 $objUsuario = new Usuarios();
 
@@ -105,24 +105,24 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
                 $objUsuario->setParametrosEmail($reg['parametros_email']);
 
-                
+
                 return $objUsuario;
             }
         }
         return false;
     }
-    
+
     public function editarConfiguracaoUsuario($objUsuario) {
 
         $query = "UPDATE usuarios 
                  SET 
-                parametros_email = '".$objUsuario->getParametrosEmail()."', 
-                nome = '".$objUsuario->getNome()."'"; 
-        if($objUsuario->getSenha()!=""){
-            $query .=", senha = '".$objUsuario->getSenha()."'"; 
+                parametros_email = '" . $objUsuario->getParametrosEmail() . "', 
+                nome = '" . $objUsuario->getNome() . "'";
+        if ($objUsuario->getSenha() != "") {
+            $query .=", senha = '" . $objUsuario->getSenha() . "'";
         }
-        
-        $query .="WHERE id_usuario = '".UsuarioLogado::getInstancia()->getIdUsuario()."' AND ativo = 1";
+
+        $query .="WHERE id_usuario = '" . UsuarioLogado::getInstancia()->getIdUsuario() . "' AND ativo = 1";
 
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
@@ -130,17 +130,17 @@ class UsuariosTable extends Doctrine_Table {
         $statement = $connection->prepare($query);
         // Make Statement  
         $statement->execute();
-        
+
         $q = Doctrine_Query::create()
                 ->select('*')
                 ->from('Usuarios')
-                ->where("id_usuario = ".UsuarioLogado::getInstancia()->getIdUsuario())
+                ->where("id_usuario = " . UsuarioLogado::getInstancia()->getIdUsuario())
                 ->andWhere("ativo = 1");
 
 
         $resultado = $q->fetchArray();
 
-        if ($resultado) { 
+        if ($resultado) {
             foreach ($resultado as $reg) {
                 $objUsuario = new Usuarios();
 
@@ -165,17 +165,17 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
                 $objUsuario->setParametrosEmail($reg['parametros_email']);
 
-                
+
                 return $objUsuario;
             }
         }
         return false;
     }
-    
+
     public function esqueciSenha($email) {
 
         $token = Util::getTokenAleatorio();
-        
+
         $query = "UPDATE usuarios 
                  SET token = '$token'
                 WHERE email = '$email' AND ativo = 1";
@@ -186,11 +186,11 @@ class UsuariosTable extends Doctrine_Table {
         $statement = $connection->prepare($query);
         // Make Statement  
         $statement->execute();
-        
+
         $query = "SELECT u.*
         FROM usuarios u 
         WHERE u.email = '$email' AND u.ativo = 1";
-        
+
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
         // Get Connection of Database  
@@ -205,7 +205,7 @@ class UsuariosTable extends Doctrine_Table {
         if ($resultado) {
             foreach ($resultado as $reg) {
                 $objUsuario = new Usuarios();
-                
+
                 $objUsuario->setCurso($reg['curso']);
                 $objUsuario->setDataNascimento($reg['data_nascimento']);
                 $objUsuario->setEmail($reg['email']);
@@ -226,13 +226,13 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setProfissao($reg['profissao']);
                 $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
                 $objUsuario->setToken($token);
-                
+
                 return $objUsuario;
             }
         }
         return false;
     }
-    
+
     public function filtroSeguidoresConteudo($idConjunto, $nome = null, $indicePagina = 1) {
         $arrayRetorno = array();
         $qtdParticipantes = 0;
@@ -246,13 +246,13 @@ class UsuariosTable extends Doctrine_Table {
             LEFT JOIN conjuntos i
             ON  u.id_usuario  = i.id_usuario AND i.id_conjunto = $idConjunto
             WHERE ((p.aceito = 1 AND p.id_conjunto = $idConjunto) OR u.id_usuario = i.id_usuario)";
-        if ($nome != null && trim($nome)!="") {
+        if ($nome != null && trim($nome) != "") {
             $queryParticipantes .= "  AND u.nome LIKE '%$nome%' ";
         }
-        
+
         $queryParticipantes .= " ORDER BY u.nome
             LIMIT " . (($indicePagina - 1) * Util::QUANTIDADE_PAGINACAO) . ", " . Util::QUANTIDADE_PAGINACAO;
-        
+
         $queryQuantidade = "
             SELECT COUNT(*) AS \"quantidade\"
             FROM usuarios u 
@@ -261,10 +261,10 @@ class UsuariosTable extends Doctrine_Table {
             LEFT JOIN conjuntos i
             ON  u.id_usuario  = i.id_usuario AND i.id_conjunto = $idConjunto
             WHERE ((p.aceito = 1 AND p.id_conjunto = $idConjunto) OR u.id_usuario = i.id_usuario)";
-        if ($nome != null && trim($nome)!="") {
+        if ($nome != null && trim($nome) != "") {
             $queryQuantidade .= "  AND u.nome LIKE '%$nome%' ";
         }
-        
+
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
         // Get Connection of Database  
@@ -295,31 +295,32 @@ class UsuariosTable extends Doctrine_Table {
 
         if ($resultado) {
             foreach ($resultado as $reg) {
-                $objUsuario = new Usuarios();
-                $objUsuario->setCurso($reg['curso']);
-                $objUsuario->setDataNascimento($reg['data_nascimento']);
-                $objUsuario->setEmail($reg['email']);
-                $objUsuario->setEndereco($reg['endereco']);
-                $objUsuario->setHabilidades($reg['habilidades']);
-                $objUsuario->setNivelEscolaridade($reg['nivel_escolaridade']);
-                $objUsuario->setIdUsuario($reg['id_usuario']);
-                $objUsuario->setLogin($reg['login']);
-                $objUsuario->setSexo($reg['sexo']);
-                $objUsuario->setSite($reg['site']);
-                $objUsuario->setSiteEmpresa($reg['site_empresa']);
-                $objUsuario->setSobreMim($reg['sobre_mim']);
-                $objUsuario->setNome($reg['nome']);
-                $objUsuario->setImagemPerfil($reg['imagem_perfil']);
-                $objUsuario->setDataCriacaoPerfil($reg['data_criacao_perfil']);
-                $objUsuario->setEmpresa($reg['empresa']);
-                $objUsuario->setEscola($reg['escola']);
-                $objUsuario->setProfissao($reg['profissao']);
-                $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
-                
+//                $objUsuario = new Usuarios();
+                $objUsuario = $this->buscarPorId($reg['id_usuario']);
+//                $objUsuario->setCurso($reg['curso']);
+//                $objUsuario->setDataNascimento($reg['data_nascimento']);
+//                $objUsuario->setEmail($reg['email']);
+//                $objUsuario->setEndereco($reg['endereco']);
+//                $objUsuario->setHabilidades($reg['habilidades']);
+//                $objUsuario->setNivelEscolaridade($reg['nivel_escolaridade']);
+//                $objUsuario->setIdUsuario($reg['id_usuario']);
+//                $objUsuario->setLogin($reg['login']);
+//                $objUsuario->setSexo($reg['sexo']);
+//                $objUsuario->setSite($reg['site']);
+//                $objUsuario->setSiteEmpresa($reg['site_empresa']);
+//                $objUsuario->setSobreMim($reg['sobre_mim']);
+//                $objUsuario->setNome($reg['nome']);
+//                $objUsuario->setImagemPerfil($reg['imagem_perfil']);
+//                $objUsuario->setDataCriacaoPerfil($reg['data_criacao_perfil']);
+//                $objUsuario->setEmpresa($reg['empresa']);
+//                $objUsuario->setEscola($reg['escola']);
+//                $objUsuario->setProfissao($reg['profissao']);
+//                $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
+
                 $arrayAmigos[] = $objUsuario;
             }
         }
-        
+
         $total = (int) ($qtdParticipantes / Util::QUANTIDADE_PAGINACAO);
         //caso a divisão real seja maior que a divisão inteira (resto)
         if (($qtdParticipantes / Util::QUANTIDADE_PAGINACAO) > $total) {
@@ -332,7 +333,7 @@ class UsuariosTable extends Doctrine_Table {
 
         return $arrayRetorno;
     }
-    
+
     public function filtroAmigosPerfil($idUsuario, $nome = null, $indicePagina = 1) {
         $arrayRetorno = array();
         $qtdAmigos = 0;
@@ -344,23 +345,23 @@ class UsuariosTable extends Doctrine_Table {
             LEFT JOIN amigos a 
             ON id_usuario = id_usuario_a OR id_usuario = id_usuario_b
             WHERE id_usuario <> $idUsuario AND a.aceito = 1 AND (a.id_usuario_a = $idUsuario OR a.id_usuario_b = $idUsuario)";
-        if ($nome != null && trim($nome)!="") {
+        if ($nome != null && trim($nome) != "") {
             $queryAmigos .= "  AND u.nome LIKE '%$nome%'";
         }
-        
+
         $queryAmigos .= "     ORDER BY u.nome
             LIMIT " . (($indicePagina - 1) * Util::QUANTIDADE_PAGINACAO) . ", " . Util::QUANTIDADE_PAGINACAO;
-        
+
         $queryQuantidade = "
             SELECT COUNT(*) AS \"quantidade\"
             FROM usuarios u 
             LEFT JOIN amigos a 
             ON id_usuario = id_usuario_a OR id_usuario = id_usuario_b
             WHERE id_usuario <> $idUsuario AND a.aceito = 1 AND (a.id_usuario_a = $idUsuario OR a.id_usuario_b = $idUsuario)";
-        if ($nome != null && trim($nome)!="") {
+        if ($nome != null && trim($nome) != "") {
             $queryQuantidade .= "  AND u.nome LIKE '%$nome%'";
         }
-        
+
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
         // Get Connection of Database  
@@ -391,7 +392,8 @@ class UsuariosTable extends Doctrine_Table {
 
         if ($resultado) {
             foreach ($resultado as $reg) {
-                $objUsuario = new Usuarios();
+                $objUsuario = $this->buscarPorId($reg['id_usuario']);
+
                 $objUsuario->setCurso($reg['curso']);
                 $objUsuario->setDataNascimento($reg['data_nascimento']);
                 $objUsuario->setEmail($reg['email']);
@@ -411,11 +413,11 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setEscola($reg['escola']);
                 $objUsuario->setProfissao($reg['profissao']);
                 $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
-                
+
                 $arrayAmigos[] = $objUsuario;
             }
         }
-        
+
         $total = (int) ($qtdAmigos / Util::QUANTIDADE_PAGINACAO);
         //caso a divisão real seja maior que a divisão inteira (resto)
         if (($qtdAmigos / Util::QUANTIDADE_PAGINACAO) > $total) {
@@ -428,7 +430,7 @@ class UsuariosTable extends Doctrine_Table {
 
         return $arrayRetorno;
     }
-    
+
     public function getAmigosPerfil($idUsuario) {
 
         $arrayRetorno = array();
@@ -449,7 +451,7 @@ class UsuariosTable extends Doctrine_Table {
             LEFT JOIN amigos a 
             ON id_usuario = id_usuario_a OR id_usuario = id_usuario_b
             WHERE id_usuario <> $idUsuario AND a.aceito = 1 AND (a.id_usuario_a = $idUsuario OR a.id_usuario_b = $idUsuario)";
-        
+
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
         // Get Connection of Database  
@@ -484,7 +486,7 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setIdUsuario($reg['id_usuario']);
                 $objUsuario->setNome($reg['nome']);
                 $objUsuario->setImagemPerfil($reg['imagem_perfil']);
-                
+
                 $arrayAmigos[] = $objUsuario;
             }
         }
@@ -519,7 +521,7 @@ class UsuariosTable extends Doctrine_Table {
             LEFT JOIN conjuntos i
             ON  u.id_usuario  = i.id_usuario AND i.id_conjunto = $idConjunto
             WHERE (p.aceito = 1 AND p.id_conjunto = $idConjunto) OR u.id_usuario = i.id_usuario";
-        
+
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
         // Get Connection of Database  
@@ -554,7 +556,7 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setIdUsuario($reg['id_usuario']);
                 $objUsuario->setNome($reg['nome']);
                 $objUsuario->setImagemPerfil($reg['imagem_perfil']);
-                
+
                 $arrayParticipantes[] = $objUsuario;
             }
         }
@@ -564,7 +566,7 @@ class UsuariosTable extends Doctrine_Table {
 
         return $arrayRetorno;
     }
-    
+
     public function buscarPorId($id) {
 
         $id_usuario_logado = UsuarioLogado::getInstancia()->getIdUsuario();
@@ -589,7 +591,7 @@ class UsuariosTable extends Doctrine_Table {
         if ($resultado) {
             foreach ($resultado as $reg) {
                 $objUsuario = new Usuarios();
-                
+
                 $objUsuario->setCurso($reg['curso']);
                 $objUsuario->setDataNascimento($reg['data_nascimento']);
                 $objUsuario->setEmail($reg['email']);
@@ -609,12 +611,11 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setEscola($reg['escola']);
                 $objUsuario->setProfissao($reg['profissao']);
                 $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
-                
-                //sem registro de amizade
-                if ($reg['amigo'] == null) {
+                if ($id_usuario_logado == $id) {
+                    $objUsuario->setTipoSolicitacaoAmizade(Usuarios::PROPRIO_USUARIO);
+                } else if ($reg['amigo'] == null) {
                     $objUsuario->setTipoSolicitacaoAmizade(Usuarios::SEM_SOLICITACAO);
                 } else {
-
                     if ($id_usuario_logado != $reg['id_usuario_a'] && $reg['amigo'] == 0) {
                         $objUsuario->setTipoSolicitacaoAmizade(Usuarios::AGUARDANDO_CONFIRMACAO);
                     } else {
@@ -695,7 +696,7 @@ class UsuariosTable extends Doctrine_Table {
 
         $resultado = $q->fetchArray();
 
-        if ($resultado) { 
+        if ($resultado) {
             foreach ($resultado as $reg) {
                 $objUsuario = new Usuarios();
 
@@ -720,13 +721,13 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
                 $objUsuario->setParametrosEmail($reg['parametros_email']);
 
-                
+
                 return $objUsuario;
             }
         }
         return false;
     }
-    
+
     public function atualizarImagemPerfil($idUsuario, $imagem) {
         $query = "UPDATE usuarios 
                  SET imagem_perfil = '$imagem'
@@ -737,7 +738,7 @@ class UsuariosTable extends Doctrine_Table {
         $statement = $connection->prepare($query);
         // Make Statement  
         $statement->execute();
-        
+
         $q = Doctrine_Query::create()
                 ->select('*')
                 ->from('Usuarios')
@@ -769,7 +770,7 @@ class UsuariosTable extends Doctrine_Table {
                 $objUsuario->setProfissao($reg['profissao']);
                 $objUsuario->setAulaRobolivre($reg['aula_robolivre']);
                 $objUsuario->setParametrosEmail($reg['parametros_email']);
-                
+
                 return $objUsuario;
             }
         }

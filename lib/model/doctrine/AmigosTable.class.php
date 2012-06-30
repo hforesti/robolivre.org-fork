@@ -84,7 +84,7 @@ class AmigosTable extends Doctrine_Table {
 
     public function recusarAmizade(Amigos $amizade) {
         $query = "DELETE FROM amigos 
-                WHERE id_usuario_a = " . $amizade->getIdUsuarioA() . " AND id_usuario_b = " . $amizade->getIdUsuarioB();
+                WHERE (id_usuario_a = " . $amizade->getIdUsuarioA() . " AND id_usuario_b = " . $amizade->getIdUsuarioB().") OR (id_usuario_a = " . $amizade->getIdUsuarioB() . " AND id_usuario_b = " . $amizade->getIdUsuarioA().")";
         $connection = Doctrine_Manager::getInstance()
                         ->getCurrentConnection()->getDbh();
         // Get Connection of Database  

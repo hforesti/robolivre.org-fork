@@ -184,8 +184,9 @@ class Util {
             if($nome_itens!="." && $nome_itens!=".."){
                 
                 $tempo = filemtime($diretorio."/".$nome_itens);
-                
+                $tamanho = filesize($diretorio."/".$nome_itens);
                 $path_parts = pathinfo($diretorio."/".$nome_itens);
+                $array['tamanho'] = number_format($tamanho/pow(1024,2),2)." MB";
                 $array['nome'] = $path_parts['filename'];
                 $array['extensao'] = $path_parts['extension'];
                 $array['arquivo'] = $path_parts['basename'];
@@ -239,10 +240,10 @@ class Util {
         foreach($arrayLista as $item){
            
             $nomeArquivo = self::getNomeReduzido($item['nome'],40);
-            
             $string .= "<tr>";
             $string .= "    <td>".($item['novo']?"<span class=\"label label-info\">Novo</span> ":""). "<a href=\"/$pasta/".$item['arquivo']."\">".$nomeArquivo."</a></td>";
             $string .= "    <td>".strtoupper($item['extensao'])."</td>";
+            $string .= "    <td>".strtoupper($item['tamanho'])."</td>";
             $string .= "</tr>";
             
         }

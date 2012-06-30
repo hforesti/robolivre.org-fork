@@ -11,7 +11,7 @@
 class conteudoActions extends robolivreAction {
 
     public function execute($request, $executarTeste = true) {
-        
+
         $acao = $request->getParameter('acao');
 
         switch ($acao) {
@@ -27,14 +27,14 @@ class conteudoActions extends robolivreAction {
             case 'exibirDocumentos' : $this->executeExibirDocumentos($request);
                 return;
             case 'video' :
-                    $this->executeExibir($request,"video");
-                    return;  
+                $this->executeExibir($request, "video");
+                return;
             case 'link' :
-                    $this->executeExibir($request,"link");
-                    return;  
+                $this->executeExibir($request, "link");
+                return;
             case 'imagem' :
-                    $this->executeExibir($request,"imagem");
-                    return;  
+                $this->executeExibir($request, "imagem");
+                return;
             case '' :
             case 'index' :
                 break;
@@ -43,6 +43,7 @@ class conteudoActions extends robolivreAction {
         }
         parent::execute($request, $executarTeste);
     }
+
     /**
      * Executes index action
      *
@@ -51,37 +52,33 @@ class conteudoActions extends robolivreAction {
     public function executeIndex(sfWebRequest $request) {
         $this->redirect("conteudos/index");
     }
-    
+
     public function executeExibirDocumentos(sfWebRequest $request) {
         $slug = $request->getParameter('slug');
         $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
         $this->forward404Unless($this->conteudo);
-        
+
         $nome = $request->getParameter("nome");
         $pagina = $request->getParameter("pagina");
         $proprietario = $request->getParameter("proprietario");
 
         if (!isset($proprietario)) {
             $proprietario = false;
-        }else{
+        } else {
             $proprietario = true;
         }
-        
+
         if (!isset($nome) || trim($nome) == "") {
             $nome = "";
         }
 
         if (!isset($pagina) || $pagina == "" || !is_numeric($pagina)) {
             $pagina = 1;
-        }
-        
-        {
+        } {
             $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
             $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
-        } 
-        
-        {
-            $arrayDocumentos = Doctrine::getTable("Documentos")->filtroDocumentosConteudo($this->conteudo->getIdConjunto(),$proprietario, $nome, $pagina);
+        } {
+            $arrayDocumentos = Doctrine::getTable("Documentos")->filtroDocumentosConteudo($this->conteudo->getIdConjunto(), $proprietario, $nome, $pagina);
             $this->documentos = $arrayDocumentos['documentos'];
             $this->quantidadeDocumentos = $arrayDocumentos['quantidade'];
             $this->quantidadeTotalPaginas = $arrayDocumentos['totalPaginas'];
@@ -89,107 +86,106 @@ class conteudoActions extends robolivreAction {
             $this->pagina = $pagina;
             $this->proprietario = $proprietario;
         }
-        
+
         $this->setTemplate("exibirDocumentos");
     }
-    
+
     public function executeAtualizarFoto(sfWebRequest $request) {
         $slug = $request->getParameter('slug');
 
         $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
-        $this->forward404Unless($this->conteudo && $this->conteudo->getPodeColaborar());
-        {
+        $this->forward404Unless($this->conteudo && $this->conteudo->getPodeColaborar()); {
             $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
             $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
-        } 
+        }
         $this->formUpload = new AtualizacaoFotoForm();
         $this->setTemplate("atualizarFoto");
     }
-    
+
     public function executeModificarFotoConteudo(sfWebRequest $request) {
-        
+
         $slug = $request->getParameter('slug');
 
         $conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
         $this->forward404Unless($conteudo && $conteudo->getPodeColaborar());
 
         $nome_arquivo = $request->getParameter('imagem_selecionada');
-        
+
         $diretorioThumbnail = Util::getDiretorioThumbnail();
-        
+
         $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo;
         $extensao = end(explode(".", $nome_arquivo));
-        
+
         $img = new sfImage($diretorio_arquivo, 'image/jpg');
-        
-        if($img->getHeight()>170 && $img->getWidth()>170){
-            
-            if($img->getWidth()>$img->getHeight()){
-                $scale = 170/$img->getHeight();
-            }else{
-                $scale = 170/$img->getWidth();
+
+        if ($img->getHeight() > 170 && $img->getWidth() > 170) {
+
+            if ($img->getWidth() > $img->getHeight()) {
+                $scale = 170 / $img->getHeight();
+            } else {
+                $scale = 170 / $img->getWidth();
             }
-            
+
             $img->scale($scale);
-            
-            if($img->getWidth()>$img->getHeight()){
-                $largura = ($img->getWidth()/2);
-                $pontoX = $largura-(170/2);
-                
-                if($pontoX<0){
+
+            if ($img->getWidth() > $img->getHeight()) {
+                $largura = ($img->getWidth() / 2);
+                $pontoX = $largura - (170 / 2);
+
+                if ($pontoX < 0) {
                     $pontoX = 0;
                 }
                 $pontoY = 0;
-            }else{
-                $altura = ($img->getHeight()/2);
-                $pontoY = $altura-(170/2);
-                
-                if($pontoY<0){
+            } else {
+                $altura = ($img->getHeight() / 2);
+                $pontoY = $altura - (170 / 2);
+
+                if ($pontoY < 0) {
                     $pontoY = 0;
                 }
                 $pontoX = 0;
             }
-            
-            $img->crop($pontoX,$pontoY,170,170); 
-        }else{
-            
-            if($img->getWidth()>$img->getHeight()){
-                $scale = 170/$img->getHeight();
-            }else{
-                $scale = 170/$img->getWidth();
+
+            $img->crop($pontoX, $pontoY, 170, 170);
+        } else {
+
+            if ($img->getWidth() > $img->getHeight()) {
+                $scale = 170 / $img->getHeight();
+            } else {
+                $scale = 170 / $img->getWidth();
             }
-            
+
             $img->scale($scale);
-            
-            if($img->getWidth()>$img->getHeight()){
-                $largura = ($img->getWidth()/2);
-                $pontoX = $largura-(170/2);
-                
-                if($pontoX<0){
+
+            if ($img->getWidth() > $img->getHeight()) {
+                $largura = ($img->getWidth() / 2);
+                $pontoX = $largura - (170 / 2);
+
+                if ($pontoX < 0) {
                     $pontoX = 0;
                 }
                 $pontoY = 0;
-            }else{
-                $altura = ($img->getHeight()/2);
-                $pontoY = $altura-(170/2);
-                
-                if($pontoY<0){
+            } else {
+                $altura = ($img->getHeight() / 2);
+                $pontoY = $altura - (170 / 2);
+
+                if ($pontoY < 0) {
                     $pontoY = 0;
                 }
                 $pontoX = 0;
             }
-            $img->crop($pontoX,$pontoY,170,170); 
+            $img->crop($pontoX, $pontoY, 170, 170);
         }
-                
+
         $img->setQuality(75);
-        $img->saveAs($diretorioThumbnail.'/_avatar_con_' . $slug . '_large.' . $extensao);
+        $img->saveAs($diretorioThumbnail . '/_avatar_con_' . $slug . '_large.' . $extensao);
         $img->thumbnail(60, 60);
         $img->setQuality(75);
-        $img->saveAs($diretorioThumbnail.'/_avatar_con_' . $slug . '_60.' . $extensao);
+        $img->saveAs($diretorioThumbnail . '/_avatar_con_' . $slug . '_60.' . $extensao);
         $img->thumbnail(20, 20);
         $img->setQuality(75);
-        $img->saveAs($diretorioThumbnail.'/_avatar_con_' . $slug . '_20.' . $extensao);
-        
+        $img->saveAs($diretorioThumbnail . '/_avatar_con_' . $slug . '_20.' . $extensao);
+
 //        $thumbnail = new sfThumbnail(170, 170,false,true);
 //        $thumbnail->loadFile($diretorio_arquivo);
 //        $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slug . '_large.' . $extensao);
@@ -201,16 +197,15 @@ class conteudoActions extends robolivreAction {
 //        $thumbnail = new sfThumbnail(20, 20,false,true);
 //        $thumbnail->loadFile($diretorio_arquivo);
 //        $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slug . '_20.' . $extensao);
-        
-        $objUsuario = Doctrine::getTable("Conteudos")->atualizarImagemConteudo($conteudo->getIdConjunto(),'_avatar_con_' . $slug . '_#.'.$extensao);
-        
+
+        $objUsuario = Doctrine::getTable("Conteudos")->atualizarImagemConteudo($conteudo->getIdConjunto(), '_avatar_con_' . $slug . '_#.' . $extensao);
+
         UsuarioLogado::getInstancia()->atualizaInformacoes($objUsuario);
-        
+
         $this->redirect("conteudo/$slug");
-        
     }
-    
-    public function executeExibir(sfWebRequest $request,$tipoFiltro="") {
+
+    public function executeExibir(sfWebRequest $request, $tipoFiltro = "") {
 
         $slug = $request->getParameter('slug');
 
@@ -221,12 +216,10 @@ class conteudoActions extends robolivreAction {
             $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
             $this->forward404Unless($this->conteudo);
             $this->formPublicacao = new PublicacoesForm();
-            $this->publicacoesConjunto = Doctrine::getTable("Publicacoes")->getPublicacoesDoConjunto($this->conteudo->getIdConjunto(),null,$tipoFiltro); //array();
+            $this->publicacoesConjunto = Doctrine::getTable("Publicacoes")->getPublicacoesDoConjunto($this->conteudo->getIdConjunto(), null, $tipoFiltro); //array();
             $chaves = array_keys($this->publicacoesConjunto);
-            $this->dataCriacao = Util::getDataFormatada($this->conteudo->getConjunto()->getDataCriacao()); 
-            $this->ultimaAtulizacao = Util::getDataFormatada($this->conteudo->getConjunto()->getUltimaModificacao()); 
-            
-            {
+            $this->dataCriacao = Util::getDataFormatada($this->conteudo->getConjunto()->getDataCriacao());
+            $this->ultimaAtulizacao = Util::getDataFormatada($this->conteudo->getConjunto()->getUltimaModificacao()); {
                 $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
                 $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
                 shuffle($arrayRetorno['participantes']);
@@ -259,26 +252,24 @@ class conteudoActions extends robolivreAction {
 
         if (!isset($pagina) || $pagina == "" || !is_numeric($pagina)) {
             $pagina = 1;
-        }
-
-        {
+        } {
             $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
             $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
             $this->arrayParticipantes = array_splice($arrayRetorno['participantes'], 0, 6);
         }
-        
+
         $arrayRetorno = Doctrine::getTable("Conteudos")->filtroConteudosRelacionadosConteudo($this->conteudo->getIdConjunto(), $nome, $pagina);
         $this->quantidadeConteudosRelacionados = $arrayRetorno['quantidade'];
         $this->arrayConteudosRelacionados = $arrayRetorno['conteudos'];
         $this->nome = $nome;
         $this->quantidadeTotalPaginas = $arrayRetorno['totalPaginas'];
         $this->pagina = $pagina;
-        
+
         $this->setTemplate("exibirConteudosRelacionados");
     }
-    
+
     public function executeExibirSeguidores(sfWebRequest $request) {
-        
+
         $slug = $request->getParameter('slug');
 
         $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
@@ -305,7 +296,7 @@ class conteudoActions extends robolivreAction {
         $this->nome = $nome;
         $this->quantidadeTotalPaginas = $arrayRetorno['totalPaginas'];
         $this->pagina = $pagina;
-        
+
         $this->setTemplate("exibirSeguidores");
     }
 

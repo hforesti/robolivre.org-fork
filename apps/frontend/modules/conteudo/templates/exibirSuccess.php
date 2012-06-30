@@ -1,5 +1,4 @@
 <?php 
-
 if($tipoFiltro!=""){
     $opcao = $tipoFiltro;
     $comBotaoLimparFiltro = false;

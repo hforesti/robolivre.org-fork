@@ -22,7 +22,7 @@ class Conteudos extends BaseConteudos
     private $quantidadeLinks;
     private $quantidadeSeguidores;
     private $pontos;
-    private $podeColaborar;
+    private $podeColaborar = null;
     private $tag = false;
     
     
@@ -142,7 +142,11 @@ class Conteudos extends BaseConteudos
     }
     
     public function getPodeColaborar() {
-        return $this->podeColaborar;
+        if ($this->getTipoUsuario() == Conteudos::PROPRIETARIO){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function setPodeColaborar($podeColaborar) {

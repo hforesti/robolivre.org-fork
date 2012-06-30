@@ -51,7 +51,7 @@ class Usuarios extends BaseUsuarios
             $this->setTipoSolicitacaoAmizade(self::PROPRIO_USUARIO);
         }
     }
-    
+
     public function setSenha($senha) {
         parent::_set('senha', md5($senha));
         return $this;

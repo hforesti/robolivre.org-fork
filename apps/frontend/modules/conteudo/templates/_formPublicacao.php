@@ -1,5 +1,4 @@
 <?php
-
 if(!isset($nome_conteudo)){
     $nomeAbaCompartilhar = "Compartilhar sobre este Conteudo";
 }else{
@@ -65,7 +64,12 @@ if(!isset($nome_conteudo)){
         $("#error").remove();
         $("#fieldset-publicacao").prepend(stringElementos);            
     }
-    
+    $("#send").click(function(){
+        if ($("#status").val().length > 1200){
+            adicionarErro("Sua atualização pode ter até 1200 caracteres");
+            return false;
+        }
+    });
     
     $(".aba-publicacao").click( function(){$("#error").remove();});
     
