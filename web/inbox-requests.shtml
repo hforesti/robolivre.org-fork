@@ -32,7 +32,7 @@
 			<li><a href="profile-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li>
 			<li><a href="perfil-info.shtml"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
 			<li><hr></li>
-            <li class="active"><a href="inbox-requests.shtml"><span class="label label-warning" id="side-notf-unread" title="2 solicitações de amizade">2</span> <i class="icon-user icon-gray"></i> Solic. de amizade</a></li>
+            <li class="active"><a href="inbox-requests.shtml"><span class="label label-warning" id="side-notf-unread" title="2 solicitações de amizade">2</span> <i class="icon-asterisk icon-gray"></i> Solic. de amizade</a></li>
 			<li><a href="inbox.shtml"><span class="label label-warning" id="side-notf-unread" title="2 notificações não lidas">2</span> <span class="icon-gray icon-bell"></span> Notificações</a></li>
 			<li><a href="inbox-pvt.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li>
 		</ul>
