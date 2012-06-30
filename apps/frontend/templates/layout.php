@@ -110,7 +110,7 @@
 
     <?php $class = ($sf_context->getModuleName() == "conteudos" || $sf_context->getModuleName() == "conteudo") ? "active" : "" ?>
                                 <li class="<?php echo $class ?>">
-                                    <a href="<?php echo url_for("conteudos/index") ?>">Conteúdos</a>
+                                    <a href="<?php echo url_for("conteudos/index") ?>">Conteúdos</a> 
                                 </li>
 
                                 <li class="divider-vertical"></li>
