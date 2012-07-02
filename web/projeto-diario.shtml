@@ -24,11 +24,12 @@
 				</li>
 			</ul>
 	</div>
+	<h1>R.A.F. (Robô Apanhador de Frutas)</h1>
 </div><!-- /avatar -->
 
 <ul class="nav nav-pills nav-stacked">
-	<li class="active"><a href="projeto.shtml"><i class="icon-gray icon-info-sign"></i> Geral</a></li>
-	<li><a href="projeto-diario.shtml"><i class="icon-gray icon-pencil"></i> Diário de bordo</a></li>
+	<li><a href="projeto.shtml"><i class="icon-gray icon-info-sign"></i> Geral</a></li>
+	<li class="active"><a href="projeto-diario.shtml"><i class="icon-gray icon-pencil"></i> Diário de bordo</a></li>
 	<li><a href="projeto-tickets.shtml"><i class="icon-gray icon-tasks"></i> Tickets</a></li>
 	<li><a href="conteudo-imagens.shtml"><i class="icon-gray icon-picture"></i> Imagens</a></li>
 	<li><a href="projeto-docs.shtml"><i class="icon-gray icon-book"></i> Documentos</a></li>
@@ -50,239 +51,103 @@
   <li>
     <a href="projetos.shtml">Projetos</a> <span class="divider">/</span>
   </li>
+  <li>
+    <a href="projeto.shtml">R.A.F. (Robô Apanhador de Frutas)</a> <span class="divider">/</span>
+  </li>
   <li class="active">
-    <a href="projeto.shtml">R.A.F. (Robô Apanhador de Frutas)</a>
+    <a href="projetos-diario.shtml">Diário de bordo</a>
   </li>
 </ul>
 
-<div class="page-header">
+<div class="list-mgmt">
 
-	<div class="row">
-		<div class="span7">
-			<h1>R.A.F. (Robô Apanhador de Frutas)</h1>
-		</div>
+<div class="row">
+	<h2 class="span7">Diário de bordo ‧ <small>15 posts</small></h2>	
+	<div class="span3">
+		<a href="projeto-diario-criar.shtml" class="btn btn-success"><i class="icon-plus icon-white"></i> Criar novo post</a>
+	</div>
+</div>
 
-		<div class="span3">
-		
-		<div class="btn-group pull-right">
-		  <a href="#" class="btn btn-success"><i class="icon-ok icon-white"></i> Seguir projeto</a>
-		  <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-		    <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu">
-		  <li>
-		    <a href="projeto-convite-solicitar.shtml">Quero ser um colaborador</a>
+<div class="row">
+	<div class="span6">
+	  <ul class="nav nav-pills">
+		  <li class="active">
+		    <a href="projeto-diario.shtml">Atualizados recentemente</a>
 		  </li>
-		  </ul>
-		</div>
-
-		<!-- Modelo de botão para seguidor
-		 <div class="btn-group pull-right">
-		  <a href="#" class="btn"><i class="icon-remove"></i> Parar de seguir projeto</a>
-		  <button class="btn dropdown-toggle" data-toggle="dropdown">
-		    <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu">
-		  <li>
-		    <a href="projeto-convite-solicitar.shtml">Quero ser um colaborador</a>
-		  </li>
-		  </ul>
-		</div> -->
-
-		</div>
-
+		  <li><a href="projeto-diario-meus.shtml">Criados por você</a></li>
+	  </ul>
 	</div>
-	</div>
-
-	<ul class="row" id="stats">
-
-		<li class="span1">
-		<p class="lead">
-			<a href="projeto-amigos-colaboradores.shtml" title="10 posts">10 <small>posts</small></a>
-		</p>
-		</li>
-
-		<li class="span1">
-		<p class="lead">
-			<a href="projeto-amigos-colaboradores.shtml" title="05 documentos">05 <small>documentos</small></a>
-		</p>
-		</li>
-
-		<li class="span1">
-		<p class="lead">
-			<a href="projeto-imagens.shtml" title="08 imagens">08 <small>imagens</small></a>
-		</p>
-		</li>
-
-		<li class="span1">
-		<p class="lead">
-			<a href="projeto-codigos.shtml" title="15 códigos">15 <small>códigos</small></a>
-		</p>
-		</li>
-
-		<li class="span1">
-		<p class="lead">
-			<a href="projeto-amigos-colaboradores.shtml" title="08 tickets">08 <small>tickets</small></a>
-		</p>
-		</li>
-
-		<li class="span1 offset3">
-		<p class="lead">
-			<a href="projeto-amigos-colaboradores.shtml" title="06 colaboradores">06 <small>colaboradores</small></a>
-		</p>
-		</li>
-
-		<li class="span1">
-		<p class="lead">
-			<a href="projeto-amigos.shtml" title="26 seguidores">26 <small>seguidores</small></a>
-		</p>
-		</li>
-	</ul>
-
-<hr>
-
-<div class="row-fluid">
-
-	<div class="well span6" id="project-info">
-			<p>
-			<small>
-				<i class="icon-eye-open icon-gray singletip" title="Público"></i> ‧ Criado por <a href="perfil.shtml">Henrique Foresti</a> em 22/01/2012 às 08h00 ‧ Última atualização em 21/01/2012 às 21:50 ‧ <span class="label label-success"><i class="icon-play-circle icon-white"></i> Em andamento</span>
-			</small>
-			</p>
-	<hr>
-			<p>R.A.F. (Robô Apanhador de Frutas) que nasceu na Oficina Robô Livre da Expoidea 2012 justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-
-			<strong>Website:</strong> <a href="http://robolivre.org">robolivre.org</a>
-
-	<hr>
-
-		<div id="cont-rel">
-		<h4><span class="icon-gray icon-tag"></span> <a href="projeto-amigos.shtml" title="Ver tudo">Conteúdos relacionados <small>16</small></a></h4>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-			<a href="conteudo.shtml"><img src="assets/img/rl/20.gif" alt="Nome do conteúdo" title="Nome do conteúdo"></a>
-		</div>
-
-	<!-- Modelo de botão para criador -->
-	<!-- <hr>
-		<a href="projeto-editar.shtml" class="btn btn-primary"><i class="icon-edit icon-white"></i> Editar projeto</a> -->
-
-	</div>
+	
+	<form class="list-filter">
+	        <input type="text" class="span4 search-query" placeholder="Buscar na lista de posts">
+	</form>
+</div>
 
 
-			<div id="diario-intro" class="span6">
-			<h3><a href="projeto-diario.shtml">Diário de bordo <small>Últimos posts</small><i class="icon-chevron-right pull-right"></i></a></h3>
 
+<div id="diario-intro">
 	<!-- Modelo sem posts criados no diario
-	<div class="well">
-		<p>Nenhum post criado ainda</p>
-	</div>
-	 -->
+	
+		<div class="well">
+		<p>Ainda não há <strong>posts</strong> criados nesse diário de bordo. <a href="projeto-diario-criar.shtml">Seja o primeiro a criar</a>.</p>
+		</div>
+	-->
 
-			<ul class="nav nav-tabs nav-stacked">
-	            <li>
-	            <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="115 comentários">115</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></a>
-	            </li>
-	            <li>
-	            <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="5 comentários">5</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></a>
-	            </li>
-	            <li class="mine">
-	            <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="Nenhum comentário ainda">0</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Criado por você</small></a>
-	            </li>
-	            <li>
-	            <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="115 comentários">115</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></a>
-	            </li>
-			</ul>
 
-			<a href="projeto-diario-criar.shtml" class="pull-right btn btn-mini">criar novo post <i class="icon-plus"></i></a>
-
-			</div><!-- diario -->
-
-</div>
-
-<hr>
-
-<div class="row-fluid">
-  <div id="images-intro" class="span12">
-		<h3><a href="projeto-imagens.shtml">Imagens <i class="icon-chevron-right pull-right"></i></a></h3>
-
-	<ul class="thumbnails row-fluid">
-		<li class="span3">
-			<a href="projeto-imagem.shtml" class="thumbnail"><img src="assets/img/rl/170.gif" alt="Título da imagem">
-			<p><small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></p></a>
-		</li>
-		<li class="span3">
-			<a href="projeto-imagem.shtml" class="thumbnail"><img src="assets/img/rl/170.gif" alt="Título da imagem">
-			<p><small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></p></a>
-		</li>
-		<li class="span3">
-			<a href="projeto-imagem.shtml" class="thumbnail"><img src="assets/img/rl/170.gif" alt="Título da imagem">
-			<p><small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></p></a>
-		</li>
-		<li class="span3">
-			<a href="projeto-imagem.shtml" class="thumbnail"><img src="assets/img/rl/170.gif" alt="Título da imagem">
-			<p><small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></p></a>
-		</li>
+	<ul class="nav nav-tabs nav-stacked">
+	    <li>
+	    <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="115 comentários">115</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></a>
+	    </li>
+	    <li>
+	    <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="5 comentários">5</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></a>
+	    </li>
+	    <li>
+	    <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="115 comentários">115</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></a>
+	    </li>
+	    <li class="mine">
+	    <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="Nenhum comentário ainda">0</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Criado por você</small></a>
+	    </li>
+	    <li>
+	    <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="115 comentários">115</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></a>
+	    </li>
+	    <li>
+	    <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="115 comentários">115</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></a>
+	    </li>
+	    <li>
+	    <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="5 comentários">5</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></a>
+	    </li>
+	    <li>
+	    <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="115 comentários">115</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></a>
+	    </li>
+	    <li class="mine">
+	    <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="Nenhum comentário ainda">0</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Criado por você</small></a>
+	    </li>
+	    <li>
+	    <a href="projeto-diario-post.shtml"><span class="badge badge-info pull-right" title="115 comentários">115</span><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique</small></a>
+	    </li>
 	</ul>
-			<a href="projeto-imagens-criar.shtml" class="pull-right btn btn-mini"><i class="icon-plus"></i> adicionar nova imagem</a>
-  </div><!-- imgs -->
+
+</div><!-- diario -->
+
+<div class="pagination">
+  <ul>
+<!--     <li><a href="#"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li> -->
+    <li class="active">
+      <a href="#">1</a>
+    </li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
+  </ul>
+  
+  <p class="pull-right">Exibindo de 1 a 10</p>
 
 </div>
 
-<hr>
+<hr class="only-mobile">
 
-		<div id="forum-intro">
-		<h3><a href="projeto-tickets.shtml">Tickets <small>Questões recentes</small> <i class="icon-chevron-right pull-right"></i></a></h3>
-
-<!-- Modelo sem ticket criado 
-<div class="well">
-	<p>Nenhum ticket criado ainda</p>
 </div>
- -->
-		<ul class="nav nav-tabs nav-stacked">
-		            <li class="mine">
-		            <a href="projeto-ticket.shtml">
-		            	<span class="badge badge-info pull-right" title="Nenhum comentário ainda">0</span>
-		            	<i class="icon-tasks icon-gray"></i> Cras mattis consectetur purus sit amet fermentum 
-		            	<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Criado por você ‧ <span class="label label-important">bug</span> ‧ <img src="assets/img/rl/20.gif" alt="Atribuído a: Primeiro nome do colaborador responsável" title="Atribuído a: Primeiro nome do colaborador responsável" class="singletip"></small> </a>
-		            </li>
-		            <li>
-		            <a href="projeto-ticket.shtml">
-		            	<span class="badge badge-info pull-right" title="5 comentários">5</span>
-		            	<i class="icon-tasks icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus 
-		            	<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ <span class="label label-success">nova funcionalidade</span></small> </a>
-		            </li>
-		            <li>
-		            <a href="projeto-ticket.shtml">
-		            	<span class="badge badge-info pull-right" title="100 comentários">100</span>
-		            	<i class="icon-tasks icon-gray"></i> Cras mattis consectetur purus sit amet fermentum 
-		            	<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ <span class="label label-success">melhoria</span> <!--<span class="label label-info">geral</span> --></small> </a>
-		            </li>
-		            <li>
-					<a href="projeto-ticket.shtml">
-						<span class="badge badge-info pull-right" title="115 comentários">115</span>
-						<i class="icon-tasks icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus 
-						<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ <span class="label label-important">obstáculo</span> ‧ <img src="assets/img/rl/20.gif" alt="Atribuído a: Primeiro nome do colaborador responsável" title="Atribuído a: Primeiro nome do colaborador responsável" class="singletip"></small> </a>
-		            </li>
-
-		</ul>
-
-		<a href="projeto-tickets-criar.shtml" class="pull-right btn btn-mini"><i class="icon-plus"></i> criar novo ticket</a>
-
-		</div><!-- forum -->
-
-
 
 </div><!-- /miolo -->
 

@@ -103,7 +103,7 @@
 
       </div><!-- entry -->
 
-        <div class="btn-group">
+        <div class="btn-group drop-options">
           <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
           <span class="icon-cog icon-gray"></span>
           </a>
@@ -145,7 +145,7 @@
 
       </div><!-- entry -->
 
-        <div class="btn-group">
+        <div class="btn-group drop-options">
           <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
           <span class="icon-cog icon-gray"></span>
           </a>
@@ -175,7 +175,7 @@
 
       </div><!-- entry -->
 
-        <div class="btn-group">
+        <div class="btn-group drop-options">
           <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
           <span class="icon-cog icon-gray"></span>
           </a>
@@ -213,7 +213,7 @@
 
       </div><!-- entry -->
 
-        <div class="btn-group">
+        <div class="btn-group drop-options">
           <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
           <span class="icon-cog icon-gray"></span>
           </a>
@@ -251,7 +251,7 @@
 
       </div><!-- entry -->
 
-        <div class="btn-group">
+        <div class="btn-group drop-options">
           <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
           <span class="icon-cog icon-gray"></span>
           </a>
@@ -288,7 +288,7 @@
 
       </div><!-- entry -->
 
-        <div class="btn-group">
+        <div class="btn-group drop-options">
           <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
           <span class="icon-cog icon-gray"></span>
           </a>
@@ -325,82 +325,7 @@
 
       </div><!-- entry -->
 
-        <div class="btn-group">
-          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-          <span class="icon-cog icon-gray"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li class="bt-reply">
-              <a href="#form-reply">Responder</a>
-            </li>
-<!--        <li class="divider"></li>
-            <li>
-              <a href="#">Editar</a>
-            </li>
-            <li>
-              <a href="#">Excluir</a>
-            </li>
--->
-        <li class="divider"></li>
-            <li>
-              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
-            </li>
-        </ul>
-      </div><!-- btn-group -->
-
-    </li>
-
-    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
-      <div class="entry">
-      <a href="perfil.shtml" class="fn">Max Guenes</a>
-      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <ul class="meta pull-right">
-            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
-          </ul>
-
-      </div><!-- entry -->
-
-        <div class="btn-group">
-          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-          <span class="icon-cog icon-gray"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li class="bt-reply">
-              <a href="#form-reply">Responder</a>
-            </li>
-<!--        <li class="divider"></li>
-            <li>
-              <a href="#">Editar</a>
-            </li>
-            <li>
-              <a href="#">Excluir</a>
-            </li>
--->
-        <li class="divider"></li>
-            <li>
-              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
-            </li>
-        </ul>
-      </div><!-- btn-group -->
-
-    </li>
-
-    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
-      <div class="entry">
-      <a href="perfil.shtml" class="fn">Max Guenes</a>
-      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <ul class="meta pull-right">
-            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
-          </ul>
-
-      </div><!-- entry -->
-
-        <div class="btn-group">
+        <div class="btn-group drop-options">
           <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
           <span class="icon-cog icon-gray"></span>
           </a>
@@ -438,7 +363,82 @@
 
       </div><!-- entry -->
 
-        <div class="btn-group">
+        <div class="btn-group drop-options">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="bt-reply">
+              <a href="#form-reply">Responder</a>
+            </li>
+<!--        <li class="divider"></li>
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+-->
+        <li class="divider"></li>
+            <li>
+              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+            </li>
+        </ul>
+      </div><!-- btn-group -->
+
+    </li>
+
+    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+      <a href="perfil.shtml" class="fn">Max Guenes</a>
+      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group drop-options">
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+          <span class="icon-cog icon-gray"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="bt-reply">
+              <a href="#form-reply">Responder</a>
+            </li>
+<!--        <li class="divider"></li>
+            <li>
+              <a href="#">Editar</a>
+            </li>
+            <li>
+              <a href="#">Excluir</a>
+            </li>
+-->
+        <li class="divider"></li>
+            <li>
+              <a href="#"><i class="icon-flag"></i> Reportar problema</a>
+            </li>
+        </ul>
+      </div><!-- btn-group -->
+
+    </li>
+
+    <li class="vcard reply"><a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+      <div class="entry">
+      <a href="perfil.shtml" class="fn">Max Guenes</a>
+      <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <ul class="meta pull-right">
+            <li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</li>
+          </ul>
+
+      </div><!-- entry -->
+
+        <div class="btn-group drop-options">
           <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
           <span class="icon-cog icon-gray"></span>
           </a>
@@ -474,7 +474,7 @@
 
       </div><!-- entry -->
 
-        <div class="btn-group">
+        <div class="btn-group drop-options">
           <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
           <span class="icon-cog icon-gray"></span>
           </a>

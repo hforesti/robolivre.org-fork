@@ -609,6 +609,7 @@ footer .pull-left {width: 45%;}
 	border-top: 1px solid #eee;
 	position: relative;
 }
+#stream .comments .mine a.fn,
 .list-mgmt ul .mine h3 a, 
 .list-mgmt .nav .mine a, 
 #forum-intro li.mine a, 
@@ -1134,6 +1135,8 @@ body{padding-top:0;}
 #stream ul .vcard .entry {width: 75%}
 #sidebar-wdgt {clear: both;}
 #footer-utility h4 {margin-top: 30px}
+
+#stream .vcard .comments {width: 100%;}
 
 #search-comun-form {
 	display: block;

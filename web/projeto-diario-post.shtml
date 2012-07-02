@@ -1,0 +1,172 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+	<div class="avatar">
+		<a href="projeto.shtml"><img src="assets/img/rl/170.gif" alt="R.A.F." class="photo"></a>
+
+    <div class="btn-group nav">
+		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+		<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+  					<li class="nav-header">Gerenciar</li>
+				<li>
+					<a href="projeto-amigos-colaboradores.shtml">Colaboradores</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a href="projeto-editar.shtml">Editar projeto</a>
+				</li>
+				<li>
+					<a href="projeto-editar-imagem.shtml">Alterar imagem</a>
+				</li>
+			</ul>
+	</div>
+	<h1>R.A.F. (Robô Apanhador de Frutas)</h1>
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li><a href="projeto.shtml"><i class="icon-gray icon-info-sign"></i> Geral</a></li>
+	<li class="active"><a href="projeto-diario.shtml"><i class="icon-gray icon-pencil"></i> Diário de bordo</a></li>
+	<li><a href="projeto-tickets.shtml"><i class="icon-gray icon-tasks"></i> Tickets</a></li>
+	<li><a href="conteudo-imagens.shtml"><i class="icon-gray icon-picture"></i> Imagens</a></li>
+	<li><a href="projeto-docs.shtml"><i class="icon-gray icon-book"></i> Documentos</a></li>
+	<li><a href="projeto-codigos.shtml"><i class="icon-gray icon-list-alt"></i> Códigos</a></li>
+	<li><hr></li>
+	<li><a href="projeto-conteudos.shtml"><i class="icon-gray icon-tag"></i> Conteúdos relacionados</a></li>
+	<li><a href="projeto-amigos.shtml"><i class="icon-gray icon-user"></i> Participantes</a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+
+<ul class="breadcrumb">
+  <li>
+    <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="projetos.shtml">Projetos</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="projeto.shtml">R.A.F. (Robô Apanhador de Frutas)</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="projetos-diario.shtml">Diário de bordo</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+    Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus
+  </li>
+</ul>
+
+<div id="stream">
+
+<h3><i class="icon-pencil icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus</h3>
+
+	<ul>
+<!-- ======================================== -->
+<!-- ! Modelo de compartilhamento de vídeo   -->
+<!-- ======================================== -->
+		<li class="vcard">
+<a href="perfil.shtml" class="photo"><img src="assets/img/rl/60.gif" alt="Max Guenes" title="Max Guenes"></a>
+			<div class="entry">
+			<a href="perfil.shtml" class="fn">Max Guenes</a>				
+
+	<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+
+	<p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus.</p>
+
+				<div class="share-content">
+					<a href="http://www.youtube.com/embed/-KXBZZO6IgQ" class="shared-item"><img src="assets/img/rl/share-img.jpg" alt="Imagem compartilhada" class="thumbnail"><div class="btn-play"></div></a>
+		
+					<div class="video-embed">
+					<iframe src="http://www.youtube.com/embed/-KXBZZO6IgQ" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</div>
+	<p>Maecenas faucibus mollis interdum. <strong>Cum sociis natoque penatibus</strong> et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+
+			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
+			os robôs. Novos formatos?</p>
+					<ul class="meta">
+						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="projeto-diario-post.shtml">39 minutos atrás</a></li>
+
+						<!-- APENAS para projeto público -->
+							<li class="share-now">
+								<div class="btn-group nav">
+									<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Compartilhar">
+										<span class="icon-share icon-gray"></span>
+									</a>
+									<ul class="dropdown-menu">
+									  	<li class="nav-header">Compartilhar post:</li>
+										<li class="go-twitter">
+											<a href="https://twitter.com/share?url=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&text=Olha+o+que+encontrei+na+rede+%40robolivre%3A&related=robolivre">Twitter</a>
+										</li>
+										<li class="go-fb">
+											<a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&t=Publicação na rede Robô livre">Facebook</a>
+										</li>
+									</ul>
+								</div><!-- btn-group -->
+							</li>
+					</ul>
+
+			<ul class="comments">
+				<li class="mine">
+					<a href="perfil.shtml" class="fn">
+						<img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" title="Rodrigo Medeiros" class="photo"> <span class="fn">Rodrigo Medeiros</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás:</span>
+					<div class="comment"> 
+						<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod.</p>
+					</div>
+					<!-- Caso seja meu comentario ou eu seja o criador do projeto, posso apagar. -->
+					<a class="close" title="Excluir seu comentário">&times;</a>
+				</li>
+				<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes" class="photo"> <span class="fn">Max Guenes</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás:</span>
+				<div class="comment"> 
+				<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo. Curabitur blandit tempus porttitor.</p>
+				</div></li>
+				<li><a href="perfil.shtml"><img src="assets/img/rl/20.gif" alt="Max Guenes" title="Max Guenes" class="photo"> <span class="fn">Max Guenes</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás:</span>
+				<div class="comment"> 
+				<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod.</p>
+				</div></li>
+				<li>
+				<form action="#" class="form-comment">
+					<img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" class="photo">
+					<textarea class="textarea-comment" rows="1" placeholder="Escreva um comentário"></textarea>
+					<button class="btn btn-mini">comentar</button>
+				</form>
+				</li>
+			</ul><!-- comments -->
+
+			</div><!-- entry -->
+
+							<div class="btn-group drop-options">
+								<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+									<span class="icon-cog icon-gray"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="projeto-diario-criar.shtml">Editar post</a>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<a data-toggle="modal" href="#modalAbuse"><i class="icon-flag"></i> Reportar abuso ou spam</a>
+									</li>
+								</ul>
+							</div><!-- btn-group -->
+
+		</li>
+
+	</ul>
+
+</div>
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->
