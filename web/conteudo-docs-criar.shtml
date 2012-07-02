@@ -81,16 +81,16 @@
         </div>
 
           <div class="control-group">
-            <label class="control-label" for="fileInputDocs">Arquivo</label>
+            <label class="control-label">Arquivo</label>
             <div class="controls">
 
-              <div id="file-uploader-docs">
+              <div id="file-uploader-doc">
                 <noscript>
                   <input class="input-file" id="fileInput2" type="file">
                 </noscript>
               </div>
 
-              <p class="help-block">Você deve anexar um arquivo. (Ex.: PDF, Apresentação, Manual).</p>
+              <p class="help-block">Você deve anexar <strong>um</strong> arquivo. (Ex.: PDF, Apresentação, Manual).</p>
             </div>
           </div>
           <hr>

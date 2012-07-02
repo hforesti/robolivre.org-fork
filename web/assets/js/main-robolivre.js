@@ -273,95 +273,102 @@ $('#location').change(function () {
 /* multi upload */
 //upload img
 
-var uploaderImg = new qq.FileUploader({
-    // pass the dom node (ex. $(selector)[0] for jQuery users)
-    element: document.getElementById('file-uploader-img'),
-    // path to server-side upload script
-    action: url_for('ajax/ajaxUlpoadImagens'),//'../uploads/',
-    multiple: false,
-	
-	// validation    
-	// ex. ['jpg', 'jpeg', 'png', 'gif'] or []
-	allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
+if ( $("#file-uploader-img").length != 0 ) {
+	var uploaderImg = new qq.FileUploader({
+	    // pass the dom node (ex. $(selector)[0] for jQuery users)
+	    element: document.getElementById('file-uploader-img'),
+	    // path to server-side upload script
+	    action: url_for('ajax/ajaxUlpoadImagens'),//'../uploads/',
+	    multiple: false,
+		
+		// validation    
+		// ex. ['jpg', 'jpeg', 'png', 'gif'] or []
+		allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
 
-	messages: {
-            typeError		: "'{file}' tem um formato inválido. Apenas imagens ({extensions}) são aceitas neste caso.",
-            sizeError		: "'{file}' é muito grande, o tamanho máximo do arquivo é: {sizeLimit}.",
-            minSizeError	: "'{file}' é muito pequeno, o tamaho mínimo do arquivo é: {minSizeLimit}.",
-            emptyError		: "'{file}' está vazio, por favor tente novamente.",
-            onLeave			: "O arquivo está sendo enviado, se você sair agora o envio será cancelado."            
-	},
-	showMessage: function(message){ 
-                alert(message);
-                $("#thumb").attr("src",url_for("assets/img/rl/170.gif")); 
-                $("#i-medium").attr("src",url_for("assets/img/rl/60.gif")); 
-                $("#i-small").attr("src",url_for("assets/img/rl/20.gif")); 
-                $("#imagem_selecionada").val("");
-            },
-        onComplete: function(id, fileName, responseJSON){
-            var arquivo = responseJSON['arquivo'];
-            var arr = arquivo.split(".");
-            var extensao = arr[1];
-            var nome = arr[0];
-            
-            $("#thumb").attr("src",url_for("uploads/"+ arquivo.replace("#", "large")));
-            $("#i-medium").attr("src",url_for("uploads/"+ arquivo.replace("#", "60"))); 
-            $("#i-small").attr("src",url_for("uploads/"+ arquivo.replace("#", "20"))); 
-            
-            $("#imagem_selecionada").val(fileName);
-        }
-});
-$("#img-preview").click(function() {
-	$("#file-uploader-img input").click();
-});
+		messages: {
+	            typeError		: "'{file}' tem um formato inválido. Apenas imagens ({extensions}) são aceitas neste caso.",
+	            sizeError		: "'{file}' é muito grande, o tamanho máximo do arquivo é: {sizeLimit}.",
+	            minSizeError	: "'{file}' é muito pequeno, o tamaho mínimo do arquivo é: {minSizeLimit}.",
+	            emptyError		: "'{file}' está vazio, por favor tente novamente.",
+	            onLeave			: "O arquivo está sendo enviado, se você sair agora o envio será cancelado."            
+		},
+		showMessage: function(message){ 
+	                alert(message);
+	                $("#thumb").attr("src",url_for("assets/img/rl/170.gif")); 
+	                $("#i-medium").attr("src",url_for("assets/img/rl/60.gif")); 
+	                $("#i-small").attr("src",url_for("assets/img/rl/20.gif")); 
+	                $("#imagem_selecionada").val("");
+	            },
+	        onComplete: function(id, fileName, responseJSON){
+	            var arquivo = responseJSON['arquivo'];
+	            var arr = arquivo.split(".");
+	            var extensao = arr[1];
+	            var nome = arr[0];
+	            
+	            $("#thumb").attr("src",url_for("uploads/"+ arquivo.replace("#", "large")));
+	            $("#i-medium").attr("src",url_for("uploads/"+ arquivo.replace("#", "60"))); 
+	            $("#i-small").attr("src",url_for("uploads/"+ arquivo.replace("#", "20"))); 
+	            
+	            $("#imagem_selecionada").val(fileName);
+	        }
+	});
+	$("#img-preview").click(function() {
+		$("#file-uploader-img input").click();
+	});
+};
 
 //upload docs
-var uploader = new qq.FileUploader({
-    // pass the dom node (ex. $(selector)[0] for jQuery users)
-    element: document.getElementById('file-uploader'),
-    // path to server-side upload script
-    action: url_for('ajax/ajaxUlpoadArquivos'),//'../uploads/',
-	// validation    
-	// ex. ['jpg', 'jpeg', 'png', 'gif'] or []
-	allowedExtensions: ['txt', 'rtf', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods', 'odg', 'fodg'],
+if ( $("#file-uploader").length != 0 ) {
+	var uploader = new qq.FileUploader({
+	    // pass the dom node (ex. $(selector)[0] for jQuery users)
+	    element: document.getElementById('file-uploader'),
+	    // path to server-side upload script
+	    action: url_for('ajax/ajaxUlpoadArquivos'),//'../uploads/',
+		// validation    
+		// ex. ['jpg', 'jpeg', 'png', 'gif'] or []
+		allowedExtensions: ['txt', 'rtf', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods', 'odg', 'fodg'],
 
-	messages: {
-            typeError		: "'{file}' tem um formato inválido. Apenas os formatos de documentos ({extensions}) são aceitos neste caso.",
-            sizeError		: "'{file}' é muito grande, o tamanho máximo do arquivo é: {sizeLimit}.",
-            minSizeError	: "'{file}' é muito pequeno, o tamaho mínimo do arquivo é: {minSizeLimit}.",
-            emptyError		: "'{file}' está vazio, por favor tente novamente.",
-            onLeave			: "Os arquivos estão sendo enviados, se você sair agora o envio será cancelado."            
-	},
-	showMessage: function(message){alert(message);},
-        onComplete: function(id, fileName, responseJSON){
-            var valores = $("#documentos_selecionados").val();
-            $("#documentos_selecionados").val(valores+"[[*]]"+fileName);
-        }
+		messages: {
+	            typeError		: "'{file}' tem um formato inválido. Apenas os formatos de documentos ({extensions}) são aceitos neste caso.",
+	            sizeError		: "'{file}' é muito grande, o tamanho máximo do arquivo é: {sizeLimit}.",
+	            minSizeError	: "'{file}' é muito pequeno, o tamaho mínimo do arquivo é: {minSizeLimit}.",
+	            emptyError		: "'{file}' está vazio, por favor tente novamente.",
+	            onLeave			: "Os arquivos estão sendo enviados, se você sair agora o envio será cancelado."            
+		},
+		showMessage: function(message){alert(message);},
+	        onComplete: function(id, fileName, responseJSON){
+	            var valores = $("#documentos_selecionados").val();
+	            $("#documentos_selecionados").val(valores+"[[*]]"+fileName);
+	        }
 
-});
+	});
+};
 
 //upload doc
-var uploader = new qq.FileUploader({
-    // pass the dom node (ex. $(selector)[0] for jQuery users)
-    element: document.getElementById('file-uploader-docs'),
-    // path to server-side upload script
-    action: url_for('ajax/ajaxUlpoadArquivos'),//'../uploads/',
-    multiple: false,
-	// validation    
-	// ex. ['jpg', 'jpeg', 'png', 'gif'] or []
-	allowedExtensions: ['txt', 'rtf', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods', 'odg', 'fodg'],
+if ( $("#file-uploader-doc").length != 0 ) {
+	var uploaderDoc = new qq.FileUploader({
+	    // pass the dom node (ex. $(selector)[0] for jQuery users)
+	    element: document.getElementById('file-uploader-doc'),
+	    // path to server-side upload script
+	    action: url_for('ajax/ajaxUlpoadImagens'),//'../uploads/',
+	    multiple: false,
+		
+		// validation    
+		// ex. ['jpg', 'jpeg', 'png', 'gif'] or []
+		allowedExtensions: ['txt', 'rtf', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods', 'odg', 'fodg'],
 
-	messages: {
-            typeError		: "'{file}' tem um formato inválido. Apenas os formatos de documentos ({extensions}) são aceitos neste caso.",
-            sizeError		: "'{file}' é muito grande, o tamanho máximo do arquivo é: {sizeLimit}.",
-            minSizeError	: "'{file}' é muito pequeno, o tamaho mínimo do arquivo é: {minSizeLimit}.",
-            emptyError		: "'{file}' está vazio, por favor tente novamente.",
-            onLeave			: "Os arquivos estão sendo enviados, se você sair agora o envio será cancelado."            
-	},
-	showMessage: function(message){alert(message);}
-});
-
-
+		messages: {
+	            typeError		: "'{file}' tem um formato inválido. Apenas os formatos de documentos ({extensions}) são aceitos neste caso.",
+	            sizeError		: "'{file}' é muito grande, o tamanho máximo do arquivo é: {sizeLimit}.",
+	            minSizeError	: "'{file}' é muito pequeno, o tamaho mínimo do arquivo é: {minSizeLimit}.",
+	            emptyError		: "'{file}' está vazio, por favor tente novamente.",
+	            onLeave			: "Os arquivos estão sendo enviados, se você sair agora o envio será cancelado."           
+		},
+		showMessage: function(message){ 
+	                alert(message);
+	            }
+	});
+};
 
 }(window.jQuery)
 

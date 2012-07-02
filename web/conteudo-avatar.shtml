@@ -76,7 +76,7 @@
               <div class="span5">				
                 <div class="controls">				
                   <p class="help-block">Escolha uma imagem para <strong>"Arduino"</strong></p>
-                  <div id="file-uploader-avatar">       
+                  <div id="file-uploader-img">       
                     <noscript>          
                       <input class="input-file" id="fileInput" type="file">
                     </noscript>         
