@@ -81,7 +81,7 @@ mas no futuro o plano é ter várias tags num post/status
 				</div>
 			<p>Iniciando pesquisa sobre formas de conexão / comunicação com
 			os robôs. Novos formatos?</p>
-					<ul class="meta">
+					<ul class="meta nav">
 						<li class="visivel-para"><i class="icon-lock" title="Privado"></i></li>
 						<li class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00"><a href="status.shtml">39 minutos atrás</a></li>
 
@@ -90,12 +90,13 @@ mas no futuro o plano é ter várias tags num post/status
 											<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Compartilhar">
 												<span class="icon-share icon-gray"></span>
 											</a>
-											<ul class="dropdown-menu">
+									<ul class="dropdown-menu">
+									  		<li class="nav-header">Compartilhar:</li>
 												<li class="go-twitter">
-													<a href="https://twitter.com/share?url=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&text=Olha+o+que+encontrei+na+rede+%40robolivre%3A&related=robolivre">Compartilhar no <strong>Twitter</strong></a>
+													<a href="https://twitter.com/share?url=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&text=Olha+o+que+encontrei+na+rede+%40robolivre%3A&related=robolivre">Twitter</a>
 												</li>
 												<li class="go-fb">
-													<a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&t=Publicação na rede Robô livre">Compartilhar no <strong>Facebook</strong></a>
+													<a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&t=Publicação na rede Robô livre">Facebook</a>
 												</li>
 											</ul>
 										</div><!-- btn-group -->
@@ -104,7 +105,7 @@ mas no futuro o plano é ter várias tags num post/status
 								</ul>
 
 			<ul class="comments">
-				<li><a href="perfil.shtml"><img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" title="Rodrigo Medeiros" class="photo"> <span class="fn">Rodrigo Medeiros</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>:
+				<li class="mine"><a href="perfil.shtml" class="fn"><img src="assets/img/rl/avatar-20.jpg" alt="Rodrigo Medeiros" title="Rodrigo Medeiros" class="photo"> <span class="fn">Rodrigo Medeiros</span></a> <span class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</span>:
 				<div class="comment"> 
 				<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod.</p>
 				</div>
