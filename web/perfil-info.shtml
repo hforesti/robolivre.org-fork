@@ -66,7 +66,7 @@
 			<h6><i class="icon-user icon-gray"></i> Sobre Henrique</h6>
 
 			<!-- modelo de botao para editar perfil caso seja o perfil dele -->
-			<!-- <a href="profile-info-editar.shtml" class="btn btn-primary pull-right"><i class="icon-edit icon-white"></i> Editar perfil</a> -->
+			 <a href="profile-info-editar.shtml" class="btn btn-primary pull-right"><i class="icon-edit icon-white"></i> Editar perfil</a> 
 
 			<p>Designer de interação que trabalha com visualização de informação e usabilidade em projetos interativos e pesquisas com usuários.</p>
 

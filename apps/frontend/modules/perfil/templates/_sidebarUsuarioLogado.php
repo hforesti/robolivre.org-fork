@@ -24,7 +24,7 @@ $quantidadeNotificacoes = $quantidadeSolicitacoes;// + NOTIFICACOES
             </ul>
         </div>
 
-        <h1><?php echo UsuarioLogado::getInstancia()->getNome(); ?></h1>
+        <h1><?php echo UsuarioLogado::getInstancia()->getNome(); echo " " .$opcao ?></h1>
 
     </div><!-- /avatar -->
 
@@ -36,7 +36,7 @@ $quantidadeNotificacoes = $quantidadeSolicitacoes;// + NOTIFICACOES
         <?php /* <li><a href="projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos</a></li> */ ?>
         <li <?php echo ($opcao=="informacao")?"class=\"active\"":"" ?>><a href="<?php echo url_for('perfil/informacaoHome') ?>"><span class="icon-gray icon-info-sign"></span> Informações</a></li>
         <li><hr></li>
-        <li <?php echo ($opcao=="notificacoes")?"class=\"active\"":"" ?>><a href="<?php echo url_for('perfil/notificacoes') ?>"><span class="label label-warning" id="side-notf-unread" title="<?php echo $quantidadeNotificacoes ?> notificações não lidas"><?php echo $quantidadeNotificacoes ?></span> <span class="icon-gray icon-bell"></span> Notificações</a></li>
+        <li <?php echo ($opcao=="notificacoes")?"class='active'":"" ?>><a href="<?php echo url_for('perfil/notificacoes') ?>"> <?php if ($quantidadeNotificacoes){ ?><span class="label label-warning" id="side-notf-unread" title="<?php echo $quantidadeNotificacoes ?> solicitações de amizade"><?php echo $quantidadeNotificacoes ?></span><?php } ?> <span class="icon-asterisk icon-gray"></span> Solic. de amizade</a></li>
         <?php /* <li <?php echo ($opcao=="mensagem")?"class=\"active\"":"" ?>><a href="inbox.shtml"><span class="label label-warning" title="2 mensagens não lidas">2</span> <span class="icon-gray icon-envelope"></span> Mensagens</a></li> */ ?>
     </ul>
 </div><!-- /sidebar -->

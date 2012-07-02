@@ -13,7 +13,6 @@ class conteudoActions extends robolivreAction {
     public function execute($request, $executarTeste = true) {
 
         $acao = $request->getParameter('acao');
-
         switch ($acao) {
 
             case 'exibirSeguidores' : $this->executeExibirSeguidores($request);
@@ -25,6 +24,8 @@ class conteudoActions extends robolivreAction {
             case 'modificarFotoConteudo' : $this->executeModificarFotoConteudo($request);
                 return;
             case 'exibirDocumentos' : $this->executeExibirDocumentos($request);
+                return;
+            case 'adicionarDoc' : $this->executeAdicionarDocumentos($request);
                 return;
             case 'video' :
                 $this->executeExibir($request, "video");
@@ -51,6 +52,24 @@ class conteudoActions extends robolivreAction {
      */
     public function executeIndex(sfWebRequest $request) {
         $this->redirect("conteudos/index");
+    }
+
+    public function executeAdicionarDocumentos(sfWebRequest $request) {
+        $slug = $request->getParameter('slug');
+        $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
+        $this->formDocumento = new ConteudosForm($this->conteudo);
+        $this->forward404Unless($this->conteudo);
+
+
+        $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
+        $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
+
+        $arrayDocumentos = Doctrine::getTable("Documentos")->filtroDocumentosConteudo($this->conteudo->getIdConjunto());
+        $this->documentos = $arrayDocumentos['documentos'];
+        $this->quantidadeDocumentos = $arrayDocumentos['quantidade'];
+        $this->quantidadeTotalPaginas = $arrayDocumentos['totalPaginas'];
+
+        $this->setTemplate("adicionarDocumentos");
     }
 
     public function executeExibirDocumentos(sfWebRequest $request) {

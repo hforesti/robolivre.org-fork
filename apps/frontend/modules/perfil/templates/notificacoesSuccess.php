@@ -5,7 +5,7 @@ $quantidadeSolicitacoes = UsuarioLogado::getInstancia()->getQuantidadeSolicitaco
 
 <div class="row">
 
-    <?php include_partial('sidebarUsuarioLogado', array('opcao' => 'noficicacoes')) ?>
+    <?php include_partial('sidebarUsuarioLogado', array('opcao' => 'notificacoes')) ?>
 
 
     <hr class="only-mobile">

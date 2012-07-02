@@ -83,7 +83,7 @@
                                 <div class="thumbnail">
                                     <?php $innerHTML = "<img src='" . image_path($conteudo->getImagemPerfil(Util::IMAGEM_GRANDE)) . "' alt='" . $conteudo->getNome() . "' title='" . $conteudo->getNome() . "'>"; ?>
                                     <?php echo Util::getTagConteudoSlug($innerHTML, $conteudo->getNome()) ?>
-                                    <h4><?php echo $conteudo->getNome(); ?></h4>
+                                    <h4><?php echo $conteudo->getNome();?> </h4>
                                     <?php if($conteudo->getTemaAula()){ ?>
                                         <span class="label label-info">Tema de aula</span>
                                     <?php } ?>

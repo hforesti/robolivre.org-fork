@@ -38,7 +38,7 @@
                 <input type="hidden" value="<?php echo $nomeArquivoImagem; ?>" id="imagem_selecionada" name="imagem_selecionada">
               </div>
 
-              <div class="span5">				
+              <div class="span5">
                 <div class="controls">				
                   <p class="help-block">Escolha uma imagem para o seu perfil</p>
                   <div id="file-uploader-img">       

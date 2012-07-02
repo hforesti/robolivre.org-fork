@@ -35,7 +35,8 @@ class conteudosActions extends robolivreAction {
     public function executeCriar(sfWebRequest $request) {
         $this->formConteudo = new ConteudosForm();
 
-        $this->nomeConteudo = $request->getParameter('nome'); {
+        $this->nomeConteudo = $request->getParameter('nome');
+        {
             $objConteudo = Doctrine::getTable('Conteudos')->validaNomeConteudo($this->nomeConteudo);
 
             if ($objConteudo) {
@@ -101,11 +102,9 @@ class conteudosActions extends robolivreAction {
         $slug = Doctrine::getTable("Conjuntos")->getSlug($id);
         $this->redirect("conteudo/$slug");
     }
-    
 
     private function criarTumbnails(sfWebRequest $request, $slugConteudo) {
         $nome_arquivo = $request->getParameter('imagem_selecionada');
-
         if (!isset($nome_arquivo) || $nome_arquivo == "") {
             return "";
         }
@@ -114,10 +113,10 @@ class conteudosActions extends robolivreAction {
             $diretorioThumbnail = Util::getDiretorioThumbnail();
 
             $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo;
+            $diretorio_arquivo = str_replace("#", "large", $diretorio_arquivo);
             $extensao = end(explode(".", $nome_arquivo));
 
             $img = new sfImage($diretorio_arquivo, 'image/jpg');
-
             if ($img->getHeight() > 170 && $img->getWidth() > 170) {
 
                 if ($img->getWidth() > $img->getHeight()) {
@@ -197,13 +196,14 @@ class conteudosActions extends robolivreAction {
 //        $thumbnail = new sfThumbnail(20, 20);
 //        $thumbnail->loadFile($diretorio_arquivo);
 //        $thumbnail->save($diretorioThumbnail.'/_avatar_con_' . $slugConteudo . '_20.' . $extensao);
+        } catch (sfImageTransformException $e) {
+
+            return $nome_arquivo;
         } catch (Exception $e) {
-            if (strstr($e->getMessage(), " is not readable.")) {
-                return $nome_arquivo;
-            } else {
-                throw $e;
-            }
+
+            throw $e;
         }
+
 
         return '_avatar_con_' . $slugConteudo . '_#.' . $extensao;
     }
@@ -363,10 +363,11 @@ class conteudosActions extends robolivreAction {
         $arrayTags = explode(",", $arrayTags);
 
         $arrayTagsTemaAula = $request->getPostParameter('tema_aula');
-
+//        if ($arrayTagsTemaAula) {
         foreach ($arrayTagsTemaAula as $tema) {
             $arrayTags[] = $tema;
         }
+//        }
         $arrayTags = array_unique($arrayTags);
 
         $arrayArquivos = explode(Util::SEPARADOR_PARAMETRO, $request->getPostParameter('documentos_selecionados'));
@@ -385,9 +386,7 @@ class conteudosActions extends robolivreAction {
             $objConteudo->setIdConteudo($valores['id_conteudo']);
             $objConteudo->setNome(Util::getHtmlPurificado($valores['nome']));
             $objConteudo->setDescricao(Util::getHtmlPurificadoDescricao($valores['descricao']));
-
             $objConteudo->setEnviarEmailCriador($valores['enviar_email_criador']);
-
             $slug = Util::criaSlug($objConteudo->getNome());
             $nomeArquivo = $this->criarTumbnails($request, $slug);
             $objConteudo->getConjunto()->setImagemPerfil($nomeArquivo);
@@ -574,9 +573,9 @@ class conteudosActions extends robolivreAction {
                 $nome_arquivo = 'img_publicacao_usu_' . UsuarioLogado::getInstancia()->getIdUsuario() . "_" . md5(time());
                 $file->save($diretorio_arquivo . '/' . $nome_arquivo . $extension);
 
-                $thumbnail = new sfThumbnail(550, null);
-                $thumbnail->loadFile($diretorio_arquivo . '/' . $nome_arquivo . $extension);
-                $thumbnail->save($diretorio_arquivo . '/' . $nome_arquivo . '_min' . $extension);
+//                $thumbnail = new sfThumbnail(550, null);
+//                $thumbnail->loadFile($diretorio_arquivo . '/' . $nome_arquivo . $extension);
+//                $thumbnail->save($diretorio_arquivo . '/' . $nome_arquivo . $extension);
 
                 $imagem = new Imagens();
                 $imagem->setIdPasta($pasta->getIdPasta());

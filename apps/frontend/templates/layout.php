@@ -45,7 +45,8 @@
 
                                 <li class="divider-vertical"></li>
                             </ul>
-                            <?php if (!($sf_context->getModuleName() == "inicial" && is_numeric(array_search($sf_context->getActionName(), array('telaLogin', 'loginInicial', 'login'))))
+                            <?php
+                            if (!($sf_context->getModuleName() == "inicial" && is_numeric(array_search($sf_context->getActionName(), array('telaLogin', 'loginInicial', 'login'))))
                                     && !($sf_context->getModuleName() == "perfil" && is_numeric(array_search($sf_context->getActionName(), array('novaSenha', 'processarNovaSenha'))))) {
                                 ?>
                                 <ul class="nav pull-right">
@@ -59,7 +60,8 @@
                     </div>
                 </div>
             </div> 
-            <?php if (!($sf_context->getModuleName() == "inicial" && is_numeric(array_search($sf_context->getActionName(), array('telaLogin', 'loginInicial', 'login'))))
+            <?php
+            if (!($sf_context->getModuleName() == "inicial" && is_numeric(array_search($sf_context->getActionName(), array('telaLogin', 'loginInicial', 'login'))))
                     && !($sf_context->getModuleName() == "perfil" && is_numeric(array_search($sf_context->getActionName(), array('novaSenha', 'processarNovaSenha'))))) {
                 ?>
 
@@ -120,7 +122,10 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo image_path(UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_MINIATURA)) ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>"> <?php echo Util::getNomeSimplificado(UsuarioLogado::getInstancia()->getNome()); ?> <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="<?php url_for('perfil/notificacoes') ?>"><i class="icon-asterisk icon-gray"></i> <span class="badge badge-warning">2</span> Solicitações de amizade</a>
+                                            <?php
+                                            $quantidadeSolicitacoes = UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes();
+                                            ?>
+                                            <a href="<?php echo url_for('perfil/notificacoes') ?>"><i class="icon-asterisk icon-gray"></i><?php if ($quantidadeSolicitacoes){ ?><span class="badge badge-warning"><?php echo $quantidadeSolicitacoes ?></span> <?php } ?>Solicitações de amizade</a>
                                         </li>
                                         <li class="divider"></li>
                                         <li>

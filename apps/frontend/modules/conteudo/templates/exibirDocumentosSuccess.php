@@ -31,9 +31,16 @@ $slug = Util::criaSlug($conteudo->getNome());
 
             <div class="row">
                 <h2 class="span7">Documentos ‧ <small><?php echo $quantidadeDocumentos ?></small></h2>	
-<!--                <div class="span3">
-                    <a href="comunidade-docs-criar.shtml" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar documento</a>
-                </div>-->
+                
+                <?php
+                if($conteudo->getTipoSolicitacao() == Conteudos::PARTICIPANTE){
+                ?>
+                <div class="span3">
+                    <a href="<?php echo url_for('conteudo/') . $slug."/adicionarDoc"; ?>" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar documento</a>
+                </div>
+                <?php
+                }
+                ?>
             </div>
 
             <div class="row">

@@ -395,7 +395,13 @@ class UsuarioLogado{
     }
 
     public function getQuantidadeSolicitacoesPendentes() {
-        return count($this->getSolicitacoesPendentes());
+        $i = 0;
+        foreach ($this->getSolicitacoesPendentes() as $dia){
+            foreach ($dia as $solicitacoesPorDia){
+                $i++;
+            }
+        }
+        return $i;
     }
 
     public function removeSolicitacao($id) {

@@ -188,7 +188,8 @@ class ajaxActions extends sfActions {
         // list of valid extensions, ex. array("jpeg", "xml", "bmp")
         $allowedExtensions = array('txt', 'rtf', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods', 'odg', 'fodg');
         // max file size in bytes
-        $sizeLimit = 0.5 * 1024 * 1024;
+        
+        $sizeLimit = 8 * 1024 * 1024;
 
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
         $result = $uploader->handleUpload('uploads/');
@@ -197,12 +198,14 @@ class ajaxActions extends sfActions {
     }
 
     public function executeAjaxUlpoadImagens(sfWebRequest $request) {
-
+        ini_set("upload_max_filesize", "10M");
+        ini_set("post_max_size", "10M");
+        ini_set("memory_limit", "10");
         // list of valid extensions, ex. array("jpeg", "xml", "bmp")
         $allowedExtensions = array('jpg', 'jpeg', 'png', 'gif');
 
         // max file size in bytes
-        $sizeLimit = 0.5 * 1024 * 1024;
+        $sizeLimit = 8 * 1024 * 1024;
 
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
         $result = $uploader->handleUpload('uploads/', true);

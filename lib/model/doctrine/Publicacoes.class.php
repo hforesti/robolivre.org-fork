@@ -146,7 +146,7 @@ class Publicacoes extends BasePublicacoes {
                     $imagem = Doctrine::getTable('Imagens')->find(array($this->getIdImagem(),$this->getIdUsuario(),$this->getIdPasta()));
                     $array = explode(".",$imagem->getNomeArquivo());
                     
-                    $diretorioArquivo = Util::getLinkFotosPublicacoes($this->getIdUsuario())."/".$array[0].'_min'.'.'.$array[1];
+                    $diretorioArquivo = Util::getLinkFotosPublicacoes($this->getIdUsuario())."/".$array[0].'.'.$array[1];
                     
                     $string .= "<div class=\"share-content\">";
                     $string .= "<img src=\"".image_path($diretorioArquivo)."\" alt=\"Imagem compartilhada\" class=\"thumbnail\">";
@@ -326,7 +326,7 @@ class Publicacoes extends BasePublicacoes {
                     $imagem = Doctrine::getTable('Imagens')->find(array($this->getIdImagem(),$this->getIdUsuario(),$this->getIdPasta()));
                     $array = explode(".",$imagem->getNomeArquivo());
                     
-                    $diretorioArquivo = Util::getLinkFotosPublicacoes($this->getIdUsuario())."/".$array[0].'_min'.'.'.$array[1];
+                    $diretorioArquivo = Util::getLinkFotosPublicacoes($this->getIdUsuario())."/".$array[0].'.'.$array[1];
                     
                     $string .= "<div class=\"share-content\">";
                     $string .= "<img src=\"".image_path($diretorioArquivo)."\" alt=\"Imagem compartilhada\" class=\"thumbnail\">";
