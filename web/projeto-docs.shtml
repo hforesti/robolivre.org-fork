@@ -3,53 +3,40 @@
 <div class="row">
 
 <div class="span2" id="sidebar">
-<div class="avatar">
-	<a href="comunidade.shtml"><img src="assets/img/rl/170.gif" alt="Poeta Manuel Bandeira" class="photo"></a>
+	<div class="avatar">
+		<a href="projeto.shtml"><img src="assets/img/rl/170.gif" alt="R.A.F." class="photo"></a>
 
-    <div class="btn-group">
+    <div class="btn-group nav">
 		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
 		<span class="icon-cog icon-gray"></span>
 		</a>
-		<ul class="dropdown-menu">
-			<li>
-				<a data-toggle="modal" href="#modalInvite">Convidar amigos</a>
-			</li>
-		    <li class="divider"></li>
-		  <li>
-			<a href="#"><i class="icon-flag"></i> Reportar problema</a>
-		  </li>
-	</ul>
+			<ul class="dropdown-menu">
+  					<li class="nav-header">Gerenciar</li>
+				<li>
+					<a href="projeto-amigos-colaboradores.shtml">Colaboradores</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a href="projeto-editar.shtml">Editar projeto</a>
+				</li>
+				<li>
+					<a href="projeto-editar-imagem.shtml">Alterar imagem</a>
+				</li>
+			</ul>
 	</div>
-
-
-<!-- ========================================== -->
-<!-- ! Menu apenas para o criador e moderador   -->
-<!-- ========================================== -->
-<!--
-    <div class="btn-group">
-		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
-		<span class="icon-cog icon-gray"></span>
-		</a>
-		<ul class="dropdown-menu">
-			<li>
-				<a href="conteudo-criar.shtml">Editar dados</a>
-			</li>
-			<li>
-				<a data-toggle="modal" href="#modalImgUpload">Atualizar imagem</a>
-			</li>
-		</ul>
-	</div>
--->
-	<h1>Poeta Manuel Bandeira</h1>
-
+	<h1>R.A.F. (Robô Apanhador de Frutas)</h1>
 </div><!-- /avatar -->
 
 <ul class="nav nav-pills nav-stacked">
-	<li><a href="comunidade.shtml"><span class="icon-gray icon-info-sign"></span> Resumo</a></li>
-	<li><a href="comunidade-forum.shtml"><span class="icon-gray icon-comment"></span> Fórum <span class="label label-info">50</span></a></li>
-	<li><a href="comunidade-projetos.shtml"><span class="icon-gray icon-folder-open"></span> Projetos <span class="label label-info">150</span></a></li>
-	<li class="active"><a href="comunidade-docs.shtml"><span class="icon-gray icon-file"></span> Documentos <span class="label label-info">5</span></a></li>
-	<li><a href="comunidade-amigos.shtml"><span class="icon-gray icon-user"></span> Participantes <span class="label label-info">15</span></a></li>
+	<li><a href="projeto.shtml"><i class="icon-gray icon-info-sign"></i> Geral</a></li>
+	<li><a href="projeto-diario.shtml"><i class="icon-gray icon-pencil"></i> Diário de bordo</a></li>
+	<li><a href="projeto-tickets.shtml"><i class="icon-gray icon-tasks"></i> Tickets</a></li>
+	<li><a href="projeto-imagens.shtml"><i class="icon-gray icon-picture"></i> Imagens</a></li>
+	<li class="active"><a href="projeto-docs.shtml"><i class="icon-gray icon-book"></i> Documentos</a></li>
+	<li><a href="projeto-codigos.shtml"><i class="icon-gray icon-list-alt"></i> Códigos</a></li>
+	<li><hr></li>
+	<li><a href="projeto-conteudos.shtml"><i class="icon-gray icon-tag"></i> Conteúdos relacionados</a></li>
+	<li><a href="projeto-amigos.shtml"><i class="icon-gray icon-user"></i> Participantes</a></li>
 </ul>
 </div><!-- /sidebar -->
 
@@ -62,13 +49,13 @@
     <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
   </li>
   <li>
-    <a href="comunidades">Comunidades</a> <span class="divider">/</span>
+    <a href="projetos.shtml">Projetos</a> <span class="divider">/</span>
   </li>
   <li>
-    <a href="comunidade.shtml">Poeta Manuel Bandeira</a> <span class="divider">/</span>
+    <a href="projeto.shtml">R.A.F. (Robô Apanhador de Frutas)</a> <span class="divider">/</span>
   </li>
   <li class="active">
-    <a href="comunidade-docs.shtml">Documentos</a>
+    <a href="projetos-docs.shtml">Documentos</a>
   </li>
 </ul>
 
@@ -86,9 +73,9 @@
 	<div class="span6">
 	  <ul class="nav nav-pills">
 		  <li class="active">
-		    <a href="comunidade-docs.shtml">Atualizados recentemente</a>
+		    <a href="projeto-docs.shtml">Atualizados recentemente</a>
 		  </li>
-		  <li><a href="comunidade-docs-meus.shtml">Criados por você</a></li>
+		  <li><a href="projeto-docs-meus.shtml">Criados por você</a></li>
 	  </ul>
 	</div>
 	
@@ -126,8 +113,8 @@
                 <a href="arquivo.pdf">Baixar</a>
               </li>
 <!-- ############################################################ -->
-<!-- Só mostrar "Editar" E "Excluir" se for adicionado por ele ou se for o moderador/criador -->
-<!-- Membro comum (que não é dono do doc) só pode baixar -->
+<!-- Só mostrar "Editar" E Excluir se for criador ou colaborador -->
+<!-- Seguidor só pode baixar -->
 <!-- ############################################################ -->
               <li>
                 <a data-toggle="modal" href="#modalEditName">Editar título</a>
@@ -367,6 +354,46 @@
     </tr>
   </tbody>
 </table>
+
+<!-- modal -->
+<div class="modal fade" id="modalEditName">
+<form action="projeto-docs.shtml" id="form-editar">
+
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Editar título do documento</h3>
+  </div>
+
+  <div class="modal-body">
+
+		          <div class="control-group row-fluid">
+		            <div class="controls">
+		             <input type="text" class="span12" id="input01" placeholder="Título do documento" value="Mattis Pharetra Sit Amet" tabindex="1">
+		            </div>
+		          </div>
+
+<!--
+				<div class="alert">
+            	O título não pode ser vazio.
+          		</div>
+-->
+
+  </div><!-- modal-body -->
+  <div class="modal-footer">
+
+    <div id="div-botao-criar">
+		<a href="#" class="btn" data-dismiss="modal">Cancelar</a> 
+<!--
+	#Imagem de loading do ajax
+    	<img src="assets/img/rl/loading.gif" alt="Aguarde...">
+-->
+    	<button type="submit" class="btn btn-primary pull-right">Atualizar título</button>
+    </div>
+  </div>
+</form>
+
+</div>
+<!-- /modal -->
 
 </div><!-- lista docs -->
 

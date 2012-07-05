@@ -100,7 +100,7 @@
 										<span class="icon-share icon-gray"></span>
 									</a>
 									<ul class="dropdown-menu">
-									  	<li class="nav-header">Compartilhar post:</li>
+									  	<li class="nav-header">Compartilhar:</li>
 										<li class="go-twitter">
 											<a href="https://twitter.com/share?url=http%3A%2F%2Frobolivre.org%2Fstatus.shtml&text=Olha+o+que+encontrei+na+rede+%40robolivre%3A&related=robolivre">Twitter</a>
 										</li>

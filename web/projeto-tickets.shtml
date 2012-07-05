@@ -1,0 +1,222 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+	<div class="avatar">
+		<a href="projeto.shtml"><img src="assets/img/rl/170.gif" alt="R.A.F." class="photo"></a>
+
+    <div class="btn-group nav">
+		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+		<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+  					<li class="nav-header">Gerenciar</li>
+				<li>
+					<a href="projeto-amigos-colaboradores.shtml">Colaboradores</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a href="projeto-editar.shtml">Editar projeto</a>
+				</li>
+				<li>
+					<a href="projeto-editar-imagem.shtml">Alterar imagem</a>
+				</li>
+			</ul>
+	</div>
+	<h1>R.A.F. (Robô Apanhador de Frutas)</h1>
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li><a href="projeto.shtml"><i class="icon-gray icon-info-sign"></i> Geral</a></li>
+	<li><a href="projeto-diario.shtml"><i class="icon-gray icon-pencil"></i> Diário de bordo</a></li>
+	<li class="active"><a href="projeto-tickets.shtml"><i class="icon-gray icon-tasks"></i> Tickets</a></li>
+	<li><a href="conteudo-imagens.shtml"><i class="icon-gray icon-picture"></i> Imagens</a></li>
+	<li><a href="projeto-docs.shtml"><i class="icon-gray icon-book"></i> Documentos</a></li>
+	<li><a href="projeto-codigos.shtml"><i class="icon-gray icon-list-alt"></i> Códigos</a></li>
+	<li><hr></li>
+	<li><a href="projeto-conteudos.shtml"><i class="icon-gray icon-tag"></i> Conteúdos relacionados</a></li>
+	<li><a href="projeto-amigos.shtml"><i class="icon-gray icon-user"></i> Participantes</a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+
+<ul class="breadcrumb">
+  <li>
+    <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="projetos.shtml">Projetos</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="projeto.shtml">R.A.F. (Robô Apanhador de Frutas)</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <a href="projetos-tickets.shtml">Tickets</a>
+  </li>
+</ul>
+
+<div class="list-mgmt">
+
+<div class="row">
+	<h2 class="span7">Tickets ‧ <small>15 questões</small></h2>	
+	<div class="span3">
+		<a href="projeto-diario-criar.shtml" class="btn btn-success"><i class="icon-plus icon-white"></i> Criar novo ticket</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span6">
+	  <ul class="nav nav-pills">
+		  <li class="dropdown active">
+		    <a class="dropdown-toggle" data-toggle="dropdown" href="projeto-tickets.shtml">
+		        Atualizados recentemente
+		        <b class="caret"></b>
+		      </a>
+		    <ul class="dropdown-menu">
+  					<li class="nav-header">Filtrar</li>
+					  <li class="active">
+					    <a href="projeto-tickets.shtml">Todos</a>
+					  </li>
+					  <li>
+					    <a href="projeto-tickets.shtml">Só os abertos</a>
+					  </li>
+					  <li>
+					    <a href="projeto-tickets.shtml">Só os fechados</a>
+					  </li>
+				
+					<li class="nav-header">Marcado como</li>
+					  <li>
+					    <a href="projeto-tickets.shtml"><span class="label label-info">geral</span></a>
+					  </li>
+					  <li>
+					    <a href="projeto-tickets.shtml"><span class="label label-success">nova funcionalidade</span></a>
+					  </li>
+					  <li>
+					    <a href="projeto-tickets.shtml"><span class="label label-success">melhoria</span></a>
+					  </li>
+					  <li>
+					    <a href="projeto-tickets.shtml"><span class="label label-important">bug</span></a>
+					  </li>
+					  <li>
+					    <a href="projeto-tickets.shtml"><span class="label label-important">obstáculo</span></a>
+					  </li>
+		    </ul>
+		  </li>
+		  <li><a href="projeto-tickets-meus.shtml">Criados por você</a></li>
+	  </ul>
+	</div>
+	
+	<form class="list-filter">
+	        <input type="text" class="span4 search-query" placeholder="Buscar na lista de tickets">
+	</form>
+</div>
+
+
+
+<div id="diario-intro">
+	<!-- Modelo sem posts criados no diario
+	
+		<div class="well">
+		<p>Ainda não há <strong>posts</strong> criados nesse diário de bordo. <a href="projeto-diario-criar.shtml">Seja o primeiro a criar</a>.</p>
+		</div>
+	-->
+
+
+		<ul class="nav nav-tabs nav-stacked">
+		            <li class="mine">
+		            <a href="projeto-ticket.shtml">
+		            	<span class="badge badge-info pull-right" title="Nenhum comentário ainda">0 <i class="icon-comment icon-white"></i></span>
+		            	<i class="icon-tasks icon-gray"></i> <span class="label">FECHADO</span> <del>Cras mattis consectetur purus sit amet fermentum</del> 
+		            	<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Criado por você ‧ <span class="label label-important">bug</span> ‧ <img src="assets/img/rl/20.gif" alt="Atribuído a: Primeiro nome do colaborador responsável" title="Atribuído a: Primeiro nome do colaborador responsável" class="singletip"></small> </a>
+		            </li>
+		            <li>
+		            <a href="projeto-ticket.shtml">
+		            	<span class="badge badge-info pull-right" title="5 comentários">5 <i class="icon-comment icon-white"></i></span>
+		            	<i class="icon-tasks icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus 
+		            	<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique ‧ <span class="label label-success">nova funcionalidade</span></small> </a>
+		            </li>
+		            <li>
+		            <a href="projeto-ticket.shtml">
+		            	<span class="badge badge-info pull-right" title="100 comentários">100 <i class="icon-comment icon-white"></i></span>
+		            	<i class="icon-tasks icon-gray"></i> <span class="label">FECHADO</span> <del>Cras mattis consectetur purus sit amet fermentum</del> 
+		            	<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique ‧ <span class="label label-info">geral</span> <!--<span class="label label-info">geral</span> --></small> </a>
+		            </li>
+		            <li>
+					<a href="projeto-ticket.shtml">
+						<span class="badge badge-info pull-right" title="115 comentários">115 <i class="icon-comment icon-white"></i></span>
+						<i class="icon-tasks icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus 
+						<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique ‧ <span class="label label-info">geral</span> ‧ <img src="assets/img/rl/20.gif" alt="Atribuído a: Primeiro nome do colaborador responsável" title="Atribuído a: Primeiro nome do colaborador responsável" class="singletip"></small> </a>
+		            </li>
+		            <li class="mine">
+		            <a href="projeto-ticket.shtml">
+		            	<span class="badge badge-info pull-right" title="Nenhum comentário ainda">0 <i class="icon-comment icon-white"></i></span>
+		            	<i class="icon-tasks icon-gray"></i> Cras mattis consectetur purus sit amet fermentum 
+		            	<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Criado por você ‧ <span class="label label-important">bug</span> ‧ <img src="assets/img/rl/20.gif" alt="Atribuído a: Primeiro nome do colaborador responsável" title="Atribuído a: Primeiro nome do colaborador responsável" class="singletip"></small> </a>
+
+		            </li>
+		            <li>
+		            <a href="projeto-ticket.shtml">
+		            	<span class="badge badge-info pull-right" title="5 comentários">5 <i class="icon-comment icon-white"></i></span>
+		            	<i class="icon-tasks icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus 
+		            	<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique ‧ <span class="label label-success">nova funcionalidade</span></small> </a>
+		            </li>
+		            <li>
+		            <a href="projeto-ticket.shtml">
+		            	<span class="badge badge-info pull-right" title="100 comentários">100 <i class="icon-comment icon-white"></i></span>
+		            	<i class="icon-tasks icon-gray"></i> Cras mattis consectetur purus sit amet fermentum 
+		            	<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique ‧ <span class="label label-success">melhoria</span> <!--<span class="label label-info">geral</span> --></small> </a>
+		            </li>
+		            <li>
+					<a href="projeto-ticket.shtml">
+						<span class="badge badge-info pull-right" title="115 comentários">115 <i class="icon-comment icon-white"></i></span>
+						<i class="icon-tasks icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus 
+						<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique ‧ <span class="label label-important">obstáculo</span> ‧ <img src="assets/img/rl/20.gif" alt="Atribuído a: Primeiro nome do colaborador responsável" title="Atribuído a: Primeiro nome do colaborador responsável" class="singletip"></small> </a>
+		            </li>
+		            <li>
+		            <a href="projeto-ticket.shtml">
+		            	<span class="badge badge-info pull-right" title="100 comentários">100 <i class="icon-comment icon-white"></i></span>
+		            	<i class="icon-tasks icon-gray"></i> Cras mattis consectetur purus sit amet fermentum 
+		            	<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique ‧ <span class="label label-success">melhoria</span> <!--<span class="label label-info">geral</span> --></small> </a>
+		            </li>
+		            <li>
+					<a href="projeto-ticket.shtml">
+						<span class="badge badge-info pull-right" title="115 comentários">115 <i class="icon-comment icon-white"></i></span>
+						<i class="icon-tasks icon-gray"></i> Cras mattis consectetur purus sit amet fermentum cum sociis natoque penatibus 
+						<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás ‧ Por Henrique ‧ <span class="label label-important">obstáculo</span> ‧ <img src="assets/img/rl/20.gif" alt="Atribuído a: Primeiro nome do colaborador responsável" title="Atribuído a: Primeiro nome do colaborador responsável" class="singletip"></small> </a>
+		            </li>
+
+		</ul>
+
+</div><!-- diario -->
+
+<div class="pagination">
+  <ul>
+<!--     <li><a href="#"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li> -->
+    <li class="active">
+      <a href="#">1</a>
+    </li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
+  </ul>
+  
+  <p class="pull-right">Exibindo de 1 a 10</p>
+
+</div>
+
+<hr class="only-mobile">
+
+</div>
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->
