@@ -1,0 +1,444 @@
+<!--#include virtual="includes/header.html" -->
+
+<div class="row">
+
+<div class="span2" id="sidebar">
+	<div class="avatar">
+		<a href="projeto.shtml"><img src="assets/img/rl/170.gif" alt="R.A.F." class="photo"></a>
+
+    <div class="btn-group nav">
+		<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+		<span class="icon-cog icon-gray"></span>
+		</a>
+			<ul class="dropdown-menu">
+  					<li class="nav-header">Gerenciar</li>
+				<li>
+					<a href="projeto-amigos-colaboradores.shtml">Colaboradores</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a href="projeto-editar.shtml">Editar projeto</a>
+				</li>
+				<li>
+					<a href="projeto-editar-imagem.shtml">Alterar imagem</a>
+				</li>
+			</ul>
+	</div>
+	<h1>R.A.F. (Robô Apanhador de Frutas)</h1>
+</div><!-- /avatar -->
+
+<ul class="nav nav-pills nav-stacked">
+	<li><a href="projeto.shtml"><i class="icon-gray icon-info-sign"></i> Geral</a></li>
+	<li><a href="projeto-diario.shtml"><i class="icon-gray icon-pencil"></i> Diário de bordo</a></li>
+	<li><a href="projeto-tickets.shtml"><i class="icon-gray icon-tasks"></i> Tickets</a></li>
+	<li><a href="projeto-imagens.shtml"><i class="icon-gray icon-picture"></i> Imagens</a></li>
+	<li class="active"><a href="projeto-docs.shtml"><i class="icon-gray icon-book"></i> Documentos</a></li>
+	<li><a href="projeto-codigos.shtml"><i class="icon-gray icon-list-alt"></i> Códigos</a></li>
+	<li><hr></li>
+	<li><a href="projeto-conteudos.shtml"><i class="icon-gray icon-tag"></i> Conteúdos relacionados</a></li>
+	<li><a href="projeto-amigos.shtml"><i class="icon-gray icon-user"></i> Participantes</a></li>
+</ul>
+</div><!-- /sidebar -->
+
+<hr class="only-mobile">
+
+<div class="span10">
+
+<ul class="breadcrumb">
+  <li>
+    <a href="profile-home.shtml">Início</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="projetos.shtml">Projetos</a> <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="projeto.shtml">R.A.F. (Robô Apanhador de Frutas)</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <a href="projetos-docs.shtml">Documentos</a>
+  </li>
+</ul>
+
+
+<div class="list-mgmt">
+
+<div class="row">
+	<h2 class="span7">Documentos ‧ <small>25</small></h2>	
+	<div class="span3">
+		<a href="comunidade-docs-criar.shtml" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar documento</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span6">
+	  <ul class="nav nav-pills">
+		  <li class="active">
+		    <a href="projeto-docs.shtml">Atualizados recentemente</a>
+		  </li>
+		  <li><a href="projeto-docs-meus.shtml">Criados por você</a></li>
+	  </ul>
+	</div>
+	
+	<form class="list-filter">
+	        <input type="text" class="span4 search-query" placeholder="Buscar na lista de documentos">
+	</form>
+</div>
+
+
+<div id="docs-intro">
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Arquivo</th>
+      <th class="col-sec">Formato</th>
+      <th class="col-sec">Tamanho</th>
+      <th class="col-sec">Downloads</th>
+      <th class="col-sec">Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
+      <td>PPT</td>
+      <td>2 MB</td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
+      <td>
+          <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+            <span class="icon-cog icon-gray"></span>
+          </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
+<!-- ############################################################ -->
+<!-- Só mostrar "Editar" E Excluir se for criador ou colaborador -->
+<!-- Seguidor só pode baixar -->
+<!-- ############################################################ -->
+              <li>
+                <a data-toggle="modal" href="#modalEditName">Editar título</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="send-msg" data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir arquivo</a>
+              </li>
+            </ul>
+          </div><!-- btn-group -->
+      </td>
+    </tr>
+    <tr>
+      <td class="mine"><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por você ‧ 39 minutos atrás</small></a></td>
+      <td>PPT</td>
+      <td>2 MB</td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
+      <td>
+          <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+            <span class="icon-cog icon-gray"></span>
+          </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
+              <li>
+                <a data-toggle="modal" href="#modalEditName">Editar título</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="send-msg" data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir arquivo</a>
+              </li>
+            </ul>
+          </div><!-- btn-group -->
+      </td>
+    </tr>
+    <tr>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
+      <td>PPT</td>
+      <td>2 MB</td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
+      <td>
+          <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+            <span class="icon-cog icon-gray"></span>
+          </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
+              <li>
+                <a data-toggle="modal" href="#modalEditName">Editar título</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="send-msg" data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir arquivo</a>
+              </li>
+            </ul>
+          </div><!-- btn-group -->
+      </td>
+    </tr>
+    <tr>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
+      <td>PPT</td>
+      <td>2 MB</td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
+      <td>
+          <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+            <span class="icon-cog icon-gray"></span>
+          </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
+              <li>
+                <a data-toggle="modal" href="#modalEditName">Editar título</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="send-msg" data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir arquivo</a>
+              </li>
+            </ul>
+          </div><!-- btn-group -->
+      </td>
+    </tr>
+    <tr>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
+      <td>PPT</td>
+      <td>2 MB</td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
+      <td>
+          <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+            <span class="icon-cog icon-gray"></span>
+          </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
+              <li>
+                <a data-toggle="modal" href="#modalEditName">Editar título</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="send-msg" data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir arquivo</a>
+              </li>
+            </ul>
+          </div><!-- btn-group -->
+      </td>
+    </tr>
+    <tr>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
+      <td>PPT</td>
+      <td>2 MB</td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
+      <td>
+          <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+            <span class="icon-cog icon-gray"></span>
+          </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
+              <li>
+                <a data-toggle="modal" href="#modalEditName">Editar título</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="send-msg" data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir arquivo</a>
+              </li>
+            </ul>
+          </div><!-- btn-group -->
+      </td>
+    </tr>
+    <tr>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
+      <td>PPT</td>
+      <td>2 MB</td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
+      <td>
+          <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+            <span class="icon-cog icon-gray"></span>
+          </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
+              <li>
+                <a data-toggle="modal" href="#modalEditName">Editar título</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="send-msg" data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir arquivo</a>
+              </li>
+            </ul>
+          </div><!-- btn-group -->
+      </td>
+    </tr>
+    <tr>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
+      <td>PPT</td>
+      <td>2 MB</td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
+      <td>
+          <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+            <span class="icon-cog icon-gray"></span>
+          </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
+              <li>
+                <a data-toggle="modal" href="#modalEditName">Editar título</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="send-msg" data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir arquivo</a>
+              </li>
+            </ul>
+          </div><!-- btn-group -->
+      </td>
+    </tr>
+    <tr>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
+      <td>PPT</td>
+      <td>2 MB</td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
+      <td>
+          <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+            <span class="icon-cog icon-gray"></span>
+          </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
+              <li>
+                <a data-toggle="modal" href="#modalEditName">Editar título</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="send-msg" data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir arquivo</a>
+              </li>
+            </ul>
+          </div><!-- btn-group -->
+      </td>
+    </tr>
+    <tr>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
+      <td>PPT</td>
+      <td>2 MB</td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
+      <td>
+          <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
+            <span class="icon-cog icon-gray"></span>
+          </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
+              <li>
+                <a data-toggle="modal" href="#modalEditName">Editar título</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="send-msg" data-toggle="modal" href="#modalDelete"><i class="icon-remove-circle icon-gray"></i> Excluir arquivo</a>
+              </li>
+            </ul>
+          </div><!-- btn-group -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</div><!-- lista docs -->
+
+<div class="pagination">
+  <ul>
+<!--     <li><a href="#"><i class="icon-chevron-left icon-gray"></i> Anterior</a></li> -->
+    <li class="active">
+      <a href="#">1</a>
+    </li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">Próxima <i class="icon-chevron-right icon-gray"></i></a></li>
+  </ul>
+  
+  <p class="pull-right">Exibindo de 1 a 10</p>
+
+</div>
+
+
+<!--
+  Modal de excluir aquivo
+ -->
+<div class="modal fade" id="modalDelete">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Excluir documento</h3>
+  </div>
+  <div class="modal-body">
+  <p>Tem certeza de que deseja excluir o documento <strong>"Mattis Pharetra Sit Amet"</strong>? <br>Essa ação não pode ser revertida.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> <a href="#" class="btn btn-danger">Sim, excluir agora</a> 
+  </div>
+</div>
+
+<!-- modal Editar titulo -->
+<div class="modal fade" id="modalEditName">
+<form action="projeto-docs.shtml" id="form-editar">
+
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Editar título do documento</h3>
+  </div>
+
+  <div class="modal-body">
+
+              <div class="control-group row-fluid">
+                <div class="controls">
+                 <input type="text" class="span12" id="input01" placeholder="Título do documento" value="Mattis Pharetra Sit Amet" tabindex="1">
+                </div>
+              </div>
+
+<!--
+        <div class="alert">
+              O título não pode ser vazio.
+              </div>
+-->
+
+  </div><!-- modal-body -->
+  <div class="modal-footer">
+
+    <div id="div-botao-criar">
+    <a href="#" class="btn" data-dismiss="modal">Cancelar</a> 
+<!--
+  #Imagem de loading do ajax
+      <img src="assets/img/rl/loading.gif" alt="Aguarde...">
+-->
+      <button type="submit" class="btn btn-primary pull-right">Atualizar título</button>
+    </div>
+  </div>
+</form>
+
+</div>
+<!-- /modal -->
+
+
+<hr class="only-mobile">
+
+</div>
+
+</div><!-- /miolo -->
+
+
+</div><!-- /row -->
+
+
+<!--#include virtual="includes/footer.html" -->
