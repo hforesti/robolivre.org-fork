@@ -372,7 +372,7 @@ $(window).load(function(){
             // pass the dom node (ex. $(selector)[0] for jQuery users)
             element: document.getElementById('file-uploader-doc'),
             // path to server-side upload script
-            action: url_for('ajax/ajaxUlpoadImagens'),//'../uploads/',
+            action: url_for('ajax/ajaxUlpoadArquivos'),//'../uploads/',
             multiple: false,
 		
             // validation    
