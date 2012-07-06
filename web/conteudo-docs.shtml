@@ -101,16 +101,23 @@
   </thead>
   <tbody>
     <tr>
-      <td><a href="#"><i class="icon-file icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small></a></td>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
       <td>PPT</td>
       <td>2 MB</td>
-      <td><a href="#"><span class="label label-info">100</span></a></td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
       <td>
           <div class="btn-group">
           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
             <span class="icon-cog icon-gray"></span>
           </a>
             <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
+<!-- ############################################################ -->
+<!-- Só mostrar "Editar" E Excluir se for criador do conteudo ou doc -->
+<!-- Seguidor só pode baixar -->
+<!-- ############################################################ -->
               <li>
                 <a data-toggle="modal" href="#modalEditName">Editar título</a>
               </li>
@@ -123,16 +130,19 @@
       </td>
     </tr>
     <tr>
-      <td class="mine"><a href="#"><i class="icon-file icon-gray"></i> Mattis Pharetra Sit Amet<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Criado por você ‧ 39 minutos atrás</small></a></td>
+      <td class="mine"><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet<small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por você ‧ 39 minutos atrás</small></a></td>
       <td>PPT</td>
       <td>2 MB</td>
-      <td><a href="#"><span class="label label-info">100</span></a></td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
       <td>
           <div class="btn-group">
           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
             <span class="icon-cog icon-gray"></span>
           </a>
             <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
               <li>
                 <a data-toggle="modal" href="#modalEditName">Editar título</a>
               </li>
@@ -145,16 +155,19 @@
       </td>
     </tr>
     <tr>
-      <td><a href="#"><i class="icon-file icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small></a></td>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
       <td>PPT</td>
       <td>2 MB</td>
-      <td><a href="#"><span class="label label-info">100</span></a></td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
       <td>
           <div class="btn-group">
           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
             <span class="icon-cog icon-gray"></span>
           </a>
             <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
               <li>
                 <a data-toggle="modal" href="#modalEditName">Editar título</a>
               </li>
@@ -167,16 +180,19 @@
       </td>
     </tr>
     <tr>
-      <td><a href="#"><i class="icon-file icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small></a></td>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
       <td>PPT</td>
       <td>2 MB</td>
-      <td><a href="#"><span class="label label-info">100</span></a></td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
       <td>
           <div class="btn-group">
           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
             <span class="icon-cog icon-gray"></span>
           </a>
             <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
               <li>
                 <a data-toggle="modal" href="#modalEditName">Editar título</a>
               </li>
@@ -189,16 +205,19 @@
       </td>
     </tr>
     <tr>
-      <td><a href="#"><i class="icon-file icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small></a></td>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
       <td>PPT</td>
       <td>2 MB</td>
-      <td><a href="#"><span class="label label-info">100</span></a></td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
       <td>
           <div class="btn-group">
           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
             <span class="icon-cog icon-gray"></span>
           </a>
             <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
               <li>
                 <a data-toggle="modal" href="#modalEditName">Editar título</a>
               </li>
@@ -211,16 +230,19 @@
       </td>
     </tr>
     <tr>
-      <td><a href="#"><i class="icon-file icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small></a></td>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
       <td>PPT</td>
       <td>2 MB</td>
-      <td><a href="#"><span class="label label-info">100</span></a></td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
       <td>
           <div class="btn-group">
           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
             <span class="icon-cog icon-gray"></span>
           </a>
             <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
               <li>
                 <a data-toggle="modal" href="#modalEditName">Editar título</a>
               </li>
@@ -233,16 +255,19 @@
       </td>
     </tr>
     <tr>
-      <td><a href="#"><i class="icon-file icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small></a></td>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
       <td>PPT</td>
       <td>2 MB</td>
-      <td><a href="#"><span class="label label-info">100</span></a></td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
       <td>
           <div class="btn-group">
           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
             <span class="icon-cog icon-gray"></span>
           </a>
             <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
               <li>
                 <a data-toggle="modal" href="#modalEditName">Editar título</a>
               </li>
@@ -255,16 +280,19 @@
       </td>
     </tr>
     <tr>
-      <td><a href="#"><i class="icon-file icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small></a></td>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
       <td>PPT</td>
       <td>2 MB</td>
-      <td><a href="#"><span class="label label-info">100</span></a></td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
       <td>
           <div class="btn-group">
           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
             <span class="icon-cog icon-gray"></span>
           </a>
             <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
               <li>
                 <a data-toggle="modal" href="#modalEditName">Editar título</a>
               </li>
@@ -277,16 +305,19 @@
       </td>
     </tr>
     <tr>
-      <td><a href="#"><i class="icon-file icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small></a></td>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
       <td>PPT</td>
       <td>2 MB</td>
-      <td><a href="#"><span class="label label-info">100</span></a></td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
       <td>
           <div class="btn-group">
           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
             <span class="icon-cog icon-gray"></span>
           </a>
             <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
               <li>
                 <a data-toggle="modal" href="#modalEditName">Editar título</a>
               </li>
@@ -299,16 +330,19 @@
       </td>
     </tr>
     <tr>
-      <td><a href="#"><i class="icon-file icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">39 minutos atrás</small></a></td>
+      <td><a href="#"><i class="icon-book icon-gray"></i> Mattis Pharetra Sit Amet <small class="time" title="Sexta, 24 de fevereiro de 2012 às 8:00">Adicionado por Henrique ‧ 39 minutos atrás</small></a></td>
       <td>PPT</td>
       <td>2 MB</td>
-      <td><a href="#"><span class="label label-info">100</span></a></td>
+      <td><a href="#"><span class="badge badge-info">100</span></a></td>
       <td>
           <div class="btn-group">
           <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Opções">
             <span class="icon-cog icon-gray"></span>
           </a>
             <ul class="dropdown-menu">
+              <li>
+                <a href="arquivo.pdf"><strong>Baixar</strong></a>
+              </li>
               <li>
                 <a data-toggle="modal" href="#modalEditName">Editar título</a>
               </li>
@@ -340,6 +374,63 @@
   <p class="pull-right">Exibindo de 1 a 10</p>
 
 </div>
+
+
+<!--
+  Modal de excluir aquivo
+ -->
+<div class="modal fade" id="modalDelete">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Excluir documento</h3>
+  </div>
+  <div class="modal-body">
+  <p>Tem certeza de que deseja excluir o documento <strong>"Mattis Pharetra Sit Amet"</strong>? <br>Essa ação não pode ser revertida.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Decidir mais tarde</a> <a href="#" class="btn btn-danger">Sim, excluir agora</a> 
+  </div>
+</div>
+
+<!-- modal Editar titulo -->
+<div class="modal fade" id="modalEditName">
+<form action="projeto-docs.shtml" id="form-editar">
+
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Editar título do documento</h3>
+  </div>
+
+  <div class="modal-body">
+
+              <div class="control-group row-fluid">
+                <div class="controls">
+                 <input type="text" class="span12" id="input01" placeholder="Título do documento" value="Mattis Pharetra Sit Amet" tabindex="1">
+                </div>
+              </div>
+
+<!--
+        <div class="alert">
+              O título não pode ser vazio.
+              </div>
+-->
+
+  </div><!-- modal-body -->
+  <div class="modal-footer">
+
+    <div id="div-botao-criar">
+    <a href="#" class="btn" data-dismiss="modal">Cancelar</a> 
+<!--
+  #Imagem de loading do ajax
+      <img src="assets/img/rl/loading.gif" alt="Aguarde...">
+-->
+      <button type="submit" class="btn btn-primary pull-right">Atualizar título</button>
+    </div>
+  </div>
+</form>
+
+</div>
+<!-- /modal -->
 
 
 <hr class="only-mobile">
