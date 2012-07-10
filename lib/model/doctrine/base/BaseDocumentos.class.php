@@ -15,6 +15,7 @@ Doctrine_Manager::getInstance()->bindComponent('Documentos', 'doctrine');
  * @property string $repositorio_github
  * @property integer $ordenacao
  * @property string $nome_documento
+ * @property integer $hits
  * 
  * @method integer    getIdDocumento()        Returns the current record's "id_documento" value
  * @method integer    getIdUsuario()          Returns the current record's "id_usuario" value
@@ -24,6 +25,7 @@ Doctrine_Manager::getInstance()->bindComponent('Documentos', 'doctrine');
  * @method string     getRepositorioGithub()  Returns the current record's "repositorio_github" value
  * @method integer    getOrdenacao()          Returns the current record's "ordenacao" value
  * @method string     getNomeDocumento()      Returns the current record's "nome_documento" value
+ * @method integer    getHits()               Returns the current record's "hits" value
  * @method Documentos setIdDocumento()        Sets the current record's "id_documento" value
  * @method Documentos setIdUsuario()          Sets the current record's "id_usuario" value
  * @method Documentos setIdPasta()            Sets the current record's "id_pasta" value
@@ -32,6 +34,7 @@ Doctrine_Manager::getInstance()->bindComponent('Documentos', 'doctrine');
  * @method Documentos setRepositorioGithub()  Sets the current record's "repositorio_github" value
  * @method Documentos setOrdenacao()          Sets the current record's "ordenacao" value
  * @method Documentos setNomeDocumento()      Sets the current record's "nome_documento" value
+ * @method Documentos setHits()               Sets the current record's "hits" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -111,6 +114,16 @@ abstract class BaseDocumentos extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => 255,
+             ));
+        $this->hasColumn('hits', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => true,
+             'primary' => false,
+             'default' => '0',
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
              ));
     }
 

@@ -15,15 +15,17 @@ abstract class BaseAmigosForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id_usuario_a' => new sfWidgetFormInputHidden(),
-      'id_usuario_b' => new sfWidgetFormInputHidden(),
-      'aceito'       => new sfWidgetFormInputText(),
+      'id_usuario_a'     => new sfWidgetFormInputHidden(),
+      'id_usuario_b'     => new sfWidgetFormInputHidden(),
+      'aceito'           => new sfWidgetFormInputText(),
+      'data_solicitacao' => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
-      'id_usuario_a' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_usuario_a')), 'empty_value' => $this->getObject()->get('id_usuario_a'), 'required' => false)),
-      'id_usuario_b' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_usuario_b')), 'empty_value' => $this->getObject()->get('id_usuario_b'), 'required' => false)),
-      'aceito'       => new sfValidatorInteger(array('required' => false)),
+      'id_usuario_a'     => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_usuario_a')), 'empty_value' => $this->getObject()->get('id_usuario_a'), 'required' => false)),
+      'id_usuario_b'     => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_usuario_b')), 'empty_value' => $this->getObject()->get('id_usuario_b'), 'required' => false)),
+      'aceito'           => new sfValidatorInteger(array('required' => false)),
+      'data_solicitacao' => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('amigos[%s]');

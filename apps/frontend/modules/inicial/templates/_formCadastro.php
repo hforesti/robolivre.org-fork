@@ -6,76 +6,91 @@ $valoresInciais = $form->getTaintedValues();
 <form id="cadastro-form" class="form-horizontal" action="<?php echo url_for('inicial/create'); ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
     <?php if (!$form->getObject()->isNew()): ?>
         <input type="hidden" name="sf_method" value="put" />
-<?php endif; ?>
-            
+    <?php endif; ?>
+
     <h1>Criar uma conta <small>último passo</small></h1>
     <fieldset>
-        
+
         <?php
-        $class = "success";
-        $descricao = "Bonito nome!";
-        if (isset($erros['nome'])) {
-            if($erros['nome']=="Required."){
-                $class = "error";
-                $descricao = "Por favor preencha";
-            }else{
-                $class = "warning";
-                $descricao = $erros['nome'];
+        $class = "";
+        if (isset($valoresInciais['nome'])) {
+            $class = "success";
+            $descricao = "Bonito nome!";
+            if (isset($erros['nome'])) {
+                if ($erros['nome'] == "Required.") {
+                    $class = "error";
+                    $descricao = "Por favor preencha";
+                } else {
+                    $class = "warning";
+                    $descricao = $erros['nome'];
+                }
             }
+        }else{
+            $valoresInciais['nome'] = "";
         }
         ?>
         <div id="div-nome" class="control-group <?php echo $class ?>">
             <label class="control-label" for="nome">Nome e Sobrenome</label>
             <div class="controls">
-                <?php echo $form->getWidget('nome')->render($form->getName() . "[nome]", null, array('id' => 'nome', 'placeholder' => "Nome e Sobrenome", 'class' => 'span5', 'value' => $valoresInciais['nome'],'onChange'=>'validaCampoNome(this)','onBlur'=>'validaCampoNome(this)')); ?>
-                <span id="help-nome" class="help-inline"><?php echo ($descricao != "")?$descricao:"" ?></span>
+                <?php echo $form->getWidget('nome')->render($form->getName() . "[nome]", null, array('id' => 'nome', 'placeholder' => "Nome e Sobrenome", 'class' => 'span5', 'value' => $valoresInciais['nome'], 'onChange' => 'validaCampoNome(this)', 'onBlur' => 'validaCampoNome(this)')); ?>
+                <span id="help-nome" class="help-inline"><?php echo ($descricao != "") ? $descricao : "" ?></span>
             </div>
         </div>
 
 
         <?php
-        $class = "success";
-        $descricao = "Ótimo! Nome de usuário disponível.";
-        if (isset($erros['login'])) {
-            if($erros['login']=="Required."){
-                $class = "error";
-                $descricao = "Por favor preencha";
-            }else{
-                $class = "warning";
-                $descricao = $erros['login'];
+        $class = "";
+        if (isset($valoresInciais['login'])) {
+            $class = "success";
+            $descricao = "Ótimo! Nome de usuário disponível.";
+            if (isset($erros['login'])) {
+                if ($erros['login'] == "Required.") {
+                    $class = "error";
+                    $descricao = "Por favor preencha";
+                } else {
+                    $class = "warning";
+                    $descricao = $erros['login'];
+                }
             }
+        }else{
+            $valoresInciais['login'] = "";
         }
         ?>
         <div id="div-login" class="control-group <?php echo $class ?>">
             <label class="control-label" for="username">Nome de usuário</label>
             <div class="controls">
-                <?php echo $form->getWidget('login')->render($form->getName() . "[login]", null, array('id' => 'username', 'placeholder' => "Nome de usuário", 'value' => $valoresInciais['login'],'onKeyUp'=>'validaForm()','onBlur'=>'validaForm()')); ?>
-                <span id="help-login" class="help-inline"><?php echo ($descricao != "")?$descricao:"" ?></span>
+                <?php echo $form->getWidget('login')->render($form->getName() . "[login]", null, array('id' => 'username', 'placeholder' => "Nome de usuário", 'value' => $valoresInciais['login'], 'onKeyUp' => 'validaForm()', 'onBlur' => 'validaForm()')); ?>
+                <span id="help-login" class="help-inline"><?php echo ($descricao != "") ? $descricao : "" ?></span>
             </div>
         </div>
-        
-        
+
+
         <?php
-        $class = "success";
-        $descricao = "Enviaremos uma confirmação para o seu e-mail";
-        if (isset($erros['email'])) {
-            if($erros['email']=="Required."){
-                $class = "error";
-                $descricao = "Por favor preencha";
-            }else if($erros['email']=="Invalid."){
-                $class = "error";
-                $descricao = "O e-mail não parece ser válido. Verifique a digitação.";
-            }else{
-                $class = "warning";
-                $descricao = $erros['email'];
+        $class = "";
+        if (isset($valoresInciais['email'])) {
+            $class = "success";
+            $descricao = "Enviaremos uma confirmação para o seu e-mail";
+            if (isset($erros['email'])) {
+                if ($erros['email'] == "Required.") {
+                    $class = "error";
+                    $descricao = "Por favor preencha";
+                } else if ($erros['email'] == "Invalid.") {
+                    $class = "error";
+                    $descricao = "O e-mail não parece ser válido. Verifique a digitação.";
+                } else {
+                    $class = "warning";
+                    $descricao = $erros['email'];
+                }
             }
+        }else{
+            $valoresInciais['email'] = "";
         }
         ?>
         <div id="div-email" class="control-group <?php echo $class ?>">
             <label class="control-label" for="email">Seu e-mail</label>
             <div class="controls">
-                <?php echo $form->getWidget('email')->render($form->getName() . "[email]", null, array('id' => 'email', 'placeholder' => "E-mail", 'value' => $valoresInciais['email'],'onKeyUp'=>'validaForm()','onBlur'=>'validaForm()')); ?>
-                <span id="help-email" class="help-inline"><?php echo ($descricao != "")?$descricao:"" ?></span>
+                <?php echo $form->getWidget('email')->render($form->getName() . "[email]", null, array('id' => 'email', 'placeholder' => "E-mail", 'value' => $valoresInciais['email'], 'onKeyUp' => 'validaForm()', 'onBlur' => 'validaForm()')); ?>
+                <span id="help-email" class="help-inline"><?php echo ($descricao != "") ? $descricao : "" ?></span>
             </div>
         </div>
         <?php
@@ -93,29 +108,16 @@ $valoresInciais = $form->getTaintedValues();
                 <span id="help-confirmacao-email" class="help-inline"><?php echo $descricao ?></span>
             </div>
         </div>
-        
-        
-        <?php
-        $class = "success";
-        $descricao = "";
-        if (isset($erros['senha'])) {
-            if($erros['senha']=="Required."){
-                $class = "error";
-                $descricao = "Por favor preencha";
-            }else{
-                $class = "warning";
-                $descricao = $erros['senha'];
-            }
-        }
-        ?>
-        <div id="div-senha" class="control-group <?php echo $class ?>">
+
+
+        <div id="div-senha" class="control-group">
             <label class="control-label" for="pass">Senha</label>
             <div class="controls">
-                <?php echo $form->getWidget('senha')->render($form->getName() . "[senha]", null, array('id' => 'pass', 'placeholder' => "Senha", "value" => (array_key_exists('senha',$valoresInciais))?$valoresInciais['senha']:'','onKeyUp'=>'atualizaForcaSenha(this)')); ?>
-                <span id="help-forca-senha" class="help-inline"><?php echo ($descricao != "")?$descricao:"" ?></span>
+                <?php echo $form->getWidget('senha')->render($form->getName() . "[senha]", null, array('id' => 'pass', 'placeholder' => "Senha", "value" => (array_key_exists('senha', $valoresInciais)) ? $valoresInciais['senha'] : '', 'onKeyUp' => 'atualizaForcaSenha(this)')); ?>
+                <span id="help-forca-senha" class="help-inline"></span>
             </div>
         </div>
-        
+
         <div id="div-confirmacao-senha" class="control-group">
             <label class="control-label" for="pass-conf">Confirme a senha</label>
             <div class="controls">
@@ -123,14 +125,14 @@ $valoresInciais = $form->getTaintedValues();
                 <span id="help-confirmacao-senha" class="help-inline"></span>
             </div>
         </div>
-        
+
         <?php echo $form->renderHiddenFields() ?>
-        
+
         <div class="control-group">
             <label class="control-label" for="optionsCheckbox">Lembrar dados</label>
             <div class="controls">
                 <label class="checkbox">
-                <input type="checkbox" name="lembrar" value="1" >
+                    <input type="checkbox" name="lembrar" value="1" >
                     Quero me manter conectado na rede<br />
                     <span class="help-inline">Marque apenas se <strong>não</strong> estiver em um computador público.</span>
                 </label>
@@ -213,7 +215,7 @@ Tudo que consta desses Termos de Uso estão regidos pelas normas vigentes na Rep
 Fica eleito como foro competente para solucionar eventuais controvérsias decorrentes do presente Termo de Uso o Foro Central da cidade de Recife, estado de Pernambuco.
     
                 </textarea>
-                                            
+
             </div>
         </div>
 
@@ -253,7 +255,7 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
         if(id=="login"){
             descricao = "Ótimo! Nome de usuário disponível.";
         }else if(id=="email"){
-           descricao = "Enviaremos uma confirmação para o seu e-mail";
+            descricao = "Enviaremos uma confirmação para o seu e-mail";
         }
         classe = "success";
         
@@ -274,7 +276,6 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
     }
     
     function atualizaCamposAjax(mensagem){
-        
         var erros = mensagem.split(SEPARADOR_PARAMETRO);
         var erro = '';
         for(i=0;i<erros.length;++i){
@@ -286,30 +287,30 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
     }
     
     function validaForm() {
-            $.ajax({
-                url: <?php echo "'".url_for("ajax/ajaxValidacaoFormCadastro") . "?usuarios[nome]='+getValue('nome')+'&usuarios[login]='+getValue('username')+'&usuarios[email]='+getValue('email')+'&usuarios[senha]='+getValue('pass')+'&usuarios[_csrf_token]='+getValue('usuarios__csrf_token')" ?>,
-                success: function(resposta){
-                    atualizaCamposAjax(resposta);
-                    verificaFormValidado();
-                }
-            });
+        $.ajax({
+            url: <?php echo "'" . url_for("ajax/ajaxValidacaoFormCadastro") . "?usuarios[nome]='+getValue('nome')+'&usuarios[login]='+getValue('username')+'&usuarios[email]='+getValue('email')+'&usuarios[senha]='+getValue('pass')+'&usuarios[_csrf_token]='+getValue('usuarios__csrf_token')" ?>,
+            success: function(resposta){
+                atualizaCamposAjax(resposta);
+                verificaFormValidado();
+            }
+        });
     }//END validaForm
 
 
     $("#cadastro-form input[type=text], #cadastro-form input[type=email], #cadastro-form input[type=password]").blur(
-        function(){
-            verificaFormValidado();
-        }
-    );
+    function(){
+        verificaFormValidado();
+    }
+);
     $("#cadastro-form input[type=text], #cadastro-form input[type=email], #cadastro-form input[type=password]").change(
-        function(){
-            verificaFormValidado();
-        }
-    );
+    function(){
+        verificaFormValidado();
+    }
+);
     function verificaFormValidado(){
-        document.getElementById("btn-submit").disabled = false;
-        if($("#cadastro-form .control-group").hasClass('error') || $("#cadastro-form .control-group").hasClass('warning')){
-            document.getElementById("btn-submit").disabled = true;
+        document.getElementById("btn-submit").disabled = true;
+        if(!$("#cadastro-form .control-group").hasClass('error') && !$("#cadastro-form .control-group").hasClass('warning')){
+            document.getElementById("btn-submit").disabled = false;
         }
     }
 
@@ -363,12 +364,12 @@ Fica eleito como foro competente para solucionar eventuais controvérsias decorr
     
     $('#username').bind('keypress', function (event) {
         try{
-        var regex = new RegExp("^[A-Za-z0-9_.]*$");
+            var regex = new RegExp("^[A-Za-z0-9_.]*$");
         }catch(e){alert(e);}
         var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
         if (!regex.test(key)) {
-        //event.preventDefault();
-        //return false;
+            //event.preventDefault();
+            //return false;
         }
     });
     

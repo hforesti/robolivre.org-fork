@@ -1,34 +1,3 @@
-Amigos:
-  connection: doctrine
-  tableName: amigos
-  columns:
-    id_usuario_a:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: false
-    id_usuario_b:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: false
-    aceito:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      default: '0'
-      notnull: false
-      autoincrement: false
-    data_solicitacao:
-      type: timestamp(25)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
 Comunidades:
   connection: doctrine
   tableName: comunidades
@@ -115,71 +84,6 @@ Conjuntos:
       unsigned: false
       primary: false
       notnull: false
-      autoincrement: false
-Conteudos:
-  connection: doctrine
-  tableName: conteudos
-  columns:
-    id_conteudo:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: true
-    id_tipo_conjunto:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: true
-      autoincrement: false
-    id_conjunto:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: false
-    id_super_tipo:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: true
-      autoincrement: false
-    nome:
-      type: string(100)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    descricao:
-      type: string()
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    enviar_email_criador:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: false
-      autoincrement: false
-    nome_repositorio_github:
-      type: string(100)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    tema_aula:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: '0'
-      notnull: true
       autoincrement: false
 DiariosBordo:
   connection: doctrine
@@ -287,6 +191,14 @@ Documentos:
       primary: false
       notnull: false
       autoincrement: false
+    hits:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
 Imagens:
   connection: doctrine
   tableName: imagens
@@ -320,73 +232,6 @@ Imagens:
       type: integer(4)
       fixed: false
       unsigned: true
-      primary: false
-      notnull: false
-      autoincrement: false
-LogsSistema:
-  connection: doctrine
-  tableName: logs_sistema
-  columns:
-    id_log_sistema:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: true
-    id_usuario:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: false
-    descricao:
-      type: string(255)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    parametros:
-      type: string(255)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    tipo_log:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: false
-      autoincrement: false
-    data_publicacao:
-      type: timestamp(25)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-Mensagens:
-  connection: doctrine
-  tableName: mensagens
-  columns:
-    id_mensagem:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: true
-      autoincrement: true
-    id_usuario:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: false
-    conteudo:
-      type: string()
-      fixed: false
-      unsigned: false
       primary: false
       notnull: false
       autoincrement: false
@@ -539,137 +384,6 @@ ProjetosComunidades:
       unsigned: false
       primary: true
       autoincrement: false
-Publicacoes:
-  connection: doctrine
-  tableName: publicacoes
-  columns:
-    id_publicacao:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: true
-    id_usuario:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: false
-    id_conteudo:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    id_tipo_conjunto:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: false
-      autoincrement: false
-    id_conjunto:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    id_diario_bordo:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: false
-      autoincrement: false
-    id_pasta:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: false
-      autoincrement: false
-    id_video:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: false
-      autoincrement: false
-    id_imagem:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: false
-      autoincrement: false
-    id_usuario_original:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    id_publicacao_original:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    id_usuario_referencia:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    comentario:
-      type: string()
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    link:
-      type: string(300)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    data_publicacao:
-      type: timestamp(25)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    visivel:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      default: '1'
-      notnull: true
-      autoincrement: false
-    tipo_publicacao:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: '0'
-      notnull: false
-      autoincrement: false
-    privacidade_publicacao:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      default: '1'
-      notnull: false
-      autoincrement: false
 SuperTipos:
   connection: doctrine
   tableName: super_tipos
@@ -688,62 +402,6 @@ SuperTipos:
       notnull: false
       autoincrement: false
     descricao:
-      type: string(255)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-TagsConteudos:
-  connection: doctrine
-  tableName: tags_conteudos
-  columns:
-    id_conteudo_referencia:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: false
-    id_conjunto_referencia:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: false
-    id_tipo_conjunto_referencia:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: true
-      autoincrement: false
-    id_tag_conteudo:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: true
-    id_conteudo_referenciado:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    id_conjunto_referenciado:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    id_tipo_conjunto_referenciado:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: true
-      autoincrement: false
-    nome_conteudo_inexistente:
       type: string(255)
       fixed: false
       unsigned: false
@@ -980,49 +638,6 @@ Usuarios:
       autoincrement: false
     token:
       type: string(20)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-Videos:
-  connection: doctrine
-  tableName: videos
-  columns:
-    id_video:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: true
-      autoincrement: true
-    id_usuario:
-      type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: false
-    id_pasta:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: true
-      autoincrement: false
-    nome_arquivo:
-      type: string(255)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    ordenacao:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: false
-      notnull: false
-      autoincrement: false
-    link_video:
-      type: string(255)
       fixed: false
       unsigned: false
       primary: false

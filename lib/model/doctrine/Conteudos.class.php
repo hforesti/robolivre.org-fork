@@ -24,6 +24,7 @@ class Conteudos extends BaseConteudos
     private $pontos;
     private $podeColaborar = null;
     private $tag = false;
+    private $ultimaAtualizacao;
     
     
     const PROPRIETARIO = -1;
@@ -38,7 +39,15 @@ class Conteudos extends BaseConteudos
         parent::_set('enviar_email_criador', ($valor=="on"||$valor==true)?1:0);
         return $this;
     }
-        
+    
+    public function getUltimaAtualizacao(){
+        return $this->ultimaAtualizacao;
+    }
+    
+    public function setUltimaAtualizacao($hora){
+        $this->ultimaAtualizacao = $hora;
+    }
+
     public function getTipoSolicitacao() {
         return $this->tipoSolicitacao;
     }

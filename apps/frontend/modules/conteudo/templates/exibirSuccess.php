@@ -77,7 +77,7 @@ if($tipoFiltro!=""){
             <hr>
         <?php } ?>
         <?php if (!UsuarioLogado::getInstancia()->isUsuarioPublico()) { ?>
-            <?php include_partial('formPublicacao', array('form' => $formPublicacao, 'nome_conteudo' => $conteudo->getNome(), 'id_conjunto' => $conteudo->getIdConjunto())) ?>
+            <?php include_partial('formPublicacao', array('form' => $formPublicacao, 'nome_conteudo' => $conteudo->getNome(), 'id_conjunto' => $conteudo->getIdConjunto(), 'tipo' => $tipoFiltro)) ?>
             <hr>
         <?php } ?>
 

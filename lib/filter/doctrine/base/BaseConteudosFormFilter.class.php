@@ -18,6 +18,7 @@ abstract class BaseConteudosFormFilter extends BaseFormFilterDoctrine
       'descricao'               => new sfWidgetFormFilterInput(),
       'enviar_email_criador'    => new sfWidgetFormFilterInput(),
       'nome_repositorio_github' => new sfWidgetFormFilterInput(),
+      'tema_aula'               => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
@@ -26,6 +27,7 @@ abstract class BaseConteudosFormFilter extends BaseFormFilterDoctrine
       'descricao'               => new sfValidatorPass(array('required' => false)),
       'enviar_email_criador'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'nome_repositorio_github' => new sfValidatorPass(array('required' => false)),
+      'tema_aula'               => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('conteudos_filters[%s]');
@@ -53,6 +55,7 @@ abstract class BaseConteudosFormFilter extends BaseFormFilterDoctrine
       'descricao'               => 'Text',
       'enviar_email_criador'    => 'Number',
       'nome_repositorio_github' => 'Text',
+      'tema_aula'               => 'Number',
     );
   }
 }

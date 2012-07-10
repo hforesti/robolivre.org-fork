@@ -22,6 +22,8 @@ abstract class BaseDocumentosForm extends BaseFormDoctrine
       'is_codigo_fonte'    => new sfWidgetFormInputText(),
       'repositorio_github' => new sfWidgetFormInputText(),
       'ordenacao'          => new sfWidgetFormInputText(),
+      'nome_documento'     => new sfWidgetFormInputText(),
+      'hits'               => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -32,6 +34,8 @@ abstract class BaseDocumentosForm extends BaseFormDoctrine
       'is_codigo_fonte'    => new sfValidatorInteger(array('required' => false)),
       'repositorio_github' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'ordenacao'          => new sfValidatorInteger(array('required' => false)),
+      'nome_documento'     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'hits'               => new sfValidatorInteger(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('documentos[%s]');

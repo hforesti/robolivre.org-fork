@@ -124,7 +124,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php Util::imprimeListaArquivos("arquivosDownloadImprensa",5) ?>
+                        <?php Util::imprimeListaArquivos("arquivosApresentacoes",5) ?>
                     </tbody>
                 </table>
 

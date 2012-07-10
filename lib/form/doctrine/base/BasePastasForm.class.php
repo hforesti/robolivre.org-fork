@@ -29,7 +29,7 @@ abstract class BasePastasForm extends BaseFormDoctrine
       'id_usuario'       => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_usuario')), 'empty_value' => $this->getObject()->get('id_usuario'), 'required' => false)),
       'id_tipo_conjunto' => new sfValidatorInteger(array('required' => false)),
       'id_conjunto'      => new sfValidatorInteger(array('required' => false)),
-      'nome'             => new sfValidatorString(array('max_length' => 45, 'required' => false)),
+      'nome'             => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'descricao'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'tipo_pasta'       => new sfValidatorInteger(),
     ));

@@ -197,14 +197,14 @@ class UsuariosForm extends BaseUsuariosForm {
     public function validaDadosIniciais() {
 
         $valores = $this->getTaintedValues();
-
+        
         if ($this->getTipoFormulario() == self::LOGIN) {
             if (!isset($valores['login']) || $valores['login'] == "" || !isset($valores['senha']) || $valores['senha'] == "") {
                 $error = new sfValidatorError($this->validatorSchema['login'], 'Preencha os campos de login e senha');
                 $this->errorSchema->addError($error, 'login');
                 $valido = false;
             }
-        } else if ($valores['login'] != null && $valores['login'] != "") {
+        } else if (isset($valores['login']) && $valores['login'] != null && $valores['login'] != "") {
             if (!preg_match("/^[a-z]+[\w.-]*$/i", $valores['login'])) {
                 $error = new sfValidatorError($this->validatorSchema['login'], 'Use apenas letras (a-z), números (0-9), ponto (.) e underline (_).');
                 $this->errorSchema->addError($error, 'login');
@@ -245,7 +245,7 @@ class UsuariosForm extends BaseUsuariosForm {
         $valido = true;
         if (!parent::isValid()) {
             $valido = false;
-        }
+        }        
         $valores = $this->getTaintedValues();
 
         if ($this->getTipoFormulario() == self::LOGIN) {
@@ -315,7 +315,6 @@ class UsuariosForm extends BaseUsuariosForm {
                 }
             } 
         }
-
         return $valido;
     }
 

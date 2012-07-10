@@ -17,6 +17,8 @@ abstract class BaseDocumentosFormFilter extends BaseFormFilterDoctrine
       'is_codigo_fonte'    => new sfWidgetFormFilterInput(),
       'repositorio_github' => new sfWidgetFormFilterInput(),
       'ordenacao'          => new sfWidgetFormFilterInput(),
+      'nome_documento'     => new sfWidgetFormFilterInput(),
+      'hits'               => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
@@ -24,6 +26,8 @@ abstract class BaseDocumentosFormFilter extends BaseFormFilterDoctrine
       'is_codigo_fonte'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'repositorio_github' => new sfValidatorPass(array('required' => false)),
       'ordenacao'          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'nome_documento'     => new sfValidatorPass(array('required' => false)),
+      'hits'               => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('documentos_filters[%s]');
@@ -50,6 +54,8 @@ abstract class BaseDocumentosFormFilter extends BaseFormFilterDoctrine
       'is_codigo_fonte'    => 'Number',
       'repositorio_github' => 'Text',
       'ordenacao'          => 'Number',
+      'nome_documento'     => 'Text',
+      'hits'               => 'Number',
     );
   }
 }
