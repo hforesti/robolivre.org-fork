@@ -24,9 +24,14 @@ class conteudosActions extends robolivreAction {
         $slug = $request->getParameter('slug');
         $conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
         $this->forward404Unless($conteudo, "Conteudo $slug não encontrado");
-        if ($conteudo->getPodeColaborar() && $request->hasParameter('u')) {
-            Doctrine::getTable('Documentos')->removeDocumento($request->getParameter('u'));
-            $this->redirect($ultimaUrl);
+        if ($request->hasParameter('u')) {
+            $doc = Doctrine::getTable('Documentos')->getPorId($request->getParameter('u'));
+            if ($conteudo->getPodeColaborar() || $doc->getIdUsuario() == UsuarioLogado::getInstancia()->getIdUsuario() ) {
+                Doctrine::getTable('Documentos')->removeDocumento($request->getParameter('u'));
+                $this->redirect($ultimaUrl);
+            } else {
+                $this->forward404("Não pode colaborar com o conteudo");
+            }
         } else {
             $this->forward404("Não pode colaborar com o conteudo");
         }
@@ -35,8 +40,7 @@ class conteudosActions extends robolivreAction {
     public function executeCriar(sfWebRequest $request) {
         $this->formConteudo = new ConteudosForm();
 
-        $this->nomeConteudo = $request->getParameter('nome');
-        {
+        $this->nomeConteudo = $request->getParameter('nome'); {
             $objConteudo = Doctrine::getTable('Conteudos')->validaNomeConteudo($this->nomeConteudo);
 
             if ($objConteudo) {
@@ -294,7 +298,7 @@ class conteudosActions extends robolivreAction {
 
                 $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(), Pastas::TIPO_PASTA_ANEXOS_CONJUNTO, $this->conteudo->getIdConjunto(), Conjuntos::TIPO_CONTEUDO);
                 if (!file_exists(sfConfig::get('sf_upload_dir') . "/documentos/$slug")) {
-                    mkdir(sfConfig::get('sf_upload_dir') . "/documentos/$slug");
+                    mkdir(sfConfig::get('sf_upload_dir') . "/documentos/$slug", 0777);
                 }
             }
             foreach ($arrayArquivos as $nomeArquivo) {
@@ -454,7 +458,7 @@ class conteudosActions extends robolivreAction {
 
                 $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(), Pastas::TIPO_PASTA_ANEXOS_CONJUNTO, $this->conteudo->getIdConjunto(), Conjuntos::TIPO_CONTEUDO);
                 if (!file_exists(sfConfig::get('sf_upload_dir') . "/documentos/$slug")) {
-                    mkdir(sfConfig::get('sf_upload_dir') . "/documentos/$slug");
+                    mkdir(sfConfig::get('sf_upload_dir') . "/documentos/$slug", 0777);
                 }
             }
             foreach ($arrayArquivos as $nomeArquivo) {

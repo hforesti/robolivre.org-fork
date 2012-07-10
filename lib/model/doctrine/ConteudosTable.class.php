@@ -200,6 +200,7 @@ class ConteudosTable extends Doctrine_Table {
                 $conteudo->setIdConteudo($reg['id_conteudo']);
                 $conteudo->setIdTipoConjunto($reg['id_tipo_conjunto']);
                 $conteudo->setIdConjunto($reg['id_conjunto']);
+                $conteudo->setUltimaAtualizacao($this->ultimaAtualizacao($reg['id_conjunto']));
                 $conteudo->setIdSuperTipo($reg['id_super_tipo']);
                 $conteudo->setNome($reg['nome']);
                 $conteudo->setDescricao($reg['descricao']);
@@ -598,7 +599,6 @@ class ConteudosTable extends Doctrine_Table {
         if ($resultado) {
             foreach ($resultado as $reg) {
                 $conteudo = new Conteudos();
-
                 $conteudo->setIdConteudo($reg['id_conteudo']);
                 $conteudo->setIdTipoConjunto($reg['id_tipo_conjunto']);
                 $conteudo->setIdConjunto($reg['id_conjunto']);
@@ -608,7 +608,6 @@ class ConteudosTable extends Doctrine_Table {
                 $conteudo->setEnviarEmailCriador($reg['enviar_email_criador']);
                 $conteudo->setNomeRepositorioGithub($reg['nome_repositorio_github']);
                 $conteudo->setTemaAula($reg['tema_aula']);
-
                 $conjunto = new Conjuntos();
                 $conjunto->setIdConjunto($reg['i.id_conjunto']);
                 $conjunto->setIdUsuario($reg['i.id_usuario']);
@@ -1051,6 +1050,19 @@ class ConteudosTable extends Doctrine_Table {
         $arrayRetorno['conteudos'] = $arrayConteudos;
 
         return $arrayRetorno;
+    }
+    
+    public function ultimaAtualizacao($id_conjuto){
+        $sql = "SELECT DATE_FORMAT(data_publicacao,'%d/%m/%Y às %H:%i') as hora 
+                FROM publicacoes 
+                WHERE id_conjunto = :id
+                ORDER BY data_publicacao DESC LIMIT 1";
+        $conn = Doctrine_Manager::getInstance()->getCurrentConnection()->getDbh();
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id',$id_conjuto);
+        $stmt->execute();
+        $resultado = $stmt->fetch();
+        return $resultado['hora'];
     }
 
 }

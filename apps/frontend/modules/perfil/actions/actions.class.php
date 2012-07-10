@@ -18,8 +18,7 @@ class perfilActions extends robolivreAction {
         $this->iniciaTabAmigo = $request->hasParameter("i");
 
 
-        $this->publicacoesHome = Doctrine::getTable("Publicacoes")->getPublicacoesHome();
-        {
+        $this->publicacoesHome = Doctrine::getTable("Publicacoes")->getPublicacoesHome(); {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
             shuffle($arrayRetorno['conteudos']);
@@ -133,8 +132,7 @@ class perfilActions extends robolivreAction {
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
         }
 
-        $this->forward404Unless($this->usuario);
-        {
+        $this->forward404Unless($this->usuario); {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
             shuffle($arrayRetorno['conteudos']);
@@ -194,8 +192,7 @@ class perfilActions extends robolivreAction {
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
         }
 
-        $this->forward404Unless($this->usuario);
-        {
+        $this->forward404Unless($this->usuario); {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
             shuffle($arrayRetorno['conteudos']);
@@ -210,8 +207,7 @@ class perfilActions extends robolivreAction {
 
     public function executeInformacaoHome(sfWebRequest $request) {
 
-        $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia());
-        {
+        $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia()); {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
             shuffle($arrayRetorno['conteudos']);
@@ -319,8 +315,7 @@ class perfilActions extends robolivreAction {
     }
 
     public function executeNotificacoes(sfWebRequest $request) {
-        UsuarioLogado::getInstancia()->atualizaSolicitacoes();
-        {
+        UsuarioLogado::getInstancia()->atualizaSolicitacoes(); {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
             shuffle($arrayRetorno['conteudos']);
@@ -564,80 +559,82 @@ class perfilActions extends robolivreAction {
     public function executeConfirmarFotoPerfil(sfWebRequest $request) {
         $nome_arquivo = $request->getParameter('imagem_selecionada');
 
-        $diretorioThumbnail = Util::getDiretorioThumbnail();
+        if ($nome_arquivo) {
+            $diretorioThumbnail = Util::getDiretorioThumbnail();
 
-        $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo;
-        $extensao = end(explode(".", $nome_arquivo));
+            $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo;
+            $extensao = end(explode(".", $nome_arquivo));
+            $extensao = strtolower($extensao);
 
-        $img = new sfImage($diretorio_arquivo, 'image/jpg');
+            $img = new sfImage($diretorio_arquivo, "image/{$extensao}");
 
-        if ($img->getHeight() > 170 && $img->getWidth() > 170) {
+            if ($img->getHeight() > 170 && $img->getWidth() > 170) {
 
-            if ($img->getWidth() > $img->getHeight()) {
-                $scale = 170 / $img->getHeight();
-            } else {
-                $scale = 170 / $img->getWidth();
-            }
+                if ($img->getWidth() > $img->getHeight()) {
+                    $scale = 170 / $img->getHeight();
+                } else {
+                    $scale = 170 / $img->getWidth();
+                }
 
-            $img->scale($scale);
+                $img->scale($scale);
 
-            if ($img->getWidth() > $img->getHeight()) {
-                $largura = ($img->getWidth() / 2);
-                $pontoX = $largura - (170 / 2);
+                if ($img->getWidth() > $img->getHeight()) {
+                    $largura = ($img->getWidth() / 2);
+                    $pontoX = $largura - (170 / 2);
 
-                if ($pontoX < 0) {
+                    if ($pontoX < 0) {
+                        $pontoX = 0;
+                    }
+                    $pontoY = 0;
+                } else {
+                    $altura = ($img->getHeight() / 2);
+                    $pontoY = $altura - (170 / 2);
+
+                    if ($pontoY < 0) {
+                        $pontoY = 0;
+                    }
                     $pontoX = 0;
                 }
-                $pontoY = 0;
-            } else {
-                $altura = ($img->getHeight() / 2);
-                $pontoY = $altura - (170 / 2);
 
-                if ($pontoY < 0) {
-                    $pontoY = 0;
+                $img->crop($pontoX, $pontoY, 170, 170);
+            } else {
+
+                if ($img->getWidth() > $img->getHeight()) {
+                    $scale = 170 / $img->getHeight();
+                } else {
+                    $scale = 170 / $img->getWidth();
                 }
-                $pontoX = 0;
-            }
 
-            $img->crop($pontoX, $pontoY, 170, 170);
-        } else {
+                $img->scale($scale);
 
-            if ($img->getWidth() > $img->getHeight()) {
-                $scale = 170 / $img->getHeight();
-            } else {
-                $scale = 170 / $img->getWidth();
-            }
+                if ($img->getWidth() > $img->getHeight()) {
+                    $largura = ($img->getWidth() / 2);
+                    $pontoX = $largura - (170 / 2);
 
-            $img->scale($scale);
+                    if ($pontoX < 0) {
+                        $pontoX = 0;
+                    }
+                    $pontoY = 0;
+                } else {
+                    $altura = ($img->getHeight() / 2);
+                    $pontoY = $altura - (170 / 2);
 
-            if ($img->getWidth() > $img->getHeight()) {
-                $largura = ($img->getWidth() / 2);
-                $pontoX = $largura - (170 / 2);
-
-                if ($pontoX < 0) {
+                    if ($pontoY < 0) {
+                        $pontoY = 0;
+                    }
                     $pontoX = 0;
                 }
-                $pontoY = 0;
-            } else {
-                $altura = ($img->getHeight() / 2);
-                $pontoY = $altura - (170 / 2);
-
-                if ($pontoY < 0) {
-                    $pontoY = 0;
-                }
-                $pontoX = 0;
+                $img->crop($pontoX, $pontoY, 170, 170);
             }
-            $img->crop($pontoX, $pontoY, 170, 170);
-        }
 
-        $img->setQuality(75);
-        $img->saveAs($diretorioThumbnail . '/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_large.' . $extensao);
-        $img->thumbnail(60, 60);
-        $img->setQuality(75);
-        $img->saveAs($diretorioThumbnail . '/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_60.' . $extensao);
-        $img->thumbnail(20, 20);
-        $img->setQuality(75);
-        $img->saveAs($diretorioThumbnail . '/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_20.' . $extensao);
+            $img->setQuality(75);
+            $img->saveAs($diretorioThumbnail . '/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_large.' . $extensao);
+            $img->thumbnail(60, 60);
+            $img->setQuality(75);
+            $img->saveAs($diretorioThumbnail . '/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_60.' . $extensao);
+            $img->thumbnail(20, 20);
+            $img->setQuality(75);
+            $img->saveAs($diretorioThumbnail . '/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_20.' . $extensao);
 
 //        $thumbnail = new sfThumbnail(170, 170,false,true);
 //        $thumbnail->loadFile($diretorio_arquivo);
@@ -651,10 +648,10 @@ class perfilActions extends robolivreAction {
 //        $thumbnail->loadFile($diretorio_arquivo);
 //        $thumbnail->save($diretorioThumbnail.'/_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_20.' . $extensao);
 
-        $objUsuario = Doctrine::getTable("Usuarios")->atualizarImagemPerfil(UsuarioLogado::getInstancia()->getIdUsuario(), '_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_#.' . $extensao);
+            $objUsuario = Doctrine::getTable("Usuarios")->atualizarImagemPerfil(UsuarioLogado::getInstancia()->getIdUsuario(), '_avatar_usu' . UsuarioLogado::getInstancia()->getIdUsuario() . '_#.' . $extensao);
 
-        UsuarioLogado::getInstancia()->atualizaInformacoes($objUsuario);
-
+            UsuarioLogado::getInstancia()->atualizaInformacoes($objUsuario);
+        }
         $this->redirect('perfil/index');
     }
 

@@ -176,7 +176,6 @@ class ajaxActions extends sfActions {
             $mensagem .= "email=" . Util::SEPARADOR_PARAMETRO;
         }
 
-
         $this->mensagem = $mensagem;
     }
 
@@ -198,12 +197,8 @@ class ajaxActions extends sfActions {
     }
 
     public function executeAjaxUlpoadImagens(sfWebRequest $request) {
-        ini_set("upload_max_filesize", "10M");
-        ini_set("post_max_size", "10M");
-        ini_set("memory_limit", "10");
         // list of valid extensions, ex. array("jpeg", "xml", "bmp")
         $allowedExtensions = array('jpg', 'jpeg', 'png', 'gif');
-
         // max file size in bytes
         $sizeLimit = 8 * 1024 * 1024;
 
@@ -220,6 +215,7 @@ class ajaxActions extends sfActions {
         $array = explode(".", $nome_arquivo_completo);
         $nome_arquivo = $array[0];
         $extensao = end($array);
+        $extensao = strtolower($extensao);
 
         if (!isset($nome_arquivo) || $nome_arquivo == "") {
             return "";
@@ -233,7 +229,7 @@ class ajaxActions extends sfActions {
             $diretorio_arquivo = sfConfig::get('sf_upload_dir') . '/' . $nome_arquivo_completo;
 
 
-            $img = new sfImage($diretorio_arquivo, 'image/jpg');
+            $img = new sfImage($diretorio_arquivo, "image/{$extensao}");
 
             if ($img->getHeight() > 170 && $img->getWidth() > 170) {
 

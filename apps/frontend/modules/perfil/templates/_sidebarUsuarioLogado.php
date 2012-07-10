@@ -24,7 +24,7 @@ $quantidadeNotificacoes = $quantidadeSolicitacoes;// + NOTIFICACOES
             </ul>
         </div>
 
-        <h1><?php echo UsuarioLogado::getInstancia()->getNome(); echo " " .$opcao ?></h1>
+        <h1><?php echo UsuarioLogado::getInstancia()->getNome();?></h1>
 
     </div><!-- /avatar -->
 

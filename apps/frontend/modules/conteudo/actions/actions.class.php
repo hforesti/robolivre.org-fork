@@ -14,7 +14,10 @@ class conteudoActions extends robolivreAction {
 
         $acao = $request->getParameter('acao');
         switch ($acao) {
-
+            case 'download' : $this->executeDownload($request);
+                return;
+            case 'editarNome' : $this->executeEditarNome($request);
+                return;
             case 'exibirSeguidores' : $this->executeExibirSeguidores($request);
                 return;
             case 'exibirConteudosRelacionados' : $this->executeExibirConteudosRelacionados($request);
@@ -26,6 +29,8 @@ class conteudoActions extends robolivreAction {
             case 'exibirDocumentos' : $this->executeExibirDocumentos($request);
                 return;
             case 'adicionarDoc' : $this->executeAdicionarDocumentos($request);
+                return;
+            case 'gravarDocumento' : $this->executeGravarDocumento($request);
                 return;
             case 'video' :
                 $this->executeExibir($request, "video");
@@ -52,6 +57,77 @@ class conteudoActions extends robolivreAction {
      */
     public function executeIndex(sfWebRequest $request) {
         $this->redirect("conteudos/index");
+    }
+
+    public function executeDownload(sfWebRequest $request){
+        $slug = $request->getParameter('slug');
+        $id = $request->getParameter('idDoc');
+        $documento = Doctrine::getTable('Documentos')->getPorId($id);
+        $documento->setHits($documento->getHits() + 1);
+        $documento->replace();
+        $this->redirect("/uploads/documentos/$slug/" . $documento->getNomeArquivo());
+    }
+
+    public function executeEditarNome(sfWebRequest $request){
+        $ultimaUrl = $request->getReferer();
+        $idDoc = $request->getParameter('idDoc');
+        $documento = Doctrine::getTable('Documentos')->getPorId($idDoc);
+        $documento->setNomeDocumento($request->getParameter('nome'));
+        $documento->replace();
+        $this->redirect($ultimaUrl);
+    }
+
+
+    public function executeGravarDocumento(sfWebRequest $request) {
+        $ultimaUrl = $request->getReferer();
+        $slug = $request->getParameter('slug');
+        $conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
+        $arquivos = explode(Util::SEPARADOR_PARAMETRO, $request->getPostParameter('documentos_selecionados'));
+        $arquivo = array_pop($arquivos);
+        $extensao = explode(".", $arquivo);
+        $nomeFile = $extensao[0];
+        $nomeDoc = $request->getParameter('nome');
+        $extensao = array_pop($extensao);
+        
+
+        $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(), Pastas::TIPO_PASTA_ANEXOS_CONJUNTO, $conteudo->getIdConjunto(), Conjuntos::TIPO_CONTEUDO);
+        if (!$pasta) {
+
+            $pasta = new Pastas();
+            $pasta->setIdUsuario(UsuarioLogado::getInstancia()->getIdUsuario());
+            $pasta->setNome("Anexo de " . UsuarioLogado::getInstancia()->getNome() . " no Conteudo " . $conteudo->getNome());
+            $pasta->setDescricao("Arquivos anexos de " . UsuarioLogado::getInstancia()->getNome() . " no Conteudo " . $conteudo->getNome());
+            $pasta->setTipoPasta(Pastas::TIPO_PASTA_ANEXOS_CONJUNTO);
+            $pasta->setIdConjunto($conteudo->getIdConjunto());
+            $pasta->setIdTipoConjunto(Conjuntos::TIPO_CONTEUDO);
+
+            $pasta->save();
+
+            $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(), Pastas::TIPO_PASTA_ANEXOS_CONJUNTO, $conteudo->getIdConjunto(), Conjuntos::TIPO_CONTEUDO);
+            if (!file_exists(sfConfig::get('sf_upload_dir') . "/documentos/$slug")) {
+                mkdir(sfConfig::get('sf_upload_dir') . "/documentos/$slug", 0777);
+            }
+        }
+        
+        if ($arquivo != "" && file_exists(sfConfig::get('sf_upload_dir') . "/" . $arquivo)) {
+            
+            $idUsuarioLogado = UsuarioLogado::getInstancia()->getIdUsuario();
+            
+            copy(sfConfig::get('sf_upload_dir') . "/" . $arquivo, sfConfig::get('sf_upload_dir') . "/documentos/$slug/" . $nomeFile . "_" . $idUsuarioLogado . "_" . time() . "." . $extensao);
+
+            $documento = new Documentos();
+            $documento->setIdPasta($pasta->getIdPasta());
+            $documento->setIdUsuario($pasta->getIdUsuario());
+            $documento->setIsCodigoFonte(false);
+            $documento->setNomeArquivo($nomeFile . "_" . $idUsuarioLogado . "_" . time() . "." . $extensao);
+            $documento->setNomeDocumento($nomeDoc);
+
+            $documento->save();
+        }
+        $this->redirect($this->generateUrl('conteudo_acao', array(
+                                                            'slug' => $slug, 
+                                                            'acao' => 'exibirDocumentos'
+                                                            )));
     }
 
     public function executeAdicionarDocumentos(sfWebRequest $request) {
@@ -113,7 +189,8 @@ class conteudoActions extends robolivreAction {
         $slug = $request->getParameter('slug');
 
         $this->conteudo = Doctrine::getTable("Conteudos")->buscaPorSlug($slug);
-        $this->forward404Unless($this->conteudo && $this->conteudo->getPodeColaborar()); {
+        $this->forward404Unless($this->conteudo && $this->conteudo->getPodeColaborar());
+        {
             $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
             $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
         }
@@ -238,7 +315,8 @@ class conteudoActions extends robolivreAction {
             $this->publicacoesConjunto = Doctrine::getTable("Publicacoes")->getPublicacoesDoConjunto($this->conteudo->getIdConjunto(), null, $tipoFiltro); //array();
             $chaves = array_keys($this->publicacoesConjunto);
             $this->dataCriacao = Util::getDataFormatada($this->conteudo->getConjunto()->getDataCriacao());
-            $this->ultimaAtulizacao = Util::getDataFormatada($this->conteudo->getConjunto()->getUltimaModificacao()); {
+            $this->ultimaAtulizacao = Util::getDataFormatada($this->conteudo->getConjunto()->getUltimaModificacao());
+            {
                 $arrayRetorno = Doctrine::getTable("Usuarios")->getParticipantesConjunto($this->conteudo->getIdConjunto());
                 $this->quantidadeParticipantes = $arrayRetorno['quantidade'];
                 shuffle($arrayRetorno['participantes']);

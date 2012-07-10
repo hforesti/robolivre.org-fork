@@ -26,8 +26,14 @@ if (!isset($opcao))
                             <a data-toggle="modal" href="#modalAdd">Remover dos amigos</a>
                         </li>
         <?php
-    }
-    ?>
+    } else if ($usuario->getTipoSolicitacaoAmizade() == Usuarios::SOLICITADA_AMIZADE) {
+                                        ?>
+                                        <li>
+                                            <a href="">Aguardando solicitação</a>
+                                        </li>
+                                        <?php
+                                    }
+                                    ?>
                     <li class="divider"></li>
                     <li>
                         <a data-toggle="modal" href="#modalIgnore"><i class="icon-ban-circle icon-gray"></i> Ignorar usuário</a>

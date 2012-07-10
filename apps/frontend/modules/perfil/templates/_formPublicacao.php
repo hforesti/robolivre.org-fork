@@ -95,7 +95,7 @@
                     adicionarErro("Adicione um arquivo de imagem");
                     $("#error").show();
                     return false;
-                }else if($.inArray(partes[1], (Array('jpg', 'jpeg', 'png', 'gif'))) == -1){
+                }else if($.inArray(partes[1].toLowerCase(), (Array('jpg', 'jpeg', 'png', 'gif'))) == -1){
                     adicionarErro("Arquivo enviado não é uma imagem");
                     $("#error").show();
                     return false;
