@@ -8,10 +8,7 @@ lib/filter/doctrine/base/Base*
 lib/filter/doctrine/*Plugin/base/Base*
 lib/form/doctrine/base/Base*
 lib/form/doctrine/*Plugin/base/Base*
-lib/model/doctrine/base/Base*
-lib/model/doctrine/*Plugin/base/Base*
-lib/model/om/*
-lib/model/map/*
+lib/vendor/*
 
 .DS_Store
 /nbproject/private/
@@ -34,3 +31,8 @@ web/arquivosImprensa/*
 
 web/uploads/documentos/*
 
+/lib/robolivre/uploadFileJS/
+/lib/robolivre/PHPMailer/
+/lib/robolivre/htmlpurifier-4.4.0/
+/lib/robolivre/tipografia/
+/lib/robolivre/exceptions/
