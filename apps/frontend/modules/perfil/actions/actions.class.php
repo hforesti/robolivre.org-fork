@@ -33,6 +33,16 @@ class perfilActions extends robolivreAction {
 
         $this->formPublicacao = new PublicacoesForm();
     }
+    
+    public function executeIgnorar(sfWebRequest $request) {
+        $ultimaUrl = $request->getReferer();
+        $id = $request->getParameter('u');
+        $amizade = new Amigos();
+        $amizade->setSolicitacao($id);
+        Doctrine::getTable("Amigos")->recusarAmizade($amizade);
+        Doctrine::getTable("Ignorados")->ignorar($id);
+        $this->redirect($ultimaUrl);
+    }
 
     public function executeNovaSenha(sfWebRequest $request) {
         $id = $request->getParameter('u');

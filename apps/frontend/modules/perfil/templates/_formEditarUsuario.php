@@ -157,7 +157,7 @@ if ($valoresInciais['data_nascimento'] != null && $valoresInciais['data_nascimen
             <div class="control-group">
                 <label class="control-label" for="empresa">Empresa</label>
                 <div class="controls">
-                    <?php echo $form->getWidget('empresa')->render($form->getName() . "[empresa]", $valoresInciais['empresa'], array('class' => "span5", 'id' => 'profissao', 'placeholder' => "Nome da Empresa", 'type' => 'text')); ?>
+                    <?php echo $form->getWidget('empresa')->render($form->getName() . "[empresa]", $valoresInciais['empresa'], array('class' => "span5", 'id' => 'empresa', 'placeholder' => "Nome da Empresa", 'type' => 'text')); ?>
                 </div>
             </div>
             <div class="control-group">
