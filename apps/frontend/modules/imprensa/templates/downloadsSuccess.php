@@ -4,7 +4,7 @@
 <h6>Imprensa</h6> 
     <ul class="nav nav-tabs nav-stacked">
         <li><a href="<?php echo url_for("imprensa/index") ?>">Robô Livre na mídia</a></li>
-        <li class="active"><a href="<?php echo url_for("imprensa/Downloads") ?>">Downloads</a></li>
+        <li class="active"><a href="<?php echo url_for("imprensa/downloads") ?>">Downloads</a></li>
     </ul>
 
     <hr>

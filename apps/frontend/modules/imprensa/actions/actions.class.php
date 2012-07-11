@@ -1,10 +1,10 @@
 <?php
 
 /**
- * imprensa actions.
+ * ajuda actions.
  *
  * @package    robolivre
- * @subpackage imprensa
+ * @subpackage ajuda
  * @author     Max Guenes
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
@@ -15,15 +15,8 @@ class imprensaActions extends robolivreAction
   *
   * @param sfRequest $request A request object
   */
-  public function executeIndex(sfWebRequest $request)
-  {
+  public function executeIndex(sfWebRequest $request){
       
   }
-  
-  public function executeDownloads(sfWebRequest $request)
-  {
-      
-  }
-  
-  
+  public function executeDownloads(sfWebRequest $request){}
 }
