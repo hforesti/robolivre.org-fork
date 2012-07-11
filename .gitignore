@@ -25,6 +25,8 @@ web/assets/js/2.0/*
 web/assets/js/2.0/bootstrap.min.js
 
 web/arquivosInstitucionais/*
+web/arquivosApresentacoes/*
+web/arquivosImprensa/*
 
 /test/
 
