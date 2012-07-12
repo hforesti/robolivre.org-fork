@@ -63,25 +63,18 @@
       </footer>
     </div><!-- /container -->
 
-
-  <ol id="tourNoob">
-    <li data-id="form-status" data-text="Next: Steps">
-      <p>Joyride gives you everything you need to call out new features in your app or website.</p>
-    </li>
-    <li data-id="sidebar" data-text="Next: License">
-      <p>Get it running in 5 simple steps.</p>
-    </li>
-    <li data-id="tab-status" data-text="Next: Download">
-      <p>Feel free to use the plugin however you want, it's covered under the MIT license!</p>
-    </li>
-    <li data-id="tabs-home" data-text="Next: GitHub">
-      <p>Grab this kit and start using it in your own projects!</p>
-    </li>
-    <li data-id="status-03" data-text="Close">
-      <p>Feel like contributing? Get on over to GitHub and do your thing.</p>
-    </li>
-  </ol>
-
+<!-- Modal download do logotipo -->
+<div class="modal fade" id="modalLogo">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal" title="Fechar">×</a>
+    <h3>Precisando do nosso logotipo?</h3>
+  </div>
+  <div class="modal-body">
+		<div class="row-fluid">
+		<a href="arquivosImprensa/logos.zip" class="btn btn-success span12">Baixe o arquivo em alta qualidade <i class="icon-download icon-white"></i></a>
+		</div>
+  </div>
+</div>
 
     <!-- Le javascript
     ================================================== -->
@@ -93,9 +86,11 @@
     <script src="assets/js/autoSuggestv14/jquery.autoSuggest.minified.js"></script>
     <script src="assets/js/file-uploader/fileuploader.js"></script>
 
-    <!-- carregar para usuários novos -->
+    <!-- TOUR - carregar para usuários novos -->
+    <link href="assets/js/joyride/joyride-1.0.3.css" rel="stylesheet">
     <script src="assets/js/joyride/jquery.joyride-1.0.3.js"></script>
 
+    <!-- JS da aplicacao -->
     <script src="assets/js/main-robolivre.js"></script>
     
 	<script type="text/javascript">
@@ -154,7 +149,6 @@ function rlGoSearchResult(item) {
 	alert(i);
 	/* $('.as-result-item a').click(); */
 }
-
 	//estilo no focus do autosuggest
 	$(".as-input").focus(function() {
 		$(this).parent().parent().addClass("as-selections-focus");
@@ -162,9 +156,7 @@ function rlGoSearchResult(item) {
 	$(".as-input").blur(function() {
 		$(this).parent().parent().removeClass("as-selections-focus");
 	});
-
 	</script>
-
 
 <div class="fade-rl"></div>
   </body>
