@@ -481,3 +481,28 @@ function getForcaSenha(inputPassword,spanHelp) {
     return erro;
 
 }
+
+//right click logo
+$('.navbar .brand').bind('contextmenu', function(e){
+    e.preventDefault();
+        $('#modalLogo').modal()
+    return false;
+});
+
+//tour do início
+$('#goTourNoob').click(function(){
+    $(this).joyride({
+      'tipLocation': 'bottom',
+      'scrollSpeed': 300,
+      'nextButton': true,
+      'tipAnimation': 'fade',
+      'tipAnimationFadeSpeed': 500,
+      'cookieMonster': false,
+      'inline': true,
+      'tipContent': '#tourNoob'
+    });
+});
+
+function teste(){
+    alert('terminou')  
+}

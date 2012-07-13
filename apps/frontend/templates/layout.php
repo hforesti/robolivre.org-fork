@@ -177,8 +177,8 @@
                     <h4><a href="<?php echo url_for("imprensa/index") ?>">Imprensa</a></h4>
                     <ul>
                         <li><a href="<?php echo url_for("imprensa/index") ?>">Robô Livre na mídia</a></li>
-                        <li><a href="http://blog.robolivre.org">Blog</a></li>
                         <li><a href="<?php echo url_for("imprensa/downloads") ?>">Downloads</a></li>
+                        <li><a href="http://blog.robolivre.org" rel="external">Blog</a></li>
                     </ul>
                 </div>
 
