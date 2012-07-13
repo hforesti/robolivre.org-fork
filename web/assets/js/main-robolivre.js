@@ -491,6 +491,10 @@ $('.navbar .brand').bind('contextmenu', function(e){
 
 //tour do início
 $('#goTourNoob').click(function(){
+    playTourNoob()
+});
+
+function playTourNoob(){
     $(this).joyride({
       'tipLocation': 'bottom',
       'scrollSpeed': 300,
@@ -500,9 +504,5 @@ $('#goTourNoob').click(function(){
       'cookieMonster': false,
       'inline': true,
       'tipContent': '#tourNoob'
-    });
-});
-
-function teste(){
-    alert('terminou')  
+    }); 
 }

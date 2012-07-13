@@ -1,5 +1,20 @@
 <!--#include virtual="includes/header.html" -->
 
+<!-- TOUR - alerta que carrega apenas para usuários novos -->
+		<div class="row hidden-phone">
+			<div class="alert alert-success span5 offset3">
+
+			  <a class="close" data-dismiss="alert" href="#" title="Não quero fazer o tour rápido">×</a>
+			  <h2>Olá, Rodrigo!</h2>
+			  	<p>Que tal conhecer esta sua Página de Início? É super simples!</p>
+			  	
+				<a data-dismiss="alert" href="#" class="btn btn-success row-fluid" id="goTourNoob"><i class="icon-ok icon-white"></i> Me leve para um passeio pela página</a>
+			  	
+			</div>
+
+		</div>
+<!-- /TOUR - alerta -->
+
 <div class="row">
 
 <div class="span2" id="sidebar">
@@ -96,8 +111,8 @@
 
 <div class="tab-content">
 <ul class="nav nav-tabs pull-right" id="tabs-home">
-	<li class="no-link">
-		<h6 id="tourTabs">Atualizações recentes de:</h6>
+	<li class="no-link" id="tourTabs">
+		<h6>Atualizações recentes de:</h6>
 	</li>
   <li class="active">
     <a href="#1" data-toggle="tab"><h3><i class="icon-tag icon-gray"></i> Conteúdos</h3></a>
@@ -971,36 +986,15 @@
       <p><span class="label label-info">2 de 4</span></p>
       <p>Já aqui você acessa todos os itens da sua Página de Início, coisas como a lista de Conteúdos que você seguir e seus amigos.</p>
     </li>
-    <li data-id="tourTabs" data-text="Próximo <i class='icon-chevron-right icon-white'></i>">
+    <li data-id="form-status" data-text="Próximo <i class='icon-chevron-right icon-white'></i>">
       <p><span class="label label-info">3 de 4</span></p>
-      <p>Nestas abas você acompanha todas as atividades que acontecem nos conteúdos que seguir ou nos perfis dos amigos que adicionar. Você já está seguindo automaticamente o conteúdo "Robótica".</p>
+      <p>Com este formulário você atualiza o mural do seu perfil. Use para compartilhar com seus amigos Links, Imagens e Vídeos legais sobre robótica.</p>
     </li>
-    <li data-id="form-status" data-text="Pronto. Comece a usar a rede! <i class='icon-ok-sign icon-white'></i>">
+    <li data-id="tourTabs" data-text="Pronto. Comece a usar a rede! <i class='icon-ok-sign icon-white'></i>">
       <p><span class="label label-info">4 de 4</span></p>
-      <p>E é com esse formulário que você atualiza o mural do seu perfil. Use para compartilhar com seus amigos Links, Imagens e Vídeos legais sobre robótica.</p>
+      <p>E nestas abas você acompanha todas as atividades que acontecem nos perfis de amigos e nos conteúdos que seguir. Você já está seguindo automaticamente o conteúdo "Robótica".</p>
     </li>
 </ol>
 
-<div class="row-fluid">
-<div class="alert span12">
-  <a class="close" data-dismiss="alert" href="#">×</a>
-  <i class="icon-question-sign icon-gray"></i> Perdido? <a href="#modalInfo" data-toggle="modal"> Faça um tour rápido e conheça esta sua Página de Início</a>
-</div>
-</div>
-
-<!-- Modal que aparece apenas uma vez para usuários novos -->
-<div class="modal fade" id="modalInfo">
-  <div class="modal-header">
-    <h3>Olá, Rodrigo!</h3>
-  </div>
-  <div class="modal-body">
-	<p class="lead">Que tal conhecer rapidamente esta sua Página de Início? <br>É super simples!</p>
-  </div>
-  <div class="modal-footer">
-    <div class="row-fluid">
-      <a href="#" class="btn btn-primary btn-large span12" id="goTourNoob" data-dismiss="modal"><i class="icon-ok icon-white"></i> Me leve para um tour rápido</a><hr>
-    </div>
-  </div>
-</div>
 
 <!--#include virtual="includes/footer.html" -->
