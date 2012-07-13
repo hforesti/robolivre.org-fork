@@ -21,6 +21,7 @@ class LogsSistema extends BaseLogsSistema
     const CRIOU_CONTEUDO = 7;
     const PARTICIPAR_COMUNIDADE = 8;
     const CRIOU_COMUNIDADE = 9;
+    const IGNOROU_USUARIO = 10;
     const SEPARADOR = "[*]";
     
     
@@ -36,6 +37,7 @@ class LogsSistema extends BaseLogsSistema
             7 => "Criou conteúdo",
             8 => "Solicitou participação na comunidade",
             9 => "Criou comunidade",
+            10 => "Ignorou usuário",
         );
         
         return $DESCRICOES_LOGS[$idTipo];

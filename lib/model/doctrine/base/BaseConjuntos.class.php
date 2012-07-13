@@ -97,7 +97,8 @@ abstract class BaseConjuntos extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
-             'notnull' => false,
+             'default' => '0000-00-00 00:00:00',
+             'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
              ));

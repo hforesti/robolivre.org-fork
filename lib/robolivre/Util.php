@@ -551,6 +551,22 @@ class Util {
             <div>Obrigado,</div>
             <div>Ethnos - O robô de perfil e cadastro</div>";
     }
+    
+    public static function getTextoEmailMigracao($urlComToken, $nomeUsuario) {
+        return
+                "   <div><br></div><div>Olá $nomeUsuario,</div>
+            <div>A robolivre.org está com uma nova versão mais simples e fácil de usar. 
+                    Para que você possa compartilhar e acompanhar temas da robótica livre, 
+                    sem necessidade da criação de um novo cadastro, precisamos que você 
+                    redefina a sua senha acessando o link a seguir:</div>
+            <div>$urlComToken</div>
+            <div><br></div>
+            <div>Com dois passos simples, você irá migrar seu perfil da nossa rede antiga para a nova em folha.</div>
+            <div>Tem dúvidas? Entre em contato: http://robolivre.org/contato</div>
+            <div><br></div>
+            <div>Muito obrigada,</div>
+            <div>Equipe Robô Livre</div>";
+    }
 
     public static function getTextoEmailReportarErro($mensagem, $nomeUsuario, $email, $mensagemSisetma = null) {
         $string =

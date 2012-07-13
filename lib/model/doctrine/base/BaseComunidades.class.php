@@ -12,17 +12,20 @@ Doctrine_Manager::getInstance()->bindComponent('Comunidades', 'doctrine');
  * @property integer $id_conjunto
  * @property string $nome
  * @property string $descricao
+ * @property timestamp $data_solicitacao
  * 
  * @method integer     getIdComunidade()     Returns the current record's "id_comunidade" value
  * @method integer     getIdTipoConjunto()   Returns the current record's "id_tipo_conjunto" value
  * @method integer     getIdConjunto()       Returns the current record's "id_conjunto" value
  * @method string      getNome()             Returns the current record's "nome" value
  * @method string      getDescricao()        Returns the current record's "descricao" value
+ * @method timestamp   getDataSolicitacao()  Returns the current record's "data_solicitacao" value
  * @method Comunidades setIdComunidade()     Sets the current record's "id_comunidade" value
  * @method Comunidades setIdTipoConjunto()   Sets the current record's "id_tipo_conjunto" value
  * @method Comunidades setIdConjunto()       Sets the current record's "id_conjunto" value
  * @method Comunidades setNome()             Sets the current record's "nome" value
  * @method Comunidades setDescricao()        Sets the current record's "descricao" value
+ * @method Comunidades setDataSolicitacao()  Sets the current record's "data_solicitacao" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -75,6 +78,15 @@ abstract class BaseComunidades extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => '',
+             ));
+        $this->hasColumn('data_solicitacao', 'timestamp', 25, array(
+             'type' => 'timestamp',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 25,
              ));
     }
 

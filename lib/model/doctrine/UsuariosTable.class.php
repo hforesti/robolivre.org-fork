@@ -16,6 +16,26 @@ class UsuariosTable extends Doctrine_Table {
         return Doctrine_Core::getTable('Usuarios');
     }
 
+    public function usuariosSemSenha() {
+        $sql = "SELECT email, token, id_usuario FROM usuarios WHERE senha = ''";
+        $conn = Doctrine_Manager::getInstance()->getCurrentConnection()->getDbh();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $usuarios = array();
+        $rows = $stmt->fetchAll();
+
+        foreach ($rows as $row) {
+
+            $u = new Usuarios();
+            $u->setToken($row['token']);
+            $u->setEmail($row['email']);
+            $u->setIdUsuario($row['id_usuario']);
+            $usuarios[] = $u;
+        }
+
+        return $usuarios;
+    }
+
     public function validaToken($idUsuario, $token) {
 
         $q = Doctrine_Query::create()

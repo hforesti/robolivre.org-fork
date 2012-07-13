@@ -177,11 +177,11 @@ class Publicacoes extends BasePublicacoes {
             }else if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_SOMENTE_AMIGOS){
                 $string .= "<li class=\"visivel-para\"><i class=\"icon-user\" title=\"Só para amigos\"></i></li>";
                 $comPermaLink = false;
-                $comMenuDropDown = false;
+                $comMenuDropDown = true;
             }else if($this->getPrivacidadePublicacao() == self::PRIVACIDADE_PRIVADA){
                 $string .= "<li class=\"visivel-para\"><i class=\"icon-lock\" title=\"Privado\"></i></li>";
                 $comPermaLink = false;
-                $comMenuDropDown = false;
+                $comMenuDropDown = true;
             }
             
             if($comPermaLink){

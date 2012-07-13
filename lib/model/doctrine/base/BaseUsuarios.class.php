@@ -25,64 +25,67 @@ Doctrine_Manager::getInstance()->bindComponent('Usuarios', 'doctrine');
  * @property integer $ativo
  * @property string $imagem_perfil
  * @property string $twitter
- * @property string $parametros_email
+ * @property string $parametros_privacidade
  * @property integer $aula_robolivre
  * @property string $profissao
  * @property string $escola
  * @property string $empresa
  * @property timestamp $data_criacao_perfil
+ * @property string $parametros_email
  * @property string $token
  * 
- * @method integer   getIdUsuario()           Returns the current record's "id_usuario" value
- * @method integer   getNivelEscolaridade()   Returns the current record's "nivel_escolaridade" value
- * @method string    getNome()                Returns the current record's "nome" value
- * @method string    getLogin()               Returns the current record's "login" value
- * @method string    getSenha()               Returns the current record's "senha" value
- * @method string    getEmail()               Returns the current record's "email" value
- * @method string    getEndereco()            Returns the current record's "endereco" value
- * @method string    getHabilidades()         Returns the current record's "habilidades" value
- * @method string    getCurso()               Returns the current record's "curso" value
- * @method string    getSite()                Returns the current record's "site" value
- * @method string    getSiteEmpresa()         Returns the current record's "site_empresa" value
- * @method date      getDataNascimento()      Returns the current record's "data_nascimento" value
- * @method integer   getSexo()                Returns the current record's "sexo" value
- * @method integer   getAdministrador()       Returns the current record's "administrador" value
- * @method string    getSobreMim()            Returns the current record's "sobre_mim" value
- * @method integer   getAtivo()               Returns the current record's "ativo" value
- * @method string    getImagemPerfil()        Returns the current record's "imagem_perfil" value
- * @method string    getTwitter()             Returns the current record's "twitter" value
- * @method string    getParametrosEmail()     Returns the current record's "parametros_email" value
- * @method integer   getAulaRobolivre()       Returns the current record's "aula_robolivre" value
- * @method string    getProfissao()           Returns the current record's "profissao" value
- * @method string    getEscola()              Returns the current record's "escola" value
- * @method string    getEmpresa()             Returns the current record's "empresa" value
- * @method timestamp getDataCriacaoPerfil()   Returns the current record's "data_criacao_perfil" value
- * @method string    getToken()               Returns the current record's "token" value
- * @method Usuarios  setIdUsuario()           Sets the current record's "id_usuario" value
- * @method Usuarios  setNivelEscolaridade()   Sets the current record's "nivel_escolaridade" value
- * @method Usuarios  setNome()                Sets the current record's "nome" value
- * @method Usuarios  setLogin()               Sets the current record's "login" value
- * @method Usuarios  setSenha()               Sets the current record's "senha" value
- * @method Usuarios  setEmail()               Sets the current record's "email" value
- * @method Usuarios  setEndereco()            Sets the current record's "endereco" value
- * @method Usuarios  setHabilidades()         Sets the current record's "habilidades" value
- * @method Usuarios  setCurso()               Sets the current record's "curso" value
- * @method Usuarios  setSite()                Sets the current record's "site" value
- * @method Usuarios  setSiteEmpresa()         Sets the current record's "site_empresa" value
- * @method Usuarios  setDataNascimento()      Sets the current record's "data_nascimento" value
- * @method Usuarios  setSexo()                Sets the current record's "sexo" value
- * @method Usuarios  setAdministrador()       Sets the current record's "administrador" value
- * @method Usuarios  setSobreMim()            Sets the current record's "sobre_mim" value
- * @method Usuarios  setAtivo()               Sets the current record's "ativo" value
- * @method Usuarios  setImagemPerfil()        Sets the current record's "imagem_perfil" value
- * @method Usuarios  setTwitter()             Sets the current record's "twitter" value
- * @method Usuarios  setParametrosEmail()     Sets the current record's "parametros_email" value
- * @method Usuarios  setAulaRobolivre()       Sets the current record's "aula_robolivre" value
- * @method Usuarios  setProfissao()           Sets the current record's "profissao" value
- * @method Usuarios  setEscola()              Sets the current record's "escola" value
- * @method Usuarios  setEmpresa()             Sets the current record's "empresa" value
- * @method Usuarios  setDataCriacaoPerfil()   Sets the current record's "data_criacao_perfil" value
- * @method Usuarios  setToken()               Sets the current record's "token" value
+ * @method integer   getIdUsuario()              Returns the current record's "id_usuario" value
+ * @method integer   getNivelEscolaridade()      Returns the current record's "nivel_escolaridade" value
+ * @method string    getNome()                   Returns the current record's "nome" value
+ * @method string    getLogin()                  Returns the current record's "login" value
+ * @method string    getSenha()                  Returns the current record's "senha" value
+ * @method string    getEmail()                  Returns the current record's "email" value
+ * @method string    getEndereco()               Returns the current record's "endereco" value
+ * @method string    getHabilidades()            Returns the current record's "habilidades" value
+ * @method string    getCurso()                  Returns the current record's "curso" value
+ * @method string    getSite()                   Returns the current record's "site" value
+ * @method string    getSiteEmpresa()            Returns the current record's "site_empresa" value
+ * @method date      getDataNascimento()         Returns the current record's "data_nascimento" value
+ * @method integer   getSexo()                   Returns the current record's "sexo" value
+ * @method integer   getAdministrador()          Returns the current record's "administrador" value
+ * @method string    getSobreMim()               Returns the current record's "sobre_mim" value
+ * @method integer   getAtivo()                  Returns the current record's "ativo" value
+ * @method string    getImagemPerfil()           Returns the current record's "imagem_perfil" value
+ * @method string    getTwitter()                Returns the current record's "twitter" value
+ * @method string    getParametrosPrivacidade()  Returns the current record's "parametros_privacidade" value
+ * @method integer   getAulaRobolivre()          Returns the current record's "aula_robolivre" value
+ * @method string    getProfissao()              Returns the current record's "profissao" value
+ * @method string    getEscola()                 Returns the current record's "escola" value
+ * @method string    getEmpresa()                Returns the current record's "empresa" value
+ * @method timestamp getDataCriacaoPerfil()      Returns the current record's "data_criacao_perfil" value
+ * @method string    getParametrosEmail()        Returns the current record's "parametros_email" value
+ * @method string    getToken()                  Returns the current record's "token" value
+ * @method Usuarios  setIdUsuario()              Sets the current record's "id_usuario" value
+ * @method Usuarios  setNivelEscolaridade()      Sets the current record's "nivel_escolaridade" value
+ * @method Usuarios  setNome()                   Sets the current record's "nome" value
+ * @method Usuarios  setLogin()                  Sets the current record's "login" value
+ * @method Usuarios  setSenha()                  Sets the current record's "senha" value
+ * @method Usuarios  setEmail()                  Sets the current record's "email" value
+ * @method Usuarios  setEndereco()               Sets the current record's "endereco" value
+ * @method Usuarios  setHabilidades()            Sets the current record's "habilidades" value
+ * @method Usuarios  setCurso()                  Sets the current record's "curso" value
+ * @method Usuarios  setSite()                   Sets the current record's "site" value
+ * @method Usuarios  setSiteEmpresa()            Sets the current record's "site_empresa" value
+ * @method Usuarios  setDataNascimento()         Sets the current record's "data_nascimento" value
+ * @method Usuarios  setSexo()                   Sets the current record's "sexo" value
+ * @method Usuarios  setAdministrador()          Sets the current record's "administrador" value
+ * @method Usuarios  setSobreMim()               Sets the current record's "sobre_mim" value
+ * @method Usuarios  setAtivo()                  Sets the current record's "ativo" value
+ * @method Usuarios  setImagemPerfil()           Sets the current record's "imagem_perfil" value
+ * @method Usuarios  setTwitter()                Sets the current record's "twitter" value
+ * @method Usuarios  setParametrosPrivacidade()  Sets the current record's "parametros_privacidade" value
+ * @method Usuarios  setAulaRobolivre()          Sets the current record's "aula_robolivre" value
+ * @method Usuarios  setProfissao()              Sets the current record's "profissao" value
+ * @method Usuarios  setEscola()                 Sets the current record's "escola" value
+ * @method Usuarios  setEmpresa()                Sets the current record's "empresa" value
+ * @method Usuarios  setDataCriacaoPerfil()      Sets the current record's "data_criacao_perfil" value
+ * @method Usuarios  setParametrosEmail()        Sets the current record's "parametros_email" value
+ * @method Usuarios  setToken()                  Sets the current record's "token" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -129,14 +132,14 @@ abstract class BaseUsuarios extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 45,
              ));
-        $this->hasColumn('senha', 'string', 255, array(
+        $this->hasColumn('senha', 'string', 45, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 255,
+             'length' => 45,
              ));
         $this->hasColumn('email', 'string', 100, array(
              'type' => 'string',
@@ -257,14 +260,14 @@ abstract class BaseUsuarios extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 100,
              ));
-        $this->hasColumn('parametros_email', 'string', 100, array(
+        $this->hasColumn('parametros_privacidade', 'string', 255, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,
-             'length' => 100,
+             'length' => 255,
              ));
         $this->hasColumn('aula_robolivre', 'integer', 4, array(
              'type' => 'integer',
@@ -312,14 +315,23 @@ abstract class BaseUsuarios extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 25,
              ));
-        $this->hasColumn('token', 'string', 20, array(
+        $this->hasColumn('parametros_email', 'string', 255, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
-             'notnull' => false,
+             'notnull' => true,
              'autoincrement' => false,
-             'length' => 20,
+             'length' => 255,
+             ));
+        $this->hasColumn('token', 'string', 255, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 255,
              ));
     }
 
