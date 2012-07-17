@@ -125,7 +125,7 @@
                                             <?php
                                             $quantidadeSolicitacoes = UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes();
                                             ?>
-                                            <a href="<?php echo url_for('perfil/notificacoes') ?>"><i class="icon-asterisk icon-gray"></i><?php if ($quantidadeSolicitacoes){ ?><span class="badge badge-warning"><?php echo $quantidadeSolicitacoes ?></span> <?php } ?>Solicitações de amizade</a>
+                                            <a href="<?php echo url_for('perfil/notificacoes') ?>"><i class="icon-asterisk icon-gray"></i><?php if ($quantidadeSolicitacoes){ ?><span class="badge badge-warning"><?php echo $quantidadeSolicitacoes ?></span><?php } ?> Solicitações de amizade</a>
                                         </li>
                                         <li class="divider"></li>
                                         <li>
