@@ -102,6 +102,9 @@ $(window).load(function(){
             opacity: 1,
         }, 250);
     });
+    $('#explore .form-search').submit(function() {
+        return false
+    });
 
     //foca no item na lista
     $('#stream .vcard .drop-options').children().hover(function() {

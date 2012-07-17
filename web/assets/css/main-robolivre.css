@@ -852,6 +852,8 @@ ul.as-selections-focus {
   /* IE6-9 */
 
 }
+#explore .as-selections input {color:#999;}
+#explore .as-selections-focus input {color:#000;}
 #explore ul.as-selections {
 	border-radius:20px;
 }
@@ -952,6 +954,14 @@ ul.as-selections li.as-original input {
 	height: 18px;
 	padding-top: 3px;
 }
+
+#explore .as-original {
+	width: 90%
+}
+#explore .as-original input {
+	width: 100%
+}
+#explore .as-results {margin-left: 5px}
 
 ul.as-list {
 	position: absolute;

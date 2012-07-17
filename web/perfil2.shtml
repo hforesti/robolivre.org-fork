@@ -42,9 +42,15 @@
 
 <div class="span7">
 
-<!-- modelo de mensagens -->
-<!-- <span class="alert pull-right">Aguardando resposta da sua solicitação de amizade.</span>
-<span class="alert alert-error pull-right">Usuário ignorado</span> -->
+<!-- modelo de mensagen de esperando solicitacao -->
+<!-- <div class="row-fluid">
+	<span class="alert span12"><i class="icon-exclamation-sign icon-gray"></i> Aguardando resposta da sua solicitação de amizade</span>
+</div> -->
+
+<!-- modelo de mensagen de ignorado -->
+<!-- <div class="row-fluid">
+<span class="alert alert-error span12"><i class="icon-exclamation-sign icon-gray"></i> Usuário ignorado</span>
+</div> -->
 
 <div class="well">
 <p><strong>Interaction Designer</strong> em Robô Livre ‧ <strong>Sexo:</strong> Masculino ‧ <strong>Idade:</strong> 30 anos</p>
