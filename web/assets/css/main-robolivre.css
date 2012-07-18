@@ -135,13 +135,13 @@ body.home .top-login {
 	}
 	.btn-navbar {border-radius: 6px}
 	.navbar .btn-navbar .icon-bar {background-color: #08c}
-	#login-form ul.extras {
+	.home #login-form ul.extras {
 		margin: 0;
 		position: relative;
 		list-style: none
 	}
 
-	#login-form #login, #login-form #login-pass {width: 35%}
+	.home #login-form #login, .home #login-form #login-pass {width: 35%}
 	#esqueci {
 		position: absolute;
 		top: 0;
@@ -753,6 +753,8 @@ table .col-sec {width: 10%}
 .img-step.step2 {background: url(../img/rl/tutorial123_2.png) no-repeat center;}
 .img-step.step3 {background: url(../img/rl/tutorial123_3.png) no-repeat center;}
 
+#modalLogin #login-form .checkbox {margin-top: 10px}
+
 .fourofour {background: url(../img/rl/404.png) no-repeat bottom center; padding-bottom:280px;}
 
 /* WYSIWYG Editor */
@@ -1224,7 +1226,7 @@ body{padding-top:0;}
 	float: left;
 	width: 60%
 }
-#login-form #login, #login-form #login-pass {
+.home #login-form #login, .home #login-form #login-pass {
 	display: block;
 	margin-bottom: 5px;
 	width: 100%
@@ -1282,7 +1284,7 @@ footer .pull-left {width:100%;}
 
 #searchsubmit {display: none}
 
-#login-form #login, #login-form #login-pass {width: 32%}
+.home #login-form #login, .home #login-form #login-pass {width: 32%}
 #top-login {width: 300px}
 #esqueci {left: 110px}
 
@@ -1307,7 +1309,7 @@ footer .pull-left {width:25%;}
 
 #searchsubmit {display: none}
 
-#login-form #login, #login-form #login-pass {width: 32%}
+.home #login-form #login, .home #login-form #login-pass {width: 32%}
 #top-login {width: 300px}
 #esqueci {left: 110px}
 
