@@ -469,7 +469,7 @@ body.home .top-login {
 	}
 
 #co-workers ul {list-style:none; margin-left:0;}
-footer .pull-left {width: 45%;}
+footer .pull-left {width: 25%;}
 #co-workers li {float: left;}
 #co-workers .heading {margin:0 5px 0 20px;}
 #co-workers ul li a {
@@ -754,6 +754,17 @@ table .col-sec {width: 10%}
 .img-step.step3 {background: url(../img/rl/tutorial123_3.png) no-repeat center;}
 
 #modalLogin #login-form .checkbox {margin-top: 10px}
+
+#press-destaques {padding: 0 5%}
+#press-destaques ul {margin: 40px 0}
+#press-destaques li {
+	margin-bottom: 18px;
+	padding-bottom: 18px;
+	border-bottom: 1px dotted #f0f0f0;
+}
+#press-destaques li a:hover {text-decoration: none}
+#press-destaques li .veiculo {text-align: right}
+#press-destaques li:hover {border-bottom: 1px dotted #08C}
 
 .fourofour {background: url(../img/rl/404.png) no-repeat bottom center; padding-bottom:280px;}
 
@@ -1291,7 +1302,9 @@ footer .pull-left {width:100%;}
 #stream ul .vcard .entry {width: 80%}
 .textarea-comment {width: 91%;}
 
-footer .pull-left {width:25%;}
+footer .pull-left {width:100%;}
+#co-workers {float: none; clear: both;}
+
 #user-menu .nav-collapse a:hover {color:#005580}
 
 }
@@ -1321,7 +1334,7 @@ footer .pull-left {width:25%;}
 		margin-right:0
 	}
 .textarea-comment {width: 91%;}
-footer .pull-left {width:25%;}
+footer .pull-left {width:100%;}
 
 }
 
@@ -1331,6 +1344,7 @@ footer .pull-left {width:25%;}
 #esqueci {
 	left: 145px
 }
+footer .pull-left {width:45%;}
 
 }
 
