@@ -68,7 +68,7 @@
                 <div class="modal fade" id="modalLogin">
                     <div class="modal-header">
                         <a class="close" data-dismiss="modal">×</a>
-                        <h3>Entrar <?php echo $sf_context->getModuleName() . " " . $sf_context->getActionName() ?></h3>
+                        <h3>Entrar</h3>
                     </div>
                     <div class="modal-body">
                             <?php $form = new UsuariosForm(null, null, null, UsuariosForm::LOGIN); ?>
@@ -86,7 +86,10 @@
                     </div>
 
                     <div class="modal-footer">
-                        <a href="#" class="btn" data-dismiss="modal">Fechar</a>
+                        <div class="row-fluid">
+                  <a href="<?php echo url_for('inicial/cadastro') ?>" class="btn btn-success span12"><i class="icon-user icon-white"></i> Novo por aqui? Crie uma conta!</a>
+                </div>
+<!--                        <a href="#" class="btn" data-dismiss="modal">Fechar</a>-->
                     </div>
                 </div>
     <?php } ?>
