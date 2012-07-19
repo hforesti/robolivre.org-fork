@@ -235,7 +235,6 @@ class conteudosActions extends robolivreAction {
             $valores = $form->getTaintedValues();
 
             $objConteudo = $form->getObject();
-
             $objConteudo->setNome(Util::getHtmlPurificado($valores['nome']));
             $objConteudo->setDescricao(Util::getHtmlPurificadoDescricao($valores['descricao']));
 
@@ -574,8 +573,24 @@ class conteudosActions extends robolivreAction {
                 $diretorio_arquivo = Util::getDiretorioFotosPublicacoes(UsuarioLogado::getInstancia()->getIdUsuario());
                 $file = $form->getValue('foto');
                 $extension = $file->getExtension($file->getOriginalExtension());
+                $extensao = str_replace('.', '', strtolower($extension));
                 $nome_arquivo = 'img_publicacao_usu_' . UsuarioLogado::getInstancia()->getIdUsuario() . "_" . md5(time());
                 $file->save($diretorio_arquivo . '/' . $nome_arquivo . $extension);
+                
+                $img = new sfImage($diretorio_arquivo . '/' . $nome_arquivo . $extension, "image/{$extensao}");
+                    if ($img->getWidth() > 570) {
+                        $largura = $img->getWidth();
+                        $diferenca = 570 / $largura;
+                        $altura = $img->getHeight() * $diferenca;
+                        $img->resize(570, $altura);
+                    }
+                    if ($extensao != 'gif') {
+                        $img->setQuality(75);
+                        $img->saveAs($diretorio_arquivo . '/' . $nome_arquivo . $extension);
+                    }
+                    $img->thumbnail(60, 60);
+                    $img->setQuality(75);
+                    $img->saveAs($diretorio_arquivo . '/' . $nome_arquivo . '_60' . $extension);
 
 //                $thumbnail = new sfThumbnail(550, null);
 //                $thumbnail->loadFile($diretorio_arquivo . '/' . $nome_arquivo . $extension);

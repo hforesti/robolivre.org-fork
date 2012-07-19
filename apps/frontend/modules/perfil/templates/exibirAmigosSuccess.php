@@ -28,13 +28,13 @@
                     ?>">
                         <div class="span8">
                             <a href="<?php echo url_for('perfil/exibir?u=' . $amigo->getIdUsuario()) ?>" class="photo"><img src="<?php echo image_path($amigo->getImagemPerfilFormatada(Util::IMAGEM_MEDIA)) ?>" alt="<?php echo $amigo->getNome() ?>" title="<?php echo $amigo->getNome() ?>" class="thumbnail"></a> <h3><a href="<?php echo url_for('perfil/exibir?u=' . $amigo->getIdUsuario()) ?>"><?php
-                    echo $amigo->getNome();
+                    echo $amigo->getNome(); ?> </a> <?php
                     if ($amigo->getTipoSolicitacaoAmizade() == Usuarios::PROPRIO_USUARIO) {
-                        echo " <small>Olha só você!</small>";
+                        echo " ‧ <small>Olha só você!</small>";
                     } else if ($amigo->getTipoSolicitacaoAmizade() == Usuarios::AMIGO) {
-                        echo " <small>Seu amigo</small>";
+                        echo " ‧ <small>Seu amigo</small>";
                     }
-                    ?></a></h3>
+                    ?></h3>
                             <p class="meta"><?php if ($amigo->getProfissao() != "") { ?>
                                     <strong><?php echo $amigo->getProfissao() ?></strong>
                                     <?php if ($amigo->getEmpresa() != "") { ?>

@@ -48,11 +48,13 @@ if (!isset($nome_conteudo)) {
     </fieldset>
 
     <button type="submit" class="btn btn-primary" id="send" tabindex="2">Publicar</button>
-
+<?php /*
     <select name="privacidade_publicacao" id="privacidade-status">
         <option value="<?php echo Publicacoes::PRIVACIDADE_PUBLICA ?>">Público</option>
         <option value="<?php echo Publicacoes::PRIVACIDADE_SOMENTE_AMIGOS ?>">Só para amigos</option>
     </select>
+ */
+?>
 
 </form>
 
@@ -91,7 +93,8 @@ if (!isset($nome_conteudo)) {
             }
             
             var matches = $('#url_video').val().match(/http:\/\/(?:www\.)?youtube.*watch\?v=([a-zA-Z0-9\-_]+)/);
-            if (matches) {
+            var link_curto = $('#url_video').val().match(/http:\/\/(?:www\.)?youtu.be?([a-zA-Z0-9\-_]+)/);
+            if (!(matches || link_curto)) {
                 adicionarErro("Nossos robôs não identificaram o link como sendo do YouTube. Por favor tente novamente.");
                 $("#error").show();
                 return false;

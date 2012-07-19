@@ -16,6 +16,18 @@ class IgnoradosTable extends Doctrine_Table {
         return Doctrine_Core::getTable('Ignorados');
     }
 
+    public function removerIgnorar($id_usuario) {
+        $id = UsuarioLogado::getInstancia()->getIdUsuario();
+        $sql = "DELETE FROM ignorados 
+                WHERE (id_usuario = :id AND id_usuario_ignorado = :id_usuario) 
+                    OR (id_usuario = :id_usuario AND id_usuario_ignorado = :id)";
+        $conn = Doctrine_Manager::getInstance()->getCurrentConnection()->getDbh();
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':id_usuario', $id_usuario);
+        $stmt->execute();
+    }
+
     public function ignorar($id_usuario_ignorado) {
         if (!$this->estaIgnorado($id_usuario_ignorado)) {
             $usuario = UsuarioLogado::getInstancia()->getIdUsuario();
@@ -40,10 +52,12 @@ class IgnoradosTable extends Doctrine_Table {
     }
 
     public function estaIgnorado($id_usuario) {
-        $sql = "SELECT id_usuario_ignorado FROM ignorados WHERE id_usuario_ignorado = :id";
+        $id = UsuarioLogado::getInstancia()->getIdUsuario();
+        $sql = "SELECT id_usuario_ignorado FROM ignorados WHERE id_usuario_ignorado = :id AND id_usuario = :id_usuario";
         $conn = Doctrine_Manager::getInstance()->getCurrentConnection()->getDbh();
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':id', $id_usuario);
+        $stmt->bindParam(':id_usuario', $id);
         $stmt->execute();
         if ($stmt->rowCount()) {
             return true;

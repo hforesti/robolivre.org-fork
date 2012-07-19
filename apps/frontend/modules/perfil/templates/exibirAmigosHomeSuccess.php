@@ -21,7 +21,7 @@
             <?php 
             if (UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() > 0) { ?> 
                 <div class="alert">
-                    Você possui <strong><?php echo UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() ?> solicitações de amizade</strong> sem resposta. <a href="<?php echo url_for('perfil/notificacoes') ?>">Confira agora</a>.
+                    Você possui <strong><?php echo UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes(); if (UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes() > 1){echo " solicitações";}else{echo " solicitação";}?> de amizade</strong> sem resposta. <a href="<?php echo url_for('perfil/notificacoes') ?>">Confira agora</a>.
                 </div>
             <?php } ?>
 

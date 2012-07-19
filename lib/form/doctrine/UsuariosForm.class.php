@@ -266,8 +266,8 @@ class UsuariosForm extends BaseUsuariosForm {
             
             if ($this->getTipoFormulario() == self::CONFIGURACAO) {
 
-                $login = UsuarioLogado::getInstancia()->getEmail();
-                if($valores['senha']!="" && !Doctrine::getTable('Usuarios')->login($login, md5($valores['senha']))){
+                $login = UsuarioLogado::getInstancia()->getLogin();
+                if($valores['senha']!="" && !Doctrine::getTable('Usuarios')->login($login, Util::gerarSenha($valores['senha'],$login))){
                     $error = new sfValidatorError($this->validatorSchema['senha'], 'Senha informada não está correta. Verifique a digitação.');
                     $this->errorSchema->addError($error, 'senha');
                     $valido = false;

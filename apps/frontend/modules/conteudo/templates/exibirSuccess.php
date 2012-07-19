@@ -68,7 +68,7 @@ if ($tipoFiltro != "") {
         </div>
 
         <?php if ($conteudo->getDescricao() != "") { ?>
-            <div class="entry" id="main-entry">
+            <div class="entry" id="<?php if ($comBotaoMaisInformacao) { echo "main-entry";}?>">
                 <?php echo $conteudo->getDescricao(); ?>
             </div>
             <?php if ($comBotaoMaisInformacao) { ?>

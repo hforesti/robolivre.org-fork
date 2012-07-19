@@ -33,7 +33,7 @@ class perfilActions extends robolivreAction {
 
         $this->formPublicacao = new PublicacoesForm();
     }
-    
+
     public function executeIgnorar(sfWebRequest $request) {
         $ultimaUrl = $request->getReferer();
         $id = $request->getParameter('u');
@@ -135,11 +135,15 @@ class perfilActions extends robolivreAction {
 
 
         $id = $request->getParameter("u");
+        $this->ignorado = null;
 
         if (!isset($id) || $id == UsuarioLogado::getInstancia()->getIdUsuario()) {
             $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia());
         } else {
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
+            if (Doctrine::getTable("Ignorados")->estaIgnorado($id)){
+                $this->ignorado = true;
+            }
         }
 
         $this->forward404Unless($this->usuario); {
@@ -272,10 +276,27 @@ class perfilActions extends robolivreAction {
                 $file = $form->getValue('foto');
 
                 $extension = $file->getExtension($file->getOriginalExtension());
+                $extensao = str_replace('.', '', strtolower($extension));
 
                 $nome_arquivo = 'img_publicacao_usu_' . UsuarioLogado::getInstancia()->getIdUsuario() . "_" . md5(time());
 
                 $file->save($diretorio_arquivo . '/' . $nome_arquivo . $extension);
+                
+                    $img = new sfImage($diretorio_arquivo . '/' . $nome_arquivo . $extension, "image/{$extensao}");
+                    if ($img->getWidth() > 570) {
+                        $largura = $img->getWidth();
+                        $diferenca = 570 / $largura;
+                        $altura = $img->getHeight() * $diferenca;
+                        $img->resize(570, $altura);
+                    }
+                    if ($extensao != 'gif') {
+                        $img->setQuality(75);
+                        $img->saveAs($diretorio_arquivo . '/' . $nome_arquivo . $extension);
+                    }
+                    $img->thumbnail(60, 60);
+                    $img->setQuality(75);
+                    $img->saveAs($diretorio_arquivo . '/' . $nome_arquivo . '_60' . $extension);
+                
 //                var_dump($file);
 //                die;
 //                $thumbnail = new sfThumbnail(550, null);
@@ -344,6 +365,9 @@ class perfilActions extends robolivreAction {
 
         if (isset($id) && $id != UsuarioLogado::getInstancia()->getIdUsuario()) {
             $amizade->setSolicitacao($id);
+
+            Doctrine::getTable('Ignorados')->removerIgnorar($id);
+
             Doctrine::getTable("Amigos")->aceitarAmizade($amizade);
             //UsuarioLogado::getInstancia()->removeSolicitacao($id);
             UsuarioLogado::getInstancia()->atualizaSolicitacoes();

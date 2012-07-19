@@ -39,7 +39,7 @@ class inicialActions extends robolivreAction {
         if ($usuario) {
             $link = url_for("perfil/novaSenha?token=" . $usuario->getToken() . "&u=" . $usuario->getIdUsuario(), true);
 
-            Util::enviarEmail("[robolivre.org] Redefinir senha", Util::getTextoEmailEsqueciSenha($link, $usuario->getNome()), $usuario->getEmail());
+            Util::enviarEmail("[robolivre.org] Redefinir senha", Util::getTextoEmailEsqueciSenha($link, $usuario->getNome(), $usuario->getLogin()), $usuario->getEmail());
 
             $this->mensagem = "$link <strong>Tudo bem!</strong> Um link para recuperar sua senha foi enviado para o seu email <em>" . $usuario->getEmail() . "</em>.";
         } else {
@@ -65,7 +65,7 @@ class inicialActions extends robolivreAction {
     public function executeCadastro(sfWebRequest $request) {
         $form = new UsuariosForm(null, null, null, UsuariosForm::SOMENTE_INFO_CADASTRO);
         $campos = $request->getParameter($form->getName());
-        
+
         if (isset($campos['nome']) || isset($campos['login']) || isset($campos['email'])) {
             $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         }
@@ -89,9 +89,15 @@ class inicialActions extends robolivreAction {
         }
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if ($form->isValid()) {
-
+            $senha = false;
             $login = $form->getValue('login');
-            $senha = md5($form->getValue('senha'));
+            if(strpos($login, '@') !== false){
+                
+                $u = Doctrine::getTable('Usuarios')->buscarPorEmail($login);
+                $senha = Util::gerarSenha($form->getValue('senha'), $u->getLogin());
+            }else{
+                $senha = Util::gerarSenha($form->getValue('senha'), $login);
+            }
 
             $objUsuario = Doctrine::getTable('Usuarios')->login($login, $senha);
 
@@ -126,7 +132,13 @@ class inicialActions extends robolivreAction {
         if ($form->isValid()) {
 
             $login = $form->getValue('login');
-            $senha = md5($form->getValue('senha'));
+            if(strpos($login, '@') !== false){
+                
+                $u = Doctrine::getTable('Usuarios')->buscarPorEmail($login);
+                $senha = Util::gerarSenha($form->getValue('senha'), $u->getLogin());
+            }else{
+                $senha = Util::gerarSenha($form->getValue('senha'), $login);
+            }
 
             $objUsuario = Doctrine::getTable('Usuarios')->login($login, $senha);
 

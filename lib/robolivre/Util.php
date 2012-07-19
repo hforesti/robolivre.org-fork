@@ -242,7 +242,8 @@ class Util {
 
             $nomeArquivo = self::getNomeReduzido($item['nome'], 40);
             $string .= "<tr>";
-            $string .= "    <td>" . ($item['novo'] ? "<span class=\"label label-info\">Novo</span> " : "") . "<a target='_blank' href=\"/$pasta/" . $item['arquivo'] . "\">" . $nomeArquivo . "</a></td>";
+            $string .= "    <td>" . ($item['novo'] ? "<span class=\"label label-info\">Novo</span> " : "") . 
+                            "<a target='_blank' href='".  urldecode(url_for("/$pasta/" . $item['arquivo'])) . "'>" . $nomeArquivo . "</a></td>";
             $string .= "    <td>" . strtoupper($item['extensao']) . "</td>";
             $string .= "    <td>" . strtoupper($item['tamanho']) . "</td>";
             $string .= "</tr>";
@@ -470,9 +471,9 @@ class Util {
         # Senha do usuÃ¡rio SMTP do GMail
         $mail->Password = "r0Bm.3eFsP";
 
-        $mail->From = "smtp@mixtecnologia.com.br";
+        $mail->From = "nao-responda@robolivre.org";
         # coloque aqui o seu correio, para que a autenticaÃ§Ã£o nÃ£o barre a mensagem
-        $mail->FromName = utf8_decode("Robolivre");
+        $mail->FromName = utf8_decode("Robô Livre");
 
         # EndereÃ§o do destinatÃ¡rio
         $mail->AddAddress($email);
@@ -537,11 +538,12 @@ class Util {
         return $purifier->purify($entrada);
     }
 
-    public static function getTextoEmailEsqueciSenha($urlComToken, $nomeUsuario) {
+    public static function getTextoEmailEsqueciSenha($urlComToken, $nomeUsuario, $login) {
         return
                 "   <div><br></div><div>Alguém solicitou que a sua senha fosse redefinida na seguinte conta:</div>
             <div><br></div>
-            <div>Nome de usuário: $nomeUsuario</div>
+            <div>Nome e sobrenome: $nomeUsuario</div>
+            <div>Nome de usuário: $login</div>
             <div><br></div>
             <div>Se for um mal entendido, apenas ignore este email e nada será alterado.</div>
             <div><br></div>
@@ -551,7 +553,7 @@ class Util {
             <div>Obrigado,</div>
             <div>Ethnos - O robô de perfil e cadastro</div>";
     }
-    
+
     public static function getTextoEmailMigracao($urlComToken, $nomeUsuario) {
         return
                 "   <div><br></div><div>Olá $nomeUsuario,</div>
@@ -609,12 +611,20 @@ class Util {
         }
         return $tamanho;
     }
-    
-    public static function trataNomeDocumento($documento){
+
+    public static function trataNomeDocumento($documento) {
         $partes = explode(".", $documento);
         $extensao = array_pop($partes);
-        $partes = explode("_".UsuarioLogado::getInstancia()->getIdUsuario()."_", $partes[0]);
-        return $partes[0].".".$extensao;
+        $partes = explode("_" . UsuarioLogado::getInstancia()->getIdUsuario() . "_", $partes[0]);
+        return $partes[0] . "." . $extensao;
+    }
+
+    public static function gerarSenha($senha, $login) {
+        $senha = md5($senha . $login);
+        for ($i = 0; $i < 1000; $i++) {
+            $senha = md5($senha);
+        }
+        return $senha;
     }
 
 }

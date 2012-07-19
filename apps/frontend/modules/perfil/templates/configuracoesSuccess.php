@@ -90,7 +90,7 @@ if(isset($erros['nome'])){
                             <?php  } ?>
                         </div>
                         <hr>
-
+                        <?php /*
                         <div class="control-group">
                             <label class="control-label">Conteúdos</label>
                             <?php $parametrosGrupo = ConfiguracoesEmailUsario::getParametrosDoGrupo(ConfiguracoesEmailUsario::GRUPO_CONTEUDO, $valoresInciais['parametros_email'])?>
@@ -105,6 +105,8 @@ if(isset($erros['nome'])){
                             <?php  } ?>
                         </div>
                         <hr>
+                         */
+                        ?>
                         <div class="control-group">
                             <label class="control-label">Informativo Robô livre</label>
                             <?php $parametrosGrupo = ConfiguracoesEmailUsario::getParametrosDoGrupo(ConfiguracoesEmailUsario::GRUPO_INFORMATIVO, $valoresInciais['parametros_email'])?>

@@ -354,7 +354,7 @@ class PublicacoesTable extends Doctrine_Table {
 
         $query .= " GROUP BY p.id_publicacao
         ORDER BY p.data_publicacao DESC
-        LIMIT 0, 10 ";
+        ";
 
         $queryCont = "SELECT count(*) as \"quantidade\"
         FROM publicacoes p 
@@ -408,7 +408,6 @@ class PublicacoesTable extends Doctrine_Table {
         if ($resultado) {
             foreach ($resultado as $reg) {
                 if (!Doctrine::getTable("Ignorados")->estaIgnorado($reg['id_usuario'])) {
-                    
                     //se já existe um objeto instanciado com esse id, não precisa instanciar novamente
                     if (isset($arrayPublicacoes[$reg['id_publicacao']])) {
                         $publicacao = $arrayPublicacoes[$reg['id_publicacao']];
@@ -461,7 +460,7 @@ class PublicacoesTable extends Doctrine_Table {
 
         $arrayRetorno['publicacoes'] = $arrayPublicacoes;
         $arrayRetorno['quantidade'] = $quantidade - $ignorados;
-
+        
         return $arrayRetorno;
     }
 

@@ -35,7 +35,7 @@ class ajaxActions extends sfActions {
 
             $link = url_for("perfil/novaSenha?token=" . $usuario->getToken() . "&u=" . $usuario->getIdUsuario(), true);
 
-            Util::enviarEmail("[robolivre.org] Redefinir senha", Util::getTextoEmailEsqueciSenha($link, $usuario->getNome()), $usuario->getEmail());
+            Util::enviarEmail("[robolivre.org] Redefinir senha", Util::getTextoEmailEsqueciSenha($link, $usuario->getNome(), $usuario->getLogin()), $usuario->getEmail());
 
             $mensagem = "<strong>Tudo bem!</strong> Um link para recuperar sua senha foi enviado para o seu email <em>" . $usuario->getEmail() . "</em>.";
         } else {
@@ -124,9 +124,13 @@ class ajaxActions extends sfActions {
         $id_ultima_publicacao = $request->getParameter('ultimo_id_publicacao');
 
         $publicacoesPerfil = Doctrine::getTable("Publicacoes")->getPublicacoesHomeConteudo($id_ultima_publicacao);
-
+        $i = 0;
         foreach ($publicacoesPerfil['publicacoes'] as $publicacao) {
             $publicacao->imprimir();
+            if ($i == 10) {
+                break;
+            }
+            $i++;
         }
 
         $this->mensagem = "";
@@ -148,7 +152,8 @@ class ajaxActions extends sfActions {
     public function executeAjaxValidacaoFormCadastro(sfWebRequest $request) {
 
         $mensagem = "";
-        $erros = null; {
+        $erros = null;
+        {
             $form = new UsuariosForm(null, null, null, UsuariosForm::SOMENTE_INFO_CADASTRO);
             $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
             $form->validaDadosIniciais();
@@ -187,7 +192,7 @@ class ajaxActions extends sfActions {
         // list of valid extensions, ex. array("jpeg", "xml", "bmp")
         $allowedExtensions = array('txt', 'rtf', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods', 'odg', 'fodg');
         // max file size in bytes
-        
+
         $sizeLimit = 8 * 1024 * 1024;
 
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);

@@ -53,7 +53,7 @@ class Usuarios extends BaseUsuarios
     }
 
     public function setSenha($senha) {
-        parent::_set('senha', md5($senha));
+        parent::_set('senha', Util::gerarSenha($senha, $this->getLogin()));
         return $this;
     }
     

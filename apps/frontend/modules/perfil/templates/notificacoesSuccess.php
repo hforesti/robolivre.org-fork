@@ -34,7 +34,7 @@ $quantidadeSolicitacoes = UsuarioLogado::getInstancia()->getQuantidadeSolicitaco
                             <?php if ($notificacao instanceof Amigos) { ?>
                                 <li class="vcard activity">
                                     <div class="notf">
-                                        <a href="<?php echo url_for('perfil/exibir') . "?u=" . $notificacao->getIdUsuarioA() ?>" class="photo"><img src="<?php echo Util::validaImagem($notificacao->getImagemPerfilUsuarioSolicitacao(), Util::IMAGEM_MEDIA, Util::TIPO_IMAGEM_USUARIO) ?>" alt="<?php echo $notificacao->getNomeUsuarioSolicitacao() ?>" title="<?php echo $notificacao->getNomeUsuarioSolicitacao() ?>"></a>
+                                        <a href="<?php echo url_for('perfil/exibir') . "?u=" . $notificacao->getIdUsuarioA() ?>" class="photo"><img src="<?php echo image_path(Util::validaImagem($notificacao->getImagemPerfilUsuarioSolicitacao(), Util::IMAGEM_MEDIA, Util::TIPO_IMAGEM_USUARIO)) ?>" alt="<?php echo $notificacao->getNomeUsuarioSolicitacao() ?>" title="<?php echo $notificacao->getNomeUsuarioSolicitacao() ?>"></a>
                                         <a href="<?php echo url_for('perfil/exibir') . "?u=" . $notificacao->getIdUsuarioA() ?>" class="fn"><?php echo $notificacao->getNomeUsuarioSolicitacao() ?></a> <span class="time" title="<?php echo Util::getDataFormatada($notificacao->getDataSolicitacao()) ?>"><?php echo Util::getDataSimplificada($notificacao->getDataSolicitacao()) ?></span>
                                     </div>
 
