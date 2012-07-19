@@ -235,7 +235,6 @@ class conteudosActions extends robolivreAction {
             $valores = $form->getTaintedValues();
 
             $objConteudo = $form->getObject();
-
             $objConteudo->setNome(Util::getHtmlPurificado($valores['nome']));
             $objConteudo->setDescricao(Util::getHtmlPurificadoDescricao($valores['descricao']));
 

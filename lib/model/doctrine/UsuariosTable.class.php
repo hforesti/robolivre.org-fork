@@ -795,5 +795,16 @@ class UsuariosTable extends Doctrine_Table {
             }
         }
     }
+    
+    public function buscarPorEmail($email){
+        $sql = "SELECT id_usuario FROM usuarios WHERE email = :email";
+        $conn = Doctrine_Manager::getInstance()->getCurrentConnection()->getDbh();
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':email',$email);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        
+        return $this->buscarPorId($result['id_usuario']);
+    }
 
 }

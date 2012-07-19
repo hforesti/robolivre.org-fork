@@ -75,9 +75,9 @@
                 $("#error").show();
                 return false;
             }
-            
+            var link_curto = $('#url_video').val().match(/http:\/\/(?:www\.)?youtu.be?([a-zA-Z0-9\-_]+)/);
             var matches = $('#url_video').val().match(/http:\/\/(?:www\.)?youtube.*watch\?v=([a-zA-Z0-9\-_]+)/);
-            if (!matches) {
+            if (!(matches || link_curto)) {
                 adicionarErro("Nossos robôs não identificaram o link como sendo do YouTube. Por favor tente novamente.");
                 $("#error").show();
                 return false;

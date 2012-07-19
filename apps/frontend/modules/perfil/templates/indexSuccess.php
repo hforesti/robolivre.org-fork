@@ -34,9 +34,13 @@
 <!-- <a href="#" class="btn btn-primary" id="refresh"><i class="icon-refresh icon-white"></i> 6 novas atualizações. Exibir agora.</a> -->
 
                     <ul id="ul-steam-conteudos">
-                        <?php foreach ($publicacoesHome['conteudos']['publicacoes'] as $publicacao) { ?>                    
+                        <?php $i=0;
+                        foreach ($publicacoesHome['conteudos']['publicacoes'] as $publicacao) { ?>                    
                             <?php
+                            
                             echo $publicacao->imprimir();
+                            if ($i==10){break;}
+                            $i++;
 
                             /* 'formPublicacao',array('form' => $formPublicacao,
                               'id_publicacao_original' => $publicacao->getIdPublicacao(),

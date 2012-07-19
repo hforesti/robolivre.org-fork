@@ -78,17 +78,17 @@
                     <div class="tab-pane active fade in" id="thumbs">
 
                         <ul>
-                            <?php foreach($melhoresConteudos as $conteudo){ ?>
-                            <li>
-                                <div class="thumbnail">
-                                    <?php $innerHTML = "<img src='" . image_path($conteudo->getImagemPerfil(Util::IMAGEM_GRANDE)) . "' alt='" . $conteudo->getNome() . "' title='" . $conteudo->getNome() . "'>"; ?>
-                                    <?php echo Util::getTagConteudoSlug($innerHTML, $conteudo->getNome()) ?>
-                                    <h4><?php echo $conteudo->getNome();?> </h4>
-                                    <?php if($conteudo->getTemaAula()){ ?>
-                                        <span class="label label-info">Tema de aula</span>
-                                    <?php } ?>
-                                </div>
-                            </li>
+                            <?php foreach ($melhoresConteudos as $conteudo) { ?>
+                                <li>
+                                    <div class="thumbnail">
+                                        <?php $innerHTML = "<img src='" . image_path($conteudo->getImagemPerfil(Util::IMAGEM_GRANDE)) . "' alt='" . $conteudo->getNome() . "' title='" . $conteudo->getNome() . "'>"; ?>
+                                        <?php echo Util::getTagConteudoSlug($innerHTML, $conteudo->getNome()) ?>
+                                        <h4><?php echo $conteudo->getNome(); ?> </h4>
+                                        <?php if ($conteudo->getTemaAula()) { ?>
+                                            <span class="label label-info">Tema de aula</span>
+                                        <?php } ?>
+                                    </div>
+                                </li>
                             <?php } ?>
                         </ul>
 
@@ -124,7 +124,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php Util::imprimeListaArquivos("arquivosApresentacoes",5) ?>
+                        <?php Util::imprimeListaArquivos("arquivosApresentacoes", 5) ?>
                     </tbody>
                 </table>
 
@@ -141,7 +141,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php Util::imprimeListaArquivos("arquivosPublicacoesCientificas",5) ?>
+                        <?php Util::imprimeListaArquivos("arquivosPublicacoesCientificas", 5) ?>
                     </tbody>
                 </table>
 
@@ -158,32 +158,32 @@
 
 <script src="<?php echo javascript_path("/assets/js/autoSuggestv14/jquery.autoSuggest.minified.js") ?>"></script>
 <script type="text/javascript">
-//<![CDATA[
+    //<![CDATA[
         
-        $("#search-content").autoSuggest("<?php echo url_for('ajax/ajaxAutoSuggestConteudo'); ?>", 
-        {
-            minChars: 2, 
-            matchCase: false,
-            resultsHighlight: true,
-            selectedItemProp: "name",
-            searchObjProps: "name",
-            startText: "Procurar conteúdo…",
-            emptyText: "Nenhuma sugestão encontrada",
-            resultClick: function(data){
-                try{
-                    url = url_for("conteudo/"+data['attributes']['slug']);
-                    window.location = url;
-                }catch(e){alert(e);}
-            },
+    $("#search-content").autoSuggest("<?php echo url_for('ajax/ajaxAutoSuggestConteudo'); ?>", 
+    {
+        minChars: 2, 
+        matchCase: false,
+        resultsHighlight: true,
+        selectedItemProp: "name",
+        searchObjProps: "name",
+        startText: "Procurar conteúdo…",
+        emptyText: "Nenhuma sugestão encontrada",
+        resultClick: function(data){
+            try{
+                url = url_for("conteudo/"+data['attributes']['slug']);
+                window.location = url;
+            }catch(e){alert(e);}
+        },
 
-            formatList: function(data, elem){
-                    //var new_elem = elem.html("<i class='icon-tag icon-gray'></i>"+ data.name);
-                    //return new_elem;
-                    var my_image = data.image;
-                    var new_elem = elem.html("<img src='"+my_image+"' alt='"+ data.name+"'><h4 style='display:inline'>"+ data.name+"<h4><a href='conteudo.shtml'></a><br clear='all'>");
-                    return new_elem;
-            }
-        });
+        formatList: function(data, elem){
+            //var new_elem = elem.html("<i class='icon-tag icon-gray'></i>"+ data.name);
+            //return new_elem;
+            var my_image = data.image;
+            var new_elem = elem.html("<img src='"+my_image+"' alt='"+ data.name+"'><h4 style='display:inline'>"+ data.name+"<h4><a href='conteudo.shtml'></a><br clear='all'>");
+            return new_elem;
+        }
+    });
         
 
     function getSlug(nome){
@@ -236,7 +236,6 @@
         }
         
     }//END validaForm
-    
     
     $('#form-criar').submit(function(){
         validaForm();

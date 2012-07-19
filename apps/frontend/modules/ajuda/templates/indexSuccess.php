@@ -3,8 +3,8 @@
 <div class="span4">
 <h6>Ajuda</h6>
     <ul class="nav nav-tabs nav-stacked">
-    <li class="active"><a href="ajuda.shtml">Iniciando no Robô Livre</a></li>
-    <li><a href="faq.shtml">Perguntas frequentes</a></li>
+    <li class="active"><a href="<?php echo url_for("ajuda/index"); ?>">Iniciando no Robô Livre</a></li>
+    <li><a href="<?php echo url_for("ajuda/perguntas"); ?>">Perguntas frequentes</a></li>
   </ul>
         <a href="profile-home.shtml" class="btn"><i class="icon-chevron-left icon-gray"></i> Início</a>
 </div>

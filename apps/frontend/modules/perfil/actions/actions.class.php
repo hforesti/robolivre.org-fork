@@ -18,7 +18,8 @@ class perfilActions extends robolivreAction {
         $this->iniciaTabAmigo = $request->hasParameter("i");
 
 
-        $this->publicacoesHome = Doctrine::getTable("Publicacoes")->getPublicacoesHome(); {
+        $this->publicacoesHome = Doctrine::getTable("Publicacoes")->getPublicacoesHome();
+        {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
             shuffle($arrayRetorno['conteudos']);
@@ -33,7 +34,7 @@ class perfilActions extends robolivreAction {
 
         $this->formPublicacao = new PublicacoesForm();
     }
-    
+
     public function executeIgnorar(sfWebRequest $request) {
         $ultimaUrl = $request->getReferer();
         $id = $request->getParameter('u');
@@ -142,7 +143,8 @@ class perfilActions extends robolivreAction {
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
         }
 
-        $this->forward404Unless($this->usuario); {
+        $this->forward404Unless($this->usuario);
+        {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
             shuffle($arrayRetorno['conteudos']);
@@ -202,7 +204,8 @@ class perfilActions extends robolivreAction {
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
         }
 
-        $this->forward404Unless($this->usuario); {
+        $this->forward404Unless($this->usuario);
+        {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
             shuffle($arrayRetorno['conteudos']);
@@ -217,7 +220,8 @@ class perfilActions extends robolivreAction {
 
     public function executeInformacaoHome(sfWebRequest $request) {
 
-        $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia()); {
+        $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia());
+        {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil($this->usuario->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
             shuffle($arrayRetorno['conteudos']);
@@ -325,7 +329,8 @@ class perfilActions extends robolivreAction {
     }
 
     public function executeNotificacoes(sfWebRequest $request) {
-        UsuarioLogado::getInstancia()->atualizaSolicitacoes(); {
+        UsuarioLogado::getInstancia()->atualizaSolicitacoes();
+        {
             $arrayRetorno = Doctrine::getTable("Conteudos")->getConteudosSeguidosPerfil(UsuarioLogado::getInstancia()->getIdUsuario());
             $this->quantidadeConteudoSeguido = $arrayRetorno['quantidade'];
             shuffle($arrayRetorno['conteudos']);
@@ -344,6 +349,9 @@ class perfilActions extends robolivreAction {
 
         if (isset($id) && $id != UsuarioLogado::getInstancia()->getIdUsuario()) {
             $amizade->setSolicitacao($id);
+
+            Doctrine::getTable('Ignorados')->removerIgnorar($id);
+
             Doctrine::getTable("Amigos")->aceitarAmizade($amizade);
             //UsuarioLogado::getInstancia()->removeSolicitacao($id);
             UsuarioLogado::getInstancia()->atualizaSolicitacoes();

@@ -7,7 +7,7 @@ if (!empty($taintedValues)) {
 
 if (!isset($conteudo)) {
     $evento = 'conteudos/gravar';
-    $imagem = "/assets/img/rl/170.gif";
+    $imagem = "/assets/img/rl/_conteudo-default-large.png";
     $nomeArquivoImagem = "";
     $idConteudo = "";
 } else {
@@ -120,6 +120,7 @@ if (!isset($conteudo)) {
                 </div><!-- row -->
 
             </div><!-- control-group -->
+            <?php if (!isset($conteudo)) { ?>
             <hr>
             <div class="control-group">
                 <label class="control-label" for="fileInput2">Documentos</label>
@@ -135,7 +136,8 @@ if (!isset($conteudo)) {
                     <p class="help-block">Você pode anexar arquivos a este conteúdo. (Ex.: PDFs, Apresentações, Manuais).</p>
                 </div>
             </div>
-            <hr>
+            <?php } ?>
+<!--            <hr>
             <div class="control-group">
                 <label class="control-label" for="optionsCheckbox">Notificações</label>
                 <div class="controls">
@@ -144,7 +146,7 @@ if (!isset($conteudo)) {
                         Receber e-mail quando um novo conteúdo relacionado a este for criado ou quando este for modificado por seus amigos
                     </label>
                 </div>
-            </div>
+            </div>-->
             <?php echo $form->renderHiddenFields() ?>
             <input type="hidden" id="tags" name="tags">
         </fieldset>          
@@ -170,7 +172,7 @@ if (!isset($conteudo)) {
         $("#alert-modalEditarConteudo").remove();
         
         if(getValue('nome') != ""){
-            $("#enviarForm").prepend("<img src='<?php echo image_path('/assets/img/rl/loading.gif'); ?>' id='imagem-load' alt='Carregando'>");
+//            $("#enviarForm").prepend("<img src='<?php echo image_path('/assets/img/rl/loading.gif'); ?>' id='imagem-load' alt='Carregando'>");
             $.ajax({
                 url: <?php echo "'" . url_for("ajax/ajaxValidaNomeConteudo") . "?editando={$nomeConteudo}&nome='+getValue('nome')" ?>,
                 success: function(resposta){

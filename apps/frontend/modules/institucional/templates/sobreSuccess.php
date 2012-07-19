@@ -115,10 +115,10 @@
             </li>
             <li class="span2">
                 <div class="thumbnail">
-                  <img src="http://placehold.it/170&text=:)" alt="Foto de Max Guenes">
-                    <h6>Max Guenes</h6>
+                  <img src="http://placehold.it/170&text=:)" alt="Foto">
+                    <h6>Victor Cisneiros</h6>
                     <p>Programador Web</p>
-                    <p><a href="http://facebook.com/maxguenes">Facebook</a> ∙ <a href="http://twitter.com/fabyuu">Twitter</a></p>
+                    <p><a href="http://www.facebook.com/vcisneiros">Facebook</a></p>
                 </div>
             </li>
         </ul>

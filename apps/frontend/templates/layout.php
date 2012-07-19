@@ -119,7 +119,14 @@
                             </ul>
                             <ul class="nav pull-right" id="user-menu">
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo image_path(UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_MINIATURA)) ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>"> <?php echo Util::getNomeSimplificado(UsuarioLogado::getInstancia()->getNome()); ?> <b class="caret"></b></a>
+                                    <?php
+                                    $quantidadeSolicitacoes = UsuarioLogado::getInstancia()->getQuantidadeSolicitacoesPendentes();
+                                    ?>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <?php
+                                        if ($quantidadeSolicitacoes > 0) { ?><span class="label label-warning" title="<?php echo $quantidadeSolicitacoes ?> nova(s) solicitações de amizade"><?php echo $quantidadeSolicitacoes ?></span><?php } ?>
+                                        <img src="<?php echo image_path(UsuarioLogado::getInstancia()->getImagemPerfilFormatada(Util::IMAGEM_MINIATURA)) ?>" alt="<?php echo UsuarioLogado::getInstancia()->getNome(); ?>"> <?php echo Util::getNomeSimplificado(UsuarioLogado::getInstancia()->getNome()); ?> <b class="caret"></b>
+                                    </a>
                                     <ul class="dropdown-menu">
                                         <li>
                                             <?php
