@@ -135,13 +135,13 @@ body.home .top-login {
 	}
 	.btn-navbar {border-radius: 6px}
 	.navbar .btn-navbar .icon-bar {background-color: #08c}
-	#login-form ul.extras {
+	.home #login-form ul.extras {
 		margin: 0;
 		position: relative;
 		list-style: none
 	}
 
-	#login-form #login, #login-form #login-pass {width: 35%}
+	.home #login-form #login, .home #login-form #login-pass {width: 35%}
 	#esqueci {
 		position: absolute;
 		top: 0;
@@ -469,7 +469,7 @@ body.home .top-login {
 	}
 
 #co-workers ul {list-style:none; margin-left:0;}
-footer .pull-left {width: 45%;}
+footer .pull-left {width: 25%;}
 #co-workers li {float: left;}
 #co-workers .heading {margin:0 5px 0 20px;}
 #co-workers ul li a {
@@ -753,6 +753,19 @@ table .col-sec {width: 10%}
 .img-step.step2 {background: url(../img/rl/tutorial123_2.png) no-repeat center;}
 .img-step.step3 {background: url(../img/rl/tutorial123_3.png) no-repeat center;}
 
+#modalLogin #login-form .checkbox {margin-top: 10px}
+
+#press-destaques {padding: 0 5%}
+#press-destaques ul {margin: 40px 0}
+#press-destaques li {
+	margin-bottom: 18px;
+	padding-bottom: 18px;
+	border-bottom: 1px dotted #f0f0f0;
+}
+#press-destaques li a:hover {text-decoration: none}
+#press-destaques li .veiculo {text-align: right}
+#press-destaques li:hover {border-bottom: 1px dotted #08C}
+
 .fourofour {background: url(../img/rl/404.png) no-repeat bottom center; padding-bottom:280px;}
 
 /* WYSIWYG Editor */
@@ -852,6 +865,8 @@ ul.as-selections-focus {
   /* IE6-9 */
 
 }
+#explore .as-selections input {color:#999;}
+#explore .as-selections-focus input {color:#000;}
 #explore ul.as-selections {
 	border-radius:20px;
 }
@@ -952,6 +967,14 @@ ul.as-selections li.as-original input {
 	height: 18px;
 	padding-top: 3px;
 }
+
+#explore .as-original {
+	width: 90%
+}
+#explore .as-original input {
+	width: 100%
+}
+#explore .as-results {margin-left: 5px}
 
 ul.as-list {
 	position: absolute;
@@ -1214,7 +1237,7 @@ body{padding-top:0;}
 	float: left;
 	width: 60%
 }
-#login-form #login, #login-form #login-pass {
+.home #login-form #login, .home #login-form #login-pass {
 	display: block;
 	margin-bottom: 5px;
 	width: 100%
@@ -1272,14 +1295,16 @@ footer .pull-left {width:100%;}
 
 #searchsubmit {display: none}
 
-#login-form #login, #login-form #login-pass {width: 32%}
+.home #login-form #login, .home #login-form #login-pass {width: 32%}
 #top-login {width: 300px}
 #esqueci {left: 110px}
 
 #stream ul .vcard .entry {width: 80%}
 .textarea-comment {width: 91%;}
 
-footer .pull-left {width:25%;}
+footer .pull-left {width:100%;}
+#co-workers {float: none; clear: both;}
+
 #user-menu .nav-collapse a:hover {color:#005580}
 
 }
@@ -1297,7 +1322,7 @@ footer .pull-left {width:25%;}
 
 #searchsubmit {display: none}
 
-#login-form #login, #login-form #login-pass {width: 32%}
+.home #login-form #login, .home #login-form #login-pass {width: 32%}
 #top-login {width: 300px}
 #esqueci {left: 110px}
 
@@ -1309,7 +1334,7 @@ footer .pull-left {width:25%;}
 		margin-right:0
 	}
 .textarea-comment {width: 91%;}
-footer .pull-left {width:25%;}
+footer .pull-left {width:100%;}
 
 }
 
@@ -1319,6 +1344,7 @@ footer .pull-left {width:25%;}
 #esqueci {
 	left: 145px
 }
+footer .pull-left {width:45%;}
 
 }
 

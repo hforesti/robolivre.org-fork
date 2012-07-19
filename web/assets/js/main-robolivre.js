@@ -102,6 +102,9 @@ $(window).load(function(){
             opacity: 1,
         }, 250);
     });
+    $('#explore .form-search').submit(function() {
+        return false
+    });
 
     //foca no item na lista
     $('#stream .vcard .drop-options').children().hover(function() {
@@ -491,6 +494,10 @@ $('.navbar .brand').bind('contextmenu', function(e){
 
 //tour do início
 $('#goTourNoob').click(function(){
+    playTourNoob()
+});
+
+function playTourNoob(){
     $(this).joyride({
       'tipLocation': 'bottom',
       'scrollSpeed': 300,
@@ -500,9 +507,5 @@ $('#goTourNoob').click(function(){
       'cookieMonster': false,
       'inline': true,
       'tipContent': '#tourNoob'
-    });
-});
-
-function teste(){
-    alert('terminou')  
+    }); 
 }
