@@ -31,35 +31,44 @@
 
 <p class="label label-success pull-right">Destaques</p>
 
-<div id="press-destaques" class="carousel slide">
+<div id="press-destaques">
+        <ul class="unstyled">
+          <li class="row-fluid">
+            <h3><a href="http://g1.globo.com/videos/pernambuco/bom-dia-pe/t/edicoes/v/expoideia-mostra-invencoes-que-usa-tecnologia-reaproveitando-o-que-parece-lixo/1939167" rel="external">
+            <span class="span3 veiculo">
+              <img src="<?php echo image_path('/assets/img/rl/imprensa-logo-globone.png') ?>" alt="Rede Globo Nordeste">
+            </span>
+            <span class="span9">
+              "Bom dia PE: Expoideia mostra invenções que usa tecnologia reaproveitando o que parece lixo"<br>
+              <small>09.05.2012</small>
+            </span>
+            </a></h3>
+          </li>
 
-  <div class="carousel-inner">
+          <li class="row-fluid">
+            <h3><a href="<?php echo image_path('/download/imprensa-clipping/JC26deabril2012-2012-04-26.jpeg') ?>" rel="external">
+            <span class="span3 veiculo">
+              <img src="<?php echo image_path('/assets/img/rl/imprensa-logo-jc.png') ?>" alt="Jornal do Commercio">
+            </span>
+            <span class="span9">
+              "Arte liga tecnologia e natureza"<br>
+              <small>26.04.2012</small>
+            </span>
+            </a></h3>
+          </li>
 
-    <div class="active item">
-      <a href="#"><img src="http://placehold.it/770x400" alt=""></a>
-      <div class="carousel-caption">
-              <h4>Primeira legenda</h4>
-      </div>
-    </div><!-- item -->
-
-    <div class="item">
-      <a href="#"><img src="http://placehold.it/770x400" alt=""></a>
-      <div class="carousel-caption">
-              <h4>Segunda legenda</h4>
-      </div>
-    </div><!-- item -->
-
-    <div class="item">
-      <a href="#"><img src="http://placehold.it/770x400" alt=""></a>
-      <div class="carousel-caption">
-              <h4>Faça o download do nosso logotipo oficial em versão vetorial</h4>
-      </div>
-    </div><!-- item -->
-
-  </div>
-
-  <a class="carousel-control left" href="#press-destaques" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#press-destaques" data-slide="next">&rsaquo;</a>
+          <li class="row-fluid">
+            <h3><a href="http://www.leiaja.com/tecnologia/2012/aprender-robotica-e-util-para-criancas-e-adolescentes" rel="external">
+            <span class="span3 veiculo">
+              <img src="<?php echo image_path('/assets/img/rl/imprensa-logo-leiaja.png') ?>" alt="Portal LeiaJá">
+            </span>
+            <span class="span9">
+              "Aprender Robótica é útil para crianças e adolescentes"<br>
+              <small>30.06.2012</small>
+            </span>
+            </a></h3>
+          </li>
+        </ul>
 </div>
 
 <hr>
