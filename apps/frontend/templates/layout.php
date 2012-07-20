@@ -17,7 +17,7 @@
 
         <!-- Le JQuery
         ================================================== -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     </head>
     <?php if (UsuarioLogado::getInstancia()->isUsuarioPublico()) { ?>
         <body>
@@ -227,12 +227,12 @@
                 </div>
                 <div id="co-workers" class="pull-right">
                     <ul>
+                        <li class="heading"><h6>Apoio</h6></li>
+                        <li id="a-mix"><a href="http://www.mixtecnologia.com.br/" rel="co-worker" title="Mix Tecnologia">Mix Tecnologia</a></li>
                         <li class="heading"><h6>Financiado por</h6></li>
                         <li id="a-capes"><a href="http://www.capes.gov.br/" rel="co-worker" title="CAPES">CAPES</a></li>
                         <li id="a-cnpq"><a href="http://www.cnpq.br/" rel="co-worker" title="CNPq">CNPq</a></li>
                         <li id="a-facepe"><a href="http://www.facepe.br/" rel="co-worker" title="FACEPE">FACEPE</a></li>
-<?php /* <li class="heading"><h6>Realização</h6></li>
-  <li id="a-mix"><a href="http://www.facepe.br/" rel="co-worker" title="Mix Tecnologia">Mix Tecnologia</a></li> */ ?>
                     </ul>
                 </div>
             </footer>

@@ -23,6 +23,11 @@ $(window).load(function(){
 });
 
 !function ($) {
+//external links
+    $('a[rel="external"], footer a[rel="co-worker"]').each(function(){
+        $(this).addClass('external')
+        $(this).attr( 'target', '_blank')
+    })
     //auto focus input
     if ( $("#login-form, #form-criar-conteudo, #form-criar-comunidade") ) {
         $('input[tabindex=1], textarea[tabindex=1]').focus();
@@ -496,16 +501,10 @@ $('.navbar .brand').bind('contextmenu', function(e){
 $('#goTourNoob').click(function(){
     playTourNoob()
 });
-
+//funcao para tour do início
 function playTourNoob(){
     $(this).joyride({
-      'tipLocation': 'bottom',
-      'scrollSpeed': 300,
-      'nextButton': true,
-      'tipAnimation': 'fade',
-      'tipAnimationFadeSpeed': 500,
-      'cookieMonster': false,
-      'inline': true,
-      'tipContent': '#tourNoob'
-    }); 
+        'tipAnimation': 'fade',
+        'cookieMonster': false
+    });
 }

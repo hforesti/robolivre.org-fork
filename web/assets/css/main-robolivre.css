@@ -27,6 +27,11 @@ body.home {
 }
 body.home h3 a {color: #333}
 
+.navbar {
+	padding-top: 2px;
+	background: url(../img/rl/bg.png) repeat-x center top;
+}
+
 h1, h2, .lead {
     font-family: 'RobotoThin', sans-serif;
     font-weight: normal;
@@ -51,7 +56,6 @@ input, textarea { color: #000; }
 .label {cursor: default;}
 .btn-large {border-radius: 22px}
 .icon-gray {opacity: 0.4}
-#sidebar .nav .active .icon-gray, .dropdown-menu li a:hover i, #explore .nav .active a i {background-image: url(../img/glyphicons-halflings-white.png);}
 
 /* image replacement */
 .brand, 
@@ -1112,6 +1116,42 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 	display: block;
 	margin-bottom: 5px;
 }
+
+#last-browsers h3 a {
+	background: url(../img/rl/browsers-sprite.png) no-repeat 0 0;
+	display: block;
+	padding-top: 130px;
+	width: 125px;
+	text-align: center;
+}
+#last-browsers #firefox a {background-position: -125px 0}
+#last-browsers #msie a {background-position: -250px 0}
+
+/* Tour */
+.joyride-tip-guide {
+	background: rgba(0,0,0,0.9);
+ 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+ 	z-index: 1000;
+}
+.joyride-tip-guide span.joyride-nub {
+	border-color: rgba(0,0,0,0.88) !important;
+}
+.joyride-tip-guide p {
+	font-family: 'RobotoCondensed';
+	font-size: 16px;
+	line-height: 20px;
+	margin-top: 10px;
+}
+.joyride-tip-guide .joyride-next-tip {
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+		border-radius: 16px;
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.no-ie .joyride-tip-guide .joyride-next-tip {float: left;}
 
 /*!
  * Responsive

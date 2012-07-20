@@ -1,153 +1,156 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <title>Robô Livre</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+  <head>
+    <meta charset="utf-8">
+    <title>Robô Livre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-        <!-- Le styles -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/css/main-robolivre.css" rel="stylesheet">
+    <!-- Le styles -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- TOUR - carregar para usuários novos -->
+    <link href="assets/js/joyride/joyride-1.0.5.min.css" rel="stylesheet">
 
-        <!-- Le JS base -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
+    <link href="assets/css/main-robolivre.css" rel="stylesheet">
 
-        <script type="text/javascript">
-            ///////////////////////////////////////////////////////////////
-            // funcão apenas para testes de upload no front-end sem o php
-            ///////////////////////////////////////////////////////////////
-            function url_for (info) {
-                return ''+info;
-            }
-        </script>
+    <!-- Le JS base -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
-    </head>
+    <script type="text/javascript">
+  ///////////////////////////////////////////////////////////////
+  // funcão apenas para testes de upload no front-end sem o php
+  ///////////////////////////////////////////////////////////////
+    function url_for (info) {
+      return ''+info;
+    }
+    </script>
 
-    <body>
+  </head>
 
-        <!-- Navbar
-          ================================================== -->
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container" id="big-areas">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="profile-home.shtml">Robô Livre</a>
-                    <div class="nav-collapse">
-                        <ul class="nav">
-                            <li class="active">
-                                <a href="profile-home.shtml">Início</a>
-                            </li>
-                            <li>
-                                <a href="conteudos.shtml">Conteúdos</a>
-                            </li>
-                            <li>
-                                <a href="projetos.shtml">Projetos</a>
-                            </li>
-                            <li>
-                                <a href="comunidades.shtml">Comunidades</a>
-                            </li>
-                            <li class="divider-vertical"></li>
-                        </ul>
-                        <form class="navbar-search pull-left" action="search.shtml">
-                            <input type="text" class="search-query span3" placeholder="Buscar robôs, comunidades, amigos…">
-                            <input id="searchsubmit" alt="Buscar" type="image" src="assets/img/rl/btn-search.png">
-                        </form>
+  <body>
 
-
-                        <ul class="nav pull-right" id="user-menu">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-warning" title="4 pendentes">4</span> <img src="assets/img/rl/20.gif" alt="Rodrigo"> Rodrigo <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="inbox-requests.shtml"><i class="icon-asterisk icon-gray"></i> <span class="badge badge-warning">2</span> Solicitações de amizade</a>
-                                    </li>
-                                    <li>
-                                        <a href="inbox.shtml"><i class="icon-bell icon-gray"></i> <span class="badge badge-warning">2</span> Notificações</a>
-                                    </li>
-                                    <li>
-                                        <a href="inbox-pvt.shtml"><i class="icon-inbox icon-gray"></i> Minhas mensagens</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="perfil.shtml"><i class="icon-user icon-gray"></i> Ver meu perfil</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="settings.shtml"><i class="icon-cog icon-gray"></i> Configurações</a>
-                                    </li>
-                                    <li>
-                                        <a href="help.shtml"><i class="icon-question-sign icon-gray"></i> Ajuda</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li class="logout-link">
-                                        <a href="logout.shtml">Sair</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                        <!-- ===================================================== -->
-                        <!-- ! Link de login que chama modal do final dessa página   -->
-                        <!-- ===================================================== -->
-
-                        <!--
-                                    <ul class="nav pull-right">
-                                                <li class="divider-vertical"></li>
-                                      <li>
-                                        <a data-toggle="modal" href="#modalLogin">Entrar</a>
-                                      </li>
-                                    </ul>
-                        -->
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================== -->
-        <!-- ! Modal de login   -->
-        <!-- ================== -->
-        <!--
-        
-        <div class="modal fade" id="modalLogin">
-          <div class="modal-header">
-            <a class="close" data-dismiss="modal">×</a>
-            <h3>Entrar</h3>
-          </div>
-          <div class="modal-body">
-          <form id="login-form" class="form-inline" action="#">
-        
-            <input id="login" type="email" placeholder="e-mail ou usuário" tabindex="1" />
-            <input id="login-pass" type="password" placeholder="senha" tabindex="2" />
-            
-            <input value="entrar" type="submit" class="btn btn-primary" tabindex="4" />
-            
-              <label class="checkbox">
-              <input type="checkbox" name="optionsCheckboxList1" value="option1" tabindex="3">
-              lembrar-me
-              </label>  
+  <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container" id="big-areas">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="profile-home.shtml">Robô Livre</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active">
+                <a href="profile-home.shtml">Início</a>
+              </li>
+              <li>
+                <a href="conteudos.shtml">Conteúdos</a>
+              </li>
+              <li>
+                <a href="projetos.shtml">Projetos</a>
+              </li>
+              <li>
+                <a href="comunidades.shtml">Comunidades</a>
+              </li>
+      <li class="divider-vertical"></li>
+            </ul>
+      <form class="navbar-search pull-left" action="search.shtml">
+            <input type="text" class="search-query span3" placeholder="Buscar robôs, comunidades, amigos…">
+        <input id="searchsubmit" alt="Buscar" type="image" src="assets/img/rl/btn-search.png">
           </form>
-          </div>
           
-          <div class="modal-footer">
-                <div class="row-fluid">
-                  <a href="cadastro-erro.shtml" class="btn btn-success span12"><i class="icon-user icon-white"></i> Novo por aqui? Crie uma conta!</a>
-                </div>
+
+        <ul class="nav pull-right" id="user-menu">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-warning" title="4 pendentes">4</span> <img src="assets/img/rl/20.gif" alt="Rodrigo"> Rodrigo <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                      <li>
+                        <a href="inbox-requests.shtml"><i class="icon-asterisk icon-gray"></i> <span class="badge badge-warning">2</span> Solicitações de amizade</a>
+                      </li>
+                      <li>
+                        <a href="inbox.shtml"><i class="icon-bell icon-gray"></i> <span class="badge badge-warning">2</span> Notificações</a>
+                      </li>
+                      <li>
+                        <a href="inbox-pvt.shtml"><i class="icon-inbox icon-gray"></i> Minhas mensagens</a>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                        <a href="perfil.shtml"><i class="icon-user icon-gray"></i> Ver meu perfil</a>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                        <a href="settings.shtml"><i class="icon-cog icon-gray"></i> Configurações</a>
+                      </li>
+                      <li>
+                        <a href="help.shtml"><i class="icon-question-sign icon-gray"></i> Ajuda</a>
+                      </li>
+                      <li class="divider"></li>
+                      <li class="logout-link">
+                        <a href="logout.shtml">Sair</a>
+                      </li>
+            </ul>
+          </li>
+        </ul>
+
+<!-- ===================================================== -->
+<!-- ! Link de login que chama modal do final dessa página   -->
+<!-- ===================================================== -->
+
+<!--
+            <ul class="nav pull-right">
+      <li class="divider-vertical"></li>
+              <li>
+                <a data-toggle="modal" href="#modalLogin">Entrar</a>
+              </li>
+            </ul>
+-->
+
+
           </div>
         </div>
-        -->
+      </div>
+    </div>
 
-        <div class="container">
+<!-- ================== -->
+<!-- ! Modal de login   -->
+<!-- ================== -->
+<!--
+
+<div class="modal fade" id="modalLogin">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Entrar</h3>
+  </div>
+  <div class="modal-body">
+  <form id="login-form" class="form-inline" action="#">
+
+    <input id="login" type="email" placeholder="e-mail ou usuário" tabindex="1" />
+    <input id="login-pass" type="password" placeholder="senha" tabindex="2" />
+    
+    <input value="entrar" type="submit" class="btn btn-primary" tabindex="4" />
+    
+      <label class="checkbox">
+      <input type="checkbox" name="optionsCheckboxList1" value="option1" tabindex="3">
+      lembrar-me
+      </label>  
+  </form>
+  </div>
+  
+  <div class="modal-footer">
+        <div class="row-fluid">
+          <a href="cadastro-erro.shtml" class="btn btn-success span12"><i class="icon-user icon-white"></i> Novo por aqui? Crie uma conta!</a>
+        </div>
+  </div>
+</div>
+-->
+
+    <div class="container">
