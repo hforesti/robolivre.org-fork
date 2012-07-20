@@ -27,6 +27,11 @@ body.home {
 }
 body.home h3 a {color: #333}
 
+.navbar {
+	padding-top: 2px;
+	background: url(../img/rl/bg.png) repeat-x center top;
+}
+
 h1, h2, .lead {
     font-family: 'RobotoThin', sans-serif;
     font-weight: normal;
@@ -1111,6 +1116,16 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 	display: block;
 	margin-bottom: 5px;
 }
+
+#last-browsers h3 a {
+	background: url(../img/rl/browsers-sprite.png) no-repeat 0 0;
+	display: block;
+	padding-top: 130px;
+	width: 125px;
+	text-align: center;
+}
+#last-browsers #firefox a {background-position: -125px 0}
+#last-browsers #msie a {background-position: -250px 0}
 
 /* Tour */
 .joyride-tip-guide {
