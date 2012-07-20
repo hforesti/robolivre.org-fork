@@ -141,7 +141,7 @@ class perfilActions extends robolivreAction {
             $this->usuario = new Usuarios(null, false, UsuarioLogado::getInstancia());
         } else {
             $this->usuario = Doctrine::getTable("Usuarios")->buscarPorId($id);
-            if (Doctrine::getTable("Ignorados")->estaIgnorado($id)){
+            if (Doctrine::getTable("Ignorados")->estaIgnorado($id)) {
                 $this->ignorado = true;
             }
         }
@@ -186,14 +186,36 @@ class perfilActions extends robolivreAction {
 
 
         $form->bind($postParameters, $request->getFiles($form->getName()));
-
+        $link = null;
         if ($form->isValid()) {
+            if ($usuarios->getEmail() != $postParameters['email']) {
+                sfContext::getInstance()->getConfiguration()->loadHelpers(array('Tag', 'Url'));
+                Doctrine_Core::getTable('Usuarios')->atualizarEmail();
+                $link = url_for("perfil/novoEmail?token=" . md5($usuarios->getLogin()) . "&u=" . $usuarios->getIdUsuario(), true);
+                Util::enviarEmail("[robolivre.org] Redefinição de email", Util::getTextoEmailRedefnirEmail($link, $usuarios->getNome(), $usuarios->getLogin()), $usuarios->getEmail());
+            }
             $usuarios = $form->save();
             UsuarioLogado::getInstancia()->atualizaInformacoes($usuarios);
-            $this->redirect('perfil/informacaoHome');
+            if ($link) {
+                $this->redirect('perfil/editarPerfil');
+            } else {
+                $this->redirect('perfil/informacaoHome');
+            }
         } else {
             $this->formUsuario = $form;
             $this->setTemplate('editarPerfil');
+        }
+    }
+
+    public function executeNovoEmail(sfWebRequest $request) {
+        $id = $request->getParameter('u');
+        $this->forward404Unless($usuario = Doctrine_Core::getTable('Usuarios')->find(array($id)), sprintf('Object usuarios does not exist (%s).', $id));
+        $this->forward404Unless(md5($usuario->getLogin()) == $request->getParameter('token') && $usuario->getEmailNovo());
+        Doctrine_Core::getTable('Usuarios')->confirmarEmail($usuario->getIdUsuario());
+        if (UsuarioLogado::getInstancia()->isLogado()) {
+            $this->redirect('perfil/editarPerfil');
+        } else {
+            $this->redirect('inicial/index');
         }
     }
 
@@ -281,22 +303,22 @@ class perfilActions extends robolivreAction {
                 $nome_arquivo = 'img_publicacao_usu_' . UsuarioLogado::getInstancia()->getIdUsuario() . "_" . md5(time());
 
                 $file->save($diretorio_arquivo . '/' . $nome_arquivo . $extension);
-                
-                    $img = new sfImage($diretorio_arquivo . '/' . $nome_arquivo . $extension, "image/{$extensao}");
-                    if ($img->getWidth() > 570) {
-                        $largura = $img->getWidth();
-                        $diferenca = 570 / $largura;
-                        $altura = $img->getHeight() * $diferenca;
-                        $img->resize(570, $altura);
-                    }
-                    if ($extensao != 'gif') {
-                        $img->setQuality(75);
-                        $img->saveAs($diretorio_arquivo . '/' . $nome_arquivo . $extension);
-                    }
-                    $img->thumbnail(60, 60);
+
+                $img = new sfImage($diretorio_arquivo . '/' . $nome_arquivo . $extension, "image/{$extensao}");
+                if ($img->getWidth() > 570) {
+                    $largura = $img->getWidth();
+                    $diferenca = 570 / $largura;
+                    $altura = $img->getHeight() * $diferenca;
+                    $img->resize(570, $altura);
+                }
+                if ($extensao != 'gif') {
                     $img->setQuality(75);
-                    $img->saveAs($diretorio_arquivo . '/' . $nome_arquivo . '_60' . $extension);
-                
+                    $img->saveAs($diretorio_arquivo . '/' . $nome_arquivo . $extension);
+                }
+                $img->thumbnail(60, 60);
+                $img->setQuality(75);
+                $img->saveAs($diretorio_arquivo . '/' . $nome_arquivo . '_60' . $extension);
+
 //                var_dump($file);
 //                die;
 //                $thumbnail = new sfThumbnail(550, null);

@@ -611,7 +611,7 @@ class UsuariosTable extends Doctrine_Table {
         if ($resultado) {
             foreach ($resultado as $reg) {
                 $objUsuario = new Usuarios();
-
+                $objUsuario->setEmailNovo($reg['email_novo']);
                 $objUsuario->setCurso($reg['curso']);
                 $objUsuario->setDataNascimento($reg['data_nascimento']);
                 $objUsuario->setEmail($reg['email']);
@@ -805,6 +805,23 @@ class UsuariosTable extends Doctrine_Table {
         $result = $stmt->fetch();
         
         return $this->buscarPorId($result['id_usuario']);
+    }
+    
+    public function atualizarEmail(){
+        $id = UsuarioLogado::getInstancia()->getIdUsuario();
+        $sql = "UPDATE usuarios SET email_novo = 1 WHERE id_usuario = :id";
+        $conn = Doctrine_Manager::getInstance()->getCurrentConnection()->getDbh();
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id',$id);
+        $stmt->execute();
+    }
+    
+    public function confirmarEmail($id){
+        $sql = "UPDATE usuarios SET email_novo = 0 WHERE id_usuario = :id";
+        $conn = Doctrine_Manager::getInstance()->getCurrentConnection()->getDbh();
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id',$id);
+        $stmt->execute();
     }
 
 }

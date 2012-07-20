@@ -7,7 +7,7 @@ if (!empty($taintedValues)) {
 
 if (!isset($conteudo)) {
     $evento = 'conteudos/gravar';
-    $imagem = "/assets/img/rl/_conteudo-default-large.png";
+    $imagem = Util::BASE_SITE . "/assets/img/rl/_conteudo-default-large.png";
     $nomeArquivoImagem = "";
     $idConteudo = "";
 } else {
@@ -121,32 +121,32 @@ if (!isset($conteudo)) {
 
             </div><!-- control-group -->
             <?php if (!isset($conteudo)) { ?>
-            <hr>
-            <div class="control-group">
-                <label class="control-label" for="fileInput2">Documentos</label>
-                <div class="controls">
+                <hr>
+                <div class="control-group">
+                    <label class="control-label" for="fileInput2">Documentos</label>
+                    <div class="controls">
 
-                    <div id="file-uploader">       
-                        <noscript>          
-                        <input class="input-file" id="fileInput2" type="file">
-                        </noscript>         
+                        <div id="file-uploader">       
+                            <noscript>          
+                            <input class="input-file" id="fileInput2" type="file">
+                            </noscript>         
+                        </div>
+                        <input type="hidden" id="documentos_selecionados" name="documentos_selecionados">
+
+                        <p class="help-block">Você pode anexar arquivos a este conteúdo. (Ex.: PDFs, Apresentações, Manuais).</p>
                     </div>
-                    <input type="hidden" id="documentos_selecionados" name="documentos_selecionados">
-
-                    <p class="help-block">Você pode anexar arquivos a este conteúdo. (Ex.: PDFs, Apresentações, Manuais).</p>
                 </div>
-            </div>
             <?php } ?>
-<!--            <hr>
-            <div class="control-group">
-                <label class="control-label" for="optionsCheckbox">Notificações</label>
-                <div class="controls">
-                    <label class="checkbox">
-                        <?php echo $form->getWidget('enviar_email_criador')->render($form->getName() . "[enviar_email_criador]", (!array_key_exists('enviar_email_criador', $valoresInciais) || $valoresInciais['enviar_email_criador'] == null) || (array_key_exists('enviar_email_criador', $valoresInciais) && $valoresInciais['enviar_email_criador'] == 1), array('id' => 'optionsCheckbox')); ?>
-                        Receber e-mail quando um novo conteúdo relacionado a este for criado ou quando este for modificado por seus amigos
-                    </label>
-                </div>
-            </div>-->
+            <!--            <hr>
+                        <div class="control-group">
+                            <label class="control-label" for="optionsCheckbox">Notificações</label>
+                            <div class="controls">
+                                <label class="checkbox">
+            <?php echo $form->getWidget('enviar_email_criador')->render($form->getName() . "[enviar_email_criador]", (!array_key_exists('enviar_email_criador', $valoresInciais) || $valoresInciais['enviar_email_criador'] == null) || (array_key_exists('enviar_email_criador', $valoresInciais) && $valoresInciais['enviar_email_criador'] == 1), array('id' => 'optionsCheckbox')); ?>
+                                    Receber e-mail quando um novo conteúdo relacionado a este for criado ou quando este for modificado por seus amigos
+                                </label>
+                            </div>
+                        </div>-->
             <?php echo $form->renderHiddenFields() ?>
             <input type="hidden" id="tags" name="tags">
         </fieldset>          
@@ -154,9 +154,9 @@ if (!isset($conteudo)) {
 
         <div class="form-actions">
             <?php if (!isset($conteudo)) { ?>
-            <button type="submit" id="enviarForm" class="btn btn-primary btn-large">Publicar</button>
+                <button type="submit" id="enviarForm" class="btn btn-primary btn-large">Publicar</button>
             <?php } else { ?>
-            <button type="button" onclick="validaForm()" id="enviarForm" class="btn btn-primary btn-large">Atualizar conteúdo</button> 
+                <button type="button" onclick="validaForm()" id="enviarForm" class="btn btn-primary btn-large">Atualizar conteúdo</button> 
             <?php } ?>
         </div>
     </fieldset>
@@ -172,7 +172,7 @@ if (!isset($conteudo)) {
         $("#alert-modalEditarConteudo").remove();
         
         if(getValue('nome') != ""){
-//            $("#enviarForm").prepend("<img src='<?php echo image_path('/assets/img/rl/loading.gif'); ?>' id='imagem-load' alt='Carregando'>");
+            //            $("#enviarForm").prepend("<img src='<?php echo image_path('/assets/img/rl/loading.gif'); ?>' id='imagem-load' alt='Carregando'>");
             $.ajax({
                 url: <?php echo "'" . url_for("ajax/ajaxValidaNomeConteudo") . "?editando={$nomeConteudo}&nome='+getValue('nome')" ?>,
                 success: function(resposta){
@@ -204,29 +204,30 @@ if (isset($tags)) {
         ?>
                         {value: "<?php echo $valueTag ?>", name: "<?php echo $tags[$valueTag]->getNomeConteudo() ?>"},
     <?php }
-} ?>
-            ];
+}
+?>
+    ];
     
         
-            //autosuggest tags data
-            $("#input-marcadores").autoSuggest("<?php echo url_for('ajax/ajaxAutoSuggestConteudo'); ?>", 
-            {
-                minChars: 2, 
-                preFill:carregar,
-                matchCase: false,
-                resultsHighlight: true,
-                selectedItemProp: "name",
-                searchObjProps: "name",
-                startText: "Ex.: Open Source, UNIX",
-                emptyText: "Nenhuma sugestão encontrada",
-                formatList: function(data, elem){
-                    var new_elem = elem.html("<i class='icon-tag icon-gray'></i>"+ data.name);
-                    return new_elem;
-                }
-            });
+    //autosuggest tags data
+    $("#input-marcadores").autoSuggest("<?php echo url_for('ajax/ajaxAutoSuggestConteudo'); ?>", 
+    {
+        minChars: 2, 
+        preFill:carregar,
+        matchCase: false,
+        resultsHighlight: true,
+        selectedItemProp: "name",
+        searchObjProps: "name",
+        startText: "Ex.: Open Source, UNIX",
+        emptyText: "Nenhuma sugestão encontrada",
+        formatList: function(data, elem){
+            var new_elem = elem.html("<i class='icon-tag icon-gray'></i>"+ data.name);
+            return new_elem;
+        }
+    });
         
-            $("#form-criar-conteudo").submit(function() {
-                document.getElementById('tags').value = $('.as-values')[0].value;
-            });
+    $("#form-criar-conteudo").submit(function() {
+        document.getElementById('tags').value = $('.as-values')[0].value;
+    });
 
 </script>

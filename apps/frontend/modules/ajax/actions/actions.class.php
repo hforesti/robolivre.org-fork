@@ -193,10 +193,10 @@ class ajaxActions extends sfActions {
         $allowedExtensions = array('txt', 'rtf', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods', 'odg', 'fodg');
         // max file size in bytes
 
-        $sizeLimit = 8 * 1024 * 1024;
+        $sizeLimit = 50 * 1024 * 1024;
 
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-        $result = $uploader->handleUpload('uploads/');
+        $result = $uploader->handleUpload(sfConfig::get('sf_upload_dir')."/");
         // to pass data through iframe you will need to encode all html tags
         echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
     }
@@ -205,10 +205,10 @@ class ajaxActions extends sfActions {
         // list of valid extensions, ex. array("jpeg", "xml", "bmp")
         $allowedExtensions = array('jpg', 'jpeg', 'png', 'gif');
         // max file size in bytes
-        $sizeLimit = 8 * 1024 * 1024;
+        $sizeLimit = 10 * 1024 * 1024;
 
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-        $result = $uploader->handleUpload('uploads/', true);
+        $result = $uploader->handleUpload(sfConfig::get('sf_upload_dir')."/", true);
 
         $result['arquivo'] = $this->criarTumbnails($_GET['qqfile']);
 

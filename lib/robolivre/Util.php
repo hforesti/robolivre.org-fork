@@ -23,6 +23,7 @@ class Util {
     const IMAGEM_MINIATURA = 3;
     const TIPO_IMAGEM_CONTEUDO = 1;
     const TIPO_IMAGEM_USUARIO = 2;
+    const BASE_SITE = '';
 
     public static function getTagUsuario($nomeUsuario, $idUsuario) {
         return "<a href=\"" . url_for('perfil/exibir?u=' . $idUsuario) . "\">$nomeUsuario</a>";
@@ -243,7 +244,7 @@ class Util {
             $nomeArquivo = self::getNomeReduzido($item['nome'], 40);
             $string .= "<tr>";
             $string .= "    <td>" . ($item['novo'] ? "<span class=\"label label-info\">Novo</span> " : "") . 
-                            "<a target='_blank' href='".  urldecode(url_for("/$pasta/" . $item['arquivo'])) . "'>" . $nomeArquivo . "</a></td>";
+                            "<a target='_blank' href='".  urldecode(url_for(self::BASE_SITE ."/$pasta/" . $item['arquivo'])) . "'>" . $nomeArquivo . "</a></td>";
             $string .= "    <td>" . strtoupper($item['extensao']) . "</td>";
             $string .= "    <td>" . strtoupper($item['tamanho']) . "</td>";
             $string .= "</tr>";
@@ -315,40 +316,40 @@ class Util {
             if (!isset($imagem) || $imagem == "") {
                 switch ($tamanhoImagem) {
                     case Util::IMAGEM_GRANDE:
-                        return "/assets/img/rl/_avatar-default-large.png";
+                        return self::BASE_SITE. "/assets/img/rl/_avatar-default-large.png";
                     case Util::IMAGEM_MEDIA:
-                        return "/assets/img/rl/_avatar-default-60.png";
+                        return self::BASE_SITE."/assets/img/rl/_avatar-default-60.png";
                     case Util::IMAGEM_MINIATURA:
-                        return "/assets/img/rl/_avatar-default-20.png";
+                        return self::BASE_SITE."/assets/img/rl/_avatar-default-20.png";
                 }
             } else {
                 switch ($tamanhoImagem) {
                     case Util::IMAGEM_GRANDE:
-                        return "/assets/img/thumbnails/" . str_replace(array("#"), array("large"), $imagem);
+                        return self::BASE_SITE."/assets/img/thumbnails/" . str_replace(array("#"), array("large"), $imagem);
                     case Util::IMAGEM_MEDIA:
-                        return "/assets/img/thumbnails/" . str_replace(array("#"), array("60"), $imagem);
+                        return self::BASE_SITE."/assets/img/thumbnails/" . str_replace(array("#"), array("60"), $imagem);
                     case Util::IMAGEM_MINIATURA:
-                        return "/assets/img/thumbnails/" . str_replace(array("#"), array("20"), $imagem);
+                        return self::BASE_SITE."/assets/img/thumbnails/" . str_replace(array("#"), array("20"), $imagem);
                 }
             }
         } else if ($tipoImagem == self::TIPO_IMAGEM_CONTEUDO) {
             if (!isset($imagem) || $imagem == "") {
                 switch ($tamanhoImagem) {
                     case Util::IMAGEM_GRANDE:
-                        return "/assets/img/rl/_conteudo-default-large.png";
+                        return self::BASE_SITE."/assets/img/rl/_conteudo-default-large.png";
                     case Util::IMAGEM_MEDIA:
-                        return "/assets/img/rl/_conteudo-default-60.png";
+                        return self::BASE_SITE."/assets/img/rl/_conteudo-default-60.png";
                     case Util::IMAGEM_MINIATURA:
-                        return "/assets/img/rl/_conteudo-default-20.png";
+                        return self::BASE_SITE."/assets/img/rl/_conteudo-default-20.png";
                 }
             } else {
                 switch ($tamanhoImagem) {
                     case Util::IMAGEM_GRANDE:
-                        return "/assets/img/thumbnails/" . str_replace(array("#"), array("large"), $imagem);
+                        return self::BASE_SITE."/assets/img/thumbnails/" . str_replace(array("#"), array("large"), $imagem);
                     case Util::IMAGEM_MEDIA:
-                        return "/assets/img/thumbnails/" . str_replace(array("#"), array("60"), $imagem);
+                        return self::BASE_SITE."/assets/img/thumbnails/" . str_replace(array("#"), array("60"), $imagem);
                     case Util::IMAGEM_MINIATURA:
-                        return "/assets/img/thumbnails/" . str_replace(array("#"), array("20"), $imagem);
+                        return self::BASE_SITE."/assets/img/thumbnails/" . str_replace(array("#"), array("20"), $imagem);
                 }
             }
         }
@@ -550,8 +551,25 @@ class Util {
             <div>Para seguir em frente e redefinir a senha, visite o seguinte endereço:</div>
             <div>$urlComToken</div>
             <div><br></div>
-            <div>Obrigado,</div>
-            <div>Ethnos - O robô de perfil e cadastro</div>";
+            <div>Muito obrigada,</div>
+            <div>Equipe Robô Livre</div>";
+    }
+    
+    public static function getTextoEmailRedefnirEmail($urlComToken, $nomeUsuario, $login) {
+        
+        return
+                "   <div><br></div><div>Alguém solicitou que seu email fosse redefinido na seguinte conta:</div>
+            <div><br></div>
+            <div>Nome e sobrenome: $nomeUsuario</div>
+            <div>Nome de usuário: $login</div>
+            <div><br></div>
+            <div>Se for um mal entendido, apenas ignore este email e nada será alterado.</div>
+            <div><br></div>
+            <div>Para seguir em frente e confirmar a redefinição do email, visite o seguinte endereço:</div>
+            <div>$urlComToken</div>
+            <div><br></div>
+            <div>Muito obrigada,</div>
+            <div>Equipe Robô Livre</div>";
     }
 
     public static function getTextoEmailMigracao($urlComToken, $nomeUsuario) {

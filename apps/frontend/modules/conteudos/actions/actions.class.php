@@ -237,7 +237,7 @@ class conteudosActions extends robolivreAction {
             $objConteudo = $form->getObject();
             $objConteudo->setNome(Util::getHtmlPurificado($valores['nome']));
             $objConteudo->setDescricao(Util::getHtmlPurificadoDescricao($valores['descricao']));
-
+            $slug = Util::criaSlug($objConteudo->getNome());
             $nomeArquivo = $this->criarTumbnails($request, Util::criaSlug($objConteudo->getNome()));
             $objConteudo->getConjunto()->setImagemPerfil($nomeArquivo);
             $this->conteudo = Doctrine::getTable("Conteudos")->gravarConteudo($objConteudo);
@@ -292,22 +292,24 @@ class conteudosActions extends robolivreAction {
                 $pasta->setTipoPasta(Pastas::TIPO_PASTA_ANEXOS_CONJUNTO);
                 $pasta->setIdConjunto($this->conteudo->getIdConjunto());
                 $pasta->setIdTipoConjunto(Conjuntos::TIPO_CONTEUDO);
-
                 $pasta->save();
 
                 $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(), Pastas::TIPO_PASTA_ANEXOS_CONJUNTO, $this->conteudo->getIdConjunto(), Conjuntos::TIPO_CONTEUDO);
                 if (!file_exists(sfConfig::get('sf_upload_dir') . "/documentos/$slug")) {
-                    mkdir(sfConfig::get('sf_upload_dir') . "/documentos/$slug", 0777);
+                    mkdir(sfConfig::get('sf_upload_dir') . "/documentos/$slug",0777);
                 }
             }
+            
             foreach ($arrayArquivos as $nomeArquivo) {
+                
                 if ($nomeArquivo != "" && file_exists(sfConfig::get('sf_upload_dir') . "/" . $nomeArquivo)) {
+                    
                     $arrayFile = explode(".", $nomeArquivo);
                     $nomeFile = $arrayFile[0];
                     $extensao = end($arrayFile);
                     $idUsuarioLogado = UsuarioLogado::getInstancia()->getIdUsuario();
                     copy(sfConfig::get('sf_upload_dir') . "/" . $nomeArquivo, sfConfig::get('sf_upload_dir') . "/documentos/$slug/" . $nomeFile . "_" . $idUsuarioLogado . "_" . time() . "." . $extensao);
-
+                    unlink(sfConfig::get('sf_upload_dir') . "/" . $nomeArquivo);
                     $documento = new Documentos();
                     $documento->setIdPasta($pasta->getIdPasta());
                     $documento->setIdUsuario($pasta->getIdUsuario());
@@ -457,27 +459,27 @@ class conteudosActions extends robolivreAction {
 
                 $pasta = Doctrine::getTable("Pastas")->getPastaUsuario(UsuarioLogado::getInstancia()->getIdUsuario(), Pastas::TIPO_PASTA_ANEXOS_CONJUNTO, $this->conteudo->getIdConjunto(), Conjuntos::TIPO_CONTEUDO);
                 if (!file_exists(sfConfig::get('sf_upload_dir') . "/documentos/$slug")) {
-                    mkdir(sfConfig::get('sf_upload_dir') . "/documentos/$slug", 0777);
+                    mkdir(sfConfig::get('sf_upload_dir') . "/documentos/$slug",0777);
                 }
             }
-            foreach ($arrayArquivos as $nomeArquivo) {
-                if ($nomeArquivo != "" && file_exists(sfConfig::get('sf_upload_dir') . "/" . $nomeArquivo)) {
-                    $arrayFile = explode(".", $nomeArquivo);
-                    $nomeFile = $arrayFile[0];
-                    $extensao = end($arrayFile);
-                    $idUsuarioLogado = UsuarioLogado::getInstancia()->getIdUsuario();
-                    copy(sfConfig::get('sf_upload_dir') . "/" . $nomeArquivo, sfConfig::get('sf_upload_dir') . "/documentos/$slug/" . $nomeFile . "_" . $idUsuarioLogado . "_" . time() . "." . $extensao);
-
-                    $documento = new Documentos();
-                    $documento->setIdPasta($pasta->getIdPasta());
-                    $documento->setIdUsuario($pasta->getIdUsuario());
-                    $documento->setIsCodigoFonte(false);
-                    $documento->setNomeArquivo($nomeFile . "_" . $idUsuarioLogado . "_" . time() . "." . $extensao);
-                    $documento->setNomeDocumento($nomeFile . "_" . $idUsuarioLogado . "_" . time() . "." . $extensao);
-
-                    $documento->save();
-                }
-            }
+//            foreach ($arrayArquivos as $nomeArquivo) {
+//                if ($nomeArquivo != "" && file_exists(sfConfig::get('sf_upload_dir') . "/" . $nomeArquivo)) {
+//                    $arrayFile = explode(".", $nomeArquivo);
+//                    $nomeFile = $arrayFile[0];
+//                    $extensao = end($arrayFile);
+//                    $idUsuarioLogado = UsuarioLogado::getInstancia()->getIdUsuario();
+//                    copy(sfConfig::get('sf_upload_dir') . "/" . $nomeArquivo, sfConfig::get('sf_upload_dir') . "/documentos/$slug/" . $nomeFile . "_" . $idUsuarioLogado . "_" . time() . "." . $extensao);
+//
+//                    $documento = new Documentos();
+//                    $documento->setIdPasta($pasta->getIdPasta());
+//                    $documento->setIdUsuario($pasta->getIdUsuario());
+//                    $documento->setIsCodigoFonte(false);
+//                    $documento->setNomeArquivo($nomeFile . "_" . $idUsuarioLogado . "_" . time() . "." . $extensao);
+//                    $documento->setNomeDocumento($nomeFile . "_" . $idUsuarioLogado . "_" . time() . "." . $extensao);
+//
+//                    $documento->save();
+//                }
+//            }
 
             foreach ($arrayObjTag as $objTag) {
                 $objTag->save();

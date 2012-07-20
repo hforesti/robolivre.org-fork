@@ -20,6 +20,7 @@ abstract class BaseComunidadesForm extends BaseFormDoctrine
       'id_conjunto'      => new sfWidgetFormInputHidden(),
       'nome'             => new sfWidgetFormInputText(),
       'descricao'        => new sfWidgetFormTextarea(),
+      'data_solicitacao' => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
@@ -28,6 +29,7 @@ abstract class BaseComunidadesForm extends BaseFormDoctrine
       'id_conjunto'      => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_conjunto')), 'empty_value' => $this->getObject()->get('id_conjunto'), 'required' => false)),
       'nome'             => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'descricao'        => new sfValidatorString(array('required' => false)),
+      'data_solicitacao' => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('comunidades[%s]');

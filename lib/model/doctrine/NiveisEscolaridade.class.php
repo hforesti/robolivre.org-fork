@@ -13,13 +13,16 @@
 class NiveisEscolaridade{
     
     public static function getNiveisEscolaridade() {
-        return array(1 => array('id'=>1 ,'descricao'=>"Ensino Fundamental"),
-                     2 => array('id'=>2 ,'descricao'=>"Ensino Médio"),
-                     3 => array('id'=>3 ,'descricao'=>"Ensino Superior Completo"),
-                     4 => array('id'=>4 ,'descricao'=>"Ensino Superior Incompleto"),
-                     5 => array('id'=>5 ,'descricao'=>"Pós-Graduação"),
-                     6 => array('id'=>6 ,'descricao'=>"Mestrado"),
-                     7 => array('id'=>7 ,'descricao'=>"Doutorado"),
+        return array(1  => array('id'=>1  ,'descricao'=>"Ensino Fundamental"),
+                     2  => array('id'=>2  ,'descricao'=>"Ensino Fundamental Incompleto"),
+                     3  => array('id'=>3  ,'descricao'=>"Ensino Médio"),
+                     4  => array('id'=>4  ,'descricao'=>"Ensino Médio Incompleto"),
+                     5  => array('id'=>5  ,'descricao'=>"Ensino Superior Completo"),
+                     6  => array('id'=>6  ,'descricao'=>"Ensino Superior Incompleto"),
+                     7  => array('id'=>7  ,'descricao'=>"Especialização"),
+                     8  => array('id'=>8  ,'descricao'=>"Mestrado"),
+                     9  => array('id'=>9  ,'descricao'=>"Doutorado"),
+                     10 => array('id'=>10 ,'descricao'=>"Pós-doutorado"),
            );
     }
     
@@ -32,9 +35,10 @@ class NiveisEscolaridade{
                      '5'=>"Ensino Superior Completo",
                      '6'=>"Ensino Superior Incompleto",
                      'Pós-graduação' => array(
-                        '5'=>"Pós-Graduação",
-                        '6'=>"Mestrado",
-                        '7'=>"Doutorado"
+                        '7' => "Especialização",
+                        '8' => "Mestrado",
+                        '9' => "Doutorado",
+                        '10'=> "Pós-doutorado"
                          )
             
            );

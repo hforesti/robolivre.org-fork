@@ -34,7 +34,7 @@ abstract class BaseDocumentosForm extends BaseFormDoctrine
       'is_codigo_fonte'    => new sfValidatorInteger(array('required' => false)),
       'repositorio_github' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'ordenacao'          => new sfValidatorInteger(array('required' => false)),
-      'nome_documento'     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'nome_documento'     => new sfValidatorString(array('max_length' => 255)),
       'hits'               => new sfValidatorInteger(array('required' => false)),
     ));
 

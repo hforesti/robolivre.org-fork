@@ -33,6 +33,7 @@ Doctrine_Manager::getInstance()->bindComponent('Usuarios', 'doctrine');
  * @property timestamp $data_criacao_perfil
  * @property string $parametros_email
  * @property string $token
+ * @property integer $email_novo
  * 
  * @method integer   getIdUsuario()              Returns the current record's "id_usuario" value
  * @method integer   getNivelEscolaridade()      Returns the current record's "nivel_escolaridade" value
@@ -60,6 +61,7 @@ Doctrine_Manager::getInstance()->bindComponent('Usuarios', 'doctrine');
  * @method timestamp getDataCriacaoPerfil()      Returns the current record's "data_criacao_perfil" value
  * @method string    getParametrosEmail()        Returns the current record's "parametros_email" value
  * @method string    getToken()                  Returns the current record's "token" value
+ * @method integer   getEmailNovo()              Returns the current record's "email_novo" value
  * @method Usuarios  setIdUsuario()              Sets the current record's "id_usuario" value
  * @method Usuarios  setNivelEscolaridade()      Sets the current record's "nivel_escolaridade" value
  * @method Usuarios  setNome()                   Sets the current record's "nome" value
@@ -86,6 +88,7 @@ Doctrine_Manager::getInstance()->bindComponent('Usuarios', 'doctrine');
  * @method Usuarios  setDataCriacaoPerfil()      Sets the current record's "data_criacao_perfil" value
  * @method Usuarios  setParametrosEmail()        Sets the current record's "parametros_email" value
  * @method Usuarios  setToken()                  Sets the current record's "token" value
+ * @method Usuarios  setEmailNovo()              Sets the current record's "email_novo" value
  * 
  * @package    robolivre
  * @subpackage model
@@ -320,6 +323,7 @@ abstract class BaseUsuarios extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => 'i[i] a[a]',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 255,
@@ -332,6 +336,16 @@ abstract class BaseUsuarios extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => 255,
+             ));
+        $this->hasColumn('email_novo', 'integer', 1, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'default' => '0',
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 1,
              ));
     }
 

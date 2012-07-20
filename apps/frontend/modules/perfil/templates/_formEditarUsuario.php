@@ -37,7 +37,7 @@ if ($valoresInciais['data_nascimento'] != null && $valoresInciais['data_nascimen
             </div>
         </div>
 
-        <div class="control-group">
+        <div class="control-group" id="data_nascimento">
             <label class="control-label">Data de nascimento</label>
             <div class="controls">
                 <select class="span1" name="<?php echo $form->getName() ?>[data_nascimento][day]" id="dia">
@@ -68,41 +68,45 @@ if ($valoresInciais['data_nascimento'] != null && $valoresInciais['data_nascimen
                         <option <?php echo ($ano == $i) ? "selected='selected'" : "" ?> value="<?php echo $i ?>"><?php echo $i ?></option>
                     <?php } ?>
                 </select>
-
+                <span id="help-data" class="help-inline"></span>
             </div>
         </div>
     </fieldset>
 
     <fieldset>
         <legend>Contatos</legend>
-        <div class="control-group">
-            <label class="control-label" for="email">E-mail <i class="icon-user icon-gray singletip" title="Apenas amigos podem ver"></i></label>
 
-            <div class="controls">
-                <div class="input-append">
-                    <?php echo $form->getWidget('email')->render($form->getName() . "[email]", $valoresInciais['email'], array('class' => "span4", 'id' => 'email', 'placeholder' => "Ex: voce@email.com", 'type' => "email")); ?><span class="add-on">
-                        <i class="icon-exclamation-sign icon-gray"></i>
-                        Confirmado
-                    </span>
-                </div>
-                <p class="help-block">
-                    Atualizando seu email você receberá um link para confirmação no novo endereço informado.</p>
-            </div>
-            
-            <?php /*<div class="control-group warning">
+        <?php if ($valoresInciais['email_novo']) { ?>
+        <div class="control-group warning" id="caixa_email">
                 <label class="control-label" for="email">E-mail <i class="icon-user icon-gray singletip" title="Apenas amigos podem ver"></i></label>
                 <div class="controls">
 
                     <div class="input-append">
-                        <input type="email" id="email" value="rodrigo@robolivre.org" placeholder="Ex: voce@email.com" class="span4"><span class="add-on"><i class="icon-exclamation-sign icon-gray"></i> Confirmação pendente</span>
+                        <?php echo $form->getWidget('email')->render($form->getName() . "[email]", $valoresInciais['email'], array('class' => "span4", 'id' => 'email', 'placeholder' => "Ex: voce@email.com", 'type' => "email")); ?><span class="add-on"><i class="icon-exclamation-sign icon-gray"></i> Confirmação pendente</span>
                     </div>
+                    <span id="help-email" class="help-inline"></span>
                     <p class="help-block">É importante confirmarmos seu email. Verifique sua caixa de entrada e também de spam.<br><strong>Não recebeu nosso email de confirmação? <a href="#">Reenviar agora</a></strong></p>
                 </div>
 
-            </div>*/ ?>
-        </div>
+            </div> 
+        <?php } else { ?>
+        <div class="control-group" id="caixa_email">
+                <label class="control-label" for="email">E-mail <i class="icon-user icon-gray singletip" title="Apenas amigos podem ver"></i></label>
 
+                <div class="controls">
+                    <div class="input-append">
+                        <?php echo $form->getWidget('email')->render($form->getName() . "[email]", $valoresInciais['email'], array('class' => "span4", 'id' => 'email', 'placeholder' => "Ex: voce@email.com", 'type' => "email")); ?><span class="add-on">
+                            <i class="icon-ok icon-gray"></i>
+                            Confirmado
+                        </span>
+                    </div>
+                    <span id="help-email" class="help-inline"></span>
+                    <p class="help-block">
+                        Atualizando seu email você receberá um link para confirmação no novo endereço informado.</p>
+                </div>
+            </div>
 
+        <?php } ?>
         <div class="control-group">
             <label class="control-label" for="site">Seu site ou blog</label>
             <div class="controls">
@@ -117,7 +121,7 @@ if ($valoresInciais['data_nascimento'] != null && $valoresInciais['data_nascimen
         <div class="control-group">
             <label class="control-label" for="escolaridade">Nível de Escolaridade</label>
             <div class="controls">
-                <?php echo $form->getWidget('nivel_escolaridade')->render($form->getName() . "[nivel_escolaridade]", null, array('class' => "span3", 'id' => 'escolaridade')); ?>
+                <?php echo $form->getWidget('nivel_escolaridade')->render($form->getName() . "[nivel_escolaridade]", $valoresInciais['nivel_escolaridade'], array('class' => "span3", 'id' => 'escolaridade')); ?>
             </div>
         </div>
 
@@ -177,4 +181,48 @@ if ($valoresInciais['data_nascimento'] != null && $valoresInciais['data_nascimen
     </fieldset>
 
 </form>
+<script type="text/javascript">
+    function verificaData(){
+        if($('#dia').val() || $('#mes').val() || $('ano').val()){
+            if($('#dia').val()  == '' || $('#mes').val()  == '' || $('#ano').val()  == ''){
+                $("#data_nascimento").addClass('error');
+                $("#help-data").html('Data inválida!');
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    function verificaEmail(){
+        if ($('#email').val().match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,3})+$/)){
+            return true;
+        }
+        $("#caixa_email").addClass("error");
+        $("#help-email").html('Email inválido!');
+        return false;
+    }
+    
+    $("#email").keyup(function(){
+        if ($("#caixa_email").hasClass('error')){
+            if(verificaEmail()){
+                $("#caixa_email").removeClass('error');
+                $("#help-email").html('');
+            } 
+        }
+    });
+    
+    $("#dia, #mes, #ano").change(function(){
+        if ($("#data_nascimento").hasClass('error')){
+            if(verificaData()){
+                $("#data_nascimento").removeClass('error');
+                $("#help-data").html('');
+            } 
+        }
+    });
+    
+    $("#form-editar-info").submit(function() {
+        return verificaData() && verificaEmail();
+    })
 
+
+</script>
