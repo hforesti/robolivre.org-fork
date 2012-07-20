@@ -977,21 +977,21 @@
 
 <!-- =================================== -->
 <!-- TOUR - carregar para usuários novos -->
-<ol id="tourNoob" class="hidden">
+<ol id="joyRideTipContent" class="hidden">
     <li data-id="big-areas" data-text="Próximo <i class='icon-chevron-right icon-white'></i>">
-      <p><span class="label label-info">1 de 4</span></p>
+      <span class="label label-success">1 de 4</span>
       <p>Use essa barra no topo para explorar as seções da rede. Aqui você também encontra seu menu de notificações e configurações.</p>
     </li>
     <li data-id="tourSidebar" data-text="Próximo <i class='icon-chevron-right icon-white'></i>">
-      <p><span class="label label-info">2 de 4</span></p>
+      <span class="label label-success">2 de 4</span>
       <p>Já aqui você acessa todos os itens da sua Página de Início, coisas como a lista de Conteúdos que você seguir e seus amigos.</p>
     </li>
     <li data-id="form-status" data-text="Próximo <i class='icon-chevron-right icon-white'></i>">
-      <p><span class="label label-info">3 de 4</span></p>
+      <span class="label label-success">3 de 4</span>
       <p>Com este formulário você atualiza o mural do seu perfil. Use para compartilhar com seus amigos Links, Imagens e Vídeos legais sobre robótica.</p>
     </li>
     <li data-id="tourTabs" data-text="Pronto. Comece a usar a rede! <i class='icon-ok-sign icon-white'></i>">
-      <p><span class="label label-info">4 de 4</span></p>
+      <span class="label label-success">4 de 4</span>
       <p>E nestas abas você acompanha todas as atividades que acontecem nos perfis de amigos e nos conteúdos que seguir. Você já está seguindo automaticamente o conteúdo "Robótica".</p>
     </li>
 </ol>

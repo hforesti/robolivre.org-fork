@@ -1112,6 +1112,32 @@ BODY:first-of-type ul.as-list, x:-moz-any-link, x:default { /* Target FF 3.5+ */
 	margin-bottom: 5px;
 }
 
+/* Tour */
+.joyride-tip-guide {
+	background: rgba(0,0,0,0.9);
+ 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+ 	z-index: 1000;
+}
+.joyride-tip-guide span.joyride-nub {
+	border-color: rgba(0,0,0,0.88) !important;
+}
+.joyride-tip-guide p {
+	font-family: 'RobotoCondensed';
+	font-size: 16px;
+	line-height: 20px;
+	margin-top: 10px;
+}
+.joyride-tip-guide .joyride-next-tip {
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+		border-radius: 16px;
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.no-ie .joyride-tip-guide .joyride-next-tip {float: left;}
+
 /*!
  * Responsive
  */
