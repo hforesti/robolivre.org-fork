@@ -491,7 +491,7 @@ function getForcaSenha(inputPassword,spanHelp) {
 }
 
 //right click logo
-$('.navbar .brand').bind('contextmenu', function(e){
+$('.navbar .brand, .home .brand').bind('contextmenu', function(e){
     e.preventDefault();
         $('#modalLogo').modal()
     return false;

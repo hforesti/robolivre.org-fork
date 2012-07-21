@@ -57,6 +57,14 @@ input, textarea { color: #000; }
 .btn-large {border-radius: 22px}
 .icon-gray {opacity: 0.4}
 
+.nav > li > a, .dropdown-menu > li > a {
+	-webkit-transition: background-color linear 0.1s,		color linear 0.2s;
+	-moz-transition: 	background-color linear 0.1s,		color linear 0.2s;
+	-ms-transition: 	background-color linear 0.1s,		color linear 0.2s;
+	-o-transition: 		background-color linear 0.1s,		color linear 0.2s;
+	transition: 		background-color linear 0.1s,		color linear 0.2s;
+}
+
 /* image replacement */
 .brand, 
 body.home .brand,
@@ -69,15 +77,16 @@ body.home .brand,
 
 .clear {clear: both; float: left; width:100%;}
 
-.brand {
-	background: url(../img/rl/logo.png) no-repeat;
-	height: 40px;
-	width: 140px;
-}
 .navbar .brand {
 	padding: 0;
 	margin-right: 20px;
+	margin-left: 0;
 }
+	.brand {
+		background: url(../img/rl/logo.png) no-repeat 0 -2px;
+		height: 40px;
+		width: 140px;
+	}
 body.home .brand {
 	background: url(../img/rl/logo-home.png) no-repeat;
 	margin-bottom: 40px;
@@ -88,14 +97,21 @@ body.home .top-login {
 	margin-bottom: 40px;
 }
 	.navbar-inner {
-		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05),inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+		box-shadow: none;
+		border-bottom: 1px solid #CAC8C8;
+	}
+	.no-ie .navbar-inner {
+		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18),inset 0 -1px 0 rgba(255, 255, 255, 1);
+		border-bottom: 0;
 	}
 	.navbar .nav > li > a {
-  		color: #08c;
+  		font-family: 'RobotoCondensed', sans-serif;
   		text-shadow: none;
+  		font-size: 14px;
 	}
-	.navbar .nav .active > a, .navbar .nav .active > a:hover {
-  		background-color: rgba(0, 0, 0, 0.03);
+	.navbar .nav .active > a, 
+	.navbar .nav .active > a:hover {
+  		color: #A8A8A8;
 	}
 	.navbar .nav li.dropdown .dropdown-toggle .caret, 
 	.navbar .nav li.dropdown.open .caret, 
@@ -106,11 +122,16 @@ body.home .top-login {
 	.dropdown.open .dropdown-toggle {color: #000}
 	.navbar-search {margin-left: 5px}
 	.navbar-search .search-query {
-	    font-family: 'RobotoCondensed';
 	    font-size: 14px;
 		background: #fff url(../img/rl/bg-input.gif) repeat-x top;
 		border-radius: 4px;
 		border: 1px solid #cac8c8;
+		-webkit-transition: box-shadow linear 0.4s;
+		-moz-transition: 	box-shadow linear 0.4s;
+		-ms-transition: 	box-shadow linear 0.4s;
+		-o-transition: 		box-shadow linear 0.4s;
+		transition: 		box-shadow linear 0.4s;
+
 	}
 	.navbar-search .search-query:hover {
 		background-color: #fff;
@@ -122,7 +143,7 @@ body.home .top-login {
 		text-shadow: none;
 		background-color: #ffffff;
 		border: 1px solid #c5c3c3;
-		box-shadow: 0 5px 25px rgba(255, 255, 255, 1);
+		box-shadow: 0 3px 15px rgba(255, 255, 255, 1);
 	}
 	#searchsubmit {position: relative; left: -31px}
 	.navbar-fixed-top .dropdown-menu {
@@ -165,14 +186,11 @@ body.home .top-login {
 		position: absolute;
 		top: 4px;
 		left: 3px;
+		font-family: sans-serif;
+		padding: 2px 4px 1px;
 	}
 
-#top-login {
-	float: right;
-/*	width: 345px;
-	_width: 355px;
-*/	
-}
+#top-login {float: right;}
 #intro {
 	margin-top: 10px
 }
@@ -339,10 +357,9 @@ body.home .top-login {
 	}
 	#stream .photo .sub-icon {
 		position: absolute;
-		bottom: 0;
-		right: 0;
+		bottom: -2px;
+		right: -2px;
 		box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
-		outline: 1px solid rgba(255, 255, 255, 0.6)
 	}
 
 	#stream .vcard .btn-group.drop-options {
@@ -418,7 +435,7 @@ body.home .top-login {
 	position: relative;
 	float: left;
 	clear: both;
-	width: 100%
+	width: 98%
 }
 .btn-load-more .btn {width: 96%}
 #shink-content {float: none; margin-bottom: -60px}
@@ -440,7 +457,6 @@ body.home .top-login {
 	}
 	.avatar {position: relative}
 	.avatar .photo {
-		background: url(../img/rl/_avatar-default-large.png) no-repeat;
 		max-width: 100%;
 	}
 	.avatar .btn-group {
@@ -456,9 +472,8 @@ body.home .top-login {
 		padding-right: 5px;
 		padding-left: 5px;
 		white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-
+			overflow: hidden;
+			text-overflow: ellipsis;
 	}
 	#sidebar .nav li {position: relative}
 	#sidebar .nav li .label {
@@ -1165,7 +1180,7 @@ body{padding-top:0;}
 	padding-right:10px;
 }
 	#user-menu,
-	.navbar .nav {
+	.nav-collapse .nav {
 		float: left;
 		width: 100%;
 	}
@@ -1173,12 +1188,12 @@ body{padding-top:0;}
 		width: 100%;
 	}
 	#user-menu li,
-	.navbar .nav li {
+	.nav-collapse .nav li {
 		float: left;
 		width: 49%;
 		white-space: normal;
 	}
-	.navbar .nav li a {
+	.nav-collapse .nav li a {
 		white-space: normal;
 	}
 	.navbar-search {clear: both;}
@@ -1231,7 +1246,7 @@ body{padding-top:0;}
 	margin-right: 0;
 }
 	#user-menu,
-	.navbar .nav {
+	.nav-collapse .nav {
 		float: left;
 		width: 100%;
 	}
@@ -1239,12 +1254,12 @@ body{padding-top:0;}
 		width: 100%;
 	}
 	#user-menu li,
-	.navbar .nav li {
+	.nav-collapse .nav li {
 		float: left;
 		width: 49%;
 		white-space: normal;
 	}
-	.navbar .nav li a {
+	.nav-collapse .nav li a {
 		white-space: normal;
 	}
 	.navbar-search {clear: both;}
@@ -1304,13 +1319,13 @@ footer .pull-left {width:100%;}
 }
 
 
-/* // Um computador por aluno */
+/* UCA - Um computador por aluno */
 @media (min-width: 768px) and (max-width: 800px) {
 .navbar-fixed-top {
 	position: fixed;
 }
 	#user-menu,
-	.navbar .nav {
+	.nav-collapse .nav {
 		float: left;
 		width: 100%;
 	}
@@ -1318,12 +1333,12 @@ footer .pull-left {width:100%;}
 		width: 100%;
 	}
 	#user-menu li,
-	.navbar .nav li {
+	.nav-collapse .nav li {
 		float: left;
 		width: 49%;
 		white-space: normal;
 	}
-	.navbar .nav li a {
+	.nav-collapse .nav li a {
 		white-space: normal;
 	}
 	.navbar-search {clear: both;}
@@ -1379,6 +1394,11 @@ footer .pull-left {width:100%;}
 
 }
 
+@media (max-width: 979px) {
+	.navbar-fixed-top .navbar-inner {
+		padding: 0 5px;
+	}
+}
 /* // Large desktop */
 @media (min-width: 1200px) {
 

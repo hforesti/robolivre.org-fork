@@ -74,9 +74,18 @@
 
     <div class="row">
 
-        <div class="span8">
+        <div class="span4">
             <h3>Conteúdos mais relevantes</h3>
             <?php echo Util::getNuvemTags(21, 10); ?>
+        </div>
+
+        <div class="span4">
+            <h3>Twitter @<a href="http://twitter.com/robolivre">robolivre</a></h3>
+            <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+            <script>new TWTR.Widget({  version: 2,  type: 'profile',  rpp: 2,  interval: 30000,  width: 'auto',  height: 300,  theme: {    shell: {      background: '#ffffff',      color: '#000000'    },    tweets: {      background: '#ffffff',      color: '#000000',      links: '#5aaffa'    }  },  features: {    scrollbar: false,    loop: false,    live: false,    behavior: 'all'  }}).render().setUser('robolivre').start();</script>
+            <script type="txt/javascript">
+
+            </script>
         </div>
 
         <!--        <div class="span4" id="grid-comunidades">
@@ -97,16 +106,7 @@
 
 
         <div class="span4">
-
-            <h3>Twitter @robolivre</h3>
-            <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-            <script>new TWTR.Widget({  version: 2,  type: 'profile',  rpp: 2,  interval: 30000,  width: 'auto',  height: 300,  theme: {    shell: {      background: '#ffffff',      color: '#000000'    },    tweets: {      background: '#ffffff',      color: '#000000',      links: '#5aaffa'    }  },  features: {    scrollbar: false,    loop: false,    live: false,    behavior: 'all'  }}).render().setUser('robolivre').start();</script>
-            <script type="txt/javascript">
-
-            </script>
-            <hr>
-
-            <h3>Facebook</h3>
+            <h3><a href="http://facebook.com/robolivre" rel="external">Facebook</a></h3>
             <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Frobolivre&amp;send=false&amp;layout=standard&amp;width=300&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=80&amp;appId=183003458415333" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:80px;" allowTransparency="true"></iframe>
         </div>
 

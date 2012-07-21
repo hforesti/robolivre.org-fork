@@ -32,7 +32,6 @@
                             <span class="icon-bar"></span>
                         </a>
                         <a class="brand" href="<?php echo url_for("inicial/index") ?>">Robô Livre</a>
-                        <div class="nav-collapse">
                             <ul class="nav">
                                 <li class="">
                                     <a href="<?php echo url_for("inicial/index") ?>">Início</a>
@@ -45,6 +44,7 @@
 
                                 <li class="divider-vertical"></li>
                             </ul>
+                        <div class="nav-collapse">
                             <?php
                             if (!($sf_context->getModuleName() == "inicial" && is_numeric(array_search($sf_context->getActionName(), array('telaLogin', 'loginInicial', 'login'))))
                                     && !($sf_context->getModuleName() == "perfil" && is_numeric(array_search($sf_context->getActionName(), array('novaSenha', 'processarNovaSenha'))))) {
@@ -173,7 +173,7 @@
             <div class="row" id="footer-utility">
 
                 <div class="span3">
-                    <h4><a href="<?php echo url_for("institucional/index") ?>">Insitucional</a></h4>
+                    <h4><a href="<?php echo url_for("institucional/index") ?>">Institucional</a></h4>
                     <ul>
                         <li><a href="<?php echo url_for("institucional/sobre") ?>">Sobre a Robô Livre</a></li>
                         <li><a href="<?php echo url_for("institucional/instituicoesParceiras") ?>">Instituições parceiras</a></li>
@@ -238,6 +238,18 @@
             </footer>
         </div><!-- /container -->
 
+<!-- Modal download do logotipo -->
+<div class="modal fade" id="modalLogo">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal" title="Fechar">×</a>
+    <h3>Precisando do nosso logotipo?</h3>
+  </div>
+  <div class="modal-body">
+        <div class="row-fluid">
+        <a href="<?php echo url_for("arquivosImprensa/logos.zip") ?>" class="btn btn-success span12">Baixe o arquivo em alta qualidade <i class="icon-download icon-white"></i></a>
+        </div>
+  </div>
+</div>
         <script type="text/javascript">
             function url_for(path){
                 return '<?php echo url_for('') ?>'+path;
