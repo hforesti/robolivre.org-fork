@@ -63,18 +63,18 @@
         <ul class="thumbnails">
             <li class="span2">
                 <div class="thumbnail">
-                  <img src="http://placehold.it/170&text=:)" alt="Foto de Henrique Foresti">
+                  <img src="<?php echo image_path('/assets/img/rl/equipe-henrique.jpg') ?>" alt="Foto de Henrique Foresti">
                     <h6>Henrique Foresti</h6>
                     <p>Coordenador do projeto &amp; Especialista em Robótica</p>
-                    <p><a href="https://www.facebook.com/HFMineiro">Facebook</a> ∙ <a href="http://twitter.com/robolivre">Twitter</a> ∙ <a href="http://lattes.cnpq.br/5161255861654045">Lattes</a></p>
+                    <p><a href="https://www.facebook.com/HFMineiro" rel="external">Facebook</a> ∙ <a href="http://twitter.com/robolivre" rel="external">Twitter</a> ∙ <a href="http://lattes.cnpq.br/5161255861654045" rel="external">Lattes</a></p>
                 </div>
             </li>
             <li class="span2">
                 <div class="thumbnail">
-                  <img src="http://placehold.it/170&text=:)" alt="Foto de Rodrigo Medeiros">
+                  <img src="<?php echo image_path('/assets/img/rl/equipe-medeiros.jpg') ?>" alt="Foto de Rodrigo Medeiros">
                     <h6>Rodrigo Medeiros</h6>
                     <p>Gerente de projetos &amp; Designer de interação</p>
-                    <p><a href="https://www.facebook.com/medeiros.rod">Facebook</a> ∙ <a href="http://twitter.com/medeiros_rod">Twitter</a> ∙ <a href="http://lattes.cnpq.br/7643665201125488">Lattes</a></p>
+                    <p><a href="https://www.facebook.com/medeiros.rod" rel="external">Facebook</a> ∙ <a href="http://twitter.com/medeiros_rod" rel="external">Twitter</a> ∙ <a href="http://lattes.cnpq.br/7643665201125488" rel="external">Lattes</a></p>
                 </div>
             </li>
         </ul>
@@ -91,34 +91,34 @@
             <?php */ ?>
             <li class="span2">
                 <div class="thumbnail">
-                  <img src="http://placehold.it/170&text=:)" alt="Foto de Ricardo Mariz">
-                    <h6>Ricardo Mariz</h6>
-                    <p>Programador &amp; Professor</p>
-                    <p><a href="http://facebook.com/ricardomariz">Facebook</a> ∙ <a href="http://twitter.com/ricardomariz">Twitter</a></p>
-                </div>
-            </li>
-            <li class="span2">
-                <div class="thumbnail">
-                  <img src="http://placehold.it/170&text=:)" alt="Foto de Fábio Emmanuel">
+                  <img src="<?php echo image_path('/assets/img/rl/equipe-fabio.jpg') ?>" alt="Foto de Fábio Emmanuel">
                     <h6>Fábio Emmanuel</h6>
-                    <p>Programador &amp; Professor</p>
-                    <p><a href="http://facebook.com/Fabyuu">Facebook</a> ∙ <a href="http://twitter.com/fabyuu">Twitter</a></p>
+                    <p>Programador &amp; Instrutor</p>
+                    <p><a href="http://facebook.com/Fabyuu" rel="external">Facebook</a> ∙ <a href="http://twitter.com/fabyuu" rel="external">Twitter</a> ∙ <a href="http://lattes.cnpq.br/1617244430938453" rel="external">Lattes</a></p>
                 </div>
             </li>
             <li class="span2">
                 <div class="thumbnail">
-                  <img src="http://placehold.it/170&text=:)" alt="Foto de Rodrigo Muniz">
+                  <img src="<?php echo image_path('/assets/img/rl/equipe-ricardo.jpg') ?>" alt="Foto de Ricardo Mariz">
+                    <h6>Ricardo Mariz</h6>
+                    <p>Programador &amp; Instrutor</p>
+                    <p><a href="http://facebook.com/ricardomariz" rel="external">Facebook</a> ∙ <a href="http://twitter.com/ricardomariz" rel="external">Twitter</a> ∙ <a href="http://lattes.cnpq.br/0981100695935147" rel="external">Lattes</a></p>
+                </div>
+            </li>
+            <li class="span2">
+                <div class="thumbnail">
+                  <img src="<?php echo image_path('/assets/img/rl/equipe-muniz.jpg') ?>" alt="Foto de Rodrigo Muniz">
                     <h6>Rodrigo Muniz</h6>
                     <p>Designer de Interfaces</p>
-                    <p><a href="http://facebook.com/rodrigomuniz">Facebook</a> ∙ <a href="http://twitter.com/rdmuniz">Twitter</a> ∙ <a href="http://lattes.cnpq.br/8973576700699514">Lattes</a></p>
+                    <p><a href="http://facebook.com/rodrigomuniz" rel="external">Facebook</a> ∙ <a href="http://twitter.com/rdmuniz" rel="external">Twitter</a> ∙ <a href="http://lattes.cnpq.br/8973576700699514" rel="external">Lattes</a></p>
                 </div>
             </li>
             <li class="span2">
                 <div class="thumbnail">
-                  <img src="http://placehold.it/170&text=:)" alt="Foto">
+                  <img src="<?php echo image_path('/assets/img/rl/equipe-victor.jpg') ?>" alt="Foto de Victor Cisneiros">
                     <h6>Victor Cisneiros</h6>
                     <p>Programador Web</p>
-                    <p><a href="http://www.facebook.com/vcisneiros">Facebook</a></p>
+                    <p><a href="http://www.facebook.com/vcisneiros" rel="external">Facebook</a></p>
                 </div>
             </li>
         </ul>

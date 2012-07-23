@@ -1,3 +1,7 @@
+/* 
+Saca de CSS?
+Envie currículo para: robolivre@robolivre.org e entre pra o time
+*/
 @font-face {
     font-family: 'RobotoCondensed';
     src: url('../fonts/Roboto-Condensed-webfont.eot');
@@ -891,9 +895,7 @@ ul.as-selections-focus {
 	border-radius:20px;
 }
 
-ul.as-selections.loading {
-	background-color: #eee;
-}
+ul.as-selections.loading {background-color: #fff;}
 
 ul.as-selections li {
 	float: left;

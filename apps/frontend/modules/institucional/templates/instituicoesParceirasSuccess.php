@@ -24,82 +24,82 @@
 <ul class="thumbnails">
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.ufpe.br/"><img src="<?php echo image_path("/assets/img/rl/logo-ufpe.png") ?>" alt="UFPE - Universidade Federal de Pernambuco"></a>
+      <a href="http://www.ufpe.br/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-ufpe.png") ?>" alt="UFPE - Universidade Federal de Pernambuco"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.gente.eti.br/edumatec/"><img src="<?php echo image_path("/assets/img/rl/logo-edumatec.png") ?>" alt="EDUMATEC"></a>
+      <a href="http://www.gente.eti.br/edumatec/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-edumatec.png") ?>" alt="EDUMATEC"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.ufpe.br/demec/"><img src="<?php echo image_path("/assets/img/rl/logo-engenhariamec.png") ?>" alt="Departamento de Engenharia Mecânica UFPE"></a>
+      <a href="http://www.ufpe.br/demec/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-engenhariamec.png") ?>" alt="Departamento de Engenharia Mecânica UFPE"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.colegioapoio.net/"><img src="<?php echo image_path("/assets/img/rl/logo-apoio.png") ?>" alt="Colégio Apoio"></a>
+      <a href="http://www.colegioapoio.net/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-apoio.png") ?>" alt="Colégio Apoio"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.ufpe.br/cap/"><img src="<?php echo image_path("/assets/img/rl/logo-aplicacao.png") ?>" alt="Colégio Aplicação"></a>
+      <a href="http://www.ufpe.br/cap/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-aplicacao.png") ?>" alt="Colégio Aplicação"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.recife.ifpe.edu.br/"><img src="<?php echo image_path("/assets/img/rl/logo-ifpe.png") ?>" alt="Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco"></a>
+      <a href="http://www.recife.ifpe.edu.br/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-ifpe.png") ?>" alt="Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.espacociencia.pe.gov.br/"><img src="<?php echo image_path("/assets/img/rl/logo-espacociencia.png") ?>" alt="Espaço Ciência"></a>
+      <a href="http://www.espacociencia.pe.gov.br/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-espacociencia.png") ?>" alt="Espaço Ciência"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://robotica.upe.poli.br/"><img src="<?php echo image_path("/assets/img/rl/logo-near.png") ?>" alt="Núcleo de Estudos em Automação e Robótica"></a>
+      <a href="http://robotica.upe.poli.br/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-near.png") ?>" alt="Núcleo de Estudos em Automação e Robótica"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.upe.br/portal/"><img src="<?php echo image_path("/assets/img/rl/logo-upe.png") ?>" alt="UPE - Universidade de Pernambuco"></a>
+      <a href="http://www.upe.br/portal/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-upe.png") ?>" alt="UPE - Universidade de Pernambuco"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.pe.senai.br/"><img src="<?php echo image_path("/assets/img/rl/logo-senai.png") ?>" alt="SENAI"></a>
+      <a href="http://www.pe.senai.br/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-senai.png") ?>" alt="SENAI"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.universidad.edu.uy/"><img src="<?php echo image_path("/assets/img/rl/logo-uuy.png") ?>" alt="Universidad de la República Uruguay"></a>
+      <a href="http://www.universidad.edu.uy/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-uuy.png") ?>" alt="Universidad de la República Uruguay"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.fing.edu.uy/inco/proyectos/butia/"><img src="<?php echo image_path("/assets/img/rl/logo-butia.png") ?>" alt="Butiá"></a>
+      <a href="http://www.fing.edu.uy/inco/proyectos/butia/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-butia.png") ?>" alt="Butiá"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.mixtecnologia.com.br/"><img src="<?php echo image_path("/assets/img/rl/logo-mix.png") ?>" alt="Mix Tecnologia"></a>
+      <a href="http://www.mixtecnologia.com.br/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-mix.png") ?>" alt="Mix Tecnologia"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.cnpq.br/"><img src="<?php echo image_path("/assets/img/rl/logo-cnpq.png") ?>" alt="CNPq"></a>
+      <a href="http://www.cnpq.br/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-cnpq.png") ?>" alt="CNPq"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.facepe.br/"><img src="<?php echo image_path("/assets/img/rl/logo-facepe.png") ?>" alt="FACEPE"></a>
+      <a href="http://www.facepe.br/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-facepe.png") ?>" alt="FACEPE"></a>
     </div>
   </li>
   <li class="span2">
     <div class="thumbnail">
-      <a href="http://www.capes.gov.br/"><img src="<?php echo image_path("/assets/img/rl/logo-capes.png") ?>" alt="CAPES"></a>
+      <a href="http://www.capes.gov.br/" rel="external"><img src="<?php echo image_path("/assets/img/rl/logo-capes.png") ?>" alt="CAPES"></a>
     </div>
   </li>
 </ul>

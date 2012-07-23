@@ -18,24 +18,109 @@
 <h1>Perguntas frequentes</h1>
 </div>
 
-<h2>O que é o Robô Livre?</h2>
-<p>
-O Robô Livre (robolivre.org) é uma plataforma de desenvolvimento colaborativo da robótica e está
-disponível desde 2005 para ajudar a desmistificar a tecnologia. Mostramos que a robótica pode e deve ser
-desenvolvida por qualquer pessoa que tenha interesse, independente de possuir conhecimentos técnicos sobre
-o tema. Com o Robô Livre pode-se criar conteúdos relacionados com robótica, participar de comunidade
-com interesses semelhantes e produzir e divulgar seus projetos nesta área, além de diversas outras
-ferramentas de colaboração, interação e troca de conhecimento entre os usuários.</p>
+<div class="accordion" id="accordionFAQ">
 
-<h2>O que é preciso para se cadastrar no Robô Livre?</h2>
-<p>
-Na página inicial do Robô Livre, já existe um pequeno formulário no qual você já pode adicionar seu nome, login/nome do usuário e e-mail para inscrever-se. Em seguida irá para uma outra página com a confirmação de algumas informações como endereço de e-mail e senha escolhida. Após preencher o formulário de cadastramento, você irá ser redirecionado para sua página de perfil e o primeiro tour pela estrutura do site.</p>
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<h3>
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionFAQ" data-target="#respUm">
+					1. O que é o Robô Livre?
+					</a>
+				</h3>
+			</div>
 
-<h2>Tenho como publicar algum conteúdo privado na rede?</h2>
-<p>
-Quando você tiver publicando qualquer conteúdo na rede você poderá decidir qual a privacidade você quer para o conteúdo e assim poderá deixar alguns conteúdos privado. Por exemplo, tenho uma olimpíada de Robótica para concorrer e não gostaria que as outras comunidades vissem meus conteúdos até a data do evento. Nesse caso você pode usar esse recurso e com isso ter uma comunidade com seus projetos sem nenhum problema.
-</p>
+			<div id="respUm" class="accordion-body collapse in">
+				<div class="accordion-inner">
+				<p>
+				O Robô Livre (robolivre.org) é uma plataforma de desenvolvimento colaborativo da robótica e está
+				disponível desde 2005 para ajudar a desmistificar a tecnologia. Mostramos que a robótica pode e deve ser
+				desenvolvida por qualquer pessoa que tenha interesse, independente de possuir conhecimentos técnicos sobre
+				o tema. Com o Robô Livre pode-se criar conteúdos relacionados com robótica, participar de comunidade
+				com interesses semelhantes e produzir e divulgar seus projetos nesta área, além de diversas outras
+				ferramentas de colaboração, interação e troca de conhecimento entre os usuários.</p>
+				</div>
+			</div>
+		</div>
 
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<h3>
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionFAQ" data-target="#respDois">
+					2. Preciso participar das aulas de robótica da Robô Livre para me cadastrar na rede?
+					</a>
+				</h3>
+			</div>
+
+			<div id="respDois" class="accordion-body collapse">
+				<div class="accordion-inner">
+				<p>
+				<strong>Não</strong>. Nossa rede foi desenvolvida para todos. Você só precisa de um endereço de e-mail para se cadastrar.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<h3>
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionFAQ" data-target="#respTres">
+					3. Posso publicar de forma privada na rede?
+					</a>
+				</h3>
+			</div>
+
+			<div id="respTres" class="accordion-body collapse">
+				<div class="accordion-inner">
+				<p>
+				Trabalhamos sempre com o conceito de conteúdo público e aberto a todos. Porém no seu perfil você poderá publicar atualizações privadas, ou apenas para os seus amigos. Isso é útil, por exemplo, se você está participando de uma olimpíada de Robótica e não gostaria que as outros vissem seus conteúdos até a data do evento.
+				</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<h3>
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionFAQ" data-target="#respQuatro">
+					4. Qual é a idade mínima necessária para se cadastrar?
+					</a>
+				</h3>
+			</div>
+
+			<div id="respQuatro" class="accordion-body collapse">
+				<div class="accordion-inner">
+				<p>
+				É necessário ter pelo menos 12 anos para criar um perfil.
+				</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<h3>
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionFAQ" data-target="#respCinco">
+					5. Quais os navegadores suportados pela rede Robô Livre?
+					</a>
+				</h3>
+			</div>
+
+			<div id="respCinco" class="accordion-body collapse">
+				<div class="accordion-inner">
+				<p>
+				Nossa rede funciona bem em qualquer navegador moderno na sua última versão, incluindo navegadores de dispositivos móveis com tela sensível ao toque.<br> Para Linux, OS X e Windows recomendamos as versões mais recentes dos seguintes navegadores:
+				<ul>
+					<li><a href="http://www.google.com/chrome">Google Chome</a></li>
+					<li><a href="http://www.firefox.com/">Mozilla Firefox</a></li>
+					<li><a href="http://www.apple.com/safari/download/">Apple Safari</a></li>
+					<li><a href="http://windows.microsoft.com/ie">Internet Explorer</a></li>
+				</ul>
+
+				</p>
+				</div>
+			</div>
+		</div>
+
+</div><!-- accordion -->
 
 </div>
 

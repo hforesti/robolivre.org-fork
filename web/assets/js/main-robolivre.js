@@ -1,3 +1,6 @@
+//Saca de JavaScript?
+//Envie currículo para: robolivre@robolivre.org e entre pra o time
+
 // para scripts exclusivos para IE
 if ( $.browser.msie ) { //if IE
     $('body').addClass('ie');

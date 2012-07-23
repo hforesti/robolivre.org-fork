@@ -1,12 +1,17 @@
 <!DOCTYPE html>
+<!-- 
+Saca de HTML, CSS, JavaScript, PHP, Python? 
+Envie currículo para: robolivre@robolivre.org e entre pra o time
+-->
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
         <title>Robô Livre</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="description" content="Rede de conteúdo colaborativo de robótica livre">
+        <meta name="author" content="Equipe Robô Livre - robolivre.org">
         <link rel="shortcut icon" type="image/x-icon" href="<?php echo image_path('/assets/img/rl/robo-icon.png') ?>" />
+        <link rel="apple-touch-icon" href="<?php echo image_path('/assets/img/rl/touch-icon-robolivre.png') ?>" />
         <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -246,7 +251,7 @@
   </div>
   <div class="modal-body">
         <div class="row-fluid">
-        <a href="<?php echo url_for("arquivosImprensa/logos.zip") ?>" class="btn btn-success span12">Baixe o arquivo em alta qualidade <i class="icon-download icon-white"></i></a>
+        <a href="<?php echo url_for("arquivosImprensa/Logotipos.zip") ?>" class="btn btn-success span12">Baixe o arquivo em alta qualidade <i class="icon-download icon-white"></i></a>
         </div>
   </div>
 </div>

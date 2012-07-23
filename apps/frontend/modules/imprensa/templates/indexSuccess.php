@@ -29,8 +29,6 @@
 <h1>Robô Livre na mídia</h1>
 </div>
 
-<p class="label label-success pull-right">Destaques</p>
-
 <div id="press-destaques">
         <ul class="unstyled">
           <li class="row-fluid">
@@ -46,7 +44,7 @@
           </li>
 
           <li class="row-fluid">
-            <h3><a href="<?php echo image_path('/download/imprensa-clipping/JC26deabril2012-2012-04-26.jpeg') ?>" rel="external">
+            <h3><a href="<?php echo image_path('/downloads/imprensa-clipping/JC26deabril2012-2012-04-26.jpeg') ?>" rel="external">
             <span class="span3 veiculo">
               <img src="<?php echo image_path('/assets/img/rl/imprensa-logo-jc.png') ?>" alt="Jornal do Commercio">
             </span>
@@ -75,15 +73,15 @@
 
         <h3>Mídia impresa ∙ <small>Imagens de matérias de revistas e jornais</small></h3>
         <ul class="nav nav-tabs nav-stacked">
-          <li><a href="<?php echo image_path('/download/imprensa-clipping/JC26deabril2012-2012-04-26.jpeg') ?>" rel="external"><span class="label label-success pull-right">
+          <li><a href="<?php echo image_path('/downloads/imprensa-clipping/JC26deabril2012-2012-04-26.jpeg') ?>" rel="external"><span class="label label-success pull-right">
             Jornal do Commercio ∙ 26.04.2012 <i class="icon-download icon-white"></i></span> 
             Arte liga tecnologia e natureza</a></li>
 
-          <li><a href="<?php echo image_path('/download/imprensa-clipping/Di_ario25deabril2012-2012-04-26.jpeg') ?>" rel="external"><span class="label label-success pull-right">
+          <li><a href="<?php echo image_path('/downloads/imprensa-clipping/Diario25deabril2012-2012-04-26.jpeg') ?>" rel="external"><span class="label label-success pull-right">
             Diário de Pernambuco ∙ 25.04.2012 <i class="icon-download icon-white"></i></span> 
-            Rob Livre foca na educação</a></li>
+            Robô Livre foca na educação</a></li>
 
-          <li><a href="<?php echo image_path('/download/imprensa-clipping/FolhaPEjulho2010-2011-11-24.pdf') ?>" rel="external"><span class="label label-success pull-right">
+          <li><a href="<?php echo image_path('/downloads/imprensa-clipping/FolhaPEjulho2010-2011-11-24.pdf') ?>" rel="external"><span class="label label-success pull-right">
             Folha de Pernambuco ∙ 24.11.2011 <i class="icon-download icon-white"></i></span> 
             Robótica como instrumento educacional</a></li>
         </ul>
@@ -145,10 +143,10 @@
 <p>Acompanhe informações sobre nossos projetos também nas redes sociais:</p>
 
 <ul>
-<li><a href="http://twitter.com/robolivre" rel="external">Twitter</a></li>
-<li><a href="https://www.facebook.com/robolivre" rel="external">Facebook</a></li>
-<li><a href="http://www.youtube.com/user/robolivre" rel="external">Youtube</a></li>
-<li><a href="http://blog.robolivre.org/">Blog no Tumblr</a></li>
+    <li id="ico-facebook"><a href="https://www.facebook.com/robolivre" rel="external">Facebook</a></li>
+    <li id="ico-twitter"><a href="http://twitter.com/robolivre" rel="external">Twitter</a></li>
+    <li id="ico-youtube"><a href="http://www.youtube.com/user/robolivre" rel="external">Youtube</a></li>
+    <li id="ico-tumblr"><a href="http://blog.robolivre.org/">Blog no Tumblr</a></li>
 </ul>
 
 </div>
